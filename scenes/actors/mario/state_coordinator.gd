@@ -3,7 +3,7 @@ extends Node
 # A method of coordination between a player's states
 
 
-@export var current_state : State = null
+@export var current_sstate : State = null
 
 @onready var actor : Node = owner
 
@@ -11,37 +11,31 @@ extends Node
 func _ready():
 	await actor.ready
 
-	enter_state()
+	current_sstate.call_with_substate("enter_state")
 
 
 func _process(delta):
-	print(actor.crouch_lock.has_overlapping_bodies())
+#	print(actor.is_on_floor())
 
-	if current_state == null:
+	if current_sstate == null:
 		return
-	current_state.tick(delta)
+	current_sstate.call_with_substate("tick", [delta])
 
 
 func _physics_process(delta):
-	if current_state == null:
+	if current_sstate == null:
 		return
 
-	var new_state = current_state.switch_check()
+	var new_state = current_sstate.switch_check()
 
 	if new_state != null:
 		change_state(new_state)
 
-	current_state.physics_tick(delta)
+	current_sstate.parent_switch_check()
+	current_sstate.call_with_substate("physics_tick", [delta])
 
 
-func change_state(new_state : State): # Switch between states
-	current_state.on_exit()
-	current_state = new_state
-	enter_state()
-
-
-func enter_state():
-	actor.doll.play(current_state.animation_name)
-	actor.doll.offset.x = current_state.offset_x * actor.movement.facing_direction
-	actor.doll.offset.y = current_state.offset_y
-	current_state.on_enter()
+func change_state(new_state : State): # Switch between super states
+	current_sstate.call_with_substate("on_exit")
+	current_sstate = new_state
+	current_sstate.call_with_substate("on_enter")

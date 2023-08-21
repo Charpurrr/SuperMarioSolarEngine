@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=57 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://scenes/actors/mario/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://bfwe80wtp2uqy" path="res://scenes/actors/mario/anime/walk.png" id="2_5xkqu"]
@@ -9,19 +9,21 @@
 [ext_resource type="Script" path="res://scenes/actors/mario/state_coordinator.gd" id="3_t4ior"]
 [ext_resource type="Texture2D" uid="uid://cof524axgo162" path="res://scenes/actors/mario/anime/skid.png" id="3_x2igy"]
 [ext_resource type="Texture2D" uid="uid://c3oofyu0r7jw2" path="res://scenes/actors/mario/anime/slow_turn.png" id="4_4n8xm"]
-[ext_resource type="Script" path="res://scenes/actors/mario/states/idle.gd" id="4_6nkrr"]
-[ext_resource type="Script" path="res://scenes/actors/mario/states/walk.gd" id="5_8nim3"]
-[ext_resource type="Script" path="res://scenes/actors/mario/states/fall.gd" id="7_k5wtt"]
 [ext_resource type="Script" path="res://scenes/actors/mario/push_ray.gd" id="8_qbkd3"]
-[ext_resource type="Script" path="res://scenes/actors/mario/states/jump.gd" id="9_5aeak"]
-[ext_resource type="Script" path="res://scenes/actors/mario/states/skid.gd" id="9_h077q"]
-[ext_resource type="Script" path="res://scenes/actors/mario/states/slow_turn.gd" id="10_aswnq"]
-[ext_resource type="Script" path="res://scenes/actors/mario/states/push.gd" id="14_h5y00"]
-[ext_resource type="Script" path="res://scenes/actors/mario/states/crouch.gd" id="15_0vb6m"]
-[ext_resource type="Script" path="res://scenes/actors/mario/states/dry_push.gd" id="15_x1462"]
-[ext_resource type="Script" path="res://scenes/actors/mario/states/crouch_walk.gd" id="18_p8tih"]
-[ext_resource type="Script" path="res://scenes/actors/mario/states/sideflip.gd" id="20_jw6y3"]
-[ext_resource type="Script" path="res://scenes/actors/mario/states/backflip.gd" id="21_3icss"]
+[ext_resource type="Script" path="res://scenes/actors/mario/states/grounded.gd" id="11_15kl1"]
+[ext_resource type="Script" path="res://scenes/actors/mario/states/grounded/idle.gd" id="12_hqcfh"]
+[ext_resource type="Script" path="res://scenes/actors/mario/states/grounded/walk.gd" id="13_olbq0"]
+[ext_resource type="Script" path="res://scenes/actors/mario/states/grounded/skid.gd" id="14_2xdeu"]
+[ext_resource type="Script" path="res://scenes/actors/mario/states/grounded/slow_turn.gd" id="15_am2gs"]
+[ext_resource type="Script" path="res://scenes/actors/mario/states/grounded/dry_push.gd" id="16_dpmo1"]
+[ext_resource type="Script" path="res://scenes/actors/mario/states/grounded/push.gd" id="17_8nb4y"]
+[ext_resource type="Script" path="res://scenes/actors/mario/states/grounded/crouch.gd" id="18_h7q8u"]
+[ext_resource type="Script" path="res://scenes/actors/mario/states/grounded/crouch_walk.gd" id="19_5dj3b"]
+[ext_resource type="Script" path="res://scenes/actors/mario/states/airborne.gd" id="20_at07q"]
+[ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/jump.gd" id="20_bs088"]
+[ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/fall.gd" id="21_cisab"]
+[ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/sideflip.gd" id="22_4r2ks"]
+[ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/backflip.gd" id="23_jcv3h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_obm5j"]
 atlas = ExtResource("2_b7wew")
@@ -311,68 +313,71 @@ movement = NodePath("../Movement")
 script = ExtResource("3_3mh1j")
 actor = NodePath("..")
 
-[node name="StateCoordinator" type="Node" parent="." node_paths=PackedStringArray("current_state")]
+[node name="StateCoordinator" type="Node" parent="." node_paths=PackedStringArray("current_sstate")]
 script = ExtResource("3_t4ior")
-current_state = NodePath("==GROUNDMOVEMENT==/Idle")
+current_sstate = NodePath("Grounded")
 
-[node name="==GROUNDMOVEMENT==" type="Node" parent="StateCoordinator"]
+[node name="Grounded" type="Node" parent="StateCoordinator" node_paths=PackedStringArray("current_substate")]
+script = ExtResource("11_15kl1")
+current_substate = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateCoordinator/==GROUNDMOVEMENT=="]
+[node name="Idle" type="Node" parent="StateCoordinator/Grounded"]
 unique_name_in_owner = true
-script = ExtResource("4_6nkrr")
+script = ExtResource("12_hqcfh")
 animation_name = &"idle"
 
-[node name="Walk" type="Node" parent="StateCoordinator/==GROUNDMOVEMENT=="]
+[node name="Walk" type="Node" parent="StateCoordinator/Grounded"]
 unique_name_in_owner = true
-script = ExtResource("5_8nim3")
+script = ExtResource("13_olbq0")
 animation_name = &"walk"
 
-[node name="Skid" type="Node" parent="StateCoordinator/==GROUNDMOVEMENT=="]
+[node name="Skid" type="Node" parent="StateCoordinator/Grounded"]
 unique_name_in_owner = true
-script = ExtResource("9_h077q")
+script = ExtResource("14_2xdeu")
 animation_name = &"skid"
 
-[node name="SlowTurn" type="Node" parent="StateCoordinator/==GROUNDMOVEMENT=="]
+[node name="SlowTurn" type="Node" parent="StateCoordinator/Grounded"]
 unique_name_in_owner = true
-script = ExtResource("10_aswnq")
+script = ExtResource("15_am2gs")
 animation_name = &"slow_turn"
 
-[node name="DryPush" type="Node" parent="StateCoordinator/==GROUNDMOVEMENT=="]
+[node name="DryPush" type="Node" parent="StateCoordinator/Grounded"]
 unique_name_in_owner = true
-script = ExtResource("15_x1462")
+script = ExtResource("16_dpmo1")
 animation_name = &"idle"
 
-[node name="Push" type="Node" parent="StateCoordinator/==GROUNDMOVEMENT=="]
+[node name="Push" type="Node" parent="StateCoordinator/Grounded"]
 unique_name_in_owner = true
-script = ExtResource("14_h5y00")
+script = ExtResource("17_8nb4y")
 animation_name = &"push"
 offset_x = 3.0
 
-[node name="Crouch" type="Node" parent="StateCoordinator/==GROUNDMOVEMENT=="]
+[node name="Crouch" type="Node" parent="StateCoordinator/Grounded"]
 unique_name_in_owner = true
-script = ExtResource("15_0vb6m")
+script = ExtResource("18_h7q8u")
 animation_name = &"crouch"
 
-[node name="CrouchWalk" type="Node" parent="StateCoordinator/==GROUNDMOVEMENT=="]
+[node name="CrouchWalk" type="Node" parent="StateCoordinator/Grounded"]
 unique_name_in_owner = true
-script = ExtResource("18_p8tih")
+script = ExtResource("19_5dj3b")
 animation_name = &"crouch_walk"
 offset_y = 8.0
 
-[node name="==JUMPING==" type="Node" parent="StateCoordinator"]
+[node name="Airborne" type="Node" parent="StateCoordinator"]
+script = ExtResource("20_at07q")
 
-[node name="Jump" type="Node" parent="StateCoordinator/==JUMPING=="]
+[node name="Jump" type="Node" parent="StateCoordinator/Airborne"]
 unique_name_in_owner = true
-script = ExtResource("9_5aeak")
+script = ExtResource("20_bs088")
 
-[node name="Fall" type="Node" parent="StateCoordinator/==JUMPING=="]
+[node name="Fall" type="Node" parent="StateCoordinator/Airborne"]
 unique_name_in_owner = true
-script = ExtResource("7_k5wtt")
+script = ExtResource("21_cisab")
 
-[node name="Sideflip" type="Node" parent="StateCoordinator/==JUMPING=="]
+[node name="Sideflip" type="Node" parent="StateCoordinator/Airborne"]
 unique_name_in_owner = true
-script = ExtResource("20_jw6y3")
+script = ExtResource("22_4r2ks")
 
-[node name="Backflip" type="Node" parent="StateCoordinator/==JUMPING=="]
+[node name="Backflip" type="Node" parent="StateCoordinator/Airborne"]
 unique_name_in_owner = true
-script = ExtResource("21_3icss")
+script = ExtResource("23_jcv3h")
