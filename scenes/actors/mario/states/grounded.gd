@@ -13,3 +13,10 @@ extends State
 	skid = %Skid,
 	push = %Push,
 }
+
+
+func switch_check():
+	if not actor.is_on_floor():
+		return %Fall
+
+	return null

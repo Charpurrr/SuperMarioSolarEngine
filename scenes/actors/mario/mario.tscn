@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=61 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://scenes/actors/mario/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://bfwe80wtp2uqy" path="res://scenes/actors/mario/anime/walk.png" id="2_5xkqu"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://scenes/actors/mario/state_coordinator.gd" id="3_t4ior"]
 [ext_resource type="Texture2D" uid="uid://cof524axgo162" path="res://scenes/actors/mario/anime/skid.png" id="3_x2igy"]
 [ext_resource type="Texture2D" uid="uid://c3oofyu0r7jw2" path="res://scenes/actors/mario/anime/slow_turn.png" id="4_4n8xm"]
+[ext_resource type="Texture2D" uid="uid://bqyc4a8h23h1" path="res://scenes/actors/mario/anime/fall.png" id="4_7yfar"]
+[ext_resource type="Texture2D" uid="uid://c2jk475rio8p1" path="res://scenes/actors/mario/anime/jump.png" id="6_6k7xd"]
 [ext_resource type="Script" path="res://scenes/actors/mario/push_ray.gd" id="8_qbkd3"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/grounded.gd" id="11_15kl1"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/grounded/idle.gd" id="12_hqcfh"]
@@ -61,9 +63,17 @@ region = Rect2(119, 0, 17, 16)
 atlas = ExtResource("3_5bgdw")
 region = Rect2(0, 0, 17, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocb2w"]
+atlas = ExtResource("4_7yfar")
+region = Rect2(0, 0, 19, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_20hs7"]
 atlas = ExtResource("2_5xkqu")
 region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_polxl"]
+atlas = ExtResource("6_6k7xd")
+region = Rect2(0, 0, 19, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5c7ec"]
 atlas = ExtResource("3_pq7bv")
@@ -178,10 +188,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ocb2w")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_20hs7")
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_polxl")
+}],
+"loop": true,
+"name": &"jump",
 "speed": 5.0
 }, {
 "frames": [{
@@ -280,7 +306,7 @@ zoom = Vector2(3, 3)
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -16)
 sprite_frames = SubResource("SpriteFrames_hmp25")
-animation = &"crouch"
+animation = &"jump"
 
 [node name="CrouchLock" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -313,9 +339,9 @@ movement = NodePath("../Movement")
 script = ExtResource("3_3mh1j")
 actor = NodePath("..")
 
-[node name="StateCoordinator" type="Node" parent="." node_paths=PackedStringArray("current_sstate")]
+[node name="StateCoordinator" type="Node" parent="." node_paths=PackedStringArray("current_substate")]
 script = ExtResource("3_t4ior")
-current_sstate = NodePath("Grounded")
+current_substate = NodePath("Grounded")
 
 [node name="Grounded" type="Node" parent="StateCoordinator" node_paths=PackedStringArray("current_substate")]
 script = ExtResource("11_15kl1")
@@ -363,16 +389,19 @@ script = ExtResource("19_5dj3b")
 animation_name = &"crouch_walk"
 offset_y = 8.0
 
-[node name="Airborne" type="Node" parent="StateCoordinator"]
+[node name="Airborne" type="Node" parent="StateCoordinator" node_paths=PackedStringArray("current_substate")]
 script = ExtResource("20_at07q")
+current_substate = NodePath("Fall")
 
 [node name="Jump" type="Node" parent="StateCoordinator/Airborne"]
 unique_name_in_owner = true
 script = ExtResource("20_bs088")
+animation_name = &"jump"
 
 [node name="Fall" type="Node" parent="StateCoordinator/Airborne"]
 unique_name_in_owner = true
 script = ExtResource("21_cisab")
+animation_name = &"fall"
 
 [node name="Sideflip" type="Node" parent="StateCoordinator/Airborne"]
 unique_name_in_owner = true

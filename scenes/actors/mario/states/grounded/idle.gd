@@ -13,6 +13,10 @@ func switch_check():
 	if input_direction != 0:
 		return get_states().walk
 
+	if Input.is_action_just_pressed("jump"):
+		return %Jump
+
+
 	if Input.is_action_pressed("down"):
 		return get_states().crouch
 

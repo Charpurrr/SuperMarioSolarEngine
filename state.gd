@@ -46,13 +46,35 @@ func parent_switch_check(): # switch_check that incorporates all substates
 		var new_state = current_substate.switch_check()
 
 		if new_state != null:
-			change_state(new_state)
+			if new_state.get_parent() == self:
+				change_state(new_state)
+			else:
+				seek_state(new_state)
 
-		current_substate.parent_switch_check()
+		if current_substate != null: # current_substate might change during seek_state()
+			current_substate.parent_switch_check()
+
+
+func seek_state(target_state : State): # Finds 
+	var path : NodePath = get_path_to(target_state)
+	var current_state : State = self
+
+	for i in path.get_name_count():
+		var parent_name : String = path.get_name(i)
+
+		print(current_state)
+		if current_state.is_ancestor_of(target_state):
+			current_state.change_state(current_state.get_node(parent_name))
+		else:
+			current_state.current_substate = null
+
+		current_state = current_state.get_node(parent_name)
 
 
 func change_state(new_state : State): # Switch between states
-	current_substate.on_exit()
+	if current_substate != null:
+		current_substate.call_with_substate("on_exit")
+
 	current_substate = new_state
 	enter_state()
 
@@ -62,7 +84,7 @@ func enter_state():
 
 	actor.doll.offset.x = current_substate.offset_x * actor.movement.facing_direction
 	actor.doll.offset.y = current_substate.offset_y
-	current_substate.on_enter()
+	current_substate.call_with_substate("on_enter")
 
 	if current_substate.animation_name != "":
 		actor.doll.play(current_substate.animation_name)
