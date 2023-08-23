@@ -31,3 +31,6 @@ func switch_check():
 
 	if (not Input.is_action_pressed("down")) and (not actor.crouch_lock.has_overlapping_bodies()):
 		return get_states().idle
+
+	if Input.is_action_just_pressed("jump"):
+		return %Backflip

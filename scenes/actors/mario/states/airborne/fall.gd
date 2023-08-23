@@ -7,8 +7,8 @@ extends State
 
 
 func physics_tick(_delta):
-	actor.vel.y += actor.movement.GRAVITY
-	actor.vel.y = min(actor.vel.y, actor.movement.TERM_VEL)
+	actor.movement.move_x("air", true)
+	actor.movement.apply_gravity()
 
 
 func switch_check():

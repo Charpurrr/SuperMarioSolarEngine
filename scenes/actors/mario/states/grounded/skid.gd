@@ -27,7 +27,11 @@ func switch_check():
 			return get_states().walk 
 		else:
 			return get_states().slow_turn
-#	elif Input.is_action_just_pressed("jump"):
-#		return slideflip_state
+
+	if Input.is_action_just_pressed("jump"):
+		if input_direction == -actor.movement.facing_direction:
+			return %Sideflip
+		else:
+			return %Jump
 
 	return null

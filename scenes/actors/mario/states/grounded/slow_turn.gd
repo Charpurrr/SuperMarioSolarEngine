@@ -29,7 +29,8 @@ func switch_check():
 			return get_states().idle
 		else:
 			return get_states().walk 
-#	elif Input.is_action_just_pressed("jump"):
-#		return jump_state
+
+	if Input.is_action_just_pressed("jump"):
+		return %Sideflip
 
 	return null

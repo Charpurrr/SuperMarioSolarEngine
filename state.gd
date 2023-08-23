@@ -55,7 +55,7 @@ func parent_switch_check(): # switch_check that incorporates all substates
 			current_substate.parent_switch_check()
 
 
-func seek_state(target_state : State): # Finds 
+func seek_state(target_state : State): # Finds a path to a given state and calls it
 	var path : NodePath = get_path_to(target_state)
 	var current_state : State = self
 
@@ -66,14 +66,19 @@ func seek_state(target_state : State): # Finds
 		if current_state.is_ancestor_of(target_state):
 			current_state.change_state(current_state.get_node(parent_name))
 		else:
-			current_state.current_substate = null
+			abandon_state()
 
 		current_state = current_state.get_node(parent_name)
 
 
+func abandon_state():
+	current_substate.call_with_substate("on_exit")
+	current_substate = null
+
+
 func change_state(new_state : State): # Switch between states
 	if current_substate != null:
-		current_substate.call_with_substate("on_exit")
+		abandon_state()
 
 	current_substate = new_state
 	enter_state()

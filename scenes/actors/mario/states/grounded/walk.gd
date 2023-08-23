@@ -30,4 +30,7 @@ func switch_check():
 	if Input.is_action_pressed("down"):
 		return get_states().crouch
 
+	if Input.is_action_just_pressed("jump"):
+		return %Jump
+
 	return null

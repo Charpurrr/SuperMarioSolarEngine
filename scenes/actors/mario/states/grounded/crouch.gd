@@ -26,5 +26,5 @@ func switch_check():
 	if input_direction != 0 and actor.vel.x == 0:
 		return get_states().crouch_walk
 
-#	if Input.is_action_just_pressed("jump"):
-#		return backflip_state
+	if Input.is_action_just_pressed("jump"):
+		return %Backflip

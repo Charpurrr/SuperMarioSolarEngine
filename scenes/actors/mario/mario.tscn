@@ -410,3 +410,4 @@ script = ExtResource("22_4r2ks")
 [node name="Backflip" type="Node" parent="StateCoordinator/Airborne"]
 unique_name_in_owner = true
 script = ExtResource("23_jcv3h")
+animation_name = &"jump"
