@@ -3,7 +3,7 @@ extends State
 # Stopping from grounded movement at max speed
 
 
-const SKID_DECEL_TIME : float = 18 # How long it takes to decelerate from a skid
+const SKID_DECEL_TIME : float = 16 # How long it takes to decelerate from a skid
 var skid_decel_step : float
 
 

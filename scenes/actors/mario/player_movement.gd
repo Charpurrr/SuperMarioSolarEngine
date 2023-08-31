@@ -6,18 +6,18 @@ extends Node
 @export var actor : Player
 
 # x variables
-const MAX_SPEED_X : float = 3 # Max horizontal speed
+const MAX_SPEED_X : float = 2.7 # Max horizontal speed
 
-const GROUND_ACCEL_TIME : float = 25 # How long it takes to accelerate (when grounded)
+const GROUND_ACCEL_TIME : float = 22.5 # How long it takes to accelerate (when grounded)
 const GROUND_ACCEL_STEP : float = MAX_SPEED_X / GROUND_ACCEL_TIME
 
-const GROUND_DECEL_TIME : float = 15 # How long it takes to decelerate (when grounded)
+const GROUND_DECEL_TIME : float = 13.5 # How long it takes to decelerate (when grounded)
 const GROUND_DECEL_STEP : float = MAX_SPEED_X / GROUND_DECEL_TIME
 
-const AIR_ACCEL_TIME : float = 25 # How long it takes to accelerate (when airborne)
+const AIR_ACCEL_TIME : float = 16 # How long it takes to accelerate (when airborne)
 const AIR_ACCEL_STEP : float = MAX_SPEED_X / AIR_ACCEL_TIME
 
-const AIR_DECEL_TIME : float = 15 # How long it takes to decelerate (when airborne)
+const AIR_DECEL_TIME : float = 18 # How long it takes to decelerate (when airborne)
 const AIR_DECEL_STEP : float = MAX_SPEED_X / AIR_DECEL_TIME
 
 const CELS : Dictionary = {
@@ -40,8 +40,10 @@ const CELS : Dictionary = {
 var facing_direction : float = 1
 
 # y variables
-const GRAVITY : float = 0.08
-const TERM_VEL : float = 6.00
+const TERM_VEL : float = 6.60
+
+const MAX_GRAV : float = 0.33 # How high gravity can interpolate
+const MIN_GRAV : float = 0.28 # How low gravity can interpolate
 
 
 func accelerate(accel_val : Variant, direction : float):
@@ -52,7 +54,7 @@ func accelerate(accel_val : Variant, direction : float):
 	elif accel_val is String:
 		accel = CELS[accel_val].accel
 	else:
-		push_error("Not a float or string!")
+		push_error("Not a number or string!")
 
 	if actor.vel.x * direction + accel < MAX_SPEED_X:
 		actor.vel.x += direction * accel
@@ -117,8 +119,10 @@ func move_y():
 	pass
 
 
-func apply_gravity():
-	if actor.vel.y + GRAVITY < TERM_VEL:
-		actor.vel.y += GRAVITY
+func apply_gravity(gravity_weight : float = 1):
+	var gravity = lerpf(MIN_GRAV, MAX_GRAV, gravity_weight)
+
+	if actor.vel.y + gravity < TERM_VEL:
+		actor.vel.y += gravity
 	elif actor.vel.y < TERM_VEL:
 		actor.vel.y = TERM_VEL

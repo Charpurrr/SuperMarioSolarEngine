@@ -15,22 +15,22 @@ func on_exit():
 func switch_check():
 	var input_direction : float = actor.movement.get_input_x()
 
+	if Input.is_action_just_pressed("jump"):
+		return %Jump
+
 	if input_direction != actor.movement.facing_direction:
 		if abs(actor.vel.x) >= actor.movement.MAX_SPEED_X:
 			return get_states().skid
 		else:
 			return get_states().idle
 
+	if Input.is_action_pressed("down"):
+		return get_states().crouch
+
 	if input_direction != 0 and actor.is_on_wall():
 		if actor.push_ray.is_colliding():
 			return get_states().push
 		else:
 			return get_states().dry_push
-
-	if Input.is_action_pressed("down"):
-		return get_states().crouch
-
-	if Input.is_action_just_pressed("jump"):
-		return %Jump
 
 	return null

@@ -4,10 +4,12 @@ extends CharacterBody2D
 
 
 @onready var doll : AnimatedSprite2D = $Doll
+@onready var animplay : AnimationPlayer = $AnimationPlayer
+
 @onready var movement : Object = $Movement
 
 @onready var push_ray : RayCast2D = $PushRay
-
+ 
 @onready var crouchbox : CollisionShape2D = %Crouchbox
 @onready var hitbox : CollisionShape2D = %Hitbox
 @onready var crouch_lock : Area2D = %CrouchLock

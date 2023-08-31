@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnha8tyjlmgxd"
-path="res://.godot/imported/debug.png-77cd9110e7c6e1d8b520299ed29fe3f7.ctex"
+uid="uid://bfq6wetdws7ug"
+path="res://.godot/imported/sideflip.png-c21966718557161eb7792368db7a9f03.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/actors/debug.png"
-dest_files=["res://.godot/imported/debug.png-77cd9110e7c6e1d8b520299ed29fe3f7.ctex"]
+source_file="res://scenes/actors/mario/anime/sideflip.png"
+dest_files=["res://.godot/imported/sideflip.png-c21966718557161eb7792368db7a9f03.ctex"]
 
 [params]
 

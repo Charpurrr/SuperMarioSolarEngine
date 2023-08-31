@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcfs6qlmbk0rv"
-path="res://.godot/imported/crouch_walk.png-eaf3fe6ce6a6f3a1fd1be05d86c4ecba.ctex"
+uid="uid://di37s0hpo2dfx"
+path="res://.godot/imported/idle.png-06d879b30a4228e5bcae63ff6dad9d25.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/actors/mario/anime/crouch_walk.png"
-dest_files=["res://.godot/imported/crouch_walk.png-eaf3fe6ce6a6f3a1fd1be05d86c4ecba.ctex"]
+source_file="res://scenes/actors/mario/anime/idle.png"
+dest_files=["res://.godot/imported/idle.png-06d879b30a4228e5bcae63ff6dad9d25.ctex"]
 
 [params]
 
