@@ -18,9 +18,13 @@ func switch_check():
 	if Input.is_action_just_pressed("jump"):
 		return %Jump
 
-	if input_direction != actor.movement.facing_direction:
+	if input_direction != 0:
 		if abs(actor.vel.x) >= actor.movement.MAX_SPEED_X:
-			return get_states().skid
+			if input_direction != actor.movement.facing_direction:
+				return get_states().turn_skid
+	else:
+		if abs(actor.vel.x) >= actor.movement.MAX_SPEED_X:
+			return get_states().stop_skid
 		else:
 			return get_states().idle
 

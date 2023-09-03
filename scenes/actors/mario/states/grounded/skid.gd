@@ -29,9 +29,6 @@ func switch_check():
 			return get_states().slow_turn
 
 	if Input.is_action_just_pressed("jump"):
-		if input_direction == -actor.movement.facing_direction:
-			return %Sideflip
-		else:
-			return %Jump
+		return %Sideflip
 
 	return null

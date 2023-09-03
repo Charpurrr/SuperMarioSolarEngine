@@ -4,23 +4,24 @@ extends State
 
 
 const PUSH_POWER : float = 1.2
-const JUMP_POWER : float = 8
+const JUMP_POWER : float = 9
 
 
 func on_enter():
-	var input_direction : float = actor.movement.get_input_x()
-
 	actor.vel.y = -JUMP_POWER
 	actor.animplay.play("sideflip")
-	actor.vel.x = PUSH_POWER * input_direction
-	
 
 
 func on_exit():
 	actor.animplay.stop()
 
 
-func physics_tick(delta):
+func physics_tick(_delta):
+	var input_direction : float = actor.movement.get_input_x()
+
+	if actor.vel.y < -JUMP_POWER + 1:
+		actor.vel.x = PUSH_POWER * input_direction
+
 	actor.movement.move_x(0.1, true)
 	actor.movement.apply_gravity(-actor.vel.y / JUMP_POWER)
 

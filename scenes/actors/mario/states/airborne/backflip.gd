@@ -4,7 +4,7 @@ extends State
 
 
 const PUSH_POWER : float = 1.4
-const JUMP_POWER : float = 8
+const JUMP_POWER : float = 9
 
 
 func on_enter():
@@ -20,7 +20,13 @@ func on_exit():
 
 
 func physics_tick(_delta):
-	actor.movement.move_x(0.08, false)
+	var input_direction : float = actor.movement.get_input_x()
+
+	if input_direction != actor.movement.facing_direction:
+		actor.movement.move_x(0.04, false)
+	elif input_direction != 0:
+		actor.movement.move_x(0.07, false)
+
 	actor.movement.apply_gravity(-actor.vel.y / JUMP_POWER)
 
 

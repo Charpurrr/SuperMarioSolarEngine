@@ -6,7 +6,7 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Mario" parent="." instance=ExtResource("1_jr8c6")]
-position = Vector2(349, 84)
+position = Vector2(293, 313)
 
 [node name="TileMap" parent="." instance=ExtResource("2_wo75n")]
 scale = Vector2(1.5, 1.5)

@@ -5,6 +5,8 @@ extends Node
 
 @onready var actor : Node = owner
 
+@export var sound_effects : Array # What sound effecet this state should play
+
 @export var animation_name : StringName # What animation this state should play
 @export var offset_x : float # This state's animation's offset on the x axis
 @export var offset_y : float # This state's animation's offset on the x axis
@@ -74,6 +76,8 @@ func seek_state(target_state : State): # Finds a path to a given state and calls
 func abandon_state():
 	if current_substate == null: return
 
+	actor.audio.stop()
+
 	current_substate.on_exit()
 	current_substate.call_with_substate("abandon_state")
 	current_substate = null
@@ -90,9 +94,16 @@ func change_state(new_state : State): # Switch between states
 func enter_state():
 	if current_substate == null: return
 
+	current_substate.call_with_substate("on_enter")
+
 	actor.doll.offset.x = current_substate.offset_x * actor.movement.facing_direction
 	actor.doll.offset.y = current_substate.offset_y
-	current_substate.call_with_substate("on_enter")
+
+	if current_substate.sound_effects != null:
+		var sfx_amt : int = current_substate.sound_effects.size() # Amount of sound effects in the sound effects array
+
+		if sfx_amt != 0:
+			actor.audio.play_sfx(current_substate.sound_effects)
 
 	if current_substate.animation_name != "":
 		actor.doll.play(current_substate.animation_name)
