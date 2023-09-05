@@ -4,6 +4,8 @@ extends State
 
 
 @onready var substates : Dictionary = {
+	groundpound_fall = $GroundPound/GroundPoundFall,
+	groundpound = $GroundPound,
 	sideflip = $Sideflip,
 	backflip = $Backflip,
 	freefall = $FreeFall,

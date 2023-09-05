@@ -22,5 +22,8 @@ func switch_check():
 	if actor.is_on_floor():
 		return idle_state
 
+	if Input.is_action_just_pressed("down"):
+		return get_states().groundpound
+
 	if is_equal_approx(actor.vel.y, actor.movement.TERM_VEL) and can_freefall:
 		return get_states().freefall

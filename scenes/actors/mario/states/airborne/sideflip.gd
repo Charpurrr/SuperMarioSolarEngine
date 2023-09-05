@@ -29,3 +29,6 @@ func physics_tick(_delta):
 func switch_check():
 	if actor.is_on_ceiling():
 		return get_states().fall
+
+	if Input.is_action_just_pressed("down"):
+		return get_states().groundpound

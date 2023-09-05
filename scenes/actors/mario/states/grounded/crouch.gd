@@ -14,11 +14,9 @@ func on_exit():
 
 
 func physics_tick(_delta):
-	var input_direction : float = actor.movement.get_input_x()
+	var direction = int(Input.is_action_just_released("right")) - int(Input.is_action_just_released("left"))
 
-	if (Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right")):
-		actor.movement.update_direction(input_direction)
-
+	actor.movement.update_direction(direction)
 	actor.movement.decelerate("ground")
 
 

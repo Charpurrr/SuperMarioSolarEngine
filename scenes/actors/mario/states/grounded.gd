@@ -4,13 +4,14 @@ extends State
 
 
 @onready var substates : Dictionary = {
-	slow_turn = $SlowTurn,
+#	dry_push = $Push/DryPush,
 	dry_push = $DryPush,
+	turn_skid = $TurnSkid,
+	stop_skid = $StopSkid,
+	slow_turn = $SlowTurn,
 	crouch = $Crouch,
 	idle = $Idle,
 	walk = $Walk,
-	turn_skid = $TurnSkid,
-	stop_skid = $StopSkid,
 	push = $Push,
 }
 

@@ -5,5 +5,5 @@ bus/1/name = &"Voices"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = -1.71701
+bus/1/volume_db = -12.4611
 bus/1/send = &"Master"

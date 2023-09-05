@@ -19,5 +19,8 @@ func physics_tick(_delta):
 
 
 func switch_check():
+	if Input.is_action_just_pressed("down"):
+		return get_states().groundpound
+
 	if actor.vel.y > 0:
 		return get_states().fall

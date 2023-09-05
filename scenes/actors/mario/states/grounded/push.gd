@@ -3,9 +3,6 @@ extends State
 # Walking against a solid body while the ray_shape is colliding
 
 
-
-
-
 func switch_check():
 	var input_direction : float = actor.movement.get_input_x()
 

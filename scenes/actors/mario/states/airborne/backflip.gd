@@ -4,7 +4,7 @@ extends State
 
 
 const PUSH_POWER : float = 1.4
-const JUMP_POWER : float = 9
+const JUMP_POWER : float = 9.5
 
 
 func on_enter():
@@ -33,3 +33,6 @@ func physics_tick(_delta):
 func switch_check():
 	if actor.vel.y > 0:
 		return get_states().fall
+
+	if Input.is_action_just_pressed("down"):
+		return get_states().groundpound
