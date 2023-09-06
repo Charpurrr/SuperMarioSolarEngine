@@ -14,7 +14,6 @@ func on_enter():
 	actor.vel.x = 0
 
 	actor.animplay.play("ground_pound")
-	print("abwbawba")
 
 
 func on_exit():

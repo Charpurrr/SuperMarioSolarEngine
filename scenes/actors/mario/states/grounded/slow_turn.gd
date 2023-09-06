@@ -3,7 +3,7 @@ extends State
 # Turning around after a skid
 
 
-const TURN_ACCEL_TIME : float = 18 # How long it takes to accelerate with a slow turn
+const TURN_ACCEL_TIME : float = 9 # How long it takes to accelerate with a slow turn
 var turn_accel_step : float
 
 
@@ -25,9 +25,9 @@ func switch_check():
 
 	if is_equal_approx(abs(actor.vel.x), actor.movement.MAX_SPEED_X):
 		if input_direction == 0:
-			return get_states().idle
+			return %Idle
 		else:
-			return get_states().walk
+			return %Walk
 
 	if Input.is_action_just_pressed("jump"):
 		return %Sideflip

@@ -10,10 +10,7 @@ func _ready():
 
 
 func _process(delta):
-#	print()
-
 	if current_substate == null: return
-
 
 	current_substate.call_with_substate("tick", [delta])
 

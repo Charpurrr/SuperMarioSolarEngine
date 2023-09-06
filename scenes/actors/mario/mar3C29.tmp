@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=73 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://scenes/actors/mario/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://bfwe80wtp2uqy" path="res://scenes/actors/mario/anime/walk.png" id="2_5xkqu"]
@@ -242,8 +242,14 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sk4yn"]
+size = Vector2(12, 14)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u4b58"]
 size = Vector2(12, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s1eck"]
+size = Vector2(12, 14)
 
 [sub_resource type="Animation" id="Animation_1d666"]
 resource_name = "backflip"
@@ -319,10 +325,24 @@ rotation = 6.28319
 sprite_frames = SubResource("SpriteFrames_hmp25")
 animation = &"walk"
 
+[node name="CrouchLock" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CrouchLock"]
+position = Vector2(0, -21)
+shape = SubResource("RectangleShape2D_sk4yn")
+debug_color = Color(0.898039, 0.658824, 0.701961, 0.419608)
+
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_u4b58")
+
+[node name="Crouchbox" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_s1eck")
+debug_color = Color(0, 0.180392, 0.701961, 0.419608)
 
 [node name="PushRay" type="RayCast2D" parent="." node_paths=PackedStringArray("movement")]
 modulate = Color(1, 1, 0.164706, 1)
@@ -413,6 +433,9 @@ anim_offset_y = -1.0
 [node name="Fall" type="Node" parent="StateCoordinator/Airborne"]
 unique_name_in_owner = true
 script = ExtResource("21_cisab")
+sfx_sound_effects = null
+sfx_quit_sfx_on_exit = null
+sfx_sfx_delay = null
 anim_animation_name = &"fall"
 anim_offset_x = 3.0
 anim_offset_y = -1.0

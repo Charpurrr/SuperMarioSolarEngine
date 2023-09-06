@@ -3,6 +3,10 @@ extends State
 # Jumping state
 
 
+@export_group("Sounds", "sfx_")
+@export var sfx_alt_sound_effects : Array
+
+const FREEFALL_MARGIN : int = 250
 const JUMP_POWER : float = 6.8
 
 
@@ -16,6 +20,13 @@ func physics_tick(_delta):
 
 	if Input.is_action_just_released("jump"):
 		actor.vel.y *= 0.5
+
+
+func get_sfx():
+	if actor.test_move(actor.transform, Vector2(0, FREEFALL_MARGIN)):
+		return sfx_sound_effects
+	else:
+		return sfx_alt_sound_effects
 
 
 func switch_check():

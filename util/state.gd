@@ -6,7 +6,7 @@ extends Node
 @onready var actor : Node = owner
 
 @export_group("Sounds", "sfx_")
-@export var sfx_sound_effects : Array # What sound effecet this state should play
+@export var sfx_sound_effects : Array # What sound effects this state should play
 @export var sfx_quit_sfx_on_exit : bool # If the sound effect should keep playing after the state's on_exit()
 @export var sfx_sfx_delay : float # How long the state should wait until playing a sound effect (in seconds)
 
@@ -95,21 +95,16 @@ func abandon_state():
 
 
 func change_state(new_state : State): # Switch between states
-	print("-------")
-	print(current_substate)
-	print(new_state)
+#	print("-------")
+#	print(current_substate)
+#	print(new_state)
 
-	var temp = current_substate
+	if new_state != current_substate:
+		if current_substate != null:
+			abandon_state()
 
-	if current_substate != null:
-		abandon_state()
+		current_substate = new_state
 
-	current_substate = new_state
-
-#	if current_substate.current_substate == null:
-#		enter_state()
-
-	if temp != current_substate:
 		enter_state()
 
 
@@ -127,10 +122,14 @@ func enter_state():
 		var sfx_amt : int = lowest_state.sfx_sound_effects.size() # Amount of sound effects in the sound effects array
 
 		if sfx_amt != 0:
-			actor.audio.play_sfx(lowest_state.sfx_sound_effects, lowest_state.sfx_sfx_delay)
+			actor.audio.play_sfx(lowest_state, lowest_state.sfx_sfx_delay)
 
 	if current_substate.anim_animation_name != "":
 		actor.doll.play(current_substate.anim_animation_name)
+
+
+func get_sfx() -> Array: # Returns the sound effects array of this state
+	return sfx_sound_effects
 
 
 func call_with_substate(function : StringName, arguments : Array = []): # Handles function interaction between the super and sub states

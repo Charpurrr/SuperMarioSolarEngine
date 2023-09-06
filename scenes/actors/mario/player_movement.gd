@@ -45,6 +45,28 @@ const TERM_VEL : float = 6.60
 const MAX_GRAV : float = 0.33 # How high gravity can interpolate
 const MIN_GRAV : float = 0.28 # How low gravity can interpolate
 
+const BUFFER_TIME : int = 6
+var buffer_timer : int
+
+const COYOTE_TIME : int = 6
+var coyote_timer : int
+
+
+func _physics_process(_delta):
+	buffer_timer = max(buffer_timer - 1, 0)
+
+	if actor.is_on_floor():
+		coyote_timer = COYOTE_TIME
+	else:
+		coyote_timer = max(coyote_timer - 1, 0)
+
+	if Input.is_action_just_pressed("jump"):
+		buffer_timer = BUFFER_TIME
+
+	if actor.vel.y < 0:
+		coyote_timer = 0
+
+# X FUNCTIONS
 
 func accelerate(accel_val : Variant, direction : float):
 	var accel : float
@@ -75,7 +97,8 @@ func decelerate(decel_val : Variant):
 	actor.vel.x = move_toward(actor.vel.x, 0, decel)
 
 
-func move_x(accel_val : Variant, should_flip : bool): # Handles movement on the X axis
+## Handles movement on the X axis.
+func move_x(accel_val : Variant, should_flip : bool):
 	var input_direction : float = get_input_x()
 
 	if should_flip:
@@ -85,7 +108,8 @@ func move_x(accel_val : Variant, should_flip : bool): # Handles movement on the 
 	accelerate(accel_val, input_direction)
 
 
-func update_direction(direction : int): # Update facing_direction
+## Update facing_direction.
+func update_direction(direction : int):
 	var new_direction = sign(direction)
 
 	if new_direction == 0:
@@ -98,7 +122,8 @@ func update_direction(direction : int): # Update facing_direction
 	actor.doll.flip_h = (facing_direction == -1)
 
 
-func check_accessible_space(delta : Vector2) -> bool: # Checks if the space at a position can be moved into
+## Checks if the space at a position can be moved into.
+func check_accessible_space(delta : Vector2) -> bool:
 	var collision := KinematicCollision2D.new()
 
 	if actor.test_move(actor.transform, delta, collision):
@@ -107,17 +132,15 @@ func check_accessible_space(delta : Vector2) -> bool: # Checks if the space at a
 		return true
 
 
-func check_space_ahead() -> bool: # Check if there is accessible space in front of the player
+## Check if there is accessible space in front of the player.
+func check_space_ahead() -> bool:
 	return check_accessible_space(Vector2(facing_direction, 0))
 
 
 func get_input_x() -> float:
 	return Input.get_axis("left", "right")
 
-
-func move_y():
-	pass
-
+# Y FUNCTIONS
 
 func apply_gravity(gravity_weight : float = 1):
 	var gravity = lerpf(MIN_GRAV, MAX_GRAV, gravity_weight)
@@ -126,3 +149,13 @@ func apply_gravity(gravity_weight : float = 1):
 		actor.vel.y += gravity
 	elif actor.vel.y < TERM_VEL:
 		actor.vel.y = TERM_VEL
+
+
+## Return whether you are or aren't trying to buffer a jump.
+func active_buffer_jump() -> bool:
+	return Input.is_action_pressed("jump") and buffer_timer > 0
+
+
+## Return whether the coyote timer is or isn't running.
+func active_coyote_time() -> bool:
+	return coyote_timer > 0
