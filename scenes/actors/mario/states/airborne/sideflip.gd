@@ -30,5 +30,8 @@ func switch_check():
 	if actor.is_on_ceiling():
 		return get_states().fall
 
+	if actor.movement.can_wallslide():
+		return get_states().wallslide
+
 	if Input.is_action_just_pressed("down"):
 		return get_states().groundpound

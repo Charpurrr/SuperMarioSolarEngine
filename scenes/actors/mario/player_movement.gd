@@ -52,6 +52,9 @@ const COYOTE_TIME : int = 6
 var coyote_timer : int
 
 
+var wallslide_disabled : bool
+
+
 func _physics_process(_delta):
 	buffer_timer = max(buffer_timer - 1, 0)
 
@@ -142,8 +145,8 @@ func get_input_x() -> float:
 
 # Y FUNCTIONS
 
-func apply_gravity(gravity_weight : float = 1):
-	var gravity = lerpf(MIN_GRAV, MAX_GRAV, gravity_weight)
+func apply_gravity(gravity_weight : float = 1, friction : float = 1):
+	var gravity = lerpf(MIN_GRAV, MAX_GRAV, gravity_weight) / friction
 
 	if actor.vel.y + gravity < TERM_VEL:
 		actor.vel.y += gravity
@@ -159,3 +162,11 @@ func active_buffer_jump() -> bool:
 ## Return whether the coyote timer is or isn't running.
 func active_coyote_time() -> bool:
 	return coyote_timer > 0
+
+
+## Return whether you can or can't wallslide
+func can_wallslide() -> bool:
+	var input_direction : float = actor.movement.get_input_x()
+
+	return (actor.push_ray.is_colliding() and input_direction != -actor.movement.facing_direction
+	and actor.vel.y > 0 and !wallslide_disabled)

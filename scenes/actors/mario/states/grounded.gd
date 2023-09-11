@@ -16,8 +16,6 @@ extends State
 
 
 func switch_check():
-	var input_direction : float = actor.movement.get_input_x()
-
 	if not actor.is_on_floor():
 		return %Fall
 

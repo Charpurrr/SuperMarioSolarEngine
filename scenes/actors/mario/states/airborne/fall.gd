@@ -28,5 +28,8 @@ func switch_check():
 	if Input.is_action_just_pressed("down"):
 		return get_states().groundpound
 
+	if actor.movement.can_wallslide():
+		return get_states().wallslide
+
 	if is_equal_approx(actor.vel.y, actor.movement.TERM_VEL) and freefall_timer == 0:
 		return get_states().freefall

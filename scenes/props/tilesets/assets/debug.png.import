@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cut0vcslnatgi"
-path="res://.godot/imported/round.png-627fe4882f29f3a716dfe68b525a0fcd.ctex"
+uid="uid://bume5ornxo0ui"
+path="res://.godot/imported/debug.png-009e0a0fc2696a603a0fdb6b34ef8031.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/actors/mario/anime/round.png"
-dest_files=["res://.godot/imported/round.png-627fe4882f29f3a716dfe68b525a0fcd.ctex"]
+source_file="res://scenes/props/tilesets/assets/debug.png"
+dest_files=["res://.godot/imported/debug.png-009e0a0fc2696a603a0fdb6b34ef8031.ctex"]
 
 [params]
 

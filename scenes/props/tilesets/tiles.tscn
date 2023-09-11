@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://dnt67y0j7e0ap"]
 
-[ext_resource type="Texture2D" uid="uid://bume5ornxo0ui" path="res://scenes/tilesets/assets/debug.png" id="1_0poc8"]
+[ext_resource type="Texture2D" uid="uid://bume5ornxo0ui" path="res://scenes/props/tilesets/assets/debug.png" id="1_2unmj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8e12i"]
 resource_name = "debug"
-texture = ExtResource("1_0poc8")
+texture = ExtResource("1_2unmj")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
 0:0/0/terrain_set = 0

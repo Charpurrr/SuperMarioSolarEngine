@@ -17,7 +17,9 @@ extends Node
 
 @export var current_substate : State
 
-func get_states() -> Dictionary: # Returns the substates dictionary from the superstate
+
+## Returns the substates dictionary from the superstate.
+func get_states() -> Dictionary:
 	var parent : Node = get_parent()
 
 	if parent is State: # Check if the node calling this function is a substate
@@ -26,27 +28,33 @@ func get_states() -> Dictionary: # Returns the substates dictionary from the sup
 	return {} # Null
 
 
-func tick(_delta): # Runs on every process loop
+## Runs on every process loop.
+func tick(_delta): 
 	pass
 
 
-func physics_tick(_delta): # Runs on every physics process loop
+## Runs on every physics process loop.
+func physics_tick(_delta): 
 	pass
 
 
-func on_enter(): # Runs when the state is activated
+## Runs when the state is activated.
+func on_enter(): 
 	pass
 
 
-func on_exit(): # Runs when the state is deactivated
+## Runs when the state is deactivated.
+func on_exit(): 
 	pass
 
 
-func switch_check() -> State: # Check if you should switch states
+## Check if you should switch states.
+func switch_check() -> State: 
 	return null
 
 
-func parent_switch_check(): # switch_check that incorporates all substates
+## switch_check that incorporates all substates.
+func parent_switch_check(): 
 	if current_substate != null:
 		var new_state = current_substate.switch_check()
 
@@ -61,7 +69,8 @@ func parent_switch_check(): # switch_check that incorporates all substates
 			current_substate.parent_switch_check()
 
 
-func seek_state(target_state : State): # Finds a path to a given state and calls it
+## Finds a path to a given state and calls it.
+func seek_state(target_state : State): 
 	var path : NodePath = get_path_to(target_state)
 	var current_state : State = self
 
@@ -76,7 +85,8 @@ func seek_state(target_state : State): # Finds a path to a given state and calls
 		current_state = current_state.get_node(parent_name)
 
 
-func get_lowest_state() -> State: # Return the lowest state in the currently active state tree
+## Return the lowest state in the currently active state tree.
+func get_lowest_state() -> State: 
 	if current_substate == null: 
 		return self
 	else:
@@ -94,7 +104,8 @@ func abandon_state():
 	current_substate = null
 
 
-func change_state(new_state : State): # Switch between states
+## Switch between states.
+func change_state(new_state : State): 
 #	print("-------")
 #	print(current_substate)
 #	print(new_state)
@@ -125,10 +136,12 @@ func enter_state():
 			actor.audio.play_sfx(lowest_state, lowest_state.sfx_sfx_delay)
 
 	if current_substate.anim_animation_name != "":
+		print(current_substate.anim_animation_name)
 		actor.doll.play(current_substate.anim_animation_name)
 
 
-func get_sfx() -> Array: # Returns the sound effects array of this state
+## Returns the sound effects array of this state.
+func get_sfx() -> Array: 
 	return sfx_sound_effects
 
 

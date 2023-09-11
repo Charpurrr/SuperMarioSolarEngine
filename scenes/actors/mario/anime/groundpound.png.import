@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bume5ornxo0ui"
-path="res://.godot/imported/debug.png-5de298da0777e41d6da468455c53b7f4.ctex"
+uid="uid://bjqptf8hd7sgj"
+path="res://.godot/imported/groundpound.png-2c36b9270f569c8b588eb3e952a949a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/tilesets/assets/debug.png"
-dest_files=["res://.godot/imported/debug.png-5de298da0777e41d6da468455c53b7f4.ctex"]
+source_file="res://scenes/actors/mario/anime/groundpound.png"
+dest_files=["res://.godot/imported/groundpound.png-2c36b9270f569c8b588eb3e952a949a2.ctex"]
 
 [params]
 

@@ -6,6 +6,8 @@ extends State
 @onready var substates : Dictionary = {
 	groundpound_fall = %GroundPoundFall,
 	groundpound = %GroundPound,
+	wallslide = %Wallslide,
+	walljump = %Walljump,
 	sideflip = %Sideflip,
 	backflip = %Backflip,
 	freefall = %Freefall,
