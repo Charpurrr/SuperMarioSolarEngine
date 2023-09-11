@@ -59,11 +59,7 @@ func parent_switch_check():
 		var new_state = current_substate.switch_check()
 
 		if new_state != null:
-			if new_state.get_parent() == self:
-				current_substate.abandon_state()
-				change_state(new_state)
-			else:
-				seek_state(new_state)
+			seek_state(new_state)
 
 		if current_substate != null: # current_substate might change during seek_state()
 			current_substate.parent_switch_check()
@@ -75,14 +71,16 @@ func seek_state(target_state : State):
 	var current_state : State = self
 
 	for i in path.get_name_count():
-		var parent_name : String = path.get_name(i)
+		var next_name : String = path.get_name(i)
+		
+		var next_state = current_state.get_node(next_name)
 
 		if current_state.is_ancestor_of(target_state):
-			current_state.change_state(current_state.get_node(parent_name))
+			current_state.change_state(next_state)
 		else:
 			abandon_state()
 
-		current_state = current_state.get_node(parent_name)
+		current_state = next_state
 
 
 ## Return the lowest state in the currently active state tree.
@@ -100,7 +98,11 @@ func abandon_state():
 		actor.audio.stop()
 
 	current_substate.on_exit()
-	current_substate.call_with_substate("abandon_state")
+	
+	# Needs to be recursive.
+	# We can't use call_with_substates because current_substate is set to null after this function ends.
+	# So, manual recursion is used.
+	current_substate.abandon_state()
 	current_substate = null
 
 
@@ -110,13 +112,14 @@ func change_state(new_state : State):
 #	print(current_substate)
 #	print(new_state)
 
-	if new_state != current_substate:
-		if current_substate != null:
-			abandon_state()
+	if new_state == current_substate: return
+	
+	if current_substate != null:
+		abandon_state()
 
-		current_substate = new_state
+	current_substate = new_state
 
-		enter_state()
+	enter_state()
 
 
 func enter_state():
