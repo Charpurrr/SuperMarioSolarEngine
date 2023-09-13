@@ -72,7 +72,6 @@ func seek_state(target_state : State):
 
 	for i in path.get_name_count():
 		var next_name : String = path.get_name(i)
-		
 		var next_state = current_state.get_node(next_name)
 
 		if current_state.is_ancestor_of(target_state):
@@ -99,9 +98,9 @@ func abandon_state():
 
 	current_substate.on_exit()
 	
-	# Needs to be recursive.
-	# We can't use call_with_substates because current_substate is set to null after this function ends.
-	# So, manual recursion is used.
+	# Needs to be recursive
+	# We can't use call_with_substates because current_substate is set to null after this function ends
+	# So, manual recursion is used
 	current_substate.abandon_state()
 	current_substate = null
 
