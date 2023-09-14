@@ -4,11 +4,10 @@ extends State
 
 
 const PUSH_POWER : float = 1.4
-const JUMP_POWER : float = 9.5
+const JUMP_POWER : float = 9.1
 
 
 func on_enter():
-	actor.movement.apply_gravity(-actor.vel.y / JUMP_POWER)
 	actor.animplay.play("backflip")
 
 	actor.vel.y = -JUMP_POWER

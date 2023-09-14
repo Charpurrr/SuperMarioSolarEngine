@@ -30,3 +30,4 @@ func _on_animation_player_animation_finished(anim_name):
 func switch_check():
 	if anim_finished:
 		return get_states().groundpound_fall
+

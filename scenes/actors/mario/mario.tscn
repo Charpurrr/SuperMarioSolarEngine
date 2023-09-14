@@ -353,6 +353,10 @@ script = ExtResource("1_3d0l6")
 position = Vector2(0, -21)
 offset = Vector2(0, -30)
 zoom = Vector2(2.5, 2.5)
+position_smoothing_speed = 40.0
+drag_vertical_offset = 0.4
+editor_draw_limits = true
+editor_draw_drag_margin = true
 
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)

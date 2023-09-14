@@ -4,7 +4,7 @@ extends State
 
 
 const PUSH_POWER : float = 1.2
-const JUMP_POWER : float = 9
+const JUMP_POWER : float = 8.8
 
 
 func on_enter():

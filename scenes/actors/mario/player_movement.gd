@@ -169,6 +169,9 @@ func can_wallslide() -> bool:
 	if should_end_wallslide():
 		return false
 
+#	if is_zero_approx(actor.vel.x):
+#
+
 	return !wallslide_disabled and actor.vel.y > 0
 
 
