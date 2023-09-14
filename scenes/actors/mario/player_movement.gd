@@ -48,7 +48,7 @@ const MIN_GRAV : float = 0.28 # How low gravity can interpolate
 const BUFFER_TIME : int = 6
 var buffer_timer : int
 
-const COYOTE_TIME : int = 6
+const COYOTE_TIME : int = 10
 var coyote_timer : int
 
 
@@ -141,7 +141,8 @@ func check_space_ahead() -> bool:
 
 
 func get_input_x() -> float:
-	return Input.get_axis("left", "right")
+	print(Input.get_axis("left", "right"))
+	return roundf(Input.get_axis("left", "right"))
 
 # Y FUNCTIONS
 

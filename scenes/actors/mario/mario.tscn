@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=81 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://scenes/actors/mario/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://bfwe80wtp2uqy" path="res://scenes/actors/mario/anime/walk.png" id="2_5xkqu"]
@@ -87,13 +87,21 @@ region = Rect2(0, 0, 22, 38)
 atlas = ExtResource("3_pq7bv")
 region = Rect2(0, 0, 28, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rww31"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_opg4y"]
 atlas = ExtResource("10_v188e")
-region = Rect2(0, 0, 30, 34)
+region = Rect2(0, 0, 18, 36)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l0lu2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdsqm"]
+atlas = ExtResource("10_v188e")
+region = Rect2(18, 0, 18, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nv5se"]
+atlas = ExtResource("10_v188e")
+region = Rect2(36, 0, 18, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_biyhv"]
 atlas = ExtResource("3_x2igy")
-region = Rect2(0, 0, 24, 34)
+region = Rect2(0, 0, 30, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s11s1"]
 atlas = ExtResource("4_4n8xm")
@@ -215,15 +223,21 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rww31")
+"texture": SubResource("AtlasTexture_opg4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdsqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nv5se")
 }],
-"loop": true,
+"loop": false,
 "name": &"sideflip",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l0lu2")
+"texture": SubResource("AtlasTexture_biyhv")
 }],
 "loop": true,
 "name": &"skid",
@@ -354,14 +368,12 @@ position = Vector2(0, -21)
 offset = Vector2(0, -30)
 zoom = Vector2(2.5, 2.5)
 position_smoothing_speed = 40.0
-drag_vertical_offset = 0.4
 editor_draw_limits = true
-editor_draw_drag_margin = true
 
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_hmp25")
-animation = &"walljump"
+animation = &"skid"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
@@ -411,11 +423,13 @@ anim_offset_y = -1.0
 unique_name_in_owner = true
 script = ExtResource("19_qr343")
 anim_animation_name = &"skid"
+anim_offset_x = 1.0
 
 [node name="TurnSkid" type="Node" parent="StateCoordinator/Grounded"]
 unique_name_in_owner = true
 script = ExtResource("20_0joxb")
 anim_animation_name = &"skid"
+anim_offset_x = 1.0
 
 [node name="SlowTurn" type="Node" parent="StateCoordinator/Grounded/TurnSkid"]
 unique_name_in_owner = true
