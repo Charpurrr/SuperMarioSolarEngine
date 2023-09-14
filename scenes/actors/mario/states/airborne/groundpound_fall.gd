@@ -14,3 +14,6 @@ func physics_tick(_delta):
 func switch_check():
 	if actor.is_on_floor():
 		return %Idle
+
+	if Input.is_action_just_pressed("up"):
+		return %Fall

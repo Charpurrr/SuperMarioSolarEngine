@@ -3,9 +3,13 @@ extends State
 # A method of coordination between a player's states
 
 
+@export var initial_state : State
+
+
 func _ready():
 	await actor.ready
 
+	seek_state(initial_state)
 	current_substate.call_with_substate("enter_state")
 
 

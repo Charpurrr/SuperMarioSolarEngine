@@ -15,7 +15,7 @@ extends Node
 @export var anim_offset_x : float # This state's animation's offset on the x axis
 @export var anim_offset_y : float # This state's animation's offset on the x axis
 
-@export var current_substate : State
+var current_substate : State
 
 
 ## Returns the substates dictionary from the superstate.
@@ -131,15 +131,14 @@ func enter_state():
 	actor.doll.offset.x = current_substate.anim_offset_x * actor.movement.facing_direction
 	actor.doll.offset.y = current_substate.anim_offset_y
 
+	if current_substate.anim_animation_name != "":
+		actor.doll.play(current_substate.anim_animation_name)
+
 	if lowest_state.sfx_sound_effects != null:
 		var sfx_amt : int = lowest_state.sfx_sound_effects.size() # Amount of sound effects in the sound effects array
 
 		if sfx_amt != 0:
 			actor.audio.play_sfx(lowest_state, lowest_state.sfx_sfx_delay)
-
-	if current_substate.anim_animation_name != "":
-		print(current_substate.anim_animation_name)
-		actor.doll.play(current_substate.anim_animation_name)
 
 
 ## Returns the sound effects array of this state.

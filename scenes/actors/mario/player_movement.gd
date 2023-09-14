@@ -164,9 +164,21 @@ func active_coyote_time() -> bool:
 	return coyote_timer > 0
 
 
-## Return whether you can or can't wallslide
+## Return whether you can or can't wallslide.
 func can_wallslide() -> bool:
+	if should_end_wallslide():
+		return false
+
+	return !wallslide_disabled and actor.vel.y > 0
+
+
+func should_end_wallslide() -> bool:
 	var input_direction : float = actor.movement.get_input_x()
 
-	return (actor.push_ray.is_colliding() and input_direction != -actor.movement.facing_direction
-	and actor.vel.y > 0 and !wallslide_disabled)
+	if not actor.push_ray.is_colliding():
+		return true
+
+	if input_direction == -actor.movement.facing_direction:
+		return true
+
+	return false

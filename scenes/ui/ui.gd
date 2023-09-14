@@ -6,6 +6,12 @@ extends CanvasLayer
 var bgm_muted : bool = false
 
 
+func _ready():
+	bgm_muted = LocalSettings.load_setting("Audio", "Music Muted", false)
+
+	set_muted_bgm()
+
+
 func _process(_delta):
 	music_control()
 	resetting()
@@ -19,10 +25,14 @@ func pausing():
 
 func music_control():
 	if Input.is_action_just_pressed("mute"):
-
 		bgm_muted = !bgm_muted
 
-		AudioServer.set_bus_mute(AudioServer.get_bus_index("BGM"), bgm_muted)
+		LocalSettings.change_setting("Audio", "Music Muted", bgm_muted)
+		set_muted_bgm()
+
+
+func set_muted_bgm():
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("BGM"), bgm_muted)
 
 
 func resetting():

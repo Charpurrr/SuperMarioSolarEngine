@@ -15,10 +15,10 @@ func physics_tick(_delta):
 
 
 func switch_check():
-	if not actor.movement.can_wallslide():
+	if actor.movement.should_end_wallslide():
 		return get_states().fall
 
-	if Input.is_action_just_pressed("jump"):
+	if actor.movement.active_buffer_jump():
 		return get_states().walljump
 
 	if Input.is_action_just_pressed("down"):

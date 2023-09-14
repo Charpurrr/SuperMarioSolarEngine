@@ -377,21 +377,20 @@ libraries = {
 "": SubResource("AnimationLibrary_grh7v")
 }
 
-[node name="Movement" type="Node" parent="." node_paths=PackedStringArray("actor")]
-script = ExtResource("3_3mh1j")
-actor = NodePath("..")
-
 [node name="AudioCoordinator" type="AudioStreamPlayer" parent="."]
 bus = &"Voices"
 script = ExtResource("15_d4m4v")
 
-[node name="StateCoordinator" type="Node" parent="." node_paths=PackedStringArray("current_substate")]
-script = ExtResource("3_t4ior")
-current_substate = NodePath("Grounded")
+[node name="Movement" type="Node" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("3_3mh1j")
+actor = NodePath("..")
 
-[node name="Grounded" type="Node" parent="StateCoordinator" node_paths=PackedStringArray("current_substate")]
+[node name="StateCoordinator" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_t4ior")
+initial_state = NodePath("Grounded/Idle")
+
+[node name="Grounded" type="Node" parent="StateCoordinator"]
 script = ExtResource("11_15kl1")
-current_substate = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateCoordinator/Grounded"]
 unique_name_in_owner = true
@@ -436,9 +435,8 @@ unique_name_in_owner = true
 script = ExtResource("18_h7q8u")
 anim_animation_name = &"crouch"
 
-[node name="Airborne" type="Node" parent="StateCoordinator" node_paths=PackedStringArray("current_substate")]
+[node name="Airborne" type="Node" parent="StateCoordinator"]
 script = ExtResource("20_at07q")
-current_substate = NodePath("Fall")
 
 [node name="Jump" type="Node" parent="StateCoordinator/Airborne"]
 unique_name_in_owner = true
@@ -469,7 +467,7 @@ unique_name_in_owner = true
 script = ExtResource("40_hk2sj")
 anim_animation_name = &"wallslide"
 
-[node name="Walljump" type="Node" parent="StateCoordinator/Airborne/Wallslide"]
+[node name="Walljump" type="Node" parent="StateCoordinator/Airborne"]
 unique_name_in_owner = true
 script = ExtResource("41_re2yk")
 anim_animation_name = &"walljump"

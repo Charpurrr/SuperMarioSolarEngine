@@ -3,8 +3,8 @@ extends State
 # Jumping from a wallslide
 
 
-const PUSH_POWER : float = 1.4
-const JUMP_POWER : float = 9.5
+const PUSH_POWER : float = 2
+const JUMP_POWER : float = 8
 
 
 func on_enter():
@@ -12,17 +12,16 @@ func on_enter():
 	actor.movement.apply_gravity(-actor.vel.y / JUMP_POWER)
 
 	actor.vel.y = -JUMP_POWER
-	actor.vel.x = PUSH_POWER * -actor.movement.facing_direction
+	actor.vel.x = PUSH_POWER * actor.movement.facing_direction
 
 
 func physics_tick(_delta):
-	print(actor.vel.y)
 	var input_direction : float = actor.movement.get_input_x()
 
 	if input_direction != actor.movement.facing_direction:
-		actor.movement.move_x(0.04, false)
+		actor.movement.move_x("air", false)
 	elif input_direction != 0:
-		actor.movement.move_x(0.07, false)
+		actor.movement.move_x("air", false)
 
 	actor.movement.apply_gravity(-actor.vel.y / JUMP_POWER)
 
