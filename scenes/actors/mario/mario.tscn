@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=90 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://scenes/actors/mario/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://bfwe80wtp2uqy" path="res://scenes/actors/mario/anime/walk.png" id="2_5xkqu"]
@@ -53,6 +53,7 @@
 [ext_resource type="AudioStream" uid="uid://bjjimcrvm4axa" path="res://scenes/actors/mario/sfx/Hya.wav" id="42_wc37c"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/groundpound.gd" id="46_4mnp2"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/groundpound_fall.gd" id="47_bnupp"]
+[ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/dive.gd" id="54_rdldk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_anesd"]
 atlas = ExtResource("2_ohfim")
@@ -563,5 +564,8 @@ unique_name_in_owner = true
 script = ExtResource("47_bnupp")
 anim_animation_name = &"gp_fall"
 anim_offset_y = 2.0
+
+[node name="Dive" type="Node" parent="StateCoordinator/Airborne"]
+script = ExtResource("54_rdldk")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="StateCoordinator/Airborne/GroundPound" method="_on_animation_player_animation_finished"]

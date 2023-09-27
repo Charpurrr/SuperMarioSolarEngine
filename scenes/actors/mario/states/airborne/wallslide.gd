@@ -1,4 +1,4 @@
-class_name WallslideState
+class_name Wallslide
 extends State
 # Holding the facing direction against a wall while airborne
 

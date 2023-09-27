@@ -1,4 +1,4 @@
-class_name GroundedState
+class_name Grounded
 extends State
 # A base state for all grounded states
 

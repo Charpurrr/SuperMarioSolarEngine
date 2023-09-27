@@ -1,4 +1,4 @@
-class_name AirborneState
+class_name Airborne
 extends State
 # A base state for all airborne states
 

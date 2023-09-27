@@ -1,4 +1,4 @@
-class_name WalljumpState
+class_name Walljump
 extends State
 # Jumping from a wallslide
 

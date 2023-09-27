@@ -1,4 +1,4 @@
-class_name FallState
+class_name Fall
 extends State
 # Falling state
 

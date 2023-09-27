@@ -1,4 +1,4 @@
-class_name SlowTurnState
+class_name SlowTurn
 extends State
 # Turning around after a skid
 

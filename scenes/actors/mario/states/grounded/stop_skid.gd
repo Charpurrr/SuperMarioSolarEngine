@@ -1,4 +1,4 @@
-class_name StopSkidState
+class_name StopSkid
 extends State
 # Stopping from grounded movement at max speed
 

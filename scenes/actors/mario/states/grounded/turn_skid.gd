@@ -1,4 +1,4 @@
-class_name TurnSkidState
+class_name TurnSkid
 extends State
 # Turning from grounded movement at max speed
 

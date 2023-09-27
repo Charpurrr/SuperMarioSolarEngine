@@ -1,4 +1,4 @@
-class_name SideflipState
+class_name Sideflip
 extends State
 # Jumping after turning
 

@@ -1,4 +1,4 @@
-class_name IdleState
+class_name Idle
 extends State
 # Default grounded state when there is no input
 

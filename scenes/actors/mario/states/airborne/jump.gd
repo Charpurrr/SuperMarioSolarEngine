@@ -1,4 +1,4 @@
-class_name JumpState
+class_name Jump
 extends State
 # Jumping state
 

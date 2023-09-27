@@ -1,4 +1,4 @@
-class_name WalkState
+class_name Walk
 extends State
 # Moving left and right on the ground
 

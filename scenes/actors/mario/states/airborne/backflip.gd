@@ -1,4 +1,4 @@
-class_name BackflipState
+class_name Backflip
 extends State
 # Jumping while crouching
 

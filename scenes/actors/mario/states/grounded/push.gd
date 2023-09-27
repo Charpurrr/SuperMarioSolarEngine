@@ -1,4 +1,4 @@
-class_name PushState
+class_name Push
 extends State
 # Walking against a solid body while the ray_shape is colliding
 

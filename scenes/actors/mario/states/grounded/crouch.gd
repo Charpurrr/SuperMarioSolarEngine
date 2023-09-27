@@ -1,4 +1,4 @@
-class_name CrouchState
+class_name Crouch
 extends State
 # Holding down on the floor
 
