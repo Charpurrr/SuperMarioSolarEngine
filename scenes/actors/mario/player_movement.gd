@@ -37,6 +37,9 @@ const CELS : Dictionary = {
 	},
 } # List of different types of acceleration/deceleration values
 
+const RETURN_RES : float = 30 # Resistance factor for acceleration
+var return_res_prog : float # Progression for the resistance factor
+
 var facing_direction : float = 1
 
 # y variables
@@ -48,7 +51,7 @@ const MIN_GRAV : float = 0.28 # How low gravity can interpolate
 const BUFFER_TIME : int = 6
 var buffer_timer : int
 
-const COYOTE_TIME : int = 10
+const COYOTE_TIME : int = 7
 var coyote_timer : int
 
 
@@ -56,6 +59,7 @@ var wallslide_disabled : bool
 
 
 func _physics_process(_delta):
+	return_res_prog = max(return_res_prog - 1, 0)
 	buffer_timer = max(buffer_timer - 1, 0)
 
 	if actor.is_on_floor():
@@ -80,6 +84,8 @@ func accelerate(accel_val : Variant, direction : float):
 		accel = CELS[accel_val].accel
 	else:
 		push_error("Not a number or string!")
+
+	accel *= (1 - return_res_prog / RETURN_RES)
 
 	if actor.vel.x * direction + accel < MAX_SPEED_X:
 		actor.vel.x += direction * accel
@@ -141,7 +147,6 @@ func check_space_ahead() -> bool:
 
 
 func get_input_x() -> float:
-	print(Input.get_axis("left", "right"))
 	return roundf(Input.get_axis("left", "right"))
 
 # Y FUNCTIONS

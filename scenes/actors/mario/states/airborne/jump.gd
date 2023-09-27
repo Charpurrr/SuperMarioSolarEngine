@@ -30,6 +30,9 @@ func get_sfx():
 
 
 func switch_check():
+	if Input.is_action_just_pressed("kick"):
+		return get_states().jumpkick
+
 	if Input.is_action_just_pressed("down"):
 		return get_states().groundpound
 

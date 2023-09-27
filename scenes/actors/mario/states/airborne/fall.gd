@@ -21,6 +21,9 @@ func physics_tick(_delta):
 
 
 func switch_check():
+	if Input.is_action_just_pressed("kick"):
+		return get_states().jumpkick
+
 	if actor.is_on_floor() and actor.movement.active_buffer_jump():
 		return get_states().jump
 

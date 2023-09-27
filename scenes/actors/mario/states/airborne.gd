@@ -8,6 +8,7 @@ extends State
 	groundpound = %GroundPound,
 	wallslide = %Wallslide,
 	walljump = %Walljump,
+	jumpkick = %JumpKick,
 	sideflip = %Sideflip,
 	backflip = %Backflip,
 	freefall = %Freefall,

@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=89 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://scenes/actors/mario/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://bfwe80wtp2uqy" path="res://scenes/actors/mario/anime/walk.png" id="2_5xkqu"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://c2jk475rio8p1" path="res://scenes/actors/mario/anime/jump.png" id="6_6k7xd"]
 [ext_resource type="Texture2D" uid="uid://bjqptf8hd7sgj" path="res://scenes/actors/mario/anime/groundpound.png" id="6_p35e6"]
 [ext_resource type="Script" path="res://scenes/actors/mario/push_ray.gd" id="8_qbkd3"]
+[ext_resource type="Texture2D" uid="uid://b5uu468w126us" path="res://scenes/actors/mario/anime/jumpkick.png" id="10_ot0kb"]
 [ext_resource type="Texture2D" uid="uid://chuaelxlkysn1" path="res://scenes/actors/mario/anime/walljump.png" id="10_s5v6g"]
 [ext_resource type="Texture2D" uid="uid://bfq6wetdws7ug" path="res://scenes/actors/mario/anime/sideflip.png" id="10_v188e"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/grounded.gd" id="11_15kl1"]
@@ -46,8 +47,10 @@
 [ext_resource type="AudioStream" uid="uid://bj4ql0rxxerg4" path="res://scenes/actors/mario/sfx/Airborne/Freefall.wav" id="39_y8nne"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/wallslide.gd" id="40_hk2sj"]
 [ext_resource type="AudioStream" uid="uid://cwm85nfl81aav" path="res://scenes/actors/mario/sfx/Airborne/GroundPound1.wav" id="40_uehwu"]
+[ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/jumpkick.gd" id="41_fqapq"]
 [ext_resource type="AudioStream" uid="uid://1nteoppir8uq" path="res://scenes/actors/mario/sfx/Ya.wav" id="41_l2mnv"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/walljump.gd" id="41_re2yk"]
+[ext_resource type="AudioStream" uid="uid://bjjimcrvm4axa" path="res://scenes/actors/mario/sfx/Hya.wav" id="42_wc37c"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/groundpound.gd" id="46_4mnp2"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/groundpound_fall.gd" id="47_bnupp"]
 
@@ -83,23 +86,43 @@ region = Rect2(0, 0, 20, 34)
 atlas = ExtResource("6_6k7xd")
 region = Rect2(0, 0, 22, 38)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjl7f"]
+atlas = ExtResource("10_ot0kb")
+region = Rect2(0, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osu8r"]
+atlas = ExtResource("10_ot0kb")
+region = Rect2(32, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fouyr"]
+atlas = ExtResource("10_ot0kb")
+region = Rect2(64, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6kar"]
+atlas = ExtResource("10_ot0kb")
+region = Rect2(96, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luc3q"]
+atlas = ExtResource("10_ot0kb")
+region = Rect2(128, 0, 32, 36)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ocu7e"]
 atlas = ExtResource("3_pq7bv")
 region = Rect2(0, 0, 28, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_opg4y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5val"]
 atlas = ExtResource("10_v188e")
 region = Rect2(0, 0, 18, 36)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hdsqm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8uo2"]
 atlas = ExtResource("10_v188e")
 region = Rect2(18, 0, 18, 36)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nv5se"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3f1x0"]
 atlas = ExtResource("10_v188e")
 region = Rect2(36, 0, 18, 36)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_biyhv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_aowtw"]
 atlas = ExtResource("3_x2igy")
 region = Rect2(0, 0, 30, 32)
 
@@ -215,6 +238,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_bjl7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osu8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fouyr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6kar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luc3q")
+}],
+"loop": false,
+"name": &"jumpkick",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ocu7e")
 }],
 "loop": true,
@@ -223,21 +266,21 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_opg4y")
+"texture": SubResource("AtlasTexture_w5val")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hdsqm")
+"texture": SubResource("AtlasTexture_k8uo2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nv5se")
+"texture": SubResource("AtlasTexture_3f1x0")
 }],
 "loop": false,
 "name": &"sideflip",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_biyhv")
+"texture": SubResource("AtlasTexture_aowtw")
 }],
 "loop": true,
 "name": &"skid",
@@ -465,6 +508,12 @@ sfx_sfx_delay = 0.1
 anim_animation_name = &"jump"
 anim_offset_x = 3.0
 anim_offset_y = -1.0
+
+[node name="JumpKick" type="Node" parent="StateCoordinator/Airborne"]
+unique_name_in_owner = true
+script = ExtResource("41_fqapq")
+sfx_sound_effects = [ExtResource("42_wc37c")]
+anim_animation_name = &"jumpkick"
 
 [node name="Fall" type="Node" parent="StateCoordinator/Airborne"]
 unique_name_in_owner = true
