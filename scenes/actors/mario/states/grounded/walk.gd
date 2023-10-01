@@ -4,6 +4,7 @@ extends State
 
 
 func physics_tick(_delta):
+	print(actor.vel.x)
 	actor.doll.speed_scale = actor.vel.x / actor.movement.MAX_SPEED_X * 2
 	actor.movement.move_x("ground", true)
 
@@ -17,6 +18,9 @@ func switch_check():
 
 	if Input.is_action_just_pressed("jump"):
 		return %Jump
+
+	if Input.is_action_just_pressed("dive") and abs(actor.vel.x) >= actor.movement.MAX_SPEED_X:
+		return %Dive
 
 	if input_direction != 0:
 		if abs(actor.vel.x) >= actor.movement.MAX_SPEED_X and input_direction != actor.movement.facing_direction:

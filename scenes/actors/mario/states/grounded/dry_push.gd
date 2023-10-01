@@ -1,5 +1,5 @@
 class_name DryPush
-extends PushState
+extends Push
 # Walking against a solid body while the ray_shape is NOT colliding
 
 

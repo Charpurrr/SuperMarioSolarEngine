@@ -1,5 +1,5 @@
 class_name FreeFall
-extends FallState
+extends Fall
 # Uninterupted falling at terminal velocity
 
 

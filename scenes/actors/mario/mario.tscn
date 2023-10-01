@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=92 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://scenes/actors/mario/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://bfwe80wtp2uqy" path="res://scenes/actors/mario/anime/walk.png" id="2_5xkqu"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cof524axgo162" path="res://scenes/actors/mario/anime/skid.png" id="3_x2igy"]
 [ext_resource type="Texture2D" uid="uid://c3oofyu0r7jw2" path="res://scenes/actors/mario/anime/slow_turn.png" id="4_4n8xm"]
 [ext_resource type="Texture2D" uid="uid://bqyc4a8h23h1" path="res://scenes/actors/mario/anime/fall.png" id="4_7yfar"]
+[ext_resource type="Texture2D" uid="uid://71qmcohslma0" path="res://scenes/actors/mario/anime/dive.png" id="4_qmifa"]
 [ext_resource type="Texture2D" uid="uid://bqelaoqudiigg" path="res://scenes/actors/mario/anime/freefall.png" id="5_hdqh5"]
 [ext_resource type="Texture2D" uid="uid://di37s0hpo2dfx" path="res://scenes/actors/mario/anime/idle.png" id="5_twypp"]
 [ext_resource type="Texture2D" uid="uid://ccli0rij5mtfx" path="res://scenes/actors/mario/anime/gp_fall.png" id="5_u6x12"]
@@ -62,6 +63,10 @@ region = Rect2(0, 0, 16, 30)
 [sub_resource type="AtlasTexture" id="AtlasTexture_k1pu5"]
 atlas = ExtResource("2_b7wew")
 region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iweg8"]
+atlas = ExtResource("4_qmifa")
+region = Rect2(0, 0, 22, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pvd63"]
 atlas = ExtResource("4_7yfar")
@@ -187,6 +192,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iweg8")
+}],
+"loop": true,
+"name": &"dive",
 "speed": 5.0
 }, {
 "frames": [{
@@ -417,7 +430,7 @@ editor_draw_limits = true
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_hmp25")
-animation = &"skid"
+animation = &"dive"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
@@ -516,6 +529,12 @@ script = ExtResource("41_fqapq")
 sfx_sound_effects = [ExtResource("42_wc37c")]
 anim_animation_name = &"jumpkick"
 
+[node name="Dive" type="Node" parent="StateCoordinator/Airborne"]
+unique_name_in_owner = true
+script = ExtResource("54_rdldk")
+anim_animation_name = &"dive"
+anim_offset_y = 1.0
+
 [node name="Fall" type="Node" parent="StateCoordinator/Airborne"]
 unique_name_in_owner = true
 script = ExtResource("21_cisab")
@@ -564,8 +583,5 @@ unique_name_in_owner = true
 script = ExtResource("47_bnupp")
 anim_animation_name = &"gp_fall"
 anim_offset_y = 2.0
-
-[node name="Dive" type="Node" parent="StateCoordinator/Airborne"]
-script = ExtResource("54_rdldk")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="StateCoordinator/Airborne/GroundPound" method="_on_animation_player_animation_finished"]

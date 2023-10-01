@@ -14,6 +14,7 @@ extends State
 	freefall = %Freefall,
 	jump = %Jump,
 	fall = %Fall,
+	dive = %Dive,
 }
 
 
