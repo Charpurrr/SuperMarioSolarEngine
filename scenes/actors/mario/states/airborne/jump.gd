@@ -7,7 +7,7 @@ extends State
 @export var sfx_alt_sound_effects : Array
 
 const FREEFALL_MARGIN : int = 250
-const JUMP_POWER : float = 6.8
+const JUMP_POWER : float = 400.0/63.0 # (6.34921-)
 
 
 func on_enter():

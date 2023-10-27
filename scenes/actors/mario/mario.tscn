@@ -335,7 +335,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 10.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -355,7 +355,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u4b58"]
-size = Vector2(12, 28)
+size = Vector2(16, 32)
 
 [sub_resource type="Animation" id="Animation_1d666"]
 resource_name = "backflip"
@@ -430,19 +430,19 @@ editor_draw_limits = true
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_hmp25")
-animation = &"dive"
+animation = &"walk"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -14)
+position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_u4b58")
 
 [node name="PushRay" type="RayCast2D" parent="." node_paths=PackedStringArray("movement")]
 modulate = Color(1, 1, 0.164706, 1)
 position = Vector2(0, -14)
-target_position = Vector2(8, 0)
+target_position = Vector2(11, 0)
 script = ExtResource("8_qbkd3")
-target_size_x = 8.0
+target_size_x = 11.0
 movement = NodePath("../Movement")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

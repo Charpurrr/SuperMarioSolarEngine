@@ -6,7 +6,7 @@ extends Node
 @export var actor : Player
 
 # x variables
-const MAX_SPEED_X : float = 2.7 # Max horizontal speed
+const MAX_SPEED_X : float = 2.72 # Max horizontal speed
 
 const GROUND_ACCEL_TIME : float = 22.5 # How long it takes to accelerate (when grounded)
 const GROUND_ACCEL_STEP : float = MAX_SPEED_X / GROUND_ACCEL_TIME
@@ -14,10 +14,10 @@ const GROUND_ACCEL_STEP : float = MAX_SPEED_X / GROUND_ACCEL_TIME
 const GROUND_DECEL_TIME : float = 13.5 # How long it takes to decelerate (when grounded)
 const GROUND_DECEL_STEP : float = MAX_SPEED_X / GROUND_DECEL_TIME
 
-const AIR_ACCEL_TIME : float = 16 # How long it takes to accelerate (when airborne)
+const AIR_ACCEL_TIME : float = 18 # How long it takes to accelerate (when airborne)
 const AIR_ACCEL_STEP : float = MAX_SPEED_X / AIR_ACCEL_TIME
 
-const AIR_DECEL_TIME : float = 18 # How long it takes to decelerate (when airborne)
+const AIR_DECEL_TIME : float = 20 # How long it takes to decelerate (when airborne)
 const AIR_DECEL_STEP : float = MAX_SPEED_X / AIR_DECEL_TIME
 
 const CELS : Dictionary = {
@@ -37,7 +37,7 @@ const CELS : Dictionary = {
 	},
 } # List of different types of acceleration/deceleration values
 
-const RETURN_RES : float = 30 # Resistance factor for acceleration
+const RETURN_RES : float = 15 # Resistance factor for acceleration
 var return_res_prog : float # Progression for the resistance factor
 
 var facing_direction : float = 1
@@ -45,10 +45,10 @@ var facing_direction : float = 1
 # y variables
 const TERM_VEL : float = 6.60
 
-const MAX_GRAV : float = 0.33 # How high gravity can interpolate
-const MIN_GRAV : float = 0.28 # How low gravity can interpolate
+const MAX_GRAV : float = 1000.0/3969.0 # (0.251953-) How high gravity can interpolate
+const MIN_GRAV : float = 990.0/3969.0 # How low gravity can interpolate
 
-const BUFFER_TIME : int = 6
+const BUFFER_TIME : int = 10
 var buffer_timer : int
 
 const COYOTE_TIME : int = 7
