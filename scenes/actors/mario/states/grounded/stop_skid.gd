@@ -1,34 +1,31 @@
 class_name StopSkid
-extends State
-# Stopping from grounded movement at max speed
+extends PlayerState
+## Stopping from grounded movement at max speed.
 
 
-const SKID_DECEL_TIME : float = 16 # How long it takes to decelerate from a skid
-var skid_decel_step : float
+## How long it takes to decelerate from a skid.
+const SKID_DECEL_TIME: float = 16
+var skid_decel_step: float
 
 
-func _ready():
-	await actor.ready
-
+func _on_enter(_handover):
 	skid_decel_step = actor.movement.MAX_SPEED_X / SKID_DECEL_TIME
 
 
-func physics_tick(_delta):
+func _cycle_tick():
 	actor.movement.decelerate(skid_decel_step)
 
 
-func switch_check():
-	var input_direction : float = actor.movement.get_input_x()
-
+func _tell_switch():
 	if actor.vel.x == 0:
 		if input_direction == 0:
-			return get_states().idle
+			return &"Idle"
 		else:
-			return get_states().walk 
+			return &"Walk"
 	elif input_direction == -actor.movement.facing_direction:
-		return get_states().turn_skid
+		return &"TurnSkid"
 
 	if Input.is_action_just_pressed("jump"):
-		return %Jump
+		return &"Jump"
 
-	return null
+	return &""

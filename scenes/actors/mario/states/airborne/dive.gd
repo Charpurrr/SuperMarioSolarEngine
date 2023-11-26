@@ -1,9 +1,9 @@
 class_name Dive
-extends State
-# Diving during a jump (or held jump)
+extends PlayerState
+## Diving during a jump (or held jump).
 
 
-const DIVE_POWER : float = 6
+const DIVE_POWER: float = 6
 
 
 func on_enter():

@@ -1,6 +1,6 @@
 class_name PMovement
 extends Node
-# Movement for player characters
+# Movement for player characters.
 
 
 @export var actor : Player

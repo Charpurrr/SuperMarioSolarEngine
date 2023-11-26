@@ -1,25 +1,27 @@
 class_name Wallslide
-extends State
-# Holding the facing direction against a wall while airborne
+extends PlayerState
+## Holding the facing direction against a wall while airborne.
 
 
-const TERM_VEL : float = 1.10
+const TERM_VEL: float = 1.10
 
 
-func on_enter():
+func _on_enter(_handover):
 	actor.vel.y = min(actor.vel.y, TERM_VEL)
 
 
-func physics_tick(_delta):
+func _post_tick():
 	actor.movement.apply_gravity(1, 8)
 
 
-func switch_check():
+func _tell_switch():
 	if actor.movement.should_end_wallslide():
-		return get_states().fall
+		return &"Fall"
 
 	if actor.movement.active_buffer_jump():
-		return get_states().walljump
+		return &"Walljump"
 
 	if Input.is_action_just_pressed("down"):
-		return get_states().groundpound
+		return &"GroundPound"
+
+	return &""

@@ -1,18 +1,20 @@
 class_name Crouch
-extends State
-# Holding down on the floor
+extends PlayerState
+## Holding down on the floor.
 
 
-func physics_tick(_delta):
-	var direction = int(Input.is_action_just_released("right")) - int(Input.is_action_just_released("left"))
+func _cycle_tick():
+	var direction = sign(input_direction)
 
 	actor.movement.update_direction(direction)
 	actor.movement.decelerate("ground")
 
 
-func switch_check():
+func _tell_switch():
 	if not Input.is_action_pressed("down") and actor.vel.x == 0:
-		return get_states().idle
+		return &"Idle"
 
 	if Input.is_action_just_pressed("jump"):
-		return %Backflip
+		return &"Backflip"
+
+	return &""

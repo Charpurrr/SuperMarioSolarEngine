@@ -1,19 +1,20 @@
 class_name GroundPoundFall
-extends State
-# Falling after performing a ground pound
+extends PlayerState
+## Falling after performing a ground pound.
 
 
-const GP_FALL_VEL = 9 # How fast you ground pound
+## How fast you ground pound.
+const GP_FALL_VEL = 9
 
 
-func physics_tick(_delta):
+func _cycle_tick():
 	actor.movement.move_x(0.04, false)
 	actor.vel.y = GP_FALL_VEL
 
 
-func switch_check():
+func _tell_switch():
 	if actor.is_on_floor():
-		return %Idle
+		return &"Idle"
 
 	if Input.is_action_just_pressed("up"):
-		return %Fall
+		return &"Fall"

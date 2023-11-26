@@ -6,7 +6,6 @@ extends CharacterBody2D
 @onready var animplay : AnimationPlayer = $AnimationPlayer
 @onready var doll : AnimatedSprite2D = $Doll
 
-@onready var audio : Object = $AudioCoordinator
 @onready var movement : Object = $Movement
 
 @onready var push_ray : RayCast2D = $PushRay

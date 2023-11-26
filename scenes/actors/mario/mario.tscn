@@ -1,179 +1,169 @@
-[gd_scene load_steps=92 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=82 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://scenes/actors/mario/player.gd" id="1_3d0l6"]
-[ext_resource type="Texture2D" uid="uid://bfwe80wtp2uqy" path="res://scenes/actors/mario/anime/walk.png" id="2_5xkqu"]
-[ext_resource type="Texture2D" uid="uid://ccfxaveftr1f0" path="res://scenes/actors/mario/anime/crouch.png" id="2_b7wew"]
-[ext_resource type="Texture2D" uid="uid://cut0vcslnatgi" path="res://scenes/actors/mario/anime/backflip.png" id="2_ohfim"]
+[ext_resource type="Texture2D" uid="uid://cut0vcslnatgi" path="res://scenes/actors/mario/audio_visual_avfx/anime/backflip.png" id="2_i2o54"]
 [ext_resource type="Script" path="res://scenes/actors/mario/player_movement.gd" id="3_3mh1j"]
-[ext_resource type="Texture2D" uid="uid://mgjnjyjy5rh8" path="res://scenes/actors/mario/anime/push.png" id="3_pq7bv"]
-[ext_resource type="Script" path="res://scenes/actors/mario/state_coordinator.gd" id="3_t4ior"]
-[ext_resource type="Texture2D" uid="uid://cof524axgo162" path="res://scenes/actors/mario/anime/skid.png" id="3_x2igy"]
-[ext_resource type="Texture2D" uid="uid://c3oofyu0r7jw2" path="res://scenes/actors/mario/anime/slow_turn.png" id="4_4n8xm"]
-[ext_resource type="Texture2D" uid="uid://bqyc4a8h23h1" path="res://scenes/actors/mario/anime/fall.png" id="4_7yfar"]
-[ext_resource type="Texture2D" uid="uid://71qmcohslma0" path="res://scenes/actors/mario/anime/dive.png" id="4_qmifa"]
-[ext_resource type="Texture2D" uid="uid://bqelaoqudiigg" path="res://scenes/actors/mario/anime/freefall.png" id="5_hdqh5"]
-[ext_resource type="Texture2D" uid="uid://di37s0hpo2dfx" path="res://scenes/actors/mario/anime/idle.png" id="5_twypp"]
-[ext_resource type="Texture2D" uid="uid://ccli0rij5mtfx" path="res://scenes/actors/mario/anime/gp_fall.png" id="5_u6x12"]
-[ext_resource type="Texture2D" uid="uid://c2jk475rio8p1" path="res://scenes/actors/mario/anime/jump.png" id="6_6k7xd"]
-[ext_resource type="Texture2D" uid="uid://bjqptf8hd7sgj" path="res://scenes/actors/mario/anime/groundpound.png" id="6_p35e6"]
+[ext_resource type="Texture2D" uid="uid://ccfxaveftr1f0" path="res://scenes/actors/mario/audio_visual_avfx/anime/crouch.png" id="3_18n8e"]
+[ext_resource type="Texture2D" uid="uid://71qmcohslma0" path="res://scenes/actors/mario/audio_visual_avfx/anime/dive.png" id="4_0hrc4"]
+[ext_resource type="Texture2D" uid="uid://bqyc4a8h23h1" path="res://scenes/actors/mario/audio_visual_avfx/anime/fall.png" id="5_gvsgc"]
+[ext_resource type="Texture2D" uid="uid://bqelaoqudiigg" path="res://scenes/actors/mario/audio_visual_avfx/anime/freefall.png" id="6_bo6cm"]
+[ext_resource type="Texture2D" uid="uid://ccli0rij5mtfx" path="res://scenes/actors/mario/audio_visual_avfx/anime/gp_fall.png" id="7_u1sy4"]
+[ext_resource type="Texture2D" uid="uid://bjqptf8hd7sgj" path="res://scenes/actors/mario/audio_visual_avfx/anime/groundpound.png" id="8_7xxgu"]
 [ext_resource type="Script" path="res://scenes/actors/mario/push_ray.gd" id="8_qbkd3"]
-[ext_resource type="Texture2D" uid="uid://b5uu468w126us" path="res://scenes/actors/mario/anime/jumpkick.png" id="10_ot0kb"]
-[ext_resource type="Texture2D" uid="uid://chuaelxlkysn1" path="res://scenes/actors/mario/anime/walljump.png" id="10_s5v6g"]
-[ext_resource type="Texture2D" uid="uid://bfq6wetdws7ug" path="res://scenes/actors/mario/anime/sideflip.png" id="10_v188e"]
+[ext_resource type="Texture2D" uid="uid://di37s0hpo2dfx" path="res://scenes/actors/mario/audio_visual_avfx/anime/idle.png" id="9_vuywt"]
+[ext_resource type="Texture2D" uid="uid://c2jk475rio8p1" path="res://scenes/actors/mario/audio_visual_avfx/anime/jump.png" id="10_x2d0v"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/grounded.gd" id="11_15kl1"]
+[ext_resource type="Texture2D" uid="uid://b5uu468w126us" path="res://scenes/actors/mario/audio_visual_avfx/anime/jumpkick.png" id="11_sw7ya"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/grounded/idle.gd" id="12_hqcfh"]
+[ext_resource type="Texture2D" uid="uid://mgjnjyjy5rh8" path="res://scenes/actors/mario/audio_visual_avfx/anime/push.png" id="12_kw6lo"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/grounded/walk.gd" id="13_olbq0"]
+[ext_resource type="Texture2D" uid="uid://bfq6wetdws7ug" path="res://scenes/actors/mario/audio_visual_avfx/anime/sideflip.png" id="13_t23yg"]
+[ext_resource type="Texture2D" uid="uid://cof524axgo162" path="res://scenes/actors/mario/audio_visual_avfx/anime/skid.png" id="14_t6mxa"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/grounded/slow_turn.gd" id="15_am2gs"]
-[ext_resource type="Script" path="res://scenes/actors/mario/audio_coordinator.gd" id="15_d4m4v"]
+[ext_resource type="Texture2D" uid="uid://c3oofyu0r7jw2" path="res://scenes/actors/mario/audio_visual_avfx/anime/slow_turn.png" id="15_v5axd"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/grounded/dry_push.gd" id="16_dpmo1"]
-[ext_resource type="Texture2D" uid="uid://4r0gxm6adtlt" path="res://scenes/actors/mario/anime/wallslide.png" id="16_wnh10"]
+[ext_resource type="Texture2D" uid="uid://bfwe80wtp2uqy" path="res://scenes/actors/mario/audio_visual_avfx/anime/walk.png" id="16_m1rrp"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/grounded/push.gd" id="17_8nb4y"]
+[ext_resource type="Texture2D" uid="uid://chuaelxlkysn1" path="res://scenes/actors/mario/audio_visual_avfx/anime/walljump.png" id="17_ko8me"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/grounded/crouch.gd" id="18_h7q8u"]
+[ext_resource type="Texture2D" uid="uid://4r0gxm6adtlt" path="res://scenes/actors/mario/audio_visual_avfx/anime/wallslide.png" id="18_ruvl0"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/grounded/stop_skid.gd" id="19_qr343"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/grounded/turn_skid.gd" id="20_0joxb"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne.gd" id="20_at07q"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/jump.gd" id="20_bs088"]
+[ext_resource type="Script" path="res://util/state_machine/audio_visual_machine/av_manager.gd" id="20_pdvs1"]
+[ext_resource type="Script" path="res://scenes/actors/mario/audio_visual_avfx/backflip_avfx.gd" id="21_2iakt"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/fall.gd" id="21_cisab"]
+[ext_resource type="Script" path="res://util/input_manager.gd" id="21_onm15"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/sideflip.gd" id="22_4r2ks"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/backflip.gd" id="23_jcv3h"]
+[ext_resource type="Script" path="res://util/state_machine/player_state_manager.gd" id="24_2oy80"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/freefall.gd" id="26_w8jki"]
-[ext_resource type="AudioStream" uid="uid://leovxwtdwcfw" path="res://scenes/actors/mario/sfx/WAhuw.wav" id="29_5idl6"]
-[ext_resource type="AudioStream" uid="uid://bnq5hgt6mos3" path="res://scenes/actors/mario/sfx/Airborne/Jump1.wav" id="29_jwc60"]
-[ext_resource type="AudioStream" uid="uid://p07n0hpye3ls" path="res://scenes/actors/mario/sfx/Wah.wav" id="30_7qm1e"]
-[ext_resource type="AudioStream" uid="uid://dp1rhi7lditkw" path="res://scenes/actors/mario/sfx/Airborne/Jump2.wav" id="30_apkvj"]
-[ext_resource type="AudioStream" uid="uid://dhadje3n76kwy" path="res://scenes/actors/mario/sfx/Airborne/Jump3.wav" id="31_n4b4m"]
-[ext_resource type="AudioStream" uid="uid://dfoho8ux01xnw" path="res://scenes/actors/mario/sfx/Airborne/Jump4.wav" id="32_l08ki"]
-[ext_resource type="AudioStream" uid="uid://bxl2hpdipot8i" path="res://scenes/actors/mario/sfx/Airborne/Jump5.wav" id="33_gdtuh"]
-[ext_resource type="AudioStream" uid="uid://3v74kjka7pdw" path="res://scenes/actors/mario/sfx/Airborne/Jump6.wav" id="34_2gbnj"]
-[ext_resource type="AudioStream" uid="uid://bj4ql0rxxerg4" path="res://scenes/actors/mario/sfx/Airborne/Freefall.wav" id="39_y8nne"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/wallslide.gd" id="40_hk2sj"]
-[ext_resource type="AudioStream" uid="uid://cwm85nfl81aav" path="res://scenes/actors/mario/sfx/Airborne/GroundPound1.wav" id="40_uehwu"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/jumpkick.gd" id="41_fqapq"]
-[ext_resource type="AudioStream" uid="uid://1nteoppir8uq" path="res://scenes/actors/mario/sfx/Ya.wav" id="41_l2mnv"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/walljump.gd" id="41_re2yk"]
-[ext_resource type="AudioStream" uid="uid://bjjimcrvm4axa" path="res://scenes/actors/mario/sfx/Hya.wav" id="42_wc37c"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/groundpound.gd" id="46_4mnp2"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/groundpound_fall.gd" id="47_bnupp"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/dive.gd" id="54_rdldk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_anesd"]
-atlas = ExtResource("2_ohfim")
+atlas = ExtResource("2_i2o54")
 region = Rect2(0, 0, 16, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k1pu5"]
-atlas = ExtResource("2_b7wew")
+atlas = ExtResource("3_18n8e")
 region = Rect2(0, 0, 24, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iweg8"]
-atlas = ExtResource("4_qmifa")
+atlas = ExtResource("4_0hrc4")
 region = Rect2(0, 0, 22, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pvd63"]
-atlas = ExtResource("4_7yfar")
+atlas = ExtResource("5_gvsgc")
 region = Rect2(0, 0, 22, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x2488"]
-atlas = ExtResource("5_hdqh5")
+atlas = ExtResource("6_bo6cm")
 region = Rect2(0, 0, 24, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2gwn3"]
-atlas = ExtResource("5_u6x12")
+atlas = ExtResource("7_u1sy4")
 region = Rect2(0, 0, 24, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wr1rc"]
-atlas = ExtResource("6_p35e6")
+atlas = ExtResource("8_7xxgu")
 region = Rect2(0, 0, 30, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m4231"]
-atlas = ExtResource("5_twypp")
+atlas = ExtResource("9_vuywt")
 region = Rect2(0, 0, 20, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bxg6x"]
-atlas = ExtResource("6_6k7xd")
+atlas = ExtResource("10_x2d0v")
 region = Rect2(0, 0, 22, 38)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bjl7f"]
-atlas = ExtResource("10_ot0kb")
+atlas = ExtResource("11_sw7ya")
 region = Rect2(0, 0, 32, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_osu8r"]
-atlas = ExtResource("10_ot0kb")
+atlas = ExtResource("11_sw7ya")
 region = Rect2(32, 0, 32, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fouyr"]
-atlas = ExtResource("10_ot0kb")
+atlas = ExtResource("11_sw7ya")
 region = Rect2(64, 0, 32, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n6kar"]
-atlas = ExtResource("10_ot0kb")
+atlas = ExtResource("11_sw7ya")
 region = Rect2(96, 0, 32, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_luc3q"]
-atlas = ExtResource("10_ot0kb")
+atlas = ExtResource("11_sw7ya")
 region = Rect2(128, 0, 32, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ocu7e"]
-atlas = ExtResource("3_pq7bv")
+atlas = ExtResource("12_kw6lo")
 region = Rect2(0, 0, 28, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w5val"]
-atlas = ExtResource("10_v188e")
+atlas = ExtResource("13_t23yg")
 region = Rect2(0, 0, 18, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k8uo2"]
-atlas = ExtResource("10_v188e")
+atlas = ExtResource("13_t23yg")
 region = Rect2(18, 0, 18, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3f1x0"]
-atlas = ExtResource("10_v188e")
+atlas = ExtResource("13_t23yg")
 region = Rect2(36, 0, 18, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aowtw"]
-atlas = ExtResource("3_x2igy")
+atlas = ExtResource("14_t6mxa")
 region = Rect2(0, 0, 30, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s11s1"]
-atlas = ExtResource("4_4n8xm")
+atlas = ExtResource("15_v5axd")
 region = Rect2(0, 0, 24, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qcxnt"]
-atlas = ExtResource("2_5xkqu")
+atlas = ExtResource("16_m1rrp")
 region = Rect2(0, 0, 24, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sjeoh"]
-atlas = ExtResource("2_5xkqu")
+atlas = ExtResource("16_m1rrp")
 region = Rect2(24, 0, 24, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_te82j"]
-atlas = ExtResource("2_5xkqu")
+atlas = ExtResource("16_m1rrp")
 region = Rect2(48, 0, 24, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_moed6"]
-atlas = ExtResource("2_5xkqu")
+atlas = ExtResource("16_m1rrp")
 region = Rect2(72, 0, 24, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a11ta"]
-atlas = ExtResource("2_5xkqu")
+atlas = ExtResource("16_m1rrp")
 region = Rect2(96, 0, 24, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8n4ke"]
-atlas = ExtResource("2_5xkqu")
+atlas = ExtResource("16_m1rrp")
 region = Rect2(120, 0, 24, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6724e"]
-atlas = ExtResource("2_5xkqu")
+atlas = ExtResource("16_m1rrp")
 region = Rect2(144, 0, 24, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ia2wo"]
-atlas = ExtResource("2_5xkqu")
+atlas = ExtResource("16_m1rrp")
 region = Rect2(168, 0, 24, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kwprx"]
-atlas = ExtResource("10_s5v6g")
+atlas = ExtResource("17_ko8me")
 region = Rect2(0, 0, 30, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xp3xl"]
-atlas = ExtResource("16_wnh10")
+atlas = ExtResource("18_ruvl0")
 region = Rect2(0, 0, 24, 34)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hmp25"]
@@ -354,9 +344,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4b58"]
-size = Vector2(16, 32)
-
 [sub_resource type="Animation" id="Animation_1d666"]
 resource_name = "backflip"
 length = 0.43
@@ -415,22 +402,23 @@ _data = {
 "sideflip": SubResource("Animation_ifrda")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4b58"]
+size = Vector2(16, 32)
+
 [node name="Mario" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_3d0l6")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -21)
-offset = Vector2(0, -30)
-zoom = Vector2(2.5, 2.5)
-position_smoothing_speed = 40.0
-editor_draw_limits = true
-
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_hmp25")
 animation = &"walk"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_grh7v")
+}
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
@@ -445,143 +433,125 @@ script = ExtResource("8_qbkd3")
 target_size_x = 11.0
 movement = NodePath("../Movement")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_grh7v")
-}
+[node name="AVManager" type="Node" parent="." node_paths=PackedStringArray("_fallback_sprite")]
+script = ExtResource("20_pdvs1")
+_fallback_sprite = NodePath("../Doll")
 
-[node name="AudioCoordinator" type="AudioStreamPlayer" parent="."]
-bus = &"Voices"
-script = ExtResource("15_d4m4v")
+[node name="BackflipAvfx" type="Node" parent="AVManager"]
+script = ExtResource("21_2iakt")
+
+[node name="InputManager" type="Node" parent="."]
+script = ExtResource("21_onm15")
 
 [node name="Movement" type="Node" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("3_3mh1j")
 actor = NodePath("..")
 
-[node name="StateCoordinator" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("3_t4ior")
-initial_state = NodePath("Grounded/Idle")
+[node name="StateManager" type="Node" parent="." node_paths=PackedStringArray("input", "movement", "target_actor", "target_av", "initial_state")]
+script = ExtResource("24_2oy80")
+input = NodePath("../InputManager")
+movement = NodePath("../Movement")
+target_actor = NodePath("..")
+target_av = NodePath("../AVManager")
+initial_state = NodePath("Airborne")
 
-[node name="Grounded" type="Node" parent="StateCoordinator"]
+[node name="Grounded" type="Node" parent="StateManager"]
 script = ExtResource("11_15kl1")
 
-[node name="Idle" type="Node" parent="StateCoordinator/Grounded"]
-unique_name_in_owner = true
+[node name="Idle" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("12_hqcfh")
-anim_animation_name = &"idle"
+effect = &"idle"
 
-[node name="Walk" type="Node" parent="StateCoordinator/Grounded"]
-unique_name_in_owner = true
+[node name="Walk" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("13_olbq0")
-anim_animation_name = &"walk"
-anim_offset_y = -1.0
+effect = &"walk"
+effect_offset = Vector2i(0, -1)
 
-[node name="StopSkid" type="Node" parent="StateCoordinator/Grounded"]
-unique_name_in_owner = true
+[node name="StopSkid" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("19_qr343")
-anim_animation_name = &"skid"
-anim_offset_x = 1.0
+effect = &"skid"
+effect_offset = Vector2i(1, 0)
 
-[node name="TurnSkid" type="Node" parent="StateCoordinator/Grounded"]
-unique_name_in_owner = true
+[node name="TurnSkid" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("20_0joxb")
-anim_animation_name = &"skid"
-anim_offset_x = 1.0
+effect = &"skid"
+effect_offset = Vector2i(1, 0)
 
-[node name="SlowTurn" type="Node" parent="StateCoordinator/Grounded/TurnSkid"]
-unique_name_in_owner = true
+[node name="SlowTurn" type="Node" parent="StateManager/Grounded/TurnSkid"]
 script = ExtResource("15_am2gs")
-anim_animation_name = &"slow_turn"
+effect = &"slow_turn"
 
-[node name="Push" type="Node" parent="StateCoordinator/Grounded"]
-unique_name_in_owner = true
+[node name="Push" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("17_8nb4y")
-anim_animation_name = &"push"
-anim_offset_x = 2.0
-anim_offset_y = 1.0
+effect = &"push"
+effect_offset = Vector2i(2, 1)
 
-[node name="DryPush" type="Node" parent="StateCoordinator/Grounded/Push"]
-unique_name_in_owner = true
+[node name="DryPush" type="Node" parent="StateManager/Grounded/Push"]
 script = ExtResource("16_dpmo1")
-anim_animation_name = &"idle"
+effect = &"idle"
 
-[node name="Crouch" type="Node" parent="StateCoordinator/Grounded"]
-unique_name_in_owner = true
+[node name="Crouch" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("18_h7q8u")
-anim_animation_name = &"crouch"
+effect = &"crouch"
 
-[node name="Airborne" type="Node" parent="StateCoordinator"]
+[node name="Airborne" type="Node" parent="StateManager"]
 script = ExtResource("20_at07q")
 
-[node name="Jump" type="Node" parent="StateCoordinator/Airborne"]
-unique_name_in_owner = true
+[node name="Jump" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("20_bs088")
-sfx_alt_sound_effects = [ExtResource("30_7qm1e"), ExtResource("29_5idl6")]
-sfx_sound_effects = [ExtResource("29_jwc60"), ExtResource("30_apkvj"), ExtResource("31_n4b4m"), ExtResource("32_l08ki"), ExtResource("33_gdtuh"), ExtResource("34_2gbnj")]
-sfx_sfx_delay = 0.1
-anim_animation_name = &"jump"
-anim_offset_x = 3.0
-anim_offset_y = -1.0
+effect = &"jump"
+effect_offset = Vector2i(3, -1)
 
-[node name="JumpKick" type="Node" parent="StateCoordinator/Airborne"]
-unique_name_in_owner = true
+[node name="JumpKick" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("41_fqapq")
-sfx_sound_effects = [ExtResource("42_wc37c")]
-anim_animation_name = &"jumpkick"
+effect = &"jumpkick"
 
-[node name="Dive" type="Node" parent="StateCoordinator/Airborne"]
-unique_name_in_owner = true
+[node name="Dive" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("54_rdldk")
-anim_animation_name = &"dive"
-anim_offset_y = 1.0
+effect = &"dive"
+effect_offset = Vector2i(0, 1)
 
-[node name="Fall" type="Node" parent="StateCoordinator/Airborne"]
-unique_name_in_owner = true
+[node name="Fall" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("21_cisab")
-anim_animation_name = &"fall"
-anim_offset_x = 3.0
-anim_offset_y = -1.0
+effect = &"fall"
+effect_offset = Vector2i(3, -1)
 
-[node name="Freefall" type="Node" parent="StateCoordinator/Airborne/Fall"]
-unique_name_in_owner = true
+[node name="Freefall" type="Node" parent="StateManager/Airborne/Fall"]
 script = ExtResource("26_w8jki")
-sfx_sound_effects = [ExtResource("39_y8nne")]
-sfx_quit_sfx_on_exit = true
-anim_animation_name = &"freefall"
+effect = &"freefall"
 
-[node name="Wallslide" type="Node" parent="StateCoordinator/Airborne"]
-unique_name_in_owner = true
+[node name="Wallslide" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("40_hk2sj")
-anim_animation_name = &"wallslide"
+effect = &"wallslide"
 
-[node name="Walljump" type="Node" parent="StateCoordinator/Airborne"]
-unique_name_in_owner = true
+[node name="Walljump" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("41_re2yk")
-anim_animation_name = &"walljump"
+effect = &"walljump"
 
-[node name="Sideflip" type="Node" parent="StateCoordinator/Airborne"]
-unique_name_in_owner = true
+[node name="Sideflip" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("22_4r2ks")
-anim_animation_name = &"sideflip"
+effect = &"sideflip"
 
-[node name="Backflip" type="Node" parent="StateCoordinator/Airborne"]
-unique_name_in_owner = true
+[node name="Backflip" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("23_jcv3h")
-anim_animation_name = &"backflip"
-anim_offset_y = 1.0
+effect = &"backflip"
+effect_offset = Vector2i(0, 1)
 
-[node name="GroundPound" type="Node" parent="StateCoordinator/Airborne"]
-unique_name_in_owner = true
+[node name="GroundPound" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("46_4mnp2")
-sfx_sound_effects = [ExtResource("40_uehwu"), ExtResource("41_l2mnv")]
-sfx_sfx_delay = 0.1
-anim_animation_name = &"groundpound"
-anim_offset_y = 2.0
+effect = &"groundpound"
+effect_offset = Vector2i(0, 2)
 
-[node name="GroundPoundFall" type="Node" parent="StateCoordinator/Airborne/GroundPound"]
-unique_name_in_owner = true
+[node name="GroundPoundFall" type="Node" parent="StateManager/Airborne/GroundPound"]
 script = ExtResource("47_bnupp")
-anim_animation_name = &"gp_fall"
-anim_offset_y = 2.0
+effect = &"gp_fall"
+effect_offset = Vector2i(0, 2)
 
-[connection signal="animation_finished" from="AnimationPlayer" to="StateCoordinator/Airborne/GroundPound" method="_on_animation_player_animation_finished"]
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -21)
+offset = Vector2(0, -30)
+zoom = Vector2(2.5, 2.5)
+position_smoothing_speed = 40.0
+editor_draw_limits = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="StateManager/Airborne/GroundPound" method="_on_animation_player_animation_finished"]

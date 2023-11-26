@@ -1,22 +1,20 @@
 class_name Walljump
-extends State
-# Jumping from a wallslide
+extends PlayerState
+## Jumping from a wallslide.
 
 
-const PUSH_POWER : float = 3
-const JUMP_POWER : float = 8.15
+const PUSH_POWER: float = 3
+const JUMP_POWER: float = 8.15
 
 
-func on_enter():
+func _on_enter(_handover):
 	actor.movement.update_direction(-actor.movement.facing_direction)
 
 	actor.vel.y = -JUMP_POWER
 	actor.vel.x = PUSH_POWER * actor.movement.facing_direction
 
 
-func physics_tick(_delta):
-	var input_direction : float = actor.movement.get_input_x()
-
+func _cycle_tick():
 	if input_direction != actor.movement.facing_direction:
 		actor.movement.move_x(0.13, false)
 	elif input_direction != 0:
@@ -26,9 +24,11 @@ func physics_tick(_delta):
 	actor.movement.decelerate(0.01)
 
 
-func switch_check():
+func _tell_switch():
 	if actor.vel.y > 0:
-		return get_states().fall
+		return &"Fall"
 
 	if Input.is_action_just_pressed("down"):
-		return get_states().groundpound
+		return &"GroundPound"
+
+	return &""

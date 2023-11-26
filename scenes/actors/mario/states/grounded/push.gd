@@ -1,20 +1,18 @@
 class_name Push
-extends State
-# Walking against a solid body while the ray_shape is colliding
+extends PlayerState
+## Walking against a solid body while the ray_shape is colliding.
 
 
-func switch_check():
-	var input_direction : float = actor.movement.get_input_x()
-
+func _tell_switch():
 	if input_direction == 0:
-		return get_states().idle
+		return &"Idle"
 	elif (input_direction == -actor.movement.facing_direction or actor.movement.check_space_ahead()):
-		return get_states().walk
+		return &"Walk"
 
 	if Input.is_action_pressed("down"):
-		return get_states().crouch
+		return &"Crouch"
 
 	if Input.is_action_just_pressed("jump"):
-		return %Jump
+		return &"Jump"
 
-	return null
+	return &""

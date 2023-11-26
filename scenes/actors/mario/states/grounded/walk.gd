@@ -1,43 +1,40 @@
 class_name Walk
-extends State
-# Moving left and right on the ground
+extends PlayerState
+## Moving left and right on the ground.
 
 
-func physics_tick(_delta):
-	print(actor.vel.x)
+func _cycle_tick():
 	actor.doll.speed_scale = actor.vel.x / actor.movement.MAX_SPEED_X * 2
 	actor.movement.move_x("ground", true)
 
 
-func on_exit():
+func _on_exit():
 	actor.doll.speed_scale = 1
 
 
-func switch_check():
-	var input_direction : float = actor.movement.get_input_x()
-
+func _tell_switch():
 	if Input.is_action_just_pressed("jump"):
-		return %Jump
+		return &"Jump"
 
 	if Input.is_action_just_pressed("dive") and abs(actor.vel.x) >= actor.movement.MAX_SPEED_X:
-		return %Dive
+		return &"Dive"
 
 	if input_direction != 0:
 		if abs(actor.vel.x) >= actor.movement.MAX_SPEED_X and input_direction != actor.movement.facing_direction:
-			return get_states().turn_skid
+			return &"TurnSkid"
 	else:
 		if abs(actor.vel.x) >= actor.movement.MAX_SPEED_X:
-			return get_states().stop_skid
+			return &"StopSkid"
 		else:
-			return get_states().idle
+			return &"Idle"
 
 	if Input.is_action_pressed("down"):
-		return get_states().crouch
+		return &"Crouch"
 
-	if input_direction != 0 and actor.is_on_wall():
+	if InputManager.get_x() != 0 and actor.is_on_wall():
 		if actor.push_ray.is_colliding():
-			return get_states().push
+			return &"Push"
 		else:
-			return get_states().dry_push
+			return &"DryPush"
 
-	return null
+	return &""

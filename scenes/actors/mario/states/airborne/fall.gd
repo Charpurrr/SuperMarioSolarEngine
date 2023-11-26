@@ -1,37 +1,39 @@
 class_name Fall
-extends State
-# Falling state
+extends PlayerState
+## Falling state.
+
+const FREEFALL_TIME: int = 70
+var freefall_timer: int
 
 
-@onready var idle_state : State = %Idle
-
-const FREEFALL_TIME : int = 70
-var freefall_timer : int
-
-
-func on_enter():
+func _on_enter(_handover):
 	freefall_timer = FREEFALL_TIME
 
 
-func physics_tick(_delta):
+func _cycle_tick():
 	freefall_timer = max(freefall_timer - 1, 0)
 
 	actor.movement.move_x("air", false)
+
+
+func _post_tick():
 	actor.movement.apply_gravity()
 
 
-func switch_check():
+func _tell_switch():
 	if Input.is_action_just_pressed("kick"):
-		return get_states().jumpkick
+		return &"JumpKick"
 
 	if actor.is_on_floor() and actor.movement.active_buffer_jump():
-		return get_states().jump
+		return &"Jump"
 
 	if Input.is_action_just_pressed("down"):
-		return get_states().groundpound
+		return &"GroundPound"
 
 	if actor.movement.can_wallslide():
-		return get_states().wallslide
+		return &"Wallslide"
 
 	if is_equal_approx(actor.vel.y, actor.movement.TERM_VEL) and freefall_timer == 0:
-		return get_states().freefall
+		return &"FreeFall"
+
+	return &""

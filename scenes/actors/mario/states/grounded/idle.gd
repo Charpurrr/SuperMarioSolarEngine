@@ -1,22 +1,20 @@
 class_name Idle
-extends State
-# Default grounded state when there is no input
+extends PlayerState
+## Default grounded state when there is no input.
 
 
-func physics_tick(_delta):
+func _cycle_tick():
 	actor.movement.decelerate("ground")
 
 
-func switch_check():
-	var input_direction : float = actor.movement.get_input_x()
-
+func _tell_switch():
 	if Input.is_action_pressed("down"):
-		return get_states().crouch
+		return &"Crouch"
 
 	if Input.is_action_just_pressed("jump"):
-		return %Jump
+		return &"Jump"
 
-	if input_direction != 0:
-		return get_states().walk
+	if InputManager.get_x() != 0:
+		return &"Walk"
 
-	return null
+	return &""
