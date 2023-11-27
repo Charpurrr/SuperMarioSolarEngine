@@ -4,10 +4,10 @@ uniform float brightness = 1.0;
 uniform float contrast = 1.0;
 uniform float saturation = 1.0;
 
-uniform vec4 color_tint : source_color;
+uniform vec4 color_tint: source_color;
 uniform float mix_amount = 1.4;
 
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_nearest_mipmap;
+uniform sampler2D SCREEN_TEXTURE: hint_screen_texture, filter_nearest_mipmap;
 
 void fragment() {
     vec3 c = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0).rgb;

@@ -10,15 +10,15 @@ var pt_b: Vector2
 var pt_c: Vector2
 var pt_d: Vector2
 
-var tg_a : Vector2
-var tg_b : Vector2
-var tg_c : Vector2
-var tg_d : Vector2
+var tg_a: Vector2
+var tg_b: Vector2
+var tg_c: Vector2
+var tg_d: Vector2
 
-var bn_a : Vector2
-var bn_b : Vector2
-var bn_c : Vector2
-var bn_d : Vector2
+var bn_a: Vector2
+var bn_b: Vector2
+var bn_c: Vector2
+var bn_d: Vector2
 
 var texture: Texture2D = null
 var color: Color = Color(1.0, 1.0, 1.0, 1.0)

@@ -31,7 +31,7 @@ func _ready():
 
 
 func _physics_process(_delta):
-	recurse_live("probe_switch")
+	recurse_live("probe_switch", [], true)
 
 	if live_substate != null:
 		# Call the tick hook function.

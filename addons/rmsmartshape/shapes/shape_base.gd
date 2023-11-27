@@ -42,66 +42,66 @@ enum ORIENTATION { COLINEAR, CLOCKWISE, C_CLOCKWISE }
 
 # Execute to refresh shape rendered geometry and textures.
 @warning_ignore("unused_private_class_variable")
-@export_placeholder("ActionProperty") var _refresh: String = "" : set = _refresh_action
+@export_placeholder("ActionProperty") var _refresh: String = "": set = _refresh_action
 #   ActionProperty will add a button to inspector to execute this action.
 #   When non-empty string is passed into setter, action is considerd executed.
 
 ## Visualize generated quads and edges.
-@export var editor_debug: bool = false : set = _set_editor_debug
+@export var editor_debug: bool = false: set = _set_editor_debug
 
-@export_range (1, 512) var curve_bake_interval: float = 20.0 : set = set_curve_bake_interval
+@export_range (1, 512) var curve_bake_interval: float = 20.0: set = set_curve_bake_interval
 
 ## How to treat color data. See [enum SS2D_Edge.COLOR_ENCODING].
-@export var color_encoding: SS2D_Edge.COLOR_ENCODING = SS2D_Edge.COLOR_ENCODING.COLOR : set = set_color_encoding
+@export var color_encoding: SS2D_Edge.COLOR_ENCODING = SS2D_Edge.COLOR_ENCODING.COLOR: set = set_color_encoding
 
 @export_group("Geometry")
 
 # Execute to make shape point geometry unique (not materials).
 @warning_ignore("unused_private_class_variable")
-@export_placeholder("ActionProperty") var _make_unique: String = "" : set = _make_unique_action
+@export_placeholder("ActionProperty") var _make_unique: String = "": set = _make_unique_action
 #   ActionProperty will add a button to inspector to execute this action.
 #   When non-empty string is passed into setter, action is considerd executed.
 
 ## Resource that holds shape point geometry (aka point array).
-@export var _points: SS2D_Point_Array : set = set_point_array
+@export var _points: SS2D_Point_Array: set = set_point_array
 
 @export_group("Edges")
 
-@export var flip_edges: bool = false : set = set_flip_edges
+@export var flip_edges: bool = false: set = set_flip_edges
 
 ## Enable/disable rendering of the edges.
-@export var render_edges: bool = true : set = set_render_edges
+@export var render_edges: bool = true: set = set_render_edges
 
 @export_group("Materials")
 
 ## Contains textures and data on how to visualize the shape.
-@export var shape_material := SS2D_Material_Shape.new() : set = _set_material
+@export var shape_material := SS2D_Material_Shape.new(): set = _set_material
 
 # Dictionary of (Array of 2 keys) to (SS2D_Material_Edge_Metadata)
 # Deprecated, exists for Support of older versions
-@export var material_overrides: Dictionary = {} : set = set_material_overrides
+@export var material_overrides: Dictionary = {}: set = set_material_overrides
 
 @export_group("Tesselation")
 
 ## Controls how many subdivisions a curve segment may face before it is considered
 ## approximate enough.
 @export_range(0, 8, 1)
-var tessellation_stages: int = 5 : set = set_tessellation_stages
+var tessellation_stages: int = 5: set = set_tessellation_stages
 
 ## Controls how many degrees the midpoint of a segment may deviate from the real
 ## curve, before the segment has to be subdivided.
 @export_range(0.1, 8.0, 0.1, "or_greater", "or_lesser")
-var tessellation_tolerence: float = 4.0 : set = set_tessellation_tolerence
+var tessellation_tolerence: float = 4.0: set = set_tessellation_tolerence
 
 @export_group("Collision")
 
 ## Controls size of generated polygon for CollisionPolygon2D.
 @export_range(0.0, 64.0, 1.0, "or_greater")
-var collision_size: float = 32 : set = set_collision_size
+var collision_size: float = 32: set = set_collision_size
 
 ## Controls offset of generated polygon for CollisionPolygon2D.
 @export_range(-64.0, 64.0, 1.0, "or_greater", "or_lesser")
-var collision_offset: float = 0.0 : set = set_collision_offset
+var collision_offset: float = 0.0: set = set_collision_offset
 
 ## NodePath to CollisionPolygon2D node for which polygon data will be generated.
 @export var collision_polygon_node_path: NodePath = ""

@@ -6,15 +6,15 @@ extends PlayerState
 func _cycle_tick():
 	var direction = sign(input_direction)
 
-	actor.movement.update_direction(direction)
-	actor.movement.decelerate("ground")
+	movement.update_direction(direction)
+	movement.decelerate("ground")
 
 
 func _tell_switch():
-	if not Input.is_action_pressed("down") and actor.vel.x == 0:
+	if not Input.is_action_pressed(&"down") and actor.vel.x == 0:
 		return &"Idle"
 
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed(&"jump"):
 		return &"Backflip"
 
 	return &""

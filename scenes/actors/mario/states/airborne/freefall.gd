@@ -1,7 +1,7 @@
-class_name FreeFall
+class_name Freefall
 extends Fall
 ## Uninterupted falling at terminal velocity.
 
 
-func switch_check():
-	pass
+func _tell_swich():
+	return &""

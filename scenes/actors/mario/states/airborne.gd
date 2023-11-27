@@ -4,10 +4,10 @@ extends PlayerState
 
 
 func _tell_switch():
-	if actor.is_on_floor() and not actor.movement.active_buffer_jump():
-		return &"Idle"
+	if actor.is_on_floor():
+		return &"Grounded"
 
-	if Input.is_action_just_pressed("jump") and actor.movement.active_coyote_time():
+	if Input.is_action_just_pressed(&"jump") and movement.active_coyote_time():
 		return &"Jump"
 
 	return &""

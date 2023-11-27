@@ -7,7 +7,7 @@ class_name SS2D_IndexMap
 const TUP = preload("res://addons/rmsmartshape/lib/tuple.gd")
 
 var object: Variant = null
-var indicies: Array[int] = [] : set = set_indicies
+var indicies: Array[int] = []: set = set_indicies
 
 
 ## Parameter [param subresources] has no effect, no subresources to duplicate.

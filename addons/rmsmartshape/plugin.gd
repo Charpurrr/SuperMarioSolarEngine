@@ -161,7 +161,7 @@ var _mouse_motion_delta_starting_pos := Vector2(0, 0)
 
 # Defining the viewport to get the current zoom/scale
 var target_viewport: Viewport
-var current_zoom_level : float = 1.0
+var current_zoom_level: float = 1.0
 
 # Track the property plugin
 var plugin: EditorInspectorPlugin

@@ -6,19 +6,19 @@ class_name SS2D_Material_Edge_Metadata
 ##
 ## Used by Shape Material.
 
-@export var edge_material: SS2D_Material_Edge = null : set = set_edge_material
+@export var edge_material: SS2D_Material_Edge = null: set = set_edge_material
 ## What range of normals can this edge be used on.
-@export var normal_range := SS2D_NormalRange.new(0, 360) : set = set_normal_range
+@export var normal_range := SS2D_NormalRange.new(0, 360): set = set_normal_range
 ## If edge should be welded to the edges surrounding it.
-@export var weld: bool = true : set = set_weld
+@export var weld: bool = true: set = set_weld
 ## If this edge should be visible.
-@export var render: bool = true : set = set_render
+@export var render: bool = true: set = set_render
 ## z index for an edge.
-@export var z_index: int = 0 : set = set_z_index
+@export var z_index: int = 0: set = set_z_index
 ## z index for an edge.
-@export var z_as_relative: bool = true : set = set_z_as_relative
+@export var z_as_relative: bool = true: set = set_z_as_relative
 ## Distance from center.
-@export_range (-1.5, 1.5, 0.1) var offset: float = 0.0 : set = set_offset
+@export_range (-1.5, 1.5, 0.1) var offset: float = 0.0: set = set_offset
 
 
 func _to_string() -> String:

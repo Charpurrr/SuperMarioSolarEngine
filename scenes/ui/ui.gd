@@ -3,7 +3,7 @@ extends CanvasLayer
 # UI and utility
 
 
-var bgm_muted : bool = false
+var bgm_muted: bool = false
 
 
 func _ready():

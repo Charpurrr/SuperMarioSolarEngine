@@ -4,8 +4,8 @@ extends PlayerState
 
 
 func _cycle_tick():
-	actor.doll.speed_scale = actor.vel.x / actor.movement.MAX_SPEED_X * 2
-	actor.movement.move_x("ground", true)
+	actor.doll.speed_scale = actor.vel.x / movement.MAX_SPEED_X * 2
+	movement.move_x("ground", true)
 
 
 func _on_exit():
@@ -13,22 +13,22 @@ func _on_exit():
 
 
 func _tell_switch():
-	if Input.is_action_just_pressed("jump"):
-		return &"Jump"
+	if Input.is_action_just_pressed(&"jump"):
+		return &"DummyJump"
 
-	if Input.is_action_just_pressed("dive") and abs(actor.vel.x) >= actor.movement.MAX_SPEED_X:
+	if Input.is_action_just_pressed(&"dive") and abs(actor.vel.x) >= movement.MAX_SPEED_X:
 		return &"Dive"
 
 	if input_direction != 0:
-		if abs(actor.vel.x) >= actor.movement.MAX_SPEED_X and input_direction != actor.movement.facing_direction:
+		if abs(actor.vel.x) >= movement.MAX_SPEED_X and input_direction != movement.facing_direction:
 			return &"TurnSkid"
 	else:
-		if abs(actor.vel.x) >= actor.movement.MAX_SPEED_X:
+		if abs(actor.vel.x) >= movement.MAX_SPEED_X:
 			return &"StopSkid"
 		else:
 			return &"Idle"
 
-	if Input.is_action_pressed("down"):
+	if Input.is_action_pressed(&"down"):
 		return &"Crouch"
 
 	if InputManager.get_x() != 0 and actor.is_on_wall():

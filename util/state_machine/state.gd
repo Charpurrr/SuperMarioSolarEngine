@@ -31,8 +31,108 @@ func _to_string():
 	return str(name)
 
 
+## Calls the fixed tick functions
+func tick_hook() -> void:
+	if _first_cycle:
+		_pre_tick()
+		_first_cycle = false
+	else:
+		_post_tick()
+
+	_cycle_tick()
+
+
+## Call a callable from a function name and given arguments.
+func call_func(function_name: StringName, arguments := []):
+	var callable := Callable(self, function_name)
+
+	callable.callv(arguments)
+
+
+## Call a function on this state and its entire descendant family.
+func recurse_descendents(function_name: StringName, arguments := []):
+	call_func(function_name, arguments)
+
+	for child in get_children():
+		child.recurse_descendents(function_name, arguments)
+
+
+## Call a function on this state and all its live descendents.
+func recurse_live(function_name: StringName, arguments := [], reverse := false):
+	if reverse:
+		_call_live(&"recurse_live", [function_name, arguments, true])
+		call_func(function_name, arguments)
+	else:
+		call_func(function_name, arguments)
+		_call_live(&"recurse_live", [function_name, arguments, false])
+
+
+## Trigger entrance events for a new state.
+func trigger_enter(handover: Variant):
+	_first_cycle = true
+	_on_enter(handover)
+
+	if av != null and effect != &"":
+		av.trigger_effect(effect, effect_offset)
+
+
+## Ditch this state and all its descendents,
+## making this branch of the state tree inactive.
+func ditch_state():
+	_on_exit()
+
+	# Ditch live descendents
+	if live_substate == null: return
+	live_substate.ditch_state()
+	live_substate = null
+
+
+## Activate the given state, ditching the current state.
+func switch_substate(new_state: State, handover: Variant):
+	if new_state == live_substate: return
+	if new_state == null: return
+
+	if live_substate != null:
+		live_substate.ditch_state()
+
+	live_substate = new_state
+	new_state.trigger_enter(handover)
+
+
+## Probe the active substate for a state to switch to.
+## This is based on its transition rules defined in _tell_switch().
+## If a state is found, switch to that state.
+func probe_switch(defer: bool = false) -> void:
+	if !_is_live():
+		return
+	var link_name
+	var handover = null
+	if defer:
+		link_name = _tell_defer()
+	else:
+		var data
+		data = _tell_switch()
+		if data is Array:
+			link_name = data[0]
+			handover = data[1]
+		else:
+			link_name = data
+	
+	# Only switch if we need to
+	if link_name != &"":
+		var link = _get_link(link_name)
+		_switch_leaf(link, handover)
+
+
+## Get the active leaf of the machine.
+func get_leaf():
+	if live_substate == null:
+		return self
+	return live_substate.get_leaf()
+
+
 ## Get a link to the given state.
-func get_link(key: StringName) -> StateLink:
+func _get_link(key: StringName) -> StateLink:
 	if _link_cache.has(key):
 		return _link_cache[key]
 
@@ -66,17 +166,6 @@ func _post_tick() -> void:
 	pass
 
 
-## Calls the fixed tick functions
-func tick_hook() -> void:
-	if _first_cycle:
-		_pre_tick()
-		_first_cycle = false
-	else:
-		_post_tick()
-
-	_cycle_tick()
-
-
 ## Called when the state becomes active.
 func _on_enter(_handover: Variant) -> void:
 	pass
@@ -99,31 +188,6 @@ func _tell_switch() -> Variant:
 ## This means that other states don't have to guess the behavior of this state when switching to a child of it.
 func _tell_defer() -> StringName:
 	return &""
-
-
-## Probe the active substate for a state to switch to.
-## This is based on its transition rules defined in tell_switch().
-## If a state is found, switch to that state.
-func probe_switch(defer: bool = false) -> void:
-	var link_name
-	var handover = null
-
-	if defer:
-		link_name = _tell_defer()
-	else:
-		var data
-
-		data = _tell_switch()
-		if data is Array:
-			link_name = data[0]
-			handover = data[1]
-		else:
-			link_name = data
-
-	# Only switch if we need to
-	if link_name != &"":
-		var link = get_link(link_name)
-		_switch_leaf(link, handover)
 
 
 ## Reroute the active path to select a given state as the active leaf.
@@ -151,62 +215,17 @@ func _switch_leaf(link: StateLink, handover = null) -> void:
 	current_state.probe_switch(true)
 
 
-## Ditch this state and all its descendents,
-## making this branch of the state tree inactive.
-func ditch_state():
-	_on_exit()
-
-	# Ditch live descendents
-	if live_substate == null: return
-	live_substate.ditch_state()
-	live_substate = null
-
-
-## Activate the given state, ditching the current state.
-func switch_substate(new_state: State, handover: Variant):
-	if new_state == live_substate: return
-	if new_state == null: return
-
-	if live_substate != null:
-		live_substate.ditch_state()
-
-	live_substate = new_state
-	new_state.trigger_enter(handover)
-
-
-## Trigger entrance events for a new state.
-func trigger_enter(handover: Variant):
-	_first_cycle = true
-	_on_enter(handover)
-
-	if av != null and effect != &"":
-		av.trigger_effect(effect, effect_offset)
-
-
 ## Call a function on the live substate, but only if there is one.
-func call_live(function_name: StringName, arguments := []):
+func _call_live(function_name: StringName, arguments := []):
 	if live_substate != null:
 		live_substate.call_func(function_name, arguments)
 
 
-## Call a function on this state and all its live descendents.
-func recurse_live(function_name: StringName, arguments := []):
-	call_func(function_name, arguments)
-	call_live(&"recurse_live", [function_name, arguments])
-
-
-## Call a function on this state and its entire descendant family.
-func recurse_descendents(function_name: StringName, arguments := []):
-	call_func(function_name, arguments)
-
-	for child in get_children():
-		child.recurse_descendents(function_name, arguments)
-
-
-## Call a callable from a function name and given arguments.
-func call_func(function_name: StringName, arguments := []):
-	var callable := Callable(self, function_name)
-
-	callable.callv(arguments)
-
-
+## Check if this state is live.
+func _is_live() -> bool:
+	var parent = get_parent()
+	if !parent is State:
+		return true
+	if parent.live_substate == self:
+		return true
+	return false

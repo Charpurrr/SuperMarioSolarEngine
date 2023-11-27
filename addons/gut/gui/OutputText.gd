@@ -5,7 +5,7 @@ extends VBoxContainer
 # Keeps search results from the TextEdit
 # ##############################################################################
 class TextEditSearcher:
-	var te : TextEdit
+	var te: TextEdit
 	var _last_term = ''
 	var _last_pos = Vector2(-1, -1)
 	var _ignore_caret_change = false
@@ -80,7 +80,7 @@ class TextEditSearcher:
 }
 
 var _sr = TextEditSearcher.new()
-var _highlighter : CodeHighlighter
+var _highlighter: CodeHighlighter
 
 # Automatically used when running the OutputText scene from the editor.  Changes
 # to this method only affect test-running the control through the editor.

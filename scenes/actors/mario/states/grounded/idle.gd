@@ -4,15 +4,15 @@ extends PlayerState
 
 
 func _cycle_tick():
-	actor.movement.decelerate("ground")
+	movement.decelerate("ground")
 
 
 func _tell_switch():
-	if Input.is_action_pressed("down"):
+	if Input.is_action_pressed(&"down"):
 		return &"Crouch"
 
-	if Input.is_action_just_pressed("jump"):
-		return &"Jump"
+	if input.buffered_input(&"jump"):
+		return &"DummyJump"
 
 	if InputManager.get_x() != 0:
 		return &"Walk"

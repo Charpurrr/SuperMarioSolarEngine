@@ -7,15 +7,15 @@ class_name SS2D_Material_Shape
 ## Each edge represents a set of textures used to render an edge.
 
 ## List of materials this shape can use.
-@export var _edge_meta_materials: Array[SS2D_Material_Edge_Metadata] = [] : set = set_edge_meta_materials
-@export var fill_textures: Array[Texture2D] = [] : set = set_fill_textures
-@export var fill_texture_z_index: int = -10 : set = set_fill_texture_z_index
-@export var fill_texture_show_behind_parent: bool = false : set = set_fill_texture_show_behind_parent
-@export var fill_mesh_offset: float = 0.0 : set = set_fill_mesh_offset
-@export var fill_mesh_material: Material = null : set = set_fill_mesh_material
+@export var _edge_meta_materials: Array[SS2D_Material_Edge_Metadata] = []: set = set_edge_meta_materials
+@export var fill_textures: Array[Texture2D] = []: set = set_fill_textures
+@export var fill_texture_z_index: int = -10: set = set_fill_texture_z_index
+@export var fill_texture_show_behind_parent: bool = false: set = set_fill_texture_show_behind_parent
+@export var fill_mesh_offset: float = 0.0: set = set_fill_mesh_offset
+@export var fill_mesh_material: Material = null: set = set_fill_mesh_material
 
 ## How much to offset all edges
-@export_range (-1.5, 1.5, 0.1) var render_offset: float = 0.0 : set = set_render_offset
+@export_range (-1.5, 1.5, 0.1) var render_offset: float = 0.0: set = set_render_offset
 
 
 func set_fill_mesh_material(m: Material) -> void:

@@ -108,7 +108,7 @@ func _get_first_child_named(obj_name, parent_obj):
 # ------------------
 # Events
 # ------------------
-func _on_title_bar_input(event : InputEvent):
+func _on_title_bar_input(event: InputEvent):
 	if(event is InputEventMouseMotion):
 		if(_title_mouse.down):
 			position += event.relative

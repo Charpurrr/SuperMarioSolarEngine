@@ -15,7 +15,7 @@ enum ORIENTATION {
 	set(val):
 		orientation = val
 		queue_redraw()
-@export var resize_control : Control = null
+@export var resize_control: Control = null
 @export var vertical_resize := true
 
 var _line_width = .5
@@ -74,7 +74,7 @@ func _draw_resize_handle_left(color):
 		draw_line(start, end, color, _line_width, true)
 
 
-func _handle_right_input(event : InputEvent):
+func _handle_right_input(event: InputEvent):
 	if(event is InputEventMouseMotion):
 		if(_mouse_down and 
 			event.global_position.x > 0 and 
@@ -89,7 +89,7 @@ func _handle_right_input(event : InputEvent):
 			queue_redraw()
 
 
-func _handle_left_input(event : InputEvent):
+func _handle_left_input(event: InputEvent):
 	if(event is InputEventMouseMotion):
 		if(_mouse_down and 
 			event.global_position.x > 0 and 

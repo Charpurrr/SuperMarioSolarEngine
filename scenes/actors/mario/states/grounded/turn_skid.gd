@@ -9,23 +9,23 @@ var skid_decel_step: float
 
 
 func _on_enter(_handover):
-	skid_decel_step = actor.movement.MAX_SPEED_X / SKID_DECEL_TIME
+	skid_decel_step = movement.MAX_SPEED_X / SKID_DECEL_TIME
 
 
 func _cycle_tick():
-	actor.movement.decelerate(skid_decel_step)
+	movement.decelerate(skid_decel_step)
 
 
 func _tell_switch():
 	if actor.vel.x == 0:
 		if input_direction == 0:
 			return &"Idle"
-		elif input_direction == actor.movement.facing_direction:
+		elif input_direction == movement.facing_direction:
 			return &"Walk"
 		else:
 			return &"SlowTurn"
 
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed(&"jump"):
 		return &"Sideflip"
 
 	return &""

@@ -8,30 +8,27 @@ const JUMP_POWER: float = 9.1
 
 
 func _on_enter(_handover):
-	actor.animplay.play("backflip")
-
 	actor.vel.y = -JUMP_POWER
-	actor.vel.x = PUSH_POWER * -actor.movement.facing_direction
-
-
-func _on_exit():
-	actor.animplay.stop()
+	actor.vel.x = PUSH_POWER * -movement.facing_direction
 
 
 func _cycle_tick():
-	if input_direction != actor.movement.facing_direction:
-		actor.movement.move_x(0.04, false)
+	if input_direction != movement.facing_direction:
+		movement.move_x(0.04, false)
 	elif input_direction != 0:
-		actor.movement.move_x(0.07, false)
+		movement.move_x(0.07, false)
 
 
 func _post_tick():
-	actor.movement.apply_gravity(-actor.vel.y / JUMP_POWER)
+	movement.apply_gravity(-actor.vel.y / JUMP_POWER)
 
 
 func _tell_switch():
-	if actor.vel.y > 0:
-		return &"Fall"
+	if actor.is_on_floor():
+		return &"BackflipStyle"
+
+	if movement.can_wallslide():
+		return &"Wallslide"
 
 	if Input.is_action_just_pressed("down"):
 		return &"GroundPound"

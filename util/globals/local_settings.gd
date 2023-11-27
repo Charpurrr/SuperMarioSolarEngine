@@ -2,7 +2,7 @@ extends Node
 # Settings stored on the system
 
 
-const FILE_PATH : String = "user://settings.cfg"
+const FILE_PATH: String = "user://settings.cfg"
 var config := ConfigFile.new()
 
 
@@ -11,7 +11,7 @@ func _init():
 		config.save(FILE_PATH)
 
 
-func load_setting(section : String , key : String, default : Variant):
+func load_setting(section: String , key: String, default: Variant):
 	var err = config.load(FILE_PATH)
 
 	if err == OK:
@@ -22,7 +22,7 @@ func load_setting(section : String , key : String, default : Variant):
 		return null
 
 
-func change_setting(section : String , key : String, value : Variant):
+func change_setting(section: String , key: String, value: Variant):
 	config.set_value(section, key, value)
 
 	config.save(FILE_PATH)

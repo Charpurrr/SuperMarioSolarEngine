@@ -20,7 +20,7 @@ var _icons = {
 }
 const _col_1_bg_color = Color(0, 0, 0, .1)
 var _max_icon_width = 10
-var _root : TreeItem
+var _root: TreeItem
 
 @onready var _ctrls = {
 	tree = $Tree,

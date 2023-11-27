@@ -11,17 +11,17 @@ func _on_enter(_handover):
 
 
 func _post_tick():
-	actor.movement.apply_gravity(1, 8)
+	movement.apply_gravity(1, 8)
 
 
 func _tell_switch():
-	if actor.movement.should_end_wallslide():
+	if movement.should_end_wallslide():
 		return &"Fall"
 
-	if actor.movement.active_buffer_jump():
+	if input.buffered_input(&"jump"):
 		return &"Walljump"
 
-	if Input.is_action_just_pressed("down"):
+	if Input.is_action_just_pressed(&"down"):
 		return &"GroundPound"
 
 	return &""

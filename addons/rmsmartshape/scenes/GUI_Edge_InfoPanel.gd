@@ -8,7 +8,7 @@ signal weld_toggled(enabled)
 signal z_index_changed(value)
 signal edge_material_changed(value)
 
-var indicies: Array[int] = [-1, -1] : set = set_indicies
+var indicies: Array[int] = [-1, -1]: set = set_indicies
 var edge_material: SS2D_Material_Edge = null
 var edge_material_selector := FileDialog.new()
 

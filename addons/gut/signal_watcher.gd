@@ -103,8 +103,8 @@ func _on_watched_signal(arg1=ARG_NOT_SET, arg2=ARG_NOT_SET, arg3=ARG_NOT_SET, \
 # just fine the way it is.
 func _obj_name_pair(obj_or_signal, signal_name=null):
 	var to_return = {
-		'object' : obj_or_signal,
-		'signal_name' : signal_name
+		'object': obj_or_signal,
+		'signal_name': signal_name
 	}
 	if(obj_or_signal is Signal):
 		to_return.object =  obj_or_signal.get_object()

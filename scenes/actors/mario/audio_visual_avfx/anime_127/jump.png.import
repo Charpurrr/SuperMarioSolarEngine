@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0stpt02oj3gc"
-path="res://.godot/imported/doublejump.png-028fef070d5cd36862cf5e75f8d5fb5f.ctex"
+uid="uid://jf8tlrjyuoav"
+path="res://.godot/imported/jump.png-dc3e71ae722887d65cd0e95b7ff095d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/actors/mario/audio_visual_avfx/anime/doublejump.png"
-dest_files=["res://.godot/imported/doublejump.png-028fef070d5cd36862cf5e75f8d5fb5f.ctex"]
+source_file="res://scenes/actors/mario/audio_visual_avfx/anime_127/jump.png"
+dest_files=["res://.godot/imported/jump.png-dc3e71ae722887d65cd0e95b7ff095d9.ctex"]
 
 [params]
 

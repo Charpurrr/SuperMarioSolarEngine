@@ -3,10 +3,7 @@ extends Node
 ## Abstract management of player input.
 ## Should be placed high up in the scene tree so that inputs are processed before they are checked.
 
-const BUFFER_DURATION: int = 4
-
-## Cache of buffer variables to keep track of.
-@export var _buffer_cache: Array[StringName] = []
+const BUFFER_DURATION: int = 7
 
 ## Remaining frames of input buffer for an action. Entries must be defined in _buffer_cache.
 var _buffers: Dictionary = {}
@@ -19,8 +16,8 @@ var _consume_queue: Array[StringName] = []
 
 
 func _ready():
-	# Register all buffers in the cache.
-	for id in _buffer_cache:
+	# Register all buffers in the input map.
+	for id in InputMap.get_actions():
 		_register_buffer(id)
 
 

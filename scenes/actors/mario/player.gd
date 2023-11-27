@@ -3,16 +3,16 @@ extends CharacterBody2D
 # Playable 2D character
 
 
-@onready var animplay : AnimationPlayer = $AnimationPlayer
-@onready var doll : AnimatedSprite2D = $Doll
+@onready var animplay: AnimationPlayer = %AnimationPlayer
+@onready var doll: AnimatedSprite2D = $Doll
 
-@onready var movement : Object = $Movement
+@onready var movement: Object = $Movement
 
-@onready var push_ray : RayCast2D = $PushRay
+@onready var push_ray: RayCast2D = $PushRay
  
-@onready var hitbox : CollisionShape2D = %Hitbox
+@onready var hitbox: CollisionShape2D = %Hitbox
 
-var vel : Vector2 # Current velocity
+var vel: Vector2 # Current velocity
 
 
 func _ready():

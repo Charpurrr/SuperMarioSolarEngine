@@ -2,10 +2,10 @@
 extends Resource
 class_name SS2D_Point
 
-@export var position: Vector2 : set = _set_position
-@export var point_in: Vector2 : set = _set_point_in
-@export var point_out: Vector2 : set = _set_point_out
-@export var properties: SS2D_VertexProperties : set = _set_properties
+@export var position: Vector2: set = _set_position
+@export var point_in: Vector2: set = _set_point_in
+@export var point_out: Vector2: set = _set_point_out
+@export var properties: SS2D_VertexProperties: set = _set_properties
 
 # If class members are written to, the 'changed' signal may not be emitted
 # Signal is only emitted when data is actually changed

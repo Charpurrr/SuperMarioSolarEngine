@@ -4,4 +4,4 @@ extends Push
 
 
 func _tell_switch():
-	pass
+	return &""

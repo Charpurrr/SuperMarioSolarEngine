@@ -7,8 +7,8 @@ class_name SS2D_NormalRange
 ## - if begin and end are equal, any angle is considered to be within range [br]
 ## - 360.0 and 0.0 degrees are considered equivilent [br]
 
-@export_range (0, 360, 1) var begin: float = 0.0 : set = set_begin
-@export_range (0, 360, 1) var distance: float = 0.0 : set = set_distance
+@export_range (0, 360, 1) var begin: float = 0.0: set = set_begin
+@export_range (0, 360, 1) var distance: float = 0.0: set = set_distance
 
 # This is a hack to support the custom editor, needed a property
 # to exist to lock the TextureProgressBar to.  Makes it flow better

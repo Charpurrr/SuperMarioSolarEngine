@@ -5,13 +5,13 @@ class_name SS2D_Shape_Anchor
 
 const DEBUG_DRAW_LINE_LENGTH := 128.0
 
-@export var shape_path: NodePath : set = set_shape_path
-@export var shape_point_index: int = 0 : set = set_shape_point_index
-@export_range (0.0, 1.0) var shape_point_offset: float = 0.0 : set = set_shape_point_offset
-@export_range (0, 3.14) var child_rotation: float = 3.14 : set = set_child_rotation
-@export var use_shape_scale: bool = false : set = set_use_shape_scale
+@export var shape_path: NodePath: set = set_shape_path
+@export var shape_point_index: int = 0: set = set_shape_point_index
+@export_range (0.0, 1.0) var shape_point_offset: float = 0.0: set = set_shape_point_offset
+@export_range (0, 3.14) var child_rotation: float = 3.14: set = set_child_rotation
+@export var use_shape_scale: bool = false: set = set_use_shape_scale
 
-@export var debug_draw: bool = false : set = set_debug_draw
+@export var debug_draw: bool = false: set = set_debug_draw
 
 var cached_shape_transform: Transform2D = Transform2D.IDENTITY
 var shape: SS2D_Shape_Base = null

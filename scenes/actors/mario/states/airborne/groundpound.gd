@@ -4,10 +4,10 @@ extends PlayerState
 
 
 ## How much the groundpound offsets you on the y axis
-const GP_OFFSET_Y : float = -5
+const GP_OFFSET_Y: float = -5
 
 ## Check if the ground pound animation has finished
-var anim_finished : bool = false
+var anim_finished: bool = false
 
 
 func _on_enter(_handover):
@@ -33,3 +33,4 @@ func _tell_switch():
 	if anim_finished:
 		return &"GroundPoundFall"
 
+	return &""

@@ -8,20 +8,20 @@ const JUMP_POWER: float = 8.15
 
 
 func _on_enter(_handover):
-	actor.movement.update_direction(-actor.movement.facing_direction)
+	movement.update_direction(-movement.facing_direction)
 
 	actor.vel.y = -JUMP_POWER
-	actor.vel.x = PUSH_POWER * actor.movement.facing_direction
+	actor.vel.x = PUSH_POWER * movement.facing_direction
 
 
 func _cycle_tick():
-	if input_direction != actor.movement.facing_direction:
-		actor.movement.move_x(0.13, false)
+	if input_direction != movement.facing_direction:
+		movement.move_x(0.13, false)
 	elif input_direction != 0:
-		actor.movement.move_x("air", false)
+		movement.move_x("air", false)
 
-	actor.movement.apply_gravity(-actor.vel.y / JUMP_POWER)
-	actor.movement.decelerate(0.01)
+	movement.apply_gravity(-actor.vel.y / JUMP_POWER)
+	movement.decelerate(0.01)
 
 
 func _tell_switch():

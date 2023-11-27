@@ -3,8 +3,8 @@ extends RayCast2D
 # A ray to check for pushable solid bodies
 
 
-@export var target_size_x : float # Value of target_position.x
-@export var movement : PMovement
+@export var target_size_x: float # Value of target_position.x
+@export var movement: PMovement
 
 
 func _process(_delta):

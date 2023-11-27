@@ -13,16 +13,16 @@ func _on_enter(_handover):
 
 
 func _post_tick():
-	actor.movement.apply_gravity(-actor.vel.y / KICK_POWER)
+	movement.apply_gravity(-actor.vel.y / KICK_POWER)
 
 
 func _cycle_tick():
-	actor.movement.move_x("air", false)
+	movement.move_x("air", false)
 
 	if actor.push_ray.is_colliding():
-		actor.movement.return_res_prog = actor.movement.RETURN_RES
+		movement.return_res_prog = movement.RETURN_RES
 
-		actor.vel.x = WALL_KICK_POWER * -actor.movement.facing_direction
+		actor.vel.x = WALL_KICK_POWER * -movement.facing_direction
 
 
 func _tell_switch():

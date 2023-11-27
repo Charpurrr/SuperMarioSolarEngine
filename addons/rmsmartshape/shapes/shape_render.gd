@@ -4,7 +4,7 @@ class_name SS2D_Shape_Render
 
 ## Node is used to render shape geometry.
 
-var mesh: SS2D_Mesh = null : set = set_mesh
+var mesh: SS2D_Mesh = null: set = set_mesh
 
 
 func set_mesh(m: SS2D_Mesh) -> void:
