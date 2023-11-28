@@ -92,7 +92,7 @@ func _physics_process(_delta):
 		coyote_timer = 0
 	# Falling
 	elif actor.vel.y > 0:
-		freefall_timer = max(freefall_timer - 1, 0)
+		freefall_timer = max(freefall_timer - 1, -1)
 
 # X FUNCTIONS
 
@@ -214,6 +214,11 @@ func activate_freefall_timer():
 ## Return whether the freefall timer has finished or not.
 func finished_freefall_timer() -> bool:
 	return freefall_timer == 0
+
+
+## Consume the freefall timer, ridding of any chance at freefalling.
+func consume_freefall_timer():
+	freefall_timer = -1
 
 # CHECK FUNCTIONS
 
