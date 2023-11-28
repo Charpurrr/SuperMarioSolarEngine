@@ -21,7 +21,6 @@ func _cycle_tick():
 
 
 func _tell_switch():
-	print(actor.vel.x)
 	if is_equal_approx(abs(actor.vel.x), movement.MAX_SPEED_X):
 		if input_direction == 0:
 			return &"Idle"

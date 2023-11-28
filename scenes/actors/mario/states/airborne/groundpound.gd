@@ -11,6 +11,8 @@ var anim_finished: bool = false
 
 
 func _on_enter(_handover):
+	movement.consume_coyote_timer()
+
 	actor.position.y += GP_OFFSET_Y
 	actor.vel.y = 0
 	actor.vel.x = 0

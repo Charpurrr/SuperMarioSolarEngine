@@ -7,6 +7,8 @@ func _cycle_tick():
 	actor.doll.speed_scale = actor.vel.x / movement.MAX_SPEED_X * 2
 	movement.move_x("ground", true)
 
+	movement.activate_coyote_timer()
+
 
 func _on_exit():
 	actor.doll.speed_scale = 1

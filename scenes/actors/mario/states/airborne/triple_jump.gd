@@ -4,8 +4,8 @@ extends Jump
 
 
 func _tell_switch():
-	if Input.is_action_just_pressed("kick"):
-		return &"JumpKick"
+	if actor.is_on_floor():
+		return &"BackflipStyle"
 
 	if Input.is_action_just_pressed("down"):
 		return &"GroundPound"

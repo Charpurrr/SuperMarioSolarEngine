@@ -1,25 +1,32 @@
 class_name PMovement
 extends Node
-# Movement for player characters.
+## Movement for player characters.
 
 
 @export var actor: Player
 
-# x variables
-const MAX_SPEED_X: float = 2.72 # Max horizontal speed
+# X VARIABLES
 
-const GROUND_ACCEL_TIME: float = 22.5 # How long it takes to accelerate (when grounded)
+## Max horizontal speed
+const MAX_SPEED_X: float = 2.72
+
+## How long it takes to accelerate (when grounded)
+const GROUND_ACCEL_TIME: float = 22.5
 const GROUND_ACCEL_STEP: float = MAX_SPEED_X / GROUND_ACCEL_TIME
 
-const GROUND_DECEL_TIME: float = 13.5 # How long it takes to decelerate (when grounded)
+## How long it takes to decelerate (when grounded)
+const GROUND_DECEL_TIME: float = 13.5
 const GROUND_DECEL_STEP: float = MAX_SPEED_X / GROUND_DECEL_TIME
 
-const AIR_ACCEL_TIME: float = 18 # How long it takes to accelerate (when airborne)
+## How long it takes to accelerate (when airborne)
+const AIR_ACCEL_TIME: float = 18
 const AIR_ACCEL_STEP: float = MAX_SPEED_X / AIR_ACCEL_TIME
 
-const AIR_DECEL_TIME: float = 20 # How long it takes to decelerate (when airborne)
+## How long it takes to decelerate (when airborne)
+const AIR_DECEL_TIME: float = 20
 const AIR_DECEL_STEP: float = MAX_SPEED_X / AIR_DECEL_TIME
 
+## List of different types of acceleration/deceleration values
 const CELS: Dictionary = {
 	"ground": 
 	{
@@ -35,18 +42,23 @@ const CELS: Dictionary = {
 		"decel":
 			AIR_DECEL_STEP,
 	},
-} # List of different types of acceleration/deceleration values
+}
 
-const RETURN_RES: float = 15 # Resistance factor for acceleration
-var return_res_prog: float # Progression for the resistance factor
+## Resistance factor for acceleration
+const RETURN_RES: float = 15
+## Progression for the resistance factor
+var return_res_prog: float
 
 var facing_direction: int = 1
 
-# y variables
+# Y VARIABLES
+
 const TERM_VEL: float = 6.60
 
-const MAX_GRAV: float = 1000.0/3969.0 # (0.251953-) How high gravity can interpolate
-const MIN_GRAV: float = 990.0/3969.0 # How low gravity can interpolate
+## (0.251953-) How high gravity can interpolate
+const MAX_GRAV: float = 1000.0/3969.0
+## How low gravity can interpolate
+const MIN_GRAV: float = 990.0/3969.0
 
 const COYOTE_TIME: int = 7
 var coyote_timer: int
@@ -58,23 +70,29 @@ var consec_jump_timer: int
 
 var wallslide_disabled: bool
 
+const FREEFALL_TIME: int = 70
+var freefall_timer: int = -1
+
 
 func _physics_process(_delta):
 	return_res_prog = max(return_res_prog - 1, 0)
 
+	# Grounded
 	if actor.is_on_floor():
 		consec_jump_timer = max(consec_jump_timer - 1, -1)
 
 		if consec_jump_timer == 0:
 			consec_jumps = 0
-
-	if actor.is_on_floor():
-		coyote_timer = COYOTE_TIME
+	# Airborne
 	else:
 		coyote_timer = max(coyote_timer - 1, 0)
 
+	# Rising
 	if actor.vel.y < 0:
 		coyote_timer = 0
+	# Falling
+	elif actor.vel.y > 0:
+		freefall_timer = max(freefall_timer - 1, 0)
 
 # X FUNCTIONS
 
@@ -161,6 +179,7 @@ func apply_gravity(gravity_weight: float = 1, friction: float = 1):
 	elif actor.vel.y < TERM_VEL:
 		actor.vel.y = TERM_VEL
 
+# TIMER FUNCTIONS
 
 ## Activate the consecutive jump timer.
 func activate_consec_jump_timer():
@@ -172,10 +191,31 @@ func active_consec_time() -> bool:
 	return consec_jump_timer > 0
 
 
+## Activate the coyote timer.
+func activate_coyote_timer():
+	coyote_timer = COYOTE_TIME
+
+
 ## Return whether the coyote timer is or isn't running.
 func active_coyote_time() -> bool:
 	return coyote_timer > 0
 
+
+## Consume the coyote timer, ridding of any chance at a coyote input.
+func consume_coyote_timer():
+	coyote_timer = 0
+
+
+## Activate the freefall timer.
+func activate_freefall_timer():
+	freefall_timer = FREEFALL_TIME
+
+
+## Return whether the freefall timer has finished or not.
+func finished_freefall_timer() -> bool:
+	return freefall_timer == 0
+
+# CHECK FUNCTIONS
 
 ## Return whether you can or can't wallslide.
 func can_wallslide() -> bool:
@@ -185,6 +225,7 @@ func can_wallslide() -> bool:
 	return !wallslide_disabled and actor.vel.y > 0
 
 
+## Return whether or not a wallslide should end
 func should_end_wallslide() -> bool:
 	var input_direction: float = get_input_x()
 

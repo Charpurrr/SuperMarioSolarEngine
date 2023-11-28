@@ -4,7 +4,6 @@ extends PlayerState
 
 
 func _on_enter(_handover):
-	print("entered grounded")
 	movement.activate_consec_jump_timer()
 
 

@@ -13,6 +13,8 @@ func _on_enter(_handover):
 	actor.vel.y = -JUMP_POWER
 	actor.vel.x = PUSH_POWER * movement.facing_direction
 
+	movement.consec_jumps = 1
+
 
 func _cycle_tick():
 	if input_direction != movement.facing_direction:

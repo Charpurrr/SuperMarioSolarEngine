@@ -2,17 +2,12 @@ class_name Fall
 extends PlayerState
 ## Falling state.
 
-const FREEFALL_TIME: int = 70
-var freefall_timer: int
-
 
 func _on_enter(_handover):
-	freefall_timer = FREEFALL_TIME
+	movement.activate_freefall_timer()
 
 
 func _cycle_tick():
-	freefall_timer = max(freefall_timer - 1, 0)
-
 	movement.move_x("air", false)
 
 
@@ -30,7 +25,7 @@ func _tell_switch():
 	if movement.can_wallslide():
 		return &"Wallslide"
 
-	if is_equal_approx(actor.vel.y, movement.TERM_VEL) and freefall_timer == 0:
+	if movement.finished_freefall_timer():
 		return &"Freefall"
 
 	return &""

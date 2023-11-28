@@ -7,6 +7,8 @@ const TERM_VEL: float = 1.10
 
 
 func _on_enter(_handover):
+	movement.consume_coyote_timer()
+
 	actor.vel.y = min(actor.vel.y, TERM_VEL)
 
 

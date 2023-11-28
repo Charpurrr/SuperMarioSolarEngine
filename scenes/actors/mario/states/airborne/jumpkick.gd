@@ -9,6 +9,8 @@ const KICK_POWER: float = 6
 
 
 func _on_enter(_handover):
+	movement.consume_coyote_timer()
+
 	actor.vel.y = -KICK_POWER
 
 
