@@ -8,10 +8,13 @@ func _on_enter(_handover):
 
 
 func _tell_switch():
-	if Input.is_action_just_pressed(&"kick"):
-		return &"JumpKick"
+	if input.buffered_input(&"spin"):
+		if movement.can_airspin():
+			return &"AirborneSpin"
+		else:
+			return &"GroundedSpin"
 
-	if Input.is_action_just_pressed(&"down"):
+	if Input.is_action_just_pressed(&"down") and movement.can_groundpound():
 		return &"GroundPound"
 
 	if movement.can_wallslide():

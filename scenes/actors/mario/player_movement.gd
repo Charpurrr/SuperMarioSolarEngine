@@ -5,8 +5,7 @@ extends Node
 
 @export var actor: Player
 
-# X VARIABLES
-
+#region X Variables
 ## Max horizontal speed
 const MAX_SPEED_X: float = 2.72
 
@@ -48,11 +47,9 @@ const CELS: Dictionary = {
 const RETURN_RES: float = 15
 ## Progression for the resistance factor
 var return_res_prog: float
+#endregion
 
-var facing_direction: int = 1
-
-# Y VARIABLES
-
+#region Y Variables
 const TERM_VEL: float = 6.60
 
 ## (0.251953-) How high gravity can interpolate
@@ -60,18 +57,35 @@ const MAX_GRAV: float = 1000.0/3969.0
 ## How low gravity can interpolate
 const MIN_GRAV: float = 990.0/3969.0
 
+## Amount of units the player needs to be above the ground to perform an airborne spin.
+const AIR_SPIN_MARGIN: int = 10
+## Amount of units the player needs to be above the ground to perform a groundpound.
+const GP_MARGIN: int = 10
+#endregion
+
+#region Timer Variables
 const COYOTE_TIME: int = 7
 var coyote_timer: int
-
-var consec_jumps: int = 0
 
 const CONSEC_JUMP_TIME: int = 10
 var consec_jump_timer: int
 
-var wallslide_disabled: bool
+const GROUND_SPIN_COOLDOWN_TIME: int = 20
+var ground_spin_cooldown_timer: int
 
 const FREEFALL_TIME: int = 70
 var freefall_timer: int = -1
+#endregion
+
+var facing_direction: int = 1
+
+## Amount of consecutive jumps performed for a triple jump.
+var consec_jumps: int = 0
+
+var wallslide_disabled: bool
+
+## The player body rotation.
+var body_rotation: float = 0
 
 
 func _physics_process(_delta):
@@ -79,6 +93,7 @@ func _physics_process(_delta):
 
 	# Grounded
 	if actor.is_on_floor():
+		ground_spin_cooldown_timer = max(ground_spin_cooldown_timer - 1, -1)
 		consec_jump_timer = max(consec_jump_timer - 1, -1)
 
 		if consec_jump_timer == 0:
@@ -86,17 +101,18 @@ func _physics_process(_delta):
 	# Airborne
 	else:
 		coyote_timer = max(coyote_timer - 1, 0)
+		consume_grounded_spin_timer()
 
-	# Rising
-	if actor.vel.y < 0:
-		coyote_timer = 0
-	# Falling
-	elif actor.vel.y > 0:
-		freefall_timer = max(freefall_timer - 1, -1)
+		# Rising
+		if actor.vel.y < 0:
+			consume_coyote_timer()
+		# Falling
+		elif actor.vel.y > 0:
+			freefall_timer = max(freefall_timer - 1, -1)
 
-# X FUNCTIONS
 
-func accelerate(accel_val: Variant, direction: float):
+#region X Functions
+func accelerate(accel_val: Variant, direction: float, max_speed: float = MAX_SPEED_X):
 	var accel: float
 
 	if (accel_val is float or accel_val is int):
@@ -108,10 +124,10 @@ func accelerate(accel_val: Variant, direction: float):
 
 	accel *= (1 - return_res_prog / RETURN_RES)
 
-	if actor.vel.x * direction + accel < MAX_SPEED_X:
+	if actor.vel.x * direction + accel < max_speed:
 		actor.vel.x += direction * accel
-	elif actor.vel.x * direction < MAX_SPEED_X:
-		actor.vel.x = direction * MAX_SPEED_X
+	elif actor.vel.x * direction < max_speed:
+		actor.vel.x = direction * max_speed
 
 
 func decelerate(decel_val: Variant):
@@ -128,13 +144,13 @@ func decelerate(decel_val: Variant):
 
 
 ## Handles movement on the X axis.
-func move_x(accel_val: Variant, should_flip: bool):
+func move_x(accel_val: Variant, should_flip: bool, max_speed: float = MAX_SPEED_X):
 	var input_direction: float = get_input_x()
 
 	if should_flip:
 		update_direction(sign(input_direction))
 
-	accelerate(accel_val, input_direction)
+	accelerate(accel_val, input_direction, max_speed)
 
 
 ## Update facing_direction.
@@ -168,9 +184,10 @@ func check_space_ahead() -> bool:
 
 func get_input_x() -> float:
 	return roundf(Input.get_axis("left", "right"))
+#endregion
 
-# Y FUNCTIONS
 
+#region Y Functions
 func apply_gravity(gravity_weight: float = 1, friction: float = 1):
 	var gravity = lerpf(MIN_GRAV, MAX_GRAV, gravity_weight) / friction
 
@@ -178,17 +195,23 @@ func apply_gravity(gravity_weight: float = 1, friction: float = 1):
 		actor.vel.y += gravity
 	elif actor.vel.y < TERM_VEL:
 		actor.vel.y = TERM_VEL
+#endregion
 
-# TIMER FUNCTIONS
 
+#region Timer Functions
 ## Activate the consecutive jump timer.
-func activate_consec_jump_timer():
+func activate_consec_timer():
 	consec_jump_timer = CONSEC_JUMP_TIME
 
 
 ## Return whether the consecutive jump timer is or isn't running.
 func active_consec_time() -> bool:
 	return consec_jump_timer > 0
+
+
+## Consume the consecutive jump timer, ridding of any chance at a consecutive jump.
+func consume_consec_timer():
+	consec_jump_timer = -1
 
 
 ## Activate the coyote timer.
@@ -220,8 +243,24 @@ func finished_freefall_timer() -> bool:
 func consume_freefall_timer():
 	freefall_timer = -1
 
-# CHECK FUNCTIONS
 
+## Activate the grounded spin cooldown timer.
+func activate_grounded_spin_timer():
+	ground_spin_cooldown_timer = GROUND_SPIN_COOLDOWN_TIME
+
+
+## Return whether the grounded spin timer cooldown has finished or not.
+func finished_grounded_spin_timer() -> bool:
+	return ground_spin_cooldown_timer == 0
+
+
+## Consume the grounded spin cooldown timer, making you able to perform a grounded spin immediately.
+func consume_grounded_spin_timer():
+	ground_spin_cooldown_timer = -1
+#endregion
+
+
+#region Check Functions
 ## Return whether you can or can't wallslide.
 func can_wallslide() -> bool:
 	if should_end_wallslide():
@@ -241,3 +280,14 @@ func should_end_wallslide() -> bool:
 		return true
 
 	return false
+
+
+## Return whether or not you can groundpound.
+func can_groundpound() -> bool:
+	return !actor.test_move(actor.transform, Vector2i(0, GP_MARGIN))
+
+
+## Return whether or not you can spin in the air.
+func can_airspin() -> bool:
+	return !actor.test_move(actor.transform, Vector2i(0, GP_MARGIN))
+#endregion

@@ -14,6 +14,9 @@ func _tell_switch():
 	if input.buffered_input(&"jump"):
 		return &"DummyJump"
 
+	if Input.is_action_just_pressed(&"spin"):
+		return &"GroundedSpin"
+
 	if InputManager.get_x() != 0:
 		return &"Walk"
 

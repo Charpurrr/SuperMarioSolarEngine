@@ -7,7 +7,13 @@ func _tell_switch():
 	if actor.is_on_floor():
 		return &"BackflipStyle"
 
-	if Input.is_action_just_pressed("down"):
+	if input.buffered_input(&"spin"):
+		if movement.can_airspin():
+			return &"AirborneSpin"
+		else:
+			return &"GroundedSpin"
+
+	if Input.is_action_just_pressed(&"down") and movement.can_groundpound():
 		return &"GroundPound"
 
 	if movement.can_wallslide():

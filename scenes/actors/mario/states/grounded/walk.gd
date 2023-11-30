@@ -18,6 +18,9 @@ func _tell_switch():
 	if Input.is_action_just_pressed(&"jump"):
 		return &"DummyJump"
 
+	if Input.is_action_just_pressed(&"spin"):
+		return &"GroundedSpin"
+
 	if Input.is_action_just_pressed(&"dive") and abs(actor.vel.x) >= movement.MAX_SPEED_X:
 		return &"Dive"
 

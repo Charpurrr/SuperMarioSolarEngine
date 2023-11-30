@@ -1,3 +1,3 @@
 class_name BackflipAVFX
-extends AVEffect
+extends PAVEffect
 ## The backflip rotation.

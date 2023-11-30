@@ -28,4 +28,7 @@ func _tell_switch():
 	if Input.is_action_just_pressed(&"jump"):
 		return &"DummyJump"
 
+	if Input.is_action_just_pressed(&"spin"):
+		return &"GroundedSpin"
+
 	return &""

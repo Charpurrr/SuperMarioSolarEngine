@@ -8,10 +8,18 @@ extends Node
 ## Cache of effects that can be triggered.
 var _effect_cache: Dictionary = {}
 
+var current_effect: AVEffect = null
+
 
 func trigger_effect(effect: String, offset:= Vector2i(0, 0)) -> void:
+	deactivate_effect()
+
 	if _effect_cache.has(effect):
-		_effect_cache[effect].trigger()
+		var effect_node: AVEffect = _effect_cache[effect]
+
+		current_effect = effect_node
+
+		effect_node.trigger()
 		return
 
 	var node: AVEffect = get_node_or_null(effect)
@@ -30,3 +38,9 @@ func trigger_effect(effect: String, offset:= Vector2i(0, 0)) -> void:
 
 	node.trigger()
 	_effect_cache[effect] = node
+	current_effect = node
+
+
+func deactivate_effect():
+	if current_effect != null and current_effect.deactivate_on_switch:
+		current_effect.deactivate()

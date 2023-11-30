@@ -14,7 +14,7 @@ func _cycle_tick():
 
 func _tell_switch():
 	if actor.is_on_floor():
-		return &"Idle"
+		return &"GroundPoundLand"
 
 	if Input.is_action_just_pressed("up"):
 		return &"Fall"

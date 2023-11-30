@@ -43,7 +43,13 @@ func _tell_switch():
 	if movement.finished_freefall_timer():
 		return &"Freefall"
 
-	if Input.is_action_just_pressed("down"):
+	if input.buffered_input(&"spin"):
+		if movement.can_airspin():
+			return &"AirborneSpin"
+		else:
+			return &"GroundedSpin"
+
+	if Input.is_action_just_pressed(&"down") and movement.can_groundpound():
 		return &"GroundPound"
 
 	return &""

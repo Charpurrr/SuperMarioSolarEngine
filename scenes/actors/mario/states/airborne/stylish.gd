@@ -14,10 +14,13 @@ func _tell_switch():
 	if input_direction != 0:
 		return &"Walk"
 
+	if Input.is_action_just_pressed(&"jump"):
+		return &"DummyJump"
+
 	if Input.is_action_pressed(&"down"):
 		return &"Crouch"
 
-	if Input.is_action_just_pressed(&"jump"):
-		return &"DummyJump"
+	if Input.is_action_just_pressed(&"spin"):
+		return &"GroundedSpin"
 
 	return &""

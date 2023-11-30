@@ -19,5 +19,8 @@ func trigger_enter(handover: Variant):
 	_first_cycle = true
 	_on_enter(handover)
 
-	if av != null and effect != &"":
-		av.trigger_effect(effect, effect_offset * Vector2i(movement.facing_direction, 1))
+	if av != null:
+		av.deactivate_effect()
+
+		if effect != &"":
+			av.trigger_effect(effect, effect_offset * Vector2i(movement.facing_direction, 1))

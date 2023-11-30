@@ -4,7 +4,7 @@ extends PlayerState
 
 
 func _on_enter(_handover):
-	movement.activate_consec_jump_timer()
+	movement.activate_consec_timer()
 
 
 func _tell_switch():

@@ -1,9 +1,10 @@
 class_name PushRay
 extends RayCast2D
-# A ray to check for pushable solid bodies
+## A ray to check for pushable solid bodies
 
 
-@export var target_size_x: float # Value of target_position.x
+## Value of target_position.x
+@export var target_size_x: float
 @export var movement: PMovement
 
 

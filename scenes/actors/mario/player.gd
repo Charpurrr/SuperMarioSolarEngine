@@ -11,6 +11,7 @@ extends CharacterBody2D
 @onready var push_ray: RayCast2D = $PushRay
  
 @onready var hitbox: CollisionShape2D = %Hitbox
+@onready var small_hitbox: CollisionShape2D = %SmallHitbox
 
 var vel: Vector2 # Current velocity
 

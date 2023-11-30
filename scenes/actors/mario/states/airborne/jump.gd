@@ -6,7 +6,7 @@ extends PlayerState
 @export var jump_power: float = 400.0/63.0
 @export var jump_number: int
 
-@export var fall_jump:= &"Fall"
+@export var fall_state:= &"Fall"
 
 ## How many units need to be below you in order to consider freefalling.
 const FREEFALL_MARGIN: int = 250
@@ -35,16 +35,19 @@ func _cycle_tick():
 
 
 func _tell_switch():
-	if Input.is_action_just_pressed(&"kick"):
-		return &"JumpKick"
+	if actor.vel.y > 0:
+		return fall_state
 
-	if Input.is_action_just_pressed(&"down"):
+	if input.buffered_input(&"spin"):
+		if movement.can_airspin():
+			return &"AirborneSpin"
+		else:
+			return &"GroundedSpin"
+
+	if Input.is_action_just_pressed(&"down") and movement.can_groundpound():
 		return &"GroundPound"
 
 	if movement.can_wallslide():
 		return &"Wallslide"
-
-	if actor.vel.y > 0:
-		return fall_jump
 
 	return &""

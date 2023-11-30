@@ -72,8 +72,11 @@ func trigger_enter(handover: Variant):
 	_first_cycle = true
 	_on_enter(handover)
 
-	if av != null and effect != &"":
-		av.trigger_effect(effect, effect_offset)
+	if av != null:
+		av.deactivate_effect()
+
+		if effect != &"":
+			av.trigger_effect(effect, effect_offset)
 
 
 ## Ditch this state and all its descendents,
