@@ -3,8 +3,8 @@ extends PlayerState
 ## Pressing down while airborne.
 
 
-## How much the groundpound offsets you on the y axis
-const GP_OFFSET_Y: float = -5
+## How much the groundpound offsets you on the Y axis.
+@export var gp_offset: float = -5
 
 
 func _on_enter(_handover):
@@ -13,7 +13,7 @@ func _on_enter(_handover):
 	actor.vel.y = 0
 	actor.vel.x = 0
 
-	actor.position.y += GP_OFFSET_Y
+	actor.position.y += gp_offset
 
 
 func _tell_switch():

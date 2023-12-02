@@ -4,12 +4,12 @@ extends PlayerState
 
 
 ## How fast you ground pound.
-const GP_FALL_VEL = 9
+@export var gp_fall_vel = 9
 
 
 func _cycle_tick():
 	movement.move_x(0.04, false)
-	actor.vel.y = GP_FALL_VEL
+	actor.vel.y = gp_fall_vel
 
 
 func _tell_switch():

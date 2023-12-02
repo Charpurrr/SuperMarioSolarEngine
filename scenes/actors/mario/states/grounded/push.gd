@@ -19,7 +19,7 @@ func _tell_switch():
 	if Input.is_action_pressed(&"down"):
 		return &"Crouch"
 
-	if Input.is_action_just_pressed(&"spin"):
-		return &"GroundedSpin"
+	if (input.buffered_input(&"spin") and movement.can_spin()):
+		return &"Spin"
 
 	return &""

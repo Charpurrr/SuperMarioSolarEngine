@@ -3,8 +3,9 @@ extends PlayerState
 ## Jumping while crouching.
 
 
-const PUSH_POWER: float = 1.4
-const JUMP_POWER: float = 9.1
+@export var jump_power: float = 9.1
+## How much the backflip sends you backwards.
+@export var push_power: float = 1.4
 
 ## If the activate_freefall_timer() function should be called.
 var start_freefall_timer: bool = false
@@ -13,8 +14,8 @@ var start_freefall_timer: bool = false
 func _on_enter(_handover):
 	start_freefall_timer = false
 
-	actor.vel.y = -JUMP_POWER
-	actor.vel.x = PUSH_POWER * -movement.facing_direction
+	actor.vel.y = -jump_power
+	actor.vel.x = push_power * -movement.facing_direction
 
 
 func _cycle_tick():
@@ -30,7 +31,7 @@ func _cycle_tick():
 
 
 func _post_tick():
-	movement.apply_gravity(-actor.vel.y / JUMP_POWER)
+	movement.apply_gravity(-actor.vel.y / jump_power)
 
 
 func _tell_switch():
@@ -44,10 +45,7 @@ func _tell_switch():
 		return &"Freefall"
 
 	if input.buffered_input(&"spin"):
-		if movement.can_airspin():
-			return &"AirborneSpin"
-		else:
-			return &"GroundedSpin"
+		return &"Spin"
 
 	if Input.is_action_just_pressed(&"down") and movement.can_groundpound():
 		return &"GroundPound"

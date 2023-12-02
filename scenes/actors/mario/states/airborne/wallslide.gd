@@ -3,13 +3,13 @@ extends PlayerState
 ## Holding the facing direction against a wall while airborne.
 
 
-const TERM_VEL: float = 1.10
+const term_vel: float = 1.10
 
 
 func _on_enter(_handover):
 	movement.consume_coyote_timer()
 
-	actor.vel.y = min(actor.vel.y, TERM_VEL)
+	actor.vel.y = min(actor.vel.y, term_vel)
 
 
 func _post_tick():
@@ -24,10 +24,7 @@ func _tell_switch():
 		return &"Walljump"
 
 	if input.buffered_input(&"spin"):
-		if movement.can_airspin():
-			return &"AirborneSpin"
-		else:
-			return &"GroundedSpin"
+		return &"Spin"
 
 	if Input.is_action_just_pressed(&"down") and movement.can_groundpound():
 		return &"GroundPound"

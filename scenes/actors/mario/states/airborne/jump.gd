@@ -8,9 +8,6 @@ extends PlayerState
 
 @export var fall_state:= &"Fall"
 
-## How many units need to be below you in order to consider freefalling.
-const FREEFALL_MARGIN: int = 250
-
 ## Check if you've applied variable jump height.
 var applied_variation: bool = false
 
@@ -39,10 +36,7 @@ func _tell_switch():
 		return fall_state
 
 	if input.buffered_input(&"spin"):
-		if movement.can_airspin():
-			return &"AirborneSpin"
-		else:
-			return &"GroundedSpin"
+		return &"Spin"
 
 	if Input.is_action_just_pressed(&"down") and movement.can_groundpound():
 		return &"GroundPound"

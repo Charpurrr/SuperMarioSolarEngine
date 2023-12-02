@@ -15,8 +15,8 @@ func _tell_switch():
 	if input.buffered_input(&"jump"):
 		return &"GroundPoundJump"
 
-	if Input.is_action_just_pressed(&"spin"):
-		return &"GroundedSpin"
+	if (input.buffered_input(&"spin") and movement.can_spin()):
+		return &"Spin"
 
 	if can_ignore and input_direction != 0:
 		return &"Idle"

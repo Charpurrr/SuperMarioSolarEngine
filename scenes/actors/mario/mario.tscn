@@ -1,11 +1,11 @@
-[gd_scene load_steps=183 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=181 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://scenes/actors/mario/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://cut0vcslnatgi" path="res://scenes/actors/mario/audio_visual_avfx/anime/backflip.png" id="2_i2o54"]
 [ext_resource type="Texture2D" uid="uid://ccfxaveftr1f0" path="res://scenes/actors/mario/audio_visual_avfx/anime/crouch.png" id="3_0c1gq"]
 [ext_resource type="Script" path="res://scenes/actors/mario/player_movement.gd" id="3_3mh1j"]
 [ext_resource type="Texture2D" uid="uid://71qmcohslma0" path="res://scenes/actors/mario/audio_visual_avfx/anime/dive.png" id="4_0hrc4"]
-[ext_resource type="Texture2D" uid="uid://cpb073sshas0o" path="res://scenes/actors/mario/audio_visual_avfx/anime/crouchwalk.png" id="4_b56cl"]
+[ext_resource type="Texture2D" uid="uid://dunegtt073xey" path="res://scenes/actors/mario/audio_visual_avfx/anime/crouchwalk.png" id="4_b56cl"]
 [ext_resource type="Texture2D" uid="uid://cng184m5tspum" path="res://scenes/actors/mario/audio_visual_avfx/anime/double_fall.png" id="5_0w3l2"]
 [ext_resource type="Texture2D" uid="uid://bqyc4a8h23h1" path="res://scenes/actors/mario/audio_visual_avfx/anime/fall.png" id="5_xpfyn"]
 [ext_resource type="Texture2D" uid="uid://0stpt02oj3gc" path="res://scenes/actors/mario/audio_visual_avfx/anime/double_jump.png" id="6_b0k2k"]
@@ -14,7 +14,7 @@
 [ext_resource type="Script" path="res://scenes/actors/mario/push_ray.gd" id="8_qbkd3"]
 [ext_resource type="Texture2D" uid="uid://c2jk475rio8p1" path="res://scenes/actors/mario/audio_visual_avfx/anime/jump.png" id="9_6r1qq"]
 [ext_resource type="Texture2D" uid="uid://bjqptf8hd7sgj" path="res://scenes/actors/mario/audio_visual_avfx/anime/groundpound.png" id="9_m0w8d"]
-[ext_resource type="Texture2D" uid="uid://c4gik0cm71e16" path="res://scenes/actors/mario/audio_visual_avfx/anime/groundpound_jump.png" id="11_1j7yv"]
+[ext_resource type="Texture2D" uid="uid://cx8otjotpvqfc" path="res://scenes/actors/mario/audio_visual_avfx/anime/groundpound_jump.png" id="11_1j7yv"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/grounded.gd" id="11_15kl1"]
 [ext_resource type="Texture2D" uid="uid://b5uu468w126us" path="res://scenes/actors/mario/audio_visual_avfx/anime/jumpkick.png" id="11_sw7ya"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/grounded/idle.gd" id="12_hqcfh"]
@@ -31,7 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://chuaelxlkysn1" path="res://scenes/actors/mario/audio_visual_avfx/anime/walljump.png" id="17_ko8me"]
 [ext_resource type="Texture2D" uid="uid://di5yor23yvh7v" path="res://scenes/actors/mario/audio_visual_avfx/anime/triple_jump.png" id="18_5kttb"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/grounded/crouch.gd" id="18_h7q8u"]
-[ext_resource type="Texture2D" uid="uid://b2d8g0fxx3k6o" path="res://scenes/actors/mario/audio_visual_avfx/anime/spin_attack.png" id="19_4jr0s"]
+[ext_resource type="Texture2D" uid="uid://dtiuy8mipcr1o" path="res://scenes/actors/mario/audio_visual_avfx/anime/spin_attack.png" id="19_4jr0s"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/grounded/stop_skid.gd" id="19_qr343"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/grounded/turn_skid.gd" id="20_0joxb"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne.gd" id="20_at07q"]
@@ -48,18 +48,16 @@
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/freefall.gd" id="26_w8jki"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/double_jump.gd" id="36_f2q1o"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/stylish.gd" id="37_5bhpx"]
-[ext_resource type="Script" path="res://scenes/actors/mario/states/grounded/grounded_spin.gd" id="38_k7pef"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/triple_jump.gd" id="38_wnh1u"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/grounded/crouch_walk.gd" id="39_eiqna"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/grounded/dive_slide.gd" id="39_iwujl"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/wallslide.gd" id="40_hk2sj"]
-[ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/jumpkick.gd" id="41_fqapq"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/walljump.gd" id="41_re2yk"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/grounded/groundpound_land.gd" id="42_q3uxx"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/dummy_jump.gd" id="44_f7pc6"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/groundpound.gd" id="46_4mnp2"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/groundpound_fall.gd" id="47_bnupp"]
-[ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/airborne_spin.gd" id="50_mq1bv"]
+[ext_resource type="Script" path="res://scenes/actors/mario/states/spin.gd" id="50_mq1bv"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/dive.gd" id="54_rdldk"]
 [ext_resource type="Script" path="res://scenes/actors/mario/states/airborne/groundpound_jump.gd" id="57_2m6wb"]
 
@@ -963,10 +961,34 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_r00bq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r00bq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r00bq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r00bq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r00bq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r00bq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r00bq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r00bq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r00bq")
 }],
-"loop": true,
+"loop": false,
 "name": &"triple_style",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1086,7 +1108,7 @@ script = ExtResource("1_3d0l6")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_hmp25")
-animation = &"spin_attack"
+animation = &"backflip_style"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Doll"]
 unique_name_in_owner = true
@@ -1138,6 +1160,9 @@ target = NodePath("../../Doll")
 unique_name_in_owner = true
 script = ExtResource("3_3mh1j")
 actor = NodePath("..")
+max_speed = 2.795
+air_accel_time = 39.075
+air_decel_time = 17.345
 
 [node name="StateManager" type="Node" parent="." node_paths=PackedStringArray("input", "movement", "target_actor", "target_av", "initial_state")]
 script = ExtResource("24_2oy80")
@@ -1170,10 +1195,6 @@ effect = &"skid"
 script = ExtResource("15_am2gs")
 effect = &"slow_turn"
 
-[node name="GroundedSpin" type="Node" parent="StateManager/Grounded"]
-script = ExtResource("38_k7pef")
-effect = &"spin_attack"
-
 [node name="Push" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("17_8nb4y")
 effect = &"push"
@@ -1200,14 +1221,14 @@ script = ExtResource("37_5bhpx")
 effect = &"triple_style"
 effect_offset = Vector2i(0, 6)
 
-[node name="DiveSlide" type="Node" parent="StateManager/Grounded"]
-script = ExtResource("39_iwujl")
-effect = &"DiveAVFX"
-
 [node name="GroundPoundLand" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("42_q3uxx")
 effect = &"gp_land"
 effect_offset = Vector2i(0, 9)
+
+[node name="DiveSlide" type="Node" parent="StateManager/Grounded"]
+script = ExtResource("39_iwujl")
+effect = &"DiveAVFX"
 
 [node name="Airborne" type="Node" parent="StateManager"]
 script = ExtResource("20_at07q")
@@ -1224,6 +1245,7 @@ effect = &"jump"
 script = ExtResource("36_f2q1o")
 jump_power = 7.937
 jump_number = 2
+fall_state = &"DoubleFall"
 effect = &"double_jump"
 
 [node name="TripleJump" type="Node" parent="StateManager/Airborne/DummyJump"]
@@ -1231,14 +1253,6 @@ script = ExtResource("38_wnh1u")
 jump_power = 9.921
 effect = &"triple_jump"
 effect_offset = Vector2i(0, 6)
-
-[node name="AirborneSpin" type="Node" parent="StateManager/Airborne"]
-script = ExtResource("50_mq1bv")
-effect = &"spin_attack"
-
-[node name="JumpKick[UNUSED]" type="Node" parent="StateManager/Airborne"]
-script = ExtResource("41_fqapq")
-effect = &"jumpkick"
 
 [node name="Fall" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("21_cisab")
@@ -1289,10 +1303,14 @@ effect = &"gp_jump"
 script = ExtResource("54_rdldk")
 effect = &"DiveAVFX"
 
+[node name="Spin" type="Node" parent="StateManager"]
+script = ExtResource("50_mq1bv")
+effect = &"spin_attack"
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -21)
 offset = Vector2(0, -30)
-zoom = Vector2(2.5, 2.5)
+zoom = Vector2(1.5, 1.5)
 position_smoothing_speed = 40.0
 editor_draw_limits = true
 

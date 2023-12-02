@@ -4,12 +4,12 @@ extends PlayerState
 
 
 ## How long it takes to accelerate with a slow turn.
-const TURN_ACCEL_TIME: float = 9
+@export var turn_accel_time: float = 9
 var turn_accel_step: float
 
 
 func _on_enter(_handover):
-	turn_accel_step = movement.MAX_SPEED_X / TURN_ACCEL_TIME
+	turn_accel_step = movement.max_speed / turn_accel_time
 	movement.update_direction(-movement.facing_direction)
 
 
@@ -21,7 +21,7 @@ func _cycle_tick():
 
 
 func _tell_switch():
-	if is_equal_approx(abs(actor.vel.x), movement.MAX_SPEED_X):
+	if is_equal_approx(abs(actor.vel.x), movement.max_speed):
 		if input_direction == 0:
 			return &"Idle"
 		else:
@@ -30,7 +30,10 @@ func _tell_switch():
 	if Input.is_action_just_pressed(&"jump"):
 		return &"Sideflip"
 
-	if Input.is_action_just_pressed(&"spin"):
-		return &"GroundedSpin"
+	if Input.is_action_pressed(&"down"):
+		return &"Crouch"
+
+	if (input.buffered_input(&"spin") and movement.can_spin()):
+		return &"Spin"
 
 	return &""

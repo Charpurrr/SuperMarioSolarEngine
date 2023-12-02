@@ -8,9 +8,12 @@ extends PlayerState
 var skip_first_frame: bool = false
 
 
-func _on_enter(_handover):
+func _on_enter(handover):
 	actor.hitbox.disabled = true
 	actor.small_hitbox.disabled = false
+
+	if handover != null:
+		skip_first_frame = handover
 
 
 func _pre_tick():
@@ -30,15 +33,20 @@ func _on_exit():
 	skip_first_frame = false
 
 
+## Return whether or not you can crouchwalk.
+func _can_crouchwalk() -> bool:
+	return (actor.vel.x == 0 and input_direction != 0 
+	and not actor.test_move(actor.transform, Vector2(0.1 * movement.facing_direction, 0)))
+
+
 func _tell_switch():
 	if not Input.is_action_pressed(&"down"):
 		return &"Idle"
 
-	if actor.vel.x == 0 and input_direction != 0:
+	if _can_crouchwalk():
 		return &"CrouchWalk"
 
 	if Input.is_action_just_pressed(&"jump"):
 		return &"Backflip"
-
 
 	return &""

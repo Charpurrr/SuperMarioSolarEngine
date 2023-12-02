@@ -1,6 +1,6 @@
 class_name Player
 extends CharacterBody2D
-# Playable 2D character
+## Playable 2D character.
 
 
 @onready var animplay: AnimationPlayer = %AnimationPlayer
@@ -13,7 +13,8 @@ extends CharacterBody2D
 @onready var hitbox: CollisionShape2D = %Hitbox
 @onready var small_hitbox: CollisionShape2D = %SmallHitbox
 
-var vel: Vector2 # Current velocity
+## Current velocity.
+var vel: Vector2
 
 
 func _ready():

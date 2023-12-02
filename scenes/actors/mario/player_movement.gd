@@ -6,56 +6,57 @@ extends Node
 @export var actor: Player
 
 #region X Variables
-## Max horizontal speed
-const MAX_SPEED_X: float = 2.72
+## Max horizontal speed.
+@export var max_speed: float = 2.72
 
-## How long it takes to accelerate (when grounded)
-const GROUND_ACCEL_TIME: float = 22.5
-const GROUND_ACCEL_STEP: float = MAX_SPEED_X / GROUND_ACCEL_TIME
+## How long it takes to accelerate (when grounded.)
+@export var ground_accel_time: float = 22.5
+var ground_accel_step: float = max_speed / ground_accel_time
 
-## How long it takes to decelerate (when grounded)
-const GROUND_DECEL_TIME: float = 13.5
-const GROUND_DECEL_STEP: float = MAX_SPEED_X / GROUND_DECEL_TIME
+## How long it takes to decelerate (when grounded.)
+@export var ground_decel_time: float = 13.5
+var ground_decel_step: float = max_speed / ground_decel_time
 
-## How long it takes to accelerate (when airborne)
-const AIR_ACCEL_TIME: float = 18
-const AIR_ACCEL_STEP: float = MAX_SPEED_X / AIR_ACCEL_TIME
+## How long it takes to accelerate (when airborne.)
+@export var air_accel_time: float = 20
+var air_accel_step: float = max_speed / air_accel_time
 
-## How long it takes to decelerate (when airborne)
-const AIR_DECEL_TIME: float = 20
-const AIR_DECEL_STEP: float = MAX_SPEED_X / AIR_DECEL_TIME
+## How long it takes to decelerate (when airborne.)
+@export var air_decel_time: float = 18
+var air_decel_step: float = max_speed / air_decel_time
 
-## List of different types of acceleration/deceleration values
-const CELS: Dictionary = {
+## List of different types of acceleration/deceleration values.
+var cels: Dictionary = {
 	"ground": 
 	{
 		"accel":
-			GROUND_ACCEL_STEP,
+			ground_accel_step,
 		"decel":
-			GROUND_DECEL_STEP,
+			ground_decel_step,
 	},
 	"air": 
 	{
 		"accel":
-			AIR_ACCEL_STEP,
+			air_accel_step,
 		"decel":
-			AIR_DECEL_STEP,
+			air_decel_step,
 	},
 }
 
-## Resistance factor for acceleration
-const RETURN_RES: float = 15
-## Progression for the resistance factor
+## Resistance factor for acceleration.
+@export var return_res: float = 15
+## Progression for the resistance factor.
 var return_res_prog: float
 #endregion
 
 #region Y Variables
-const TERM_VEL: float = 6.60
+## Max vertical speed.
+@export var term_vel: float = 6.60
 
-## (0.251953-) How high gravity can interpolate
-const MAX_GRAV: float = 1000.0/3969.0
-## How low gravity can interpolate
-const MIN_GRAV: float = 990.0/3969.0
+## How high gravity can interpolate.
+@export var max_grav: float = 0.27
+## How low gravity can interpolate.
+@export var min_grav: float = 0.26
 
 ## Amount of units the player needs to be above the ground to perform an airborne spin.
 const AIR_SPIN_MARGIN: int = 10
@@ -70,10 +71,10 @@ var coyote_timer: int
 const CONSEC_JUMP_TIME: int = 10
 var consec_jump_timer: int
 
-const GROUND_SPIN_COOLDOWN_TIME: int = 20
+const GROUND_SPIN_COOLDOWN_TIME: int = 300
 var ground_spin_cooldown_timer: int
 
-const FREEFALL_TIME: int = 70
+const FREEFALL_TIME: int = 100
 var freefall_timer: int = -1
 #endregion
 
@@ -89,11 +90,11 @@ var body_rotation: float = 0
 
 
 func _physics_process(_delta):
+	ground_spin_cooldown_timer = max(ground_spin_cooldown_timer - 1, 0)
 	return_res_prog = max(return_res_prog - 1, 0)
 
 	# Grounded
 	if actor.is_on_floor():
-		ground_spin_cooldown_timer = max(ground_spin_cooldown_timer - 1, -1)
 		consec_jump_timer = max(consec_jump_timer - 1, -1)
 
 		if consec_jump_timer == 0:
@@ -101,7 +102,6 @@ func _physics_process(_delta):
 	# Airborne
 	else:
 		coyote_timer = max(coyote_timer - 1, 0)
-		consume_grounded_spin_timer()
 
 		# Rising
 		if actor.vel.y < 0:
@@ -112,22 +112,22 @@ func _physics_process(_delta):
 
 
 #region X Functions
-func accelerate(accel_val: Variant, direction: float, max_speed: float = MAX_SPEED_X):
+func accelerate(accel_val: Variant, direction: float, speed_cap: float = max_speed):
 	var accel: float
 
 	if (accel_val is float or accel_val is int):
 		accel = accel_val
 	elif accel_val is String:
-		accel = CELS[accel_val].accel
+		accel = cels[accel_val].accel
 	else:
 		push_error("Not a number or string!")
 
-	accel *= (1 - return_res_prog / RETURN_RES)
+	accel *= (1 - return_res_prog / return_res)
 
-	if actor.vel.x * direction + accel < max_speed:
+	if actor.vel.x * direction + accel < speed_cap:
 		actor.vel.x += direction * accel
-	elif actor.vel.x * direction < max_speed:
-		actor.vel.x = direction * max_speed
+	elif actor.vel.x * direction < speed_cap:
+		actor.vel.x = direction * speed_cap
 
 
 func decelerate(decel_val: Variant):
@@ -136,7 +136,7 @@ func decelerate(decel_val: Variant):
 	if decel_val is float:
 		decel = decel_val
 	elif decel_val is String:
-		decel = CELS[decel_val].decel
+		decel = cels[decel_val].decel
 	else:
 		push_error("Not a float or string!")
 
@@ -144,13 +144,13 @@ func decelerate(decel_val: Variant):
 
 
 ## Handles movement on the X axis.
-func move_x(accel_val: Variant, should_flip: bool, max_speed: float = MAX_SPEED_X):
+func move_x(accel_val: Variant, should_flip: bool, speed_cap: float = max_speed):
 	var input_direction: float = get_input_x()
 
 	if should_flip:
 		update_direction(sign(input_direction))
 
-	accelerate(accel_val, input_direction, max_speed)
+	accelerate(accel_val, input_direction, speed_cap)
 
 
 ## Update facing_direction.
@@ -189,18 +189,18 @@ func get_input_x() -> float:
 
 #region Y Functions
 func apply_gravity(gravity_weight: float = 1, friction: float = 1):
-	var gravity = lerpf(MIN_GRAV, MAX_GRAV, gravity_weight) / friction
+	var gravity = lerpf(min_grav, max_grav, gravity_weight) / friction
 
-	if actor.vel.y + gravity < TERM_VEL:
+	if actor.vel.y + gravity < term_vel:
 		actor.vel.y += gravity
-	elif actor.vel.y < TERM_VEL:
-		actor.vel.y = TERM_VEL
+	elif actor.vel.y < term_vel:
+		actor.vel.y = term_vel
 #endregion
 
 
 #region Timer Functions
 ## Activate the consecutive jump timer.
-func activate_consec_timer():
+func activate_consec_timer() -> void:
 	consec_jump_timer = CONSEC_JUMP_TIME
 
 
@@ -210,12 +210,12 @@ func active_consec_time() -> bool:
 
 
 ## Consume the consecutive jump timer, ridding of any chance at a consecutive jump.
-func consume_consec_timer():
+func consume_consec_timer() -> void:
 	consec_jump_timer = -1
 
 
 ## Activate the coyote timer.
-func activate_coyote_timer():
+func activate_coyote_timer() -> void:
 	coyote_timer = COYOTE_TIME
 
 
@@ -225,12 +225,12 @@ func active_coyote_time() -> bool:
 
 
 ## Consume the coyote timer, ridding of any chance at a coyote input.
-func consume_coyote_timer():
+func consume_coyote_timer() -> void:
 	coyote_timer = 0
 
 
 ## Activate the freefall timer.
-func activate_freefall_timer():
+func activate_freefall_timer() -> void:
 	freefall_timer = FREEFALL_TIME
 
 
@@ -240,12 +240,12 @@ func finished_freefall_timer() -> bool:
 
 
 ## Consume the freefall timer, ridding of any chance at freefalling.
-func consume_freefall_timer():
+func consume_freefall_timer() -> void:
 	freefall_timer = -1
 
 
 ## Activate the grounded spin cooldown timer.
-func activate_grounded_spin_timer():
+func activate_grounded_spin_timer() -> void:
 	ground_spin_cooldown_timer = GROUND_SPIN_COOLDOWN_TIME
 
 
@@ -255,8 +255,8 @@ func finished_grounded_spin_timer() -> bool:
 
 
 ## Consume the grounded spin cooldown timer, making you able to perform a grounded spin immediately.
-func consume_grounded_spin_timer():
-	ground_spin_cooldown_timer = -1
+func consume_grounded_spin_timer() -> void:
+	ground_spin_cooldown_timer = 0
 #endregion
 
 
@@ -266,7 +266,7 @@ func can_wallslide() -> bool:
 	if should_end_wallslide():
 		return false
 
-	return !wallslide_disabled and actor.vel.y > 0
+	return not wallslide_disabled and actor.vel.y > 0
 
 
 ## Return whether or not a wallslide should end
@@ -284,10 +284,15 @@ func should_end_wallslide() -> bool:
 
 ## Return whether or not you can groundpound.
 func can_groundpound() -> bool:
-	return !actor.test_move(actor.transform, Vector2i(0, GP_MARGIN))
+	return not actor.test_move(actor.transform, Vector2i(0, GP_MARGIN))
+
+
+## Return whether or not you can perform a spin attack.
+func can_spin() -> bool:
+	return can_airspin() or finished_grounded_spin_timer()
 
 
 ## Return whether or not you can spin in the air.
 func can_airspin() -> bool:
-	return !actor.test_move(actor.transform, Vector2i(0, GP_MARGIN))
+	return not actor.test_move(actor.transform, Vector2i(0, AIR_SPIN_MARGIN))
 #endregion

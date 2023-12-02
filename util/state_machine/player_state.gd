@@ -1,6 +1,6 @@
 class_name PlayerState
 extends State
-# State specialised for player characters.
+## State specialised for player characters.
 
 
 @onready var input: InputManager = null

@@ -29,6 +29,16 @@ window/stretch/scale_mode="integer"
 
 enabled=PackedStringArray("res://addons/rmsmartshape/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://addons/": "red",
+"res://scenes/": "green",
+"res://scenes/actors/": "blue",
+"res://scenes/actors/mario/": "red",
+"res://util/": "purple"
+}
+
 [input]
 
 left={

@@ -1,6 +1,6 @@
 class_name Fall
 extends PlayerState
-## Falling state.
+## Falling.
 
 
 func _on_enter(_handover):
@@ -16,11 +16,8 @@ func _post_tick():
 
 
 func _tell_switch():
-	if input.buffered_input(&"spin"):
-		if movement.can_airspin():
-			return &"AirborneSpin"
-		else:
-			return &"GroundedSpin"
+	if input.buffered_input(&"spin") and movement.can_spin():
+		return &"Spin"
 
 	if Input.is_action_just_pressed(&"down") and movement.can_groundpound():
 		return &"GroundPound"
