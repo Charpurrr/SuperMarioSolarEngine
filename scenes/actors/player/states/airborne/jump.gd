@@ -34,7 +34,6 @@ func _cycle_tick():
 	movement.move_x("air", true)
 
 	if movement.can_release_jump(applied_variation, min_jump_power):
-		print("b,jker")
 		applied_variation = true
 		actor.vel.y *= 0.5
 

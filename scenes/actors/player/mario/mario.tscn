@@ -1163,7 +1163,7 @@ script = ExtResource("3_3mh1j")
 actor = NodePath("..")
 max_speed = 2.7
 air_accel_time = 38.0
-term_vel = 10.0
+term_vel = 8.0
 max_grav = 0.22
 min_grav = 0.215
 
@@ -1320,13 +1320,8 @@ spin_power = 5.0
 wall_kickback_power_y = 1.8
 effect = &"spin_attack"
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -21)
-offset = Vector2(0, -30)
-zoom = Vector2(2, 2)
-position_smoothing_speed = 30.0
-editor_draw_limits = true
-editor_draw_drag_margin = true
+[node name="Camera" type="Node2D" parent="."]
 script = ExtResource("61_0shyc")
+zoom = 2.0
 
 [connection signal="animation_finished" from="Doll/AnimationPlayer" to="StateManager/Airborne/GroundPound" method="_on_animation_player_animation_finished"]
