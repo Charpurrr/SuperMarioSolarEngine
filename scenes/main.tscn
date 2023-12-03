@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://45bmeug2usc7" path="res://scenes/props/bgs/space.png" id="4_7xhvw"]
 [ext_resource type="Shader" path="res://scenes/props/environment_light.gdshader" id="4_bmtu7"]
 [ext_resource type="PackedScene" uid="uid://ccj3teu3h6xfm" path="res://scenes/ui/ui.tscn" id="5_rg8ge"]
-[ext_resource type="AudioStream" uid="uid://rdadrrqvsy6s" path="res://scenes/music/CalmBeforetheStorm.ogg" id="6_ek4no"]
+[ext_resource type="AudioStream" uid="uid://rdadrrqvsy6s" path="res://scenes/music/CalmBeforetheStorm.ogg" id="6_c0eeh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mvny6"]
 shader = ExtResource("4_bmtu7")
@@ -52,7 +52,6 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="BGM" type="AudioStreamPlayer" parent="Environment"]
-stream = ExtResource("6_ek4no")
-pitch_scale = 0.7
+stream = ExtResource("6_c0eeh")
 autoplay = true
 bus = &"BGM"

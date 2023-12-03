@@ -261,6 +261,14 @@ func consume_grounded_spin_timer() -> void:
 
 
 #region Check Functions
+## Whether or not the jump can be variated (released).
+func can_release_jump(applied_variation: bool, min_jump_power: float) -> bool:
+	return (not Input.is_action_pressed(&"jump") 
+	and actor.vel.y > -min_jump_power
+	and not applied_variation 
+	and actor.vel.y < 0)
+
+
 ## Return whether you can or can't wallslide.
 func can_wallslide() -> bool:
 	if should_end_wallslide():

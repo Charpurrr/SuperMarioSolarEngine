@@ -14,7 +14,11 @@ func _on_enter(handover):
 
 
 func _cycle_tick():
-	super()
+	movement.move_x("air", false)
+
+	if movement.can_release_jump(applied_variation, min_jump_power):
+		applied_variation = true
+		actor.vel.y *= 0.5
 
 	if actor.vel.y > 0 and not start_freefall_timer:
 		start_freefall_timer = true

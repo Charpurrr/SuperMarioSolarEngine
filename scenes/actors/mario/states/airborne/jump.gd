@@ -3,7 +3,12 @@ extends PlayerState
 ## Jumping.
 
 
-@export var jump_power: float = 400.0/63.0
+@export var jump_power: float = 400.0 / 63.0
+
+## How much of the jump needs to be finished before it can be let go.
+@export_range(0.00, 100.00) var min_jump_percent: float
+var min_jump_power: float
+
 @export var jump_number: int
 
 @export var fall_state:= &"Fall"
@@ -16,6 +21,8 @@ func _on_enter(_handover):
 	applied_variation = false
 	actor.vel.y = -jump_power
 
+	min_jump_power = jump_power * (1 - min_jump_percent / 100)
+
 	movement.consec_jumps = jump_number
 
 
@@ -24,9 +31,10 @@ func _post_tick():
 
 
 func _cycle_tick():
-	movement.move_x("air", false)
+	movement.move_x("air", true)
 
-	if not Input.is_action_pressed(&"jump") and not applied_variation:
+	if movement.can_release_jump(applied_variation, min_jump_power):
+		print("b,jker")
 		applied_variation = true
 		actor.vel.y *= 0.5
 

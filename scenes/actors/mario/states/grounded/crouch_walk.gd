@@ -12,7 +12,7 @@ func _cycle_tick():
 	var crouch_walk_speed: float = movement.max_speed / 2
 
 	movement.activate_coyote_timer()
-	movement.move_x(0.10, true, crouch_walk_speed)
+	movement.move_x(0.12, true, crouch_walk_speed)
 
 	actor.doll.speed_scale = actor.vel.x / crouch_walk_speed
 

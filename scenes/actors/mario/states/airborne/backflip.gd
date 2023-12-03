@@ -19,8 +19,10 @@ func _on_enter(_handover):
 
 
 func _cycle_tick():
+	# Moving in the direction opposite to your backflip.
 	if input_direction != movement.facing_direction:
 		movement.move_x(0.04, false)
+	# Moving in the direction toward your backflip.
 	elif input_direction != 0:
 		movement.move_x(0.07, false)
 

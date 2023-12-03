@@ -64,8 +64,12 @@ func _tell_switch():
 
 		if movement.finished_freefall_timer():
 			return &"Freefall"
+
+		if Input.is_action_just_pressed(&"down") and movement.can_groundpound():
+			return &"GroundPound"
 	else:
 		if not actor.doll.is_playing():
 			return &"Idle"
+
 
 	return &""

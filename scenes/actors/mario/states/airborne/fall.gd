@@ -8,7 +8,7 @@ func _on_enter(_handover):
 
 
 func _cycle_tick():
-	movement.move_x("air", false)
+	movement.move_x("air", true)
 
 
 func _post_tick():
