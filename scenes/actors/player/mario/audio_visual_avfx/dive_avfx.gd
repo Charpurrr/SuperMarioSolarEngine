@@ -5,4 +5,10 @@ extends PAVEffect
 
 func do_effect():
 	target.play("dive")
-	target.rotation = lerp_angle(target.rotation, movement.body_rotation, 0.5)
+	target.rotation = lerp_angle(target.rotation, movement.body_rotation * movement.facing_direction, 0.5)
+
+
+func deactivate():
+	super()
+
+	target.rotation = 0

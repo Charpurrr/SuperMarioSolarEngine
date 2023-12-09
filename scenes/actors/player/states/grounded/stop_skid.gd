@@ -34,4 +34,7 @@ func _tell_switch():
 	if (input.buffered_input(&"spin") and movement.can_spin()):
 		return &"Spin"
 
+	if Input.is_action_just_pressed(&"dive"):
+		return &"Dive"
+
 	return &""

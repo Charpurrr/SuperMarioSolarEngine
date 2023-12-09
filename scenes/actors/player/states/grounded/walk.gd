@@ -4,14 +4,11 @@ extends PlayerState
 
 
 func _cycle_tick():
-	actor.doll.speed_scale = actor.vel.x / movement.max_speed * 2
+	actor.vel.x = move_toward(actor.vel.x, movement.max_speed * movement.facing_direction, 1)
+
 	movement.move_x("ground", true)
 
 	movement.activate_coyote_timer()
-
-
-func _on_exit():
-	actor.doll.speed_scale = 1
 
 
 func _tell_switch():
@@ -21,8 +18,8 @@ func _tell_switch():
 	if (input.buffered_input(&"spin") and movement.can_spin()):
 		return &"Spin"
 
-	if Input.is_action_just_pressed(&"dive") and abs(actor.vel.x) >= movement.max_speed:
-		return &"Dive"
+	if Input.is_action_just_pressed(&"dive"):
+		return &"AirborneDive"
 
 	if input_direction != 0:
 		if abs(actor.vel.x) >= movement.max_speed and input_direction != movement.facing_direction:

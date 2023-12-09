@@ -58,10 +58,8 @@ var return_res_prog: float
 ## How low gravity can interpolate.
 @export var min_grav: float = 0.26
 
-## Amount of units the player needs to be above the ground to perform an airborne spin.
-const AIR_SPIN_MARGIN: int = 10
-## Amount of units the player needs to be above the ground to perform a groundpound.
-const GP_MARGIN: int = 10
+## Amount of units the player needs to be above the ground to perform an airborne action.
+const AIR_MARGIN: int = 10
 #endregion
 
 #region Timer Variables
@@ -71,7 +69,7 @@ var coyote_timer: int
 const CONSEC_JUMP_TIME: int = 10
 var consec_jump_timer: int
 
-const GROUND_SPIN_COOLDOWN_TIME: int = 300
+const GROUND_SPIN_COOLDOWN_TIME: int = 20
 var ground_spin_cooldown_timer: int
 
 const FREEFALL_TIME: int = 100
@@ -290,17 +288,13 @@ func should_end_wallslide() -> bool:
 	return false
 
 
-## Return whether or not you can groundpound.
-func can_groundpound() -> bool:
-	return not actor.test_move(actor.transform, Vector2i(0, GP_MARGIN))
-
-
 ## Return whether or not you can perform a spin attack.
 func can_spin() -> bool:
-	return can_airspin() or finished_grounded_spin_timer()
+	return can_air_action() or finished_grounded_spin_timer()
 
 
-## Return whether or not you can spin in the air.
-func can_airspin() -> bool:
-	return not actor.test_move(actor.transform, Vector2i(0, AIR_SPIN_MARGIN))
+## Return whether or not you can perform an airborne action.
+## Avoids accidental air movement inputs.
+func can_air_action() -> bool:
+	return not actor.test_move(actor.transform, Vector2i(0, AIR_MARGIN))
 #endregion

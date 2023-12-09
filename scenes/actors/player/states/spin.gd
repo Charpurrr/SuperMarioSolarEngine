@@ -16,7 +16,7 @@ var is_airspin: bool
 
 
 func _on_enter(_handover):
-	is_airspin = movement.can_airspin()
+	is_airspin = movement.can_air_action()
 
 	if is_airspin:
 		actor.vel.y = -spin_power
