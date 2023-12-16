@@ -10,6 +10,7 @@ extends PlayerState
 
 func _on_enter(_handover):
 	movement.update_direction(-movement.facing_direction)
+	movement.activate_freefall_timer()
 
 	actor.vel.y = -jump_power
 	actor.vel.x = push_power * movement.facing_direction
@@ -28,9 +29,6 @@ func _cycle_tick():
 
 
 func _tell_switch():
-	if actor.vel.y > 0:
-		return &"Fall"
-
 	if input.buffered_input(&"spin"):
 		return &"Spin"
 
@@ -39,5 +37,11 @@ func _tell_switch():
 
 	if Input.is_action_just_pressed(&"down") and movement.can_air_action():
 		return &"GroundPound"
+
+	if movement.can_wallslide(true):
+		return &"Wallslide"
+
+	if movement.finished_freefall_timer():
+		return &"Freefall"
 
 	return &""

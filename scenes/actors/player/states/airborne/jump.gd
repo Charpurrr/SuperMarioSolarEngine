@@ -39,19 +39,19 @@ func _cycle_tick():
 
 
 func _tell_switch():
-	if actor.vel.y > 0:
-		return fall_state
+	if Input.is_action_just_pressed(&"dive") and movement.can_air_action():
+		return &"AirborneDive"
 
 	if input.buffered_input(&"spin"):
 		return &"Spin"
-
-	if Input.is_action_just_pressed(&"dive") and movement.can_air_action():
-		return &"AirborneDive"
 
 	if Input.is_action_just_pressed(&"down") and movement.can_air_action():
 		return &"GroundPound"
 
 	if movement.can_wallslide():
 		return &"Wallslide"
+
+	if actor.vel.y > 0:
+		return fall_state
 
 	return &""

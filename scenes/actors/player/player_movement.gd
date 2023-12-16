@@ -81,8 +81,6 @@ var facing_direction: int = 1
 ## Amount of consecutive jumps performed for a triple jump.
 var consec_jumps: int = 0
 
-var wallslide_disabled: bool
-
 ## The player body rotation.
 var body_rotation: float = 0
 
@@ -268,22 +266,15 @@ func can_release_jump(applied_variation: bool, min_jump_power: float) -> bool:
 
 
 ## Return whether you can or can't wallslide.
-func can_wallslide() -> bool:
-	if should_end_wallslide():
-		return false
+func can_wallslide(ignore_input: bool = false) -> bool:
+	if should_end_wallslide(): return false
 
-	return not wallslide_disabled and actor.vel.y > 0
+	return actor.vel.y != 0 and (true if ignore_input else get_input_x() == facing_direction)
 
 
 ## Return whether or not a wallslide should end
 func should_end_wallslide() -> bool:
-	var input_direction: float = get_input_x()
-
-	if not actor.push_ray.is_colliding():
-		return true
-
-	if input_direction == -facing_direction:
-		return true
+	if (not actor.push_ray.is_colliding() or get_input_x() == -facing_direction): return true
 
 	return false
 

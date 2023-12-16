@@ -37,6 +37,6 @@ func _tell_switch():
 		return &"Spin"
 
 	if Input.is_action_just_pressed(&"dive"):
-		return &"Dive"
+		return &"AirborneDive"
 
 	return &""

@@ -8,7 +8,7 @@ func _cycle_tick():
 
 
 func _tell_switch():
-	if not av.fallback_sprite.is_playing():
+	if not actor.doll.is_playing():
 		return &"Idle"
 
 	if input_direction != 0:

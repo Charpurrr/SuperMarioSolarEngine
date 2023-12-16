@@ -24,7 +24,7 @@ func _cycle_tick():
 		movement.move_x(0.04, false)
 	# Moving in the direction toward your backflip.
 	elif input_direction != 0:
-		movement.move_x(0.07, false)
+		movement.move_x(0.06, false)
 
 	if actor.vel.y > 0 and not start_freefall_timer:
 		start_freefall_timer = true
@@ -37,14 +37,8 @@ func _post_tick():
 
 
 func _tell_switch():
-	if actor.is_on_floor():
-		return &"BackflipStyle"
-
 	if movement.can_wallslide():
 		return &"Wallslide"
-
-	if movement.finished_freefall_timer():
-		return &"Freefall"
 
 	if input.buffered_input(&"spin"):
 		return &"Spin"
@@ -54,5 +48,11 @@ func _tell_switch():
 
 	if Input.is_action_just_pressed(&"down") and movement.can_air_action():
 		return &"GroundPound"
+
+	if actor.is_on_floor():
+		return &"BackflipStyle"
+
+	if movement.finished_freefall_timer():
+		return &"Freefall"
 
 	return &""

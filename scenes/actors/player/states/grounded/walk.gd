@@ -4,11 +4,26 @@ extends PlayerState
 
 
 func _cycle_tick():
-	actor.vel.x = move_toward(actor.vel.x, movement.max_speed * movement.facing_direction, 1)
-
-	movement.move_x("ground", true)
+	var current_frame = actor.doll.get_frame()
+	var current_progress = actor.doll.get_frame_progress()
 
 	movement.activate_coyote_timer()
+	movement.move_x("ground", true)
+
+	if abs(actor.vel.x) > movement.max_speed:
+		actor.doll.play("run")
+		actor.doll.set_frame_and_progress(current_frame, current_progress)
+
+		actor.vel.x = move_toward(actor.vel.x, movement.max_speed * movement.facing_direction, 0.1)
+	else:
+		actor.doll.play("walk")
+		actor.doll.set_frame_and_progress(current_frame, current_progress)
+
+	actor.doll.speed_scale = actor.vel.x / movement.max_speed * 2
+
+
+func _on_exit():
+	actor.doll.speed_scale = 1
 
 
 func _tell_switch():
