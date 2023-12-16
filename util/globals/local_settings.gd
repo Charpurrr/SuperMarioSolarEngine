@@ -1,5 +1,5 @@
 extends Node
-## Settings stored on the system.
+## Settings stored on the user's system.
 
 
 const FILE_PATH: String = "user://settings.cfg"

@@ -17,7 +17,7 @@ func _on_enter(_handover):
 
 
 func _tell_switch():
-	if not av.fallback_sprite.is_playing():
+	if not actor.doll.is_playing():
 		return &"GroundPoundFall"
 
 	return &""

@@ -13,12 +13,17 @@ extends PlayerState
 
 ## If the spin action was performed while airborne or not.
 var is_airspin: bool
+## If the initial spin action has finished or not.
+var finished_init: bool
 
 
 func _on_enter(_handover):
 	is_airspin = movement.can_air_action()
 
 	if is_airspin:
+		if input.get_last_x() != sign(actor.vel.x):
+			actor.vel.x = abs(actor.vel.x) * sign(input.get_last_x()) * 0.5
+
 		actor.vel.y = -spin_power
 
 	movement.activate_freefall_timer()
@@ -37,13 +42,17 @@ func _post_tick():
 
 
 func _cycle_tick():
+	print(finished_init)
 	if is_airspin:
 		movement.move_x("air", false)
 	else:
 		movement.move_x("ground", false)
 
+	if not actor.doll.is_playing():
+		finished_init = true
+
 	# Spinning wall bonk
-	if actor.push_ray.is_colliding():
+	if actor.push_ray.is_colliding() and not finished_init:
 		movement.return_res_prog = movement.return_res
 
 		actor.vel.x = wall_kickback_power_x * -movement.facing_direction
@@ -56,6 +65,8 @@ func _on_exit():
 	if not is_airspin:
 		movement.activate_grounded_spin_timer()
 
+	finished_init = false
+
 
 func _tell_switch():
 	if is_airspin:
@@ -65,8 +76,12 @@ func _tell_switch():
 		if movement.finished_freefall_timer():
 			return &"Freefall"
 
-		if Input.is_action_just_pressed(&"down") and movement.can_groundpound():
+		if Input.is_action_just_pressed(&"down") and movement.can_air_action():
 			return &"GroundPound"
+
+		if movement.can_wallslide() and finished_init:
+			return &"Wallslide"
+
 	else:
 		if not actor.doll.is_playing():
 			return &"Idle"

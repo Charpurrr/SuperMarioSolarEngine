@@ -9,9 +9,6 @@ var live_substate: State = null
 ## The target of this state machine's behavior.
 var actor: CharacterBody2D = null
 
-## The AVManager of this state machine.
-var av: AVManager = null
-
 ## The root of the state machine.
 var manager: StateManager = null
 
@@ -20,11 +17,6 @@ var _link_cache: Dictionary = {}
 
 ## True when on the first cycle of the physics loop.
 var _first_cycle: bool = true
-
-## The name of the AV effect that this state should trigger.
-@export var effect := &""
-## How many units the effect needs to be offset.
-@export var effect_offset := Vector2i()
 
 
 func _to_string():
@@ -71,12 +63,6 @@ func recurse_live(function_name: StringName, arguments := [], reverse := false):
 func trigger_enter(handover: Variant):
 	_first_cycle = true
 	_on_enter(handover)
-
-	if av != null:
-		av.deactivate_effect()
-
-		if effect != &"":
-			av.trigger_effect(effect, effect_offset)
 
 
 ## Ditch this state and all its descendents,

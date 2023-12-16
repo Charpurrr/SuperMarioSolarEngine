@@ -1,4 +1,4 @@
-[gd_scene load_steps=191 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=187 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://scenes/actors/player/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://b1ix4oovqenv2" path="res://scenes/actors/player/mario/audio_visual_avfx/anime/backflip.png" id="2_i2o54"]
@@ -37,17 +37,13 @@
 [ext_resource type="Script" path="res://scenes/actors/player/states/grounded/turn_skid.gd" id="20_0joxb"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne.gd" id="20_at07q"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/jump.gd" id="20_bs088"]
-[ext_resource type="Script" path="res://scenes/actors/player/mario/audio_visual_avfx/backflip_avfx.gd" id="21_2iakt"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/fall.gd" id="21_cisab"]
 [ext_resource type="Script" path="res://util/input_manager.gd" id="21_onm15"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/sideflip.gd" id="22_4r2ks"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/backflip.gd" id="23_jcv3h"]
 [ext_resource type="Script" path="res://scenes/actors/player/dive_ray.gd" id="23_k0i43"]
 [ext_resource type="Script" path="res://util/state_machine/player_state_manager.gd" id="24_2oy80"]
-[ext_resource type="Script" path="res://util/state_machine/audio_visual_machine/player_av_manager.gd" id="24_ix3lo"]
-[ext_resource type="Script" path="res://scenes/actors/player/mario/audio_visual_avfx/dive_avfx.gd" id="26_udb26"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/freefall.gd" id="26_w8jki"]
-[ext_resource type="Script" path="res://scenes/actors/player/mario/audio_visual_avfx/walk_avfx.gd" id="28_rxogm"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/double_jump.gd" id="36_f2q1o"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/stylish.gd" id="37_5bhpx"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/triple_jump.gd" id="38_wnh1u"]
@@ -780,7 +776,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"gp_land",
-"speed": 12.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -892,7 +888,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 12.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1171,7 +1167,7 @@ script = ExtResource("1_3d0l6")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_hmp25")
-animation = &"run"
+animation = &"gp_land"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Doll"]
 unique_name_in_owner = true
@@ -1206,26 +1202,6 @@ script = ExtResource("23_k0i43")
 [node name="InputManager" type="Node" parent="."]
 script = ExtResource("21_onm15")
 
-[node name="AVManager" type="Node" parent="." node_paths=PackedStringArray("movement", "player", "fallback_sprite")]
-script = ExtResource("24_ix3lo")
-movement = NodePath("../Movement")
-player = NodePath("..")
-fallback_sprite = NodePath("../Doll")
-
-[node name="WalkAVFX" type="Node" parent="AVManager" node_paths=PackedStringArray("target")]
-script = ExtResource("28_rxogm")
-target = NodePath("../../Doll")
-deactivate_on_switch = true
-
-[node name="DiveAVFX" type="Node" parent="AVManager" node_paths=PackedStringArray("target")]
-script = ExtResource("26_udb26")
-target = NodePath("../../Doll")
-deactivate_on_switch = true
-
-[node name="BackflipAVFX" type="Node" parent="AVManager" node_paths=PackedStringArray("target")]
-script = ExtResource("21_2iakt")
-target = NodePath("../../Doll")
-
 [node name="Movement" type="Node" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("3_3mh1j")
 actor = NodePath("..")
@@ -1235,12 +1211,11 @@ term_vel = 8.0
 max_grav = 0.22
 min_grav = 0.215
 
-[node name="StateManager" type="Node" parent="." node_paths=PackedStringArray("input", "movement", "target_actor", "target_av", "initial_state")]
+[node name="StateManager" type="Node" parent="." node_paths=PackedStringArray("input", "movement", "target_actor", "initial_state")]
 script = ExtResource("24_2oy80")
 input = NodePath("../InputManager")
 movement = NodePath("../Movement")
 target_actor = NodePath("..")
-target_av = NodePath("../AVManager")
 initial_state = NodePath("Airborne")
 
 [node name="Grounded" type="Node" parent="StateManager"]
@@ -1248,54 +1223,53 @@ script = ExtResource("11_15kl1")
 
 [node name="Idle" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("12_hqcfh")
-effect = &"idle"
+animation = &"idle"
 
 [node name="Walk" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("13_olbq0")
-effect = &"WalkAVFX"
 
 [node name="StopSkid" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("19_qr343")
-effect = &"slow_turn"
+animation = &"skid"
 
 [node name="TurnSkid" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("20_0joxb")
-effect = &"skid"
+animation = &"skid"
 
 [node name="SlowTurn" type="Node" parent="StateManager/Grounded/TurnSkid"]
 script = ExtResource("15_am2gs")
-effect = &"slow_turn"
+animation = &"slow_turn"
 
 [node name="Push" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("17_8nb4y")
-effect = &"push"
+animation = &"push"
 
 [node name="DryPush" type="Node" parent="StateManager/Grounded/Push"]
 script = ExtResource("16_dpmo1")
-effect = &"idle"
+animation = &"idle"
 
 [node name="Crouch" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("18_h7q8u")
-effect = &"crouch"
+animation = &"crouch"
 
 [node name="CrouchWalk" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("39_eiqna")
-effect = &"crouch_walk"
+animation = &"crouch_walk"
 
 [node name="BackflipStyle" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("37_5bhpx")
-effect = &"backflip_style"
-effect_offset = Vector2i(0, 3)
+animation = &"backflip_style"
+anim_offset = Vector2i(0, 5)
 
 [node name="TripleJumpStyle" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("37_5bhpx")
-effect = &"triple_style"
-effect_offset = Vector2i(0, 6)
+animation = &"triple_style"
+anim_offset = Vector2i(0, 5)
 
 [node name="GroundPoundLand" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("42_q3uxx")
-effect = &"gp_land"
-effect_offset = Vector2i(0, 9)
+animation = &"gp_land"
+anim_offset = Vector2i(0, 9)
 
 [node name="Airborne" type="Node" parent="StateManager"]
 script = ExtResource("20_at07q")
@@ -1308,7 +1282,7 @@ script = ExtResource("20_bs088")
 jump_power = 5.3
 min_jump_percent = 20.0
 jump_number = 1
-effect = &"jump"
+animation = &"jump"
 
 [node name="DoubleJump" type="Node" parent="StateManager/Airborne/DummyJump"]
 script = ExtResource("36_f2q1o")
@@ -1316,76 +1290,76 @@ jump_power = 6.4
 min_jump_percent = 35.0
 jump_number = 2
 fall_state = &"DoubleFall"
-effect = &"double_jump"
+animation = &"double_jump"
 
 [node name="TripleJump" type="Node" parent="StateManager/Airborne/DummyJump"]
 script = ExtResource("38_wnh1u")
 jump_power = 7.6
 min_jump_percent = 50.0
-effect = &"triple_jump"
-effect_offset = Vector2i(0, 6)
+animation = &"triple_jump"
+anim_offset = Vector2i(0, 5)
 
 [node name="Fall" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("21_cisab")
-effect = &"fall"
+animation = &"fall"
 
 [node name="Freefall" type="Node" parent="StateManager/Airborne/Fall"]
 script = ExtResource("26_w8jki")
-effect = &"freefall"
+animation = &"freefall"
 
 [node name="DoubleFall" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("21_cisab")
-effect = &"double_fall"
+animation = &"double_fall"
 
 [node name="Wallslide" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("40_hk2sj")
-effect = &"wallslide"
+animation = &"wallslide"
 
 [node name="Walljump" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("41_re2yk")
-jump_power = 5.5
+jump_power = 5.0
 push_power = 4.0
-effect = &"walljump"
+animation = &"walljump"
 
 [node name="Sideflip" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("22_4r2ks")
 jump_power = 7.2
-effect = &"sideflip"
+animation = &"sideflip"
 
 [node name="Backflip" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("23_jcv3h")
 jump_power = 7.5
-effect = &"backflip"
-effect_offset = Vector2i(0, 3)
+animation = &"backflip"
+anim_offset = Vector2i(0, 5)
 
 [node name="GroundPound" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("46_4mnp2")
-effect = &"gp"
-effect_offset = Vector2i(0, 9)
+animation = &"gp"
+anim_offset = Vector2i(0, 9)
 
 [node name="GroundPoundFall" type="Node" parent="StateManager/Airborne/GroundPound"]
 script = ExtResource("47_bnupp")
-effect = &"gp_fall"
-effect_offset = Vector2i(0, 9)
+animation = &"gp_fall"
+anim_offset = Vector2i(0, 9)
 
 [node name="GroundPoundJump" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("57_2m6wb")
 jump_power = 6.3
 min_jump_percent = 35.0
 jump_number = 1
-effect = &"gp_jump"
+animation = &"gp_jump"
 
 [node name="AirborneDive" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("54_rdldk")
 x_power = 5.0
 y_power = 1.88
-effect = &"DiveAVFX"
+animation = &"dive"
 
 [node name="Spin" type="Node" parent="StateManager"]
 script = ExtResource("50_mq1bv")
 spin_power = 3.0
 wall_kickback_power_y = 1.8
-effect = &"spin_attack"
+animation = &"spin_attack"
 
 [node name="Camera" type="Node2D" parent="."]
 script = ExtResource("61_0shyc")

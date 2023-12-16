@@ -37,14 +37,8 @@ func _cycle_tick():
 
 
 func _tell_switch():
-	if actor.is_on_ceiling():
-		return &"Fall"
-
 	if movement.can_wallslide():
 		return &"Wallslide"
-
-	if movement.finished_freefall_timer():
-		return &"Freefall"
 
 	if input.buffered_input(&"spin"):
 		return &"Spin"
@@ -54,5 +48,11 @@ func _tell_switch():
 
 	if Input.is_action_just_pressed(&"down") and movement.can_air_action():
 		return &"GroundPound"
+
+	if actor.is_on_ceiling():
+		return &"Fall"
+
+	if movement.finished_freefall_timer():
+		return &"Freefall"
 
 	return &""
