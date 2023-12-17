@@ -1,4 +1,4 @@
-[gd_scene load_steps=187 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=189 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://scenes/actors/player/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://cut0vcslnatgi" path="res://scenes/actors/player/mario/audio_visual_avfx/anime/backflip.png" id="2_i2o54"]
@@ -57,6 +57,7 @@
 [ext_resource type="Script" path="res://scenes/actors/player/states/spin.gd" id="50_mq1bv"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/air_dive.gd" id="54_rdldk"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/groundpound_jump.gd" id="57_2m6wb"]
+[ext_resource type="Script" path="res://scenes/actors/player/states/airborne/twirl.gd" id="57_dqusk"]
 [ext_resource type="Script" path="res://scenes/actors/player/player_camera.gd" id="61_0shyc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_joy5i"]
@@ -1154,7 +1155,10 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u4b58"]
-size = Vector2(16, 32)
+size = Vector2(16, 17)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nh8pl"]
+radius = 8.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1emcl"]
 size = Vector2(16, 16)
@@ -1162,6 +1166,7 @@ size = Vector2(16, 16)
 [node name="Mario" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 3
+floor_max_angle = 1.55334
 script = ExtResource("1_3d0l6")
 
 [node name="Doll" type="AnimatedSprite2D" parent="."]
@@ -1178,11 +1183,20 @@ libraries = {
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -16)
+position = Vector2(0, -15.5)
 shape = SubResource("RectangleShape2D_u4b58")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -24)
+shape = SubResource("CircleShape2D_nh8pl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_nh8pl")
 
 [node name="SmallHitbox" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_1emcl")
 
@@ -1354,6 +1368,12 @@ script = ExtResource("54_rdldk")
 x_power = 5.0
 y_power = 1.88
 animation = &"dive"
+
+[node name="Twirl" type="Node" parent="StateManager/Airborne"]
+script = ExtResource("57_dqusk")
+spin_power = 0.5
+wall_kickback_power_y = 1.8
+animation = &"spin_attack"
 
 [node name="Spin" type="Node" parent="StateManager"]
 script = ExtResource("50_mq1bv")

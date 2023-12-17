@@ -42,7 +42,6 @@ func _post_tick():
 
 
 func _cycle_tick():
-	print(finished_init)
 	if is_airspin:
 		movement.move_x("air", false)
 	else:
@@ -51,14 +50,14 @@ func _cycle_tick():
 	if not actor.doll.is_playing():
 		finished_init = true
 
-	# Spinning wall bonk
+	# Spinning wall bonk.
 	if actor.push_ray.is_colliding() and not finished_init:
 		movement.return_res_prog = movement.return_res
 
 		actor.vel.x = wall_kickback_power_x * -movement.facing_direction
 
 		if is_airspin:
-			actor.vel.y = wall_kickback_power_y * -movement.facing_direction
+			actor.vel.y = -wall_kickback_power_y
 
 
 func _on_exit():
@@ -72,6 +71,9 @@ func _tell_switch():
 	if is_airspin:
 		if actor.is_on_floor():
 			return &"Idle"
+
+		if input.buffered_input(&"spin") and finished_init:
+			return &"Twirl"
 
 		if movement.finished_freefall_timer():
 			return &"Freefall"

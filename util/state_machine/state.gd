@@ -65,6 +65,12 @@ func trigger_enter(handover: Variant):
 	_on_enter(handover)
 
 
+## Trigger exit events for a new state.
+func trigger_exit():
+	_first_cycle = true
+	_on_exit()
+
+
 ## Ditch this state and all its descendents,
 ## making this branch of the state tree inactive.
 func ditch_state():
@@ -74,6 +80,12 @@ func ditch_state():
 	if live_substate == null: return
 	live_substate.ditch_state()
 	live_substate = null
+
+
+## Artificially restart the current state.
+func reset_state():
+	trigger_exit()
+	trigger_enter(null)
 
 
 ## Activate the given state, ditching the current state.
