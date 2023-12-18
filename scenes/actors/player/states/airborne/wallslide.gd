@@ -28,14 +28,14 @@ func _post_tick():
 
 
 func _tell_switch():
-	if movement.should_end_wallslide():
-		return &"Fall"
+	if (input.buffered_input(&"spin") and movement.can_spin()):
+		return &"Spin"
 
 	if input.buffered_input(&"jump"):
 		return &"Walljump"
 
-	if input.buffered_input(&"spin"):
-		return &"Spin"
+	if movement.should_end_wallslide():
+		return &"Fall"
 
 	if Input.is_action_just_pressed(&"down") and movement.can_air_action():
 		return &"GroundPound"

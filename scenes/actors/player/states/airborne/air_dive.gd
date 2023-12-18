@@ -2,8 +2,10 @@ class_name AirDive
 extends PlayerState
 ## Diving while airborne.
 
-@export var x_power: float = 6
-@export var y_power: float = 1.5
+
+@export var min_x_power: float = 2.0
+@export var x_power: float = 6.0
+@export var y_power: float = 1.88
 
 
 func _on_enter(_handover):
@@ -14,8 +16,8 @@ func _on_enter(_handover):
 
 	#actor.vel.x += ((x_power - abs(actor.vel.x)) / 5 * movement.facing_direction)
 
-	movement.accelerate(x_power, input_direction, 6)
-	actor.vel.x = max(0.04, abs(actor.vel.x)) * sign(actor.vel.x)
+	movement.accelerate(x_power, input_direction, x_power)
+	actor.vel.x = max(min_x_power, abs(actor.vel.x)) * movement.facing_direction
 
 	actor.vel.y = -y_power
 
@@ -40,5 +42,8 @@ func _on_exit():
 func _tell_switch():
 	#if actor.is_on_floor():
 		#return &"DiveSlide"
+
+	if Input.is_action_just_pressed(&"down") and movement.can_air_action():
+		return &"GroundPound"
 
 	return &""

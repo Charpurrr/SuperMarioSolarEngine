@@ -18,7 +18,7 @@ shader_parameter/saturation = 1.0
 shader_parameter/color_tint = Color(0.811765, 0, 0, 1)
 shader_parameter/mix_amount = 1.4
 
-[node name="Node2D" type="Node2D"]
+[node name="BOBTestCourse" type="Node2D"]
 
 [node name="UI" parent="." instance=ExtResource("5_rg8ge")]
 
@@ -45,7 +45,7 @@ layer_1/tile_data = PackedInt32Array(917622, 524288, 1, 983158, 524288, 1, 10486
 texture_repeat = 2
 texture = ExtResource("5_eal23")
 texture_scale = Vector2(0.5, 0.5)
-polygon = PackedVector2Array(1955, -107, 1777, -232, 1735, -161, 1757, -13, 1945, -9)
+polygon = PackedVector2Array(1971, -131, 1777, -232, 1735, -161, 1757, -13, 1945, -9)
 script = ExtResource("6_2btxk")
 
 [node name="Environment" type="ColorRect" parent="."]

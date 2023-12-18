@@ -10,6 +10,7 @@ func _cycle_tick():
 	movement.activate_coyote_timer()
 	movement.move_x("ground", true)
 
+	# Switch between the running and walking animation depending on your velocity.
 	if abs(actor.vel.x) > movement.max_speed:
 		actor.doll.play("run")
 		actor.doll.set_frame_and_progress(current_frame, current_progress)
@@ -27,7 +28,7 @@ func _on_exit():
 
 
 func _tell_switch():
-	if Input.is_action_just_pressed(&"jump"):
+	if input.buffered_input(&"jump"):
 		return &"DummyJump"
 
 	if (input.buffered_input(&"spin") and movement.can_spin()):
@@ -46,7 +47,10 @@ func _tell_switch():
 			return &"Idle"
 
 	if Input.is_action_pressed(&"down"):
-		return &"Crouch"
+		if movement.is_slide_slope():
+			return &"ButtSlide"
+		else: 
+			return &"Crouch"
 
 	if InputManager.get_x() != 0 and actor.is_on_wall():
 		if actor.push_ray.is_colliding():

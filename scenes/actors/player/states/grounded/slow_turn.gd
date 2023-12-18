@@ -27,14 +27,14 @@ func _tell_switch():
 		else:
 			return &"Walk"
 
-	if Input.is_action_just_pressed(&"jump"):
+	if (input.buffered_input(&"spin") and movement.can_spin()):
+		return &"Spin"
+
+	if input.buffered_input(&"jump"):
 		return &"Sideflip"
 
 	if Input.is_action_pressed(&"down"):
 		return &"Crouch"
-
-	if (input.buffered_input(&"spin") and movement.can_spin()):
-		return &"Spin"
 
 	if Input.is_action_just_pressed(&"dive"):
 		return &"AirborneDive"

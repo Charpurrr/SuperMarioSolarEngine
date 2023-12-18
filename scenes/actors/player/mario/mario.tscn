@@ -1,9 +1,10 @@
-[gd_scene load_steps=189 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=193 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://scenes/actors/player/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://cut0vcslnatgi" path="res://scenes/actors/player/mario/audio_visual_avfx/anime/backflip.png" id="2_i2o54"]
 [ext_resource type="Texture2D" uid="uid://ccfxaveftr1f0" path="res://scenes/actors/player/mario/audio_visual_avfx/anime/crouch.png" id="3_0c1gq"]
 [ext_resource type="Script" path="res://scenes/actors/player/player_movement.gd" id="3_3mh1j"]
+[ext_resource type="Texture2D" uid="uid://iobst2en0jj5" path="res://scenes/actors/player/mario/audio_visual_avfx/anime/buttslide.png" id="3_pusam"]
 [ext_resource type="Texture2D" uid="uid://71qmcohslma0" path="res://scenes/actors/player/mario/audio_visual_avfx/anime/dive.png" id="4_0hrc4"]
 [ext_resource type="Texture2D" uid="uid://dunegtt073xey" path="res://scenes/actors/player/mario/audio_visual_avfx/anime/crouchwalk.png" id="4_b56cl"]
 [ext_resource type="Texture2D" uid="uid://cng184m5tspum" path="res://scenes/actors/player/mario/audio_visual_avfx/anime/double_fall.png" id="5_0w3l2"]
@@ -50,12 +51,14 @@
 [ext_resource type="Script" path="res://scenes/actors/player/states/grounded/crouch_walk.gd" id="39_eiqna"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/wallslide.gd" id="40_hk2sj"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/walljump.gd" id="41_re2yk"]
+[ext_resource type="Script" path="res://scenes/actors/player/states/grounded/butt_slide.gd" id="42_f7r2o"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/grounded/groundpound_land.gd" id="42_q3uxx"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/dummy_jump.gd" id="44_f7pc6"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/groundpound.gd" id="46_4mnp2"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/groundpound_fall.gd" id="47_bnupp"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/spin.gd" id="50_mq1bv"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/air_dive.gd" id="54_rdldk"]
+[ext_resource type="Script" path="res://scenes/actors/player/states/airborne/spinjump.gd" id="56_j6jt4"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/groundpound_jump.gd" id="57_2m6wb"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/twirl.gd" id="57_dqusk"]
 [ext_resource type="Script" path="res://scenes/actors/player/player_camera.gd" id="61_0shyc"]
@@ -123,6 +126,14 @@ region = Rect2(672, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_dego1"]
 atlas = ExtResource("2_i2o54")
 region = Rect2(720, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bd11w"]
+atlas = ExtResource("3_pusam")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47s6i"]
+atlas = ExtResource("3_pusam")
+region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_au3y7"]
 atlas = ExtResource("3_0c1gq")
@@ -633,6 +644,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_bd11w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47s6i")
+}],
+"loop": true,
+"name": &"butt_slide",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_au3y7")
 }, {
 "duration": 1.0,
@@ -640,7 +662,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"crouch",
-"speed": 12.0
+"speed": 18.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1155,10 +1177,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u4b58"]
-size = Vector2(16, 17)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_nh8pl"]
-radius = 8.0
+size = Vector2(16, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1emcl"]
 size = Vector2(16, 16)
@@ -1166,13 +1185,15 @@ size = Vector2(16, 16)
 [node name="Mario" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 3
+floor_constant_speed = true
 floor_max_angle = 1.55334
 script = ExtResource("1_3d0l6")
 
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_hmp25")
-animation = &"gp_land"
+animation = &"butt_slide"
+frame_progress = 0.310693
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Doll"]
 unique_name_in_owner = true
@@ -1183,20 +1204,11 @@ libraries = {
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -15.5)
+position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_u4b58")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -24)
-shape = SubResource("CircleShape2D_nh8pl")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(0, -8)
-shape = SubResource("CircleShape2D_nh8pl")
 
 [node name="SmallHitbox" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
-visible = false
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_1emcl")
 
@@ -1285,6 +1297,10 @@ script = ExtResource("42_q3uxx")
 animation = &"gp_land"
 anim_offset = Vector2i(0, 9)
 
+[node name="ButtSlide" type="Node" parent="StateManager/Grounded"]
+script = ExtResource("42_f7r2o")
+animation = &"butt_slide"
+
 [node name="Airborne" type="Node" parent="StateManager"]
 script = ExtResource("20_at07q")
 
@@ -1363,15 +1379,19 @@ min_jump_percent = 35.0
 jump_number = 1
 animation = &"gp_jump"
 
+[node name="Spinjump" type="Node" parent="StateManager/Airborne"]
+script = ExtResource("56_j6jt4")
+spin_power = 4.0
+wall_kickback_power_y = 1.8
+
 [node name="AirborneDive" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("54_rdldk")
-x_power = 5.0
-y_power = 1.88
+min_x_power = 2.5
 animation = &"dive"
 
 [node name="Twirl" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("57_dqusk")
-spin_power = 0.5
+spin_power = 0.25
 wall_kickback_power_y = 1.8
 animation = &"spin_attack"
 
@@ -1384,6 +1404,6 @@ animation = &"spin_attack"
 [node name="Camera" type="Node2D" parent="."]
 script = ExtResource("61_0shyc")
 zoom = 2.0
-offset = Vector2(0, 400)
+offset = Vector2(0, 200)
 
 [connection signal="animation_finished" from="Doll/AnimationPlayer" to="StateManager/Airborne/GroundPound" method="_on_animation_player_animation_finished"]

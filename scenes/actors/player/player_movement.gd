@@ -76,6 +76,11 @@ const FREEFALL_TIME: int = 100
 var freefall_timer: int = -1
 #endregion
 
+## Minimum angle of slope needed to start a buttslide.
+@export var slide_angle: float = 0.61
+## Minimum angle of slope needed to be considered a steep slope.
+@export var steep_angle: float = 0.87
+
 var facing_direction: int = 1
 
 ## Amount of consecutive jumps performed for a triple jump.
@@ -257,6 +262,16 @@ func consume_grounded_spin_timer() -> void:
 
 
 #region Check Functions
+## Check if the slope below the player is a slidable one (in radians.)
+func is_slide_slope() -> bool:
+	return actor.get_floor_angle() >= slide_angle
+
+
+## Check if the slope below the player is a steep one (in radians.)
+func is_steep_slope() -> bool:
+	return actor.get_floor_angle() >= steep_angle
+
+
 ## Whether or not the jump can be variated (released).
 func can_release_jump(applied_variation: bool, min_jump_power: float) -> bool:
 	return (not Input.is_action_pressed(&"jump") 

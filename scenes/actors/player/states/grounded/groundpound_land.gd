@@ -12,14 +12,14 @@ func _on_enter(_handover):
 
 
 func _tell_switch():
+	if (input.buffered_input(&"spin") and movement.can_spin()):
+		return &"Spin"
+
 	if input.buffered_input(&"jump"):
 		return &"GroundPoundJump"
 
 	if Input.is_action_pressed(&"down"):
 		return &"Crouch"
-
-	if (input.buffered_input(&"spin") and movement.can_spin()):
-		return &"Spin"
 
 	if can_ignore and input_direction != 0:
 		return &"Idle"

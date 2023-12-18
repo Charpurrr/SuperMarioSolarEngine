@@ -21,7 +21,7 @@ func _on_enter(_handover):
 func _cycle_tick():
 	# Moving in the direction opposite to your backflip.
 	if input_direction != movement.facing_direction:
-		movement.move_x(0.04, false)
+		movement.move_x(0.05, false)
 	# Moving in the direction toward your backflip.
 	elif input_direction != 0:
 		movement.move_x(0.06, false)
@@ -40,7 +40,7 @@ func _tell_switch():
 	if movement.can_wallslide():
 		return &"Wallslide"
 
-	if input.buffered_input(&"spin"):
+	if (input.buffered_input(&"spin") and movement.can_spin()):
 		return &"Spin"
 
 	if Input.is_action_just_pressed(&"dive") and movement.can_air_action():

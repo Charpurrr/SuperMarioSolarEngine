@@ -43,10 +43,13 @@ func _tell_switch():
 	if not Input.is_action_pressed(&"down"):
 		return &"Idle"
 
+	if movement.is_slide_slope():
+		return &"ButtSlide"
+
 	if _can_crouchwalk():
 		return &"CrouchWalk"
 
-	if Input.is_action_just_pressed(&"jump"):
+	if input.buffered_input(&"jump"):
 		return &"Backflip"
 
 	return &""

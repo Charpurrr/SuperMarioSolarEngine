@@ -85,6 +85,9 @@ func _tell_switch():
 			return &"Wallslide"
 
 	else:
+		if input.buffered_input(&"jump"):
+			return &"Spinjump"
+
 		if not actor.doll.is_playing():
 			return &"Idle"
 

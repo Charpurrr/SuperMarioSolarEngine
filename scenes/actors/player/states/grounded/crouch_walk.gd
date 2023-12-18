@@ -28,7 +28,7 @@ func _tell_switch():
 	if (input_direction == 0 or actor.is_on_wall()):
 		return [&"Crouch", true]
 
-	if Input.is_action_just_pressed(&"jump"):
+	if input.buffered_input(&"jump"):
 		return &"Backflip"
 
 	if not Input.is_action_pressed(&"down"):
