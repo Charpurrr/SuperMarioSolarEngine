@@ -28,11 +28,11 @@ func _on_exit():
 
 
 func _tell_switch():
-	if input.buffered_input(&"jump"):
-		return &"DummyJump"
-
 	if (input.buffered_input(&"spin") and movement.can_spin()):
 		return &"Spin"
+
+	if input.buffered_input(&"jump"):
+		return &"DummyJump"
 
 	if Input.is_action_just_pressed(&"dive"):
 		return &"AirborneDive"

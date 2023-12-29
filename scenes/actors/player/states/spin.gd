@@ -22,7 +22,7 @@ func _on_enter(_handover):
 
 	if is_airspin:
 		if input.get_last_x() != sign(actor.vel.x):
-			actor.vel.x = abs(actor.vel.x) * sign(input.get_last_x()) * 0.5
+			actor.vel.x *= 0.5
 
 		actor.vel.y = -spin_power
 

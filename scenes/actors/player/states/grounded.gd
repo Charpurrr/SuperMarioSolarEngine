@@ -7,11 +7,7 @@ func _on_enter(_handover):
 	movement.activate_consec_timer()
 	movement.consume_freefall_timer()
 
-
-func _cycle_tick():
-	actor.set_floor_snap_length(100.0)
-	actor.movement.body_rotation = actor.get_floor_angle() * actor.movement.facing_direction
-	actor.doll.rotation = actor.movement.body_rotation
+	actor.set_floor_snap_length(8.0)
 
 
 func _tell_switch():

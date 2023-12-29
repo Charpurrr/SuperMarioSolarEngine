@@ -10,11 +10,10 @@ extends PlayerState
 
 func _on_enter(_handover):
 	movement.consume_coyote_timer()
+	movement.consec_jumps = 0
 
 	actor.hitbox.disabled = true
 	actor.small_hitbox.disabled = false
-
-	#actor.vel.x += ((x_power - abs(actor.vel.x)) / 5 * movement.facing_direction)
 
 	movement.accelerate(x_power, input_direction, x_power)
 	actor.vel.x = max(min_x_power, abs(actor.vel.x)) * movement.facing_direction

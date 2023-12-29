@@ -1,10 +1,46 @@
-[gd_scene load_steps=6 format=3 uid="uid://ernfgv2twpy4"]
+[gd_scene load_steps=18 format=3 uid="uid://ernfgv2twpy4"]
 
+[ext_resource type="Script" path="res://scenes/props/terrains/funny_terrain.gd" id="1_aqn3p"]
 [ext_resource type="PackedScene" uid="uid://dgqp3sqvmcvpu" path="res://scenes/actors/player/mario/mario.tscn" id="1_cq4tv"]
-[ext_resource type="Texture2D" uid="uid://cp72kjmmxv6wq" path="res://scenes/props/terrains/grass/dirt.png" id="2_llkx0"]
 [ext_resource type="Script" path="res://scenes/props/terrains/terrain.gd" id="3_jfqwu"]
 [ext_resource type="PackedScene" uid="uid://ccj3teu3h6xfm" path="res://scenes/ui/ui.tscn" id="4_17jpa"]
+[ext_resource type="Shader" path="res://util/outline.gdshader" id="4_32cwk"]
+[ext_resource type="Texture2D" uid="uid://copqfjlenn2tm" path="res://scenes/props/terrains/grate.png" id="4_iopjo"]
 [ext_resource type="Script" path="res://scenes/ui/label.gd" id="5_o36pd"]
+[ext_resource type="Texture2D" uid="uid://d27j0du7v2ptb" path="res://scenes/ui/polyline_segment1.png" id="7_q35h4"]
+[ext_resource type="Texture2D" uid="uid://gbtr8cftocek" path="res://scenes/ui/polyline_segment2.png" id="8_mxh75"]
+[ext_resource type="Texture2D" uid="uid://cc3coo8btj5hk" path="res://scenes/ui/polyline_segment3.png" id="9_ixddv"]
+[ext_resource type="Texture2D" uid="uid://bideu3lrgywmv" path="res://scenes/ui/polyline_segment4.png" id="10_3ff85"]
+[ext_resource type="Texture2D" uid="uid://b5tnwrbn5wuaw" path="res://scenes/ui/polyline_segment5.png" id="11_68t5h"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qm5on"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xwd0d"]
+shader = ExtResource("4_32cwk")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yielt"]
+size = Vector2(32, 32)
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_akk4i"]
+frames = 5
+speed_scale = 20.0
+frame_0/texture = ExtResource("7_q35h4")
+frame_1/texture = ExtResource("8_mxh75")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("9_ixddv")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("10_3ff85")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("11_68t5h")
+frame_4/duration = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fqbrv"]
+radius = 4.0
 
 [node name="FunnySlopeTest" type="Node2D"]
 
@@ -13,14 +49,16 @@ floor_snap_length = 0.0
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 texture_repeat = 2
-texture = ExtResource("2_llkx0")
+texture = SubResource("PlaceholderTexture2D_qm5on")
 polygon = PackedVector2Array(-64, 0, 384, 0, 640, -64, 896, 0, 1152, 0, 1280, -64, 1408, 0, 1600, 0, 1664, -64, 1728, 0, 1920, 0, 1984, -128, 2048, 0, 2240, 0, 2272, -128, 2304, 0, 2496, 0, 2496, 256, -64, 256)
 script = ExtResource("3_jfqwu")
 
-[node name="Polygon2D2" type="Polygon2D" parent="."]
+[node name="Polygon2D3" type="Polygon2D" parent="."]
 texture_repeat = 2
-texture = ExtResource("2_llkx0")
-polygon = PackedVector2Array(2496, 0, 2536, -48, 2576, 0, 2752, 0, 2752, 256, 2496, 256)
+material = SubResource("ShaderMaterial_xwd0d")
+position = Vector2(432, -168)
+texture = ExtResource("4_iopjo")
+polygon = PackedVector2Array(32, 0, 32, 32, 0, 32, 0, 0)
 script = ExtResource("3_jfqwu")
 
 [node name="UI" parent="." instance=ExtResource("4_17jpa")]
@@ -31,3 +69,29 @@ offset_bottom = 23.0
 text = "velocity.x = 0"
 script = ExtResource("5_o36pd")
 player = NodePath("../../Mario")
+
+[node name="StaticBody2D" type="RigidBody2D" parent="."]
+position = Vector2(-208, -32)
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_yielt")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
+
+[node name="FunnyTerrain" type="Line2D" parent="."]
+texture_repeat = 2
+width = 2.0
+texture = SubResource("AnimatedTexture_akk4i")
+texture_mode = 1
+script = ExtResource("1_aqn3p")
+
+[node name="Button" type="Area2D" parent="FunnyTerrain"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FunnyTerrain/Button"]
+shape = SubResource("CircleShape2D_fqbrv")
+
+[connection signal="input_event" from="FunnyTerrain/Button" to="FunnyTerrain" method="_on_button_input_event"]
