@@ -6,7 +6,7 @@ extends State
 ## The name of the animation that this state should play.
 @export var animation := &""
 ## How many pixels the animation needs to be offset.
-@export var anim_offset := Vector2i()
+@export var anim_offset: Vector2i
 
 @onready var input: InputManager = null
 @onready var movement: PMovement = null
