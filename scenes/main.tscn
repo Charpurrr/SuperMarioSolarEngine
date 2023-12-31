@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dnt67y0j7e0ap" path="res://scenes/props/tilesets/tiles.tscn" id="2_wo75n"]
 [ext_resource type="Texture2D" uid="uid://45bmeug2usc7" path="res://scenes/props/bgs/space.png" id="4_7xhvw"]
 [ext_resource type="Shader" path="res://scenes/props/environment_light.gdshader" id="4_bmtu7"]
-[ext_resource type="Texture2D" uid="uid://dlodr50epcaqe" path="res://scenes/props/terrains/grass/dirt.png" id="5_eal23"]
+[ext_resource type="Texture2D" uid="uid://cp72kjmmxv6wq" path="res://scenes/props/terrains/grass/dirt.png" id="5_eal23"]
 [ext_resource type="PackedScene" uid="uid://ccj3teu3h6xfm" path="res://scenes/ui/ui.tscn" id="5_rg8ge"]
 [ext_resource type="Script" path="res://scenes/props/terrains/terrain.gd" id="6_2btxk"]
 [ext_resource type="AudioStream" uid="uid://rdadrrqvsy6s" path="res://scenes/music/CalmBeforetheStorm.ogg" id="6_c0eeh"]

@@ -15,7 +15,12 @@ func _physics_process(_delta):
 		return
 	else:
 		if Input.is_action_just_pressed("end_polygon_creation"):
-			pass
+			var body := Polygon2D.new()
+
+			body.polygon = points
+			body.position = position
+
+			get_parent().call_deferred("add_child", body)
 
 func _draw():
 	_draw_point()

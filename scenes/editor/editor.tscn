@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfrw3lh0b17ri"]
+
+[ext_resource type="Script" path="res://scenes/editor/editor_camera.gd" id="1_7pwxt"]
+[ext_resource type="Texture2D" uid="uid://dpo6gt5rpnscv" path="res://icon.svg" id="2_nknx2"]
+
+[node name="Editor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EditorCam" type="Camera2D" parent="."]
+anchor_mode = 0
+position_smoothing_enabled = true
+script = ExtResource("1_7pwxt")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(560, 352)
+texture = ExtResource("2_nknx2")
