@@ -46,6 +46,7 @@ func _cycle_tick():
 		movement.move_x("air", false)
 	else:
 		movement.move_x("ground", false)
+		input.queue_consume(&"spin")
 
 	if not actor.doll.is_playing():
 		finished_init = true

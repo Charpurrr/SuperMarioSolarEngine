@@ -28,7 +28,7 @@ func _on_exit():
 
 
 func _tell_switch():
-	if (input.buffered_input(&"spin") and movement.can_spin()):
+	if movement.can_spin() and input.buffered_input(&"spin"):
 		return &"Spin"
 
 	if input.buffered_input(&"jump"):

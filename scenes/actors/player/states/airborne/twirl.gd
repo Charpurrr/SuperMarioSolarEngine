@@ -16,7 +16,8 @@ var finished_init: bool
 
 
 func _on_enter(_handover):
-	actor.vel.y = -spin_power
+	if movement.can_air_action():
+		actor.vel.y = -spin_power
 
 	movement.activate_freefall_timer()
 	movement.consume_coyote_timer()
@@ -45,6 +46,9 @@ func _on_exit():
 
 
 func _tell_switch():
+	if not movement.can_air_action():
+		return &"Spin"
+
 	if actor.is_on_floor():
 		return &"Idle"
 

@@ -1390,7 +1390,7 @@ animation = &"dive"
 
 [node name="Twirl" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("57_dqusk")
-spin_power = 0.25
+spin_power = 0.125
 wall_kickback_power_y = 1.8
 animation = &"spin_attack"
 

@@ -25,7 +25,7 @@ func _tell_switch():
 	elif input_direction == -movement.facing_direction:
 		return &"TurnSkid"
 
-	if (input.buffered_input(&"spin") and movement.can_spin()):
+	if movement.can_spin() and input.buffered_input(&"spin"):
 		return &"Spin"
 
 	if input.buffered_input(&"jump"):

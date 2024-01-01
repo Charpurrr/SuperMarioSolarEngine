@@ -7,7 +7,7 @@ extends Node
 var live_substate: State = null
 
 ## The target of this state machine's behavior.
-var actor: CharacterBody2D = null
+var actor: Node = null
 
 ## The root of the state machine.
 var manager: StateManager = null
