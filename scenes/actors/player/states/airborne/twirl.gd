@@ -47,13 +47,13 @@ func _on_exit():
 
 func _tell_switch():
 	if actor.is_on_floor():
-		if not finished_init:
-			return &"Spin"
-		else:
-			return &"Idle"
+		return &"Idle"
 
-	if finished_init and input.buffered_input(&"spin"):
+	if finished_init and movement.can_air_action() and input.buffered_input(&"spin"):
 		reset_state()
+
+	if not movement.can_air_action() and input.buffered_input(&"spin"):
+		return &"Spin"
 
 	if movement.finished_freefall_timer():
 		return &"Freefall"
