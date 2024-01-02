@@ -49,7 +49,7 @@ func _tell_switch():
 	if actor.is_on_floor():
 		return &"Idle"
 
-	if finished_init and input.buffered_input(&"spin"):
+	if finished_init and actor.vel.y > 0 and input.buffered_input(&"spin"):
 		return &"Twirl"
 
 	if movement.finished_freefall_timer():
