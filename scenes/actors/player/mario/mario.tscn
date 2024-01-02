@@ -1,4 +1,4 @@
-[gd_scene load_steps=195 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=199 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://scenes/actors/player/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://cut0vcslnatgi" path="res://scenes/actors/player/mario/audio_visual_avfx/anime/backflip.png" id="2_i2o54"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bqyc4a8h23h1" path="res://scenes/actors/player/mario/audio_visual_avfx/anime/fall.png" id="5_xpfyn"]
 [ext_resource type="Texture2D" uid="uid://0stpt02oj3gc" path="res://scenes/actors/player/mario/audio_visual_avfx/anime/double_jump.png" id="6_b0k2k"]
 [ext_resource type="Texture2D" uid="uid://bqelaoqudiigg" path="res://scenes/actors/player/mario/audio_visual_avfx/anime/freefall.png" id="6_bo6cm"]
+[ext_resource type="Texture2D" uid="uid://c1re3wsiqbvbl" path="res://scenes/actors/player/mario/audio_visual_avfx/anime/diveslide.png" id="7_wwk88"]
 [ext_resource type="Script" path="res://scenes/actors/player/push_ray.gd" id="8_qbkd3"]
 [ext_resource type="Texture2D" uid="uid://bjqptf8hd7sgj" path="res://scenes/actors/player/mario/audio_visual_avfx/anime/groundpound.png" id="9_m0w8d"]
 [ext_resource type="Texture2D" uid="uid://cx8otjotpvqfc" path="res://scenes/actors/player/mario/audio_visual_avfx/anime/groundpound_jump.png" id="11_1j7yv"]
@@ -54,6 +55,7 @@
 [ext_resource type="Script" path="res://scenes/actors/player/states/grounded/butt_slide.gd" id="42_f7r2o"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/grounded/groundpound_land.gd" id="42_q3uxx"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/dummy_jump.gd" id="44_f7pc6"]
+[ext_resource type="Script" path="res://scenes/actors/player/states/grounded/dive_slide.gd" id="45_alo0d"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/groundpound.gd" id="46_4mnp2"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/groundpound_fall.gd" id="47_bnupp"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/spin.gd" id="50_mq1bv"]
@@ -170,6 +172,10 @@ region = Rect2(48, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_r6ble"]
 atlas = ExtResource("4_0hrc4")
 region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrm3h"]
+atlas = ExtResource("7_wwk88")
+region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v3xok"]
 atlas = ExtResource("5_0w3l2")
@@ -705,6 +711,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_xrm3h")
+}],
+"loop": false,
+"name": &"dive_slide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_v3xok")
 }, {
 "duration": 1.0,
@@ -1196,6 +1210,9 @@ size = Vector2(16, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1emcl"]
 size = Vector2(16, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c86nk"]
+size = Vector2(16, 16)
+
 [node name="Mario" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 3
@@ -1206,9 +1223,7 @@ script = ExtResource("1_3d0l6")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_hmp25")
-animation = &"dive"
-frame = 2
-frame_progress = 1.0
+animation = &"dive_slide"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Doll"]
 unique_name_in_owner = true
@@ -1218,14 +1233,16 @@ libraries = {
 }
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-unique_name_in_owner = true
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_u4b58")
 
 [node name="SmallHitbox" type="CollisionShape2D" parent="."]
-unique_name_in_owner = true
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_1emcl")
+
+[node name="DiveHitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_c86nk")
 
 [node name="PushRay" type="RayCast2D" parent="." node_paths=PackedStringArray("movement")]
 modulate = Color(1, 1, 0.164706, 1)
@@ -1315,6 +1332,10 @@ anim_offset = Vector2i(0, 9)
 [node name="ButtSlide" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("42_f7r2o")
 animation = &"butt_slide"
+
+[node name="DiveSlide" type="Node" parent="StateManager/Grounded"]
+script = ExtResource("45_alo0d")
+animation = &"dive_slide"
 
 [node name="Airborne" type="Node" parent="StateManager"]
 script = ExtResource("20_at07q")

@@ -13,7 +13,8 @@ func _on_enter(_handover):
 	movement.consec_jumps = 0
 
 	actor.hitbox.disabled = true
-	actor.small_hitbox.disabled = false
+	actor.small_hitbox.disabled = true
+	actor.dive_hitbox.disabled = false
 
 	movement.accelerate(x_power, input_direction, x_power)
 	actor.vel.x = max(min_x_power, abs(actor.vel.x)) * movement.facing_direction
@@ -32,15 +33,12 @@ func _post_tick():
 
 
 func _on_exit():
-	actor.hitbox.disabled = false
-	actor.small_hitbox.disabled = true
+	movement.body_rotation = PI/2
 
-	movement.body_rotation = 0
-	actor.doll.rotation = 0
 
 func _tell_switch():
-	#if actor.is_on_floor():
-		#return &"DiveSlide"
+	if actor.is_on_floor():
+		return &"DiveSlide"
 
 	if Input.is_action_just_pressed(&"down") and movement.can_air_action():
 		return &"GroundPound"

@@ -11,6 +11,7 @@ var skip_first_frame: bool = false
 func _on_enter(handover):
 	actor.hitbox.disabled = true
 	actor.small_hitbox.disabled = false
+	actor.dive_hitbox.disabled = true
 
 	if handover != null:
 		skip_first_frame = handover
@@ -29,6 +30,7 @@ func _cycle_tick():
 func _on_exit():
 	actor.hitbox.disabled = false
 	actor.small_hitbox.disabled = true
+	actor.dive_hitbox.disabled = true
 
 	skip_first_frame = false
 

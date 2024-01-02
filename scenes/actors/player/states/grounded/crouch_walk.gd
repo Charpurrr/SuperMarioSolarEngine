@@ -6,6 +6,7 @@ extends PlayerState
 func _on_enter(_handover):
 	actor.hitbox.disabled = true
 	actor.small_hitbox.disabled = false
+	actor.dive_hitbox.disabled = true
 
 
 func _cycle_tick():
@@ -20,6 +21,7 @@ func _cycle_tick():
 func _on_exit():
 	actor.hitbox.disabled = false
 	actor.small_hitbox.disabled = true
+	actor.dive_hitbox.disabled = true
 
 	actor.doll.speed_scale = 1
 

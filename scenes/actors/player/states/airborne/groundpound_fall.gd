@@ -16,7 +16,10 @@ func _tell_switch():
 	if actor.is_on_floor():
 		return &"GroundPoundLand"
 
-	if Input.is_action_just_pressed("up"):
+	if movement.can_air_action() and Input.is_action_just_pressed(&"dive"):
+		return &"AirborneDive"
+
+	if Input.is_action_just_pressed(&"up"):
 		return &"Fall"
 
 	return &""

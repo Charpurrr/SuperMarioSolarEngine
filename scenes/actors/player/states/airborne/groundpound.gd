@@ -17,6 +17,9 @@ func _on_enter(_handover):
 
 
 func _tell_switch():
+	if Input.is_action_just_pressed(&"dive"):
+		return &"AirborneDive"
+
 	if not actor.doll.is_playing():
 		return &"GroundPoundFall"
 
