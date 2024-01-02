@@ -1,4 +1,4 @@
-[gd_scene load_steps=193 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=195 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://scenes/actors/player/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://cut0vcslnatgi" path="res://scenes/actors/player/mario/audio_visual_avfx/anime/backflip.png" id="2_i2o54"]
@@ -159,9 +159,17 @@ region = Rect2(96, 0, 48, 48)
 atlas = ExtResource("4_b56cl")
 region = Rect2(144, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iweg8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajcvd"]
 atlas = ExtResource("4_0hrc4")
-region = Rect2(0, 0, 22, 36)
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7n8jl"]
+atlas = ExtResource("4_0hrc4")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6ble"]
+atlas = ExtResource("4_0hrc4")
+region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v3xok"]
 atlas = ExtResource("5_0w3l2")
@@ -683,11 +691,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iweg8")
+"texture": SubResource("AtlasTexture_ajcvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7n8jl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6ble")
 }],
-"loop": true,
+"loop": false,
 "name": &"dive",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1192,7 +1206,9 @@ script = ExtResource("1_3d0l6")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_hmp25")
-animation = &"gp"
+animation = &"dive"
+frame = 2
+frame_progress = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Doll"]
 unique_name_in_owner = true

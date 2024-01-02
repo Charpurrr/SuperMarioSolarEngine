@@ -11,7 +11,7 @@ func _tell_switch():
 	if actor.is_on_floor():
 		return &"Grounded"
 
-	if input.buffered_input(&"jump") and movement.active_coyote_time():
+	if movement.active_coyote_time() and input.buffered_input(&"jump"):
 		return &"Jump"
 
 	return &""

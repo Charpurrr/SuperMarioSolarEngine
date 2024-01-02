@@ -23,6 +23,7 @@ func _physics_process(_delta):
 func trigger_enter(handover):
 	super(handover)
 
-	if not animation == &"":
+	if not animation.is_empty():
 		actor.doll.play(animation)
-		actor.doll.offset = anim_offset
+
+	actor.doll.offset = anim_offset

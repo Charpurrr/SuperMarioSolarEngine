@@ -19,11 +19,7 @@ func _on_enter(_handover):
 
 
 func _cycle_tick():
-	# Moving in the direction opposite to your backflip.
-	if input_direction != movement.facing_direction:
-		movement.move_x(0.05, false)
-	# Moving in the direction toward your backflip.
-	elif input_direction != 0:
+	if input_direction != 0:
 		movement.move_x(0.06, false)
 
 	if actor.vel.y > 0 and not start_freefall_timer:
@@ -33,7 +29,7 @@ func _cycle_tick():
 
 
 func _post_tick():
-	movement.apply_gravity(-actor.vel.y / jump_power)
+	movement.apply_gravity()
 
 
 func _tell_switch():

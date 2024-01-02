@@ -8,7 +8,7 @@ func _on_enter(_handover):
 
 
 func _tell_switch():
-	if input.buffered_input(&"spin") and movement.can_spin():
+	if movement.can_spin() and input.buffered_input(&"spin"):
 		return &"Spin"
 
 	if Input.is_action_just_pressed(&"dive") and movement.can_air_action():

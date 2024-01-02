@@ -120,7 +120,7 @@ func probe_switch(defer: bool = false) -> void:
 			link_name = data
 	
 	# Only switch if we need to
-	if link_name != &"":
+	if not link_name.is_empty():
 		var link = _get_link(link_name)
 		_switch_leaf(link, handover)
 

@@ -34,11 +34,11 @@ func _pre_tick():
 	# Gravity needs to be applied when a grounded spin is buffered.
 	# (Pressing the spin actions while being a few units from the ground.)
 	if not is_airspin:
-		movement.apply_gravity(-actor.vel.y / spin_power)
+		movement.apply_gravity()
 
 
 func _post_tick():
-	movement.apply_gravity(-actor.vel.y / spin_power)
+	movement.apply_gravity()
 
 
 func _cycle_tick():
@@ -73,7 +73,7 @@ func _tell_switch():
 		if actor.is_on_floor():
 			return &"Idle"
 
-		if input.buffered_input(&"spin") and finished_init:
+		if finished_init and movement.can_air_action() and input.buffered_input(&"spin"):
 			return &"Twirl"
 
 		if movement.finished_freefall_timer():
@@ -86,11 +86,10 @@ func _tell_switch():
 			return &"Wallslide"
 
 	else:
-		if input.buffered_input(&"jump"):
-			return &"Spinjump"
-
 		if not actor.doll.is_playing():
 			return &"Idle"
 
+		if input.buffered_input(&"jump"):
+			return &"Spinjump"
 
 	return &""

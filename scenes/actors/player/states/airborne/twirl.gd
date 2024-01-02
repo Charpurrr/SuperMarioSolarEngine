@@ -24,7 +24,7 @@ func _on_enter(_handover):
 
 
 func _post_tick():
-	movement.apply_gravity(-actor.vel.y / spin_power)
+	movement.apply_gravity()
 
 
 func _cycle_tick():
@@ -46,13 +46,13 @@ func _on_exit():
 
 
 func _tell_switch():
-	if not movement.can_air_action():
-		return &"Spin"
-
 	if actor.is_on_floor():
-		return &"Idle"
+		if not finished_init:
+			return &"Spin"
+		else:
+			return &"Idle"
 
-	if input.buffered_input(&"spin") and finished_init:
+	if finished_init and input.buffered_input(&"spin"):
 		reset_state()
 
 	if movement.finished_freefall_timer():

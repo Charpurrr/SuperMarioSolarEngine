@@ -3,7 +3,7 @@ extends Node
 ## Abstract management of player input.
 ## Should be placed high up in the scene tree so that inputs are processed before they are checked.
 
-const BUFFER_DURATION: int = 100
+const BUFFER_DURATION: int = 8
 
 ## Remaining frames of input buffer for an action. Entries must be defined in _buffer_cache.
 var _buffers: Dictionary = {}
