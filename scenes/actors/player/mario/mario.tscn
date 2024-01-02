@@ -1,4 +1,4 @@
-[gd_scene load_steps=199 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=200 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://scenes/actors/player/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://cut0vcslnatgi" path="res://scenes/actors/player/mario/audio_visual_avfx/anime/backflip.png" id="2_i2o54"]
@@ -64,6 +64,7 @@
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/groundpound_jump.gd" id="57_2m6wb"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/twirl.gd" id="57_dqusk"]
 [ext_resource type="Script" path="res://scenes/actors/player/player_camera.gd" id="61_0shyc"]
+[ext_resource type="Script" path="res://scenes/actors/player/states/airborne/odyssey_dive.gd" id="61_cxojr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_joy5i"]
 atlas = ExtResource("2_i2o54")
@@ -1263,7 +1264,9 @@ script = ExtResource("21_onm15")
 [node name="Movement" type="Node" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("3_3mh1j")
 actor = NodePath("..")
-max_speed = 3.0
+max_speed = 3.2
+ground_accel_time = 45.5
+ground_decel_time = 20.0
 air_accel_time = 38.0
 term_vel = 8.0
 max_grav = 0.22
@@ -1296,6 +1299,7 @@ animation = &"skid"
 
 [node name="SlowTurn" type="Node" parent="StateManager/Grounded/TurnSkid"]
 script = ExtResource("15_am2gs")
+turn_accel_time = 8.0
 animation = &"slow_turn"
 
 [node name="Push" type="Node" parent="StateManager/Grounded"]
@@ -1419,6 +1423,9 @@ animation = &"gp_jump"
 script = ExtResource("56_j6jt4")
 spin_power = 5.3
 wall_kickback_power_y = 1.8
+
+[node name="OdysseyDive" type="Node" parent="StateManager/Airborne"]
+script = ExtResource("61_cxojr")
 
 [node name="AirborneDive" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("54_rdldk")

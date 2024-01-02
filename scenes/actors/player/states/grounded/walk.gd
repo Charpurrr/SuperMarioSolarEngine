@@ -11,7 +11,7 @@ func _cycle_tick():
 	movement.move_x("ground", true)
 
 	# Switch between the running and walking animation depending on your velocity.
-	if abs(actor.vel.x) > movement.max_speed:
+	if roundf(abs(actor.vel.x)) > movement.max_speed:
 		actor.doll.play("run")
 		actor.doll.set_frame_and_progress(current_frame, current_progress)
 

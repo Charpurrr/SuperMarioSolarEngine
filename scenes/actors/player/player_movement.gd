@@ -7,7 +7,7 @@ extends Node
 
 #region X Variables
 ## Max horizontal speed.
-@export var max_speed: float = 2.72
+@export var max_speed: float = 2.8
 
 ## How long it takes to accelerate (when grounded.)
 @export var ground_accel_time: float = 22.5
