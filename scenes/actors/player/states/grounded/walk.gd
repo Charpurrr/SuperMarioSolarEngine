@@ -7,11 +7,13 @@ func _cycle_tick():
 	var current_frame = actor.doll.get_frame()
 	var current_progress = actor.doll.get_frame_progress()
 
+	print(abs(actor.vel.x))
+
 	movement.activate_coyote_timer()
 	movement.move_x("ground", true)
 
 	# Switch between the running and walking animation depending on your velocity.
-	if roundf(abs(actor.vel.x)) > movement.max_speed:
+	if Math.roundp(abs(actor.vel.x), 3) > movement.max_speed:
 		actor.doll.play("run")
 		actor.doll.set_frame_and_progress(current_frame, current_progress)
 

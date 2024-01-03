@@ -780,6 +780,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nw1i4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5twte")
 }],
 "loop": false,
 "name": &"gp",
@@ -1224,7 +1227,7 @@ script = ExtResource("1_3d0l6")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_hmp25")
-animation = &"dive_slide"
+animation = &"gp"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Doll"]
 unique_name_in_owner = true
@@ -1260,6 +1263,7 @@ script = ExtResource("23_k0i43")
 
 [node name="InputManager" type="Node" parent="."]
 script = ExtResource("21_onm15")
+buffer_duration = 100
 
 [node name="Movement" type="Node" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("3_3mh1j")
@@ -1404,6 +1408,7 @@ anim_offset = Vector2i(0, 5)
 
 [node name="GroundPound" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("46_4mnp2")
+linger_time = 5.0
 animation = &"gp"
 anim_offset = Vector2i(0, 9)
 
@@ -1426,10 +1431,11 @@ wall_kickback_power_y = 1.8
 
 [node name="OdysseyDive" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("61_cxojr")
+animation = &"dive"
 
 [node name="AirborneDive" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("54_rdldk")
-min_x_power = 2.5
+min_x_power = 3.0
 animation = &"dive"
 
 [node name="Twirl" type="Node" parent="StateManager/Airborne"]

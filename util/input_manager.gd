@@ -3,7 +3,9 @@ extends Node
 ## Abstract management of player input.
 ## Should be placed high up in the scene tree so that inputs are processed before they are checked.
 
-const BUFFER_DURATION: int = 8
+
+## Amount of frames a buffered input lasts.
+@export var buffer_duration: int = 8
 
 ## Remaining frames of input buffer for an action. Entries must be defined in _buffer_cache.
 var _buffers: Dictionary = {}
@@ -97,7 +99,7 @@ func _burn_buffers() -> void:
 func _spark_buffers() -> void:
 	for id in _buffers:
 		if Input.is_action_just_pressed(id):
-			_buffers[id] = BUFFER_DURATION
+			_buffers[id] = buffer_duration
 
 
 ## Consume the buffers that have been queued to be consumed.
