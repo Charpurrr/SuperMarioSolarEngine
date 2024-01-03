@@ -1,4 +1,4 @@
-[gd_scene load_steps=200 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=206 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://scenes/actors/player/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://cut0vcslnatgi" path="res://scenes/actors/player/mario/audio_visual_avfx/anime/backflip.png" id="2_i2o54"]
@@ -58,8 +58,14 @@
 [ext_resource type="Script" path="res://scenes/actors/player/states/grounded/dive_slide.gd" id="45_alo0d"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/groundpound.gd" id="46_4mnp2"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/groundpound_fall.gd" id="47_bnupp"]
+[ext_resource type="AudioStream" uid="uid://bnq5hgt6mos3" path="res://scenes/actors/player/mario/audio_visual_avfx/sfx/airborne/Jump1.wav" id="49_gqevt"]
+[ext_resource type="AudioStream" uid="uid://dp1rhi7lditkw" path="res://scenes/actors/player/mario/audio_visual_avfx/sfx/airborne/Jump2.wav" id="50_4fyf5"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/spin.gd" id="50_mq1bv"]
+[ext_resource type="AudioStream" uid="uid://dhadje3n76kwy" path="res://scenes/actors/player/mario/audio_visual_avfx/sfx/airborne/Jump3.wav" id="51_wbvww"]
+[ext_resource type="AudioStream" uid="uid://dfoho8ux01xnw" path="res://scenes/actors/player/mario/audio_visual_avfx/sfx/airborne/Jump4.wav" id="52_hni5v"]
+[ext_resource type="AudioStream" uid="uid://bxl2hpdipot8i" path="res://scenes/actors/player/mario/audio_visual_avfx/sfx/airborne/Jump5.wav" id="53_7fxg4"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/air_dive.gd" id="54_rdldk"]
+[ext_resource type="AudioStream" uid="uid://3v74kjka7pdw" path="res://scenes/actors/player/mario/audio_visual_avfx/sfx/airborne/Jump6.wav" id="54_yd5re"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/spinjump.gd" id="56_j6jt4"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/groundpound_jump.gd" id="57_2m6wb"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/twirl.gd" id="57_dqusk"]
@@ -1236,6 +1242,9 @@ libraries = {
 "": SubResource("AnimationLibrary_grh7v")
 }
 
+[node name="Voice" type="AudioStreamPlayer" parent="."]
+bus = &"Voices"
+
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_u4b58")
@@ -1357,6 +1366,7 @@ jump_power = 5.3
 min_jump_percent = 20.0
 jump_number = 1
 animation = &"jump"
+sfx = [ExtResource("49_gqevt"), ExtResource("50_4fyf5"), ExtResource("51_wbvww"), ExtResource("52_hni5v"), ExtResource("53_7fxg4"), ExtResource("54_yd5re")]
 
 [node name="DoubleJump" type="Node" parent="StateManager/Airborne/DummyJump"]
 script = ExtResource("36_f2q1o")
