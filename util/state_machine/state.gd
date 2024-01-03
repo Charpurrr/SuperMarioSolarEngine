@@ -74,7 +74,7 @@ func trigger_exit():
 ## Ditch this state and all its descendents,
 ## making this branch of the state tree inactive.
 func ditch_state():
-	_on_exit()
+	trigger_exit()
 
 	# Ditch live descendents
 	if live_substate == null: return
