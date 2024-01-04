@@ -14,7 +14,10 @@ func _on_enter(handover):
 
 
 func _cycle_tick():
-	movement.move_x("air", false)
+	if actor.vel.y < 0:
+		movement.move_x("air", false)
+	else:
+		movement.move_x("air", true)
 
 	if movement.can_release_jump(applied_variation, min_jump_power):
 		applied_variation = true

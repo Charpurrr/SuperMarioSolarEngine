@@ -7,8 +7,6 @@ func _cycle_tick():
 	var current_frame = actor.doll.get_frame()
 	var current_progress = actor.doll.get_frame_progress()
 
-	print(abs(actor.vel.x))
-
 	movement.activate_coyote_timer()
 	movement.move_x("ground", true)
 
