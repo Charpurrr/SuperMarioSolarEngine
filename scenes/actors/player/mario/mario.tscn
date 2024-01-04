@@ -1,4 +1,4 @@
-[gd_scene load_steps=245 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=247 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://scenes/actors/player/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://cut0vcslnatgi" path="res://scenes/actors/player/mario/anime/backflip.png" id="2_i2o54"]
@@ -60,7 +60,7 @@
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/groundpound.gd" id="46_4mnp2"]
 [ext_resource type="AudioStream" uid="uid://14hs5hbn8r80" path="res://scenes/actors/player/mario/voice/groundpound_land2.wav" id="46_ejnxf"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/groundpound_fall.gd" id="47_bnupp"]
-[ext_resource type="AudioStream" uid="uid://ca0csaglq5r5i" path="res://scenes/actors/player/mario/motion/groundpound_land.wav" id="47_pigbl"]
+[ext_resource type="AudioStream" uid="uid://ssibgby10vy2" path="res://scenes/actors/player/mario/motion127/groundpound_land.wav" id="47_komh2"]
 [ext_resource type="AudioStream" uid="uid://d0ueooesw7d8y" path="res://scenes/actors/player/mario/voice/jump1.wav" id="49_2q5ti"]
 [ext_resource type="Script" path="res://scenes/actors/player/sfx.gd" id="49_apkmk"]
 [ext_resource type="AudioStream" uid="uid://jgsu5ymv3exc" path="res://scenes/actors/player/mario/voice/jump2.wav" id="50_1joi3"]
@@ -88,6 +88,7 @@
 [ext_resource type="AudioStream" uid="uid://8tetw3d3qrqa" path="res://scenes/actors/player/mario/voice/spin2.wav" id="76_wbgcl"]
 [ext_resource type="AudioStream" uid="uid://bjeyn212f2hf6" path="res://scenes/actors/player/mario/voice/spin3.wav" id="77_v4501"]
 [ext_resource type="AudioStream" uid="uid://3la1yree4tvo" path="res://scenes/actors/player/mario/motion/spinattack_shine.wav" id="78_6j3mr"]
+[ext_resource type="AudioStream" uid="uid://buddprylyeytj" path="res://scenes/actors/player/mario/motion127/groundpound_fall.wav" id="78_kut5v"]
 [ext_resource type="AudioStream" uid="uid://d1p8j8jgn4h8" path="res://scenes/actors/player/mario/motion/spinattack_wind.wav" id="79_b28yg"]
 [ext_resource type="AudioStream" uid="uid://mig4xhlvfoep" path="res://scenes/actors/player/mario/motion/dive.wav" id="82_2iou6"]
 
@@ -1259,7 +1260,7 @@ cutoff_sfx = true
 
 [sub_resource type="Resource" id="Resource_t5lrn"]
 script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("47_pigbl")]
+sfx_list = [ExtResource("47_komh2")]
 bus = &"Motion"
 cutoff_sfx = false
 
@@ -1326,6 +1327,12 @@ cutoff_sfx = true
 [sub_resource type="Resource" id="Resource_7r27p"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("73_02ncr")]
+bus = &"Motion"
+cutoff_sfx = true
+
+[sub_resource type="Resource" id="Resource_wee2r"]
+script = ExtResource("49_apkmk")
+sfx_list = [ExtResource("78_kut5v")]
 bus = &"Motion"
 cutoff_sfx = true
 
@@ -1422,9 +1429,9 @@ script = ExtResource("21_onm15")
 script = ExtResource("3_3mh1j")
 actor = NodePath("..")
 max_speed = 3.2
-ground_accel_time = 45.5
-ground_decel_time = 20.0
-air_accel_time = 38.0
+ground_accel_time = 17.0
+air_accel_time = 16.0
+air_decel_time = 15.0
 term_vel = 8.0
 max_grav = 0.22
 min_grav = 0.215
@@ -1579,6 +1586,7 @@ force_new = false
 script = ExtResource("47_bnupp")
 animation = &"gp_fall"
 anim_offset = Vector2i(0, 9)
+sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_wee2r")])
 
 [node name="GroundPoundJump" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("57_2m6wb")

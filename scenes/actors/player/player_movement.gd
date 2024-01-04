@@ -11,22 +11,22 @@ extends Node
 
 ## How long it takes to accelerate (when grounded.)
 @export var ground_accel_time: float = 22.5
-var ground_accel_step: float = max_speed / ground_accel_time
+@onready var ground_accel_step: float = max_speed / ground_accel_time
 
 ## How long it takes to decelerate (when grounded.)
 @export var ground_decel_time: float = 13.5
-var ground_decel_step: float = max_speed / ground_decel_time
+@onready var ground_decel_step: float = max_speed / ground_decel_time
 
 ## How long it takes to accelerate (when airborne.)
 @export var air_accel_time: float = 20
-var air_accel_step: float = max_speed / air_accel_time
+@onready var air_accel_step: float = max_speed / air_accel_time
 
 ## How long it takes to decelerate (when airborne.)
 @export var air_decel_time: float = 18
-var air_decel_step: float = max_speed / air_decel_time
+@onready var air_decel_step: float = max_speed / air_decel_time
 
 ## List of different types of acceleration/deceleration values.
-var cels: Dictionary = {
+@onready var cels: Dictionary = {
 	"ground": 
 	{
 		"accel":
