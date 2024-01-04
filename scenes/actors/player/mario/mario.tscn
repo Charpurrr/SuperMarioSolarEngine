@@ -1,4 +1,4 @@
-[gd_scene load_steps=247 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=245 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://scenes/actors/player/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://cut0vcslnatgi" path="res://scenes/actors/player/mario/anime/backflip.png" id="2_i2o54"]
@@ -24,7 +24,6 @@
 [ext_resource type="Texture2D" uid="uid://di37s0hpo2dfx" path="res://scenes/actors/player/mario/anime/idle.png" id="13_y5x62"]
 [ext_resource type="Texture2D" uid="uid://c2jk475rio8p1" path="res://scenes/actors/player/mario/anime/jump.png" id="14_31p2v"]
 [ext_resource type="Texture2D" uid="uid://cof524axgo162" path="res://scenes/actors/player/mario/anime/skid.png" id="14_t6mxa"]
-[ext_resource type="Script" path="res://scenes/actors/player/states/grounded/slow_turn.gd" id="15_am2gs"]
 [ext_resource type="Texture2D" uid="uid://c3oofyu0r7jw2" path="res://scenes/actors/player/mario/anime/slow_turn.png" id="15_v5axd"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/grounded/dry_push.gd" id="16_dpmo1"]
 [ext_resource type="Texture2D" uid="uid://bfwe80wtp2uqy" path="res://scenes/actors/player/mario/anime/walk.png" id="16_m1rrp"]
@@ -35,7 +34,6 @@
 [ext_resource type="Texture2D" uid="uid://di5yor23yvh7v" path="res://scenes/actors/player/mario/anime/triple_jump.png" id="18_5kttb"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/grounded/crouch.gd" id="18_h7q8u"]
 [ext_resource type="Texture2D" uid="uid://dtiuy8mipcr1o" path="res://scenes/actors/player/mario/anime/spin_attack.png" id="19_4jr0s"]
-[ext_resource type="Script" path="res://scenes/actors/player/states/grounded/stop_skid.gd" id="19_qr343"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/grounded/turn_skid.gd" id="20_0joxb"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne.gd" id="20_at07q"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/jump.gd" id="20_bs088"]
@@ -1428,10 +1426,10 @@ script = ExtResource("21_onm15")
 [node name="Movement" type="Node" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("3_3mh1j")
 actor = NodePath("..")
-max_speed = 3.2
+max_speed = 3.0
 ground_accel_time = 17.0
-air_accel_time = 16.0
-air_decel_time = 15.0
+air_accel_time = 15.0
+air_decel_time = 100.0
 term_vel = 8.0
 max_grav = 0.22
 min_grav = 0.215
@@ -1453,17 +1451,8 @@ animation = &"idle"
 [node name="Walk" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("13_olbq0")
 
-[node name="StopSkid" type="Node" parent="StateManager/Grounded"]
-script = ExtResource("19_qr343")
-animation = &"skid"
-
 [node name="TurnSkid" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("20_0joxb")
-animation = &"skid"
-
-[node name="SlowTurn" type="Node" parent="StateManager/Grounded/TurnSkid"]
-script = ExtResource("15_am2gs")
-turn_accel_time = 8.0
 animation = &"slow_turn"
 
 [node name="Push" type="Node" parent="StateManager/Grounded"]

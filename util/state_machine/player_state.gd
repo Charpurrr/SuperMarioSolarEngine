@@ -34,7 +34,6 @@ func trigger_enter(handover):
 
 	if not sfx_layers.is_empty():
 		for sfx_list in sfx_layers:
-			print(sfx_list)
 			play_sfx(sfx_list, force_new)
 
 	actor.doll.offset = anim_offset

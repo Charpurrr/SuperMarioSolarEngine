@@ -82,6 +82,8 @@ var freefall_timer: int = -1
 @export var steep_angle: float = 0.87
 
 var facing_direction: int = 1
+## facing_direction on the previous frame.
+var prev_facing_direction: int
 
 ## Amount of consecutive jumps performed for a triple jump.
 var consec_jumps: int = 0
@@ -154,7 +156,6 @@ func move_x(accel_val: Variant, should_flip: bool, speed_cap: float = max_speed)
 	accelerate(accel_val, input_direction, speed_cap)
 
 
-## Update facing_direction.
 func update_direction(direction: int):
 	var new_direction = sign(direction)
 
@@ -166,6 +167,10 @@ func update_direction(direction: int):
 
 	facing_direction = new_direction
 	actor.doll.flip_h = (facing_direction == -1)
+
+
+func update_prev_direction():
+	prev_facing_direction = facing_direction
 
 
 ## Checks if the space at a position can be moved into.

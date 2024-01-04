@@ -3,27 +3,27 @@ extends PlayerState
 ## Turning from grounded movement at max speed.
 
 
-## How long it takes to decelerate from a skid.
-@export var skid_decel_time: float = 16
-var skid_decel_step: float
+## How long it takes to accelerate from a skid.
+@export var skid_accel_time: float = 16
+@onready var skid_accel_step: float
 
 
 func _on_enter(_handover):
-	skid_decel_step = movement.max_speed / skid_decel_time
+	movement.update_direction(-movement.facing_direction)
+	actor.vel.x = 0
+
+	skid_accel_step = movement.max_speed / skid_accel_time
 
 
 func _cycle_tick():
-	movement.decelerate(skid_decel_step)
+	movement.accelerate(skid_accel_step, -movement.facing_direction)
 
 
 func _tell_switch():
-	if actor.vel.x == 0:
-		if input_direction == 0:
-			return &"Idle"
-		elif input_direction == movement.facing_direction:
-			return &"Walk"
-		else:
-			return &"SlowTurn"
+	if input_direction == 0 or actor.vel.x == 0:
+		return &"Idle"
+	elif input_direction == movement.facing_direction:
+		return &"Walk"
 
 	if movement.can_spin() and input.buffered_input(&"spin"):
 		return &"Spin"

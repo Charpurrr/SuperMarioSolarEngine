@@ -8,6 +8,7 @@ func _cycle_tick():
 	var current_progress = actor.doll.get_frame_progress()
 
 	movement.activate_coyote_timer()
+	movement.update_prev_direction()
 	movement.move_x("ground", true)
 
 	# Switch between the running and walking animation depending on your velocity.
@@ -37,14 +38,13 @@ func _tell_switch():
 	if Input.is_action_just_pressed(&"dive"):
 		return &"AirborneDive"
 
-	if input_direction != 0:
-		if abs(actor.vel.x) >= movement.max_speed and input_direction != movement.facing_direction:
-			return &"TurnSkid"
-	else:
-		if abs(actor.vel.x) >= movement.max_speed:
-			return &"StopSkid"
-		else:
-			return &"Idle"
+	print(input_direction, movement.prev_facing_direction)
+
+	if input_direction == -movement.prev_facing_direction:
+		return &"TurnSkid"
+
+	if input_direction == 0:
+		return &"Idle"
 
 	if Input.is_action_pressed(&"down"):
 		if movement.is_slide_slope():
