@@ -11,7 +11,7 @@ func _tell_switch():
 	if not actor.doll.is_playing():
 		return &"Idle"
 
-	if input_direction != 0:
+	if InputManager.is_moving_x():
 		return &"Walk"
 
 	if movement.can_spin() and input.buffered_input(&"spin"):

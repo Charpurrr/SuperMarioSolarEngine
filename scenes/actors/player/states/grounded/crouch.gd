@@ -23,7 +23,7 @@ func _pre_tick():
 
 
 func _cycle_tick():
-	movement.update_direction(sign(input_direction))
+	movement.update_direction(InputManager.get_x_dir())
 	movement.decelerate(0.07)
 
 
@@ -37,7 +37,7 @@ func _on_exit():
 
 ## Return whether or not you can crouchwalk.
 func _can_crouchwalk() -> bool:
-	return (actor.vel.x == 0 and input_direction != 0 
+	return (actor.vel.x == 0 and InputManager.is_moving_x()
 	and not actor.test_move(actor.transform, Vector2(0.1 * movement.facing_direction, 0)))
 
 

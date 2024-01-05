@@ -12,7 +12,7 @@ extends PlayerState
 
 
 func _on_enter(_handover):
-	movement.update_direction(-input_direction)
+	movement.update_direction(-InputManager.get_x_dir())
 
 	actor.vel.x = 0
 
@@ -24,10 +24,10 @@ func _cycle_tick():
 
 
 func _tell_switch():
-	if input_direction == 0 or actor.vel.x == 0:
+	if not InputManager.is_moving_x() or actor.vel.x == 0:
 		return &"Idle"
 
-	if input_direction == movement.facing_direction:
+	if InputManager.get_x_dir() == movement.facing_direction:
 		reset_state()
 
 	if is_equal_approx(abs(actor.vel.x), movement.max_speed + over_accel):

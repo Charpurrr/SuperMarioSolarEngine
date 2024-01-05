@@ -35,6 +35,11 @@ static func get_x() -> float:
 	return Input.get_axis(&"left", &"right")
 
 
+## Returns an int, of value -1, 0 or 1, indicating the direction of the horizontal input axis.
+static func get_x_dir() -> int:
+	return sign(get_x())
+
+
 ## Return the last horizontal direction pressed.
 func get_last_x() -> int:
 	return _last_x

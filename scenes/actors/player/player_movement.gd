@@ -148,7 +148,7 @@ func decelerate(decel_val: Variant):
 
 ## Handles movement on the X axis.
 func move_x(accel_val: Variant, should_flip: bool, speed_cap: float = max_speed):
-	var input_direction: float = get_input_x()
+	var input_direction: float = InputManager.get_x()
 
 	if should_flip:
 		update_direction(sign(input_direction))

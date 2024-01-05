@@ -19,9 +19,9 @@ func _on_enter(_handover):
 
 
 func _cycle_tick():
-	if input_direction != movement.facing_direction:
+	if InputManager.get_x_dir() != movement.facing_direction:
 		movement.move_x(0.13, false)
-	elif input_direction != 0:
+	elif InputManager.is_moving_x():
 		movement.move_x("air", false)
 
 	movement.apply_gravity(-actor.vel.y / jump_power)

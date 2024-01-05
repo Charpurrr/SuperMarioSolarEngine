@@ -26,7 +26,7 @@ func _post_tick():
 
 func _cycle_tick():
 	if actor.vel.y < -jump_power + 1:
-		actor.vel.x = push_power * input_direction
+		actor.vel.x = push_power * InputManager.get_x_dir()
 
 	movement.move_x(0.1, false)
 

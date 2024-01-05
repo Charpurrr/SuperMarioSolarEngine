@@ -27,7 +27,7 @@ func _on_exit():
 
 
 func _tell_switch():
-	if (input_direction == 0 or actor.is_on_wall()):
+	if (not InputManager.is_moving_x() or actor.is_on_wall()):
 		return [&"Crouch", true]
 
 	if input.buffered_input(&"jump"):

@@ -19,7 +19,7 @@ func _on_enter(_handover):
 
 
 func _cycle_tick():
-	if input_direction != 0:
+	if InputManager.is_moving_x():
 		movement.move_x(0.06, false)
 
 	if actor.vel.y > 0 and not start_freefall_timer:

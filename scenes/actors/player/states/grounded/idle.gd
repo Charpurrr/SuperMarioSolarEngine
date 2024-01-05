@@ -18,10 +18,9 @@ func _tell_switch():
 	if input.buffered_input(&"jump"):
 		return &"DummyJump"
 
-	if input_direction == movement.prev_facing_direction:
-		print(input_direction, "walk")
+	if InputManager.get_x_dir() == movement.prev_facing_direction:
 		return &"Walk"
-	elif input_direction == -movement.prev_facing_direction:
+	elif InputManager.get_x_dir() == -movement.prev_facing_direction:
 		return &"TurnSkid"
 
 	return &""

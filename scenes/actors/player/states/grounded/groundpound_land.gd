@@ -21,7 +21,7 @@ func _tell_switch():
 	if Input.is_action_pressed(&"down"):
 		return &"Crouch"
 
-	if can_ignore and input_direction != 0:
+	if can_ignore and InputManager.is_moving_x():
 		return &"Idle"
 	elif not actor.doll.is_playing():
 		return &"Idle"

@@ -8,9 +8,9 @@ func _on_enter(_handover):
 
 
 func _tell_switch():
-	if input_direction == 0:
+	if not InputManager.is_moving_x():
 		return &"Idle"
-	elif (input_direction == -movement.facing_direction or movement.check_space_ahead()):
+	elif InputManager.get_x_dir() == -movement.facing_direction or movement.check_space_ahead():
 		return &"Walk"
 
 	if movement.can_spin() and input.buffered_input(&"spin"):

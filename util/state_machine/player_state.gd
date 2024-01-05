@@ -18,13 +18,6 @@ extends State
 @onready var input: InputManager = null
 @onready var movement: PMovement = null
 
-## Returns a float from -1 to 1 indicating the value of the horizontal input axis.
-var input_direction: float
-
-
-func _physics_process(_delta):
-	input_direction = InputManager.get_x()
-
 
 func trigger_enter(handover):
 	super(handover)

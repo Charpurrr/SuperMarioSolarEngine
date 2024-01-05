@@ -18,7 +18,7 @@ func _on_exit():
 
 
 func _tell_switch():
-	if is_zero_approx(actor.vel.x) or input_direction != 0:
+	if is_zero_approx(actor.vel.x) or InputManager.is_moving_x():
 		return &"Idle"
 
 	return &""
