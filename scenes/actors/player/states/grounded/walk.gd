@@ -38,12 +38,12 @@ func _tell_switch():
 	if Input.is_action_just_pressed(&"dive"):
 		return &"AirborneDive"
 
-	print(input_direction, movement.prev_facing_direction)
-
 	if input_direction == -movement.prev_facing_direction:
+		print("anythingidk")
 		return &"TurnSkid"
 
 	if input_direction == 0:
+		print("ga")
 		return &"Idle"
 
 	if Input.is_action_pressed(&"down"):
