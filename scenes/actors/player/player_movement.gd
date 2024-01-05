@@ -22,6 +22,8 @@ extends Node
 @onready var air_accel_step: float = max_speed / air_accel_time
 
 ## How long it takes to decelerate (when airborne.)
+## [br][br][i]Currently unused in this version of the engine, but could be
+## implemented to be used with air resistance.[/i]
 @export var air_decel_time: float = 18
 @onready var air_decel_step: float = max_speed / air_decel_time
 
@@ -87,6 +89,9 @@ var prev_facing_direction: int
 
 ## Amount of consecutive jumps performed for a triple jump.
 var consec_jumps: int = 0
+
+## The x direction of the last wall you walljumped from.
+var last_wall: int
 
 ## The player body rotation.
 var body_rotation: float = 0

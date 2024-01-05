@@ -11,13 +11,15 @@ extends PlayerState
 @export var over_accel: float = 0.3
 
 
-func _on_enter(starting_frame):
+# The first entry in the array is what frame the animation should skip to,
+# the second entry is how long it should take to accelerate.
+func _on_enter(array):
 	movement.update_direction(-movement.facing_direction)
 
-	actor.doll.frame = starting_frame
+	actor.doll.frame = array[0]
 	actor.vel.x = 0
 
-	skid_accel_step = (movement.max_speed + over_accel) / skid_accel_time
+	skid_accel_step = (movement.max_speed + over_accel) / array[1]
 
 
 func _cycle_tick():
@@ -29,7 +31,7 @@ func _tell_switch():
 		return &"Idle"
 
 	if InputManager.get_x_dir() == -movement.facing_direction:
-		reset_state(0)
+		reset_state([0, 16])
 
 	if is_equal_approx(abs(actor.vel.x), movement.max_speed + over_accel):
 		return &"Walk"

@@ -23,8 +23,8 @@ func _tell_switch():
 	elif InputManager.get_x_dir() == -movement.prev_facing_direction:
 		# Tiny margin to avoid making the skidding animation change frame perfect.
 		if abs(actor.vel.x) < 1:
-			return [&"TurnSkid", 2]
+			return [&"TurnSkid", [2, 8]]
 		else:
-			return [&"TurnSkid", 0]
+			return [&"TurnSkid", [0, 16]]
 
 	return &""

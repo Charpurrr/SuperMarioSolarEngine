@@ -6,11 +6,6 @@ extends PlayerState
 ## How much the spin sends you upwards when airborne.
 @export var spin_power: float = 6
 
-## Horizontal knockback from spinning against a wall.
-@export var wall_kickback_power_x: float = 1.2
-## Vertical knockback from spinning against a wall (only applied when airborne.)
-@export var wall_kickback_power_y: float = 1.2
-
 ## If the spin action was performed while airborne or not.
 var is_airspin: bool
 ## If the initial spin action has finished or not.
@@ -24,7 +19,8 @@ func _on_enter(_handover):
 		if input.get_last_x() != sign(actor.vel.x):
 			actor.vel.x *= 0.5
 
-		actor.vel.y = -spin_power
+		if actor.vel.y > 0:
+			actor.vel.y = -spin_power
 
 	movement.activate_freefall_timer()
 	movement.consume_coyote_timer()
@@ -51,14 +47,14 @@ func _cycle_tick():
 	if not actor.doll.is_playing():
 		finished_init = true
 
-	# Spinning wall bonk.
-	if actor.push_ray.is_colliding() and not finished_init:
-		movement.return_res_prog = movement.return_res
-
-		actor.vel.x = wall_kickback_power_x * -movement.facing_direction
-
-		if is_airspin:
-			actor.vel.y = -wall_kickback_power_y
+	## Spinning wall bonk.
+	#if actor.push_ray.is_colliding() and Input.is_action_just_pressed(&"spin"):
+		#movement.return_res_prog = movement.return_res
+#
+		#actor.vel.x = wall_kickback_power_x * -movement.facing_direction
+#
+		#if is_airspin:
+			#actor.vel.y = -wall_kickback_power_y
 
 
 func _on_exit():
@@ -73,8 +69,11 @@ func _tell_switch():
 		if actor.is_on_floor():
 			return &"Idle"
 
-		if finished_init and movement.can_air_action() and input.buffered_input(&"spin"):
-			return &"Twirl"
+		if finished_init and movement.can_air_action():
+			if input.buffered_input(&"spin"):
+				return &"Twirl"
+			elif input.buffered_input(&"dive"):
+				return &"AirborneDive"
 
 		if movement.finished_freefall_timer():
 			return &"Freefall"
@@ -82,7 +81,7 @@ func _tell_switch():
 		if Input.is_action_just_pressed(&"down") and movement.can_air_action():
 			return &"GroundPound"
 
-		if movement.can_wallslide() and finished_init:
+		if finished_init and movement.can_wallslide():
 			return &"Wallslide"
 
 	else:

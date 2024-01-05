@@ -33,13 +33,6 @@ func _cycle_tick():
 	if not actor.doll.is_playing():
 		finished_init = true
 
-	# Twirling wall bonk.
-	if actor.push_ray.is_colliding():
-		movement.return_res_prog = movement.return_res
-
-		actor.vel.x = wall_kickback_power_x * -movement.facing_direction
-		actor.vel.y = wall_kickback_power_y * -movement.facing_direction
-
 
 func _on_exit():
 	finished_init = false

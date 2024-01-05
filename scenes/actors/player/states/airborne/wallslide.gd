@@ -6,6 +6,11 @@ extends PlayerState
 ## How fast you can slide downwards during a wallslide.
 @export var term_vel: float = 1.10
 
+## Horizontal knockback from spinning against a wall.
+@export var wall_kickback_power_x: float = 1.2
+## Vertical knockback from spinning against a wall. (Only applied when airborne.)
+@export var wall_kickback_power_y: float = 1.2
+
 ## If you've started sliding down or not.
 var reached_fall: bool
 
@@ -21,6 +26,15 @@ func _cycle_tick():
 		actor.vel.y = lerp(actor.vel.y, 0.0, 0.2)
 	else:
 		actor.vel.y = min(actor.vel.y, term_vel)
+
+	# Spinning wall bonk.
+	if Input.is_action_just_pressed(&"spin"):
+		movement.return_res_prog = movement.return_res
+
+		actor.vel.x = wall_kickback_power_x * -movement.facing_direction
+
+		if movement.can_air_action():
+			actor.vel.y = -wall_kickback_power_y
 
 
 func _post_tick():

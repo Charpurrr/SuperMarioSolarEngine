@@ -40,7 +40,7 @@ func _tell_switch():
 
 	if InputManager.get_x_dir() == -movement.prev_facing_direction:
 		movement.update_prev_direction()
-		return [&"TurnSkid", 0]
+		return [&"TurnSkid", [0, 16]]
 
 	if !InputManager.is_moving_x():
 		return &"Idle"
