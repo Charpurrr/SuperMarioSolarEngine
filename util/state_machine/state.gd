@@ -83,9 +83,9 @@ func ditch_state():
 
 
 ## Artificially restart the current state.
-func reset_state():
+func reset_state(handover: Variant = null):
 	trigger_exit()
-	trigger_enter(null)
+	trigger_enter(handover)
 
 
 ## Activate the given state, ditching the current state.

@@ -21,6 +21,10 @@ func _tell_switch():
 	if InputManager.get_x_dir() == movement.prev_facing_direction:
 		return &"Walk"
 	elif InputManager.get_x_dir() == -movement.prev_facing_direction:
-		return &"TurnSkid"
+		# Tiny margin to avoid making the skidding animation change frame perfect.
+		if abs(actor.vel.x) < 1:
+			return [&"TurnSkid", 2]
+		else:
+			return [&"TurnSkid", 0]
 
 	return &""

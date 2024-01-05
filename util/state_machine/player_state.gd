@@ -20,8 +20,6 @@ extends State
 
 
 func trigger_enter(handover):
-	super(handover)
-
 	if not animation.is_empty():
 		actor.doll.play(animation)
 
@@ -30,6 +28,8 @@ func trigger_enter(handover):
 			play_sfx(sfx_list, force_new)
 
 	actor.doll.offset = anim_offset
+
+	super(handover)
 
 
 ## Plays a random sound effect from an array.

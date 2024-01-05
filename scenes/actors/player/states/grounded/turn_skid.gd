@@ -11,27 +11,27 @@ extends PlayerState
 @export var over_accel: float = 0.3
 
 
-func _on_enter(_handover):
-	movement.update_direction(-InputManager.get_x_dir())
+func _on_enter(starting_frame):
+	movement.update_direction(-movement.facing_direction)
 
+	actor.doll.frame = starting_frame
 	actor.vel.x = 0
 
 	skid_accel_step = (movement.max_speed + over_accel) / skid_accel_time
 
 
 func _cycle_tick():
-	movement.accelerate(skid_accel_step, -movement.facing_direction, movement.max_speed + over_accel)
+	movement.accelerate(skid_accel_step, movement.facing_direction, movement.max_speed + over_accel)
 
 
 func _tell_switch():
 	if not InputManager.is_moving_x() or actor.vel.x == 0:
 		return &"Idle"
 
-	if InputManager.get_x_dir() == movement.facing_direction:
-		reset_state()
+	if InputManager.get_x_dir() == -movement.facing_direction:
+		reset_state(0)
 
 	if is_equal_approx(abs(actor.vel.x), movement.max_speed + over_accel):
-		movement.update_direction(-movement.facing_direction)
 		return &"Walk"
 
 	if movement.can_spin() and input.buffered_input(&"spin"):
