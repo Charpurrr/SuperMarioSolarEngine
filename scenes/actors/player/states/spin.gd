@@ -19,8 +19,7 @@ func _on_enter(_handover):
 		if input.get_last_x() != sign(actor.vel.x):
 			actor.vel.x *= 0.5
 
-		if actor.vel.y > 0:
-			actor.vel.y = -spin_power
+		actor.vel.y = -spin_power
 
 	movement.activate_freefall_timer()
 	movement.consume_coyote_timer()
@@ -46,15 +45,6 @@ func _cycle_tick():
 
 	if not actor.doll.is_playing():
 		finished_init = true
-
-	## Spinning wall bonk.
-	#if actor.push_ray.is_colliding() and Input.is_action_just_pressed(&"spin"):
-		#movement.return_res_prog = movement.return_res
-#
-		#actor.vel.x = wall_kickback_power_x * -movement.facing_direction
-#
-		#if is_airspin:
-			#actor.vel.y = -wall_kickback_power_y
 
 
 func _on_exit():

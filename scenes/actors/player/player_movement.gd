@@ -90,9 +90,6 @@ var prev_facing_direction: int
 ## Amount of consecutive jumps performed for a triple jump.
 var consec_jumps: int = 0
 
-## The x direction of the last wall you walljumped from.
-var last_wall: int
-
 ## The player body rotation.
 var body_rotation: float = 0
 

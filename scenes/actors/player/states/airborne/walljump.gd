@@ -7,9 +7,19 @@ extends PlayerState
 ## How much the walljump sends you forwards.
 @export var push_power: float = 3
 
+## The y position of the point you walljumped from.
+## Used to avoid being able to scale a wall infinitely with a spin. 
+var start_y: float
+## How many extra units get subtracted from the start_y position to
+## avoid being able to scale a wall infinitely with a spin.
+## Currently set to roughly the amount of height you can from a spin
+var extra_sub: float = 10.0
+
 
 func _on_enter(_handover):
-	movement.last_wall = movement.facing_direction
+	#movement.return_res_prog = movement.return_res
+	start_y = actor.position.y
+	print("jumped @ ",actor.position.y)
 
 	movement.update_direction(-movement.facing_direction)
 	movement.activate_freefall_timer()
@@ -23,7 +33,7 @@ func _on_enter(_handover):
 func _cycle_tick():
 	var should_flip: bool
 
-	should_flip = actor.vel.y > 0
+	should_flip = actor.position.y > start_y + extra_sub
 
 	if InputManager.get_x_dir() != movement.facing_direction:
 		movement.move_x(0.13, should_flip)
@@ -36,10 +46,7 @@ func _cycle_tick():
 
 func _tell_switch():
 	if input.buffered_input(&"spin"):
-		if movement.last_wall != -movement.facing_direction:
-			return &"Spin"
-		else:
-			return &"Twirl"
+		return &"Spin"
 
 	if Input.is_action_just_pressed(&"dive") and movement.can_air_action():
 		return &"AirborneDive"

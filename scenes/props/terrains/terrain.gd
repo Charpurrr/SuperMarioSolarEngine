@@ -11,7 +11,7 @@ func _ready():
 	var poly := CollisionPolygon2D.new()
 
 	poly.polygon = polygon
-	poly.position = position
+	poly.position = position + offset
 
 	call_deferred("add_child", body)
 	body.call_deferred("add_child", poly)

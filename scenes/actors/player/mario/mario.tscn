@@ -1413,6 +1413,7 @@ script = ExtResource("23_k0i43")
 
 [node name="InputManager" type="Node" parent="."]
 script = ExtResource("21_onm15")
+buffer_duration = 6
 
 [node name="Movement" type="Node" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("3_3mh1j")

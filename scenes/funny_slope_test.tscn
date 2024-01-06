@@ -61,8 +61,9 @@ polygon = PackedVector2Array(-64, 0, 384, 0, 640, -64, 896, 0, 1152, 0, 1280, -6
 script = ExtResource("3_jfqwu")
 
 [node name="Polygon2D2" type="Polygon2D" parent="."]
+offset = Vector2(60, 0)
 texture = SubResource("PlaceholderTexture2D_yvhfe")
-polygon = PackedVector2Array(16, -96, 16, -208, 64, -208, 64, -64, 16, -64)
+polygon = PackedVector2Array(16, -208, 64, -208, 64, -64, 16, -64)
 script = ExtResource("3_jfqwu")
 
 [node name="Polygon2D3" type="Polygon2D" parent="."]
@@ -96,7 +97,7 @@ visible = false
 shape = SubResource("CircleShape2D_fqbrv")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(128, -32)
+position = Vector2(312, -32)
 physics_material_override = SubResource("PhysicsMaterial_sca4b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]

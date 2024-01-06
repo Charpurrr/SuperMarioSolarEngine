@@ -33,13 +33,6 @@ func _cycle_tick():
 	if not actor.doll.is_playing():
 		finished_init = true
 
-	# Spinjump wall bonk.
-	if actor.push_ray.is_colliding() and not finished_init:
-		movement.return_res_prog = movement.return_res
-
-		actor.vel.x = wall_kickback_power_x * -movement.facing_direction
-		actor.vel.y = -wall_kickback_power_y
-
 
 func _on_exit():
 	finished_init = false

@@ -7,8 +7,6 @@ func _on_enter(_handover):
 	movement.activate_consec_timer()
 	movement.consume_freefall_timer()
 
-	movement.last_wall = 0
-
 	actor.set_floor_snap_length(8.0)
 
 
