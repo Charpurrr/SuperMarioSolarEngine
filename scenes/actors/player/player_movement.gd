@@ -296,7 +296,7 @@ func can_wallslide(ignore_input: bool = false) -> bool:
 
 ## Return whether or not a wallslide should end
 func should_end_wallslide() -> bool:
-	if (not actor.push_ray.is_colliding() or get_input_x() == -facing_direction): return true
+	if (not actor.push_rays.pushing or get_input_x() == -facing_direction): return true
 
 	return false
 

@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://0stpt02oj3gc" path="res://scenes/actors/player/mario/anime/double_jump.png" id="6_b0k2k"]
 [ext_resource type="Texture2D" uid="uid://bqelaoqudiigg" path="res://scenes/actors/player/mario/anime/freefall.png" id="6_bo6cm"]
 [ext_resource type="Texture2D" uid="uid://c1re3wsiqbvbl" path="res://scenes/actors/player/mario/anime/diveslide.png" id="7_wwk88"]
-[ext_resource type="Script" path="res://scenes/actors/player/push_ray.gd" id="8_qbkd3"]
 [ext_resource type="Texture2D" uid="uid://bjqptf8hd7sgj" path="res://scenes/actors/player/mario/anime/groundpound.png" id="9_m0w8d"]
 [ext_resource type="Texture2D" uid="uid://cx8otjotpvqfc" path="res://scenes/actors/player/mario/anime/groundpound_jump.png" id="11_1j7yv"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/grounded.gd" id="11_15kl1"]
@@ -42,6 +41,7 @@
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/backflip.gd" id="23_jcv3h"]
 [ext_resource type="Script" path="res://scenes/actors/player/dive_ray.gd" id="23_k0i43"]
 [ext_resource type="Script" path="res://util/state_machine/player_state_manager.gd" id="24_2oy80"]
+[ext_resource type="Script" path="res://scenes/actors/player/push_rays.gd" id="26_qi7rb"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/freefall.gd" id="26_w8jki"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/double_jump.gd" id="36_f2q1o"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/stylish.gd" id="37_5bhpx"]
@@ -1398,13 +1398,19 @@ shape = SubResource("RectangleShape2D_1emcl")
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_c86nk")
 
-[node name="PushRay" type="RayCast2D" parent="." node_paths=PackedStringArray("movement")]
+[node name="PushRays" type="Node2D" parent="." node_paths=PackedStringArray("movement")]
+script = ExtResource("26_qi7rb")
+movement = NodePath("../Movement")
+
+[node name="PushRayR" type="RayCast2D" parent="PushRays"]
 modulate = Color(1, 1, 0.164706, 1)
 position = Vector2(0, -14)
 target_position = Vector2(11, 0)
-script = ExtResource("8_qbkd3")
-target_size_x = 11.0
-movement = NodePath("../Movement")
+
+[node name="PushRayL" type="RayCast2D" parent="PushRays"]
+modulate = Color(1, 1, 0.164706, 1)
+position = Vector2(0, -14)
+target_position = Vector2(-11, 0)
 
 [node name="DiveRay" type="RayCast2D" parent="."]
 modulate = Color(0, 1, 0, 1)

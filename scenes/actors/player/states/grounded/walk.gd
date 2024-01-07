@@ -52,7 +52,7 @@ func _tell_switch():
 			return &"Crouch"
 
 	if InputManager.get_x() != 0 and actor.is_on_wall():
-		if actor.push_ray.is_colliding():
+		if actor.push_rays.pushing:
 			return &"Push"
 		else:
 			return &"DryPush"

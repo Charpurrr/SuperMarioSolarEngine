@@ -9,7 +9,7 @@ extends CharacterBody2D
 @onready var movement: Object = $Movement
 @onready var input: Object = $InputManager
 
-@onready var push_ray: RayCast2D = $PushRay
+@onready var push_rays: Node = $PushRays
  
 @onready var hitbox: CollisionShape2D = $Hitbox
 @onready var dive_hitbox: CollisionShape2D = $DiveHitbox
