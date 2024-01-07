@@ -1,4 +1,4 @@
-[gd_scene load_steps=242 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=243 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://scenes/actors/player/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://cut0vcslnatgi" path="res://scenes/actors/player/mario/anime/backflip.png" id="2_i2o54"]
@@ -82,6 +82,7 @@
 [ext_resource type="AudioStream" uid="uid://bkoer1vfkd3q5" path="res://scenes/actors/player/mario/voice/groundpound2.wav" id="72_43pmu"]
 [ext_resource type="AudioStream" uid="uid://dohp6r2vq2vmx" path="res://scenes/actors/player/mario/motion/groundpound.wav" id="73_02ncr"]
 [ext_resource type="AudioStream" uid="uid://u4a2vdtuu7x8" path="res://scenes/actors/player/mario/voice/spin1.wav" id="75_6p5ps"]
+[ext_resource type="Script" path="res://scenes/actors/player/states/airborne/groundpound_cancel.gd" id="75_tu65i"]
 [ext_resource type="AudioStream" uid="uid://8tetw3d3qrqa" path="res://scenes/actors/player/mario/voice/spin2.wav" id="76_wbgcl"]
 [ext_resource type="AudioStream" uid="uid://bjeyn212f2hf6" path="res://scenes/actors/player/mario/voice/spin3.wav" id="77_v4501"]
 [ext_resource type="AudioStream" uid="uid://3la1yree4tvo" path="res://scenes/actors/player/mario/motion/spinattack_shine.wav" id="78_6j3mr"]
@@ -1405,12 +1406,12 @@ movement = NodePath("../Movement")
 [node name="PushRayR" type="RayCast2D" parent="PushRays"]
 modulate = Color(1, 1, 0.164706, 1)
 position = Vector2(0, -14)
-target_position = Vector2(11, 0)
+target_position = Vector2(9, 0)
 
 [node name="PushRayL" type="RayCast2D" parent="PushRays"]
 modulate = Color(1, 1, 0.164706, 1)
 position = Vector2(0, -14)
-target_position = Vector2(-11, 0)
+target_position = Vector2(-9, 0)
 
 [node name="DiveRay" type="RayCast2D" parent="."]
 modulate = Color(0, 1, 0, 1)
@@ -1578,6 +1579,10 @@ force_new = false
 script = ExtResource("47_bnupp")
 animation = &"gp_fall"
 anim_offset = Vector2i(0, 9)
+
+[node name="GroundPoundCancel" type="Node" parent="StateManager/Airborne"]
+script = ExtResource("75_tu65i")
+animation = &"fall"
 
 [node name="GroundPoundJump" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("57_2m6wb")

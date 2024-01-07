@@ -19,6 +19,7 @@ func _on_enter(_handover):
 		if input.get_last_x() != sign(actor.vel.x):
 			actor.vel.x *= 0.5
 
+		movement.air_spun = true
 		actor.vel.y = -spin_power
 
 	movement.activate_freefall_timer()

@@ -19,7 +19,7 @@ var extra_sub: float = 10.0
 func _on_enter(_handover):
 	#movement.return_res_prog = movement.return_res
 	start_y = actor.position.y
-	print("jumped @ ",actor.position.y)
+	#print("jumped @ ",actor.position.y)
 
 	movement.update_direction(-movement.facing_direction)
 	movement.activate_freefall_timer()

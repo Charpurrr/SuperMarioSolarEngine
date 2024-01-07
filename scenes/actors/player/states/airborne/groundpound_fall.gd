@@ -20,6 +20,6 @@ func _tell_switch():
 		return &"AirborneDive"
 
 	if input.buffered_input(&"up"):
-		return &"Fall"
+		return &"GroundPoundCancel"
 
 	return &""

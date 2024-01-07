@@ -6,6 +6,7 @@ extends PlayerState
 func _on_enter(_handover):
 	movement.activate_consec_timer()
 	movement.consume_freefall_timer()
+	movement.air_spun = false
 
 	actor.set_floor_snap_length(8.0)
 

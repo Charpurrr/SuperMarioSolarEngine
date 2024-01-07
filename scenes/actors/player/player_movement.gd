@@ -87,6 +87,9 @@ var facing_direction: int = 1
 ## facing_direction on the previous frame.
 var prev_facing_direction: int
 
+## If you've performed an airborne spin or not.
+var air_spun: bool = false
+
 ## Amount of consecutive jumps performed for a triple jump.
 var consec_jumps: int = 0
 
