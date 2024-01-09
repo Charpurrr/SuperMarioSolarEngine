@@ -28,13 +28,11 @@ func _cycle_tick():
 		actor.vel.y = min(actor.vel.y, term_vel)
 
 	# Spinning wall bonk.
-	if Input.is_action_just_pressed(&"spin"):
+	if input.buffered_input(&"spin"):
 		movement.return_res_prog = movement.return_res
 
 		actor.vel.x = wall_kickback_power_x * -movement.facing_direction
-
-		if movement.can_air_action():
-			actor.vel.y = -wall_kickback_power_y
+		actor.vel.y = -wall_kickback_power_y
 
 
 func _post_tick():
@@ -42,8 +40,8 @@ func _post_tick():
 
 
 func _tell_switch():
-	if movement.can_spin() and input.buffered_input(&"spin"):
-		return &"Spin"
+	if input.buffered_input(&"spin"):
+		return &"SpinWallbonk"
 
 	if input.buffered_input(&"jump"):
 		return &"Walljump"

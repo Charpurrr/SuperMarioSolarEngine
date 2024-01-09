@@ -1,4 +1,4 @@
-[gd_scene load_steps=243 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=249 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://scenes/actors/player/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://cut0vcslnatgi" path="res://scenes/actors/player/mario/anime/backflip.png" id="2_i2o54"]
@@ -75,6 +75,9 @@
 [ext_resource type="AudioStream" uid="uid://fni3a0dhooyy" path="res://scenes/actors/player/mario/motion/triplejump.wav" id="58_uwkq0"]
 [ext_resource type="Script" path="res://scenes/actors/player/player_camera.gd" id="61_0shyc"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/odyssey_dive.gd" id="61_cxojr"]
+[ext_resource type="Script" path="res://scenes/actors/player/states/airborne/spin_wallbonk.gd" id="65_echk5"]
+[ext_resource type="AudioStream" uid="uid://b2yaw26eibc6u" path="res://scenes/actors/player/mario/voice/spin_wallbonk.wav" id="66_mdmrc"]
+[ext_resource type="AudioStream" uid="uid://dwacbyt1r8oqr" path="res://scenes/actors/player/mario/motion/spin_wallbonk.wav" id="67_cc7at"]
 [ext_resource type="AudioStream" uid="uid://2gaylcwlwkr2" path="res://scenes/actors/player/mario/voice/back-sideflip1.wav" id="67_dmli7"]
 [ext_resource type="AudioStream" uid="uid://dhed11uhnwiye" path="res://scenes/actors/player/mario/voice/back-sideflip2.wav" id="68_37k6u"]
 [ext_resource type="AudioStream" uid="uid://sniv4wh18sqt" path="res://scenes/actors/player/mario/motion/back-sideflip.wav" id="69_th0h2"]
@@ -1275,7 +1278,7 @@ cutoff_sfx = true
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("55_laysa")]
 bus = &"Motion"
-cutoff_sfx = true
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_bjym6"]
 script = ExtResource("49_apkmk")
@@ -1286,6 +1289,24 @@ cutoff_sfx = true
 [sub_resource type="Resource" id="Resource_0beus"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("58_uwkq0")]
+bus = &"Motion"
+cutoff_sfx = false
+
+[sub_resource type="Resource" id="Resource_oiutc"]
+script = ExtResource("49_apkmk")
+sfx_list = [ExtResource("49_2q5ti"), ExtResource("50_1joi3"), ExtResource("51_p5ndj")]
+bus = &"Voice"
+cutoff_sfx = true
+
+[sub_resource type="Resource" id="Resource_ax73p"]
+script = ExtResource("49_apkmk")
+sfx_list = [ExtResource("66_mdmrc")]
+bus = &"Voice"
+cutoff_sfx = true
+
+[sub_resource type="Resource" id="Resource_2nfvq"]
+script = ExtResource("49_apkmk")
+sfx_list = [ExtResource("67_cc7at")]
 bus = &"Motion"
 cutoff_sfx = true
 
@@ -1353,7 +1374,7 @@ cutoff_sfx = true
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("79_b28yg")]
 bus = &"Motion"
-cutoff_sfx = true
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_vehmo"]
 script = ExtResource("49_apkmk")
@@ -1365,7 +1386,7 @@ cutoff_sfx = true
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("78_6j3mr")]
 bus = &"Motion"
-cutoff_sfx = true
+cutoff_sfx = false
 
 [node name="Mario" type="CharacterBody2D"]
 collision_layer = 2
@@ -1406,12 +1427,12 @@ movement = NodePath("../Movement")
 [node name="PushRayR" type="RayCast2D" parent="PushRays"]
 modulate = Color(1, 1, 0.164706, 1)
 position = Vector2(0, -14)
-target_position = Vector2(9, 0)
+target_position = Vector2(10, 0)
 
 [node name="PushRayL" type="RayCast2D" parent="PushRays"]
 modulate = Color(1, 1, 0.164706, 1)
 position = Vector2(0, -14)
-target_position = Vector2(-9, 0)
+target_position = Vector2(-10, 0)
 
 [node name="DiveRay" type="RayCast2D" parent="."]
 modulate = Color(0, 1, 0, 1)
@@ -1430,6 +1451,7 @@ ground_accel_time = 17.0
 ground_decel_time = 8.0
 air_accel_time = 15.0
 air_decel_time = 0.0
+return_res = 60.0
 term_vel = 8.0
 max_grav = 0.22
 min_grav = 0.215
@@ -1542,7 +1564,8 @@ animation = &"double_fall"
 
 [node name="Wallslide" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("40_hk2sj")
-wall_kickback_power_x = 4.0
+term_vel = 1.5
+wall_kickback_power_x = 1.7
 wall_kickback_power_y = 0.6
 animation = &"wallslide"
 
@@ -1551,6 +1574,13 @@ script = ExtResource("41_re2yk")
 jump_power = 5.0
 push_power = 4.0
 animation = &"walljump"
+sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_oiutc")])
+
+[node name="SpinWallbonk" type="Node" parent="StateManager/Airborne"]
+script = ExtResource("65_echk5")
+spin_power = 3.0
+animation = &"spin_attack"
+sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ax73p"), SubResource("Resource_2nfvq")])
 
 [node name="Sideflip" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("22_4r2ks")
@@ -1609,8 +1639,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_lib4c"), SubR
 
 [node name="Twirl" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("57_dqusk")
-spin_power = 0.125
-wall_kickback_power_y = 1.8
+spin_power = 0.0
 animation = &"spin_attack"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_2y8iw")])
 

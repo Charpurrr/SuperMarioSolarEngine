@@ -20,7 +20,7 @@ func _on_enter(_handover):
 
 	movement.activate_freefall_timer()
 	movement.consume_coyote_timer()
-	movement.consec_jumps = 0
+	movement.consec_jumps = 1
 
 
 func _post_tick():

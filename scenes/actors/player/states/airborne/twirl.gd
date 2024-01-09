@@ -6,11 +6,6 @@ extends PlayerState
 ## How much the twirl sends you upwards.
 @export var spin_power: float = 6
 
-## Horizontal knockback from twirling against a wall.
-@export var wall_kickback_power_x: float = 1.2
-## Vertical knockback from twirling against a wall.
-@export var wall_kickback_power_y: float = 1.2
-
 ## If the initial spin action has finished or not.
 var finished_init: bool
 

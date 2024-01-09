@@ -22,8 +22,8 @@ extends Node
 @onready var air_accel_step: float = max_speed / air_accel_time
 
 ## How long it takes to decelerate (when airborne.)
-## [br][br][i]Currently unused in this version of the engine, but could be
-## implemented to be used with air resistance.[/i]
+# Currently unused in this version of the engine, but could be
+# implemented to be used with air resistance.
 @export var air_decel_time: float = 18
 @onready var air_decel_step: float = max_speed / air_decel_time
 
@@ -45,10 +45,11 @@ extends Node
 	},
 }
 
-## Resistance factor for acceleration.
+## How many frames have to progress before you can accelerate forward again.
+# Has some nieche use-cases, in-engine is only used to handle wallbonk spins.
 @export var return_res: float = 15
-## Progression for the resistance factor.
 var return_res_prog: float
+
 #endregion
 
 #region Y Variables
@@ -297,9 +298,9 @@ func can_wallslide(ignore_input: bool = false) -> bool:
 	return actor.vel.y != 0 and (true if ignore_input else get_input_x() == facing_direction)
 
 
-## Return whether or not a wallslide should end
+## Return whether or not a wallslide should end.
 func should_end_wallslide() -> bool:
-	if (not actor.push_rays.pushing or get_input_x() == -facing_direction): return true
+	if (not actor.push_rays.check_push() or get_input_x() == -facing_direction): return true
 
 	return false
 

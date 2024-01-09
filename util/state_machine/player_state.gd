@@ -55,8 +55,10 @@ func play_sfx(layer: SFXLayer, randomized: bool):
 func trigger_exit():
 	super()
 
-	for sfx_list in sfx_layers:
-		if sfx_list.cutoff_sfx:
-			for child in get_children():
-				if child is AudioStreamPlayer:
-					child.queue_free()
+	for layer in sfx_layers:
+		if not layer.cutoff_sfx:
+			continue
+
+		for child in get_children():
+			if child is AudioStreamPlayer and child.stream in layer.sfx_list:
+				child.queue_free()
