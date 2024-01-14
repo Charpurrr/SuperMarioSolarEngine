@@ -13,7 +13,7 @@ var start_freefall_timer: bool = false
 
 func _on_enter(_handover):
 	start_freefall_timer = false
-
+	actor.animplay.play("backflip_" + str(int(bool(movement.facing_direction + 1))))
 	actor.vel.y = -jump_power
 	actor.vel.x = push_power * -movement.facing_direction
 
@@ -52,3 +52,6 @@ func _tell_switch():
 		return &"Freefall"
 
 	return &""
+	
+func _on_exit():
+	actor.animplay.play("RESET")
