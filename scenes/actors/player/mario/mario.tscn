@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=240 format=3 uid="uid://dgqp3sqvmcvpu"]
-=======
 [gd_scene load_steps=244 format=3 uid="uid://dgqp3sqvmcvpu"]
->>>>>>> Stashed changes
 
 [ext_resource type="Script" path="res://scenes/actors/player/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://dpgrdedkvkcju" path="res://scenes/actors/player/mario/anime/backflip.png" id="2_i2o54"]
@@ -23,16 +19,6 @@
 [ext_resource type="Script" path="res://scenes/actors/player/states/grounded/idle.gd" id="12_hqcfh"]
 [ext_resource type="Texture2D" uid="uid://b5iej6icdkuw4" path="res://scenes/actors/player/mario/anime/push.png" id="12_kw6lo"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/grounded/walk.gd" id="13_olbq0"]
-<<<<<<< Updated upstream
-[ext_resource type="Texture2D" uid="uid://qiniaam7fprw" path="res://scenes/actors/player/mario/anime/sideflip.png" id="13_t23yg"]
-[ext_resource type="Texture2D" uid="uid://u8kj4gjqrxnp" path="res://scenes/actors/player/mario/anime/idle.png" id="13_y5x62"]
-[ext_resource type="Texture2D" uid="uid://clvuoy7quw8yy" path="res://scenes/actors/player/mario/anime/jump.png" id="14_31p2v"]
-[ext_resource type="Texture2D" uid="uid://bqqd01d5bocqj" path="res://scenes/actors/player/mario/anime/skid.png" id="14_t6mxa"]
-[ext_resource type="Script" path="res://scenes/actors/player/states/grounded/dry_push.gd" id="16_dpmo1"]
-[ext_resource type="Texture2D" uid="uid://crbenw5fboh56" path="res://scenes/actors/player/mario/anime/walk.png" id="16_m1rrp"]
-[ext_resource type="Texture2D" uid="uid://cdut0d6m51b7u" path="res://scenes/actors/player/mario/anime/run.png" id="16_x2vr5"]
-[ext_resource type="Texture2D" uid="uid://tf5drcifeft0" path="res://scenes/actors/player/mario/anime/wallslide.png" id="17_7ue6x"]
-=======
 [ext_resource type="Texture2D" uid="uid://bfq6wetdws7ug" path="res://scenes/actors/player/mario/anime/sideflip.png" id="13_t23yg"]
 [ext_resource type="Texture2D" uid="uid://c2jk475rio8p1" path="res://scenes/actors/player/mario/anime/jump.png" id="14_31p2v"]
 [ext_resource type="Texture2D" uid="uid://lssscgb46pkr" path="res://scenes/actors/player/mario/anime_127/idle.png" id="14_esdke"]
@@ -40,7 +26,6 @@
 [ext_resource type="Script" path="res://scenes/actors/player/states/grounded/dry_push.gd" id="16_dpmo1"]
 [ext_resource type="Texture2D" uid="uid://dgwydekc2fhw1" path="res://scenes/actors/player/mario/anime/run.png" id="16_x2vr5"]
 [ext_resource type="Texture2D" uid="uid://ce5qo8vhh0ax3" path="res://scenes/actors/player/mario/anime/wallslide.png" id="17_7ue6x"]
->>>>>>> Stashed changes
 [ext_resource type="Script" path="res://scenes/actors/player/states/grounded/push.gd" id="17_8nb4y"]
 [ext_resource type="Texture2D" uid="uid://umcnbai2mq2o" path="res://scenes/actors/player/mario/anime/walljump.png" id="17_ko8me"]
 [ext_resource type="Texture2D" uid="uid://dddb3cx37sgf8" path="res://scenes/actors/player/mario/anime/triple_jump.png" id="18_5kttb"]
@@ -101,20 +86,12 @@
 [ext_resource type="AudioStream" uid="uid://dkkyjdbjl0rc5" path="res://scenes/actors/player/mario/motion/groundpound.wav" id="73_02ncr"]
 [ext_resource type="AudioStream" uid="uid://cj5ofcpoghjqc" path="res://scenes/actors/player/mario/voice/spin1.wav" id="75_6p5ps"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/groundpound_cancel.gd" id="75_tu65i"]
-<<<<<<< Updated upstream
-[ext_resource type="AudioStream" uid="uid://cg20frj0ec6qp" path="res://scenes/actors/player/mario/voice/spin2.wav" id="76_wbgcl"]
-[ext_resource type="AudioStream" uid="uid://cufjtuecvsp7e" path="res://scenes/actors/player/mario/voice/spin3.wav" id="77_v4501"]
-[ext_resource type="AudioStream" uid="uid://o0oq5hjxp12u" path="res://scenes/actors/player/mario/motion/spinattack_shine.wav" id="78_6j3mr"]
-[ext_resource type="AudioStream" uid="uid://ddvdrrgj0kn0q" path="res://scenes/actors/player/mario/motion/spinattack_wind.wav" id="79_b28yg"]
-[ext_resource type="AudioStream" uid="uid://cpvsl4a2t2ljt" path="res://scenes/actors/player/mario/motion/dive.wav" id="82_2iou6"]
-=======
 [ext_resource type="AudioStream" uid="uid://8tetw3d3qrqa" path="res://scenes/actors/player/mario/voice/spin2.wav" id="76_wbgcl"]
 [ext_resource type="AudioStream" uid="uid://bjeyn212f2hf6" path="res://scenes/actors/player/mario/voice/spin3.wav" id="77_v4501"]
 [ext_resource type="AudioStream" uid="uid://3la1yree4tvo" path="res://scenes/actors/player/mario/motion/spinattack_shine.wav" id="78_6j3mr"]
 [ext_resource type="AudioStream" uid="uid://d1p8j8jgn4h8" path="res://scenes/actors/player/mario/motion/spinattack_wind.wav" id="79_b28yg"]
 [ext_resource type="AudioStream" uid="uid://mig4xhlvfoep" path="res://scenes/actors/player/mario/motion/dive.wav" id="82_2iou6"]
 [ext_resource type="AudioStream" uid="uid://bt1r1w0de5ooq" path="res://scenes/actors/player/mario/voice/dive (2).wav" id="83_hswun"]
->>>>>>> Stashed changes
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_joy5i"]
 atlas = ExtResource("2_i2o54")
@@ -1341,12 +1318,8 @@ script = ExtResource("1_3d0l6")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_hmp25")
-<<<<<<< Updated upstream
-animation = &"backflip_land"
-=======
 animation = &"walk"
 frame_progress = 0.169077
->>>>>>> Stashed changes
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Doll"]
 unique_name_in_owner = true
