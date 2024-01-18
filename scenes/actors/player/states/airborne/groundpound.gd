@@ -33,7 +33,7 @@ func _cycle_tick():
 
 
 func _tell_switch():
-	if Input.is_action_just_pressed(&"dive"):
+	if movement.can_air_action() and input.buffered_input(&"dive"):
 		return &"OdysseyDive"
 
 	if linger_timer == 0:

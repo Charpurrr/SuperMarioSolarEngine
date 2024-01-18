@@ -35,7 +35,7 @@ func _tell_switch():
 	if input.buffered_input(&"jump"):
 		return &"DummyJump"
 
-	if Input.is_action_just_pressed(&"dive"):
+	if input.buffered_input(&"dive"):
 		return &"AirborneDive"
 
 	if InputManager.get_x_dir() == -movement.prev_facing_direction:

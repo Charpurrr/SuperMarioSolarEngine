@@ -7,8 +7,14 @@ extends PlayerState
 @export var x_power: float = 6.0
 @export var y_power: float = 1.88
 
+## whether or not you'll go down on your dive.
+var down: bool
 
-func _on_enter(_handover):
+
+func _on_enter(neutral):
+	if Input.is_action_pressed(&"down"):
+		down = true
+
 	movement.consume_coyote_timer()
 	movement.consec_jumps = 0
 
@@ -19,7 +25,11 @@ func _on_enter(_handover):
 	movement.accelerate(x_power, InputManager.get_x(), x_power)
 	actor.vel.x = max(min_x_power, abs(actor.vel.x)) * movement.facing_direction
 
-	actor.vel.y = -y_power
+	if is_equal_approx(actor.vel.x, 0):
+		actor.vel.y = -y_power
+
+	if not down and actor.vel.y > -y_power:
+		actor.vel.y = -y_power
 
 
 func _cycle_tick():

@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=240 format=3 uid="uid://dgqp3sqvmcvpu"]
+=======
+[gd_scene load_steps=244 format=3 uid="uid://dgqp3sqvmcvpu"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Script" path="res://scenes/actors/player/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://dpgrdedkvkcju" path="res://scenes/actors/player/mario/anime/backflip.png" id="2_i2o54"]
@@ -19,6 +23,7 @@
 [ext_resource type="Script" path="res://scenes/actors/player/states/grounded/idle.gd" id="12_hqcfh"]
 [ext_resource type="Texture2D" uid="uid://b5iej6icdkuw4" path="res://scenes/actors/player/mario/anime/push.png" id="12_kw6lo"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/grounded/walk.gd" id="13_olbq0"]
+<<<<<<< Updated upstream
 [ext_resource type="Texture2D" uid="uid://qiniaam7fprw" path="res://scenes/actors/player/mario/anime/sideflip.png" id="13_t23yg"]
 [ext_resource type="Texture2D" uid="uid://u8kj4gjqrxnp" path="res://scenes/actors/player/mario/anime/idle.png" id="13_y5x62"]
 [ext_resource type="Texture2D" uid="uid://clvuoy7quw8yy" path="res://scenes/actors/player/mario/anime/jump.png" id="14_31p2v"]
@@ -27,6 +32,15 @@
 [ext_resource type="Texture2D" uid="uid://crbenw5fboh56" path="res://scenes/actors/player/mario/anime/walk.png" id="16_m1rrp"]
 [ext_resource type="Texture2D" uid="uid://cdut0d6m51b7u" path="res://scenes/actors/player/mario/anime/run.png" id="16_x2vr5"]
 [ext_resource type="Texture2D" uid="uid://tf5drcifeft0" path="res://scenes/actors/player/mario/anime/wallslide.png" id="17_7ue6x"]
+=======
+[ext_resource type="Texture2D" uid="uid://bfq6wetdws7ug" path="res://scenes/actors/player/mario/anime/sideflip.png" id="13_t23yg"]
+[ext_resource type="Texture2D" uid="uid://c2jk475rio8p1" path="res://scenes/actors/player/mario/anime/jump.png" id="14_31p2v"]
+[ext_resource type="Texture2D" uid="uid://lssscgb46pkr" path="res://scenes/actors/player/mario/anime_127/idle.png" id="14_esdke"]
+[ext_resource type="Texture2D" uid="uid://cof524axgo162" path="res://scenes/actors/player/mario/anime/skid.png" id="14_t6mxa"]
+[ext_resource type="Script" path="res://scenes/actors/player/states/grounded/dry_push.gd" id="16_dpmo1"]
+[ext_resource type="Texture2D" uid="uid://dgwydekc2fhw1" path="res://scenes/actors/player/mario/anime/run.png" id="16_x2vr5"]
+[ext_resource type="Texture2D" uid="uid://ce5qo8vhh0ax3" path="res://scenes/actors/player/mario/anime/wallslide.png" id="17_7ue6x"]
+>>>>>>> Stashed changes
 [ext_resource type="Script" path="res://scenes/actors/player/states/grounded/push.gd" id="17_8nb4y"]
 [ext_resource type="Texture2D" uid="uid://umcnbai2mq2o" path="res://scenes/actors/player/mario/anime/walljump.png" id="17_ko8me"]
 [ext_resource type="Texture2D" uid="uid://dddb3cx37sgf8" path="res://scenes/actors/player/mario/anime/triple_jump.png" id="18_5kttb"]
@@ -40,6 +54,7 @@
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/sideflip.gd" id="22_4r2ks"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/backflip.gd" id="23_jcv3h"]
 [ext_resource type="Script" path="res://scenes/actors/player/dive_ray.gd" id="23_k0i43"]
+[ext_resource type="Texture2D" uid="uid://dksuluskiaatw" path="res://scenes/actors/player/mario/anime_127/run.png" id="23_qkkif"]
 [ext_resource type="Script" path="res://util/state_machine/player_state_manager.gd" id="24_2oy80"]
 [ext_resource type="Script" path="res://scenes/actors/player/push_rays.gd" id="26_qi7rb"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/freefall.gd" id="26_w8jki"]
@@ -86,11 +101,20 @@
 [ext_resource type="AudioStream" uid="uid://dkkyjdbjl0rc5" path="res://scenes/actors/player/mario/motion/groundpound.wav" id="73_02ncr"]
 [ext_resource type="AudioStream" uid="uid://cj5ofcpoghjqc" path="res://scenes/actors/player/mario/voice/spin1.wav" id="75_6p5ps"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/groundpound_cancel.gd" id="75_tu65i"]
+<<<<<<< Updated upstream
 [ext_resource type="AudioStream" uid="uid://cg20frj0ec6qp" path="res://scenes/actors/player/mario/voice/spin2.wav" id="76_wbgcl"]
 [ext_resource type="AudioStream" uid="uid://cufjtuecvsp7e" path="res://scenes/actors/player/mario/voice/spin3.wav" id="77_v4501"]
 [ext_resource type="AudioStream" uid="uid://o0oq5hjxp12u" path="res://scenes/actors/player/mario/motion/spinattack_shine.wav" id="78_6j3mr"]
 [ext_resource type="AudioStream" uid="uid://ddvdrrgj0kn0q" path="res://scenes/actors/player/mario/motion/spinattack_wind.wav" id="79_b28yg"]
 [ext_resource type="AudioStream" uid="uid://cpvsl4a2t2ljt" path="res://scenes/actors/player/mario/motion/dive.wav" id="82_2iou6"]
+=======
+[ext_resource type="AudioStream" uid="uid://8tetw3d3qrqa" path="res://scenes/actors/player/mario/voice/spin2.wav" id="76_wbgcl"]
+[ext_resource type="AudioStream" uid="uid://bjeyn212f2hf6" path="res://scenes/actors/player/mario/voice/spin3.wav" id="77_v4501"]
+[ext_resource type="AudioStream" uid="uid://3la1yree4tvo" path="res://scenes/actors/player/mario/motion/spinattack_shine.wav" id="78_6j3mr"]
+[ext_resource type="AudioStream" uid="uid://d1p8j8jgn4h8" path="res://scenes/actors/player/mario/motion/spinattack_wind.wav" id="79_b28yg"]
+[ext_resource type="AudioStream" uid="uid://mig4xhlvfoep" path="res://scenes/actors/player/mario/motion/dive.wav" id="82_2iou6"]
+[ext_resource type="AudioStream" uid="uid://bt1r1w0de5ooq" path="res://scenes/actors/player/mario/voice/dive (2).wav" id="83_hswun"]
+>>>>>>> Stashed changes
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_joy5i"]
 atlas = ExtResource("2_i2o54")
@@ -256,33 +280,9 @@ region = Rect2(528, 0, 48, 48)
 atlas = ExtResource("9_m0w8d")
 region = Rect2(576, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fpho7"]
-atlas = ExtResource("13_y5x62")
+[sub_resource type="AtlasTexture" id="AtlasTexture_naxvm"]
+atlas = ExtResource("14_esdke")
 region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mfgxh"]
-atlas = ExtResource("13_y5x62")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a7xmk"]
-atlas = ExtResource("13_y5x62")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8gyoq"]
-atlas = ExtResource("13_y5x62")
-region = Rect2(144, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4q73x"]
-atlas = ExtResource("13_y5x62")
-region = Rect2(192, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fqjp4"]
-atlas = ExtResource("13_y5x62")
-region = Rect2(240, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4p072"]
-atlas = ExtResource("13_y5x62")
-region = Rect2(288, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_35kb4"]
 atlas = ExtResource("14_31p2v")
@@ -512,37 +512,37 @@ region = Rect2(720, 0, 48, 48)
 atlas = ExtResource("18_5kttb")
 region = Rect2(768, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wk521"]
-atlas = ExtResource("16_m1rrp")
+[sub_resource type="AtlasTexture" id="AtlasTexture_quwsx"]
+atlas = ExtResource("23_qkkif")
 region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u6srt"]
-atlas = ExtResource("16_m1rrp")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ip85h"]
+atlas = ExtResource("23_qkkif")
 region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_twv7r"]
-atlas = ExtResource("16_m1rrp")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tn4j"]
+atlas = ExtResource("23_qkkif")
 region = Rect2(96, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7qdef"]
-atlas = ExtResource("16_m1rrp")
+[sub_resource type="AtlasTexture" id="AtlasTexture_krhdf"]
+atlas = ExtResource("23_qkkif")
 region = Rect2(144, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ke7l6"]
-atlas = ExtResource("16_m1rrp")
-region = Rect2(192, 0, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_kq1ou"]
+atlas = ExtResource("23_qkkif")
+region = Rect2(0, 48, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hv5he"]
-atlas = ExtResource("16_m1rrp")
-region = Rect2(240, 0, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_64l63"]
+atlas = ExtResource("23_qkkif")
+region = Rect2(48, 48, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_autf6"]
-atlas = ExtResource("16_m1rrp")
-region = Rect2(288, 0, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctry4"]
+atlas = ExtResource("23_qkkif")
+region = Rect2(96, 48, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ubwgb"]
-atlas = ExtResource("16_m1rrp")
-region = Rect2(336, 0, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gnne"]
+atlas = ExtResource("23_qkkif")
+region = Rect2(144, 48, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ajosc"]
 atlas = ExtResource("17_ko8me")
@@ -798,25 +798,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fpho7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mfgxh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a7xmk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8gyoq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4q73x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fqjp4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4p072")
+"texture": SubResource("AtlasTexture_naxvm")
 }],
 "loop": true,
 "name": &"idle",
@@ -1067,28 +1049,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wk521")
+"texture": SubResource("AtlasTexture_quwsx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_u6srt")
+"texture": SubResource("AtlasTexture_ip85h")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_twv7r")
+"texture": SubResource("AtlasTexture_8tn4j")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7qdef")
+"texture": SubResource("AtlasTexture_krhdf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ke7l6")
+"texture": SubResource("AtlasTexture_kq1ou")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hv5he")
+"texture": SubResource("AtlasTexture_64l63")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_autf6")
+"texture": SubResource("AtlasTexture_ctry4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ubwgb")
+"texture": SubResource("AtlasTexture_4gnne")
 }],
 "loop": true,
 "name": &"walk",
@@ -1321,7 +1303,7 @@ cutoff_sfx = true
 
 [sub_resource type="Resource" id="Resource_lib4c"]
 script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("49_2q5ti")]
+sfx_list = [ExtResource("83_hswun")]
 bus = &"Voice"
 cutoff_sfx = true
 
@@ -1359,7 +1341,12 @@ script = ExtResource("1_3d0l6")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_hmp25")
+<<<<<<< Updated upstream
 animation = &"backflip_land"
+=======
+animation = &"walk"
+frame_progress = 0.169077
+>>>>>>> Stashed changes
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Doll"]
 unique_name_in_owner = true
@@ -1392,7 +1379,7 @@ target_position = Vector2(10, 0)
 [node name="PushRayL" type="RayCast2D" parent="PushRays"]
 modulate = Color(1, 1, 0.164706, 1)
 position = Vector2(0, -14)
-target_position = Vector2(-10, 0)
+target_position = Vector2(-9, 0)
 
 [node name="DiveRay" type="RayCast2D" parent="."]
 modulate = Color(0, 1, 0, 1)
@@ -1433,7 +1420,7 @@ script = ExtResource("13_olbq0")
 
 [node name="TurnSkid" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("20_0joxb")
-skid_accel_time = 10.0
+skid_accel_time = 8.0
 over_accel = 1.0
 animation = &"skid"
 

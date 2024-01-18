@@ -3,11 +3,13 @@ extends State
 ## State specialised for player characters.
 
 
+@export_category(&"Animation")
 ## The name of the animation that this state should play.
 @export var animation := &""
 ## How many pixels the animation needs to be offset.
 @export var anim_offset: Vector2i
 
+@export_category(&"Sound")
 ## sfx_layers is a list of the possible sound effects that can play at once.
 ## [br][br]This is useful if you want a state to play more than just one sound on entry.
 ## [br][br]Every array inside of the sfx_layers array is said list of possible sound effects it can cycle through.

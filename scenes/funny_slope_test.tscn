@@ -97,7 +97,7 @@ visible = false
 shape = SubResource("CircleShape2D_fqbrv")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(312, -32)
+position = Vector2(712, -136)
 physics_material_override = SubResource("PhysicsMaterial_sca4b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]

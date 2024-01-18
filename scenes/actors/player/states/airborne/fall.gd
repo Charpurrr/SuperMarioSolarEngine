@@ -19,7 +19,7 @@ func _tell_switch():
 	if movement.can_spin() and input.buffered_input(&"spin"):
 		return &"Spin"
 
-	if Input.is_action_just_pressed(&"dive") and movement.can_air_action():
+	if movement.can_air_action() and input.buffered_input(&"dive"):
 		return &"AirborneDive"
 
 	if Input.is_action_just_pressed(&"down") and movement.can_air_action():

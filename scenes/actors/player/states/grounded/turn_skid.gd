@@ -45,7 +45,7 @@ func _tell_switch():
 	if Input.is_action_pressed(&"down"):
 		return &"Crouch"
 
-	if Input.is_action_just_pressed(&"dive"):
+	if input.buffered_input(&"dive"):
 		return &"AirborneDive"
 
 	return &""
