@@ -34,11 +34,22 @@ func _physics_process(_delta):
 	center_offset = DisplayServer.window_get_size() / 2
 	trans = trans.scaled(Vector2.ONE * zoom)
 
-	#if player.vel.x != 0:
-		#print(player.input.get_x_dir())
+	if player.vel.x != 0:
+		x_push_timer = max(x_push_timer - 1, 0)
+	else:
+		x_push_timer = x_push_time
 
-	#trans.origin = (-player.position * zoom) + center_offset
-	# Disable camera following Mario on Y axis.
+	if x_push_timer == 0:
+		match player.input.get_x_dir():
+			1:
+				@warning_ignore("integer_division")
+				position.x = min(position.x + x_push / x_push_time, position.x + x_push)
+			-1:
+				@warning_ignore("integer_division")
+				position.x = max(-position.x + x_push / x_push_time, position.x - x_push)
+
+	trans.origin = (-player.position * zoom) + center_offset
+
 	trans.origin = (Vector2(-player.position.x, 0) * zoom) + center_offset + offset
 
 	viewport.canvas_transform = trans

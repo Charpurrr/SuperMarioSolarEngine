@@ -11,7 +11,7 @@ extends PlayerState
 var down: bool
 
 
-func _on_enter(neutral):
+func _on_enter(_handover):
 	if Input.is_action_pressed(&"down"):
 		down = true
 

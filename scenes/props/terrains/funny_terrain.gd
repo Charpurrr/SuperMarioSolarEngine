@@ -22,6 +22,7 @@ func _physics_process(_delta):
 
 			get_parent().call_deferred("add_child", body)
 
+
 func _draw():
 	_draw_point()
 

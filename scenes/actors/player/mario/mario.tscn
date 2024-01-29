@@ -1537,8 +1537,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_vehmo"), SubR
 script = ExtResource("61_0shyc")
 zoom = 2.0
 offset = Vector2(0, 200)
-
-[node name="Camera2D" type="Camera2D" parent="Camera"]
-zoom = Vector2(2, 2)
+x_push = 300
+x_push_time = 100
 
 [connection signal="animation_finished" from="Doll/AnimationPlayer" to="StateManager/Airborne/GroundPound" method="_on_animation_player_animation_finished"]

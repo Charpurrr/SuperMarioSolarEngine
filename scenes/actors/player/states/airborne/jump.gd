@@ -39,7 +39,7 @@ func _cycle_tick():
 
 
 func _tell_switch():
-	if movement.can_air_action() and input.buffered_input(&"dive"):
+	if input.buffered_input(&"dive"):
 		return &"AirborneDive"
 
 	if movement.can_spin() and input.buffered_input(&"spin"):

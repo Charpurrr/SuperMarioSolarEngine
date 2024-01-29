@@ -33,11 +33,11 @@ func _tell_switch():
 	if actor.is_on_floor():
 		return &"TripleJumpStyle"
 
+	if input.buffered_input(&"dive"):
+		return &"AirborneDive"
+
 	if movement.can_spin() and input.buffered_input(&"spin"):
 		return &"Spin"
-
-	if input.buffered_input(&"dive") and movement.can_air_action():
-		return &"AirborneDive"
 
 	if Input.is_action_just_pressed(&"down") and movement.can_air_action():
 		return &"GroundPound"

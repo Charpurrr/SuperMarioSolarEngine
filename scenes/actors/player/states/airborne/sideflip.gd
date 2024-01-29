@@ -40,11 +40,11 @@ func _tell_switch():
 	if movement.can_wallslide():
 		return &"Wallslide"
 
+	if input.buffered_input(&"dive"):
+		return &"AirborneDive"
+
 	if input.buffered_input(&"spin"):
 		return &"Spin"
-
-	if input.buffered_input(&"dive") and movement.can_air_action():
-		return &"AirborneDive"
 
 	if Input.is_action_just_pressed(&"down") and movement.can_air_action():
 		return &"GroundPound"

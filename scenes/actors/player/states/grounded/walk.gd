@@ -29,14 +29,14 @@ func _on_exit():
 
 
 func _tell_switch():
+	if input.buffered_input(&"dive"):
+		return &"AirborneDive"
+
 	if movement.can_spin() and input.buffered_input(&"spin"):
 		return &"Spin"
 
 	if input.buffered_input(&"jump"):
 		return &"DummyJump"
-
-	if input.buffered_input(&"dive"):
-		return &"AirborneDive"
 
 	if InputManager.get_x_dir() == -movement.prev_facing_direction:
 		movement.update_prev_direction()
