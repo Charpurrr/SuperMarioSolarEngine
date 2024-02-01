@@ -13,7 +13,6 @@ var start_freefall_timer: bool = false
 
 func _on_enter(_handover):
 	start_freefall_timer = false
-	actor.animplay.play("backflip_" + str(int(bool(movement.facing_direction + 1))))
 	actor.vel.y = -jump_power
 	actor.vel.x = push_power * -movement.facing_direction
 
@@ -30,6 +29,16 @@ func _cycle_tick():
 
 func _post_tick():
 	movement.apply_gravity()
+
+
+func _on_exit():
+	actor.doll.rotation = 0
+
+
+func _play_animation():
+	var tween := Tween.new()
+
+	tween.tween_property(actor.doll, rotation, 180 * movement.facing_direction)
 
 
 func _tell_switch():
@@ -52,6 +61,4 @@ func _tell_switch():
 		return &"Freefall"
 
 	return &""
-	
-func _on_exit():
-	actor.animplay.play("RESET")
+

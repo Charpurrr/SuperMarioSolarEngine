@@ -3,7 +3,6 @@ extends CharacterBody2D
 ## Playable 2D character.
 
 
-@onready var animplay: AnimationPlayer = %AnimationPlayer
 @onready var doll: AnimatedSprite2D = $Doll
 
 @onready var movement: Object = $Movement
