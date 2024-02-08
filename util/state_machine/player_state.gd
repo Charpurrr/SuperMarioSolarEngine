@@ -10,6 +10,8 @@ extends State
 @export var anim_offset: Vector2i
 
 @export_category(&"Sound")
+## If the sound effect(s) should play as soon as the state starts or not.
+@export var on_enter: bool = true
 ## sfx_layers is a list of the possible sound effects that can play at once.
 ## [br][br]This is useful if you want a state to play more than just one sound on entry.
 ## [br][br]Every array inside of the sfx_layers array is said list of possible sound effects it can cycle through.
@@ -25,33 +27,13 @@ func trigger_enter(handover):
 	if not animation.is_empty():
 		actor.doll.play(animation)
 
-	if not sfx_layers.is_empty():
-		for sfx_list in sfx_layers:
-			play_sfx(sfx_list, force_new)
-
 	actor.doll.offset = anim_offset
 
+	if on_enter and not sfx_layers.is_empty():
+		for sfx_list in sfx_layers:
+			SFXLayer.play_sfx(self, sfx_list, force_new)
+
 	super(handover)
-
-
-## Plays a random sound effect from an array.
-func play_sfx(layer: SFXLayer, randomized: bool):
-	var player := AudioStreamPlayer.new()
-
-	layer.new_pick = layer.sfx_list.pick_random()
-
-	if randomized and layer.sfx_list.size() > 1:
-		while layer.new_pick == layer.last_pick:
-			layer.new_pick = layer.sfx_list.pick_random()
-
-	call_deferred("add_child", player)
-	player.stream = layer.new_pick
-	player.bus = layer.bus
-	player.autoplay = true
-
-	player.connect(&"finished", player.queue_free)
-
-	layer.last_pick = layer.new_pick
 
 
 func trigger_exit():

@@ -11,3 +11,23 @@ extends Resource
 
 var last_pick: AudioStream
 var new_pick: AudioStream
+
+
+## Plays a random sound effect from an array.
+static func play_sfx(node: Object, layer: SFXLayer, randomized: bool):
+	var player := AudioStreamPlayer.new()
+
+	layer.new_pick = layer.sfx_list.pick_random()
+
+	if randomized and layer.sfx_list.size() > 1:
+		while layer.new_pick == layer.last_pick:
+			layer.new_pick = layer.sfx_list.pick_random()
+
+	node.call_deferred("add_child", player)
+	player.stream = layer.new_pick
+	player.bus = layer.bus
+	player.autoplay = true
+
+	player.connect(&"finished", player.queue_free)
+
+	layer.last_pick = layer.new_pick

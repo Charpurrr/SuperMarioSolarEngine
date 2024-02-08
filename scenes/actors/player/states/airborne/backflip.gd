@@ -38,7 +38,7 @@ func _on_exit():
 func _play_animation():
 	var tween := Tween.new()
 
-	tween.tween_property(actor.doll, rotation, 180 * movement.facing_direction)
+	tween.tween_property(actor.doll, actor.doll.rotation, 180 * movement.facing_direction, 1)
 
 
 func _tell_switch():
