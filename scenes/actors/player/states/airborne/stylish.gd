@@ -21,6 +21,6 @@ func _tell_switch():
 		return &"DummyJump"
 
 	if Input.is_action_pressed(&"down"):
-		return &"Crouch"
+		return [&"Crouch", [false, true]]
 
 	return &""

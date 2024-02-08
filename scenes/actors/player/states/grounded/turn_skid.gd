@@ -27,7 +27,7 @@ func _cycle_tick():
 
 
 func _tell_switch():
-	if not InputManager.is_moving_x() or actor.vel.x == 0:
+	if not InputManager.is_moving_x() or actor.vel.x == 0 or actor.is_on_wall():
 		return &"Idle"
 
 	if InputManager.get_x_dir() == -movement.facing_direction:
@@ -43,7 +43,7 @@ func _tell_switch():
 		return &"Sideflip"
 
 	if Input.is_action_pressed(&"down"):
-		return &"Crouch"
+		return [&"Crouch", [false, true]]
 
 	if input.buffered_input(&"dive"):
 		return &"AirborneDive"

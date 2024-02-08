@@ -29,6 +29,6 @@ func _on_exit():
 
 func _tell_switch():
 	if not movement.is_slide_slope():
-		return &"Crouch"
+		return [&"Crouch", [true, true]]
 
 	return &""

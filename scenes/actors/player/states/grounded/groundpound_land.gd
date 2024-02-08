@@ -19,7 +19,7 @@ func _tell_switch():
 		return &"GroundPoundJump"
 
 	if Input.is_action_pressed(&"down"):
-		return &"Crouch"
+		return [&"Crouch", [true, true]]
 
 	if can_ignore and InputManager.is_moving_x():
 		return &"Idle"

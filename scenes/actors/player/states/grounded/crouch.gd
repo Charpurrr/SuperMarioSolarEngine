@@ -3,23 +3,20 @@ extends PlayerState
 ## Holding down on the floor.
 
 
-## Skips the first frame of the crouching animation when true.
-## Usually set by the predecessor state.
-var skip_first_frame: bool = false
-
-
-func _on_enter(handover):
+# The first entry in the array is wether the first frame 
+# of the crouch animation should be skipped or not,
+# the second entry is wether the crouch sound effect should be player or not.
+func _on_enter(array):
 	actor.hitbox.disabled = true
 	actor.small_hitbox.disabled = false
 	actor.dive_hitbox.disabled = true
 
-	if handover != null:
-		skip_first_frame = handover
-
-
-func _pre_tick():
-	if skip_first_frame:
+	if array[0] == true:
 		actor.doll.set_frame(1)
+
+	if array[1] == true:
+		for sfx_list in sfx_layers:
+				SFXLayer.play_sfx(self, sfx_list, force_new)
 
 
 func _cycle_tick():
@@ -31,8 +28,6 @@ func _on_exit():
 	actor.hitbox.disabled = false
 	actor.small_hitbox.disabled = true
 	actor.dive_hitbox.disabled = true
-
-	skip_first_frame = false
 
 
 ## Return whether or not you can crouchwalk.

@@ -21,16 +21,16 @@ func _cycle_tick():
 	movement.move_x("ground", true)
 
 	actor.doll.speed_scale = actor.vel.x / movement.max_speed * 2
-	_set_appropriate_anim(current_frame)
+	_set_appropriate_anim()
 
 	if current_frame != last_frame:
-		_play_footstep_sfx(current_frame)
+		_play_footstep_sfx()
 
 	last_frame = current_frame
 
 
 ## Sets either the walking or running animation depending on velocity.
-func _set_appropriate_anim(current_frame: int):
+func _set_appropriate_anim():
 	var current_progress = actor.doll.get_frame_progress()
 
 	if Math.roundp(abs(actor.vel.x), 3) > movement.max_speed:
@@ -44,7 +44,7 @@ func _set_appropriate_anim(current_frame: int):
 
 
 ## Play a footstep sound effect depending on the current frame.
-func _play_footstep_sfx(current_frame: int):
+func _play_footstep_sfx():
 	for frame in footstep_frames:
 		if frame == current_frame:
 			for sfx_list in sfx_layers:
@@ -76,7 +76,7 @@ func _tell_switch():
 		if movement.is_slide_slope():
 			return &"ButtSlide"
 		else: 
-			return &"Crouch"
+			return [&"Crouch", [false, true]]
 
 	if InputManager.get_x() != 0 and actor.is_on_wall():
 		if actor.push_rays.check_push():

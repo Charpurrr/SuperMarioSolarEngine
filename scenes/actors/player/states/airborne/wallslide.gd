@@ -17,6 +17,7 @@ var reached_fall: bool
 
 func _on_enter(_handover):
 	movement.consume_coyote_timer()
+	movement.consec_jumps = 0
 
 
 func _cycle_tick():

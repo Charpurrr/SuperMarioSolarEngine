@@ -10,7 +10,7 @@ func _cycle_tick():
 
 func _tell_switch():
 	if Input.is_action_pressed(&"down"):
-		return &"Crouch"
+		return [&"Crouch", [false, true]]
 
 	if movement.can_spin() and input.buffered_input(&"spin"):
 		return &"Spin"

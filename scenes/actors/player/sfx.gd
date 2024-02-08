@@ -13,7 +13,7 @@ var last_pick: AudioStream
 var new_pick: AudioStream
 
 
-## Plays a random sound effect from an array.
+## Plays a sound effect from an array.
 static func play_sfx(node: Object, layer: SFXLayer, randomized: bool):
 	var player := AudioStreamPlayer.new()
 
