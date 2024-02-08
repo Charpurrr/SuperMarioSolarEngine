@@ -1089,7 +1089,7 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_2esv2"]
 script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("49_ym08k"), ExtResource("50_snfws"), ExtResource("51_26k4x")]
+sfx_list = [ExtResource("49_ym08k"), ExtResource("50_snfws")]
 bus = &"Motion"
 cutoff_sfx = false
 
@@ -1101,7 +1101,7 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_cjrlj"]
 script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("49_ym08k"), ExtResource("50_snfws"), ExtResource("51_26k4x")]
+sfx_list = [ExtResource("51_26k4x")]
 bus = &"Motion"
 cutoff_sfx = false
 
@@ -1399,7 +1399,7 @@ animation = &"wallslide"
 
 [node name="Walljump" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("41_re2yk")
-jump_power = 5.0
+jump_power = 5.3
 push_power = 4.0
 animation = &"walljump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_oiutc")])

@@ -6,22 +6,31 @@ extends PlayerState
 ## On what frames of the walking animation a footstep soundeffect should play.
 @export var footstep_frames: Array[int]
 
+## Wether the footstep sound effect has played or not.
+var sfx_has_played: bool = false
+
+var current_frame: int
+var last_frame: int
+
 
 func _cycle_tick():
-	var current_frame = actor.doll.get_frame()
+	current_frame = actor.doll.get_frame()
 
 	movement.update_prev_direction()
 	movement.activate_coyote_timer()
 	movement.move_x("ground", true)
 
 	actor.doll.speed_scale = actor.vel.x / movement.max_speed * 2
-	set_appropriate_anim(current_frame)
+	_set_appropriate_anim(current_frame)
 
-	play_footstep_sfx(current_frame)
+	if current_frame != last_frame:
+		_play_footstep_sfx(current_frame)
+
+	last_frame = current_frame
 
 
 ## Sets either the walking or running animation depending on velocity.
-func set_appropriate_anim(current_frame: int):
+func _set_appropriate_anim(current_frame: int):
 	var current_progress = actor.doll.get_frame_progress()
 
 	if Math.roundp(abs(actor.vel.x), 3) > movement.max_speed:
@@ -35,18 +44,11 @@ func set_appropriate_anim(current_frame: int):
 
 
 ## Play a footstep sound effect depending on the current frame.
-func play_footstep_sfx(current_frame: int):
-	var has_played: bool
-
-	print(has_played) # YB GBUHU UDONT FORGET DELTARUNE!!!
-
+func _play_footstep_sfx(current_frame: int):
 	for frame in footstep_frames:
-		if frame == current_frame and not has_played:
+		if frame == current_frame:
 			for sfx_list in sfx_layers:
 				SFXLayer.play_sfx(self, sfx_list, force_new)
-				has_played = true
-
-		#has_played = false
 
 
 func _on_exit():
