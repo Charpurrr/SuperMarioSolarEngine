@@ -64,7 +64,7 @@ func _tell_switch():
 			if input.buffered_input(&"spin"):
 				return &"Twirl"
 			elif input.buffered_input(&"dive"):
-				return &"AirborneDive"
+				return &"Dive"
 
 		if movement.finished_freefall_timer():
 			return &"Freefall"

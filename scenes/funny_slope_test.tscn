@@ -57,7 +57,7 @@ floor_snap_length = 0.0
 [node name="Polygon2D" type="Polygon2D" parent="."]
 texture_repeat = 2
 texture = SubResource("PlaceholderTexture2D_qm5on")
-polygon = PackedVector2Array(-64, 0, 384, 0, 640, -64, 896, 0, 1152, 0, 1280, -64, 1408, 0, 1600, 0, 1664, -64, 1728, 0, 1920, 0, 1984, -128, 2048, 0, 2240, 0, 2272, -128, 2304, 0, 2496, 0, 2496, 256, -64, 256, -120, 256, -120, -208, -64, -208)
+polygon = PackedVector2Array(-64, 0, 200, 0, 200, -8, 232, -8, 232, 0, 280, 0, 280, -16, 312, -16, 312, 0, 384, 0, 640, -64, 896, 0, 1152, 0, 1280, -64, 1408, 0, 1600, 0, 1664, -64, 1728, 0, 1920, 0, 1984, -128, 2048, 0, 2240, 0, 2272, -128, 2304, 0, 2496, 0, 2496, 256, -64, 256, -120, 256, -120, -208, -64, -208)
 script = ExtResource("3_jfqwu")
 
 [node name="Polygon2D2" type="Polygon2D" parent="."]

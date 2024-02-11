@@ -5,6 +5,7 @@ extends CharacterBody2D
 
 @onready var doll: AnimatedSprite2D = $Doll
 
+@onready var state_manager: Object = $StateManager
 @onready var movement: Object = $Movement
 @onready var input: Object = $InputManager
 

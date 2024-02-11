@@ -1,5 +1,5 @@
 class_name OdysseyDive
-extends AirDive
+extends Dive
 ## Diving after a groundpound.
 
 

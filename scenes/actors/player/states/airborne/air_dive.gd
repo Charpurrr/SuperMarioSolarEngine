@@ -1,13 +1,14 @@
-class_name AirDive
+class_name Dive
 extends PlayerState
-## Diving while airborne.
+## General diving state.
+## See OdysseyDive for diving after performing a ground pound.
 
 
 @export var min_x_power: float = 2.0
 @export var x_power: float = 6.0
 @export var y_power: float = 1.88
 
-## whether or not you'll go down on your dive.
+## Whether or not you'll go down on your dive.
 var down: bool
 
 
@@ -44,13 +45,14 @@ func _post_tick():
 
 func _on_exit():
 	movement.body_rotation = PI/2
+	down = false
 
 
 func _tell_switch():
 	if actor.is_on_floor():
 		return &"DiveSlide"
 
-	if Input.is_action_just_pressed(&"down") and movement.can_air_action():
+	if movement.can_air_action() and Input.is_action_just_pressed(&"down"):
 		return &"GroundPound"
 
 	return &""

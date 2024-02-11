@@ -1,6 +1,6 @@
-class_name CrouchWalk
+class_name Waddle
 extends PlayerState
-## Walking whilst crouching on the floor.
+## Walking whilse crouching on the floor.
 
 
 ## On what frames of the walking animation a footstep soundeffect should play.

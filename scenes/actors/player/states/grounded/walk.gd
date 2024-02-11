@@ -57,7 +57,7 @@ func _on_exit():
 
 func _tell_switch():
 	if input.buffered_input(&"dive"):
-		return &"AirborneDive"
+		return &"Dive"
 
 	if movement.can_spin() and input.buffered_input(&"spin"):
 		return &"Spin"
@@ -67,7 +67,7 @@ func _tell_switch():
 
 	if InputManager.get_x_dir() == -movement.prev_facing_direction:
 		movement.update_prev_direction()
-		return [&"TurnSkid", [0, 16]]
+		return [&"Skid", [0, 16]]
 
 	if !InputManager.is_moving_x():
 		return &"Idle"

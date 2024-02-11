@@ -1,4 +1,4 @@
-class_name TurnSkid
+class_name Skid
 extends PlayerState
 ## Turning from grounded movement at max speed.
 
@@ -46,6 +46,6 @@ func _tell_switch():
 		return [&"Crouch", [false, true]]
 
 	if input.buffered_input(&"dive"):
-		return &"AirborneDive"
+		return &"Dive"
 
 	return &""

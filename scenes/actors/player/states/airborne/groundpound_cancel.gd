@@ -11,7 +11,7 @@ func _tell_switch():
 			return &"Twirl"
 
 	if movement.can_air_action() and input.buffered_input(&"dive"):
-		return &"AirborneDive"
+		return &"Dive"
 
 	if Input.is_action_just_pressed(&"down") and movement.can_air_action():
 		return &"GroundPound"

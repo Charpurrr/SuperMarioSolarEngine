@@ -44,7 +44,7 @@ func _tell_switch():
 		return &"ButtSlide"
 
 	if _can_crouchwalk():
-		return &"CrouchWalk"
+		return &"Waddle"
 
 	if input.buffered_input(&"jump"):
 		return &"Backflip"

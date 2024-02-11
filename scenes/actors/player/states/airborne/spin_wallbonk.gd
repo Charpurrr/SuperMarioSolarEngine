@@ -8,7 +8,7 @@ func _tell_switch():
 		return &"Idle"
 
 	if finished_init and movement.can_air_action() and input.buffered_input(&"dive"):
-		return &"AirborneDive"
+		return &"Dive"
 
 	if movement.finished_freefall_timer():
 		return &"Freefall"
