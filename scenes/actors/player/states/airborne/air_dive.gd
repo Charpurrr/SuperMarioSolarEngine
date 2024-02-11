@@ -23,7 +23,7 @@ func _on_enter(_handover):
 	actor.small_hitbox.disabled = true
 	actor.dive_hitbox.disabled = false
 
-	movement.accelerate(x_power, InputManager.get_x(), x_power)
+	movement.accelerate(x_power, InputManager.get_x_dir(), x_power)
 	actor.vel.x = max(min_x_power, abs(actor.vel.x)) * movement.facing_direction
 
 	if is_equal_approx(actor.vel.x, 0):

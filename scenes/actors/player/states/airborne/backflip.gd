@@ -1,6 +1,6 @@
 class_name Backflip
 extends PlayerState
-## Jumping while crouching.
+## Jumping backwards from a crouch.
 
 
 @export var jump_power: float = 9.1

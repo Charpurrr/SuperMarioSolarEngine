@@ -47,6 +47,9 @@ func _tell_switch():
 		return &"Waddle"
 
 	if input.buffered_input(&"jump"):
-		return &"Backflip"
+		if InputManager.get_x_dir() == 0:
+			return &"Backflip"
+		else:
+			return &"Longjump"
 
 	return &""
