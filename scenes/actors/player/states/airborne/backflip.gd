@@ -31,25 +31,15 @@ func _post_tick():
 	movement.apply_gravity()
 
 
-func _on_exit():
-	actor.doll.rotation = 0
-
-
-func _play_animation():
-	var tween := Tween.new()
-
-	tween.tween_property(actor.doll, actor.doll.rotation, 180 * movement.facing_direction, 1)
-
-
 func _tell_switch():
 	if movement.can_wallslide():
 		return &"Wallslide"
 
+	if input.buffered_input(&"dive"):
+		return &"AirborneDive"
+
 	if movement.can_spin() and input.buffered_input(&"spin"):
 		return &"Spin"
-
-	if movement.can_air_action() and input.buffered_input(&"dive"):
-		return &"AirborneDive"
 
 	if Input.is_action_just_pressed(&"down") and movement.can_air_action():
 		return &"GroundPound"
