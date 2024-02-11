@@ -4,7 +4,7 @@ extends PlayerState
 
 
 @export var jump_power: float = 8.8
-## How much the sideflip sends you backwards.
+## How much the sideflip sends you forwards.
 @export var push_power: float = 1.2
 
 ## If the activate_freefall_timer() function should be called.
@@ -15,9 +15,10 @@ func _on_enter(_handover):
 	start_freefall_timer = false
 
 	movement.update_direction(sign(movement.get_input_x()))
-	actor.vel.y = -jump_power
-
 	movement.consec_jumps = 1
+
+	actor.vel.y = -jump_power
+	actor.vel.x = push_power * InputManager.get_x_dir()
 
 
 func _post_tick():
@@ -25,8 +26,8 @@ func _post_tick():
 
 
 func _cycle_tick():
-	if actor.vel.y < -jump_power + 1:
-		actor.vel.x = push_power * InputManager.get_x_dir()
+	#if actor.vel.y < -jump_power + 1: # wtf is this line lmaoo
+		#actor.vel.x = push_power * InputManager.get_x_dir()
 
 	movement.move_x(0.1, false)
 

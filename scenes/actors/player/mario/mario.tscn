@@ -1,4 +1,4 @@
-[gd_scene load_steps=250 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=251 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://scenes/actors/player/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://cut0vcslnatgi" path="res://scenes/actors/player/mario/anime/backflip.png" id="2_i2o54"]
@@ -9,13 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://dunegtt073xey" path="res://scenes/actors/player/mario/anime/crouchwalk.png" id="4_b56cl"]
 [ext_resource type="Texture2D" uid="uid://cng184m5tspum" path="res://scenes/actors/player/mario/anime/double_fall.png" id="5_0w3l2"]
 [ext_resource type="Texture2D" uid="uid://dgni6l4f0eh6o" path="res://scenes/actors/player/mario/anime_127/crouch.png" id="5_v8y6h"]
-[ext_resource type="Texture2D" uid="uid://bqyc4a8h23h1" path="res://scenes/actors/player/mario/anime/fall.png" id="5_xpfyn"]
 [ext_resource type="Texture2D" uid="uid://0stpt02oj3gc" path="res://scenes/actors/player/mario/anime/double_jump.png" id="6_b0k2k"]
 [ext_resource type="Texture2D" uid="uid://bqelaoqudiigg" path="res://scenes/actors/player/mario/anime/freefall.png" id="6_bo6cm"]
 [ext_resource type="Texture2D" uid="uid://c1re3wsiqbvbl" path="res://scenes/actors/player/mario/anime/diveslide.png" id="7_wwk88"]
 [ext_resource type="Texture2D" uid="uid://bjqptf8hd7sgj" path="res://scenes/actors/player/mario/anime/groundpound.png" id="9_m0w8d"]
 [ext_resource type="Texture2D" uid="uid://cx8otjotpvqfc" path="res://scenes/actors/player/mario/anime/groundpound_jump.png" id="11_1j7yv"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/grounded.gd" id="11_15kl1"]
+[ext_resource type="Texture2D" uid="uid://dda5frijccwp1" path="res://scenes/actors/player/mario/anime_127/fall.png" id="11_yo8jf"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/grounded/idle.gd" id="12_hqcfh"]
 [ext_resource type="Texture2D" uid="uid://mgjnjyjy5rh8" path="res://scenes/actors/player/mario/anime/push.png" id="12_kw6lo"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/grounded/walk.gd" id="13_olbq0"]
@@ -103,9 +103,9 @@
 [ext_resource type="AudioStream" uid="uid://dw82lkdljdpnv" path="res://scenes/actors/player/mario/nsmbu_m_voice/waho.wav" id="96_ex20x"]
 [ext_resource type="AudioStream" uid="uid://cd2tp335whfwi" path="res://scenes/actors/player/mario/nsmbu_m_voice/hhuowa.wav" id="97_pkbn3"]
 [ext_resource type="AudioStream" uid="uid://5ugrgm22u53o" path="res://scenes/actors/player/mario/nsmbu_m_voice/huah.wav" id="98_1ccgr"]
-[ext_resource type="AudioStream" uid="uid://c4tu3w8d0713c" path="res://scenes/actors/player/mario/nsmbu_m_voice/yah(circonflexe).wav" id="100_dy8dx"]
 [ext_resource type="AudioStream" uid="uid://blkai3jqert2f" path="res://scenes/actors/player/mario/motion_nsmbw/twirl.wav" id="100_iksxt"]
 [ext_resource type="AudioStream" uid="uid://d1hej4ubqjb01" path="res://scenes/actors/player/mario/nsmbu_m_voice/wahu.wav" id="100_yqne1"]
+[ext_resource type="AudioStream" uid="uid://bhcvq7v453428" path="res://scenes/actors/player/mario/nsmbu_m_voice/yuaa.wav" id="103_ovuyj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_joy5i"]
 atlas = ExtResource("2_i2o54")
@@ -191,9 +191,13 @@ region = Rect2(0, 0, 48, 48)
 atlas = ExtResource("6_b0k2k")
 region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aeo3t"]
-atlas = ExtResource("5_xpfyn")
+[sub_resource type="AtlasTexture" id="AtlasTexture_dl2f3"]
+atlas = ExtResource("11_yo8jf")
 region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mci5"]
+atlas = ExtResource("11_yo8jf")
+region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_useot"]
 atlas = ExtResource("6_bo6cm")
@@ -679,11 +683,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aeo3t")
+"texture": SubResource("AtlasTexture_dl2f3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mci5")
 }],
 "loop": false,
 "name": &"fall",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1102,13 +1109,13 @@ cutoff_sfx = false
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("46_ek8cu"), ExtResource("47_0n258"), ExtResource("48_msvxl")]
 bus = &"Voice"
-cutoff_sfx = false
+cutoff_sfx = true
 
 [sub_resource type="Resource" id="Resource_b3ye4"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("46_ek8cu"), ExtResource("47_0n258"), ExtResource("48_msvxl")]
 bus = &"Voice"
-cutoff_sfx = false
+cutoff_sfx = true
 
 [sub_resource type="Resource" id="Resource_t5lrn"]
 script = ExtResource("49_apkmk")
@@ -1256,7 +1263,7 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_vehmo"]
 script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("98_1ccgr"), ExtResource("100_dy8dx"), ExtResource("100_yqne1")]
+sfx_list = [ExtResource("98_1ccgr"), ExtResource("103_ovuyj"), ExtResource("100_yqne1")]
 bus = &"Voice"
 cutoff_sfx = false
 
@@ -1276,7 +1283,7 @@ script = ExtResource("1_3d0l6")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_hmp25")
-animation = &"crouch_walk"
+animation = &"fall"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
@@ -1416,6 +1423,7 @@ jump_power = 5.3
 min_jump_percent = 20.0
 jump_number = 1
 animation = &"jump"
+anim_offset = Vector2i(0, 5)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_2esv2")])
 force_new = false
 
@@ -1441,6 +1449,7 @@ force_new = false
 [node name="Fall" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("21_cisab")
 animation = &"fall"
+anim_offset = Vector2i(0, 5)
 
 [node name="Freefall" type="Node" parent="StateManager/Airborne/Fall"]
 script = ExtResource("26_w8jki")
