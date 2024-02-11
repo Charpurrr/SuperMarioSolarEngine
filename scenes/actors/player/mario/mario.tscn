@@ -1,4 +1,4 @@
-[gd_scene load_steps=251 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=250 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://scenes/actors/player/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://cut0vcslnatgi" path="res://scenes/actors/player/mario/anime/backflip.png" id="2_i2o54"]
@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://bjqptf8hd7sgj" path="res://scenes/actors/player/mario/anime/groundpound.png" id="9_m0w8d"]
 [ext_resource type="Texture2D" uid="uid://cx8otjotpvqfc" path="res://scenes/actors/player/mario/anime/groundpound_jump.png" id="11_1j7yv"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/grounded.gd" id="11_15kl1"]
-[ext_resource type="Texture2D" uid="uid://dda5frijccwp1" path="res://scenes/actors/player/mario/anime_127/fall.png" id="11_yo8jf"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/grounded/idle.gd" id="12_hqcfh"]
 [ext_resource type="Texture2D" uid="uid://mgjnjyjy5rh8" path="res://scenes/actors/player/mario/anime/push.png" id="12_kw6lo"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/grounded/walk.gd" id="13_olbq0"]
@@ -191,14 +190,6 @@ region = Rect2(0, 0, 48, 48)
 atlas = ExtResource("6_b0k2k")
 region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dl2f3"]
-atlas = ExtResource("11_yo8jf")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4mci5"]
-atlas = ExtResource("11_yo8jf")
-region = Rect2(48, 0, 48, 48)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_useot"]
 atlas = ExtResource("6_bo6cm")
 region = Rect2(0, 0, 48, 48)
@@ -279,17 +270,25 @@ region = Rect2(576, 0, 48, 48)
 atlas = ExtResource("14_esdke")
 region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8u1iv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_eeboy"]
 atlas = ExtResource("15_ql0oe")
 region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xyoqn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0j43o"]
 atlas = ExtResource("15_ql0oe")
 region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qvptw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6crpk"]
 atlas = ExtResource("15_ql0oe")
 region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t12mv"]
+atlas = ExtResource("15_ql0oe")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgo6g"]
+atlas = ExtResource("15_ql0oe")
+region = Rect2(96, 48, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i0dhx"]
 atlas = ExtResource("12_kw6lo")
@@ -683,17 +682,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dl2f3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4mci5")
-}],
-"loop": false,
-"name": &"fall",
-"speed": 15.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_useot")
 }],
 "loop": true,
@@ -796,16 +784,27 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8u1iv")
+"texture": SubResource("AtlasTexture_eeboy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xyoqn")
+"texture": SubResource("AtlasTexture_0j43o")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qvptw")
+"texture": SubResource("AtlasTexture_6crpk")
 }],
 "loop": false,
 "name": &"jump",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t12mv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgo6g")
+}],
+"loop": false,
+"name": &"jump_fall",
 "speed": 15.0
 }, {
 "frames": [{
@@ -1283,7 +1282,7 @@ script = ExtResource("1_3d0l6")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_hmp25")
-animation = &"fall"
+animation = &"jump_fall"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
@@ -1448,7 +1447,7 @@ force_new = false
 
 [node name="Fall" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("21_cisab")
-animation = &"fall"
+animation = &"jump_fall"
 anim_offset = Vector2i(0, 5)
 
 [node name="Freefall" type="Node" parent="StateManager/Airborne/Fall"]
