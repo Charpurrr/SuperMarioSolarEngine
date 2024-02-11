@@ -18,7 +18,6 @@ func _on_enter(_handover):
 	movement.consec_jumps = 0
 
 	actor.vel.y = -jump_power
-	actor.vel.x = push_power * InputManager.get_x_dir()
 
 
 func _post_tick():
@@ -26,7 +25,7 @@ func _post_tick():
 
 
 func _cycle_tick():
-	movement.move_x(0.3, false)
+	movement.accelerate(0.2, InputManager.get_x_dir(), push_power)
 
 	if actor.vel.y > 0 and not start_freefall_timer:
 		start_freefall_timer = true

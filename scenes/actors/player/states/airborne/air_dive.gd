@@ -10,6 +10,10 @@ extends PlayerState
 
 ## Whether or not you'll go down on your dive.
 var down: bool
+## The input direction the player entered the dive state with.
+var entered_dir: int
+## The facing direction the player entered the dive state with.
+var entered_face: int
 
 
 func _on_enter(_handover):
@@ -23,13 +27,10 @@ func _on_enter(_handover):
 	actor.small_hitbox.disabled = true
 	actor.dive_hitbox.disabled = false
 
-	movement.accelerate(x_power, InputManager.get_x_dir(), x_power)
-	actor.vel.x = max(min_x_power, abs(actor.vel.x)) * movement.facing_direction
+	entered_face = movement.facing_direction
+	entered_dir = InputManager.get_x_dir()
 
-	if is_equal_approx(actor.vel.x, 0):
-		actor.vel.y = -y_power
-
-	if not down and actor.vel.y > -y_power:
+	if (not down and actor.vel.y > -y_power) or is_equal_approx(actor.vel.x, 0):
 		actor.vel.y = -y_power
 
 
@@ -37,6 +38,11 @@ func _cycle_tick():
 	movement.body_rotation = actor.vel.angle() + PI / 2
 
 	actor.doll.rotation = lerp_angle(actor.doll.rotation, movement.body_rotation, 0.5)
+
+	if entered_dir != 0:
+		movement.accelerate(0.5, entered_face, x_power)
+	else:
+		actor.vel.x = min_x_power
 
 
 func _post_tick():
