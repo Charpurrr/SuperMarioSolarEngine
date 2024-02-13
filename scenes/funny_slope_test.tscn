@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ernfgv2twpy4"]
+[gd_scene load_steps=22 format=3 uid="uid://ernfgv2twpy4"]
 
 [ext_resource type="Script" path="res://scenes/props/terrains/funny_terrain.gd" id="1_aqn3p"]
 [ext_resource type="PackedScene" uid="uid://dgqp3sqvmcvpu" path="res://scenes/actors/player/mario/mario.tscn" id="1_cq4tv"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://deaf7c51bxjrn" path="res://scenes/editor/terrain_edit/polyline_segment4.png" id="10_3ff85"]
 [ext_resource type="Texture2D" uid="uid://fgjreysoh48j" path="res://scenes/editor/terrain_edit/polyline_segment5.png" id="11_68t5h"]
 [ext_resource type="Texture2D" uid="uid://dshijnokfnb86" path="res://scenes/props/objects/note_block.png" id="13_g8ybp"]
+[ext_resource type="PackedScene" uid="uid://c0idljyvqdalg" path="res://scenes/actors/enemies/thwomp/thwomp.tscn" id="14_fu6s8"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qm5on"]
 
@@ -52,12 +53,15 @@ size = Vector2(32, 32)
 [node name="FunnySlopeTest" type="Node2D"]
 
 [node name="Mario" parent="." instance=ExtResource("1_cq4tv")]
+position = Vector2(218, -172)
 floor_snap_length = 0.0
+
+[node name="Camera2D" type="Camera2D" parent="Mario"]
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 texture_repeat = 2
 texture = SubResource("PlaceholderTexture2D_qm5on")
-polygon = PackedVector2Array(-64, 0, 200, 0, 200, -8, 232, -8, 232, 0, 280, 0, 280, -16, 312, -16, 312, 0, 384, 0, 640, -64, 896, 0, 1152, 0, 1280, -64, 1408, 0, 1600, 0, 1664, -64, 1728, 0, 1920, 0, 1984, -128, 2048, 0, 2240, 0, 2272, -128, 2304, 0, 2496, 0, 2496, 256, -64, 256, -120, 256, -120, -208, -64, -208)
+polygon = PackedVector2Array(-64, 0, 200, 0, 200, -8, 232, -8, 232, 0, 280, 0, 280, -16, 312, -16, 312, 0, 384, 0, 640, -64, 896, 0, 1152, 0, 1280, -64, 1408, 0, 1600, 0, 1664, -64, 1728, 0, 1920, 0, 1984, -128, 2048, 0, 2240, 0, 2272, -128, 2304, 0, 2496, 0, 2496, 256, -31, 1534, 34, 931, -120, 256, -120, -208, -64, -208, -64, -24, -112, -24, -112, 0)
 script = ExtResource("3_jfqwu")
 
 [node name="Polygon2D2" type="Polygon2D" parent="."]
@@ -105,5 +109,8 @@ shape = SubResource("RectangleShape2D_tefr0")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
 texture = ExtResource("13_g8ybp")
+
+[node name="Thwomp" parent="." instance=ExtResource("14_fu6s8")]
+position = Vector2(188, -172)
 
 [connection signal="input_event" from="FunnyTerrain/Button" to="FunnyTerrain" method="_on_button_input_event"]

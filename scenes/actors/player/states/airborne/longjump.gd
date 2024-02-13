@@ -27,6 +27,8 @@ func _post_tick():
 func _cycle_tick():
 	movement.accelerate(0.2, InputManager.get_x_dir(), push_power)
 
+	# NOTE TO SELF, check walljump for pushback
+
 	if actor.vel.y > 0 and not start_freefall_timer:
 		start_freefall_timer = true
 

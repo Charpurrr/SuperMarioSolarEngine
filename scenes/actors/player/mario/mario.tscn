@@ -1,4 +1,4 @@
-[gd_scene load_steps=272 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=274 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://scenes/actors/player/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://cut0vcslnatgi" path="res://scenes/actors/player/mario/anime/backflip.png" id="2_i2o54"]
@@ -44,6 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://dfr68pj70d7he" path="res://scenes/actors/player/mario/anime_127/wallslide.png" id="24_dqa47"]
 [ext_resource type="Script" path="res://scenes/actors/player/push_rays.gd" id="26_qi7rb"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/freefall.gd" id="26_w8jki"]
+[ext_resource type="Script" path="res://scenes/actors/player/crouchlock.gd" id="27_y8r5l"]
 [ext_resource type="AudioStream" uid="uid://bbtaclojkk7fd" path="res://scenes/actors/player/mario/motion_nsmbw/land1(hard).wav" id="32_85yci"]
 [ext_resource type="AudioStream" uid="uid://cccbn6ulhevnp" path="res://scenes/actors/player/mario/motion_nsmbw/land2(hard).wav" id="33_hm8uh"]
 [ext_resource type="AudioStream" uid="uid://i88nn3e4i6qo" path="res://scenes/actors/player/mario/motion_nsmbw/step1(hard).wav" id="34_a3ogi"]
@@ -1195,6 +1196,9 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c86nk"]
 size = Vector2(16, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2tafv"]
+size = Vector2(16, 32)
+
 [sub_resource type="Resource" id="Resource_r5xry"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("32_85yci"), ExtResource("33_hm8uh")]
@@ -1412,6 +1416,14 @@ shape = SubResource("RectangleShape2D_1emcl")
 [node name="DiveHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_c86nk")
+
+[node name="Crouchlock" type="Area2D" parent="."]
+script = ExtResource("27_y8r5l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crouchlock"]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_2tafv")
+debug_color = Color(0.792157, 0.380392, 0.52549, 0.419608)
 
 [node name="PushRays" type="Node2D" parent="." node_paths=PackedStringArray("movement")]
 script = ExtResource("26_qi7rb")
@@ -1678,7 +1690,10 @@ force_new = false
 
 [node name="Camera" type="Node2D" parent="."]
 script = ExtResource("61_0shyc")
+enabled = false
 zoom = 2.0
 offset = Vector2(0, 200)
 x_push = 300
 x_push_time = 100
+
+[connection signal="body_entered" from="Crouchlock" to="Crouchlock" method="_on_body_entered"]

@@ -15,6 +15,8 @@ extends CharacterBody2D
 @onready var dive_hitbox: CollisionShape2D = $DiveHitbox
 @onready var small_hitbox: CollisionShape2D = $SmallHitbox
 
+@onready var crouchlock: CrouchlockDetection = $Crouchlock
+
 ## Current velocity.
 var vel: Vector2
 
