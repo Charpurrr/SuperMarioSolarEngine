@@ -1401,9 +1401,7 @@ script = ExtResource("1_3d0l6")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_hmp25")
-animation = &"longjump"
-frame = 4
-frame_progress = 1.0
+animation = &"idle"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
@@ -1690,7 +1688,6 @@ force_new = false
 
 [node name="Camera" type="Node2D" parent="."]
 script = ExtResource("61_0shyc")
-enabled = false
 zoom = 2.0
 offset = Vector2(0, 200)
 x_push = 300
