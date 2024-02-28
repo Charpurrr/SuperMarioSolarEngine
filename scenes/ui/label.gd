@@ -1,16 +1,16 @@
 extends Label
 
 
-@export var player: Player
-
-
 func _physics_process(_delta):
-	text = ("velocity.x = %.3f \n 
-	velocity.y = %.3f \n 
-	state = %s \n
+	text = (
+	"fps = %s \n
+	velocity.x = %.3f
+	velocity.y = %.3f \n
+	state = %s
 	SCL = %s" %[
-		player.vel.x, 
-		player.vel.y,
-		player.state_manager.get_leaf(),
-		player.crouchlock.crouchlock_enabled
+		Engine.get_frames_per_second(),
+		get_parent().player.vel.x, 
+		get_parent().player.vel.y,
+		get_parent().player.state_manager.get_leaf(),
+		get_parent().player.crouchlock.crouchlock_enabled
 	])
