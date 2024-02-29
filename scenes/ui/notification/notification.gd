@@ -3,7 +3,6 @@ extends AnimatedSprite2D
 ## Pop-up notifications, warnings, or errors.
 
 
-@onready var ap: AnimationPlayer = $AnimationPlayer
 @onready var label: Label = $Label
 
 ## Type of notification. (I.e. error, warning, push)
@@ -15,8 +14,6 @@ var input: String
 func _ready():
 	animation = type
 	label.text = input
-
-	#ap.play(&"pop")
 
 
 func _process(delta):
