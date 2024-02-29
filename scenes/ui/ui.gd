@@ -29,8 +29,6 @@ func _ready():
 
 
 func _process(_delta):
-	print(current_notifs)
-
 	_music_control()
 	_advance_frame()
 	_resetting()

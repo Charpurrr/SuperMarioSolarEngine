@@ -16,7 +16,7 @@ func _ready():
 	animation = type
 	label.text = input
 
-	ap.play(&"pop")
+	#ap.play(&"pop")
 
 
 func _process(delta):
