@@ -53,6 +53,9 @@ size = Vector2(32, 32)
 [node name="Mario" parent="." instance=ExtResource("1_cq4tv")]
 floor_snap_length = 0.0
 
+[node name="Camera2D" type="Camera2D" parent="Mario"]
+enabled = false
+
 [node name="Polygon2D" type="Polygon2D" parent="."]
 texture_repeat = 2
 texture = SubResource("PlaceholderTexture2D_qm5on")

@@ -1301,18 +1301,6 @@ sfx_list = [ExtResource("72_qiukt")]
 bus = &"Motion"
 cutoff_sfx = false
 
-[sub_resource type="Resource" id="Resource_ax73p"]
-script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("75_dfuxb"), ExtResource("76_2i2di")]
-bus = &"Voice"
-cutoff_sfx = true
-
-[sub_resource type="Resource" id="Resource_2nfvq"]
-script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("67_cc7at")]
-bus = &"Motion"
-cutoff_sfx = true
-
 [sub_resource type="Resource" id="Resource_nya8m"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("79_5k4ls"), ExtResource("89_nb4nr"), ExtResource("60_4ujrx")]
@@ -1366,6 +1354,18 @@ script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("100_iksxt")]
 bus = &"Motion"
 cutoff_sfx = false
+
+[sub_resource type="Resource" id="Resource_ax73p"]
+script = ExtResource("49_apkmk")
+sfx_list = [ExtResource("75_dfuxb"), ExtResource("76_2i2di")]
+bus = &"Voice"
+cutoff_sfx = true
+
+[sub_resource type="Resource" id="Resource_2nfvq"]
+script = ExtResource("49_apkmk")
+sfx_list = [ExtResource("67_cc7at")]
+bus = &"Motion"
+cutoff_sfx = true
 
 [sub_resource type="Resource" id="Resource_lib4c"]
 script = ExtResource("49_apkmk")
@@ -1601,12 +1601,12 @@ animation = &"walljump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_r38cq"), SubResource("Resource_a2hl0")])
 force_new = false
 
-[node name="SpinWallbonk" type="Node" parent="StateManager/Airborne"]
-script = ExtResource("65_echk5")
-spin_power = 3.0
-animation = &"spin_attack"
-sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ax73p"), SubResource("Resource_2nfvq")])
-force_new = false
+[node name="Spinjump" type="Node" parent="StateManager/Airborne"]
+script = ExtResource("56_j6jt4")
+jump_power = 6.7
+min_jump_percent = 100.0
+fall_state = &""
+animation = &"spinjump"
 
 [node name="Longjump" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("82_b7kjt")
@@ -1654,13 +1654,6 @@ jump_number = 1
 animation = &"gp_jump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_8711x"), SubResource("Resource_nl575")])
 
-[node name="Spinjump" type="Node" parent="StateManager/Airborne"]
-script = ExtResource("56_j6jt4")
-jump_power = 6.0
-min_jump_percent = 100.0
-fall_state = &""
-animation = &"spinjump"
-
 [node name="OdysseyDive" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("61_cxojr")
 animation = &"dive"
@@ -1672,6 +1665,13 @@ script = ExtResource("57_dqusk")
 spin_power = 0.0
 animation = &"spin_attack"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_2y8iw")])
+
+[node name="SpinWallbonk" type="Node" parent="StateManager/Airborne"]
+script = ExtResource("65_echk5")
+spin_power = 3.0
+animation = &"spin_attack"
+sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ax73p"), SubResource("Resource_2nfvq")])
+force_new = false
 
 [node name="Dive" type="Node" parent="StateManager"]
 script = ExtResource("54_rdldk")

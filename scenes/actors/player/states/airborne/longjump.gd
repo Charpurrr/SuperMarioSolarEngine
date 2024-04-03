@@ -36,6 +36,9 @@ func _cycle_tick():
 
 
 func _tell_switch():
+	if actor.crouchlock.enabled:
+		return [&"Crouch", [true, false]]
+
 	if movement.can_wallslide():
 		return &"Wallslide"
 

@@ -5,7 +5,7 @@ extends PlayerState
 
 # The first entry in the array is wether the first frame 
 # of the crouch animation should be skipped or not,
-# the second entry is wether the crouch sound effect should be player or not.
+# the second entry is wether the crouch sound effect should be played or not.
 func _on_enter(array):
 	actor.hitbox.disabled = true
 	actor.small_hitbox.disabled = false
