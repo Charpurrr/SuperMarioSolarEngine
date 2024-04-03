@@ -12,5 +12,5 @@ func _physics_process(_delta):
 		get_parent().player.vel.x, 
 		get_parent().player.vel.y,
 		get_parent().player.state_manager.get_leaf(),
-		get_parent().player.crouchlock.crouchlock_enabled
+		get_parent().player.crouchlock.enabled
 	])

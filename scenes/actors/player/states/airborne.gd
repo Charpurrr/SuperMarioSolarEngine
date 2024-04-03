@@ -19,3 +19,7 @@ func _tell_switch():
 		return &"Jump"
 
 	return &""
+
+
+func _tell_defer():
+	return &"Fall"

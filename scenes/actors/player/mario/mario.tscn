@@ -1692,5 +1692,3 @@ zoom = 2.0
 offset = Vector2(0, 200)
 x_push = 300
 x_push_time = 100
-
-[connection signal="body_entered" from="Crouchlock" to="Crouchlock" method="_on_body_entered"]

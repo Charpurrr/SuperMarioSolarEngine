@@ -62,7 +62,7 @@ func _tell_switch():
 		else:
 			return &"Longjump"
 
-	if not Input.is_action_pressed(&"down"):
+	if not Input.is_action_pressed(&"down") and not actor.crouchlock.enabled:
 		return &"Idle"
 
 	return &""

@@ -82,7 +82,7 @@ func _resetting():
 
 ## Creates a visual "notification" type indicator on the screen.
 func _push_notif(type: StringName, input: String):
-	var notif = notif_scene.instantiate()
+	var notif: Node = notif_scene.instantiate()
 
 	notif.type = type
 	notif.input = input

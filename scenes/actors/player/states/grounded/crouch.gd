@@ -37,9 +37,6 @@ func _can_crouchwalk() -> bool:
 
 
 func _tell_switch():
-	if not Input.is_action_pressed(&"down"):
-		return &"Idle"
-
 	if movement.is_slide_slope():
 		return &"ButtSlide"
 
@@ -51,5 +48,9 @@ func _tell_switch():
 			return &"Backflip"
 		else:
 			return &"Longjump"
+
+	if not Input.is_action_pressed(&"down") and not actor.crouchlock.enabled:
+		return &"Idle"
+
 
 	return &""

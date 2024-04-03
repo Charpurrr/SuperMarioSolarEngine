@@ -23,9 +23,4 @@ func _tell_switch():
 
 
 func _tell_defer():
-	var leaf: State = manager.get_leaf()
-
-	if leaf.name == &"Backflip":
-		return &"BackflipStyle"
-
 	return &"Idle"
