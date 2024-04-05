@@ -21,6 +21,12 @@ var notif_scene: PackedScene = preload("res://scenes/ui/notification/notificatio
 var current_notifs: Array = []
 #endregion
 
+#region Input Display variables
+@onready var input_display: Node2D = $InputDisplay
+
+var input_event: InputEvent
+#endregion
+
 
 func _ready():
 	bgm_muted = LocalSettings.load_setting("Audio", "Music Muted", false)
@@ -29,10 +35,12 @@ func _ready():
 
 
 func _process(_delta):
+	_display_input(input_event)
 	_music_control()
 	_advance_frame()
 	_resetting()
 	_pausing()
+
 
 	if get_tree().paused == true and Input.is_action_just_pressed(&"frame_advance"):
 		can_fa = true
@@ -40,6 +48,10 @@ func _process(_delta):
 	for i in current_notifs:
 		if not is_instance_valid(i):
 			current_notifs.erase(i)
+
+
+func _input(event: InputEvent):
+	input_event = event
 
 
 ## Frame advancing only works while paused.
@@ -95,3 +107,16 @@ func _push_notif(type: StringName, input: String):
 	current_notifs.append(notif)
 
 	notif_list.add_child(notif)
+
+
+func _display_input(event: InputEvent):
+	var event_str: String = event.as_text()
+
+	if input_display.find_child(event_str) == null: return
+
+	var sprite: Sprite2D = input_display.find_child(event_str)
+
+	if event.is_pressed():
+		sprite.set_modulate(Color(1, 1, 1, 1))
+	else:
+		sprite.set_modulate(Color(1, 1, 1, 0.5))
