@@ -78,6 +78,7 @@ func ditch_state():
 
 	# Ditch live descendents
 	if live_substate == null: return
+
 	live_substate.ditch_state()
 	live_substate = null
 
@@ -106,20 +107,24 @@ func switch_substate(new_state: State, handover: Variant):
 func probe_switch(defer: bool = false) -> void:
 	if !_is_live():
 		return
+
 	var link_name
 	var handover = null
+
 	if defer:
 		link_name = _tell_defer()
 	else:
 		var data
+
 		data = _trans_rules()
+
 		if data is Array:
 			link_name = data[0]
 			handover = data[1]
 		else:
 			link_name = data
-	
-	# Only switch if we need to
+
+	# Only switch if we need to.
 	if not link_name.is_empty():
 		var link = _get_link(link_name)
 		_switch_leaf(link, handover)

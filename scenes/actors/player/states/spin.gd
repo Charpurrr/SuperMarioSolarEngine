@@ -52,7 +52,7 @@ func _on_exit():
 	if not is_airspin:
 		movement.activate_grounded_spin_timer()
 
-	movement.update_direction(movement.get_input_x())
+	movement.update_direction(sign(movement.get_input_x()))
 
 	finished_init = false
 

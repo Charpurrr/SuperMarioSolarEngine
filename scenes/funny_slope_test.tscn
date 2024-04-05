@@ -51,6 +51,7 @@ size = Vector2(32, 32)
 [node name="FunnySlopeTest" type="Node2D"]
 
 [node name="Mario" parent="." instance=ExtResource("1_cq4tv")]
+position = Vector2(0, -8)
 floor_snap_length = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="Mario"]

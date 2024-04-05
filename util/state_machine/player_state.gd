@@ -40,9 +40,12 @@ func trigger_exit():
 	super()
 
 	for layer in sfx_layers:
+		print(name + "a")
 		if not layer.cutoff_sfx:
 			continue
 
+		print(name + "c")
 		for child in get_children():
 			if child is AudioStreamPlayer and child.stream in layer.sfx_list:
+				print(name + "b")
 				child.queue_free()

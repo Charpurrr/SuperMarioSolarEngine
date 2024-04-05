@@ -23,10 +23,11 @@ static func play_sfx(node: Object, layer: SFXLayer, randomized: bool):
 		while layer.new_pick == layer.last_pick:
 			layer.new_pick = layer.sfx_list.pick_random()
 
-	node.call_deferred("add_child", player)
 	player.stream = layer.new_pick
 	player.bus = layer.bus
 	player.autoplay = true
+
+	node.add_child(player)
 
 	player.connect(&"finished", player.queue_free)
 
