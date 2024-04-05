@@ -22,7 +22,16 @@ var current_notifs: Array = []
 #endregion
 
 #region Input Display variables
-@onready var input_display: Node2D = $InputDisplay
+@onready var sprite_dictionary: Dictionary = {
+	"Shift": %Shift,
+	"Z": %Z,
+	"X": %X,
+	"C": %C,
+	"Up": %Up,
+	"Right": %Right,
+	"Down": %Down,
+	"Left": %Left,
+}
 
 var input_event: InputEvent
 #endregion
@@ -35,12 +44,10 @@ func _ready():
 
 
 func _process(_delta):
-	_display_input(input_event)
 	_music_control()
 	_advance_frame()
 	_resetting()
 	_pausing()
-
 
 	if get_tree().paused == true and Input.is_action_just_pressed(&"frame_advance"):
 		can_fa = true
@@ -52,6 +59,8 @@ func _process(_delta):
 
 func _input(event: InputEvent):
 	input_event = event
+
+	_display_input(input_event)
 
 
 ## Frame advancing only works while paused.
@@ -112,9 +121,9 @@ func _push_notif(type: StringName, input: String):
 func _display_input(event: InputEvent):
 	var event_str: String = event.as_text()
 
-	if input_display.find_child(event_str) == null: return
+	if sprite_dictionary[event_str] == null: return
 
-	var sprite: Sprite2D = input_display.find_child(event_str)
+	var sprite: Sprite2D = sprite_dictionary[event_str]
 
 	if event.is_pressed():
 		sprite.set_modulate(Color(1, 1, 1, 1))
