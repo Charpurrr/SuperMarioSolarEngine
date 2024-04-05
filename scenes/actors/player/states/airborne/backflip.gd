@@ -32,9 +32,6 @@ func _subsequent_ticks():
 
 
 func _trans_rules():
-	if actor.crouchlock.enabled:
-		return [&"Crouch", [true, false]]
-
 	if movement.can_wallslide():
 		return &"Wallslide"
 

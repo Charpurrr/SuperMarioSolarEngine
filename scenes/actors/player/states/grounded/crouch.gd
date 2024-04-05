@@ -43,7 +43,7 @@ func _trans_rules():
 	if _can_crouchwalk():
 		return &"Waddle"
 
-	if input.buffered_input(&"jump"):
+	if input.buffered_input(&"jump") and not actor.crouchlock.enabled:
 		if InputManager.get_x_dir() == 0:
 			return &"Backflip"
 		else:
