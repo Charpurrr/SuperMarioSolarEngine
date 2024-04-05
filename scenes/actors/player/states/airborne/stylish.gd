@@ -3,11 +3,11 @@ extends PlayerState
 ## Stylish cheer after a move.
 
 
-func _cycle_tick():
+func _physics_tick():
 	movement.decelerate("ground")
 
 
-func _tell_switch():
+func _trans_rules():
 	if not actor.doll.is_playing():
 		return &"Idle"
 

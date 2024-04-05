@@ -7,15 +7,15 @@ func _on_enter(_handover):
 	movement.activate_freefall_timer()
 
 
-func _post_tick():
+func _subsequent_ticks():
 	movement.apply_gravity()
 
 
-func _cycle_tick():
+func _physics_tick():
 	movement.move_x("air", true)
 
 
-func _tell_switch():
+func _trans_rules():
 	if movement.can_spin() and input.buffered_input(&"spin"):
 		return &"Spin"
 

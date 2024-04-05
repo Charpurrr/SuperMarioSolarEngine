@@ -15,7 +15,7 @@ func _on_enter(play_land_sfx):
 				SFXLayer.play_sfx(self, sfx_list, force_new)
 
 
-func _tell_switch():
+func _trans_rules():
 	if not actor.is_on_floor():
 		return &"Fall"
 

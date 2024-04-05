@@ -13,7 +13,7 @@ var current_frame: int
 var last_frame: int
 
 
-func _cycle_tick():
+func _physics_tick():
 	current_frame = actor.doll.get_frame()
 
 	movement.update_prev_direction()
@@ -55,7 +55,7 @@ func _on_exit():
 	actor.doll.speed_scale = 1
 
 
-func _tell_switch():
+func _trans_rules():
 	if input.buffered_input(&"dive"):
 		return &"Dive"
 

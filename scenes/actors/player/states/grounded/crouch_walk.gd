@@ -19,7 +19,7 @@ func _on_enter(_handover):
 	actor.dive_hitbox.disabled = true
 
 
-func _cycle_tick():
+func _physics_tick():
 	var crouch_walk_speed: float = movement.max_speed / 2
 
 	current_frame = actor.doll.get_frame()
@@ -52,7 +52,7 @@ func _on_exit():
 	actor.doll.speed_scale = 1
 
 
-func _tell_switch():
+func _trans_rules():
 	if (not InputManager.is_moving_x() or actor.is_on_wall()):
 		return [&"Crouch", [true, false]]
 

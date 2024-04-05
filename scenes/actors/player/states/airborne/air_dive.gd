@@ -34,7 +34,7 @@ func _on_enter(_handover):
 		actor.vel.y = -y_power
 
 
-func _cycle_tick():
+func _physics_tick():
 	movement.body_rotation = actor.vel.angle() + PI / 2
 
 	actor.doll.rotation = lerp_angle(actor.doll.rotation, movement.body_rotation, 0.5)
@@ -45,7 +45,7 @@ func _cycle_tick():
 		actor.vel.x = min_x_power
 
 
-func _post_tick():
+func _subsequent_ticks():
 	movement.apply_gravity()
 
 
@@ -54,7 +54,7 @@ func _on_exit():
 	down = false
 
 
-func _tell_switch():
+func _trans_rules():
 	if actor.is_on_floor():
 		return &"DiveSlide"
 

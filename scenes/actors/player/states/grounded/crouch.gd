@@ -19,7 +19,7 @@ func _on_enter(array):
 				SFXLayer.play_sfx(self, sfx_list, force_new)
 
 
-func _cycle_tick():
+func _physics_tick():
 	movement.update_direction(InputManager.get_x_dir())
 	movement.decelerate(0.07)
 
@@ -36,7 +36,7 @@ func _can_crouchwalk() -> bool:
 	and not actor.test_move(actor.transform, Vector2(0.1 * movement.facing_direction, 0)))
 
 
-func _tell_switch():
+func _trans_rules():
 	if movement.is_slide_slope():
 		return &"ButtSlide"
 

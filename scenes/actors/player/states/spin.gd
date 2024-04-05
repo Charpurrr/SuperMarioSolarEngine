@@ -26,18 +26,18 @@ func _on_enter(_handover):
 	movement.consume_coyote_timer()
 
 
-func _pre_tick():
+func _first_tick():
 	# Gravity needs to be applied when a grounded spin is buffered.
 	# (Pressing the spin actions while being a few units from the ground.)
 	if not is_airspin:
 		movement.apply_gravity()
 
 
-func _post_tick():
+func _subsequent_ticks():
 	movement.apply_gravity()
 
 
-func _cycle_tick():
+func _physics_tick():
 	if is_airspin:
 		movement.move_x("air", false)
 	else:
@@ -55,7 +55,7 @@ func _on_exit():
 	finished_init = false
 
 
-func _tell_switch():
+func _trans_rules():
 	if is_airspin:
 		if actor.is_on_floor():
 			return &"Idle"

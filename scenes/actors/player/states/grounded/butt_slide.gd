@@ -13,7 +13,7 @@ func _on_enter(_handover):
 	actor.dive_hitbox.disabled = true
 
 
-func _cycle_tick():
+func _physics_tick():
 	if not actor.vel.x >= min_speed:
 		movement.accelerate("ground", movement.facing_direction, min_speed)
 
@@ -27,7 +27,7 @@ func _on_exit():
 	actor.dive_hitbox.disabled = true
 
 
-func _tell_switch():
+func _trans_rules():
 	if not movement.is_slide_slope():
 		return [&"Crouch", [true, true]]
 

@@ -13,7 +13,7 @@ func _on_enter(handover):
 	start_freefall_timer = false
 
 
-func _cycle_tick():
+func _physics_tick():
 	if actor.vel.y < 0:
 		movement.move_x(0.15, false)
 	else:
@@ -29,7 +29,7 @@ func _cycle_tick():
 		movement.activate_freefall_timer()
 
 
-func _tell_switch():
+func _trans_rules():
 	if actor.is_on_floor():
 		return &"TripleJumpStyle"
 

@@ -18,11 +18,11 @@ func _on_enter(_handover):
 	movement.consume_coyote_timer()
 
 
-func _post_tick():
+func _subsequent_ticks():
 	movement.apply_gravity()
 
 
-func _cycle_tick():
+func _physics_tick():
 	movement.move_x("air", false)
 
 	if not actor.doll.is_playing():
@@ -33,7 +33,7 @@ func _on_exit():
 	finished_init = false
 
 
-func _tell_switch():
+func _trans_rules():
 	if actor.is_on_floor():
 		return &"Idle"
 

@@ -26,11 +26,11 @@ func _on_enter(_handover):
 	movement.consec_jumps = jump_number
 
 
-func _post_tick():
+func _subsequent_ticks():
 	movement.apply_gravity(-actor.vel.y / jump_power)
 
 
-func _cycle_tick():
+func _physics_tick():
 	movement.move_x("air", true)
 
 	if movement.can_release_jump(applied_variation, min_jump_power):
@@ -38,7 +38,7 @@ func _cycle_tick():
 		actor.vel.y *= 0.5
 
 
-func _tell_switch():
+func _trans_rules():
 	if input.buffered_input(&"dive"):
 		return &"Dive"
 

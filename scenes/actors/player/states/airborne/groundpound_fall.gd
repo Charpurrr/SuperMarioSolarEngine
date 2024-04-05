@@ -7,12 +7,12 @@ extends PlayerState
 @export var gp_fall_vel = 9
 
 
-func _cycle_tick():
+func _physics_tick():
 	movement.move_x(0.04, false)
 	actor.vel.y = gp_fall_vel
 
 
-func _tell_switch():
+func _trans_rules():
 	if actor.is_on_floor():
 		return &"GroundPoundLand"
 

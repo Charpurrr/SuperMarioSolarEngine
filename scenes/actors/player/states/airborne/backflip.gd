@@ -17,7 +17,7 @@ func _on_enter(_handover):
 	actor.vel.x = push_power * -movement.facing_direction
 
 
-func _cycle_tick():
+func _physics_tick():
 	if InputManager.is_moving_x():
 		movement.move_x(0.06, false)
 
@@ -27,11 +27,11 @@ func _cycle_tick():
 		movement.activate_freefall_timer()
 
 
-func _post_tick():
+func _subsequent_ticks():
 	movement.apply_gravity()
 
 
-func _tell_switch():
+func _trans_rules():
 	if actor.crouchlock.enabled:
 		return [&"Crouch", [true, false]]
 

@@ -28,7 +28,7 @@ func _on_enter(_handover):
 	movement.consec_jumps = 1
 
 
-func _cycle_tick():
+func _physics_tick():
 	var should_flip: bool
 
 	should_flip = actor.position.y > start_y + extra_sub
@@ -42,7 +42,7 @@ func _cycle_tick():
 	movement.decelerate(0.01)
 
 
-func _tell_switch():
+func _trans_rules():
 	if input.buffered_input(&"spin"):
 		return &"Spin"
 

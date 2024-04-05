@@ -27,12 +27,12 @@ func _on_enter(_handover):
 	linger_timer = linger_time
 
 
-func _cycle_tick():
+func _physics_tick():
 	if not actor.doll.is_playing():
 		linger_timer = max(linger_timer - 1, 0)
 
 
-func _tell_switch():
+func _trans_rules():
 	if movement.can_air_action() and input.buffered_input(&"dive"):
 		return &"OdysseyDive"
 

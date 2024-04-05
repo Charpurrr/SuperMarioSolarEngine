@@ -2,5 +2,5 @@ class_name ToolManager
 extends StateManager
 
 
-func _cycle_tick():
+func _physics_tick():
 	live_substate = target_actor.current_tool

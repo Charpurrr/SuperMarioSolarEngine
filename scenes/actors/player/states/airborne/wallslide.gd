@@ -20,7 +20,7 @@ func _on_enter(_handover):
 	movement.consec_jumps = 0
 
 
-func _cycle_tick():
+func _physics_tick():
 	reached_fall = actor.vel.y >= 0
 
 	if not reached_fall:
@@ -36,11 +36,11 @@ func _cycle_tick():
 		actor.vel.y = -wall_kickback_power_y
 
 
-func _post_tick():
+func _subsequent_ticks():
 	movement.apply_gravity(1, 8)
 
 
-func _tell_switch():
+func _trans_rules():
 	if input.buffered_input(&"spin"):
 		return &"SpinWallbonk"
 

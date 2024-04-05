@@ -3,7 +3,7 @@ extends Fall
 ## Pressing up after a groundpound.
 
 
-func _tell_switch():
+func _trans_rules():
 	if movement.can_spin() and input.buffered_input(&"spin"):
 		if not movement.air_spun:
 			return &"Spin"

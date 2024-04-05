@@ -7,7 +7,7 @@ func _on_enter(_handover):
 	movement.consume_freefall_timer()
 
 
-func _tell_switch():
+func _trans_rules():
 	if movement.can_spin() and input.buffered_input(&"spin"):
 		return &"Spin"
 

@@ -11,7 +11,7 @@ func _on_enter(_handover):
 	actor.vel.x = 0
 
 
-func _tell_switch():
+func _trans_rules():
 	if movement.can_spin() and input.buffered_input(&"spin"):
 		return &"Spin"
 

@@ -3,7 +3,7 @@ extends Dive
 ## Diving after a groundpound.
 
 
-func _tell_switch():
+func _trans_rules():
 	if actor.is_on_floor():
 		return &"DiveSlide"
 

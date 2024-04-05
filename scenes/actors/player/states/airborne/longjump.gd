@@ -20,11 +20,11 @@ func _on_enter(_handover):
 	actor.vel.y = -jump_power
 
 
-func _post_tick():
+func _subsequent_ticks():
 	movement.apply_gravity(-actor.vel.y / jump_power, 1.2)
 
 
-func _cycle_tick():
+func _physics_tick():
 	movement.accelerate(0.2, InputManager.get_x_dir(), push_power)
 
 	# NOTE TO SELF, check walljump for pushback
@@ -35,7 +35,7 @@ func _cycle_tick():
 		movement.activate_freefall_timer()
 
 
-func _tell_switch():
+func _trans_rules():
 	if actor.crouchlock.enabled:
 		return [&"Crouch", [true, false]]
 

@@ -3,5 +3,5 @@ extends Push
 ## Walking against a solid body while the ray_shape is NOT colliding.
 
 
-func _tell_switch():
+func _trans_rules():
 	return &""

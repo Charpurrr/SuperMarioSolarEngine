@@ -22,11 +22,11 @@ func _on_enter(array):
 	skid_accel_step = (movement.max_speed + over_accel) / array[1]
 
 
-func _cycle_tick():
+func _physics_tick():
 	movement.accelerate(skid_accel_step, movement.facing_direction, movement.max_speed + over_accel)
 
 
-func _tell_switch():
+func _trans_rules():
 	if not InputManager.is_moving_x() or actor.vel.x == 0 or actor.is_on_wall():
 		return &"Idle"
 

@@ -3,18 +3,18 @@ extends Jump
 ## Jumping during a grounded spin attack.
 
 
-func _cycle_tick():
+func _physics_tick():
 	movement.move_x(0.15, false)
 
 
-func _post_tick():
+func _subsequent_ticks():
 	if actor.vel.y < 0:
 		movement.apply_gravity(-actor.vel.y / jump_power)
 	if actor.vel.y > 0:
 		movement.apply_gravity(1, 2)
 
 
-func _tell_switch():
+func _trans_rules():
 	if actor.is_on_floor():
 		return &"Idle"
 

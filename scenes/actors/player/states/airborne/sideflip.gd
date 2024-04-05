@@ -21,11 +21,11 @@ func _on_enter(_handover):
 	actor.vel.x = push_power * InputManager.get_x_dir()
 
 
-func _post_tick():
+func _subsequent_ticks():
 	movement.apply_gravity(-actor.vel.y / jump_power)
 
 
-func _cycle_tick():
+func _physics_tick():
 	movement.move_x(0.1, false)
 
 	if actor.vel.y > 0 and not start_freefall_timer:
@@ -34,7 +34,7 @@ func _cycle_tick():
 		movement.activate_freefall_timer()
 
 
-func _tell_switch():
+func _trans_rules():
 	if movement.can_wallslide():
 		return &"Wallslide"
 

@@ -3,12 +3,12 @@ extends PlayerState
 ## Default grounded state when there is no input.
 
 
-func _cycle_tick():
+func _physics_tick():
 	movement.update_prev_direction()
 	movement.decelerate("ground")
 
 
-func _tell_switch():
+func _trans_rules():
 	if Input.is_action_pressed(&"down"):
 		return [&"Crouch", [false, true]]
 

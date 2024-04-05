@@ -7,7 +7,7 @@ func _on_enter(_handover):
 	movement.consume_consec_timer()
 
 
-func _tell_switch():
+func _trans_rules():
 	if not InputManager.is_moving_x():
 		return &"Idle"
 	elif InputManager.get_x_dir() == -movement.facing_direction or movement.check_space_ahead():
