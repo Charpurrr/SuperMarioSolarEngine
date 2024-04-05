@@ -162,6 +162,7 @@ func move_x(accel_val: Variant, should_flip: bool, speed_cap: float = max_speed)
 	accelerate(accel_val, input_direction, speed_cap)
 
 
+## Updates the player's visual facing direction.
 func update_direction(direction: int):
 	var new_direction = sign(direction)
 
