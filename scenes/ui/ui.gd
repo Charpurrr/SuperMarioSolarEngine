@@ -121,7 +121,7 @@ func _push_notif(type: StringName, input: String):
 func _display_input(event: InputEvent):
 	var event_str: String = event.as_text()
 
-	if sprite_dictionary[event_str] == null: return
+	if not sprite_dictionary.has(event_str): return
 
 	var sprite: Sprite2D = sprite_dictionary[event_str]
 
