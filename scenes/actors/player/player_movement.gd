@@ -6,6 +6,8 @@ extends Node
 @export var actor: Player
 
 #region X Variables
+@export_category("X Variables")
+
 ## Max horizontal speed.
 @export var max_speed: float = 2.8
 
@@ -53,6 +55,8 @@ var return_res_prog: float
 #endregion
 
 #region Y Variables
+@export_category("Y Variables")
+
 ## Max vertical speed.
 @export var term_vel: float = 6.60
 
@@ -66,22 +70,30 @@ const AIR_MARGIN: int = 10
 #endregion
 
 #region Timer Variables
-const COYOTE_TIME: int = 7
+@export_category("Timer Variables")
+
+## How many frames an airborne input is still registered after leaving the ground.
+@export var coyote_time: int = 7
 var coyote_timer: int
 
-const CONSEC_JUMP_TIME: int = 10
+## How many frames can be between consecutive timed jump inputs. (Triple jump)
+@export var consec_jump_time: int = 10
 var consec_jump_timer: int
 
-const GROUND_SPIN_COOLDOWN_TIME: int = 20
+@export var ground_spin_cooldown_time: int = 20
 var ground_spin_cooldown_timer: int
 
-const FREEFALL_TIME: int = 100
+## How many frames need to pass before you start freefalling out of a normal fall.
+@export var freefall_time: int = 100
 var freefall_timer: int = -1
 #endregion
 
+#region Miscellaneous Variables
+@export_category("Miscellaneous Variables")
+
 ## Minimum angle of slope needed to start a buttslide.
 @export var slide_angle: float = 0.61
-## Minimum angle of slope needed to be considered a steep slope.
+## Minimum angle of slope to be considered a steep slope. (Automatically makes you slide off.)
 @export var steep_angle: float = 0.87
 
 var facing_direction: int = 1
@@ -96,6 +108,7 @@ var consec_jumps: int = 0
 
 ## The player body rotation.
 var body_rotation: float = 0
+#endregion
 
 
 func _physics_process(_delta):
@@ -214,7 +227,7 @@ func apply_gravity(gravity_weight: float = 1, friction: float = 1):
 #region Timer Functions
 ## Activate the consecutive jump timer.
 func activate_consec_timer() -> void:
-	consec_jump_timer = CONSEC_JUMP_TIME
+	consec_jump_timer = consec_jump_time
 
 
 ## Return whether the consecutive jump timer is or isn't running.
@@ -229,7 +242,7 @@ func consume_consec_timer() -> void:
 
 ## Activate the coyote timer.
 func activate_coyote_timer() -> void:
-	coyote_timer = COYOTE_TIME
+	coyote_timer = coyote_time
 
 
 ## Return whether the coyote timer is or isn't running.
@@ -244,7 +257,7 @@ func consume_coyote_timer() -> void:
 
 ## Activate the freefall timer.
 func activate_freefall_timer() -> void:
-	freefall_timer = FREEFALL_TIME
+	freefall_timer = freefall_time
 
 
 ## Return whether the freefall timer has finished or not.
@@ -259,7 +272,7 @@ func consume_freefall_timer() -> void:
 
 ## Activate the grounded spin cooldown timer.
 func activate_grounded_spin_timer() -> void:
-	ground_spin_cooldown_timer = GROUND_SPIN_COOLDOWN_TIME
+	ground_spin_cooldown_timer = ground_spin_cooldown_time
 
 
 ## Return whether the grounded spin timer cooldown has finished or not.
