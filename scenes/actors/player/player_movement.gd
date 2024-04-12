@@ -23,9 +23,9 @@ extends Node
 @export var air_accel_time: float = 20
 @onready var air_accel_step: float = max_speed / air_accel_time
 
-## How long it takes to decelerate (when airborne.)
 # Currently unused in this version of the engine, but could be
 # implemented to be used with air resistance.
+## How long it takes to decelerate (when airborne.)
 @export var air_decel_time: float = 18
 @onready var air_decel_step: float = max_speed / air_decel_time
 
@@ -66,7 +66,7 @@ var return_res_prog: float
 @export var min_grav: float = 0.26
 
 ## Amount of units the player needs to be above the ground to perform an airborne action.
-const AIR_MARGIN: int = 10
+@export var air_margin: int = 10
 #endregion
 
 #region Timer Variables
@@ -327,5 +327,5 @@ func can_spin() -> bool:
 ## Return whether or not you can perform an airborne action.
 ## Avoids accidental air movement inputs.
 func can_air_action() -> bool:
-	return not actor.test_move(actor.transform, Vector2i(0, AIR_MARGIN))
+	return not actor.test_move(actor.transform, Vector2i(0, air_margin))
 #endregion

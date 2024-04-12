@@ -1,16 +1,27 @@
 extends Label
 
 
+@onready var player: Player
+
+
+func _ready():
+	await get_parent().ready
+	player = get_parent().player
+
+
 func _physics_process(_delta):
 	text = (
 	"fps = %s \n
 	velocity.x = %.3f
 	velocity.y = %.3f \n
+	rotation = %.3f
+	facing = %d
 	state = %s
-	SCL = %s" %[
+	" %[
 		Engine.get_frames_per_second(),
-		get_parent().player.vel.x, 
-		get_parent().player.vel.y,
-		get_parent().player.state_manager.get_leaf(),
-		get_parent().player.crouchlock.enabled
+		player.vel.x, 
+		player.vel.y,
+		player.movement.body_rotation,
+		player.movement.facing_direction,
+		player.state_manager.get_leaf(),
 	])

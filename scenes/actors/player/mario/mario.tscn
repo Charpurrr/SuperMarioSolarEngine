@@ -1605,6 +1605,7 @@ force_new = false
 script = ExtResource("56_j6jt4")
 jump_power = 6.7
 min_jump_percent = 100.0
+jump_number = 1
 fall_state = &""
 animation = &"spinjump"
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ernfgv2twpy4"]
+[gd_scene load_steps=17 format=3 uid="uid://ernfgv2twpy4"]
 
 [ext_resource type="Script" path="res://scenes/props/terrains/funny_terrain.gd" id="1_aqn3p"]
 [ext_resource type="PackedScene" uid="uid://dgqp3sqvmcvpu" path="res://scenes/actors/player/mario/mario.tscn" id="1_cq4tv"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://wf3l8upofoip" path="res://scenes/editor/terrain_edit/polyline_segment3.png" id="9_ixddv"]
 [ext_resource type="Texture2D" uid="uid://deaf7c51bxjrn" path="res://scenes/editor/terrain_edit/polyline_segment4.png" id="10_3ff85"]
 [ext_resource type="Texture2D" uid="uid://fgjreysoh48j" path="res://scenes/editor/terrain_edit/polyline_segment5.png" id="11_68t5h"]
-[ext_resource type="Texture2D" uid="uid://dshijnokfnb86" path="res://scenes/props/objects/note_block.png" id="13_g8ybp"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qm5on"]
 
@@ -40,13 +39,6 @@ frame_4/duration = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fqbrv"]
 radius = 4.0
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sca4b"]
-friction = 0.5
-bounce = 1.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tefr0"]
-size = Vector2(32, 32)
 
 [node name="FunnySlopeTest" type="Node2D"]
 
@@ -88,16 +80,6 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FunnyTerrain/Button"]
 shape = SubResource("CircleShape2D_fqbrv")
-
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(712, -136)
-physics_material_override = SubResource("PhysicsMaterial_sca4b")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-shape = SubResource("RectangleShape2D_tefr0")
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-texture = ExtResource("13_g8ybp")
 
 [node name="UI" parent="." instance=ExtResource("4_17jpa")]
 
