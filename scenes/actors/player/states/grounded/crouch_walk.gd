@@ -13,12 +13,6 @@ var current_frame: int
 var last_frame: int
 
 
-func _on_enter(_handover):
-	actor.hitbox.disabled = true
-	actor.small_hitbox.disabled = false
-	actor.dive_hitbox.disabled = true
-
-
 func _physics_tick():
 	var crouch_walk_speed: float = movement.max_speed / 2
 
@@ -45,10 +39,6 @@ func _play_footstep_sfx():
 
 
 func _on_exit():
-	actor.hitbox.disabled = false
-	actor.small_hitbox.disabled = true
-	actor.dive_hitbox.disabled = true
-
 	actor.doll.speed_scale = 1
 
 

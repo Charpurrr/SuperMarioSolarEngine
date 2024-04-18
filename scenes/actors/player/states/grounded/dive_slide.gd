@@ -12,10 +12,6 @@ func _on_exit():
 	movement.body_rotation = 0
 	actor.doll.rotation = 0
 
-	actor.hitbox.disabled = false
-	actor.small_hitbox.disabled = true
-	actor.dive_hitbox.disabled = true
-
 
 func _trans_rules():
 	if Input.is_action_just_pressed(&"down"):

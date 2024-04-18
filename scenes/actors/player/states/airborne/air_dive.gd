@@ -8,12 +8,8 @@ extends PlayerState
 @export var x_power: float = 6.0
 @export var y_power: float = 1.88
 
-## Whether or not you'll go down on your dive.
+## Whether or not you'll do a faceplant dive.
 var down: bool
-## The input direction the player entered the dive state with.
-var entered_dir: int
-## The facing direction the player entered the dive state with.
-var entered_face: int
 
 
 func _on_enter(_handover):
@@ -23,13 +19,6 @@ func _on_enter(_handover):
 	movement.consume_coyote_timer()
 	movement.consec_jumps = 0
 
-	actor.hitbox.disabled = true
-	actor.small_hitbox.disabled = true
-	actor.dive_hitbox.disabled = false
-
-	entered_face = movement.facing_direction
-	entered_dir = InputManager.get_x_dir()
-
 	if (not down and actor.vel.y > -y_power) or is_equal_approx(actor.vel.x, 0):
 		actor.vel.y = -y_power
 
@@ -38,11 +27,6 @@ func _physics_tick():
 	movement.body_rotation = actor.vel.angle() + PI / 2
 
 	actor.doll.rotation = lerp_angle(actor.doll.rotation, movement.body_rotation, 0.5)
-
-	if entered_dir != 0:
-		movement.accelerate(0.5, entered_face, x_power)
-	else:
-		actor.vel.x = min_x_power
 
 
 func _subsequent_ticks():

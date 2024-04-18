@@ -16,9 +16,6 @@ func _on_enter(_handover):
 	is_airspin = movement.can_air_action()
 
 	if is_airspin:
-		if input.get_last_x() != sign(actor.vel.x):
-			actor.vel.x *= 0.5
-
 		movement.air_spun = true
 		actor.vel.y = -spin_power
 

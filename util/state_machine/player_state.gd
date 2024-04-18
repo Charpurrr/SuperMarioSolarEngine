@@ -3,6 +3,8 @@ extends State
 ## State specialised for player characters.
 
 
+@export_enum("Normal", "Small", "Dive") var hitbox_type: String = "Normal"
+
 @export_category(&"Animation")
 ## The name of the animation that this state should play.
 @export var animation := &""
@@ -24,16 +26,38 @@ extends State
 
 
 func trigger_enter(handover):
+	_set_animation()
+	_play_sounds()
+	_set_hitbox()
+
+	super(handover)
+
+
+func _set_hitbox():
+	actor.hitbox.disabled = true
+	actor.small_hitbox.disabled = true
+	actor.dive_hitbox.disabled = true
+
+	match hitbox_type:
+		"Normal":
+			actor.hitbox.disabled = false
+		"Small":
+			actor.small_hitbox.disabled = false
+		"Dive":
+			actor.dive_hitbox.disabled = false
+
+
+func _set_animation():
 	if not animation.is_empty():
 		actor.doll.play(animation)
 
 	actor.doll.offset = anim_offset
 
+
+func _play_sounds():
 	if on_enter and not sfx_layers.is_empty():
 		for sfx_list in sfx_layers:
 			SFXLayer.play_sfx(self, sfx_list, force_new)
-
-	super(handover)
 
 
 func trigger_exit():

@@ -5,10 +5,7 @@ extends Fall
 
 func _trans_rules():
 	if movement.can_spin() and input.buffered_input(&"spin"):
-		if not movement.air_spun:
-			return &"Spin"
-		else:
-			return &"Twirl"
+		return &"Twirl"
 
 	if movement.can_air_action() and input.buffered_input(&"dive"):
 		return &"Dive"

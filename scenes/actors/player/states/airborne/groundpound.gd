@@ -11,10 +11,6 @@ var linger_timer: float
 
 
 func _on_enter(_handover):
-	actor.hitbox.disabled = false
-	actor.small_hitbox.disabled = true
-	actor.dive_hitbox.disabled = true
-
 	movement.consume_coyote_timer()
 	movement.body_rotation = 0
 

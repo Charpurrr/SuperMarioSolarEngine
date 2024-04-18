@@ -68,7 +68,7 @@ _data = {
 [node name="Panel" type="AnimatedSprite2D"]
 modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(817, 653)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_gwknb")
 animation = &"push"
 script = ExtResource("2_gnk35")

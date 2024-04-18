@@ -7,10 +7,6 @@ extends PlayerState
 # of the crouch animation should be skipped or not,
 # the second entry is wether the crouch sound effect should be played or not.
 func _on_enter(array):
-	actor.hitbox.disabled = true
-	actor.small_hitbox.disabled = false
-	actor.dive_hitbox.disabled = true
-
 	if array[0] == true:
 		actor.doll.set_frame(1)
 
@@ -22,12 +18,6 @@ func _on_enter(array):
 func _physics_tick():
 	movement.update_direction(InputManager.get_x_dir())
 	movement.decelerate(0.07)
-
-
-func _on_exit():
-	actor.hitbox.disabled = false
-	actor.small_hitbox.disabled = true
-	actor.dive_hitbox.disabled = true
 
 
 ## Return whether or not you can crouchwalk.
