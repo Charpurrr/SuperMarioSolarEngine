@@ -1,12 +1,12 @@
 extends Label
 
 
-@onready var player: Player
-
-
-func _ready():
-	await get_parent().ready
-	player = get_parent().player
+#@onready var player: Player
+#
+#
+#func _ready():
+	#await get_parent().ready
+	#player = get_parent().player
 
 
 func _physics_process(_delta):
@@ -19,9 +19,9 @@ func _physics_process(_delta):
 	state = %s
 	" %[
 		Engine.get_frames_per_second(),
-		player.vel.x, 
-		player.vel.y,
-		player.movement.body_rotation,
-		player.movement.facing_direction,
-		player.state_manager.get_leaf(),
+		get_parent().player.vel.x, 
+		get_parent().player.vel.y,
+		get_parent().player.movement.body_rotation,
+		get_parent().player.movement.facing_direction,
+		get_parent().player.state_manager.get_leaf(),
 	])

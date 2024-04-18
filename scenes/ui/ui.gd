@@ -49,7 +49,7 @@ func _process(_delta):
 	_resetting()
 	_pausing()
 
-	if get_tree().paused == true and Input.is_action_just_pressed(&"frame_advance"):
+	if is_inside_tree() and get_tree().paused and Input.is_action_just_pressed(&"frame_advance"):
 		can_fa = true
 
 	for i in current_notifs:

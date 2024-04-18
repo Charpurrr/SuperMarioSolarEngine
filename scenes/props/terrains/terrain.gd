@@ -16,6 +16,3 @@ func _ready():
 	call_deferred("add_child", body)
 	body.call_deferred("add_child", poly)
 
-
-func _physics_process(_delta):
-	pass
