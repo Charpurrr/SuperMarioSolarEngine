@@ -17,7 +17,7 @@ func _trans_rules():
 		return &"GroundPoundLand"
 
 	if movement.can_air_action() and input.buffered_input(&"dive"):
-		return &"Dive"
+		return [&"Dive", false]
 
 	if input.buffered_input(&"up"):
 		return &"GroundPoundCancel"

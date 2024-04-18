@@ -8,7 +8,7 @@ func _trans_rules():
 		return &"Idle"
 
 	if finished_init and movement.can_air_action() and input.buffered_input(&"dive"):
-		return &"Dive"
+		return [&"Dive", false]
 
 	if movement.finished_freefall_timer():
 		return &"Freefall"

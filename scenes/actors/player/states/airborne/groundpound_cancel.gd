@@ -8,7 +8,7 @@ func _trans_rules():
 		return &"Twirl"
 
 	if movement.can_air_action() and input.buffered_input(&"dive"):
-		return &"Dive"
+		return [&"Dive", false]
 
 	if Input.is_action_just_pressed(&"down") and movement.can_air_action():
 		return &"GroundPound"

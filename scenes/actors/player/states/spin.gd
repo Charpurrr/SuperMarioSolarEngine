@@ -63,7 +63,7 @@ func _trans_rules():
 			if input.buffered_input(&"spin"):
 				return &"Twirl"
 			elif input.buffered_input(&"dive"):
-				return &"Dive"
+				return [&"Dive", false]
 
 		if movement.finished_freefall_timer():
 			return &"Freefall"

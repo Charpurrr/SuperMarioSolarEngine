@@ -9,6 +9,9 @@ func _physics_tick():
 
 
 func _trans_rules():
+	if actor.vel.x != 0 and input.buffered_input(&"dive"):
+		return [&"Dive", false]
+
 	if Input.is_action_pressed(&"down"):
 		return [&"Crouch", [false, true]]
 

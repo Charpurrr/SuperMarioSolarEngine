@@ -57,7 +57,7 @@ func _on_exit():
 
 func _trans_rules():
 	if input.buffered_input(&"dive"):
-		return &"Dive"
+		return [&"Dive", false]
 
 	if movement.can_spin() and input.buffered_input(&"spin"):
 		return &"Spin"

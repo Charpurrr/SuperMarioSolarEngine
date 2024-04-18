@@ -14,6 +14,9 @@ func _on_exit():
 
 
 func _trans_rules():
+	if input.buffered_input(&"dive"):
+		return [&"Dive", true]
+
 	if Input.is_action_just_pressed(&"down"):
 		return [&"Crouch", [true, false]]
 

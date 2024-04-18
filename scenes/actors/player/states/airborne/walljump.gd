@@ -47,7 +47,7 @@ func _trans_rules():
 		return &"Spin"
 
 	if input.buffered_input(&"dive") and movement.can_air_action():
-		return &"Dive"
+		return [&"Dive", false]
 
 	if Input.is_action_just_pressed(&"down") and movement.can_air_action():
 		return &"GroundPound"
