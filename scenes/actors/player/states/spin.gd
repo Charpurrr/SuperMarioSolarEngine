@@ -71,7 +71,7 @@ func _trans_rules():
 		if Input.is_action_just_pressed(&"down") and movement.can_air_action():
 			return [&"GroundPound", false]
 
-		if finished_init and movement.can_wallslide():
+		if finished_init and movement.can_init_wallslide():
 			return &"Wallslide"
 
 	else:

@@ -9,7 +9,7 @@ extends Node2D
 @onready var ray_l: RayCast2D = $PushRayL
 
 
-func check_push() -> bool:
+func is_colliding() -> bool:
 	match movement.facing_direction:
 		1: return ray_r.is_colliding()
 		-1: return ray_l.is_colliding()

@@ -79,7 +79,7 @@ func _trans_rules():
 			return [&"Crouch", [false, true]]
 
 	if InputManager.get_x() != 0 and actor.is_on_wall():
-		if actor.push_rays.check_push():
+		if actor.push_rays.is_colliding():
 			return &"Push"
 		else:
 			return &"DryPush"

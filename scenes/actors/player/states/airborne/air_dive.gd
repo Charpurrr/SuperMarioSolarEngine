@@ -16,7 +16,7 @@ func _on_enter(bellyflop):
 	movement.consume_coyote_timer()
 	movement.consec_jumps = 0
 
-	if bellyflop == true:
+	if bellyflop:
 		actor.doll.set_frame(2)
 
 	if actor.vel.y > -y_power or is_equal_approx(actor.vel.x, 0):

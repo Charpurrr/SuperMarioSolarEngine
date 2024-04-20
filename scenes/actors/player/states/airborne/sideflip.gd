@@ -35,7 +35,7 @@ func _physics_tick():
 
 
 func _trans_rules():
-	if movement.can_wallslide():
+	if movement.can_init_wallslide():
 		return &"Wallslide"
 
 	if input.buffered_input(&"dive"):
