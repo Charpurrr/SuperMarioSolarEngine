@@ -1,7 +1,7 @@
 class_name Dive
 extends PlayerState
 ## General diving state.
-## See OdysseyDive for diving after performing a ground pound.
+## See FaceplantDive for diving downwards.
 
 
 ## The horizontal dive power added to your current velocity.
@@ -12,11 +12,11 @@ extends PlayerState
 @export var accel_cap: float = 10.0
 
 
-func _on_enter(skip_anim):
+func _on_enter(bellyflop):
 	movement.consume_coyote_timer()
 	movement.consec_jumps = 0
 
-	if skip_anim == true:
+	if bellyflop == true:
 		actor.doll.set_frame(2)
 
 	if actor.vel.y > -y_power or is_equal_approx(actor.vel.x, 0):
@@ -30,9 +30,14 @@ func _on_enter(skip_anim):
 	elif abs(actor.vel.x) < accel_cap:
 		actor.vel.x += x_power * movement.facing_direction
 
+	# Sprite rotation starts at 0 when neutral, which actually corresponds with 90° or PI / 2.
+	# To get around this problem we use the opposite complement of the velocity angle:
+	# (TAU / 4 - alpha)
+	actor.doll.rotation = TAU / 4 + actor.vel.angle()
+
 
 func _physics_tick():
-	movement.body_rotation = actor.vel.angle() + PI / 2
+	movement.body_rotation = TAU / 4 + actor.vel.angle()
 
 	actor.doll.rotation = lerp_angle(actor.doll.rotation, movement.body_rotation, 0.5)
 
@@ -42,7 +47,7 @@ func _subsequent_ticks():
 
 
 func _on_exit():
-	movement.body_rotation = PI/2
+	movement.body_rotation = TAU / 4
 
 
 func _trans_rules():
@@ -50,6 +55,6 @@ func _trans_rules():
 		return &"DiveSlide"
 
 	if movement.can_air_action() and Input.is_action_just_pressed(&"down"):
-		return &"GroundPound"
+		return [&"GroundPound", false]
 
 	return &""

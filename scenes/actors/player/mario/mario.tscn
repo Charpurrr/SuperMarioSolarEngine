@@ -84,7 +84,6 @@
 [ext_resource type="AudioStream" uid="uid://d1wv55mrl8ihl" path="res://scenes/actors/player/mario/nsmbu_m_voice/wahoo.wav" id="60_4ujrx"]
 [ext_resource type="AudioStream" uid="uid://w287qpae1bk8" path="res://scenes/actors/player/mario/motion_nsmbw/triplejumpflip.wav" id="60_07vye"]
 [ext_resource type="Script" path="res://scenes/actors/player/player_camera.gd" id="61_0shyc"]
-[ext_resource type="Script" path="res://scenes/actors/player/states/airborne/odyssey_dive.gd" id="61_cxojr"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/spin_wallbonk.gd" id="65_echk5"]
 [ext_resource type="AudioStream" uid="uid://dwacbyt1r8oqr" path="res://scenes/actors/player/mario/motion/spin_wallbonk.wav" id="67_cc7at"]
 [ext_resource type="AudioStream" uid="uid://pmvdb21qwahg" path="res://scenes/actors/player/mario/motion_nsmbw/wallslide.wav" id="68_w4awc"]
@@ -103,6 +102,7 @@
 [ext_resource type="AudioStream" uid="uid://7ukbjapgnxvk" path="res://scenes/actors/player/mario/nsmbu_m_voice/wihee.wav" id="87_rh14y"]
 [ext_resource type="AudioStream" uid="uid://dxc5shyngpv4r" path="res://scenes/actors/player/mario/nsmbu_m_voice/woohuw.wav" id="88_2pqmv"]
 [ext_resource type="AudioStream" uid="uid://ct61kwl0lri2j" path="res://scenes/actors/player/mario/nsmbu_m_voice/wuhoo.wav" id="89_nb4nr"]
+[ext_resource type="Script" path="res://scenes/actors/player/states/airborne/faceplant_dive.gd" id="93_2rear"]
 [ext_resource type="AudioStream" uid="uid://d0s7brppcahqo" path="res://scenes/actors/player/mario/nsmbu_m_voice/waho.wav" id="96_ex20x"]
 [ext_resource type="AudioStream" uid="uid://dja46wtya5yy0" path="res://scenes/actors/player/mario/nsmbu_m_voice/hhuowa.wav" id="97_pkbn3"]
 [ext_resource type="AudioStream" uid="uid://co15hqbxk41a7" path="res://scenes/actors/player/mario/nsmbu_m_voice/huah.wav" id="98_1ccgr"]
@@ -1610,7 +1610,7 @@ force_new = false
 script = ExtResource("56_j6jt4")
 jump_power = 6.7
 min_jump_percent = 100.0
-jump_number = 1
+jump_number = 2
 fall_state = &""
 animation = &"spinjump"
 
@@ -1662,8 +1662,10 @@ jump_number = 1
 animation = &"gp_jump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_8711x"), SubResource("Resource_nl575")])
 
-[node name="OdysseyDive" type="Node" parent="StateManager/Airborne"]
-script = ExtResource("61_cxojr")
+[node name="FaceplantDive" type="Node" parent="StateManager/Airborne"]
+script = ExtResource("93_2rear")
+y_power = 6.0
+accel_cap = 6.0
 animation = &"dive"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_7x71p")])
 force_new = false

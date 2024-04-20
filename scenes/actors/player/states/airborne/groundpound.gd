@@ -9,8 +9,12 @@ extends PlayerState
 @export var linger_time: float = 20
 var linger_timer: float
 
+## Whether or not you're allowed to transition to the FaceplantDive state.
+## This is to avoid being able to linger in the air indefinitely using a Down + Dive combo.
+var allow_dive: bool
 
-func _on_enter(_handover):
+
+func _on_enter(faceplant_dived):
 	movement.consume_coyote_timer()
 	movement.body_rotation = 0
 
@@ -21,6 +25,7 @@ func _on_enter(_handover):
 	actor.position.y += gp_offset
 
 	linger_timer = linger_time
+	allow_dive = !faceplant_dived
 
 
 func _physics_tick():
@@ -29,10 +34,10 @@ func _physics_tick():
 
 
 func _trans_rules():
-	if movement.can_air_action() and input.buffered_input(&"dive"):
-		return &"OdysseyDive"
+	if allow_dive and movement.can_air_action() and input.buffered_input(&"dive"):
+		return &"FaceplantDive"
 
 	if linger_timer == 0:
-		return &"GroundPoundFall"
+		return [&"GroundPoundFall", allow_dive]
 
 	return &""
