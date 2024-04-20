@@ -49,7 +49,8 @@ func _on_exit():
 	if not is_airspin:
 		movement.activate_grounded_spin_timer()
 
-	movement.update_direction(sign(movement.get_input_x()))
+	if actor.is_on_floor():
+		movement.update_direction(sign(movement.get_input_x()))
 
 	finished_init = false
 

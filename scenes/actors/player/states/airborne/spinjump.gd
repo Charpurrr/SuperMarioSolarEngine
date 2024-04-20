@@ -21,6 +21,9 @@ func _trans_rules():
 	if actor.is_on_ceiling():
 		return &"Fall"
 
+	if input.buffered_input(&"dive") and movement.can_air_action():
+		return [&"Dive", false]
+
 	if actor.vel.y > 0 and input.buffered_input(&"spin"):
 		return &"Twirl"
 

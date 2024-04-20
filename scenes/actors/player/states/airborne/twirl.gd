@@ -32,6 +32,9 @@ func _physics_tick():
 func _on_exit():
 	finished_init = false
 
+	if actor.is_on_floor():
+		movement.update_direction(sign(movement.get_input_x()))
+
 
 func _trans_rules():
 	if actor.is_on_floor():
