@@ -32,6 +32,9 @@ func _subsequent_ticks():
 
 
 func _trans_rules():
+	if actor.push_rays.is_colliding() and input.buffered_input(&"jump"): 
+		return &"Walljump"
+
 	if movement.can_init_wallslide():
 		return &"Wallslide"
 

@@ -309,6 +309,8 @@ func can_release_jump(applied_variation: bool, min_jump_power: float) -> bool:
 func can_init_wallslide(ignore_facing: bool = false, ignore_input: bool = false) -> bool:
 	if should_end_wallslide(): return false
 
+	if not actor.vel.y >= 0: return false
+
 	if ignore_facing and not ignore_input:
 		return InputManager.is_moving_x()
 	elif ignore_input:
@@ -319,7 +321,9 @@ func can_init_wallslide(ignore_facing: bool = false, ignore_input: bool = false)
 
 ## Return whether or not a wallslide should end.
 func should_end_wallslide() -> bool:
-	if (not actor.push_rays.is_colliding() or get_input_x() == -facing_direction): return true
+	if not actor.push_rays.is_colliding(): return true
+	if get_input_x() == -facing_direction: return true
+	if not can_air_action(): return true
 
 	return false
 

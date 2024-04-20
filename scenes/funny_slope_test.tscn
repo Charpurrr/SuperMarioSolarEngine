@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ernfgv2twpy4"]
+[gd_scene load_steps=16 format=3 uid="uid://ernfgv2twpy4"]
 
 [ext_resource type="Script" path="res://scenes/props/terrains/funny_terrain.gd" id="1_aqn3p"]
 [ext_resource type="PackedScene" uid="uid://dgqp3sqvmcvpu" path="res://scenes/actors/player/mario/mario.tscn" id="1_cq4tv"]
@@ -13,8 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://fgjreysoh48j" path="res://scenes/editor/terrain_edit/polyline_segment5.png" id="11_68t5h"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qm5on"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yvhfe"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xwd0d"]
 shader = ExtResource("4_32cwk")
@@ -51,13 +49,7 @@ enabled = false
 [node name="Polygon2D" type="Polygon2D" parent="."]
 texture_repeat = 2
 texture = SubResource("PlaceholderTexture2D_qm5on")
-polygon = PackedVector2Array(-64, 0, 200, 0, 200, -8, 232, -8, 232, 0, 280, 0, 280, -16, 312, -16, 312, 0, 384, 0, 640, -64, 896, 0, 1152, 0, 1280, -64, 1408, 0, 1600, 0, 1664, -64, 1728, 0, 1920, 0, 1984, -128, 2048, 0, 2240, 0, 2272, -128, 2304, 0, 2496, 0, 2496, 256, -31, 1534, 34, 931, -120, 256, -120, -208, -64, -208, -64, -24, -112, -24, -112, 0)
-script = ExtResource("3_jfqwu")
-
-[node name="Polygon2D2" type="Polygon2D" parent="."]
-offset = Vector2(60, 0)
-texture = SubResource("PlaceholderTexture2D_yvhfe")
-polygon = PackedVector2Array(16, -208, 64, -208, 64, -64, 16, -64)
+polygon = PackedVector2Array(200, 0, 200, -8, 232, -8, 232, 0, 280, 0, 280, -16, 312, -16, 312, 0, 384, 0, 640, -64, 896, 0, 1152, 0, 1280, -64, 1408, 0, 1600, 0, 1664, -64, 1728, 0, 1920, 0, 1984, -128, 2048, 0, 2240, 0, 2272, -128, 2304, 0, 2496, 0, 2496, 256, -31, 1534, 34, 931, -120, 256, -568, 0, -256, 0, -256, -192, -192, -192, -192, -128, -128, -128, -128, -64, -64, -64, -64, 0, -39.3632, 0)
 script = ExtResource("3_jfqwu")
 
 [node name="Polygon2D3" type="Polygon2D" parent="."]
