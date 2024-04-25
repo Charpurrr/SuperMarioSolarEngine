@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://ernfgv2twpy4"]
+[gd_scene load_steps=20 format=3 uid="uid://ernfgv2twpy4"]
 
 [ext_resource type="Script" path="res://scenes/props/terrains/funny_terrain.gd" id="1_aqn3p"]
 [ext_resource type="PackedScene" uid="uid://dgqp3sqvmcvpu" path="res://scenes/actors/player/mario/mario.tscn" id="1_cq4tv"]
-[ext_resource type="Texture2D" uid="uid://j1pmw0npok62" path="res://scenes/props/terrains/cookie.png" id="2_y628m"]
+[ext_resource type="Script" path="res://scenes/actors/player/player_camera.gd" id="2_bajs2"]
+[ext_resource type="Texture2D" uid="uid://gewkm3vuow1" path="res://scenes/props/terrains/synth.png" id="3_ao5c2"]
 [ext_resource type="Script" path="res://scenes/props/terrains/terrain.gd" id="3_jfqwu"]
 [ext_resource type="PackedScene" uid="uid://ccj3teu3h6xfm" path="res://scenes/ui/ui.tscn" id="4_17jpa"]
 [ext_resource type="Texture2D" uid="uid://bvlq5mbmdnk2b" path="res://scenes/editor/terrain_edit/polyline_segment1.png" id="7_q35h4"]
@@ -10,8 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://wf3l8upofoip" path="res://scenes/editor/terrain_edit/polyline_segment3.png" id="9_ixddv"]
 [ext_resource type="Texture2D" uid="uid://deaf7c51bxjrn" path="res://scenes/editor/terrain_edit/polyline_segment4.png" id="10_3ff85"]
 [ext_resource type="Texture2D" uid="uid://fgjreysoh48j" path="res://scenes/editor/terrain_edit/polyline_segment5.png" id="11_68t5h"]
-
-[sub_resource type="CameraTexture" id="CameraTexture_hfbq3"]
+[ext_resource type="AudioStream" uid="uid://d0n7gsk7ymjkd" path="res://scenes/music/aquarium_park.ogg" id="11_hyslq"]
+[ext_resource type="Shader" path="res://scenes/props/environment_light.gdshader" id="11_i84w5"]
+[ext_resource type="Texture2D" uid="uid://1nelqqfhfo5a" path="res://scenes/props/bgs/synth/synth1.png" id="12_73x4r"]
+[ext_resource type="Texture2D" uid="uid://c3pp3x8c713m3" path="res://scenes/props/bgs/synth/synth2.png" id="14_rnpbm"]
+[ext_resource type="Texture2D" uid="uid://tfvxnw4vaqmj" path="res://scenes/props/bgs/synth/synth3.png" id="15_q6vnw"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_akk4i"]
 frames = 5
@@ -29,24 +33,41 @@ frame_4/duration = 1.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_fqbrv"]
 radius = 4.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_35kp6"]
+shader = ExtResource("11_i84w5")
+shader_parameter/brightness = 1.0
+shader_parameter/contrast = 1.0
+shader_parameter/saturation = 1.0
+shader_parameter/color_tint = Color(0.811765, 0, 0, 1)
+shader_parameter/mix_amount = 1.4
+
 [node name="FunnySlopeTest" type="Node2D"]
 
 [node name="Mario" parent="." instance=ExtResource("1_cq4tv")]
-position = Vector2(-336, -80)
+position = Vector2(-192, 0)
 floor_snap_length = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="Mario"]
+zoom = Vector2(2, 2)
+
+[node name="PlayerCamera" type="Node2D" parent="Mario"]
+script = ExtResource("2_bajs2")
 enabled = false
+zoom = 2.0
+offset = Vector2(0, 200)
+x_push = 300
+x_push_time = 100
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 texture_repeat = 2
-texture = ExtResource("2_y628m")
+texture = ExtResource("3_ao5c2")
 polygon = PackedVector2Array(384, 0, 640, -64, 896, 0, 1152, 0, 1280, -64, 1408, 0, 1600, 0, 1664, -64, 1728, 0, 1920, 0, 1984, -128, 2048, 0, 2240, 0, 2272, -128, 2304, 0, 2496, 0, 2496, 256, -31, 1534, 34, 931, -120, 256, -568, 0)
 uv = PackedVector2Array(200, 0, 200, -8, 232, -8, 232, 0, 280, 0, 280, -16, 312, -16, 312, 0, 384, 0, 640, -64, 896, 0, 1152, 0, 1280, -64, 1408, 0, 1600, 0, 1664, -64, 1728, 0, 1920, 0, 1984, -128, 2048, 0, 2240, 0, 2272, -128, 2304, 0, 2496, 0, 2496, 256, -31, 1534, 34, 931, -120, 256, -568, 0, -256, 0, -261.989, -103.448, -192, -192, -192, -128, -128, -128, -128, -64, -64, -64, -64, 0, -39.3632, 0)
 script = ExtResource("3_jfqwu")
 
 [node name="Polygon2D2" type="Polygon2D" parent="."]
-texture = SubResource("CameraTexture_hfbq3")
+texture_repeat = 2
+texture = ExtResource("3_ao5c2")
 polygon = PackedVector2Array(-448, -24, -256, -24, -256, -152, -448, -152)
 script = ExtResource("3_jfqwu")
 
@@ -64,5 +85,61 @@ visible = false
 shape = SubResource("CircleShape2D_fqbrv")
 
 [node name="UI" parent="." instance=ExtResource("4_17jpa")]
+
+[node name="Environment" type="ColorRect" parent="."]
+top_level = true
+material = SubResource("ShaderMaterial_35kp6")
+metadata/_edit_use_anchors_ = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Environment"]
+scroll_offset = Vector2(768, 768)
+scroll_base_scale = Vector2(2, 2)
+
+[node name="Stars" type="ParallaxLayer" parent="Environment/ParallaxBackground"]
+texture_repeat = 2
+motion_scale = Vector2(0.01, 0)
+motion_mirroring = Vector2(512, 0)
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Environment/ParallaxBackground/Stars"]
+offset_right = 512.0
+offset_bottom = 512.0
+texture = ExtResource("12_73x4r")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Hills" type="ParallaxLayer" parent="Environment/ParallaxBackground"]
+texture_repeat = 2
+motion_scale = Vector2(0.05, 0)
+motion_mirroring = Vector2(512, 0)
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Environment/ParallaxBackground/Hills"]
+offset_right = 512.0
+offset_bottom = 512.0
+texture = ExtResource("14_rnpbm")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Floor" type="ParallaxLayer" parent="Environment/ParallaxBackground"]
+texture_repeat = 2
+motion_scale = Vector2(0.03, 0)
+motion_mirroring = Vector2(512, 0)
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Environment/ParallaxBackground/Floor"]
+offset_right = 512.0
+offset_bottom = 512.0
+texture = ExtResource("15_q6vnw")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="BGM" type="AudioStreamPlayer" parent="Environment"]
+stream = ExtResource("11_hyslq")
+autoplay = true
+bus = &"BGM"
 
 [connection signal="input_event" from="FunnyTerrain/Button" to="FunnyTerrain" method="_on_button_input_event"]

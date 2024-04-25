@@ -1,13 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://csq0gc0k3l1l0"]
+[gd_scene load_steps=8 format=3 uid="uid://csq0gc0k3l1l0"]
 
 [ext_resource type="PackedScene" uid="uid://dgqp3sqvmcvpu" path="res://scenes/actors/player/mario/mario.tscn" id="1_jr8c6"]
-[ext_resource type="Script" path="res://scenes/ui/label.gd" id="2_i2cmn"]
 [ext_resource type="PackedScene" uid="uid://dnt67y0j7e0ap" path="res://scenes/props/tilesets/tiles.tscn" id="2_wo75n"]
 [ext_resource type="Texture2D" uid="uid://45bmeug2usc7" path="res://scenes/props/bgs/space.png" id="4_7xhvw"]
 [ext_resource type="Shader" path="res://scenes/props/environment_light.gdshader" id="4_bmtu7"]
-[ext_resource type="PackedScene" uid="uid://ccj3teu3h6xfm" path="res://scenes/ui/ui.tscn" id="5_rg8ge"]
 [ext_resource type="Script" path="res://scenes/props/terrains/terrain.gd" id="6_2btxk"]
-[ext_resource type="AudioStream" uid="uid://rdadrrqvsy6s" path="res://scenes/music/CalmBeforetheStorm.ogg" id="6_c0eeh"]
+[ext_resource type="AudioStream" uid="uid://rdadrrqvsy6s" path="res://scenes/music/calm_before_the_storm.ogg" id="6_c0eeh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mvny6"]
 shader = ExtResource("4_bmtu7")
@@ -18,15 +16,6 @@ shader_parameter/color_tint = Color(0.811765, 0, 0, 1)
 shader_parameter/mix_amount = 1.4
 
 [node name="BOBTestCourse" type="Node2D"]
-
-[node name="UI" parent="." instance=ExtResource("5_rg8ge")]
-
-[node name="Label" type="Label" parent="UI" node_paths=PackedStringArray("player")]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "velocity.x = 0"
-script = ExtResource("2_i2cmn")
-player = NodePath("../../Mario")
 
 [node name="Mario" parent="." instance=ExtResource("1_jr8c6")]
 position = Vector2(2310, -128)

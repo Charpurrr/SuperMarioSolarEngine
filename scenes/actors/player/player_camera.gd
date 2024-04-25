@@ -9,7 +9,7 @@ extends Node2D
 @export var zoom: float = 1
 @export var offset: Vector2
 
-@onready var player: CharacterBody2D = owner
+@onready var player: CharacterBody2D = get_parent()
 @onready var viewport: Viewport = get_viewport()
 
 ## Center of the viewport.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=282 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=281 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://scenes/actors/player/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://cut0vcslnatgi" path="res://scenes/actors/player/mario/anime/backflip.png" id="2_i2o54"]
@@ -84,7 +84,6 @@
 [ext_resource type="AudioStream" uid="uid://ccuv1hxh81f1y" path="res://scenes/actors/player/mario/motion_nsmbw/triplejump.wav" id="59_wk6r7"]
 [ext_resource type="AudioStream" uid="uid://d1wv55mrl8ihl" path="res://scenes/actors/player/mario/nsmbu_m_voice/wahoo.wav" id="60_4ujrx"]
 [ext_resource type="AudioStream" uid="uid://w287qpae1bk8" path="res://scenes/actors/player/mario/motion_nsmbw/triplejumpflip.wav" id="60_07vye"]
-[ext_resource type="Script" path="res://scenes/actors/player/player_camera.gd" id="61_0shyc"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne/spin_wallbonk.gd" id="65_echk5"]
 [ext_resource type="AudioStream" uid="uid://dwacbyt1r8oqr" path="res://scenes/actors/player/mario/motion/spin_wallbonk.wav" id="67_cc7at"]
 [ext_resource type="AudioStream" uid="uid://pmvdb21qwahg" path="res://scenes/actors/player/mario/motion_nsmbw/wallslide.wav" id="68_w4awc"]
@@ -1760,10 +1759,3 @@ spin_power = 3.0
 animation = &"spin_attack"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_vehmo"), SubResource("Resource_0hpnu")])
 force_new = false
-
-[node name="Camera" type="Node2D" parent="."]
-script = ExtResource("61_0shyc")
-zoom = 2.0
-offset = Vector2(0, 200)
-x_push = 300
-x_push_time = 100
