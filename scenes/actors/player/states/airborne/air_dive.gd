@@ -15,6 +15,7 @@ extends PlayerState
 func _on_enter(bellyflop):
 	movement.consume_coyote_timer()
 	movement.consec_jumps = 0
+	movement.dived = true
 
 	if bellyflop:
 		actor.doll.set_frame(2)
@@ -55,6 +56,6 @@ func _trans_rules():
 		return &"DiveSlide"
 
 	if movement.can_air_action() and Input.is_action_just_pressed(&"down"):
-		return [&"GroundPound", false]
+		return &"GroundPound"
 
 	return &""

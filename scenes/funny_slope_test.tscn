@@ -1,26 +1,17 @@
-[gd_scene load_steps=16 format=3 uid="uid://ernfgv2twpy4"]
+[gd_scene load_steps=14 format=3 uid="uid://ernfgv2twpy4"]
 
 [ext_resource type="Script" path="res://scenes/props/terrains/funny_terrain.gd" id="1_aqn3p"]
 [ext_resource type="PackedScene" uid="uid://dgqp3sqvmcvpu" path="res://scenes/actors/player/mario/mario.tscn" id="1_cq4tv"]
+[ext_resource type="Texture2D" uid="uid://j1pmw0npok62" path="res://scenes/props/terrains/cookie.png" id="2_y628m"]
 [ext_resource type="Script" path="res://scenes/props/terrains/terrain.gd" id="3_jfqwu"]
 [ext_resource type="PackedScene" uid="uid://ccj3teu3h6xfm" path="res://scenes/ui/ui.tscn" id="4_17jpa"]
-[ext_resource type="Shader" path="res://util/outline.gdshader" id="4_32cwk"]
-[ext_resource type="Texture2D" uid="uid://dwjlwl3f1b0x3" path="res://scenes/props/terrains/grate.png" id="4_iopjo"]
 [ext_resource type="Texture2D" uid="uid://bvlq5mbmdnk2b" path="res://scenes/editor/terrain_edit/polyline_segment1.png" id="7_q35h4"]
 [ext_resource type="Texture2D" uid="uid://dlk1ab78py0wb" path="res://scenes/editor/terrain_edit/polyline_segment2.png" id="8_mxh75"]
 [ext_resource type="Texture2D" uid="uid://wf3l8upofoip" path="res://scenes/editor/terrain_edit/polyline_segment3.png" id="9_ixddv"]
 [ext_resource type="Texture2D" uid="uid://deaf7c51bxjrn" path="res://scenes/editor/terrain_edit/polyline_segment4.png" id="10_3ff85"]
 [ext_resource type="Texture2D" uid="uid://fgjreysoh48j" path="res://scenes/editor/terrain_edit/polyline_segment5.png" id="11_68t5h"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qm5on"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xwd0d"]
-shader = ExtResource("4_32cwk")
-shader_parameter/color = Color(0, 0, 0, 1)
-shader_parameter/width = 1.0
-shader_parameter/pattern = 1
-shader_parameter/inside = false
-shader_parameter/add_margins = true
+[sub_resource type="CameraTexture" id="CameraTexture_hfbq3"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_akk4i"]
 frames = 5
@@ -41,6 +32,7 @@ radius = 4.0
 [node name="FunnySlopeTest" type="Node2D"]
 
 [node name="Mario" parent="." instance=ExtResource("1_cq4tv")]
+position = Vector2(-336, -80)
 floor_snap_length = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="Mario"]
@@ -48,16 +40,14 @@ enabled = false
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 texture_repeat = 2
-texture = SubResource("PlaceholderTexture2D_qm5on")
-polygon = PackedVector2Array(200, 0, 200, -8, 232, -8, 232, 0, 280, 0, 280, -16, 312, -16, 312, 0, 384, 0, 640, -64, 896, 0, 1152, 0, 1280, -64, 1408, 0, 1600, 0, 1664, -64, 1728, 0, 1920, 0, 1984, -128, 2048, 0, 2240, 0, 2272, -128, 2304, 0, 2496, 0, 2496, 256, -31, 1534, 34, 931, -120, 256, -568, 0, -256, 0, -256, -192, -192, -192, -192, -128, -128, -128, -128, -64, -64, -64, -64, 0, -39.3632, 0)
+texture = ExtResource("2_y628m")
+polygon = PackedVector2Array(384, 0, 640, -64, 896, 0, 1152, 0, 1280, -64, 1408, 0, 1600, 0, 1664, -64, 1728, 0, 1920, 0, 1984, -128, 2048, 0, 2240, 0, 2272, -128, 2304, 0, 2496, 0, 2496, 256, -31, 1534, 34, 931, -120, 256, -568, 0)
+uv = PackedVector2Array(200, 0, 200, -8, 232, -8, 232, 0, 280, 0, 280, -16, 312, -16, 312, 0, 384, 0, 640, -64, 896, 0, 1152, 0, 1280, -64, 1408, 0, 1600, 0, 1664, -64, 1728, 0, 1920, 0, 1984, -128, 2048, 0, 2240, 0, 2272, -128, 2304, 0, 2496, 0, 2496, 256, -31, 1534, 34, 931, -120, 256, -568, 0, -256, 0, -261.989, -103.448, -192, -192, -192, -128, -128, -128, -128, -64, -64, -64, -64, 0, -39.3632, 0)
 script = ExtResource("3_jfqwu")
 
-[node name="Polygon2D3" type="Polygon2D" parent="."]
-texture_repeat = 2
-material = SubResource("ShaderMaterial_xwd0d")
-position = Vector2(432, -168)
-texture = ExtResource("4_iopjo")
-polygon = PackedVector2Array(32, 0, 32, 32, 0, 32, 0, 0)
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+texture = SubResource("CameraTexture_hfbq3")
+polygon = PackedVector2Array(-448, -24, -256, -24, -256, -152, -448, -152)
 script = ExtResource("3_jfqwu")
 
 [node name="FunnyTerrain" type="Line2D" parent="."]

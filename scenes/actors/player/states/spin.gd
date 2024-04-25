@@ -57,32 +57,45 @@ func _on_exit():
 
 func _trans_rules():
 	if is_airspin:
-		if actor.is_on_floor():
-			return &"Idle"
+		return _air_rules()
+	else:
+		return _ground_rules()
 
-		if finished_init and movement.can_air_action():
-			if input.buffered_input(&"spin"):
-				return &"Twirl"
-			elif input.buffered_input(&"dive"):
+
+func _air_rules() -> Variant:
+	if actor.is_on_floor():
+		return &"Idle"
+
+	if finished_init and movement.can_air_action():
+		if input.buffered_input(&"spin"):
+			return &"Twirl"
+
+		if not movement.dived and input.buffered_input(&"dive") and movement.can_air_action():
+			if Input.is_action_pressed(&"down"):
+				return [&"FaceplantDive", 0.0]
+			else:
 				return [&"Dive", false]
 
-		if movement.finished_freefall_timer():
-			return &"Freefall"
+	if movement.finished_freefall_timer():
+		return &"Freefall"
 
-		if Input.is_action_just_pressed(&"down") and movement.can_air_action():
-			return [&"GroundPound", false]
+	if Input.is_action_just_pressed(&"down") and movement.can_air_action():
+		return &"GroundPound"
 
-		if finished_init and actor.push_rays.is_colliding() and input.buffered_input(&"jump"): 
-			return &"Walljump"
+	if finished_init and actor.push_rays.is_colliding() and input.buffered_input(&"jump"): 
+		return &"Walljump"
 
-		if finished_init and movement.can_init_wallslide():
-			return &"Wallslide"
+	if finished_init and movement.can_init_wallslide():
+		return &"Wallslide"
 
-	else:
-		if not actor.doll.is_playing():
-			return &"Idle"
+	return &""
 
-		if input.buffered_input(&"jump"):
-			return &"Spinjump"
+
+func _ground_rules() -> Variant:
+	if not actor.doll.is_playing():
+		return &"Idle"
+
+	if input.buffered_input(&"jump"):
+		return &"Spinjump"
 
 	return &""

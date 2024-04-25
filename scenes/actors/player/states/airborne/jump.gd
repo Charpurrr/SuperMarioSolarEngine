@@ -39,14 +39,17 @@ func _physics_tick():
 
 
 func _trans_rules():
-	if input.buffered_input(&"dive"):
-		return [&"Dive", false]
+	if not movement.dived and input.buffered_input(&"dive") and movement.can_air_action():
+		if Input.is_action_pressed(&"down"):
+			return [&"FaceplantDive", 0.0]
+		else:
+			return [&"Dive", false]
 
 	if movement.can_spin() and input.buffered_input(&"spin"):
 		return &"Spin"
 
 	if Input.is_action_just_pressed(&"down") and movement.can_air_action():
-		return [&"GroundPound", false]
+		return &"GroundPound"
 
 	if actor.push_rays.is_colliding() and input.buffered_input(&"jump"): 
 		return &"Walljump"

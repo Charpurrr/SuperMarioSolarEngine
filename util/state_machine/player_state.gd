@@ -34,17 +34,27 @@ func trigger_enter(handover):
 
 
 func _set_hitbox():
+	var was_diving = not actor.dive_hitbox.disabled
+
 	actor.hitbox.disabled = true
 	actor.small_hitbox.disabled = true
 	actor.dive_hitbox.disabled = true
 
 	match hitbox_type:
 		"Normal":
+			_snap_dive_to_ground(was_diving)
 			actor.hitbox.disabled = false
 		"Small":
+			_snap_dive_to_ground(was_diving)
 			actor.small_hitbox.disabled = false
 		"Dive":
 			actor.dive_hitbox.disabled = false
+
+
+## Snap back to the ground if you exit from a dive hitbox to a non-dive hitbox.
+func _snap_dive_to_ground(was_diving: bool):
+	if was_diving:
+		actor.global_position.y -= actor.dive_hitbox.get_shape().get_rect().size.y / 2
 
 
 func _set_animation():

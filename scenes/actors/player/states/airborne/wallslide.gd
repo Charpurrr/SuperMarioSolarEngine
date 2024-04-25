@@ -51,6 +51,6 @@ func _trans_rules():
 		return &"Fall"
 
 	if Input.is_action_just_pressed(&"down") and movement.can_air_action():
-		return [&"GroundPound", false]
+		return &"GroundPound"
 
 	return &""

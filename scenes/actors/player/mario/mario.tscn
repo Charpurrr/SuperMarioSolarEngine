@@ -1,4 +1,4 @@
-[gd_scene load_steps=274 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=282 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://scenes/actors/player/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://cut0vcslnatgi" path="res://scenes/actors/player/mario/anime/backflip.png" id="2_i2o54"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://chuaelxlkysn1" path="res://scenes/actors/player/mario/anime/walljump.png" id="17_ko8me"]
 [ext_resource type="Texture2D" uid="uid://di5yor23yvh7v" path="res://scenes/actors/player/mario/anime/triple_jump.png" id="18_5kttb"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/grounded/crouch.gd" id="18_h7q8u"]
+[ext_resource type="Texture2D" uid="uid://bapkl7gnv0ya1" path="res://scenes/actors/player/mario/anime/rollout.png" id="18_w61pa"]
 [ext_resource type="Texture2D" uid="uid://dtiuy8mipcr1o" path="res://scenes/actors/player/mario/anime/spin_attack.png" id="19_4jr0s"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/grounded/turn_skid.gd" id="20_0joxb"]
 [ext_resource type="Script" path="res://scenes/actors/player/states/airborne.gd" id="20_at07q"]
@@ -109,6 +110,7 @@
 [ext_resource type="AudioStream" uid="uid://blkai3jqert2f" path="res://scenes/actors/player/mario/motion_nsmbw/twirl.wav" id="100_iksxt"]
 [ext_resource type="AudioStream" uid="uid://beitv72hc6w6i" path="res://scenes/actors/player/mario/nsmbu_m_voice/wahu.wav" id="100_yqne1"]
 [ext_resource type="AudioStream" uid="uid://clxcecymdjmqx" path="res://scenes/actors/player/mario/nsmbu_m_voice/yuaa.wav" id="103_ovuyj"]
+[ext_resource type="Script" path="res://scenes/actors/player/states/airborne/rollout.gd" id="103_p6px5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8n85e"]
 atlas = ExtResource("2_i2o54")
@@ -373,6 +375,30 @@ region = Rect2(288, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_1wf5d"]
 atlas = ExtResource("12_kw6lo")
 region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bl2g"]
+atlas = ExtResource("18_w61pa")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5ja2"]
+atlas = ExtResource("18_w61pa")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5203c"]
+atlas = ExtResource("18_w61pa")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2b3b"]
+atlas = ExtResource("18_w61pa")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xyyw"]
+atlas = ExtResource("18_w61pa")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kn0ha"]
+atlas = ExtResource("18_w61pa")
+region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eusuh"]
 atlas = ExtResource("16_x2vr5")
@@ -925,6 +951,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_3bl2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5ja2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5203c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2b3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xyyw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kn0ha")
+}],
+"loop": false,
+"name": &"rollout",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_eusuh")
 }, {
 "duration": 1.0,
@@ -1343,12 +1392,6 @@ sfx_list = [ExtResource("59_wk6r7")]
 bus = &"Motion"
 cutoff_sfx = false
 
-[sub_resource type="Resource" id="Resource_7x71p"]
-script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("96_ex20x"), ExtResource("87_rh14y"), ExtResource("97_pkbn3")]
-bus = &"Voice"
-cutoff_sfx = false
-
 [sub_resource type="Resource" id="Resource_2y8iw"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("100_iksxt")]
@@ -1366,6 +1409,12 @@ script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("67_cc7at")]
 bus = &"Motion"
 cutoff_sfx = true
+
+[sub_resource type="Resource" id="Resource_7x71p"]
+script = ExtResource("49_apkmk")
+sfx_list = [ExtResource("96_ex20x"), ExtResource("87_rh14y"), ExtResource("97_pkbn3")]
+bus = &"Voice"
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_lib4c"]
 script = ExtResource("49_apkmk")
@@ -1401,7 +1450,7 @@ script = ExtResource("1_3d0l6")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_hmp25")
-animation = &"dive"
+animation = &"backflip"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
@@ -1410,10 +1459,12 @@ shape = SubResource("RectangleShape2D_u4b58")
 [node name="SmallHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_1emcl")
+debug_color = Color(0.371138, 0.615246, 1.54018e-06, 0.42)
 
 [node name="DiveHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_c86nk")
+debug_color = Color(0.79996, 0.0297055, 1, 0.42)
 
 [node name="Crouchlock" type="Area2D" parent="."]
 script = ExtResource("27_y8r5l")
@@ -1662,14 +1713,6 @@ jump_number = 1
 animation = &"gp_jump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_8711x"), SubResource("Resource_nl575")])
 
-[node name="FaceplantDive" type="Node" parent="StateManager/Airborne"]
-script = ExtResource("93_2rear")
-y_power = 6.0
-accel_cap = 6.0
-animation = &"dive"
-sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_7x71p")])
-force_new = false
-
 [node name="Twirl" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("57_dqusk")
 spin_power = 0.0
@@ -1683,6 +1726,14 @@ animation = &"spin_attack"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ax73p"), SubResource("Resource_2nfvq")])
 force_new = false
 
+[node name="FaceplantDive" type="Node" parent="StateManager/Airborne"]
+script = ExtResource("93_2rear")
+y_power = 6.0
+accel_cap = 6.0
+animation = &"dive"
+sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_7x71p")])
+force_new = false
+
 [node name="Dive" type="Node" parent="StateManager"]
 script = ExtResource("54_rdldk")
 x_power = 3.0
@@ -1690,6 +1741,18 @@ accel_cap = 6.0
 hitbox_type = "Dive"
 animation = &"dive"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_lib4c"), SubResource("Resource_6roi5")])
+
+[node name="Rollout" type="Node" parent="StateManager"]
+script = ExtResource("103_p6px5")
+x_multiplier = 1.2
+x_power = 3.0
+accel_cap = 7.0
+jump_power = 3.0
+min_jump_percent = 100.0
+jump_number = 1
+fall_state = &""
+animation = &"rollout"
+anim_offset = Vector2i(0, 6)
 
 [node name="Spin" type="Node" parent="StateManager"]
 script = ExtResource("50_mq1bv")

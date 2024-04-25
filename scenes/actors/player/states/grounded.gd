@@ -7,6 +7,7 @@ func _on_enter(play_land_sfx):
 	movement.activate_consec_timer()
 	movement.consume_freefall_timer()
 	movement.air_spun = false
+	movement.dived = false
 
 	actor.set_floor_snap_length(8.0)
 
