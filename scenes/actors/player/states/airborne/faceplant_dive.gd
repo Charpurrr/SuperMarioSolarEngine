@@ -13,6 +13,8 @@ func _on_enter(queued_speed):
 	if movement.facing_direction != sign(actor.vel.x):
 		actor.vel.x = 0
 
+	actor.vel.x = queued_speed
+
 	if abs(actor.vel.x) < accel_cap:
 		if abs(actor.vel.x) > accel_cap - x_power:
 			actor.vel.x = accel_cap * movement.facing_direction
