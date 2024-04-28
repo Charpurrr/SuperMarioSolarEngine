@@ -18,7 +18,7 @@ func _trans_rules():
 		return &"GroundPoundLand"
 
 	if not movement.dived and movement.can_air_action() and input.buffered_input(&"dive"):
-		return [&"FaceplantDive", 0.0]
+		return [&"FaceplantDive", actor.vel.x]
 
 	if input.buffered_input(&"up"):
 		return &"GroundPoundCancel"

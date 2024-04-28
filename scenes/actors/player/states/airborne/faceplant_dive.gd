@@ -14,8 +14,10 @@ func _on_enter(queued_speed):
 		actor.vel.x = 0
 
 	if abs(actor.vel.x) < accel_cap:
-		print("aa")
-		actor.vel.x += queued_speed + x_power * movement.facing_direction
+		if abs(actor.vel.x) > accel_cap - x_power:
+			actor.vel.x = accel_cap * movement.facing_direction
+		else:
+			actor.vel.x += x_power * movement.facing_direction
 
 	actor.doll.rotation = TAU / 4 + actor.vel.angle()
 	

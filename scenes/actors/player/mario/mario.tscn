@@ -1728,7 +1728,7 @@ force_new = false
 [node name="FaceplantDive" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("93_2rear")
 y_power = 6.0
-accel_cap = 6.0
+accel_cap = 8.0
 animation = &"dive"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_7x71p")])
 force_new = false
@@ -1736,7 +1736,7 @@ force_new = false
 [node name="Dive" type="Node" parent="StateManager"]
 script = ExtResource("54_rdldk")
 x_power = 3.0
-accel_cap = 6.0
+accel_cap = 8.0
 hitbox_type = "Dive"
 animation = &"dive"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_lib4c"), SubResource("Resource_6roi5")])
@@ -1744,8 +1744,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_lib4c"), SubR
 [node name="Rollout" type="Node" parent="StateManager"]
 script = ExtResource("103_p6px5")
 x_multiplier = 1.2
-x_power = 3.0
-accel_cap = 7.0
+accel_cap = 8.0
 jump_power = 3.0
 min_jump_percent = 100.0
 jump_number = 1

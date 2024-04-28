@@ -48,7 +48,10 @@ position = Vector2(-192, 0)
 floor_snap_length = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="Mario"]
+offset = Vector2(0, -110)
 zoom = Vector2(2, 2)
+drag_vertical_enabled = true
+drag_top_margin = 1.0
 
 [node name="PlayerCamera" type="Node2D" parent="Mario"]
 script = ExtResource("2_bajs2")

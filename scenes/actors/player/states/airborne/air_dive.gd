@@ -26,10 +26,11 @@ func _on_enter(bellyflop):
 	if movement.facing_direction != sign(actor.vel.x):
 		actor.vel.x = 0
 
-	#if is_equal_approx(actor.vel.x, 0):
-		#actor.vel.x = x_power * movement.facing_direction
 	if abs(actor.vel.x) < accel_cap:
-		actor.vel.x += x_power * movement.facing_direction
+		if abs(actor.vel.x) > accel_cap - x_power:
+			actor.vel.x = accel_cap * movement.facing_direction
+		else:
+			actor.vel.x += x_power * movement.facing_direction
 
 	# Sprite rotation starts at 0 when neutral, which actually corresponds with 90° or PI / 2.
 	# To get around this problem we use the opposite complement of the velocity angle:

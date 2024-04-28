@@ -5,8 +5,6 @@ extends Jump
 
 ## The multiplier applied to your current horizontal speed after a rollout.
 @export_range(1, 10) var x_multiplier: float = 1.3
-## The horizontal dive power added to your current velocity.
-@export var x_power: float = 6.0
 ## The maximum horizontal speed you need to reach before rollouts no longer contribute to your x velocity.
 @export var accel_cap: float = 10.0
 
@@ -17,7 +15,10 @@ func _on_enter(_handover):
 	actor.vel.y = -jump_power
 
 	if abs(actor.vel.x) < accel_cap:
-		actor.vel.x *= x_multiplier
+		if abs(actor.vel.x) > accel_cap / x_multiplier:
+			actor.vel.x = accel_cap * movement.facing_direction
+		else:
+			actor.vel.x *= x_multiplier
 
 
 func _trans_rules():
@@ -26,7 +27,7 @@ func _trans_rules():
 
 	if not movement.dived and input.buffered_input(&"dive") and movement.can_air_action():
 		if Input.is_action_pressed(&"down"):
-			return [&"FaceplantDive", 0.0]
+			return [&"FaceplantDive", actor.vel.x]
 		else:
 			return [&"Dive", false]
 

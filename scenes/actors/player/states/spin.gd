@@ -72,7 +72,7 @@ func _air_rules() -> Variant:
 
 		if not movement.dived and input.buffered_input(&"dive") and movement.can_air_action():
 			if Input.is_action_pressed(&"down"):
-				return [&"FaceplantDive", 0.0]
+				return [&"FaceplantDive", actor.vel.x]
 			else:
 				return [&"Dive", false]
 
