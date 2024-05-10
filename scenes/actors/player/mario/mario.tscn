@@ -1391,12 +1391,6 @@ sfx_list = [ExtResource("59_wk6r7")]
 bus = &"Motion"
 cutoff_sfx = false
 
-[sub_resource type="Resource" id="Resource_2y8iw"]
-script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("100_iksxt")]
-bus = &"Motion"
-cutoff_sfx = false
-
 [sub_resource type="Resource" id="Resource_ax73p"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("75_dfuxb"), ExtResource("76_2i2di")]
@@ -1408,6 +1402,12 @@ script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("67_cc7at")]
 bus = &"Motion"
 cutoff_sfx = true
+
+[sub_resource type="Resource" id="Resource_2y8iw"]
+script = ExtResource("49_apkmk")
+sfx_list = [ExtResource("100_iksxt")]
+bus = &"Motion"
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_7x71p"]
 script = ExtResource("49_apkmk")
@@ -1449,7 +1449,7 @@ script = ExtResource("1_3d0l6")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_hmp25")
-animation = &"backflip"
+animation = &"idle"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
@@ -1712,18 +1712,18 @@ jump_number = 1
 animation = &"gp_jump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_8711x"), SubResource("Resource_nl575")])
 
-[node name="Twirl" type="Node" parent="StateManager/Airborne"]
-script = ExtResource("57_dqusk")
-spin_power = 0.0
-animation = &"spin_attack"
-sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_2y8iw")])
-
 [node name="SpinWallbonk" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("65_echk5")
 spin_power = 3.0
 animation = &"spin_attack"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ax73p"), SubResource("Resource_2nfvq")])
 force_new = false
+
+[node name="Twirl" type="Node" parent="StateManager/Airborne"]
+script = ExtResource("57_dqusk")
+spin_power = 0.0
+animation = &"spin_attack"
+sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_2y8iw")])
 
 [node name="FaceplantDive" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("93_2rear")

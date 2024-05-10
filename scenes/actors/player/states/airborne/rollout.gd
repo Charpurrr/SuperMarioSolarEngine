@@ -25,7 +25,7 @@ func _trans_rules():
 	if actor.is_on_floor():
 		return &"Idle"
 
-	if not movement.dived and input.buffered_input(&"dive") and movement.can_air_action():
+	if not movement.dived and movement.can_air_action() and input.buffered_input(&"dive"):
 		if Input.is_action_pressed(&"down"):
 			return [&"FaceplantDive", actor.vel.x]
 		else:
@@ -38,7 +38,7 @@ func _trans_rules():
 		return &"GroundPound"
 
 	if actor.push_rays.is_colliding() and input.buffered_input(&"jump"): 
-		return &"Walljump"
+		return [&"Walljump", -movement.facing_direction]
 
 	if movement.can_init_wallslide():
 		return &"Wallslide"

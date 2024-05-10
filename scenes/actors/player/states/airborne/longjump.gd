@@ -27,8 +27,6 @@ func _subsequent_ticks():
 func _physics_tick():
 	movement.accelerate(0.2, InputManager.get_x_dir(), push_power)
 
-	# NOTE TO SELF, check walljump for pushback
-
 	if actor.vel.y > 0 and not start_freefall_timer:
 		start_freefall_timer = true
 
@@ -37,12 +35,12 @@ func _physics_tick():
 
 func _trans_rules():
 	if actor.push_rays.is_colliding() and input.buffered_input(&"jump"): 
-		return &"Walljump"
+		return [&"Walljump", -movement.facing_direction]
 
 	if movement.can_init_wallslide():
 		return &"Wallslide"
 
-	if not movement.dived and input.buffered_input(&"dive") and movement.can_air_action():
+	if not movement.dived and movement.can_air_action() and input.buffered_input(&"dive"):
 		if Input.is_action_pressed(&"down"):
 			return [&"FaceplantDive", actor.vel.x]
 		else:

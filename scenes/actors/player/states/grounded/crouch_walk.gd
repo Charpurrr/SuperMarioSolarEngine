@@ -46,7 +46,7 @@ func _trans_rules():
 	if (not InputManager.is_moving_x() or actor.is_on_wall()):
 		return [&"Crouch", [true, false]]
 
-	if input.buffered_input(&"jump") and not actor.crouchlock.enabled:
+	if not actor.crouchlock.enabled and input.buffered_input(&"jump"):
 		if InputManager.get_x_dir() == 0:
 			return &"Backflip"
 		else:

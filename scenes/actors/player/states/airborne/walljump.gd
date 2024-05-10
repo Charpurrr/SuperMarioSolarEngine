@@ -16,14 +16,18 @@ var start_y: float
 var extra_sub: float = 10.0
 
 
-func _on_enter(_handover):
+## Direction is the direction in which the walljump sends you.
+## By default, it sends you in the opposite of your facing direction,
+## but for cases like the spinjump; this needs to be handled manually.
+## Direction is an integer type.
+func _on_enter(direction):
 	start_y = actor.position.y
 
-	movement.update_direction(-movement.facing_direction)
+	movement.update_direction(direction)
 	movement.activate_freefall_timer()
 
 	actor.vel.y = -jump_power
-	actor.vel.x = push_power * movement.facing_direction
+	actor.vel.x = push_power * direction
 
 	movement.consec_jumps = 1
 
@@ -46,7 +50,7 @@ func _trans_rules():
 	if input.buffered_input(&"spin"):
 		return &"Spin"
 
-	if not movement.dived and input.buffered_input(&"dive") and movement.can_air_action():
+	if not movement.dived and movement.can_air_action() and input.buffered_input(&"dive"):
 		if Input.is_action_pressed(&"down"):
 			return [&"FaceplantDive", actor.vel.x]
 		else:
@@ -59,7 +63,7 @@ func _trans_rules():
 		return &"Wallslide"
 
 	if actor.push_rays.is_colliding() and input.buffered_input(&"jump"): 
-		return &"Walljump"
+		reset_state(-movement.facing_direction)
 
 	if movement.finished_freefall_timer():
 		return &"Freefall"

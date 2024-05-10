@@ -18,9 +18,6 @@ func _trans_rules():
 	if movement.can_spin() and input.buffered_input(&"spin"):
 		return &"Spin"
 
-	if input.buffered_input(&"jump"):
-		return &"DummyJump"
-
 	if InputManager.get_x_dir() == movement.prev_facing_direction:
 		return &"Walk"
 	elif InputManager.get_x_dir() == -movement.prev_facing_direction:
@@ -29,5 +26,8 @@ func _trans_rules():
 			return [&"Skid", [2, 8]]
 		else:
 			return [&"Skid", [0, 16]]
+
+	if input.buffered_input(&"jump"):
+		return &"DummyJump"
 
 	return &""

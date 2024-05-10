@@ -23,14 +23,14 @@ var current_notifs: Array = []
 
 #region Input Display variables
 @onready var sprite_dictionary: Dictionary = {
-	"Shift": %Shift,
-	"Z": %Z,
-	"X": %X,
-	"C": %C,
-	"Up": %Up,
-	"Right": %Right,
-	"Down": %Down,
-	"Left": %Left,
+	KEY_SHIFT: %Shift,
+	KEY_Z: %Z,
+	KEY_X: %X,
+	KEY_C: %C,
+	KEY_UP: %Up,
+	KEY_RIGHT: %Right,
+	KEY_DOWN: %Down,
+	KEY_LEFT: %Left,
 }
 
 var input_event: InputEvent
@@ -119,7 +119,9 @@ func _push_notif(type: StringName, input: String):
 
 
 func _display_input(event: InputEvent):
-	var event_str: String = event.as_text()
+	if not event is InputEventKey: return
+
+	var event_str: Key = event.keycode
 
 	if not sprite_dictionary.has(event_str): return
 

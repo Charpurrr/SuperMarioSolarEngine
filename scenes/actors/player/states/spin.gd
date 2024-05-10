@@ -19,6 +19,9 @@ func _on_enter(_handover):
 		movement.air_spun = true
 		actor.vel.y = -spin_power
 
+		if InputManager.get_x_dir() == -sign(actor.vel.x):
+			actor.vel.x = 0
+
 	movement.activate_freefall_timer()
 	movement.consume_coyote_timer()
 
@@ -70,7 +73,7 @@ func _air_rules() -> Variant:
 		if input.buffered_input(&"spin"):
 			return &"Twirl"
 
-		if not movement.dived and input.buffered_input(&"dive") and movement.can_air_action():
+		if not movement.dived and movement.can_air_action() and input.buffered_input(&"dive"):
 			if Input.is_action_pressed(&"down"):
 				return [&"FaceplantDive", actor.vel.x]
 			else:
@@ -83,7 +86,7 @@ func _air_rules() -> Variant:
 		return &"GroundPound"
 
 	if finished_init and actor.push_rays.is_colliding() and input.buffered_input(&"jump"): 
-		return &"Walljump"
+		return [&"Walljump", -movement.facing_direction]
 
 	if finished_init and movement.can_init_wallslide():
 		return &"Wallslide"

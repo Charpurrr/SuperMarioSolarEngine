@@ -44,11 +44,12 @@ shader_parameter/mix_amount = 1.4
 [node name="FunnySlopeTest" type="Node2D"]
 
 [node name="Mario" parent="." instance=ExtResource("1_cq4tv")]
-position = Vector2(-192, 0)
+position = Vector2(-216, 0)
 floor_snap_length = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="Mario"]
 offset = Vector2(0, -110)
+ignore_rotation = false
 zoom = Vector2(2, 2)
 drag_vertical_enabled = true
 drag_top_margin = 1.0
@@ -71,7 +72,13 @@ script = ExtResource("3_jfqwu")
 [node name="Polygon2D2" type="Polygon2D" parent="."]
 texture_repeat = 2
 texture = ExtResource("3_ao5c2")
-polygon = PackedVector2Array(-448, -24, -256, -24, -256, -152, -448, -152)
+polygon = PackedVector2Array(-448, -24, -256, -24, -256, -184, -448, -176)
+script = ExtResource("3_jfqwu")
+
+[node name="Polygon2D3" type="Polygon2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("3_ao5c2")
+polygon = PackedVector2Array(-180.639, -24, -147.514, -24, -147.514, -184, -180.639, -184)
 script = ExtResource("3_jfqwu")
 
 [node name="FunnyTerrain" type="Line2D" parent="."]

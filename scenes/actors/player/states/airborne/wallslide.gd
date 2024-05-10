@@ -11,9 +11,6 @@ extends PlayerState
 ## Vertical knockback from spinning against a wall. (Only applied when airborne.)
 @export var wall_kickback_power_y: float = 1.2
 
-## If you've started sliding down or not.
-var reached_fall: bool
-
 
 func _on_enter(_handover):
 	movement.consume_coyote_timer()
@@ -21,12 +18,7 @@ func _on_enter(_handover):
 
 
 func _physics_tick():
-	reached_fall = actor.vel.y >= 0
-
-	if not reached_fall:
-		actor.vel.y = lerp(actor.vel.y, 0.0, 0.2)
-	else:
-		actor.vel.y = min(actor.vel.y, term_vel)
+	actor.vel.y = min(actor.vel.y, term_vel)
 
 	# Spinning wall bonk.
 	if input.buffered_input(&"spin"):
@@ -45,7 +37,7 @@ func _trans_rules():
 		return &"SpinWallbonk"
 
 	if input.buffered_input(&"jump"):
-		return &"Walljump"
+		return [&"Walljump", -movement.facing_direction]
 
 	if movement.should_end_wallslide():
 		return &"Fall"
