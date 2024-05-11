@@ -25,7 +25,10 @@ func _subsequent_ticks():
 
 
 func _physics_tick():
-	movement.accelerate(0.2, InputManager.get_x_dir(), push_power)
+	if InputManager.get_x_dir() == movement.facing_direction:
+		movement.accelerate(0.4, movement.facing_direction, push_power)
+	else:
+		movement.accelerate(0.2, InputManager.get_x_dir(), push_power)
 
 	if actor.vel.y > 0 and not start_freefall_timer:
 		start_freefall_timer = true

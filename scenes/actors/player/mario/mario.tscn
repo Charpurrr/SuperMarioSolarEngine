@@ -1502,7 +1502,7 @@ actor = NodePath("..")
 max_speed = 3.0
 ground_accel_time = 17.0
 ground_decel_time = 8.0
-air_decel_time = 0.0
+air_decel_time = 13.0
 return_res = 60.0
 term_vel = 8.0
 max_grav = 0.22
@@ -1643,8 +1643,6 @@ animation = &"double_fall"
 [node name="Wallslide" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("40_hk2sj")
 term_vel = 2.0
-wall_kickback_power_x = 1.7
-wall_kickback_power_y = 0.6
 animation = &"wallslide"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_w3vn1")])
 
@@ -1714,7 +1712,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_8711x"), SubR
 
 [node name="SpinWallbonk" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("65_echk5")
-spin_power = 3.0
+wall_kickback_power_y = 1.5
 animation = &"spin_attack"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ax73p"), SubResource("Resource_2nfvq")])
 force_new = false

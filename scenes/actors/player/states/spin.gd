@@ -6,9 +6,9 @@ extends PlayerState
 ## How much the spin sends you upwards when airborne.
 @export var spin_power: float = 6
 
-## If the spin action was performed while airborne or not.
+## Whether the spin action was performed while airborne or not.
 var is_airspin: bool
-## If the initial spin action has finished or not.
+## Whether the initial spin action has finished or not.
 var finished_init: bool
 
 

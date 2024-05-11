@@ -11,11 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://wf3l8upofoip" path="res://scenes/editor/terrain_edit/polyline_segment3.png" id="9_ixddv"]
 [ext_resource type="Texture2D" uid="uid://deaf7c51bxjrn" path="res://scenes/editor/terrain_edit/polyline_segment4.png" id="10_3ff85"]
 [ext_resource type="Texture2D" uid="uid://fgjreysoh48j" path="res://scenes/editor/terrain_edit/polyline_segment5.png" id="11_68t5h"]
-[ext_resource type="AudioStream" uid="uid://d0n7gsk7ymjkd" path="res://scenes/music/aquarium_park.ogg" id="11_hyslq"]
 [ext_resource type="Shader" path="res://scenes/props/environment_light.gdshader" id="11_i84w5"]
 [ext_resource type="Texture2D" uid="uid://1nelqqfhfo5a" path="res://scenes/props/bgs/synth/synth1.png" id="12_73x4r"]
 [ext_resource type="Texture2D" uid="uid://c3pp3x8c713m3" path="res://scenes/props/bgs/synth/synth2.png" id="14_rnpbm"]
 [ext_resource type="Texture2D" uid="uid://tfvxnw4vaqmj" path="res://scenes/props/bgs/synth/synth3.png" id="15_q6vnw"]
+[ext_resource type="AudioStream" uid="uid://dp0qulyplgfih" path="res://scenes/music/knitted_frustration.ogg" id="16_fkmc1"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_akk4i"]
 frames = 5
@@ -148,7 +148,7 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="BGM" type="AudioStreamPlayer" parent="Environment"]
-stream = ExtResource("11_hyslq")
+stream = ExtResource("16_fkmc1")
 autoplay = true
 bus = &"BGM"
 
