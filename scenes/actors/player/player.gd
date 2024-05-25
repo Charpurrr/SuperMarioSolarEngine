@@ -29,6 +29,4 @@ func _physics_process(delta):
 	set_velocity(vel / delta)
 	move_and_slide()
 
-	floor_constant_speed = movement.is_steep_slope()
-
 	vel = velocity * delta

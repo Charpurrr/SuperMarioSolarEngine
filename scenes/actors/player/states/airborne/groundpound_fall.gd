@@ -4,7 +4,7 @@ extends PlayerState
 
 
 ## How fast you ground pound.
-@export var gp_fall_vel = 9
+@export var gp_fall_vel: float = 9.0
 
 
 func _physics_tick():
@@ -15,7 +15,10 @@ func _physics_tick():
 
 func _trans_rules():
 	if actor.is_on_floor():
-		return &"GroundPoundLand"
+		if movement.is_slide_slope():
+			return [&"ButtSlide", gp_fall_vel]
+		else:
+			return &"GroundPoundLand"
 
 	if not movement.dived and movement.can_air_action() and input.buffered_input(&"dive"):
 		return [&"FaceplantDive", actor.vel.x]

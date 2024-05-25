@@ -38,6 +38,8 @@ func _subsequent_ticks():
 
 
 func _physics_tick():
+	is_airspin = movement.can_air_action()
+
 	if is_airspin:
 		movement.move_x("air", false)
 	else:

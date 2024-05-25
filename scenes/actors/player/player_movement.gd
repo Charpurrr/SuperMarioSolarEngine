@@ -48,10 +48,9 @@ extends Node
 }
 
 ## How many frames have to progress before you can accelerate forward again.
-# Has some nieche use-cases, in-engine is only used to handle wallbonk spins.
+## Has some nieche use-cases, in-engine is only used to handle wallbonk spins.
 @export var return_res: float = 15
 var return_res_prog: float
-
 #endregion
 
 #region Y Variables

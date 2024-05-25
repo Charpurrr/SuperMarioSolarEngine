@@ -4,7 +4,7 @@ extends PlayerState
 
 
 ## Minimum X velocity required to perform the third consecutive jump.
-const TRIPLE_MIN_VEL : float = 1
+@export var triple_min_vel : float = 1.0
 
 
 func _on_enter(_handover):
@@ -17,7 +17,7 @@ func _tell_defer():
 
 	match movement.consec_jumps:
 		2:
-			if abs(actor.vel.x) > TRIPLE_MIN_VEL and sign(actor.vel.x) == movement.facing_direction:
+			if abs(actor.vel.x) > triple_min_vel and sign(actor.vel.x) == movement.facing_direction:
 				return &"TripleJump"
 			else:
 				return &"DoubleJump"
