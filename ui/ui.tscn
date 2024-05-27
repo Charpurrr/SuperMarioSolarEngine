@@ -1,0 +1,93 @@
+[gd_scene load_steps=12 format=3 uid="uid://ccj3teu3h6xfm"]
+
+[ext_resource type="Script" path="res://ui/ui.gd" id="1_pakjx"]
+[ext_resource type="Script" path="res://ui/debug_label.gd" id="2_suudb"]
+[ext_resource type="PackedScene" uid="uid://b41sl5v4p501f" path="res://ui/notification/notification.tscn" id="2_ufvuv"]
+[ext_resource type="Texture2D" uid="uid://rqmk8y0h1450" path="res://ui/input_display/input_display_ico1.png" id="3_4oo64"]
+[ext_resource type="Texture2D" uid="uid://jbm5npuy3yok" path="res://ui/input_display/input_display_ico2.png" id="4_8x05r"]
+[ext_resource type="Texture2D" uid="uid://bwh5yg024sqag" path="res://ui/input_display/input_display_ico3.png" id="5_cgoe6"]
+[ext_resource type="Texture2D" uid="uid://bkvicbrah3ltp" path="res://ui/input_display/input_display_ico4.png" id="6_7ipv2"]
+[ext_resource type="Texture2D" uid="uid://cnypyennkpxux" path="res://ui/input_display/input_display_ico5.png" id="7_yer77"]
+[ext_resource type="Texture2D" uid="uid://7p0auiyqcgk3" path="res://ui/input_display/input_display_ico6.png" id="8_nyjo7"]
+[ext_resource type="Texture2D" uid="uid://dir44lhfrdcxu" path="res://ui/input_display/input_display_ico7.png" id="9_smbrs"]
+[ext_resource type="Texture2D" uid="uid://15yce5ngma24" path="res://ui/input_display/input_display_ico8.png" id="10_5r8on"]
+
+[node name="UI" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_pakjx")
+notif_scene = ExtResource("2_ufvuv")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "fps =
+
+velocity.x =
+velocity.y =
+
+state =
+SCL ="
+script = ExtResource("2_suudb")
+metadata/_edit_lock_ = true
+
+[node name="Notifications" type="Node" parent="."]
+
+[node name="InputDisplay" type="Node2D" parent="."]
+position = Vector2(-4, -706)
+scale = Vector2(2, 2)
+
+[node name="Shift" type="Sprite2D" parent="InputDisplay"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(10, 689)
+texture = ExtResource("3_4oo64")
+centered = false
+
+[node name="Z" type="Sprite2D" parent="InputDisplay"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(34, 689)
+texture = ExtResource("8_nyjo7")
+centered = false
+
+[node name="X" type="Sprite2D" parent="InputDisplay"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(51, 689)
+texture = ExtResource("9_smbrs")
+centered = false
+
+[node name="C" type="Sprite2D" parent="InputDisplay"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(68, 689)
+texture = ExtResource("10_5r8on")
+centered = false
+
+[node name="Up" type="Sprite2D" parent="InputDisplay"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(109, 672)
+texture = ExtResource("4_8x05r")
+centered = false
+
+[node name="Right" type="Sprite2D" parent="InputDisplay"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(126, 689)
+texture = ExtResource("5_cgoe6")
+centered = false
+
+[node name="Down" type="Sprite2D" parent="InputDisplay"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(109, 689)
+texture = ExtResource("6_7ipv2")
+centered = false
+
+[node name="Left" type="Sprite2D" parent="InputDisplay"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(92, 689)
+texture = ExtResource("7_yer77")
+centered = false

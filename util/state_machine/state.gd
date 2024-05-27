@@ -46,7 +46,8 @@ func recurse_descendents(function_name: StringName, arguments := []):
 	call_func(function_name, arguments)
 
 	for child in get_children():
-		child.recurse_descendents(function_name, arguments)
+		if child is State:
+			child.recurse_descendents(function_name, arguments)
 
 
 ## Call a function on this state and all its live descendents.
