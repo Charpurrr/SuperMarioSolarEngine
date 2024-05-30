@@ -17,6 +17,8 @@ func _on_enter(bellyflop):
 	movement.consec_jumps = 0
 	movement.dived = true
 
+	actor.set_floor_snap_length(8.0)
+
 	if bellyflop:
 		actor.doll.set_frame(2)
 

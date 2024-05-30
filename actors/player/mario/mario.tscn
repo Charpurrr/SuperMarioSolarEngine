@@ -1,4 +1,4 @@
-[gd_scene load_steps=283 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=284 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://actors/player/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://cut0vcslnatgi" path="res://actors/player/mario/anime/backflip.png" id="2_i2o54"]
@@ -39,7 +39,6 @@
 [ext_resource type="Texture2D" uid="uid://dmvqixf7ivoa6" path="res://actors/player/mario/anime/spinjump.png" id="21_pd4hh"]
 [ext_resource type="Script" path="res://actors/player/states/airborne/sideflip.gd" id="22_4r2ks"]
 [ext_resource type="Script" path="res://actors/player/states/airborne/backflip.gd" id="23_jcv3h"]
-[ext_resource type="Script" path="res://actors/player/dive_ray.gd" id="23_k0i43"]
 [ext_resource type="Texture2D" uid="uid://dksuluskiaatw" path="res://actors/player/mario/anime_127/run.png" id="23_qkkif"]
 [ext_resource type="Script" path="res://util/state_machine/player_state_manager.gd" id="24_2oy80"]
 [ext_resource type="Texture2D" uid="uid://dfr68pj70d7he" path="res://actors/player/mario/anime_127/wallslide.png" id="24_dqa47"]
@@ -100,7 +99,9 @@
 [ext_resource type="AudioStream" uid="uid://dflvhtj1qab8t" path="res://actors/player/mario/motion_nsmbw/groundpound.wav" id="83_6bb16"]
 [ext_resource type="AudioStream" uid="uid://7ukbjapgnxvk" path="res://actors/player/mario/nsmbu_m_voice/wihee.wav" id="87_rh14y"]
 [ext_resource type="AudioStream" uid="uid://dxc5shyngpv4r" path="res://actors/player/mario/nsmbu_m_voice/woohuw.wav" id="88_2pqmv"]
+[ext_resource type="Script" path="res://actors/player/states/airborne/groundpound_homing.gd" id="88_wydnf"]
 [ext_resource type="AudioStream" uid="uid://ct61kwl0lri2j" path="res://actors/player/mario/nsmbu_m_voice/wuhoo.wav" id="89_nb4nr"]
+[ext_resource type="Script" path="res://actors/player/states/airborne/groundpound_homing_fall.gd" id="90_yms6y"]
 [ext_resource type="Script" path="res://actors/player/states/airborne/faceplant_dive.gd" id="93_2rear"]
 [ext_resource type="AudioStream" uid="uid://d0s7brppcahqo" path="res://actors/player/mario/nsmbu_m_voice/waho.wav" id="96_ex20x"]
 [ext_resource type="AudioStream" uid="uid://dja46wtya5yy0" path="res://actors/player/mario/nsmbu_m_voice/hhuowa.wav" id="97_pkbn3"]
@@ -1245,11 +1246,11 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c86nk"]
 size = Vector2(16, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gh08o"]
-size = Vector2(40, 20)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2tafv"]
 size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gh08o"]
+size = Vector2(40, 20)
 
 [sub_resource type="Resource" id="Resource_r5xry"]
 script = ExtResource("49_apkmk")
@@ -1443,9 +1444,10 @@ sfx_list = [ExtResource("78_6j3mr")]
 bus = &"Motion"
 cutoff_sfx = false
 
-[node name="Mario" type="CharacterBody2D" node_paths=PackedStringArray("doll", "state_manager", "movement", "input", "push_rays", "hitbox", "dive_hitbox", "small_hitbox", "crouchlock", "spin_hitbox")]
+[node name="Mario" type="CharacterBody2D" node_paths=PackedStringArray("doll", "state_manager", "movement", "input", "push_rays", "hitbox", "dive_hitbox", "small_hitbox", "crouchlock", "homing_radar", "spin_hitbox")]
 collision_layer = 2
 floor_max_angle = 1.55334
+floor_snap_length = 8.0
 script = ExtResource("1_3d0l6")
 doll = NodePath("Doll")
 state_manager = NodePath("StateManager")
@@ -1455,8 +1457,9 @@ push_rays = NodePath("PushRays")
 hitbox = NodePath("Hitbox")
 dive_hitbox = NodePath("DiveHitbox")
 small_hitbox = NodePath("SmallHitbox")
-crouchlock = NodePath("Crouchlock")
-spin_hitbox = NodePath("SpinHitbox")
+crouchlock = NodePath("Areas/Crouchlock")
+homing_radar = NodePath("Areas/HomingRadar")
+spin_hitbox = NodePath("Areas/SpinHitbox")
 
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
@@ -1477,23 +1480,36 @@ position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_c86nk")
 debug_color = Color(0.79996, 0.0297055, 1, 0.42)
 
-[node name="SpinHitbox" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 4
-monitoring = false
+[node name="Areas" type="Node2D" parent="."]
 
-[node name="DamageBox" type="CollisionShape2D" parent="SpinHitbox"]
+[node name="HomingRadar" type="Area2D" parent="Areas"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Areas/HomingRadar"]
+modulate = Color(1, 1, 1, 0.392157)
 position = Vector2(0, -16)
-shape = SubResource("RectangleShape2D_gh08o")
-debug_color = Color(1, 0, 0.145098, 0.141176)
+rotation = 0.00447762
+polygon = PackedVector2Array(-141.4, 141.4, -100, 173.2, -51.8, 193.2, 0, 200, 51.8, 193.2, 100, 173.2, 141.4, 141.4, 0, 0)
 
-[node name="Crouchlock" type="Area2D" parent="."]
+[node name="Crouchlock" type="Area2D" parent="Areas"]
+collision_layer = 0
 script = ExtResource("27_y8r5l")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Crouchlock"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Crouchlock"]
 position = Vector2(0, -24)
 shape = SubResource("RectangleShape2D_2tafv")
 debug_color = Color(0.792157, 0.380392, 0.52549, 0.419608)
+
+[node name="SpinHitbox" type="Area2D" parent="Areas"]
+collision_layer = 0
+collision_mask = 4
+monitoring = false
+
+[node name="DamageBox" type="CollisionShape2D" parent="Areas/SpinHitbox"]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_gh08o")
+debug_color = Color(1, 0, 0.145098, 0.141176)
 
 [node name="PushRays" type="Node2D" parent="." node_paths=PackedStringArray("movement")]
 script = ExtResource("26_qi7rb")
@@ -1508,11 +1524,6 @@ target_position = Vector2(10, 0)
 modulate = Color(1, 1, 0.164706, 1)
 position = Vector2(0, -14)
 target_position = Vector2(-9, 0)
-
-[node name="DiveRay" type="RayCast2D" parent="."]
-modulate = Color(0, 1, 0, 1)
-target_position = Vector2(0, 4)
-script = ExtResource("23_k0i43")
 
 [node name="InputManager" type="Node" parent="."]
 script = ExtResource("21_onm15")
@@ -1704,7 +1715,6 @@ force_new = false
 [node name="GroundPound" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("46_4mnp2")
 linger_time = 5.0
-hitbox_type = "Small"
 animation = &"gp"
 anim_offset = Vector2i(0, 9)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_7r27p")])
@@ -1712,9 +1722,14 @@ force_new = false
 
 [node name="GroundPoundFall" type="Node" parent="StateManager/Airborne/GroundPound"]
 script = ExtResource("47_bnupp")
-hitbox_type = "Small"
 animation = &"gp_fall"
 anim_offset = Vector2i(0, 9)
+
+[node name="HomingGroundPound" type="Node" parent="StateManager/Airborne"]
+script = ExtResource("88_wydnf")
+
+[node name="HomingGroundPoundFall" type="Node" parent="StateManager/Airborne/HomingGroundPound"]
+script = ExtResource("90_yms6y")
 
 [node name="GroundPoundCancel" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("75_tu65i")
@@ -1787,4 +1802,4 @@ animation = &"spin_attack"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_vehmo"), SubResource("Resource_0hpnu")])
 force_new = false
 
-[connection signal="body_entered" from="SpinHitbox" to="StateManager/Spin" method="_on_spin_hitbox_body_entered"]
+[connection signal="body_entered" from="Areas/SpinHitbox" to="StateManager/Spin" method="_on_spin_hitbox_body_entered"]

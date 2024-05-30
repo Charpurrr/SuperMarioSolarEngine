@@ -16,6 +16,7 @@ extends CharacterBody2D
 @export var small_hitbox: CollisionShape2D
 
 @export var crouchlock: CrouchlockDetection
+@export var homing_radar: Area2D
 @export var spin_hitbox: Area2D
 
 ## Current velocity.

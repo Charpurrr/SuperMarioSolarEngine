@@ -15,10 +15,10 @@ var ready_to_perish: bool = false
 func _physics_process(delta):
 	vel.y += gravity
 
+	# Die
 	if is_on_floor() and vel.y >= 0 and ready_to_perish:
-		queue_free()
-	elif is_on_floor():
 		vel.y = min(vel.y, 0)
+		queue_free()
 
 	super(delta)
 
@@ -30,5 +30,7 @@ func die(source: Node, damage_type: HealthModule.DamageType):
 			vel.y = -strike_y_power
 
 			ready_to_perish = true
+			anime.play(&"die_strike")
+
 		HealthModule.DamageType.SQUISH:
 			pass

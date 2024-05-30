@@ -32,7 +32,7 @@ var no_direction: bool
 
 
 func _on_enter(handover_speed):
-	actor.set_floor_snap_length(8.0)
+	actor.set_floor_snap_length(16.0)
 
 	if handover_speed is float:
 		old_direction = Vector2.DOWN

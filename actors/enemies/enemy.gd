@@ -5,7 +5,10 @@ extends CharacterBody2D
 
 @export var hp: int
 
+@export_category(&"References")
 @export var hitbox: CollisionShape2D
+
+@export var anime: AnimationPlayer
 @export var doll: AnimatedSprite2D
 
 @onready var health_module := HealthModule.new(hp, take_hit, die)
