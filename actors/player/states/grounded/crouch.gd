@@ -33,6 +33,9 @@ func _trans_rules():
 	if _can_crouchwalk():
 		return &"Waddle"
 
+	if input.buffered_input(&"spin"):
+		return &"Breakdance"
+
 	if not actor.crouchlock.enabled and input.buffered_input(&"jump"):
 		if actor.vel.x == 0:
 			return &"Backflip"

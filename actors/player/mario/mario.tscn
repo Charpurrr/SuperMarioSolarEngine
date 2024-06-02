@@ -1,9 +1,10 @@
-[gd_scene load_steps=284 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=294 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://actors/player/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://cut0vcslnatgi" path="res://actors/player/mario/anime/backflip.png" id="2_i2o54"]
 [ext_resource type="Texture2D" uid="uid://ccfxaveftr1f0" path="res://actors/player/mario/anime/crouch.png" id="3_0c1gq"]
 [ext_resource type="Script" path="res://actors/player/player_movement.gd" id="3_3mh1j"]
+[ext_resource type="Texture2D" uid="uid://dc2mgnun4cf8p" path="res://actors/player/mario/anime/breakdance.png" id="3_h1rp8"]
 [ext_resource type="Texture2D" uid="uid://iobst2en0jj5" path="res://actors/player/mario/anime/buttslide.png" id="3_pusam"]
 [ext_resource type="Texture2D" uid="uid://71qmcohslma0" path="res://actors/player/mario/anime/dive.png" id="4_0hrc4"]
 [ext_resource type="Texture2D" uid="uid://dunegtt073xey" path="res://actors/player/mario/anime/crouchwalk.png" id="4_b56cl"]
@@ -60,6 +61,7 @@
 [ext_resource type="Script" path="res://actors/player/states/airborne/dummy_jump.gd" id="44_f7pc6"]
 [ext_resource type="Script" path="res://actors/player/states/grounded/dive_slide.gd" id="45_alo0d"]
 [ext_resource type="Script" path="res://actors/player/states/airborne/groundpound.gd" id="46_4mnp2"]
+[ext_resource type="Script" path="res://actors/player/states/grounded/breakdance.gd" id="46_ayg2w"]
 [ext_resource type="AudioStream" uid="uid://eg6wdajph5l2" path="res://actors/player/mario/nsmbu_m_voice/hohoo.wav" id="46_ek8cu"]
 [ext_resource type="AudioStream" uid="uid://fvrbemdqohdi" path="res://actors/player/mario/nsmbu_m_voice/arright.wav" id="47_0n258"]
 [ext_resource type="AudioStream" uid="uid://c8y4afwkcsrsw" path="res://actors/player/mario/motion_nsmbw/groundpoundland.wav" id="47_1l3qp"]
@@ -160,6 +162,38 @@ region = Rect2(480, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_j7p2a"]
 atlas = ExtResource("2_i2o54")
 region = Rect2(528, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0pj7"]
+atlas = ExtResource("3_h1rp8")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vrf7"]
+atlas = ExtResource("3_h1rp8")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxub6"]
+atlas = ExtResource("3_h1rp8")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7juob"]
+atlas = ExtResource("3_h1rp8")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfjcm"]
+atlas = ExtResource("3_h1rp8")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wslg"]
+atlas = ExtResource("3_h1rp8")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7n81"]
+atlas = ExtResource("3_h1rp8")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wv4h"]
+atlas = ExtResource("3_h1rp8")
+region = Rect2(336, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bd11w"]
 atlas = ExtResource("3_pusam")
@@ -690,6 +724,35 @@ animations = [{
 "loop": false,
 "name": &"backflip",
 "speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0pj7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vrf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxub6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7juob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfjcm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wslg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7n81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wv4h")
+}],
+"loop": false,
+"name": &"breakdance",
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1250,7 +1313,7 @@ size = Vector2(16, 16)
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gh08o"]
-size = Vector2(40, 20)
+size = Vector2(44, 26)
 
 [sub_resource type="Resource" id="Resource_r5xry"]
 script = ExtResource("49_apkmk")
@@ -1447,7 +1510,7 @@ cutoff_sfx = false
 [node name="Mario" type="CharacterBody2D" node_paths=PackedStringArray("doll", "state_manager", "movement", "input", "push_rays", "hitbox", "dive_hitbox", "small_hitbox", "crouchlock", "homing_radar", "spin_hitbox")]
 collision_layer = 2
 floor_max_angle = 1.55334
-floor_snap_length = 8.0
+floor_snap_length = 16.0
 script = ExtResource("1_3d0l6")
 doll = NodePath("Doll")
 state_manager = NodePath("StateManager")
@@ -1464,7 +1527,7 @@ spin_hitbox = NodePath("Areas/SpinHitbox")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_hmp25")
-animation = &"spin_attack"
+animation = &"breakdance"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
@@ -1507,7 +1570,7 @@ collision_mask = 4
 monitoring = false
 
 [node name="DamageBox" type="CollisionShape2D" parent="Areas/SpinHitbox"]
-position = Vector2(0, -16)
+position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_gh08o")
 debug_color = Color(1, 0, 0.145098, 0.141176)
 
@@ -1538,7 +1601,6 @@ ground_decel_time = 8.0
 air_decel_time = 13.0
 return_res = 60.0
 term_vel = 8.0
-max_grav = 0.22
 min_grav = 0.215
 min_slide_incline = 0.4
 
@@ -1584,6 +1646,11 @@ hitbox_type = "Small"
 animation = &"crouch"
 on_enter = false
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ql55k")])
+
+[node name="Breakdance" type="Node" parent="StateManager/Grounded"]
+script = ExtResource("46_ayg2w")
+hitbox_type = "Small"
+animation = &"breakdance"
 
 [node name="Waddle" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("39_eiqna")
@@ -1801,5 +1868,7 @@ spin_power = 3.0
 animation = &"spin_attack"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_vehmo"), SubResource("Resource_0hpnu")])
 force_new = false
+
+[node name="Bonk" type="Node" parent="StateManager"]
 
 [connection signal="body_entered" from="Areas/SpinHitbox" to="StateManager/Spin" method="_on_spin_hitbox_body_entered"]

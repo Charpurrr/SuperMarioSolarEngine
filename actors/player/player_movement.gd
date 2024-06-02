@@ -60,12 +60,15 @@ var return_res_prog: float
 @export var term_vel: float = 6.60
 
 ## How high gravity can interpolate.
-@export var max_grav: float = 0.27
+@export var max_grav: float = 0.22
 ## How low gravity can interpolate.
-@export var min_grav: float = 0.26
+@export var min_grav: float = max_grav
 
 ## Amount of units the player needs to be above the ground to perform an airborne action.
 @export var air_margin: int = 10
+
+## Sets the floor_snap_length of the actor.
+@export var snap_length: float = 16
 #endregion
 
 #region Timer Variables

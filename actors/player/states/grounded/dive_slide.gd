@@ -8,8 +8,10 @@ func _on_enter(_handover):
 
 
 func _physics_tick():
-	actor.doll.rotation = lerp_angle(actor.doll.rotation, 
-	actor.get_floor_angle() + (TAU / 4 * movement.facing_direction), 0.5)
+	var normal_angle: float = actor.get_floor_normal().angle()
+	var angle: float = normal_angle + TAU / 2 * Math.sign_positive(actor.movement.facing_direction)
+
+	actor.doll.rotation = lerp_angle(actor.doll.rotation, angle, 0.5)
 	movement.decelerate("ground")
 
 
@@ -18,6 +20,7 @@ func _on_exit():
 
 	actor.floor_stop_on_slope = true
 	actor.doll.rotation = 0
+
 
 func _trans_rules():
 	if not actor.crouchlock.enabled:

@@ -9,7 +9,9 @@ func _on_enter(play_land_sfx):
 	movement.air_spun = false
 	movement.dived = false
 
-	actor.set_floor_snap_length(16.0)
+	actor.set_floor_snap_length(movement.snap_length)
+
+	actor.vel.y = 0
 
 	if play_land_sfx:
 		for sfx_list in sfx_layers:

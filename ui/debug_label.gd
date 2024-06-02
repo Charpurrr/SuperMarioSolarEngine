@@ -2,10 +2,13 @@ extends Label
 
 
 func _physics_process(_delta):
+	var player: CharacterBody2D = get_parent().player
+
 	text = (
 	"fps = %s \n
 	is_on_floor() = %s 
 	can_air_action() = %s
+	get_floor_angle / TAU = %.3f
 	floor_incline = %.3f \n
 	position.x = %.3f
 	position.y = %.3f
@@ -17,15 +20,16 @@ func _physics_process(_delta):
 	state = %s
 	" %[
 		Engine.get_frames_per_second(),
-		get_parent().player.is_on_floor(),
-		get_parent().player.movement.can_air_action(),
-		get_parent().player.movement.get_floor_incline(),
-		get_parent().player.global_position.x,
-		get_parent().player.global_position.y,
-		get_parent().player.vel.x, 
-		get_parent().player.vel.y,
-		get_parent().player.movement.body_rotation,
-		get_parent().player.doll.rotation,
-		get_parent().player.movement.facing_direction,
-		get_parent().player.state_manager.get_leaf(),
+		player.is_on_floor(),
+		player.movement.can_air_action(),
+		player.get_floor_angle() / TAU,
+		player.movement.get_floor_incline(),
+		player.global_position.x,
+		player.global_position.y,
+		player.vel.x, 
+		player.vel.y,
+		player.movement.body_rotation,
+		player.doll.rotation,
+		player.movement.facing_direction,
+		player.state_manager.get_leaf(),
 	])
