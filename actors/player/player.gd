@@ -32,5 +32,3 @@ func _physics_process(delta):
 	move_and_slide()
 
 	vel = velocity * delta
-
-	print(movement.snap_length)

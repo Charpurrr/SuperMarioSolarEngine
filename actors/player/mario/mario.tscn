@@ -1,9 +1,10 @@
-[gd_scene load_steps=294 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=299 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://actors/player/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://cut0vcslnatgi" path="res://actors/player/mario/anime/backflip.png" id="2_i2o54"]
 [ext_resource type="Texture2D" uid="uid://ccfxaveftr1f0" path="res://actors/player/mario/anime/crouch.png" id="3_0c1gq"]
 [ext_resource type="Script" path="res://actors/player/player_movement.gd" id="3_3mh1j"]
+[ext_resource type="Texture2D" uid="uid://bbns3o1keat41" path="res://actors/player/mario/anime/bonk.png" id="3_3y25f"]
 [ext_resource type="Texture2D" uid="uid://dc2mgnun4cf8p" path="res://actors/player/mario/anime/breakdance.png" id="3_h1rp8"]
 [ext_resource type="Texture2D" uid="uid://iobst2en0jj5" path="res://actors/player/mario/anime/buttslide.png" id="3_pusam"]
 [ext_resource type="Texture2D" uid="uid://71qmcohslma0" path="res://actors/player/mario/anime/dive.png" id="4_0hrc4"]
@@ -32,6 +33,7 @@
 [ext_resource type="Script" path="res://actors/player/states/grounded/crouch.gd" id="18_h7q8u"]
 [ext_resource type="Texture2D" uid="uid://bapkl7gnv0ya1" path="res://actors/player/mario/anime/rollout.png" id="18_w61pa"]
 [ext_resource type="Texture2D" uid="uid://dtiuy8mipcr1o" path="res://actors/player/mario/anime/spin_attack.png" id="19_4jr0s"]
+[ext_resource type="Texture2D" uid="uid://caof7f4dvdp28" path="res://actors/player/mario/anime_127/look_up.png" id="19_31nk2"]
 [ext_resource type="Script" path="res://actors/player/states/grounded/turn_skid.gd" id="20_0joxb"]
 [ext_resource type="Script" path="res://actors/player/states/airborne.gd" id="20_at07q"]
 [ext_resource type="Script" path="res://actors/player/states/airborne/jump.gd" id="20_bs088"]
@@ -114,6 +116,7 @@
 [ext_resource type="Script" path="res://actors/player/states/airborne/rollout.gd" id="103_p6px5"]
 [ext_resource type="Script" path="res://actors/player/states/airborne/butt_slide_jump.gd" id="103_vw86a"]
 [ext_resource type="Script" path="res://actors/player/states/butt_slide.gd" id="105_wa8lx"]
+[ext_resource type="Script" path="res://actors/player/states/bonk.gd" id="115_s81vk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8n85e"]
 atlas = ExtResource("2_i2o54")
@@ -162,6 +165,10 @@ region = Rect2(480, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_j7p2a"]
 atlas = ExtResource("2_i2o54")
 region = Rect2(528, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idtcy"]
+atlas = ExtResource("3_3y25f")
+region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f0pj7"]
 atlas = ExtResource("3_h1rp8")
@@ -378,6 +385,10 @@ region = Rect2(144, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_eaoan"]
 atlas = ExtResource("16_a6s6v")
 region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjbsg"]
+atlas = ExtResource("19_31nk2")
+region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i0dhx"]
 atlas = ExtResource("12_kw6lo")
@@ -727,6 +738,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_idtcy")
+}],
+"loop": false,
+"name": &"bonk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_f0pj7")
 }, {
 "duration": 1.0,
@@ -983,6 +1002,14 @@ animations = [{
 "loop": false,
 "name": &"longjump",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjbsg")
+}],
+"loop": true,
+"name": &"look_up",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1417,6 +1444,18 @@ sfx_list = [ExtResource("72_qiukt")]
 bus = &"Motion"
 cutoff_sfx = false
 
+[sub_resource type="Resource" id="Resource_ax73p"]
+script = ExtResource("49_apkmk")
+sfx_list = [ExtResource("75_dfuxb"), ExtResource("76_2i2di")]
+bus = &"Voice"
+cutoff_sfx = true
+
+[sub_resource type="Resource" id="Resource_2nfvq"]
+script = ExtResource("49_apkmk")
+sfx_list = [ExtResource("67_cc7at")]
+bus = &"Motion"
+cutoff_sfx = true
+
 [sub_resource type="Resource" id="Resource_nya8m"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("79_5k4ls"), ExtResource("89_nb4nr"), ExtResource("60_4ujrx")]
@@ -1459,18 +1498,6 @@ sfx_list = [ExtResource("59_wk6r7")]
 bus = &"Motion"
 cutoff_sfx = false
 
-[sub_resource type="Resource" id="Resource_ax73p"]
-script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("75_dfuxb"), ExtResource("76_2i2di")]
-bus = &"Voice"
-cutoff_sfx = true
-
-[sub_resource type="Resource" id="Resource_2nfvq"]
-script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("67_cc7at")]
-bus = &"Motion"
-cutoff_sfx = true
-
 [sub_resource type="Resource" id="Resource_2y8iw"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("100_iksxt")]
@@ -1483,18 +1510,6 @@ sfx_list = [ExtResource("96_ex20x"), ExtResource("87_rh14y"), ExtResource("97_pk
 bus = &"Voice"
 cutoff_sfx = false
 
-[sub_resource type="Resource" id="Resource_lib4c"]
-script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("96_ex20x"), ExtResource("87_rh14y"), ExtResource("97_pkbn3")]
-bus = &"Voice"
-cutoff_sfx = false
-
-[sub_resource type="Resource" id="Resource_6roi5"]
-script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("82_2iou6")]
-bus = &"Motion"
-cutoff_sfx = false
-
 [sub_resource type="Resource" id="Resource_vehmo"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("98_1ccgr"), ExtResource("103_ovuyj"), ExtResource("100_yqne1")]
@@ -1504,6 +1519,18 @@ cutoff_sfx = false
 [sub_resource type="Resource" id="Resource_0hpnu"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("78_6j3mr")]
+bus = &"Motion"
+cutoff_sfx = false
+
+[sub_resource type="Resource" id="Resource_lib4c"]
+script = ExtResource("49_apkmk")
+sfx_list = [ExtResource("96_ex20x"), ExtResource("87_rh14y"), ExtResource("97_pkbn3")]
+bus = &"Voice"
+cutoff_sfx = false
+
+[sub_resource type="Resource" id="Resource_6roi5"]
+script = ExtResource("49_apkmk")
+sfx_list = [ExtResource("82_2iou6")]
 bus = &"Motion"
 cutoff_sfx = false
 
@@ -1527,7 +1554,7 @@ spin_hitbox = NodePath("Areas/SpinHitbox")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_hmp25")
-animation = &"breakdance"
+animation = &"bonk"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
@@ -1750,6 +1777,13 @@ animation = &"walljump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_r38cq"), SubResource("Resource_a2hl0")])
 force_new = false
 
+[node name="SpinWallbonk" type="Node" parent="StateManager/Airborne"]
+script = ExtResource("65_echk5")
+wall_kickback_power_y = 1.5
+animation = &"spin_attack"
+sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ax73p"), SubResource("Resource_2nfvq")])
+force_new = false
+
 [node name="Spinjump" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("56_j6jt4")
 jump_power = 6.7
@@ -1810,13 +1844,6 @@ jump_number = 1
 animation = &"gp_jump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_8711x"), SubResource("Resource_nl575")])
 
-[node name="SpinWallbonk" type="Node" parent="StateManager/Airborne"]
-script = ExtResource("65_echk5")
-wall_kickback_power_y = 1.5
-animation = &"spin_attack"
-sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ax73p"), SubResource("Resource_2nfvq")])
-force_new = false
-
 [node name="Twirl" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("57_dqusk")
 spin_power = 0.0
@@ -1849,6 +1876,13 @@ min_jump_percent = 20.0
 jump_number = 1
 fall_state = &""
 
+[node name="Spin" type="Node" parent="StateManager"]
+script = ExtResource("50_mq1bv")
+spin_power = 3.0
+animation = &"spin_attack"
+sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_vehmo"), SubResource("Resource_0hpnu")])
+force_new = false
+
 [node name="Dive" type="Node" parent="StateManager"]
 script = ExtResource("54_rdldk")
 x_power = 3.0
@@ -1857,18 +1891,14 @@ hitbox_type = "Dive"
 animation = &"dive"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_lib4c"), SubResource("Resource_6roi5")])
 
+[node name="Bonk" type="Node" parent="StateManager"]
+script = ExtResource("115_s81vk")
+rotation_time = 45.0
+animation = &"bonk"
+
 [node name="ButtSlide" type="Node" parent="StateManager"]
 script = ExtResource("105_wa8lx")
 hitbox_type = "Small"
 animation = &"butt_slide"
-
-[node name="Spin" type="Node" parent="StateManager"]
-script = ExtResource("50_mq1bv")
-spin_power = 3.0
-animation = &"spin_attack"
-sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_vehmo"), SubResource("Resource_0hpnu")])
-force_new = false
-
-[node name="Bonk" type="Node" parent="StateManager"]
 
 [connection signal="body_entered" from="Areas/SpinHitbox" to="StateManager/Spin" method="_on_spin_hitbox_body_entered"]

@@ -7,6 +7,11 @@ func _physics_tick():
 	movement.update_prev_direction()
 	movement.decelerate("ground")
 
+	if Input.is_action_pressed(&"up"):
+		actor.doll.play("look_up")
+	else:
+		actor.doll.play(animation)
+
 
 func _trans_rules():
 	if actor.vel.x != 0 and input.buffered_input(&"dive"):
