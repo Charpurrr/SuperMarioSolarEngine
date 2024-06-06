@@ -92,7 +92,10 @@ func _air_rules() -> Variant:
 		return &"Freefall"
 
 	if Input.is_action_just_pressed(&"down") and movement.can_air_action():
-		return &"HomingGroundPound"
+		if not finished_init:
+			return &"HomingGroundPound"
+		else:
+			return &"GroundPound"
 
 	if finished_init and actor.push_rays.is_colliding() and input.buffered_input(&"jump"): 
 		return [&"Walljump", -movement.facing_direction]

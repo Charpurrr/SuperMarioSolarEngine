@@ -45,7 +45,7 @@ shader_parameter/mix_amount = 1.4
 [node name="FunnySlopeTest" type="Node2D"]
 
 [node name="Mario" parent="." instance=ExtResource("1_pj472")]
-position = Vector2(-24, 0)
+position = Vector2(1816, -80)
 floor_snap_length = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="Mario"]

@@ -43,6 +43,9 @@ func _on_exit():
 
 
 func _trans_rules():
+	if movement.is_slide_slope():
+		return &"ButtSlide"
+
 	if (not InputManager.is_moving_x() or actor.is_on_wall()):
 		return [&"Crouch", [true, false]]
 

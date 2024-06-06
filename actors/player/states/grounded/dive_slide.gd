@@ -9,7 +9,7 @@ func _on_enter(_handover):
 
 func _physics_tick():
 	var normal_angle: float = actor.get_floor_normal().angle()
-	var angle: float = normal_angle + TAU / 2 * Math.sign_positive(actor.movement.facing_direction)
+	var angle: float = normal_angle + TAU / 2 * Math.sign_positive(movement.facing_direction)
 
 	actor.doll.rotation = lerp_angle(actor.doll.rotation, angle, 0.5)
 	movement.decelerate("ground")
