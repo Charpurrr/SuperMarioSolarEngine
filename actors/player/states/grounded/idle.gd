@@ -3,12 +3,17 @@ extends PlayerState
 ## Default grounded state when there is no input.
 
 
+@export_category(&"Animation (Unique to State)")
+@export var animation_look_up: StringName
+@export var anim_offset_l_u: Vector2
+
+
 func _physics_tick():
 	movement.update_prev_direction()
 	movement.decelerate("ground")
 
 	if Input.is_action_pressed(&"up"):
-		actor.doll.play("look_up")
+		actor.doll.play(animation_look_up)
 	else:
 		actor.doll.play(animation)
 

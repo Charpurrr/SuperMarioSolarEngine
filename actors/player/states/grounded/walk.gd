@@ -6,6 +6,10 @@ extends PlayerState
 ## On what frames of the walking animation a footstep soundeffect should play.
 @export var footstep_frames: Array[int]
 
+@export_category(&"Animation (Unique to State)")
+@export var animation_run: StringName
+@export var anim_offset_r: Vector2
+
 ## Wether the footstep sound effect has played or not.
 var sfx_has_played: bool = false
 
@@ -34,12 +38,12 @@ func _set_appropriate_anim():
 	var current_progress = actor.doll.get_frame_progress()
 
 	if Math.roundp(abs(actor.vel.x), 3) > movement.max_speed:
-		actor.doll.play("run")
+		actor.doll.play(animation_run)
 		actor.doll.set_frame_and_progress(current_frame, current_progress)
 
 		actor.vel.x = move_toward(actor.vel.x, movement.max_speed * movement.facing_direction, 0.1)
 	else:
-		actor.doll.play("walk")
+		actor.doll.play(animation)
 		actor.doll.set_frame_and_progress(current_frame, current_progress)
 
 

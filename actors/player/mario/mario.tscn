@@ -1,4 +1,4 @@
-[gd_scene load_steps=305 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=308 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://actors/player/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://cut0vcslnatgi" path="res://actors/player/mario/anime/backflip.png" id="2_i2o54"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cgewu5ufbonu5" path="res://actors/player/mario/anime/buttslide_back.png" id="6_dks4s"]
 [ext_resource type="Texture2D" uid="uid://e3grnlv2slwt" path="res://actors/player/mario/anime/buttslide_front.png" id="7_dlq6r"]
 [ext_resource type="Texture2D" uid="uid://c1re3wsiqbvbl" path="res://actors/player/mario/anime/diveslide.png" id="7_wwk88"]
+[ext_resource type="Texture2D" uid="uid://c4tsvbkrby424" path="res://actors/player/mario/anime/buttslide_jump.png" id="8_ugnlj"]
 [ext_resource type="Texture2D" uid="uid://bjqptf8hd7sgj" path="res://actors/player/mario/anime/groundpound.png" id="9_m0w8d"]
 [ext_resource type="Texture2D" uid="uid://cx8otjotpvqfc" path="res://actors/player/mario/anime/groundpound_jump.png" id="11_1j7yv"]
 [ext_resource type="Script" path="res://actors/player/states/grounded.gd" id="11_15kl1"]
@@ -226,6 +227,14 @@ region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xw7fx"]
 atlas = ExtResource("7_dlq6r")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2fhk"]
+atlas = ExtResource("8_ugnlj")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a43w4"]
+atlas = ExtResource("8_ugnlj")
 region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_au3y7"]
@@ -810,7 +819,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_bn87u")
 }],
 "loop": true,
-"name": &"butt_slide_b",
+"name": &"butt_slide_backwards",
 "speed": 8.0
 }, {
 "frames": [{
@@ -821,8 +830,19 @@ animations = [{
 "texture": SubResource("AtlasTexture_xw7fx")
 }],
 "loop": true,
-"name": &"butt_slide_f",
+"name": &"butt_slide_forwards",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2fhk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a43w4")
+}],
+"loop": true,
+"name": &"butt_slide_jump",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1594,9 +1614,7 @@ spin_hitbox = NodePath("Areas/SpinHitbox")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_hmp25")
-animation = &"butt_slide"
-frame = 1
-frame_progress = 0.726436
+animation = &"butt_slide_jump"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
@@ -1683,16 +1701,20 @@ initial_state = NodePath("Airborne")
 
 [node name="Grounded" type="Node" parent="StateManager"]
 script = ExtResource("11_15kl1")
+hitbox_type = "None"
 on_enter = false
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_r5xry")])
 
 [node name="Idle" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("12_hqcfh")
+animation_look_up = &"look_up"
 animation = &"idle"
 
 [node name="Walk" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("13_olbq0")
 footstep_frames = Array[int]([0, 4])
+animation_run = &"run"
+animation = &"walk"
 on_enter = false
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_8p2oq")])
 
@@ -1758,6 +1780,7 @@ animation = &"dive_slide"
 
 [node name="Airborne" type="Node" parent="StateManager"]
 script = ExtResource("20_at07q")
+hitbox_type = "None"
 on_enter = false
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_oau5y")])
 
@@ -1897,6 +1920,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_2y8iw")])
 script = ExtResource("93_2rear")
 y_power = 6.0
 accel_cap = 8.0
+hitbox_type = "Dive"
 animation = &"dive"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_7x71p")])
 force_new = false
@@ -1918,6 +1942,8 @@ jump_power = 5.3
 min_jump_percent = 20.0
 jump_number = 1
 fall_state = &""
+animation = &"butt_slide_jump"
+anim_offset = Vector2i(0, 3)
 
 [node name="Spin" type="Node" parent="StateManager"]
 script = ExtResource("50_mq1bv")
@@ -1941,6 +1967,11 @@ animation = &"bonk"
 
 [node name="ButtSlide" type="Node" parent="StateManager"]
 script = ExtResource("105_wa8lx")
+turn_forgiveness = 1.5
+shallow_penalty = 0.25
+animation_forward = &"butt_slide_forwards"
+animation_backward = &"butt_slide_backwards"
+animation_airborne = &"butt_slide_jump"
 hitbox_type = "Small"
 animation = &"butt_slide"
 

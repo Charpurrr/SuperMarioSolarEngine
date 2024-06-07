@@ -31,8 +31,11 @@ func _trans_rules():
 		and (input.buffered_input(&"jump") or Input.is_action_pressed(&"jump"))):
 			return &"Rollout"
 
-	if Input.is_action_just_pressed(&"down"):
-		return [&"Crouch", [true, false]]
+	if Input.is_action_pressed(&"down"):
+		if movement.is_slide_slope():
+			return &"ButtSlide"
+		else: 
+			return [&"Crouch", [true, false]]
 
 	if is_zero_approx(actor.vel.x) or InputManager.get_x_dir() == -movement.facing_direction:
 		if actor.crouchlock.enabled:

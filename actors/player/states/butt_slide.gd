@@ -16,14 +16,22 @@ extends PlayerState
 ## Maximum acceleration from sliding, when a slope is as steep as possible.
 @export var max_accel: float = 0.22
 
-## How much speed is conserved when changing slope angle.
-## Higher numbers mean more speed is conserved.
-@export var turn_forgiveness: float = 2.0
+## How much speed is lost when changing slope angle.
+## Higher turn forgiveness means more speed is lost.
+@export_exp_easing() var turn_forgiveness: float = 2.0
 
-## Higher shallowness penalty means shallow slopes will have less effect on speed.
-@export var shallowness_penalty: float = 0.5
-## Higher slipperiness means more speed conservation on steep slopes.
-@export var steep_slope_slipperiness: float = 10
+## Higher shallowness penalty means shallow slopes will decrease speed more.
+@export_exp_easing() var shallow_penalty: float = 0.5
+## Higher friction means less speed conservation on steep slopes.
+@export_exp_easing() var incline_friction: float = 10.0
+
+@export_category(&"Animation (Unique to State)")
+@export var animation_forward: StringName
+@export var anim_offset_f: Vector2
+@export var animation_backward: StringName
+@export var anim_offset_b: Vector2
+@export var animation_airborne: StringName
+@export var anim_offset_a: Vector2
 
 ## Speed at which the player slides.
 var slide_speed: float = 0.0
@@ -49,6 +57,8 @@ func _on_enter(handover_speed):
 
 
 func _physics_tick():
+	print(slide_speed)
+
 	if actor.is_on_floor():
 		_grounded()
 	else:
@@ -92,7 +102,7 @@ func _airborne():
 
 
 ## Get the slide direction downwards along the slope.
-func _get_slide_dir(floor_normal: Vector2):
+func _get_slide_dir(floor_normal: Vector2) -> Vector2:
 	var direction: Vector2
 
 	if floor_normal == Vector2.UP:
@@ -130,18 +140,20 @@ func _modify_speed(floor_normal: Vector2):
 	var steepness: float = 1 - flatness
 	var slope_dir: int = sign(floor_normal.x)
 
-	var slide_accel: float = pow(steepness, shallowness_penalty) * max_accel
-	var slide_decel: float = pow(flatness, steep_slope_slipperiness) * friction
+	var accel_ease: float = ease(steepness, shallow_penalty)
 
-	var target_speed: float = pow(steepness, shallowness_penalty) * speed
+	var slide_accel: float = accel_ease * max_accel
+	var slide_decel: float = ease(flatness, incline_friction) * friction
+
+	var target_speed: float = accel_ease * speed
 
 	if input_dir != 0:
 		# Holding the direction of the slope (accel)
 		if input_dir == slope_dir:
-			target_speed = pow(steepness, shallowness_penalty) * max_speed
+			target_speed = accel_ease * max_speed
 		# Holding the opposite direction of the slope (decel)
 		elif slope_dir == movement.facing_direction:
-			target_speed = pow(steepness, shallowness_penalty) * min_speed
+			target_speed = accel_ease * min_speed
 
 	# Accelerate down the slope
 	_accelerate(slide_accel, target_speed)
@@ -162,14 +174,12 @@ func _redirect_slide(new: Vector2, old: Vector2):
 
 	# Calculate how much speed would be lost
 	var lost = 1 - preserved
-
 	# Apply forgiveness to what was lost
-	var lost_forgiven = pow(lost, turn_forgiveness)
+	var lost_forgiven = ease(lost, turn_forgiveness)
 
 	# Subtract the reduced loss from 1
 	var final_preserved = 1 - lost_forgiven
 
-	# Apply the new speed
 	slide_speed *= final_preserved * new_sign
 
 
@@ -194,15 +204,17 @@ func _decelerate(amount: float, target: float):
 func _set_appropriate_anim():
 	if actor.is_on_floor():
 		if input_dir == movement.facing_direction:
-			actor.doll.play(animation + "_f")
+			actor.doll.play(animation_forward)
 		elif input_dir == -movement.facing_direction:
-			actor.doll.play(animation + "_b")
+			actor.doll.play(animation_backward)
+		else:
+			actor.doll.play(animation)
 	else:
-		actor.doll.play(animation)
+		actor.doll.play(animation_airborne)
 
 
 func _trans_rules():
-	if not movement.is_slide_slope() and abs(actor.vel.x) < 0.5:
+	if not movement.is_slide_slope() and is_equal_approx(actor.vel.x, 0):
 		return [&"Crouch", [true, false]]
 
 	if actor.is_on_floor():
@@ -213,10 +225,10 @@ func _trans_rules():
 			if input_dir == -sign(old_direction.x):
 				return &"Walk"
 
+		if input.buffered_input(&"jump"):
+			return &"ButtSlideJump"
+
 	if input.buffered_input(&"spin"):
 		return &"Spin"
-
-	if actor.is_on_floor() and input.buffered_input(&"jump"):
-		return &"ButtSlideJump"
 
 	return &""

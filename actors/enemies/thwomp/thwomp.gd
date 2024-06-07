@@ -19,5 +19,3 @@ func _physics_process(_delta):
 	if rest_timer == 0:
 		falling = true
 
-	if constant_linear_velocity == Vector2(0, 0):
-		print("aaa")
