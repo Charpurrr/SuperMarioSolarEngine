@@ -1967,6 +1967,7 @@ animation = &"bonk"
 
 [node name="ButtSlide" type="Node" parent="StateManager"]
 script = ExtResource("105_wa8lx")
+max_speed = 15.0
 turn_forgiveness = 1.5
 shallow_penalty = 0.25
 animation_forward = &"butt_slide_forwards"

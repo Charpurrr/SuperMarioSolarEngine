@@ -1,18 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfrw3lh0b17ri"]
+[gd_scene load_steps=3 format=3 uid="uid://bfrw3lh0b17ri"]
 
 [ext_resource type="Script" path="res://ui/editor/editor_camera.gd" id="1_7pwxt"]
 [ext_resource type="Script" path="res://ui/editor/editor.gd" id="1_uwmd0"]
-[ext_resource type="Script" path="res://ui/editor/actionbar.gd" id="2_mgqb3"]
-[ext_resource type="Script" path="res://ui/editor/tools/tool_manager.gd" id="4_u12mb"]
-[ext_resource type="Script" path="res://ui/editor/tools/terrain_tool.gd" id="6_lq1mt"]
-[ext_resource type="Texture2D" uid="uid://6cnxs886fivr" path="res://ui/editor/tools/cursors/pen.png" id="6_ppnkq"]
-[ext_resource type="Script" path="res://ui/editor/tools/select_tool.gd" id="7_cb2uu"]
-[ext_resource type="Texture2D" uid="uid://b6gpj074qmkmk" path="res://ui/editor/tools/cursors/select.png" id="7_yo8ck"]
-[ext_resource type="PackedScene" uid="uid://dgqp3sqvmcvpu" path="res://actors/player/mario/mario.tscn" id="10_6hlgs"]
 
-[sub_resource type="Theme" id="Theme_achxo"]
-
-[node name="Editor" type="Control" node_paths=PackedStringArray("current_tool")]
+[node name="Editor" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,66 +11,151 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uwmd0")
-current_tool = NodePath("ToolManager/SelectTool")
 metadata/_edit_lock_ = true
 
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Panels" type="VBoxContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TopBarPanel" type="Panel" parent="UI/Panels"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="All" type="HBoxContainer" parent="UI/Panels/TopBarPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="LeftAnchor" type="HBoxContainer" parent="UI/Panels/TopBarPanel/All"]
+layout_mode = 2
+
+[node name="Help" type="Button" parent="UI/Panels/TopBarPanel/All/LeftAnchor"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = "( i )"
+
+[node name="TangibilityLayer" type="Button" parent="UI/Panels/TopBarPanel/All/LeftAnchor"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = "G"
+
+[node name="VSeparator" type="VSeparator" parent="UI/Panels/TopBarPanel/All"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="ZView" type="HBoxContainer" parent="UI/Panels/TopBarPanel/All"]
+layout_mode = 2
+
+[node name="ZViewToggle" type="CheckButton" parent="UI/Panels/TopBarPanel/All/ZView"]
+layout_mode = 2
+text = "Z-view"
+
+[node name="ZViewLayer" type="SpinBox" parent="UI/Panels/TopBarPanel/All/ZView"]
+layout_mode = 2
+size_flags_vertical = 4
+rounded = true
+allow_greater = true
+allow_lesser = true
+alignment = 2
+editable = false
+
+[node name="VSeparator2" type="VSeparator" parent="UI/Panels/TopBarPanel/All"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ObjectCounter" type="HBoxContainer" parent="UI/Panels/TopBarPanel/All"]
+layout_mode = 2
+alignment = 2
+
+[node name="CounterHelp" type="Button" parent="UI/Panels/TopBarPanel/All/ObjectCounter"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = "( i )"
+
+[node name="ObjectCount" type="Label" parent="UI/Panels/TopBarPanel/All/ObjectCounter"]
+custom_minimum_size = Vector2(170, 23)
+layout_mode = 2
+text = "Object Count: 999.999"
+
+[node name="VSeparator3" type="VSeparator" parent="UI/Panels/TopBarPanel/All"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="RightAnchor" type="HBoxContainer" parent="UI/Panels/TopBarPanel/All"]
+layout_mode = 2
+
+[node name="Options" type="Button" parent="UI/Panels/TopBarPanel/All/RightAnchor"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "≡"
+
+[node name="SideBars" type="HBoxContainer" parent="UI/Panels"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="LeftSide" type="BoxContainer" parent="UI/Panels/SideBars"]
+layout_mode = 2
+theme_override_constants/separation = 0
+vertical = true
+
+[node name="HotbarPanel" type="Panel" parent="UI/Panels/SideBars/LeftSide"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="PlayButton" type="Button" parent="UI/Panels/SideBars/LeftSide"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+text = "PLAY"
+
+[node name="BottomSide" type="BoxContainer" parent="UI/Panels/SideBars"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+vertical = true
+
+[node name="ToolbarPanel" type="Panel" parent="UI/Panels/SideBars/BottomSide"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="RightSide" type="BoxContainer" parent="UI/Panels/SideBars"]
+layout_mode = 2
+theme_override_constants/separation = 0
+vertical = true
+
+[node name="PropertiesPanel" type="Panel" parent="UI/Panels/SideBars/RightSide"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="UI/Panels/SideBars/RightSide"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+
 [node name="EditorCam" type="Camera2D" parent="."]
+visible = false
 anchor_mode = 0
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0
 script = ExtResource("1_7pwxt")
 metadata/_edit_lock_ = true
-
-[node name="Mario" parent="." instance=ExtResource("10_6hlgs")]
-position = Vector2(256, 144)
-
-[node name="ToolManager" type="Node" parent="." node_paths=PackedStringArray("target_actor", "initial_state")]
-script = ExtResource("4_u12mb")
-target_actor = NodePath("..")
-initial_state = NodePath("SelectTool")
-
-[node name="TerrainTool" type="Node" parent="ToolManager"]
-unique_name_in_owner = true
-script = ExtResource("6_lq1mt")
-mouse_icon = ExtResource("6_ppnkq")
-
-[node name="SelectTool" type="Node" parent="ToolManager"]
-unique_name_in_owner = true
-script = ExtResource("7_cb2uu")
-mouse_icon = ExtResource("7_yo8ck")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-scale = Vector2(2, 2)
-transform = Transform2D(2, 0, 0, 2, 0, 0)
-
-[node name="Toolbar" type="MenuBar" parent="CanvasLayer" node_paths=PackedStringArray("editor", "tool_0", "tool_1")]
-layout_direction = 2
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 31.0
-grow_horizontal = 2
-size_flags_horizontal = 2
-size_flags_vertical = 2
-theme = SubResource("Theme_achxo")
-start_index = 1
-script = ExtResource("2_mgqb3")
-editor = NodePath("../..")
-tool_0 = NodePath("../../ToolManager/SelectTool")
-tool_1 = NodePath("../../ToolManager/TerrainTool")
-
-[node name="PopupMenu" type="PopupMenu" parent="CanvasLayer/Toolbar"]
-title = "mmuhh??"
-size = Vector2i(142, 100)
-hide_on_state_item_selection = true
-item_count = 2
-item_0/text = "Select"
-item_0/icon = ExtResource("7_yo8ck")
-item_0/checkable = 2
-item_0/id = 0
-item_1/text = "Polygon"
-item_1/icon = ExtResource("6_ppnkq")
-item_1/checkable = 2
-item_1/id = 1
-
-[connection signal="id_pressed" from="CanvasLayer/Toolbar/PopupMenu" to="CanvasLayer/Toolbar" method="_on_popup_menu_id_pressed"]

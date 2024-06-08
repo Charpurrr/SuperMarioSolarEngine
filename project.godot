@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SolarEngine"
-run/main_scene="res://areas/funny_slope_test.tscn"
+run/main_scene="res://ui/editor/editor.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 run/max_fps=60
 boot_splash/bg_color=Color(0.513726, 0.403922, 0.470588, 1)
@@ -27,7 +27,6 @@ LocalSettings="*res://util/globals/local_settings.gd"
 
 window/size/viewport_width=1080
 window/size/viewport_height=720
-window/size/resizable=false
 window/stretch/scale_mode="integer"
 mouse_cursor/custom_image="res://ui/editor/tools/cursors/select.png"
 
