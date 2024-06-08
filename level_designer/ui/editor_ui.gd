@@ -8,6 +8,11 @@ extends CanvasLayer
 
 @export_category(&"Popup Windows")
 @export var quit_confirm: ConfirmationDialog
+@export var search_menu: Panel
+
+
+func _ready():
+	get_window().min_size = Vector2i(800, 300)
 
 
 func _process(_delta):
@@ -30,3 +35,7 @@ func _z_view_behaviour():
 
 func _on_quit_confirm_confirmed():
 	get_tree().quit()
+
+
+func _on_search_pressed():
+	search_menu.visible = !search_menu.visible
