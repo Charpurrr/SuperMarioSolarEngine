@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfrw3lh0b17ri"]
+[gd_scene load_steps=4 format=3 uid="uid://bfrw3lh0b17ri"]
 
 [ext_resource type="Script" path="res://ui/editor/editor_camera.gd" id="1_7pwxt"]
 [ext_resource type="Script" path="res://ui/editor/editor.gd" id="1_uwmd0"]
+[ext_resource type="Script" path="res://ui/editor/editor_ui.gd" id="2_w6sns"]
 
-[node name="Editor" type="Control"]
+[node name="Editor" type="Control" node_paths=PackedStringArray("user_interface", "quit_confirm")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,9 +12,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uwmd0")
-metadata/_edit_lock_ = true
+user_interface = NodePath("UI")
+quit_confirm = NodePath("UI/QuitConfirm")
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("z_toggle", "z_layer", "quit_confirm")]
+script = ExtResource("2_w6sns")
+z_toggle = NodePath("Panels/TopBarPanel/Top/ZView/ZViewToggle")
+z_layer = NodePath("Panels/TopBarPanel/Top/ZView/ZViewLayer")
+quit_confirm = NodePath("QuitConfirm")
 
 [node name="Panels" type="VBoxContainer" parent="UI"]
 anchors_preset = 15
@@ -21,13 +27,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 1
 theme_override_constants/separation = 0
 
 [node name="TopBarPanel" type="Panel" parent="UI/Panels"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="All" type="HBoxContainer" parent="UI/Panels/TopBarPanel"]
+[node name="Top" type="HBoxContainer" parent="UI/Panels/TopBarPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -40,32 +47,35 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 5
 
-[node name="LeftAnchor" type="HBoxContainer" parent="UI/Panels/TopBarPanel/All"]
-layout_mode = 2
-
-[node name="Help" type="Button" parent="UI/Panels/TopBarPanel/All/LeftAnchor"]
+[node name="Help" type="Button" parent="UI/Panels/TopBarPanel/Top"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-text = "( i )"
+theme_override_font_sizes/font_size = 23
+text = "ⓘ"
 
-[node name="TangibilityLayer" type="Button" parent="UI/Panels/TopBarPanel/All/LeftAnchor"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-text = "G"
-
-[node name="VSeparator" type="VSeparator" parent="UI/Panels/TopBarPanel/All"]
+[node name="VSeparator4" type="VSeparator" parent="UI/Panels/TopBarPanel/Top"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 
-[node name="ZView" type="HBoxContainer" parent="UI/Panels/TopBarPanel/All"]
+[node name="TangibilityLayer" type="Button" parent="UI/Panels/TopBarPanel/Top"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = "G"
+
+[node name="VSeparator" type="VSeparator" parent="UI/Panels/TopBarPanel/Top"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="ZView" type="HBoxContainer" parent="UI/Panels/TopBarPanel/Top"]
 layout_mode = 2
 
-[node name="ZViewToggle" type="CheckButton" parent="UI/Panels/TopBarPanel/All/ZView"]
+[node name="ZViewToggle" type="CheckButton" parent="UI/Panels/TopBarPanel/Top/ZView"]
 layout_mode = 2
 text = "Z-view"
 
-[node name="ZViewLayer" type="SpinBox" parent="UI/Panels/TopBarPanel/All/ZView"]
+[node name="ZViewLayer" type="SpinBox" parent="UI/Panels/TopBarPanel/Top/ZView"]
 layout_mode = 2
 size_flags_vertical = 4
 rounded = true
@@ -74,88 +84,390 @@ allow_lesser = true
 alignment = 2
 editable = false
 
-[node name="VSeparator2" type="VSeparator" parent="UI/Panels/TopBarPanel/All"]
+[node name="VSeparator2" type="VSeparator" parent="UI/Panels/TopBarPanel/Top"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ObjectCounter" type="HBoxContainer" parent="UI/Panels/TopBarPanel/All"]
+[node name="ObjectCounter" type="HBoxContainer" parent="UI/Panels/TopBarPanel/Top"]
 layout_mode = 2
 alignment = 2
 
-[node name="CounterHelp" type="Button" parent="UI/Panels/TopBarPanel/All/ObjectCounter"]
+[node name="CounterHelp" type="Button" parent="UI/Panels/TopBarPanel/Top/ObjectCounter"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-text = "( i )"
+theme_override_font_sizes/font_size = 23
+text = "ⓘ"
 
-[node name="ObjectCount" type="Label" parent="UI/Panels/TopBarPanel/All/ObjectCounter"]
+[node name="ObjectCount" type="Label" parent="UI/Panels/TopBarPanel/Top/ObjectCounter"]
 custom_minimum_size = Vector2(170, 23)
 layout_mode = 2
 text = "Object Count: 999.999"
 
-[node name="VSeparator3" type="VSeparator" parent="UI/Panels/TopBarPanel/All"]
+[node name="VSeparator3" type="VSeparator" parent="UI/Panels/TopBarPanel/Top"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 
-[node name="RightAnchor" type="HBoxContainer" parent="UI/Panels/TopBarPanel/All"]
+[node name="Save" type="Button" parent="UI/Panels/TopBarPanel/Top"]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "💾"
 
-[node name="Options" type="Button" parent="UI/Panels/TopBarPanel/All/RightAnchor"]
+[node name="VSeparator5" type="VSeparator" parent="UI/Panels/TopBarPanel/Top"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Options" type="Button" parent="UI/Panels/TopBarPanel/Top"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 23
 text = "≡"
 
-[node name="SideBars" type="HBoxContainer" parent="UI/Panels"]
+[node name="OtherBars" type="HBoxContainer" parent="UI/Panels"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="LeftSide" type="BoxContainer" parent="UI/Panels/SideBars"]
+[node name="LeftSide" type="BoxContainer" parent="UI/Panels/OtherBars"]
 layout_mode = 2
 theme_override_constants/separation = 0
 vertical = true
 
-[node name="HotbarPanel" type="Panel" parent="UI/Panels/SideBars/LeftSide"]
+[node name="ItemPanel" type="Panel" parent="UI/Panels/OtherBars/LeftSide"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-size_flags_horizontal = 0
 size_flags_vertical = 3
 
-[node name="PlayButton" type="Button" parent="UI/Panels/SideBars/LeftSide"]
-custom_minimum_size = Vector2(0, 140)
+[node name="ItemList" type="VBoxContainer" parent="UI/Panels/OtherBars/LeftSide/ItemPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="Search" type="Button" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList"]
+custom_minimum_size = Vector2(0, 31)
+layout_mode = 2
+text = "Object List 🔍"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Hotbar" type="HBoxContainer" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+
+[node name="HotbarLeft" type="VBoxContainer" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/ScrollContainer/Hotbar"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="Item1" type="Button" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/ScrollContainer/Hotbar/HotbarLeft"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Item2" type="Button" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/ScrollContainer/Hotbar/HotbarLeft"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Item3" type="Button" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/ScrollContainer/Hotbar/HotbarLeft"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Item4" type="Button" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/ScrollContainer/Hotbar/HotbarLeft"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Item5" type="Button" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/ScrollContainer/Hotbar/HotbarLeft"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Item6" type="Button" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/ScrollContainer/Hotbar/HotbarLeft"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Item7" type="Button" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/ScrollContainer/Hotbar/HotbarLeft"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Item8" type="Button" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/ScrollContainer/Hotbar/HotbarLeft"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Item9" type="Button" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/ScrollContainer/Hotbar/HotbarLeft"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Item10" type="Button" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/ScrollContainer/Hotbar/HotbarLeft"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HotbarRight" type="VBoxContainer" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/ScrollContainer/Hotbar"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="Item11" type="Button" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/ScrollContainer/Hotbar/HotbarRight"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Item12" type="Button" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/ScrollContainer/Hotbar/HotbarRight"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Item13" type="Button" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/ScrollContainer/Hotbar/HotbarRight"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Item14" type="Button" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/ScrollContainer/Hotbar/HotbarRight"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Item15" type="Button" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/ScrollContainer/Hotbar/HotbarRight"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Item16" type="Button" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/ScrollContainer/Hotbar/HotbarRight"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Item17" type="Button" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/ScrollContainer/Hotbar/HotbarRight"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Item18" type="Button" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/ScrollContainer/Hotbar/HotbarRight"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Item19" type="Button" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/ScrollContainer/Hotbar/HotbarRight"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Item20" type="Button" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/ScrollContainer/Hotbar/HotbarRight"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PlayButton" type="Button" parent="UI/Panels/OtherBars/LeftSide"]
+modulate = Color(0, 1, 0, 1)
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 text = "PLAY"
 
-[node name="BottomSide" type="BoxContainer" parent="UI/Panels/SideBars"]
+[node name="BottomSide" type="BoxContainer" parent="UI/Panels/OtherBars"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 vertical = true
 
-[node name="ToolbarPanel" type="Panel" parent="UI/Panels/SideBars/BottomSide"]
-custom_minimum_size = Vector2(0, 80)
+[node name="ToolbarPanel" type="Panel" parent="UI/Panels/OtherBars/BottomSide"]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 
-[node name="RightSide" type="BoxContainer" parent="UI/Panels/SideBars"]
+[node name="Toolbar" type="HBoxContainer" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+alignment = 1
+
+[node name="VSeparator7" type="VSeparator" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel/Toolbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel/Toolbar"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VSeparator" type="VSeparator" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel/Toolbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button2" type="Button" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel/Toolbar"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VSeparator2" type="VSeparator" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel/Toolbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button3" type="Button" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel/Toolbar"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VSeparator3" type="VSeparator" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel/Toolbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button4" type="Button" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel/Toolbar"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VSeparator4" type="VSeparator" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel/Toolbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button5" type="Button" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel/Toolbar"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VSeparator5" type="VSeparator" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel/Toolbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button6" type="Button" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel/Toolbar"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VSeparator6" type="VSeparator" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel/Toolbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RightSide" type="BoxContainer" parent="UI/Panels/OtherBars"]
 layout_mode = 2
 theme_override_constants/separation = 0
 vertical = true
 
-[node name="PropertiesPanel" type="Panel" parent="UI/Panels/SideBars/RightSide"]
+[node name="InspectorPanel" type="Panel" parent="UI/Panels/OtherBars/RightSide"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Panel" type="Panel" parent="UI/Panels/SideBars/RightSide"]
+[node name="Inspector" type="VBoxContainer" parent="UI/Panels/OtherBars/RightSide/InspectorPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ObjectHistory" type="HBoxContainer" parent="UI/Panels/OtherBars/RightSide/InspectorPanel/Inspector"]
+custom_minimum_size = Vector2(0, 31)
+layout_mode = 2
+
+[node name="PrevObj" type="Button" parent="UI/Panels/OtherBars/RightSide/InspectorPanel/Inspector/ObjectHistory"]
+custom_minimum_size = Vector2(31, 31)
+layout_mode = 2
+disabled = true
+text = "<"
+
+[node name="Object" type="Panel" parent="UI/Panels/OtherBars/RightSide/InspectorPanel/Inspector/ObjectHistory"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="UI/Panels/OtherBars/RightSide/InspectorPanel/Inspector/ObjectHistory/Object"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "No Object"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="NextObj" type="Button" parent="UI/Panels/OtherBars/RightSide/InspectorPanel/Inspector/ObjectHistory"]
+custom_minimum_size = Vector2(31, 31)
+layout_mode = 2
+disabled = true
+text = ">"
+
+[node name="Search" type="LineEdit" parent="UI/Panels/OtherBars/RightSide/InspectorPanel/Inspector"]
+custom_minimum_size = Vector2(0, 31)
+layout_mode = 2
+placeholder_text = "Filter Properties        🔍"
+context_menu_enabled = false
+clear_button_enabled = true
+caret_blink = true
+caret_mid_grapheme = true
+
+[node name="PalettePanel" type="Panel" parent="UI/Panels/OtherBars/RightSide"]
+modulate = Color(1, 0, 1, 1)
 custom_minimum_size = Vector2(0, 140)
 layout_mode = 2
 
+[node name="QuitConfirm" type="ConfirmationDialog" parent="UI"]
+title = "Quit Confirmation"
+initial_position = 2
+size = Vector2i(329, 106)
+unresizable = true
+ok_button_text = "Quit"
+dialog_text = "Are you sure you want to quit the game?"
+
 [node name="EditorCam" type="Camera2D" parent="."]
-visible = false
 anchor_mode = 0
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0
 script = ExtResource("1_7pwxt")
 metadata/_edit_lock_ = true
+
+[connection signal="confirmed" from="UI/QuitConfirm" to="UI" method="_on_quit_confirm_confirmed"]
