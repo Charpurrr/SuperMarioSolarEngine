@@ -24,7 +24,7 @@ extends Panel
 
 
 func _ready():
-	for item in item_list.item_list:
+	for item in item_list.items:
 		var inst: Node = item_slot.instantiate()
 
 		category_connections[item.category].add_child(inst)

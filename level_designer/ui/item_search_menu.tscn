@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dpgxxjf6ip6lp"]
 
 [ext_resource type="Script" path="res://level_designer/ui/item_search_menu.gd" id="1_84b0m"]
-[ext_resource type="Resource" uid="uid://cn5e66c7khe60" path="res://level_designer/items/editor_item_list.tres" id="2_xc1y2"]
-[ext_resource type="PackedScene" uid="uid://cwwikuogin26x" path="res://level_designer/items/search_item.tscn" id="3_3cmik"]
+[ext_resource type="Resource" uid="uid://dcalwyn0qfk5j" path="res://level_designer/items/editor_items/editor_item_list.tres" id="2_sah4e"]
+[ext_resource type="PackedScene" uid="uid://cwwikuogin26x" path="res://level_designer/items/search_items/search_item.tscn" id="3_3cmik"]
 
 [node name="SearchMenu" type="Panel" node_paths=PackedStringArray("catg_terrain", "catg_object", "catg_decoration", "catg_entity", "catg_npc", "catg_utility")]
 custom_minimum_size = Vector2(110, 155)
@@ -13,7 +13,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_84b0m")
-item_list = ExtResource("2_xc1y2")
+item_list = ExtResource("2_sah4e")
 item_slot = ExtResource("3_3cmik")
 catg_terrain = NodePath("ScrollContainer/VBoxContainer/TerrainItems")
 catg_object = NodePath("ScrollContainer/VBoxContainer/ObjectItems")

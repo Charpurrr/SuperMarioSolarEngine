@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cvbbpn56rtjwd" path="res://actors/enemies/goomba/goomba.tscn" id="1_3uc5t"]
 [ext_resource type="Texture2D" uid="uid://x2edebevq3c7" path="res://actors/enemies/goomba/anime/idle.png" id="1_p27l3"]
-[ext_resource type="Script" path="res://level_designer/items/editor_item_actor.gd" id="3_hivxg"]
+[ext_resource type="Script" path="res://level_designer/items/editor_items/editor_item_actor.gd" id="3_hivxg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0exjl"]
 atlas = ExtResource("1_p27l3")

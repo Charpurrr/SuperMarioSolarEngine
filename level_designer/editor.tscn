@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://level_designer/editor_camera.gd" id="1_7pwxt"]
 [ext_resource type="Script" path="res://level_designer/editor.gd" id="1_uwmd0"]
 [ext_resource type="Script" path="res://level_designer/ui/editor_ui.gd" id="2_w6sns"]
-[ext_resource type="PackedScene" uid="uid://c537c7fubd6rx" path="res://level_designer/items/hotbar_item.tscn" id="3_b0k1p"]
+[ext_resource type="PackedScene" uid="uid://c537c7fubd6rx" path="res://level_designer/items/hotbar_items/hotbar_item.tscn" id="3_b0k1p"]
 [ext_resource type="PackedScene" uid="uid://dpgxxjf6ip6lp" path="res://level_designer/ui/item_search_menu.tscn" id="3_gtqtc"]
 
 [node name="Editor" type="Control" node_paths=PackedStringArray("user_interface", "quit_confirm")]

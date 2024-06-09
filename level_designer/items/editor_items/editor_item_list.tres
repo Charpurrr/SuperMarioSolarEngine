@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EditorItemList" load_steps=4 format=3 uid="uid://dcalwyn0qfk5j"]
+
+[ext_resource type="Resource" uid="uid://5t8dv0lk7haj" path="res://actors/enemies/goomba/goomba_item.tres" id="1_1tvdt"]
+[ext_resource type="Script" path="res://level_designer/items/editor_items/editor_item_list.gd" id="1_md486"]
+[ext_resource type="Resource" uid="uid://b54qj4s6iwq0v" path="res://props/terrain/grass/grass_item.tres" id="2_8wlw2"]
+
+[resource]
+script = ExtResource("1_md486")
+items = Array[Resource("res://level_designer/items/editor_items/editor_item.gd")]([ExtResource("1_1tvdt"), ExtResource("2_8wlw2")])

@@ -1,16 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwwikuogin26x"]
+[gd_scene load_steps=2 format=3 uid="uid://c537c7fubd6rx"]
 
-[ext_resource type="Script" path="res://level_designer/items/search_item.gd" id="1_2cxrk"]
+[ext_resource type="Script" path="res://level_designer/items/hotbar_items/hotbar_item.gd" id="1_rngah"]
 
-[node name="SearchItem" type="Button"]
+[node name="HotbarItem" type="Button"]
 custom_minimum_size = Vector2(80, 80)
 offset_right = 8.0
 offset_bottom = 8.0
-script = ExtResource("1_2cxrk")
+script = ExtResource("1_rngah")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -40.0
