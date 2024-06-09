@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TerrainProperties" load_steps=2 format=3 uid="uid://di8no2s3qpemd"]
+
+[ext_resource type="Script" path="res://props/terrain/terrain_properties.gd" id="1_6de61"]
+
+[resource]
+script = ExtResource("1_6de61")
+type = 0
+vanish_passable = false

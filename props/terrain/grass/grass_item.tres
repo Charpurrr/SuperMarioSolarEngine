@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EditorItemTerrain" load_steps=4 format=3 uid="uid://b54qj4s6iwq0v"]
+
+[ext_resource type="Texture2D" uid="uid://d2d23lf2h8era" path="res://props/terrain/grass/grass.png" id="1_4xw2n"]
+[ext_resource type="Script" path="res://level_designer/items/editor_item_terrain.gd" id="1_wopmr"]
+[ext_resource type="Resource" uid="uid://di8no2s3qpemd" path="res://props/terrain/grass/grass.tres" id="2_mdg3u"]
+
+[resource]
+script = ExtResource("1_wopmr")
+item_resource = ExtResource("2_mdg3u")
+icon_texture = ExtResource("1_4xw2n")
+category = 0

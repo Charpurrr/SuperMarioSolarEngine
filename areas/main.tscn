@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dgqp3sqvmcvpu" path="res://actors/player/mario/mario.tscn" id="1_myuqj"]
 [ext_resource type="PackedScene" uid="uid://dnt67y0j7e0ap" path="res://props/tilesets/tiles.tscn" id="2_ogq6b"]
-[ext_resource type="Script" path="res://props/terrains/terrain.gd" id="3_xl14m"]
+[ext_resource type="Script" path="res://props/terrain/terrain.gd" id="3_xl14m"]
 [ext_resource type="Shader" path="res://props/environment_light.gdshader" id="4_v0mg4"]
 [ext_resource type="Texture2D" uid="uid://45bmeug2usc7" path="res://props/bgs/space.png" id="5_5ktc4"]
 [ext_resource type="AudioStream" uid="uid://rdadrrqvsy6s" path="res://props/music/calm_before_the_storm.ogg" id="6_tfyw1"]
