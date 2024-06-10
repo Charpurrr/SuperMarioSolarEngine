@@ -22,7 +22,7 @@ script = ExtResource("2_w6sns")
 z_toggle = NodePath("Panels/TopBarPanel/Top/ZView/ZViewToggle")
 z_layer = NodePath("Panels/TopBarPanel/Top/ZView/ZViewLayer")
 quit_confirm = NodePath("QuitConfirm")
-search_menu = NodePath("Panels/OtherBars/BottomSide/ObjectSearch")
+search_menu = NodePath("Panels/OtherBars/HSplitContainer2/HSplitContainer/BottomSide/ObjectSearch")
 
 [node name="Panels" type="VBoxContainer" parent="UI"]
 anchors_preset = 15
@@ -133,17 +133,21 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="LeftSide" type="BoxContainer" parent="UI/Panels/OtherBars"]
+[node name="HSplitContainer2" type="HSplitContainer" parent="UI/Panels/OtherBars"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LeftSide" type="BoxContainer" parent="UI/Panels/OtherBars/HSplitContainer2"]
 layout_mode = 2
 theme_override_constants/separation = 0
 vertical = true
 
-[node name="ItemPanel" type="Panel" parent="UI/Panels/OtherBars/LeftSide"]
+[node name="ItemPanel" type="Panel" parent="UI/Panels/OtherBars/HSplitContainer2/LeftSide"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ItemList" type="VBoxContainer" parent="UI/Panels/OtherBars/LeftSide/ItemPanel"]
+[node name="ItemList" type="VBoxContainer" parent="UI/Panels/OtherBars/HSplitContainer2/LeftSide/ItemPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -156,183 +160,182 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 5
 
-[node name="Search" type="Button" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList"]
+[node name="Search" type="Button" parent="UI/Panels/OtherBars/HSplitContainer2/LeftSide/ItemPanel/ItemList"]
 custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 text = "Object List 🔍"
 
-[node name="HotbarContainer" type="ScrollContainer" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList"]
+[node name="HotbarContainer" type="ScrollContainer" parent="UI/Panels/OtherBars/HSplitContainer2/LeftSide/ItemPanel/ItemList"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Hotbar" type="GridContainer" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/HotbarContainer"]
+[node name="Hotbar" type="HFlowContainer" parent="UI/Panels/OtherBars/HSplitContainer2/LeftSide/ItemPanel/ItemList/HotbarContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 3
 size_flags_vertical = 3
-columns = 2
+alignment = 1
 
-[node name="HotbarItem1" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
+[node name="HotbarItem1" parent="UI/Panels/OtherBars/HSplitContainer2/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
 layout_mode = 2
 
-[node name="HotbarItem2" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
+[node name="HotbarItem2" parent="UI/Panels/OtherBars/HSplitContainer2/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
 layout_mode = 2
 
-[node name="HotbarItem3" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
+[node name="HotbarItem3" parent="UI/Panels/OtherBars/HSplitContainer2/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
 layout_mode = 2
 
-[node name="HotbarItem4" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
+[node name="HotbarItem4" parent="UI/Panels/OtherBars/HSplitContainer2/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
 layout_mode = 2
 
-[node name="HotbarItem5" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
+[node name="HotbarItem5" parent="UI/Panels/OtherBars/HSplitContainer2/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
 layout_mode = 2
 
-[node name="HotbarItem6" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
+[node name="HotbarItem6" parent="UI/Panels/OtherBars/HSplitContainer2/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
 layout_mode = 2
 
-[node name="HotbarItem7" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
+[node name="HotbarItem7" parent="UI/Panels/OtherBars/HSplitContainer2/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
 layout_mode = 2
 
-[node name="HotbarItem8" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
+[node name="HotbarItem8" parent="UI/Panels/OtherBars/HSplitContainer2/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
 layout_mode = 2
 
-[node name="HotbarItem9" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
+[node name="HotbarItem9" parent="UI/Panels/OtherBars/HSplitContainer2/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
 layout_mode = 2
 
-[node name="HotbarItem10" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
+[node name="HotbarItem10" parent="UI/Panels/OtherBars/HSplitContainer2/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
 layout_mode = 2
 
-[node name="HotbarItem11" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
+[node name="HotbarItem11" parent="UI/Panels/OtherBars/HSplitContainer2/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
 layout_mode = 2
 
-[node name="HotbarItem12" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
+[node name="HotbarItem12" parent="UI/Panels/OtherBars/HSplitContainer2/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
 layout_mode = 2
 
-[node name="HotbarItem13" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
+[node name="HotbarItem13" parent="UI/Panels/OtherBars/HSplitContainer2/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
 layout_mode = 2
 
-[node name="HotbarItem14" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
+[node name="HotbarItem14" parent="UI/Panels/OtherBars/HSplitContainer2/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
 layout_mode = 2
 
-[node name="HotbarItem15" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
+[node name="HotbarItem15" parent="UI/Panels/OtherBars/HSplitContainer2/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
 layout_mode = 2
 
-[node name="HotbarItem16" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
+[node name="HotbarItem16" parent="UI/Panels/OtherBars/HSplitContainer2/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
 layout_mode = 2
 
-[node name="HotbarItem17" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
+[node name="HotbarItem17" parent="UI/Panels/OtherBars/HSplitContainer2/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
 layout_mode = 2
 
-[node name="HotbarItem18" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
+[node name="HotbarItem18" parent="UI/Panels/OtherBars/HSplitContainer2/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
 layout_mode = 2
 
-[node name="HotbarItem19" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
+[node name="HotbarItem19" parent="UI/Panels/OtherBars/HSplitContainer2/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
 layout_mode = 2
 
-[node name="HotbarItem20" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
+[node name="HotbarItem20" parent="UI/Panels/OtherBars/HSplitContainer2/LeftSide/ItemPanel/ItemList/HotbarContainer/Hotbar" instance=ExtResource("3_b0k1p")]
 layout_mode = 2
 
-[node name="PlayButton" type="Button" parent="UI/Panels/OtherBars/LeftSide"]
+[node name="PlayButton" type="Button" parent="UI/Panels/OtherBars/HSplitContainer2/LeftSide"]
 modulate = Color(0, 1, 0, 1)
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 text = "PLAY"
 
-[node name="BottomSide" type="BoxContainer" parent="UI/Panels/OtherBars"]
+[node name="HSplitContainer" type="HSplitContainer" parent="UI/Panels/OtherBars/HSplitContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="BottomSide" type="BoxContainer" parent="UI/Panels/OtherBars/HSplitContainer2/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 alignment = 2
 vertical = true
 
-[node name="ObjectSearch" parent="UI/Panels/OtherBars/BottomSide" instance=ExtResource("3_gtqtc")]
+[node name="ObjectSearch" parent="UI/Panels/OtherBars/HSplitContainer2/HSplitContainer/BottomSide" instance=ExtResource("3_gtqtc")]
 visible = false
 clip_contents = true
 layout_mode = 2
 
-[node name="ToolbarPanel" type="Panel" parent="UI/Panels/OtherBars/BottomSide"]
+[node name="ToolbarContainer" type="PanelContainer" parent="UI/Panels/OtherBars/HSplitContainer2/HSplitContainer/BottomSide"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 
-[node name="Toolbar" type="HBoxContainer" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = -5.0
-offset_bottom = -5.0
+[node name="Toolbar" type="HBoxContainer" parent="UI/Panels/OtherBars/HSplitContainer2/HSplitContainer/BottomSide/ToolbarContainer"]
+layout_mode = 2
+size_flags_vertical = 4
 alignment = 1
 
-[node name="VSeparator7" type="VSeparator" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel/Toolbar"]
+[node name="VSeparator7" type="VSeparator" parent="UI/Panels/OtherBars/HSplitContainer2/HSplitContainer/BottomSide/ToolbarContainer/Toolbar"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button" type="Button" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel/Toolbar"]
+[node name="Button" type="Button" parent="UI/Panels/OtherBars/HSplitContainer2/HSplitContainer/BottomSide/ToolbarContainer/Toolbar"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VSeparator" type="VSeparator" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel/Toolbar"]
+[node name="VSeparator" type="VSeparator" parent="UI/Panels/OtherBars/HSplitContainer2/HSplitContainer/BottomSide/ToolbarContainer/Toolbar"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button2" type="Button" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel/Toolbar"]
+[node name="Button2" type="Button" parent="UI/Panels/OtherBars/HSplitContainer2/HSplitContainer/BottomSide/ToolbarContainer/Toolbar"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VSeparator2" type="VSeparator" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel/Toolbar"]
+[node name="VSeparator2" type="VSeparator" parent="UI/Panels/OtherBars/HSplitContainer2/HSplitContainer/BottomSide/ToolbarContainer/Toolbar"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button3" type="Button" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel/Toolbar"]
+[node name="Button3" type="Button" parent="UI/Panels/OtherBars/HSplitContainer2/HSplitContainer/BottomSide/ToolbarContainer/Toolbar"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VSeparator3" type="VSeparator" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel/Toolbar"]
+[node name="VSeparator3" type="VSeparator" parent="UI/Panels/OtherBars/HSplitContainer2/HSplitContainer/BottomSide/ToolbarContainer/Toolbar"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button4" type="Button" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel/Toolbar"]
+[node name="Button4" type="Button" parent="UI/Panels/OtherBars/HSplitContainer2/HSplitContainer/BottomSide/ToolbarContainer/Toolbar"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VSeparator4" type="VSeparator" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel/Toolbar"]
+[node name="VSeparator4" type="VSeparator" parent="UI/Panels/OtherBars/HSplitContainer2/HSplitContainer/BottomSide/ToolbarContainer/Toolbar"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button5" type="Button" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel/Toolbar"]
+[node name="Button5" type="Button" parent="UI/Panels/OtherBars/HSplitContainer2/HSplitContainer/BottomSide/ToolbarContainer/Toolbar"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VSeparator5" type="VSeparator" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel/Toolbar"]
+[node name="VSeparator5" type="VSeparator" parent="UI/Panels/OtherBars/HSplitContainer2/HSplitContainer/BottomSide/ToolbarContainer/Toolbar"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button6" type="Button" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel/Toolbar"]
+[node name="Button6" type="Button" parent="UI/Panels/OtherBars/HSplitContainer2/HSplitContainer/BottomSide/ToolbarContainer/Toolbar"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VSeparator6" type="VSeparator" parent="UI/Panels/OtherBars/BottomSide/ToolbarPanel/Toolbar"]
+[node name="VSeparator6" type="VSeparator" parent="UI/Panels/OtherBars/HSplitContainer2/HSplitContainer/BottomSide/ToolbarContainer/Toolbar"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="RightSide" type="BoxContainer" parent="UI/Panels/OtherBars"]
+[node name="RightSide" type="BoxContainer" parent="UI/Panels/OtherBars/HSplitContainer2/HSplitContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 vertical = true
 
-[node name="InspectorPanel" type="Panel" parent="UI/Panels/OtherBars/RightSide"]
+[node name="InspectorPanel" type="Panel" parent="UI/Panels/OtherBars/HSplitContainer2/HSplitContainer/RightSide"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Inspector" type="VBoxContainer" parent="UI/Panels/OtherBars/RightSide/InspectorPanel"]
+[node name="Inspector" type="VBoxContainer" parent="UI/Panels/OtherBars/HSplitContainer2/HSplitContainer/RightSide/InspectorPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -344,21 +347,21 @@ offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ObjectHistory" type="HBoxContainer" parent="UI/Panels/OtherBars/RightSide/InspectorPanel/Inspector"]
+[node name="ObjectHistory" type="HBoxContainer" parent="UI/Panels/OtherBars/HSplitContainer2/HSplitContainer/RightSide/InspectorPanel/Inspector"]
 custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 
-[node name="PrevObj" type="Button" parent="UI/Panels/OtherBars/RightSide/InspectorPanel/Inspector/ObjectHistory"]
+[node name="PrevObj" type="Button" parent="UI/Panels/OtherBars/HSplitContainer2/HSplitContainer/RightSide/InspectorPanel/Inspector/ObjectHistory"]
 custom_minimum_size = Vector2(31, 31)
 layout_mode = 2
 disabled = true
 text = "<"
 
-[node name="Object" type="Panel" parent="UI/Panels/OtherBars/RightSide/InspectorPanel/Inspector/ObjectHistory"]
+[node name="Object" type="Panel" parent="UI/Panels/OtherBars/HSplitContainer2/HSplitContainer/RightSide/InspectorPanel/Inspector/ObjectHistory"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="UI/Panels/OtherBars/RightSide/InspectorPanel/Inspector/ObjectHistory/Object"]
+[node name="Label" type="Label" parent="UI/Panels/OtherBars/HSplitContainer2/HSplitContainer/RightSide/InspectorPanel/Inspector/ObjectHistory/Object"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -374,13 +377,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 text_overrun_behavior = 3
 
-[node name="NextObj" type="Button" parent="UI/Panels/OtherBars/RightSide/InspectorPanel/Inspector/ObjectHistory"]
+[node name="NextObj" type="Button" parent="UI/Panels/OtherBars/HSplitContainer2/HSplitContainer/RightSide/InspectorPanel/Inspector/ObjectHistory"]
 custom_minimum_size = Vector2(31, 31)
 layout_mode = 2
 disabled = true
 text = ">"
 
-[node name="Search" type="LineEdit" parent="UI/Panels/OtherBars/RightSide/InspectorPanel/Inspector"]
+[node name="Search" type="LineEdit" parent="UI/Panels/OtherBars/HSplitContainer2/HSplitContainer/RightSide/InspectorPanel/Inspector"]
 custom_minimum_size = Vector2(0, 31)
 layout_mode = 2
 placeholder_text = "Filter Properties        🔍"
@@ -389,7 +392,7 @@ clear_button_enabled = true
 caret_blink = true
 caret_mid_grapheme = true
 
-[node name="PalettePanel" type="Panel" parent="UI/Panels/OtherBars/RightSide"]
+[node name="PalettePanel" type="Panel" parent="UI/Panels/OtherBars/HSplitContainer2/HSplitContainer/RightSide"]
 modulate = Color(1, 0, 1, 1)
 custom_minimum_size = Vector2(0, 140)
 layout_mode = 2
@@ -410,5 +413,5 @@ position_smoothing_speed = 20.0
 script = ExtResource("1_7pwxt")
 metadata/_edit_lock_ = true
 
-[connection signal="pressed" from="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/Search" to="UI" method="_on_search_pressed"]
+[connection signal="pressed" from="UI/Panels/OtherBars/HSplitContainer2/LeftSide/ItemPanel/ItemList/Search" to="UI" method="_on_search_pressed"]
 [connection signal="confirmed" from="UI/QuitConfirm" to="UI" method="_on_quit_confirm_confirmed"]
