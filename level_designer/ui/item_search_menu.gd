@@ -3,6 +3,8 @@ extends Panel
 ## Search menu for all editor items.
 
 
+@export var hotbar: HFlowContainer
+
 @export var item_list: EditorItemList
 @export var item_slot: PackedScene
 
@@ -29,3 +31,4 @@ func _ready():
 
 		category_connections[item.category].add_child(inst)
 		inst.create_item(item)
+		inst.hotbar = hotbar

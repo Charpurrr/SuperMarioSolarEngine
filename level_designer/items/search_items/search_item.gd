@@ -6,6 +6,8 @@ extends Button
 @onready var texture_rect = $TextureRect
 
 var item_data: EditorItem
+## Set by the item search menu upon creation.
+var hotbar: Hotbar
 
 
 func create_item(data: EditorItem):
@@ -29,3 +31,7 @@ func _get_drag_data(_at_position):
 	set_drag_preview(preview)
 
 	return item_data
+
+
+func _on_button_up():
+	hotbar.add_item(item_data)

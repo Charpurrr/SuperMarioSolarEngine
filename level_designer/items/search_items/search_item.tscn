@@ -19,3 +19,5 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
 stretch_mode = 3
+
+[connection signal="button_up" from="." to="." method="_on_button_up"]
