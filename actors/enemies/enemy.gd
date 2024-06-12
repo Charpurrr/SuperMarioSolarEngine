@@ -28,11 +28,11 @@ func _physics_process(delta):
 	vel = velocity * delta
 
 
-## Behaviour for getting hit. (Gets overwritten by parent class.)
+## Behaviour for getting hit. (Gets overridden by child class.)
 func take_hit(_source: Node, _damage_type: HealthModule.DamageType):
 	pass
 
 
-## Behaviour for dying. (Gets overwritten by parent class.)
+## Behaviour for dying. (Gets overridden by child class.)
 func die(_source: Node, _damage_type: HealthModule.DamageType):
 	pass

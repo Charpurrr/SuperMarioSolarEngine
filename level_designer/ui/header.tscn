@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://chu1fc7exh5st"]
+
+[node name="TopBarPanel" type="Panel"]
+custom_minimum_size = Vector2(0, 50)
+
+[node name="Top" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="Help" type="Button" parent="Top"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "ⓘ"
+
+[node name="VSeparator4" type="VSeparator" parent="Top"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="TangibilityLayer" type="Button" parent="Top"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = "G"
+
+[node name="VSeparator" type="VSeparator" parent="Top"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="ZView" type="HBoxContainer" parent="Top"]
+layout_mode = 2
+
+[node name="ZViewToggle" type="CheckButton" parent="Top/ZView"]
+layout_mode = 2
+text = "Z-view"
+
+[node name="ZViewLayer" type="SpinBox" parent="Top/ZView"]
+layout_mode = 2
+size_flags_vertical = 4
+rounded = true
+allow_greater = true
+allow_lesser = true
+alignment = 2
+editable = false
+
+[node name="VSeparator2" type="VSeparator" parent="Top"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ObjectCounter" type="HBoxContainer" parent="Top"]
+layout_mode = 2
+alignment = 2
+
+[node name="CounterHelp" type="Button" parent="Top/ObjectCounter"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "ⓘ"
+
+[node name="ObjectCount" type="Label" parent="Top/ObjectCounter"]
+custom_minimum_size = Vector2(170, 23)
+layout_mode = 2
+text = "Object Count: 999.999"
+
+[node name="VSeparator3" type="VSeparator" parent="Top"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Save" type="Button" parent="Top"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "💾"
+
+[node name="VSeparator5" type="VSeparator" parent="Top"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Options" type="Button" parent="Top"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "≡"

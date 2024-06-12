@@ -1,17 +1,31 @@
 class_name Tool
-extends State
+extends Button
 ## Editor tool.
 
+
+@export var toolbar: Toolbar
 ## The visual icon of the tool.
-@export var mouse_icon: Texture2D
+@export var default_mouse_icon: Texture2D
 ## The shape of the tool.
 @export var mouse_shape: Input.CursorShape
 ## The hotspot location of the cursor.
 ## [br][br][i]The hotspot is the point in the cursor that interacts with other elements on the screen.[/i]
 @export var hotspot: Vector2i
 
+var active: bool
 
-func trigger_enter(handover):
-	super(handover)
 
-	Input.set_custom_mouse_cursor(mouse_icon, mouse_shape, hotspot)
+func _ready():
+	var callable: Callable = toolbar.update_active_tool
+
+	connect(&"pressed", callable.bind(self))
+
+
+func _process(_delta):
+	if active:
+		_tick()
+
+
+## Overridden by the child class.
+func _tick():
+	pass

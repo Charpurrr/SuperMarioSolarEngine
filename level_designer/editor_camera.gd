@@ -15,7 +15,7 @@ func _physics_process(_delta):
 
 ## Moving the editor camera.
 func _cam_movement():
-	var input_vector: Vector2 = Input.get_vector("left", "right", "up", "down")
+	var input_vector: Vector2 = Input.get_vector("e_left", "e_right", "e_up", "e_down")
 
 	position += input_vector * _get_cam_speed()
 
