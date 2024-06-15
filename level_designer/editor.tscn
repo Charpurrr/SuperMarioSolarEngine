@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c213qbjcdv6xj" path="res://level_designer/ui/hotbar.tscn" id="3_jdkim"]
 [ext_resource type="PackedScene" uid="uid://b7fc22e7d8hap" path="res://level_designer/ui/toolbar.tscn" id="6_5sjl1"]
 [ext_resource type="PackedScene" uid="uid://bf1fop2elpnih" path="res://level_designer/ui/inspector.tscn" id="6_58xql"]
-[ext_resource type="Texture2D" uid="uid://bwuodtones7dv" path="res://level_designer/tools/select_tool/selection_box.png" id="8_plyee"]
+[ext_resource type="Texture2D" uid="uid://dtcs8m1axrnbb" path="res://level_designer/tools/select_tool/selection_box.png" id="8_plyee"]
 [ext_resource type="Script" path="res://level_designer/tools/select_tool/select_box.gd" id="9_qeiqb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1gkqx"]
