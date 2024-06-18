@@ -2,7 +2,6 @@ class_name DiveRollout
 extends Jump
 ## Jumping out of a dive slide.
 
-
 ## The multiplier applied to your current horizontal speed after a rollout.
 @export_range(1, 10) var x_multiplier: float = 1.3
 ## The maximum horizontal speed you need to reach before rollouts no longer contribute to your x velocity.
@@ -37,7 +36,7 @@ func _trans_rules():
 	if Input.is_action_just_pressed(&"down") and movement.can_air_action():
 		return &"GroundPound"
 
-	if actor.push_rays.is_colliding() and input.buffered_input(&"jump"): 
+	if actor.push_rays.is_colliding() and input.buffered_input(&"jump"):
 		return [&"Walljump", -movement.facing_direction]
 
 	if movement.can_init_wallslide():

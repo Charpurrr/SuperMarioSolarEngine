@@ -2,7 +2,6 @@ class_name Hotbar
 extends HFlowContainer
 ## The level designer hotbar.
 
-
 var pinned_items: Array = []
 
 @export var editor: LevelEditor

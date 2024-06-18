@@ -2,7 +2,6 @@ class_name Wallslide
 extends PlayerState
 ## Holding the facing direction against a wall while airborne.
 
-
 ## How fast you can slide downwards during a wallslide.
 @export var term_vel: float = 1.10
 

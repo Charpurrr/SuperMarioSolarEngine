@@ -2,7 +2,6 @@ class_name HomingGroundPound
 extends PlayerState
 ## Homing towards objects that have it enabled through the usage of a ground pound.
 
-
 ## How much the groundpound offsets you on the Y axis.
 @export var gp_offset: float = -5
 

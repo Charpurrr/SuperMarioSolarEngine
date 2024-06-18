@@ -2,13 +2,12 @@ class_name HealthModule
 extends RefCounted
 ## Provides a simple way to add health to a player or enemy.
 
-
 var hp: int
 
 var hit_callback: Callable
 var die_callback: Callable
 
-enum DamageType {SQUISH, STRIKE, BURN, FREEZE, SHOCK, GENERIC}
+enum DamageType { SQUISH, STRIKE, BURN, FREEZE, SHOCK, GENERIC }
 
 
 func _init(hit_points: int, hit_callback_pass: Callable, die_callback_pass: Callable):

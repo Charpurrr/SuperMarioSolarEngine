@@ -1,6 +1,5 @@
 extends Line2D
 
-
 ## Current cursor position.
 var cursor_pos: Vector2
 ## Where the cursor was located on its last left click.
@@ -78,12 +77,13 @@ func _is_viable_creation() -> bool:
 func _check_not_intersect(poly: PackedVector2Array, new_pos: Vector2) -> bool:
 	var size: int = poly.size()
 
-	if size <= 2: return true
+	if size <= 2:
+		return true
 
 	var edge_start: Vector2 = poly[size - 1]
 
 	for i in size - 2:
-		if Geometry2D.segment_intersects_segment(poly[i], poly[i + 1], edge_start, new_pos): 
+		if Geometry2D.segment_intersects_segment(poly[i], poly[i + 1], edge_start, new_pos):
 			push_warning("Cannot create a polygon that intersects with itself.")
 			return false
 

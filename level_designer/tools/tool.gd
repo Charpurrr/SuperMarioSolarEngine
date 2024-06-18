@@ -2,7 +2,6 @@ class_name Tool
 extends Button
 ## Editor tool.
 
-
 @export var toolbar: Toolbar
 ## The visual icon of the tool.
 @export var default_mouse_icon: Texture2D

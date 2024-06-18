@@ -3,7 +3,6 @@ extends Node
 ## Abstract management of player input.
 ## Should be placed high up in the scene tree so that inputs are processed before they are checked.
 
-
 ## Amount of frames a buffered input lasts.
 @export var buffer_duration: int = 8
 
@@ -72,7 +71,9 @@ func buffered_input(id: StringName, consume: bool = true) -> bool:
 		# The buffer should have been sparked before this function was called.
 		# However, if the InputManager node has insufficient priority, this might not be the case.
 		# This should be a warning, since it will mostly work as intended, but might be off by 1 frame.
-		push_warning("Input pressed before buffer sparked. Does InputManager have sufficient priority?")
+		push_warning(
+			"Input pressed before buffer sparked. Does InputManager have sufficient priority?"
+		)
 		return true
 
 	return false

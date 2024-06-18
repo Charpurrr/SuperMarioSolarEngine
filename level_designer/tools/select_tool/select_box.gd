@@ -2,7 +2,6 @@ class_name SelectionBox
 extends NinePatchRect
 ## Object selector for the level designer.
 
-
 ## Area2D that handles item detection.
 @export var selection_area: Area2D
 

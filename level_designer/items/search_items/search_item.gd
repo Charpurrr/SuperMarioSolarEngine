@@ -2,7 +2,6 @@ class_name SearchItem
 extends Button
 ## An item within the search item menu.
 
-
 @onready var texture_rect = $TextureRect
 
 var item_data: EditorItem

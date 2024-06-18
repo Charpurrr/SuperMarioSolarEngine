@@ -2,7 +2,6 @@ class_name GroundPoundLand
 extends PlayerState
 ## Landing after a groundpound.
 
-
 ## If the player can simply cancel out of the groundpound landing.
 @export var can_ignore: bool = true
 

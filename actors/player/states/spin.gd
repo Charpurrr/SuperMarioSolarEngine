@@ -2,7 +2,6 @@ class_name Spin
 extends PlayerState
 ## Spinning for the first time.
 
-
 ## How much the spin sends you upwards when airborne.
 @export var spin_power: float = 6
 
@@ -97,7 +96,7 @@ func _air_rules() -> Variant:
 		else:
 			return &"GroundPound"
 
-	if finished_init and actor.push_rays.is_colliding() and input.buffered_input(&"jump"): 
+	if finished_init and actor.push_rays.is_colliding() and input.buffered_input(&"jump"):
 		return [&"Walljump", -movement.facing_direction]
 
 	if finished_init and movement.can_init_wallslide():

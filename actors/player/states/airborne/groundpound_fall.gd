@@ -2,7 +2,6 @@ class_name GroundPoundFall
 extends PlayerState
 ## Falling after performing a ground pound.
 
-
 ## How fast you ground pound.
 @export var gp_fall_vel: float = 9.0
 

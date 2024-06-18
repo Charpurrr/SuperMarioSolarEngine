@@ -8,7 +8,7 @@ func _physics_tick():
 
 	if actor.is_on_ceiling() and not live_substate is GroundPound:
 		for sfx_list in sfx_layers:
-				SFXLayer.play_sfx(self, sfx_list, force_new)
+			SFXLayer.play_sfx(self, sfx_list, force_new)
 
 
 func _trans_rules():

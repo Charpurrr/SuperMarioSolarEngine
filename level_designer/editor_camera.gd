@@ -2,7 +2,6 @@ class_name EditorCamera
 extends Camera2D
 ## Camera used during level editing.
 
-
 ## The travelling speed of the camera.
 @export var cam_speed: int = 10
 ## How much cam_speed gets multiplied when holding the e_speed input.

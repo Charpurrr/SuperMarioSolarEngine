@@ -3,7 +3,7 @@ extends PlayerState
 ## Holding down on the floor.
 
 
-# The first entry in the array is wether the first frame 
+# The first entry in the array is wether the first frame
 # of the crouch animation should be skipped or not,
 # the second entry is wether the crouch sound effect should be played or not.
 func _on_enter(array):
@@ -12,7 +12,7 @@ func _on_enter(array):
 
 	if array[1] == true:
 		for sfx_list in sfx_layers:
-				SFXLayer.play_sfx(self, sfx_list, force_new)
+			SFXLayer.play_sfx(self, sfx_list, force_new)
 
 
 func _physics_tick():
@@ -22,8 +22,11 @@ func _physics_tick():
 
 ## Return whether or not you can crouchwalk.
 func _can_crouchwalk() -> bool:
-	return (actor.vel.x == 0 and InputManager.is_moving_x()
-	and not actor.test_move(actor.transform, Vector2(0.1 * movement.facing_direction, 0)))
+	return (
+		actor.vel.x == 0
+		and InputManager.is_moving_x()
+		and not actor.test_move(actor.transform, Vector2(0.1 * movement.facing_direction, 0))
+	)
 
 
 func _trans_rules():
@@ -44,6 +47,5 @@ func _trans_rules():
 
 	if not Input.is_action_pressed(&"down") and not actor.crouchlock.enabled:
 		return &"Idle"
-
 
 	return &""

@@ -3,6 +3,7 @@ extends Node2D
 
 var brush_item: PreviewItem
 
+
 func new_brush(item_data: EditorItem):
 	if brush_item != null:
 		brush_item.queue_free()

@@ -2,13 +2,12 @@ class_name Walljump
 extends PlayerState
 ## Jumping from a wallslide.
 
-
 @export var jump_power: float = 8.15
 ## How much the walljump sends you forwards.
 @export var push_power: float = 3
 
 ## The y position of the point you walljumped from.
-## Used to avoid being able to scale a wall infinitely with a spin. 
+## Used to avoid being able to scale a wall infinitely with a spin.
 var start_y: float
 ## How many extra units get subtracted from the start_y position to
 ## avoid being able to scale a wall infinitely with a spin.
@@ -62,7 +61,7 @@ func _trans_rules():
 	if movement.can_init_wallslide(true):
 		return &"Wallslide"
 
-	if actor.push_rays.is_colliding() and input.buffered_input(&"jump"): 
+	if actor.push_rays.is_colliding() and input.buffered_input(&"jump"):
 		reset_state(-movement.facing_direction)
 
 	if movement.finished_freefall_timer():

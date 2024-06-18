@@ -8,6 +8,7 @@ var display: Node2D
 
 @onready var selection_shape: CollisionShape2D = %SelectionShape
 
+
 func _ready():
 	var shape = item_data.preview_display_data.get_selection_shape()
 	if shape != null:

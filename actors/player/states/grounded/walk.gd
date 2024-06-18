@@ -2,7 +2,6 @@ class_name Walk
 extends PlayerState
 ## Moving left and right on the ground.
 
-
 ## On what frames of the walking animation a footstep soundeffect should play.
 @export var footstep_frames: Array[int]
 
@@ -79,7 +78,7 @@ func _trans_rules():
 	if Input.is_action_pressed(&"down"):
 		if movement.is_slide_slope():
 			return &"ButtSlide"
-		else: 
+		else:
 			return [&"Crouch", [false, true]]
 
 	if InputManager.get_x() != 0 and actor.is_on_wall():

@@ -2,9 +2,8 @@ class_name DummyJump
 extends PlayerState
 ## General jump action.
 
-
 ## Minimum X velocity required to perform the third consecutive jump.
-@export var triple_min_vel : float = 1.0
+@export var triple_min_vel: float = 1.0
 
 
 func _on_enter(_handover):

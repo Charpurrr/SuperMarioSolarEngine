@@ -3,16 +3,15 @@ class_name SelectionShapeGenerator
 extends ResourceGenerator
 ## Generator and editor for selection shapes of editor items.
 
-
 ## Press to apply the edits made to the shape.
-@export var apply_manual_edit: bool = false :
+@export var apply_manual_edit: bool = false:
 	set(val):
 		_save_edits()
 	get:
 		return false
 
 ## An EditorItem resource can be dragged here to edit it.
-@export var manual_edit_item: EditorItem = null :
+@export var manual_edit_item: EditorItem = null:
 	set(val):
 		manual_edit_item = val
 		_update_edit_preview()

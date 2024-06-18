@@ -2,6 +2,7 @@
 class_name PreviewDisplayData
 extends Resource
 
+
 func create() -> Node2D:
 	return Node2D.new()
 

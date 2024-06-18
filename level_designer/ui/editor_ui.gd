@@ -1,7 +1,6 @@
 class_name LevelEditorUI
 extends CanvasLayer
 
-
 @export_category(&"UI Buttons")
 @export var z_toggle: CheckButton
 @export var z_layer: SpinBox
@@ -12,6 +11,7 @@ extends CanvasLayer
 
 @export_category(&"Other Elements")
 @export var toolbar: Toolbar
+
 
 func _ready():
 	get_window().min_size = Vector2i(800, 300)

@@ -3,10 +3,9 @@ class_name ResourceGenerator
 extends Node
 ## Base class for toolscripts that can be used to auto-generate resources.
 
-
 ## Press to refresh and re-process all related resources.
 ## The value isn't stored, this is just an export that triggers a refresh when clicked.
-@export var refresh_resources: bool :
+@export var refresh_resources: bool:
 	set(_value):
 		_refresh()
 	get:

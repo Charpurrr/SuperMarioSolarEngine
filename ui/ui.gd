@@ -2,7 +2,6 @@ class_name UserInterface
 extends CanvasLayer
 ## UI and utility.
 
-
 # temporary for debug label
 @onready var player: CharacterBody2D = get_parent().find_child("Mario")
 
@@ -120,11 +119,13 @@ func _push_notif(type: StringName, input: String):
 
 
 func _display_input(event: InputEvent):
-	if not event is InputEventKey: return
+	if not event is InputEventKey:
+		return
 
 	var event_str: Key = event.keycode
 
-	if not sprite_dictionary.has(event_str): return
+	if not sprite_dictionary.has(event_str):
+		return
 
 	var sprite: Sprite2D = sprite_dictionary[event_str]
 

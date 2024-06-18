@@ -1,7 +1,6 @@
 class_name Thwomp
 extends AnimatableBody2D
 
-
 @export var rest_time: int = 20
 var rest_timer: int
 
@@ -18,4 +17,3 @@ func _physics_process(_delta):
 
 	if rest_timer == 0:
 		falling = true
-

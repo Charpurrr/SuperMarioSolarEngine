@@ -2,7 +2,6 @@ class_name Twirl
 extends PlayerState
 ## Spinning in the air after having airborne spinned once already.
 
-
 ## How much the twirl sends you upwards.
 @export var spin_power: float = 6
 
@@ -58,7 +57,7 @@ func _trans_rules():
 	if Input.is_action_just_pressed(&"down") and movement.can_air_action():
 		return &"GroundPound"
 
-	if actor.push_rays.is_colliding() and input.buffered_input(&"jump"): 
+	if actor.push_rays.is_colliding() and input.buffered_input(&"jump"):
 		return [&"Walljump", -movement.facing_direction]
 
 	if movement.can_init_wallslide():

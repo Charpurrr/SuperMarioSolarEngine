@@ -2,7 +2,6 @@ class_name Enemy
 extends CharacterBody2D
 ## Abstract class for all enemies.
 
-
 @export var hp: int
 
 @export_category(&"References")

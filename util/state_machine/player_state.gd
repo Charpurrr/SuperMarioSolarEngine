@@ -2,7 +2,6 @@ class_name PlayerState
 extends State
 ## State specialised for player characters.
 
-
 @export_enum("Normal", "Small", "Dive", "None") var hitbox_type: String = "Normal"
 
 @export_category(&"Animation")
@@ -34,7 +33,8 @@ func trigger_enter(handover):
 
 
 func _set_hitbox():
-	if hitbox_type == "None": return
+	if hitbox_type == "None":
+		return
 
 	var was_diving = not actor.dive_hitbox.disabled
 

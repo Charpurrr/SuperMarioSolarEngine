@@ -2,7 +2,9 @@ class_name EditorItem
 extends Resource
 ## Data for an item inside of the Level Editor.
 
-const PREVIEW_ITEM: PackedScene = preload("res://level_designer/items/preview_items/preview_item.tscn")
+const PREVIEW_ITEM: PackedScene = preload(
+	"res://level_designer/items/preview_items/preview_item.tscn"
+)
 
 ## Icon texture that represents this item.
 @export var icon_texture: Texture2D
@@ -17,8 +19,8 @@ const PREVIEW_ITEM: PackedScene = preload("res://level_designer/items/preview_it
 @export var preview_display_data: PreviewDisplayData
 
 enum Category {
-	TERRAIN, 
-	OBJECT, 
+	TERRAIN,
+	OBJECT,
 	DECORATION,
 	ENTITY,
 	NPC,

@@ -27,14 +27,16 @@ func _trans_rules():
 		if input.buffered_input(&"dive"):
 			return [&"Dive", true]
 
-		if ((InputManager.get_x_dir() == movement.facing_direction or InputManager.get_x_dir() == 0) 
-		and (input.buffered_input(&"jump") or Input.is_action_pressed(&"jump"))):
+		if (
+			(InputManager.get_x_dir() == movement.facing_direction or InputManager.get_x_dir() == 0)
+			and (input.buffered_input(&"jump") or Input.is_action_pressed(&"jump"))
+		):
 			return &"Rollout"
 
 	if Input.is_action_pressed(&"down"):
 		if movement.is_slide_slope():
 			return &"ButtSlide"
-		else: 
+		else:
 			return [&"Crouch", [true, false]]
 
 	if is_zero_approx(actor.vel.x) or InputManager.get_x_dir() == -movement.facing_direction:

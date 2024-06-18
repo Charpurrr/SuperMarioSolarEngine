@@ -2,7 +2,6 @@ class_name PropertyDisplay
 extends Node2D
 ## Handles the display of properties in the editor.
 
-
 ## The preview item this property affects.
 @onready var preview: PreviewItem = get_parent()
 

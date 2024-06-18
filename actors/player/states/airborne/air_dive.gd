@@ -3,7 +3,6 @@ extends PlayerState
 ## General diving state.
 ## See FaceplantDive for diving downwards.
 
-
 ## The horizontal dive power added to your current velocity.
 @export var x_power: float = 6.0
 ## The vertical dive power only applied in certain cases.

@@ -2,7 +2,6 @@ class_name State
 extends Node
 ## Abstract state class with behavior that affects a target node.
 
-
 ## The current active substate.
 var live_substate: State = null
 
@@ -78,7 +77,8 @@ func ditch_state():
 	trigger_exit()
 
 	# Ditch live descendents
-	if live_substate == null: return
+	if live_substate == null:
+		return
 
 	live_substate.ditch_state()
 	live_substate = null
@@ -92,8 +92,10 @@ func reset_state(handover: Variant = null):
 
 ## Activate the given state, ditching the current state.
 func switch_substate(new_state: State, handover: Variant):
-	if new_state == live_substate: return
-	if new_state == null: return
+	if new_state == live_substate:
+		return
+	if new_state == null:
+		return
 
 	if live_substate != null:
 		live_substate.ditch_state()

@@ -2,7 +2,6 @@ class_name SpinWallbonk
 extends PlayerState
 ## Spin during a wallslide.
 
-
 ## Horizontal knockback from spinning against a wall.
 @export var wall_kickback_power_x: float = 1.7
 ## Vertical knockback from spinning against a wall. (Only applied when airborne.)
@@ -49,7 +48,7 @@ func _trans_rules():
 			return [&"Dive", false]
 
 	if finished_init and movement.can_air_action() and input.buffered_input(&"spin"):
-			return &"Twirl"
+		return &"Twirl"
 
 	if movement.finished_freefall_timer():
 		return &"Freefall"

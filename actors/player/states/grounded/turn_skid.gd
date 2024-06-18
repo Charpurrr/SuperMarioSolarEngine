@@ -2,7 +2,6 @@ class_name Skid
 extends PlayerState
 ## Turning from grounded movement at max speed.
 
-
 ## How long it takes to accelerate from a skid.
 @export var skid_accel_time: float = 16
 @onready var skid_accel_step: float

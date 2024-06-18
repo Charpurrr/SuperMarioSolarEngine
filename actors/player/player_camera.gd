@@ -2,7 +2,6 @@ class_name PlayerCamera
 extends Node2D
 ## Camera specifically for player characters.
 
-
 @export var enabled = true
 
 @export_category("Camera Transform")
@@ -16,7 +15,7 @@ extends Node2D
 @onready var center_offset: Vector2
 
 @export_category("Camera Movement")
-## How far the camera gets pushed past the center of the screen 
+## How far the camera gets pushed past the center of the screen
 ## while continuously walking in one direction.
 @export var x_push: int
 
@@ -27,7 +26,8 @@ var x_push_timer: int
 
 
 func _physics_process(_delta):
-	if not enabled: return
+	if not enabled:
+		return
 
 	var trans := Transform2D.IDENTITY
 

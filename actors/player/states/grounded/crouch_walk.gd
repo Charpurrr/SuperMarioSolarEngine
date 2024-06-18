@@ -2,7 +2,6 @@ class_name Waddle
 extends PlayerState
 ## Walking whilse crouching on the floor.
 
-
 ## On what frames of the walking animation a footstep soundeffect should play.
 @export var footstep_frames: Array[int]
 
@@ -46,7 +45,7 @@ func _trans_rules():
 	if movement.is_slide_slope():
 		return &"ButtSlide"
 
-	if (not InputManager.is_moving_x() or actor.is_on_wall()):
+	if not InputManager.is_moving_x() or actor.is_on_wall():
 		return [&"Crouch", [true, false]]
 
 	if not actor.crouchlock.enabled and input.buffered_input(&"jump"):

@@ -2,7 +2,6 @@
 # meta-description: Base template for SS2D_Action classes
 # meta-default: true
 
-
 extends SS2D_Action
 
 ## Action

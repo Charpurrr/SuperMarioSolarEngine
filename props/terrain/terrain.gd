@@ -2,7 +2,6 @@ class_name Terrain
 extends Polygon2D
 ## Vectorised interactable terrain.
 
-
 @export var terrain_type: StringName = &"Solid"
 
 
@@ -15,4 +14,3 @@ func _ready():
 
 	call_deferred("add_child", body)
 	body.call_deferred("add_child", poly)
-

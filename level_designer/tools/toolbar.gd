@@ -2,7 +2,6 @@ class_name Toolbar
 extends PanelContainer
 ## Holds data for the currently active tool.
 
-
 @export var editor: LevelEditor
 
 @export_category(&"Local References")
@@ -25,10 +24,12 @@ func update_active_tool(new_tool: Tool):
 	if active_tool != null:
 		active_tool.deactivate()
 	new_tool.activate()
-	
+
 	active_tool = new_tool
 
-	Input.set_custom_mouse_cursor(active_tool.default_mouse_icon, active_tool.mouse_shape, active_tool.hotspot)
+	Input.set_custom_mouse_cursor(
+		active_tool.default_mouse_icon, active_tool.mouse_shape, active_tool.hotspot
+	)
 
 
 func drop_tools():

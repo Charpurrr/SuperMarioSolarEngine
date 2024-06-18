@@ -1,7 +1,6 @@
 @tool
 extends ResourceGenerator
 
-
 const ITEM_LIST_PATH = "res://level_designer/items/editor_items/editor_item_list.tres"
 
 

@@ -2,7 +2,6 @@ class_name Sideflip
 extends PlayerState
 ## Jumping after turning.
 
-
 @export var jump_power: float = 8.8
 ## How much the sideflip sends you forwards.
 @export var push_power: float = 1.2
@@ -35,8 +34,7 @@ func _physics_tick():
 
 
 func _trans_rules():
-
-	if actor.push_rays.is_colliding() and input.buffered_input(&"jump"): 
+	if actor.push_rays.is_colliding() and input.buffered_input(&"jump"):
 		return [&"Walljump", -movement.facing_direction]
 
 	if movement.can_init_wallslide():

@@ -2,7 +2,6 @@ class_name Jump
 extends PlayerState
 ## Jumping.
 
-
 @export var jump_power: float = 400.0 / 63.0
 
 ## How much of the jump needs to be finished before it can be let go.
@@ -11,7 +10,7 @@ var min_jump_power: float
 
 @export var jump_number: int
 
-@export var fall_state:= &"Fall"
+@export var fall_state := &"Fall"
 
 ## Check if you've applied variable jump height.
 var applied_variation: bool = false
@@ -51,7 +50,7 @@ func _trans_rules():
 	if Input.is_action_just_pressed(&"down") and movement.can_air_action():
 		return &"GroundPound"
 
-	if actor.push_rays.is_colliding() and input.buffered_input(&"jump"): 
+	if actor.push_rays.is_colliding() and input.buffered_input(&"jump"):
 		return [&"Walljump", -movement.facing_direction]
 
 	if movement.can_init_wallslide():

@@ -41,4 +41,3 @@ extends Resource
 @export_group("Misc Checks")
 @export var _no_elif_return: bool = false
 @export var _no_else_return: bool = false
-

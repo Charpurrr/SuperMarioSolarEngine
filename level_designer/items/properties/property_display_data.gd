@@ -5,4 +5,3 @@ extends Resource
 
 func add_to(_node: Node):
 	pass
-

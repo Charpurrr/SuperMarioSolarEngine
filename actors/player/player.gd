@@ -2,7 +2,6 @@ class_name Player
 extends CharacterBody2D
 ## Playable 2D character.
 
-
 @export var doll: AnimatedSprite2D
 
 @export var state_manager: StateManager
@@ -10,8 +9,8 @@ extends CharacterBody2D
 @export var input: InputManager
 
 @export var push_rays: Node2D
- 
-@export var hitbox: CollisionShape2D 
+
+@export var hitbox: CollisionShape2D
 @export var dive_hitbox: CollisionShape2D
 @export var small_hitbox: CollisionShape2D
 

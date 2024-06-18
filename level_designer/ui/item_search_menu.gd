@@ -2,7 +2,6 @@ class_name ItemSearchMenu
 extends Panel
 ## Search menu for all editor items.
 
-
 @export var hotbar: HFlowContainer
 
 @export var item_list: EditorItemList

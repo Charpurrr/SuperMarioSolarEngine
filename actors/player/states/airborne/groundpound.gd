@@ -2,7 +2,6 @@ class_name GroundPound
 extends PlayerState
 ## Pressing down while airborne.
 
-
 ## How much the groundpound offsets you on the Y axis.
 @export var gp_offset: float = -5
 

@@ -3,7 +3,6 @@ extends State
 ## Root node of a state machine.
 ## Manages the execution of hook functions in the machine.
 
-
 @export var target_actor: Node = null
 @export var initial_state: State = null
 

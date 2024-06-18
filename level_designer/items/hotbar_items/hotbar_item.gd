@@ -2,7 +2,6 @@ class_name HotbarItem
 extends Button
 ## Hotbar button for an item.
 
-
 ## How fast the progress bar for pinning an item fills up (in seconds.)
 @export var pin_hold_time: float
 ## How fast the progress bar for pinning an item empties out (in seconds.)
@@ -40,7 +39,8 @@ func _gui_input(event):
 
 
 func _tween_inrease():
-	if _tween != null: _tween.kill()
+	if _tween != null:
+		_tween.kill()
 
 	_tween = get_tree().create_tween()
 	_tween.set_ease(Tween.EASE_IN)
@@ -50,7 +50,8 @@ func _tween_inrease():
 
 
 func _tween_decrease():
-	if _tween != null: _tween.kill()
+	if _tween != null:
+		_tween.kill()
 
 	_tween = get_tree().create_tween()
 	_tween.tween_property(pin_progress, "value", 0.0, pin_release_time)
@@ -81,8 +82,10 @@ func _notification(what):
 
 
 func _get_drag_data(_at_position):
-	if pinned: return
-	if item_data == null: return null
+	if pinned:
+		return
+	if item_data == null:
+		return null
 
 	_tween_decrease()
 
@@ -113,7 +116,8 @@ func _drop_data(_at_position, data):
 
 
 func _clear_data():
-	if pinned: return
+	if pinned:
+		return
 
 	item_icon.texture = null
 	item_data = null

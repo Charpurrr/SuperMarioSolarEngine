@@ -2,7 +2,6 @@ class_name Idle
 extends PlayerState
 ## Default grounded state when there is no input.
 
-
 @export_category(&"Animation (Unique to State)")
 @export var animation_look_up: StringName
 @export var anim_offset_l_u: Vector2

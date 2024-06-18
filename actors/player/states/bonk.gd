@@ -2,7 +2,6 @@ class_name Bonk
 extends PlayerState
 ## Bonk against a wall
 
-
 ## Horizontal knockback from bonking against a wall.
 @export var wall_kickback_power_x: float = 1.7
 ## Vertical knockback from bonking against a wall.
@@ -36,14 +35,16 @@ func _subsequent_ticks():
 func _physics_tick():
 	rotation_timer = min(rotation_timer + 1, rotation_time)
 
-	actor.doll.rotation = _rotation_math(rotation_timer / rotation_time) * -TAU / 8 * movement.facing_direction
+	actor.doll.rotation = (
+		_rotation_math(rotation_timer / rotation_time) * -TAU / 8 * movement.facing_direction
+	)
 
 	if rotation_timer == rotation_time:
 		finished_rotating = true
 
 
 func _rotation_math(time: float) -> float:
-	return 1 - pow((time-1), 2)
+	return 1 - pow(time - 1, 2)
 
 
 func _on_exit():
@@ -64,7 +65,7 @@ func _trans_rules():
 				return [&"Dive", false]
 
 		if movement.can_air_action() and input.buffered_input(&"spin"):
-				return &"Twirl"
+			return &"Twirl"
 
 		if movement.finished_freefall_timer():
 			return &"Freefall"

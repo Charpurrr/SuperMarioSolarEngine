@@ -22,7 +22,7 @@ func _on_enter(queued_speed):
 			actor.vel.x += x_power * movement.facing_direction
 
 	actor.doll.rotation = TAU / 4 + actor.vel.angle()
-	
+
 
 func _trans_rules():
 	if actor.is_on_floor():

@@ -2,7 +2,6 @@ class_name ButtSlide
 extends PlayerState
 ## Crouching while on a slope (or being forced.)
 
-
 ## Default sliding speed.
 @export var speed: float = 10
 ## Minimum sliding speed (through decelerating by holding the opposite direction you're sliding in.)
@@ -168,7 +167,7 @@ func _redirect_slide(new: Vector2, old: Vector2):
 	# Store the sign: -1 if we have moved from an upward slope to a downward slope
 	# or vice versa
 	var new_sign = sign(preserved)
-	
+
 	# Take absolute value so we can work with 0 to 1 instead of -1 to 1
 	preserved = abs(preserved)
 
@@ -206,10 +205,11 @@ func _set_appropriate_anim():
 		actor.doll.play(animation_airborne)
 		return
 	if input_dir != 0:
-		actor.doll.play(animation_forward if input_dir == movement.facing_direction else animation_backward)
+		actor.doll.play(
+			animation_forward if input_dir == movement.facing_direction else animation_backward
+		)
 		return
 	actor.doll.play(animation)
-
 
 
 func _trans_rules():
@@ -218,8 +218,7 @@ func _trans_rules():
 
 	if actor.is_on_floor():
 		if not Input.is_action_pressed(&"down"):
-			if (old_direction.y == 0 and input_dir != 0
-			or Input.is_action_just_pressed(&"up")):
+			if old_direction.y == 0 and input_dir != 0 or Input.is_action_just_pressed(&"up"):
 				return &"Idle"
 			if input_dir == -sign(old_direction.x):
 				return &"Walk"

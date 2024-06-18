@@ -2,7 +2,6 @@ class_name PushRays
 extends Node2D
 ## Rays to check for pushable solid bodies.
 
-
 @export var movement: PMovement
 
 @onready var ray_r: RayCast2D = $PushRayR
@@ -13,15 +12,17 @@ func is_colliding(input_based: bool = false, collision_based: bool = false) -> b
 	var check: int
 
 	if input_based:
-		check = InputManager.get_x_dir() 
+		check = InputManager.get_x_dir()
 	elif not collision_based:
 		check = movement.facing_direction
 	else:
 		check = get_collide_side()
 
 	match check:
-		1: return ray_r.is_colliding()
-		-1: return ray_l.is_colliding()
+		1:
+			return ray_r.is_colliding()
+		-1:
+			return ray_l.is_colliding()
 
 	return false
 
@@ -36,22 +37,22 @@ func get_collide_side() -> int:
 		return 0
 
 	match InputManager.get_x_dir():
-		1: 
-			if right: 
+		1:
+			if right:
 				return 1
 			else:
 				return 0
-		-1: 
+		-1:
 			if left:
 				return -1
 			else:
 				return 0
 
 	match movement.facing_direction:
-		1: 
-			if right: 
+		1:
+			if right:
 				return 1
-		-1: 
+		-1:
 			if left:
 				return -1
 

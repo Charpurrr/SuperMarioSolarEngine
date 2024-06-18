@@ -2,7 +2,6 @@ class_name PMovement
 extends Node
 ## Movement for player characters.
 
-
 @export var actor: Player
 
 #region X Variables
@@ -31,19 +30,15 @@ extends Node
 
 ## List of different types of acceleration/deceleration values.
 @onready var cels: Dictionary = {
-	"ground": 
+	"ground":
 	{
-		"accel":
-			ground_accel_step,
-		"decel":
-			ground_decel_step,
+		"accel": ground_accel_step,
+		"decel": ground_decel_step,
 	},
-	"air": 
+	"air":
 	{
-		"accel":
-			air_accel_step,
-		"decel":
-			air_decel_step,
+		"accel": air_accel_step,
+		"decel": air_decel_step,
 	},
 }
 
@@ -95,7 +90,7 @@ var freefall_timer: int = -1
 
 ## Minimum incline of slope (0.0 - 1.0) needed to start a buttslide.
 @export_range(0.0, 1.0) var min_slide_incline: float = 0.3
-## Minimum incline of slope (0.0 - 1.0) needed to be considered a steep slope. 
+## Minimum incline of slope (0.0 - 1.0) needed to be considered a steep slope.
 ## Steep slopes automatically make you slide off.
 @export_range(0.0, 1.0) var min_steep_incline: float = 0.8
 
@@ -142,7 +137,7 @@ func _physics_process(_delta):
 func accelerate(accel_val: Variant, direction: float, speed_cap: float = max_speed):
 	var accel: float
 
-	if (accel_val is float or accel_val is int):
+	if accel_val is float or accel_val is int:
 		accel = accel_val
 	elif accel_val is String:
 		accel = cels[accel_val].accel
@@ -215,6 +210,8 @@ func check_space_ahead() -> bool:
 
 func get_input_x() -> float:
 	return roundf(Input.get_axis("left", "right"))
+
+
 #endregion
 
 
@@ -226,6 +223,8 @@ func apply_gravity(gravity_weight: float = 1, friction: float = 1):
 		actor.vel.y += gravity
 	elif actor.vel.y < term_vel:
 		actor.vel.y = term_vel
+
+
 #endregion
 
 
@@ -288,6 +287,8 @@ func finished_grounded_spin_timer() -> bool:
 ## Consume the grounded spin cooldown timer, making you able to perform a grounded spin immediately.
 func consume_grounded_spin_timer() -> void:
 	ground_spin_cooldown_timer = 0
+
+
 #endregion
 
 
@@ -311,27 +312,34 @@ func is_steep_slope() -> bool:
 
 ## Whether or not the jump can be variated (released).
 func can_release_jump(applied_variation: bool, min_jump_power: float) -> bool:
-	return (not Input.is_action_pressed(&"jump") 
-	and actor.vel.y > -min_jump_power
-	and not applied_variation 
-	and actor.vel.y < 0)
+	return (
+		not Input.is_action_pressed(&"jump")
+		and actor.vel.y > -min_jump_power
+		and not applied_variation
+		and actor.vel.y < 0
+	)
 
 
 ## Return whether you can or can't initiate a wallslide.
 ## input_based is whether or not a wallslide prioritises input over facing_direction.
 func can_init_wallslide(input_based: bool = false) -> bool:
-	if should_end_wallslide(input_based): return false
+	if should_end_wallslide(input_based):
+		return false
 
-	if not actor.vel.y >= 0: return false
+	if not actor.vel.y >= 0:
+		return false
 
 	return input_based or get_input_x() == facing_direction
 
 
 ## Return whether or not a wallslide should end.
 func should_end_wallslide(input_based: bool = false) -> bool:
-	if not actor.push_rays.is_colliding(input_based): return true
-	if not input_based and get_input_x() == -facing_direction: return true
-	if not can_air_action(): return true
+	if not actor.push_rays.is_colliding(input_based):
+		return true
+	if not input_based and get_input_x() == -facing_direction:
+		return true
+	if not can_air_action():
+		return true
 
 	return false
 

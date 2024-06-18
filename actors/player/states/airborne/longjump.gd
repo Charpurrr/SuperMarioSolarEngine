@@ -2,7 +2,6 @@ class_name Longjump
 extends PlayerState
 ## Jumping forwards from a crouch.
 
-
 @export var jump_power: float = 8.8
 ## How much the longjump sends you forwards.
 @export var push_power: float = 1.2
@@ -37,7 +36,7 @@ func _physics_tick():
 
 
 func _trans_rules():
-	if actor.push_rays.is_colliding() and input.buffered_input(&"jump"): 
+	if actor.push_rays.is_colliding() and input.buffered_input(&"jump"):
 		return [&"Walljump", -movement.facing_direction]
 
 	if movement.can_init_wallslide():
