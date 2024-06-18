@@ -6,7 +6,7 @@ extends Button
 ## How fast the progress bar for pinning an item fills up (in seconds.)
 @export var pin_hold_time: float
 ## How fast the progress bar for pinning an item empties out (in seconds.)
-@export var pîn_release_time: float
+@export var pin_release_time: float
 
 @export_category(&"References")
 @export var item_icon: TextureRect
@@ -14,6 +14,7 @@ extends Button
 @export var pin_icon: Sprite2D
 
 @onready var hotbar: Hotbar = get_parent()
+@onready var toolbar: Toolbar = %ToolbarContainer
 
 @onready var _tween = null
 
@@ -52,7 +53,7 @@ func _tween_decrease():
 	if _tween != null: _tween.kill()
 
 	_tween = get_tree().create_tween()
-	_tween.tween_property(pin_progress, "value", 0.0, pîn_release_time)
+	_tween.tween_property(pin_progress, "value", 0.0, pin_release_time)
 
 
 func _pin_unpin_item():
@@ -116,3 +117,10 @@ func _clear_data():
 
 	item_icon.texture = null
 	item_data = null
+
+
+func _on_pressed():
+	if item_data == null:
+		return
+	hotbar.editor.level.new_brush(item_data)
+	toolbar.drop_tools()

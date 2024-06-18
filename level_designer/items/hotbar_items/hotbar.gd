@@ -5,6 +5,8 @@ extends HFlowContainer
 
 var pinned_items: Array = []
 
+@export var editor: LevelEditor
+
 
 func add_item(item_data: EditorItem):
 	var last_slot: HotbarItem = null

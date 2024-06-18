@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Property" load_steps=5 format=3 uid="uid://dgoo836b0wfb1"]
+
+[ext_resource type="PackedScene" uid="uid://t1487ntavp0t" path="res://level_designer/items/properties/scale_widgets.tscn" id="1_mkxin"]
+[ext_resource type="Script" path="res://level_designer/items/properties/property.gd" id="1_ni3jq"]
+[ext_resource type="Script" path="res://level_designer/items/properties/complex_property_display_data.gd" id="2_ilebm"]
+
+[sub_resource type="Resource" id="Resource_64ab8"]
+script = ExtResource("2_ilebm")
+scene = ExtResource("1_mkxin")
+
+[resource]
+script = ExtResource("1_ni3jq")
+property_name = &"scale"
+show_in_properties = true
+data_type = 5
+display = SubResource("Resource_64ab8")

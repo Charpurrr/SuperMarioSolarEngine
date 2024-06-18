@@ -12,6 +12,7 @@ extends Button
 ## [br][br][i]The hotspot is the point in the cursor that interacts with other elements on the screen.[/i]
 @export var hotspot: Vector2i
 
+## Whether or not the tool is active for use.
 var active: bool
 
 
@@ -28,4 +29,26 @@ func _process(_delta):
 
 ## Overridden by the child class.
 func _tick():
+	pass
+
+
+## Activates the tool.
+func activate():
+	active = true
+	_on_activate()
+
+
+## Deactivates the tool.
+func deactivate():
+	active = false
+	_on_deactivate()
+
+
+## Called when the tool becomes active.
+func _on_activate():
+	pass
+
+
+## Called when the tool becomes inactive.
+func _on_deactivate():
 	pass

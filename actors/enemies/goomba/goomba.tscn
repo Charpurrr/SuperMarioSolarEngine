@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cvbbpn56rtjwd"]
 
 [ext_resource type="Script" path="res://actors/enemies/goomba/goomba.gd" id="1_hhlu2"]
-[ext_resource type="Texture2D" uid="uid://x2edebevq3c7" path="res://actors/enemies/goomba/anime/idle.png" id="1_hp473"]
+[ext_resource type="Texture2D" uid="uid://c58jc51bc7x8f" path="res://actors/enemies/goomba/anime/idle.png" id="1_hp473"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_doiik"]
 animations = [{

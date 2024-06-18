@@ -11,7 +11,6 @@ offset_right = 8.0
 offset_bottom = 8.0
 script = ExtResource("1_rngah")
 pin_hold_time = 0.7
-"pîn_release_time" = 0.1
 item_icon = NodePath("Icon")
 pin_progress = NodePath("PinProgress")
 pin_icon = NodePath("PinIcon")
@@ -45,3 +44,5 @@ z_index = 1
 position = Vector2(56, 0)
 texture = SubResource("PlaceholderTexture2D_1mgp8")
 centered = false
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

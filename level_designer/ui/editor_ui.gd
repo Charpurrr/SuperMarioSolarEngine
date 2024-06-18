@@ -10,6 +10,8 @@ extends CanvasLayer
 @export var quit_confirm: ConfirmationDialog
 @export var search_menu: Panel
 
+@export_category(&"Other Elements")
+@export var toolbar: Toolbar
 
 func _ready():
 	get_window().min_size = Vector2i(800, 300)
