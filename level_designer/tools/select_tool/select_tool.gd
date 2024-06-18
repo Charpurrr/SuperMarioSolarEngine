@@ -5,7 +5,7 @@ extends Tool
 
 @onready var selection_box: NinePatchRect = toolbar.editor.selection_box
 @onready var selection_area: Area2D = selection_box.area
-@onready var selection_shape: CollisionShape2D = selection_box.shap
+@onready var selection_shape: CollisionShape2D = selection_box.shape
 
 var started_selection: bool
 
