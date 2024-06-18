@@ -202,15 +202,14 @@ func _decelerate(amount: float, target: float):
 
 ## Set the animation based on how you're moving on a slope.
 func _set_appropriate_anim():
-	if actor.is_on_floor():
-		if input_dir == movement.facing_direction:
-			actor.doll.play(animation_forward)
-		elif input_dir == -movement.facing_direction:
-			actor.doll.play(animation_backward)
-		else:
-			actor.doll.play(animation)
-	else:
+	if not actor.is_on_floor():
 		actor.doll.play(animation_airborne)
+		return
+	if input_dir != 0:
+		actor.doll.play(animation_forward if input_dir == movement.facing_direction else animation_backward)
+		return
+	actor.doll.play(animation)
+
 
 
 func _trans_rules():
