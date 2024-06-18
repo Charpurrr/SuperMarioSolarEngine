@@ -3,7 +3,7 @@ extends Tool
 ## Default all-purpose selection tool.
 
 @onready var selection_box: NinePatchRect = toolbar.editor.selection_box
-@onready var selection_area: Area2D = selection_box.area
+@onready var selection_area: Area2D = selection_box.selection_area
 @onready var selection_shape: CollisionShape2D = selection_box.shape
 
 var started_selection: bool
@@ -12,10 +12,6 @@ var point_start: Vector2
 var point_end: Vector2
 
 var selected_previews: Array = []
-
-@onready var selection_box: NinePatchRect = toolbar.editor.selection_box
-@onready var selection_area: Area2D = selection_box.selection_area
-@onready var selection_shape: CollisionShape2D = selection_box.shape
 
 
 func _ready():
