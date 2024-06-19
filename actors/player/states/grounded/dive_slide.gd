@@ -24,6 +24,9 @@ func _on_exit():
 
 func _trans_rules():
 	if not actor.crouchlock.enabled:
+		if movement.can_spin() and input.buffered_input(&"spin"):
+			return &"Spin"
+
 		if input.buffered_input(&"dive"):
 			return [&"Dive", true]
 
@@ -36,8 +39,8 @@ func _trans_rules():
 	if Input.is_action_pressed(&"down"):
 		if movement.is_slide_slope():
 			return &"ButtSlide"
-		else:
-			return [&"Crouch", [true, false]]
+
+		return [&"Crouch", [true, false]]
 
 	if is_zero_approx(actor.vel.x) or InputManager.get_x_dir() == -movement.facing_direction:
 		if actor.crouchlock.enabled:
