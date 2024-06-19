@@ -72,7 +72,7 @@
 [ext_resource type="AudioStream" uid="uid://c8y4afwkcsrsw" path="res://actors/player/mario/motion_nsmbw/groundpoundland.wav" id="47_1l3qp"]
 [ext_resource type="Script" path="res://actors/player/states/airborne/groundpound_fall.gd" id="47_bnupp"]
 [ext_resource type="AudioStream" uid="uid://cyjdhvnhtuskx" path="res://actors/player/mario/nsmbu_m_voice/haha.wav" id="48_msvxl"]
-[ext_resource type="Script" path="res://actors/player/sfx.gd" id="49_apkmk"]
+[ext_resource type="Script" path="res://util/sfx_layer.gd" id="49_apkmk"]
 [ext_resource type="AudioStream" uid="uid://b0e1ties8ms2s" path="res://actors/player/mario/motion_nsmbw/jump2.wav" id="49_ym08k"]
 [ext_resource type="Script" path="res://actors/player/states/spin.gd" id="50_mq1bv"]
 [ext_resource type="AudioStream" uid="uid://crdvp0q7abs5g" path="res://actors/player/mario/motion_nsmbw/doublejump.wav" id="50_snfws"]
@@ -1406,199 +1406,296 @@ size = Vector2(44, 26)
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("32_85yci"), ExtResource("33_hm8uh")]
 bus = &"Motion"
+delay_time = 0
+force_new = false
 cutoff_sfx = false
+overwrite_other = false
 
 [sub_resource type="Resource" id="Resource_8p2oq"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("34_a3ogi"), ExtResource("35_mc2n0")]
 bus = &"Motion"
+delay_time = 0
+force_new = false
 cutoff_sfx = true
+overwrite_other = false
 
 [sub_resource type="Resource" id="Resource_ql55k"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("42_3fc5f")]
 bus = &"Motion"
+delay_time = 0
+force_new = false
 cutoff_sfx = false
+overwrite_other = false
 
 [sub_resource type="Resource" id="Resource_lybx2"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("34_a3ogi"), ExtResource("35_mc2n0")]
 bus = &"Motion"
+delay_time = 0
+force_new = false
 cutoff_sfx = false
+overwrite_other = false
 
 [sub_resource type="Resource" id="Resource_sitp4"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("46_ek8cu"), ExtResource("47_0n258"), ExtResource("48_msvxl")]
 bus = &"Voice"
+delay_time = 0
+force_new = false
 cutoff_sfx = true
+overwrite_other = true
 
 [sub_resource type="Resource" id="Resource_b3ye4"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("46_ek8cu"), ExtResource("47_0n258"), ExtResource("48_msvxl")]
 bus = &"Voice"
+delay_time = 0
+force_new = false
 cutoff_sfx = true
+overwrite_other = true
 
 [sub_resource type="Resource" id="Resource_t5lrn"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("47_1l3qp")]
 bus = &"Motion"
+delay_time = 0
+force_new = false
 cutoff_sfx = false
+overwrite_other = false
 
 [sub_resource type="Resource" id="Resource_oau5y"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("53_k5674")]
 bus = &"Motion"
+delay_time = 0
+force_new = false
 cutoff_sfx = false
+overwrite_other = true
 
 [sub_resource type="Resource" id="Resource_2esv2"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("49_ym08k"), ExtResource("51_26k4x")]
 bus = &"Motion"
+delay_time = 0
+force_new = false
 cutoff_sfx = false
+overwrite_other = false
 
 [sub_resource type="Resource" id="Resource_buurc"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("53_bc4wc"), ExtResource("51_nubdx")]
 bus = &"Voice"
+delay_time = 0
+force_new = false
 cutoff_sfx = false
+overwrite_other = true
 
 [sub_resource type="Resource" id="Resource_cjrlj"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("50_snfws")]
 bus = &"Motion"
+delay_time = 0
+force_new = false
 cutoff_sfx = false
+overwrite_other = false
 
 [sub_resource type="Resource" id="Resource_bjym6"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("54_ra85y"), ExtResource("59_vsotw"), ExtResource("60_4ujrx")]
 bus = &"Voice"
+delay_time = 0
+force_new = false
 cutoff_sfx = false
+overwrite_other = true
 
 [sub_resource type="Resource" id="Resource_0beus"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("59_wk6r7")]
 bus = &"Motion"
+delay_time = 0
+force_new = false
 cutoff_sfx = false
+overwrite_other = false
 
 [sub_resource type="Resource" id="Resource_32052"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("60_07vye")]
 bus = &"Motion"
+delay_time = 0
+force_new = false
 cutoff_sfx = false
+overwrite_other = false
 
 [sub_resource type="Resource" id="Resource_w3vn1"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("68_w4awc")]
 bus = &"Motion"
+delay_time = 0
+force_new = false
 cutoff_sfx = true
+overwrite_other = false
 
 [sub_resource type="Resource" id="Resource_r38cq"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("73_b81tu"), ExtResource("74_6dsyu")]
 bus = &"Voice"
+delay_time = 0
+force_new = false
 cutoff_sfx = false
+overwrite_other = true
 
 [sub_resource type="Resource" id="Resource_a2hl0"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("72_qiukt")]
 bus = &"Motion"
+delay_time = 0
+force_new = false
 cutoff_sfx = false
+overwrite_other = false
 
 [sub_resource type="Resource" id="Resource_ax73p"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("75_dfuxb"), ExtResource("76_2i2di")]
 bus = &"Voice"
+delay_time = 0
+force_new = false
 cutoff_sfx = true
+overwrite_other = true
 
 [sub_resource type="Resource" id="Resource_2nfvq"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("67_cc7at")]
 bus = &"Motion"
+delay_time = 0
+force_new = false
 cutoff_sfx = true
+overwrite_other = false
 
 [sub_resource type="Resource" id="Resource_nya8m"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("79_5k4ls"), ExtResource("89_nb4nr"), ExtResource("60_4ujrx")]
 bus = &"Voice"
+delay_time = 0
+force_new = false
 cutoff_sfx = false
+overwrite_other = true
 
 [sub_resource type="Resource" id="Resource_foa8p"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("69_th0h2")]
 bus = &"Motion"
+delay_time = 0
+force_new = false
 cutoff_sfx = false
+overwrite_other = false
 
 [sub_resource type="Resource" id="Resource_5uwm8"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("89_nb4nr"), ExtResource("79_5k4ls"), ExtResource("60_4ujrx")]
 bus = &"Voice"
+delay_time = 0
+force_new = false
 cutoff_sfx = false
+overwrite_other = true
 
 [sub_resource type="Resource" id="Resource_l81lv"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("69_th0h2")]
 bus = &"Motion"
+delay_time = 0
+force_new = false
 cutoff_sfx = false
+overwrite_other = false
 
 [sub_resource type="Resource" id="Resource_7r27p"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("83_6bb16")]
 bus = &"Motion"
+delay_time = 0
+force_new = false
 cutoff_sfx = true
+overwrite_other = false
 
 [sub_resource type="Resource" id="Resource_8711x"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("87_rh14y"), ExtResource("88_2pqmv"), ExtResource("89_nb4nr")]
 bus = &"Voice"
+delay_time = 0
+force_new = false
 cutoff_sfx = false
+overwrite_other = true
 
 [sub_resource type="Resource" id="Resource_nl575"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("59_wk6r7")]
 bus = &"Motion"
+delay_time = 0
+force_new = false
 cutoff_sfx = false
+overwrite_other = false
 
 [sub_resource type="Resource" id="Resource_2y8iw"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("100_iksxt")]
 bus = &"Motion"
+delay_time = 0
+force_new = false
 cutoff_sfx = false
+overwrite_other = false
 
 [sub_resource type="Resource" id="Resource_7x71p"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("96_ex20x"), ExtResource("87_rh14y"), ExtResource("97_pkbn3")]
 bus = &"Voice"
+delay_time = 0
+force_new = false
 cutoff_sfx = false
+overwrite_other = true
 
 [sub_resource type="Resource" id="Resource_vehmo"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("98_1ccgr"), ExtResource("103_ovuyj"), ExtResource("100_yqne1")]
 bus = &"Voice"
+delay_time = 0
+force_new = false
 cutoff_sfx = false
+overwrite_other = true
 
 [sub_resource type="Resource" id="Resource_0hpnu"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("78_6j3mr")]
 bus = &"Motion"
+delay_time = 0
+force_new = false
 cutoff_sfx = false
+overwrite_other = false
 
 [sub_resource type="Resource" id="Resource_lib4c"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("96_ex20x"), ExtResource("87_rh14y"), ExtResource("97_pkbn3")]
 bus = &"Voice"
+delay_time = 0
+force_new = false
 cutoff_sfx = false
+overwrite_other = true
 
 [sub_resource type="Resource" id="Resource_6roi5"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("82_2iou6")]
 bus = &"Motion"
+delay_time = 0
+force_new = false
 cutoff_sfx = false
+overwrite_other = false
 
-[node name="Mario" type="CharacterBody2D" node_paths=PackedStringArray("state_manager", "movement", "input", "push_rays", "hitbox", "dive_hitbox", "small_hitbox", "crouchlock", "homing_radar", "spin_hitbox")]
+[node name="Mario" type="CharacterBody2D" node_paths=PackedStringArray("doll", "state_manager", "movement", "input", "push_rays", "hitbox", "dive_hitbox", "small_hitbox", "crouchlock", "homing_radar", "spin_hitbox")]
 collision_layer = 2
 floor_max_angle = 1.55334
 floor_snap_length = 16.0
 script = ExtResource("1_3d0l6")
+doll = NodePath("Doll")
 state_manager = NodePath("StateManager")
 movement = NodePath("Movement")
 input = NodePath("InputManager")
@@ -1756,14 +1853,12 @@ script = ExtResource("37_5bhpx")
 animation = &"stylish"
 anim_offset = Vector2i(0, 5)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_sitp4")])
-force_new = false
 
 [node name="TripleJumpStyle" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("37_5bhpx")
 animation = &"stylish"
 anim_offset = Vector2i(0, 5)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_b3ye4")])
-force_new = false
 
 [node name="GroundPoundLand" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("42_q3uxx")
@@ -1794,7 +1889,6 @@ jump_number = 1
 animation = &"jump"
 anim_offset = Vector2i(0, 5)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_2esv2")])
-force_new = false
 
 [node name="DoubleJump" type="Node" parent="StateManager/Airborne/DummyJump"]
 script = ExtResource("36_f2q1o")
@@ -1804,7 +1898,6 @@ jump_number = 2
 fall_state = &"DoubleFall"
 animation = &"double_jump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_buurc"), SubResource("Resource_cjrlj")])
-force_new = false
 
 [node name="TripleJump" type="Node" parent="StateManager/Airborne/DummyJump"]
 script = ExtResource("38_wnh1u")
@@ -1813,7 +1906,6 @@ min_jump_percent = 50.0
 animation = &"triple_jump"
 anim_offset = Vector2i(0, 5)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_bjym6"), SubResource("Resource_0beus"), SubResource("Resource_32052")])
-force_new = false
 
 [node name="Fall" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("21_cisab")
@@ -1840,14 +1932,12 @@ jump_power = 5.3
 push_power = 4.0
 animation = &"walljump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_r38cq"), SubResource("Resource_a2hl0")])
-force_new = false
 
 [node name="SpinWallbonk" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("65_echk5")
 wall_kickback_power_y = 1.5
 animation = &"spin_attack"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ax73p"), SubResource("Resource_2nfvq")])
-force_new = false
 
 [node name="Spinjump" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("56_j6jt4")
@@ -1868,7 +1958,6 @@ script = ExtResource("22_4r2ks")
 jump_power = 7.2
 animation = &"sideflip"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_nya8m"), SubResource("Resource_foa8p")])
-force_new = false
 
 [node name="Backflip" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("23_jcv3h")
@@ -1876,7 +1965,6 @@ jump_power = 7.5
 animation = &"backflip"
 anim_offset = Vector2i(0, 5)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_5uwm8"), SubResource("Resource_l81lv")])
-force_new = false
 
 [node name="GroundPound" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("46_4mnp2")
@@ -1884,7 +1972,6 @@ linger_time = 5.0
 animation = &"gp"
 anim_offset = Vector2i(0, 9)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_7r27p")])
-force_new = false
 
 [node name="GroundPoundFall" type="Node" parent="StateManager/Airborne/GroundPound"]
 script = ExtResource("47_bnupp")
@@ -1922,7 +2009,6 @@ accel_cap = 8.0
 hitbox_type = "Dive"
 animation = &"dive"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_7x71p")])
-force_new = false
 
 [node name="Rollout" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("103_p6px5")
@@ -1949,7 +2035,6 @@ script = ExtResource("50_mq1bv")
 spin_power = 3.0
 animation = &"spin_attack"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_vehmo"), SubResource("Resource_0hpnu")])
-force_new = false
 
 [node name="Dive" type="Node" parent="StateManager"]
 script = ExtResource("54_rdldk")

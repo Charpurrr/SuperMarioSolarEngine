@@ -34,7 +34,7 @@ func _play_footstep_sfx():
 	for frame in footstep_frames:
 		if frame == current_frame:
 			for sfx_list in sfx_layers:
-				SFXLayer.play_sfx(self, sfx_list, force_new)
+				sfx_list.play_sfx_at(self)
 
 
 func _on_exit():

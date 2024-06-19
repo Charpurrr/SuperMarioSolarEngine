@@ -15,7 +15,7 @@ func _on_enter(play_land_sfx):
 
 	if play_land_sfx:
 		for sfx_list in sfx_layers:
-			SFXLayer.play_sfx(self, sfx_list, force_new)
+			sfx_list.play_sfx_at(self)
 
 
 func _trans_rules():

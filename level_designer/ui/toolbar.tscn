@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://level_designer/tools/toolbar.gd" id="1_an7pt"]
 [ext_resource type="Script" path="res://level_designer/tools/select_tool/select_tool.gd" id="2_4xoly"]
-[ext_resource type="Texture2D" uid="uid://dmy6doqqfdf55" path="res://level_designer/tools/select_tool/select.png" id="3_jip52"]
+[ext_resource type="Texture2D" uid="uid://b6gpj074qmkmk" path="res://level_designer/tools/select_tool/select.png" id="3_jip52"]
 [ext_resource type="Script" path="res://level_designer/tools/pen_tool.gd" id="3_tuarx"]
 [ext_resource type="Script" path="res://level_designer/tools/erase_tool.gd" id="4_y2rc6"]
-[ext_resource type="Texture2D" uid="uid://b5cd8k253igb5" path="res://level_designer/tools/cursors/pen.png" id="5_03ff0"]
+[ext_resource type="Texture2D" uid="uid://6cnxs886fivr" path="res://level_designer/tools/cursors/pen.png" id="5_03ff0"]
 [ext_resource type="Script" path="res://level_designer/tools/eyedrop_tool.gd" id="5_s38ce"]
 [ext_resource type="Script" path="res://level_designer/tools/shape_tool.gd" id="6_xogfa"]
 [ext_resource type="Script" path="res://level_designer/tools/gravity_tool.gd" id="7_oq4tl"]

@@ -51,7 +51,7 @@ func _play_footstep_sfx():
 	for frame in footstep_frames:
 		if frame == current_frame:
 			for sfx_list in sfx_layers:
-				SFXLayer.play_sfx(self, sfx_list, force_new)
+				sfx_list.play_sfx_at(self)
 
 
 func _on_exit():
@@ -78,13 +78,13 @@ func _trans_rules():
 	if Input.is_action_pressed(&"down"):
 		if movement.is_slide_slope():
 			return &"ButtSlide"
-		else:
-			return [&"Crouch", [false, true]]
+
+		return [&"Crouch", [false, true]]
 
 	if InputManager.get_x() != 0 and actor.is_on_wall():
 		if actor.push_rays.is_colliding():
 			return &"Push"
-		else:
-			return &"DryPush"
+
+		return &"DryPush"
 
 	return &""

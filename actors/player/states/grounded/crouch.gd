@@ -12,7 +12,7 @@ func _on_enter(array):
 
 	if array[1] == true:
 		for sfx_list in sfx_layers:
-			SFXLayer.play_sfx(self, sfx_list, force_new)
+			sfx_list.play_sfx_at(self)
 
 
 func _physics_tick():

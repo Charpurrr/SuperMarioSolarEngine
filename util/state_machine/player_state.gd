@@ -11,14 +11,13 @@ extends State
 @export var anim_offset: Vector2i
 
 @export_category(&"Sound")
-## If the sound effect(s) should play as soon as the state starts or not.
+## Whether or not the sound effect(s) should play as soon as the state starts.
 @export var on_enter: bool = true
 ## sfx_layers is a list of the possible sound effects that can play at once.
-## [br][br]This is useful if you want a state to play more than just one sound on entry.
-## [br][br]Every array inside of the sfx_layers array is said list of possible sound effects it can cycle through.
+## [br][br]This is useful if you want a state to play more than one sound on entry.
+## [br][br]Every array inside of the sfx_layers array is said list of possible
+## sound effects it can cycle through.
 @export var sfx_layers: Array[SFXLayer]
-## If the next sound effect should always differ from the previous one or not.
-@export var force_new: bool = true
 
 @onready var input: InputManager = null
 @onready var movement: PMovement = null
@@ -69,7 +68,7 @@ func _set_animation():
 func _play_sounds():
 	if on_enter and not sfx_layers.is_empty():
 		for sfx_list in sfx_layers:
-			SFXLayer.play_sfx(self, sfx_list, force_new)
+			sfx_list.play_sfx_at(self)
 
 
 func trigger_exit():
