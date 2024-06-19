@@ -41,7 +41,7 @@
 atlas = ExtResource("28_n5bx3")
 region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_xbvsn"]
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_2nb1h"]
 points = PackedVector2Array(-14, 14, -4, 0, 1, -6, 9, -6, 12, -2, 13, 8, 10, 19, 1, 24, -7, 24, -14, 20, -14, 14)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8n85e"]
@@ -1310,7 +1310,7 @@ animations = [{
 script = ExtResource("3_og5mc")
 animation = &"run"
 sprite_frames = SubResource("SpriteFrames_23oer")
-selection_shape = SubResource("ConvexPolygonShape2D_xbvsn")
+selection_shape = SubResource("ConvexPolygonShape2D_2nb1h")
 
 [resource]
 script = ExtResource("1_cmbnh")

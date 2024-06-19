@@ -4,11 +4,11 @@ extends ResourceGenerator
 ## Generator and editor for selection shapes of editor items.
 
 ## Press to apply the edits made to the shape.
-@export var apply_manual_edit: bool = false:
+## The button in the inspector is added through the EditorInspectorPlugin: ButtonProperty
+@export_placeholder("Button_Apply_Manual_Edit") var apply_manual_edit:
 	set(val):
-		_save_edits()
-	get:
-		return false
+		if not val.is_empty():
+			_save_edits()
 
 ## An EditorItem resource can be dragged here to edit it.
 @export var manual_edit_item: EditorItem = null:
@@ -28,9 +28,13 @@ var preview_display: Node2D = null
 ## Saves edits to the selected item.
 func _save_edits():
 	var shape = ConvexPolygonShape2D.new()
+
 	shape.points = edit_polygon.polygon
 	manual_edit_item.preview_display_data.set_selection_shape(shape)
+
 	_resave(manual_edit_item)
+
+	print("Applied changes!")
 
 
 ## Updates the edit preview to match the selected edit item.

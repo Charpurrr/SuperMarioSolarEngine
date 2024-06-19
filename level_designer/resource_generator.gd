@@ -5,11 +5,11 @@ extends Node
 
 ## Press to refresh and re-process all related resources.
 ## The value isn't stored, this is just an export that triggers a refresh when clicked.
-@export var refresh_resources: bool:
-	set(_value):
-		_refresh()
-	get:
-		return false
+## The button in the inspector is added through the EditorInspectorPlugin: ButtonProperty
+@export_placeholder("Button_Generate_Missing_Resources") var refresh_resources = "":
+	set(val):
+		if not val.is_empty():
+			_refresh()
 
 
 ## Refresh and re-process all related resources.
