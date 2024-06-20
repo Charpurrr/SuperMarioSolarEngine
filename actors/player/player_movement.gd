@@ -64,6 +64,14 @@ var return_res_prog: float
 
 ## Sets the floor_snap_length of the actor.
 @export var snap_length: float = 16
+
+## The y position of the point you walljumped from.
+## Used to avoid being able to scale a wall infinitely.
+var walljump_start_y: float
+## How many units you need to pass from your original walljump y position
+## in order to be turned around. See 'walljump_start_y'.
+## Defaulted to roughly the amount of height you can get from a spin.
+@export var walljump_turn_threshold: float = 10.0
 #endregion
 
 #region Timer Variables

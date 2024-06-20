@@ -3,6 +3,14 @@ extends Fall
 ## Pressing up after a groundpound.
 
 
+func _physics_tick():
+	var should_flip: bool
+
+	should_flip = actor.position.y > movement.walljump_start_y + movement.walljump_turn_threshold
+
+	movement.move_x("air", should_flip)
+
+
 func _trans_rules():
 	if movement.can_spin() and input.buffered_input(&"spin"):
 		return &"Twirl"
