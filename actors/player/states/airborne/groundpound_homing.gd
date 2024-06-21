@@ -18,12 +18,10 @@ func _on_enter(_handover):
 	queued_speed = actor.vel.x
 
 	movement.consume_coyote_timer()
-	movement.body_rotation = 0
 
 	actor.vel.y = 0
 	actor.vel.x = 0
 
-	actor.doll.rotation = 0
 	actor.position.y += gp_offset
 
 	linger_timer = linger_time

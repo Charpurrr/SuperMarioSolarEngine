@@ -47,7 +47,6 @@ func _physics_tick():
 		movement.move_x("air", false)
 	else:
 		movement.move_x("ground", false)
-		input.queue_consume(&"spin")
 
 	if not actor.doll.is_playing():
 		finished_init = true
@@ -69,8 +68,8 @@ func _on_exit():
 func _trans_rules():
 	if is_airspin:
 		return _air_rules()
-	else:
-		return _ground_rules()
+
+	return _ground_rules()
 
 
 func _air_rules() -> Variant:
@@ -84,8 +83,8 @@ func _air_rules() -> Variant:
 		if not movement.dived and movement.can_air_action() and input.buffered_input(&"dive"):
 			if Input.is_action_pressed(&"down"):
 				return [&"FaceplantDive", actor.vel.x]
-			else:
-				return [&"Dive", false]
+
+			return [&"Dive", false]
 
 	if movement.finished_freefall_timer():
 		return &"Freefall"
@@ -93,8 +92,8 @@ func _air_rules() -> Variant:
 	if Input.is_action_just_pressed(&"down") and movement.can_air_action():
 		if not finished_init:
 			return &"HomingGroundPound"
-		else:
-			return &"GroundPound"
+
+		return &"GroundPound"
 
 	if finished_init and actor.push_rays.is_colliding() and input.buffered_input(&"jump"):
 		return [&"Walljump", -movement.facing_direction]
@@ -106,11 +105,12 @@ func _air_rules() -> Variant:
 
 
 func _ground_rules() -> Variant:
-	if actor.is_on_floor() and not actor.doll.is_playing():
-		return &"Idle"
+	if actor.is_on_floor():
+		if not actor.doll.is_playing():
+			return &"Idle"
 
-	if input.buffered_input(&"jump"):
-		return &"Spinjump"
+		if input.buffered_input(&"jump"):
+			return &"Spinjump"
 
 	return &""
 

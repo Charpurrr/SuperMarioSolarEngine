@@ -45,13 +45,16 @@ func _trans_rules():
 	if movement.is_slide_slope():
 		return &"ButtSlide"
 
+	if movement.can_spin() and input.buffered_input(&"spin"):
+		return &"Breakdance"
+
 	if not InputManager.is_moving_x() or actor.is_on_wall():
 		return [&"Crouch", [true, false]]
 
 	if not actor.crouchlock.enabled and input.buffered_input(&"jump"):
-		if InputManager.get_x_dir() == 0:
+		if is_equal_approx(actor.vel.x, 0.0) or sign(actor.vel.x) != movement.facing_direction:
 			return &"Backflip"
-		else:
+		elif sign(actor.vel.x) == movement.facing_direction:
 			return &"Longjump"
 
 	if not Input.is_action_pressed(&"down") and not actor.crouchlock.enabled:

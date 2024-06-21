@@ -7,11 +7,13 @@ extends PlayerState
 @export var x_power: float = 6.0
 ## The vertical dive power only applied in certain cases.
 @export var y_power: float = 1.88
-## The maximum horizontal speed you need to reach before dives no longer contribute to your x velocity.
+## The maximum horizontal speed you need to reach before dives no longer
+## contribute to your x velocity.
 @export var accel_cap: float = 10.0
 
 
 func _on_enter(bellyflop):
+	movement.activate_freefall_timer()
 	movement.consume_coyote_timer()
 	movement.consec_jumps = 0
 	movement.dived = true
@@ -40,7 +42,8 @@ func _on_enter(bellyflop):
 
 
 func _physics_tick():
-	movement.body_rotation = TAU / 4 + actor.vel.angle()
+	if not actor.is_on_floor():
+		movement.body_rotation = TAU / 4 + actor.vel.angle()
 
 	actor.doll.rotation = lerp_angle(actor.doll.rotation, movement.body_rotation, 0.5)
 
@@ -50,7 +53,7 @@ func _subsequent_ticks():
 
 
 func _on_exit():
-	movement.body_rotation = TAU / 4
+	actor.doll.rotation = 0
 
 
 func _trans_rules():
@@ -62,5 +65,8 @@ func _trans_rules():
 
 	if movement.can_air_action() and Input.is_action_just_pressed(&"down"):
 		return &"GroundPound"
+
+	if movement.finished_freefall_timer():
+		return &"Freefall"
 
 	return &""

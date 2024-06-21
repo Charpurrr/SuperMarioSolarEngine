@@ -13,7 +13,7 @@ func _trans_rules():
 	if not actor.crouchlock.enabled and input.buffered_input(&"jump"):
 		if actor.vel.x == 0:
 			return &"Backflip"
-		else:
-			return &"Longjump"
+
+		return &"Longjump"
 
 	return &""

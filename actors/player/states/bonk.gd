@@ -19,9 +19,6 @@ var finished_rotating: bool
 func _on_enter(_handover):
 	movement.activate_freefall_timer()
 
-	movement.body_rotation = 0
-	actor.doll.rotation = 0
-
 	actor.vel.x = wall_kickback_power_x * -movement.facing_direction
 	actor.vel.y = -wall_kickback_power_y
 
@@ -61,8 +58,8 @@ func _trans_rules():
 		if not movement.dived and movement.can_air_action() and input.buffered_input(&"dive"):
 			if Input.is_action_pressed(&"down"):
 				return [&"FaceplantDive", actor.vel.x]
-			else:
-				return [&"Dive", false]
+
+			return [&"Dive", false]
 
 		if movement.can_air_action() and input.buffered_input(&"spin"):
 			return &"Twirl"

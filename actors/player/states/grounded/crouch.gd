@@ -36,13 +36,14 @@ func _trans_rules():
 	if _can_crouchwalk():
 		return &"Waddle"
 
-	if input.buffered_input(&"spin"):
+	if movement.can_spin() and input.buffered_input(&"spin"):
 		return &"Breakdance"
 
 	if not actor.crouchlock.enabled and input.buffered_input(&"jump"):
-		if actor.vel.x == 0:
+		if is_equal_approx(actor.vel.x, 0.0) or sign(actor.vel.x) != movement.facing_direction:
 			return &"Backflip"
-		else:
+
+		if sign(actor.vel.x) == movement.facing_direction:
 			return &"Longjump"
 
 	if not Input.is_action_pressed(&"down") and not actor.crouchlock.enabled:

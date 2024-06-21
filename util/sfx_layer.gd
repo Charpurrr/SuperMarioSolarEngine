@@ -6,8 +6,8 @@ extends Resource
 ## What audio bus this layer should play its sound effect(s) to.
 @export var bus: StringName
 
-## How many frames pass before the sound effect(s) play.
-@export var delay_time: int = 0
+## How many seconds pass before the sound effect(s) play.
+@export var delay_time: float = 0.0
 ## Whether or not a sound effect can play more than once in a row.
 @export var force_new: bool = false
 ## Whether or not changing the state should end the sound effect(s) early.
@@ -21,9 +21,12 @@ var new_pick: AudioStream
 
 
 ## Plays a sound effect from the list at a specific node.
-func play_sfx_at(node: Object):
-	var player := AudioStreamPlayer.new()
+func play_sfx_at(node: Node):
+	var timer: SceneTreeTimer = node.get_tree().create_timer(delay_time)
 
+	await timer.timeout
+
+	var player := AudioStreamPlayer.new()
 	new_pick = sfx_list.pick_random()
 
 	if force_new and sfx_list.size() > 1:

@@ -5,6 +5,7 @@ extends PlayerState
 
 func _on_enter(_handover):
 	actor.floor_stop_on_slope = false
+	actor.doll.rotation = movement.body_rotation
 
 
 func _physics_tick():
@@ -16,8 +17,6 @@ func _physics_tick():
 
 
 func _on_exit():
-	movement.body_rotation = 0
-
 	actor.floor_stop_on_slope = true
 	actor.doll.rotation = 0
 
