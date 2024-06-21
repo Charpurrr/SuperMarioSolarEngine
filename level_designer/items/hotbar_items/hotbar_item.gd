@@ -87,6 +87,9 @@ func _get_drag_data(_at_position):
 	if item_data == null:
 		return null
 
+	if !self.is_class("SearchItem"):
+		hotbar.swapping_item = self
+
 	_tween_decrease()
 
 	var preview_texture := TextureRect.new()
@@ -112,7 +115,12 @@ func _can_drop_data(_at_position, data):
 
 
 func _drop_data(_at_position, data):
-	create_data(data)
+	if item_icon.texture != null and item_data != null:
+		hotbar.swap_data(item_data)
+		hotbar.swapping_item = null
+		create_data(data)
+	else:
+		create_data(data)
 
 
 func _clear_data():
