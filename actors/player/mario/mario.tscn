@@ -127,7 +127,7 @@
 [ext_resource type="Script" path="res://actors/player/states/airborne/butt_slide_jump.gd" id="103_vw86a"]
 [ext_resource type="Script" path="res://actors/player/states/butt_slide.gd" id="105_wa8lx"]
 [ext_resource type="AudioStream" uid="uid://bhklahfo0oipn" path="res://actors/player/mario/voice/ya_hoo.wav" id="108_e31o1"]
-[ext_resource type="AudioStream" uid="uid://umfd1p5l48qy" path="res://actors/player/mario/voice/wahahoo(spinjump).wav" id="109_s2cvh"]
+[ext_resource type="AudioStream" uid="uid://b17lwsuovnc5t" path="res://actors/player/mario/voice/wahahoo.wav" id="109_s2cvh"]
 [ext_resource type="AudioStream" uid="uid://cug0bull4md7o" path="res://actors/player/mario/voice/doh.wav" id="110_eavfs"]
 [ext_resource type="AudioStream" uid="uid://b87cfbxjjqiqq" path="res://actors/player/mario/voice/waf.wav" id="111_vejrh"]
 [ext_resource type="Script" path="res://actors/player/states/bonk.gd" id="115_s81vk"]
