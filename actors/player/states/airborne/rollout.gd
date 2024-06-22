@@ -25,7 +25,12 @@ func _trans_rules():
 	if actor.is_on_floor():
 		return &"Idle"
 
-	if not movement.dived and movement.can_air_action() and input.buffered_input(&"dive"):
+	if (
+		not movement.dived
+		and movement.can_air_action()
+		and actor.vel.y > 0
+		and input.buffered_input(&"dive")
+	):
 		if Input.is_action_pressed(&"down"):
 			return [&"FaceplantDive", actor.vel.x]
 
