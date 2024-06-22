@@ -3,6 +3,7 @@ extends HFlowContainer
 ## The level designer hotbar.
 
 var pinned_items: Array = []
+var swapping_item: HotbarItem
 
 @export var editor: LevelEditor
 
@@ -40,3 +41,8 @@ func pin_item(item: HotbarItem):
 
 func unpin_item(item: HotbarItem):
 	pinned_items.erase(item)
+
+
+func swap_data(item_data: EditorItem):
+	if swapping_item != null:
+		swapping_item.create_data(item_data)
