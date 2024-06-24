@@ -87,4 +87,11 @@ func _trans_rules():
 
 		return &"DryPush"
 
+	## the following causes a weird interaction where mario constantly slips and gets back up
+	## of a second but gets back up immediately only to repeat it again. To be fair though
+	## this interaction is actually present in some mario games and can be prevented by just
+	## designing levels with this in mind
+	if movement.is_steep_slope():
+		return &"Slip"
+
 	return &""

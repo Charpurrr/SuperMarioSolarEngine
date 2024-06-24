@@ -49,4 +49,7 @@ func _trans_rules():
 
 		return &"Idle"
 
+	if movement.is_steep_slope():
+		return &"Slip"
+
 	return &""
