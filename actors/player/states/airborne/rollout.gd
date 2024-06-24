@@ -22,19 +22,20 @@ func _on_enter(_handover):
 
 
 func _trans_rules():
-	if actor.is_on_floor():
-		return &"Idle"
-
 	if (
 		not movement.dived
 		and movement.can_air_action()
 		and actor.vel.y > 0
-		and input.buffered_input(&"dive")
+		and (input.buffered_input(&"dive")
+		or Input.is_action_pressed(&"dive"))
 	):
 		if Input.is_action_pressed(&"down"):
 			return [&"FaceplantDive", actor.vel.x]
 
 		return [&"Dive", false]
+
+	if actor.is_on_floor():
+		return &"Idle"
 
 	if movement.can_spin() and input.buffered_input(&"spin"):
 		return &"Spin"

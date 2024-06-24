@@ -30,8 +30,10 @@ func _trans_rules():
 			return [&"Dive", true]
 
 		if (
-			(InputManager.get_x_dir() == movement.facing_direction or InputManager.get_x_dir() == 0)
-			and (input.buffered_input(&"jump") or Input.is_action_pressed(&"jump"))
+			(InputManager.get_x_dir() == movement.facing_direction 
+			or InputManager.get_x_dir() == 0)
+			and (input.buffered_input(&"jump") 
+			or Input.is_action_pressed(&"jump"))
 		):
 			return &"Rollout"
 

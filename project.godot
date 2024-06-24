@@ -21,6 +21,7 @@ boot_splash/use_filter=false
 [autoload]
 
 LocalSettings="*res://util/globals/local_settings.gd"
+GameState="*res://util/globals/game_state.gd"
 
 [display]
 

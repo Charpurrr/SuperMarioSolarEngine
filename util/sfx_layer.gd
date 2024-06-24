@@ -24,7 +24,10 @@ var new_pick: AudioStream
 func play_sfx_at(node: Node):
 	var timer: SceneTreeTimer = node.get_tree().create_timer(delay_time)
 
-	await timer.timeout
+	if delay_time != 0:
+		await timer.timeout
+
+	if node == null: return
 
 	var player := AudioStreamPlayer.new()
 	new_pick = sfx_list.pick_random()
@@ -41,6 +44,7 @@ func play_sfx_at(node: Node):
 
 	player.bus = bus
 	player.add_to_group(bus)
+
 
 	node.add_child(player)
 
