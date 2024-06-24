@@ -44,5 +44,5 @@ func unpin_item(item: HotbarItem):
 
 
 func swap_data(item_data: EditorItem):
-	if swapping_item != null:
+	if swapping_item:
 		swapping_item.create_data(item_data)
