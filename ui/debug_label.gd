@@ -1,9 +1,9 @@
 extends Label
 
+@onready var player: CharacterBody2D = $"../../".find_child("Mario")
+
 
 func _physics_process(_delta):
-	var player: CharacterBody2D = get_parent().player
-
 	if player == null:
 		return
 

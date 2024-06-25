@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ccj3teu3h6xfm"]
+[gd_scene load_steps=17 format=3 uid="uid://ccj3teu3h6xfm"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_pakjx"]
 [ext_resource type="Script" path="res://ui/debug_label.gd" id="2_suudb"]
@@ -11,15 +11,27 @@
 [ext_resource type="Texture2D" uid="uid://7p0auiyqcgk3" path="res://ui/input_display/input_display_ico6.png" id="8_nyjo7"]
 [ext_resource type="Texture2D" uid="uid://dir44lhfrdcxu" path="res://ui/input_display/input_display_ico7.png" id="9_smbrs"]
 [ext_resource type="Texture2D" uid="uid://15yce5ngma24" path="res://ui/input_display/input_display_ico8.png" id="10_5r8on"]
+[ext_resource type="Script" path="res://ui/pause_menu/pause_menu.gd" id="12_l4gs6"]
+[ext_resource type="Shader" path="res://ui/blur.gdshader" id="12_wqetc"]
+[ext_resource type="Script" path="res://ui/pause_menu/audio_setting.gd" id="14_466vg"]
 
-[node name="UI" type="CanvasLayer"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8xxao"]
+shader = ExtResource("12_wqetc")
+shader_parameter/lod = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_20l3y"]
+font_size = 111
+
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("notif_list", "pause_menu")]
 process_mode = 3
 script = ExtResource("1_pakjx")
 notif_scene = ExtResource("2_ufvuv")
+notif_list = NodePath("Notifications")
+pause_menu = NodePath("PauseMenu")
 
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="DebugLabel" type="Label" parent="."]
+offset_right = 86.0
+offset_bottom = 179.0
 text = "fps =
 
 velocity.x =
@@ -30,64 +42,233 @@ SCL ="
 script = ExtResource("2_suudb")
 metadata/_edit_lock_ = true
 
-[node name="Notifications" type="Node" parent="."]
-
-[node name="InputDisplay" type="Node2D" parent="."]
-position = Vector2(-4, -706)
+[node name="InputDisplay" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = -16.0
+grow_vertical = 0
 scale = Vector2(2, 2)
 
-[node name="Shift" type="Sprite2D" parent="InputDisplay"]
+[node name="HBoxContainer" type="HBoxContainer" parent="InputDisplay"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -33.0
+offset_right = 132.0
+grow_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="Shift" type="TextureRect" parent="InputDisplay/HBoxContainer"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.498039)
-position = Vector2(10, 689)
+layout_mode = 2
+size_flags_vertical = 8
 texture = ExtResource("3_4oo64")
-centered = false
+stretch_mode = 4
 
-[node name="Z" type="Sprite2D" parent="InputDisplay"]
+[node name="ActionButtons" type="HBoxContainer" parent="InputDisplay/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 1
+
+[node name="Z" type="TextureRect" parent="InputDisplay/HBoxContainer/ActionButtons"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.498039)
-position = Vector2(34, 689)
+layout_mode = 2
 texture = ExtResource("8_nyjo7")
-centered = false
 
-[node name="X" type="Sprite2D" parent="InputDisplay"]
+[node name="X" type="TextureRect" parent="InputDisplay/HBoxContainer/ActionButtons"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.498039)
-position = Vector2(51, 689)
+layout_mode = 2
 texture = ExtResource("9_smbrs")
-centered = false
 
-[node name="C" type="Sprite2D" parent="InputDisplay"]
+[node name="C" type="TextureRect" parent="InputDisplay/HBoxContainer/ActionButtons"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.498039)
-position = Vector2(68, 689)
+layout_mode = 2
 texture = ExtResource("10_5r8on")
-centered = false
 
-[node name="Up" type="Sprite2D" parent="InputDisplay"]
+[node name="GridContainer" type="GridContainer" parent="InputDisplay/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 1
+theme_override_constants/v_separation = 1
+columns = 3
+
+[node name="Control" type="Control" parent="InputDisplay/HBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Up" type="TextureRect" parent="InputDisplay/HBoxContainer/GridContainer"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.498039)
-position = Vector2(109, 672)
+layout_mode = 2
 texture = ExtResource("4_8x05r")
-centered = false
 
-[node name="Right" type="Sprite2D" parent="InputDisplay"]
+[node name="Control2" type="Control" parent="InputDisplay/HBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Left" type="TextureRect" parent="InputDisplay/HBoxContainer/GridContainer"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.498039)
-position = Vector2(126, 689)
-texture = ExtResource("5_cgoe6")
-centered = false
-
-[node name="Down" type="Sprite2D" parent="InputDisplay"]
-unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.498039)
-position = Vector2(109, 689)
-texture = ExtResource("6_7ipv2")
-centered = false
-
-[node name="Left" type="Sprite2D" parent="InputDisplay"]
-unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.498039)
-position = Vector2(92, 689)
+layout_mode = 2
 texture = ExtResource("7_yer77")
-centered = false
+
+[node name="Down" type="TextureRect" parent="InputDisplay/HBoxContainer/GridContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 2
+texture = ExtResource("6_7ipv2")
+
+[node name="Right" type="TextureRect" parent="InputDisplay/HBoxContainer/GridContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 2
+texture = ExtResource("5_cgoe6")
+
+[node name="PauseMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("12_l4gs6")
+
+[node name="Blur" type="ColorRect" parent="PauseMenu"]
+material = SubResource("ShaderMaterial_8xxao")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Contents" type="VBoxContainer" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -213.5
+offset_top = -203.5
+offset_right = 213.5
+offset_bottom = 203.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Paused" type="Label" parent="PauseMenu/Contents"]
+layout_mode = 2
+text = "PUASED"
+label_settings = SubResource("LabelSettings_20l3y")
+
+[node name="MasterText" type="Label" parent="PauseMenu/Contents"]
+layout_mode = 2
+text = "Master Volume"
+
+[node name="Master" type="HBoxContainer" parent="PauseMenu/Contents" node_paths=PackedStringArray("reset", "slider", "percentage")]
+layout_mode = 2
+script = ExtResource("14_466vg")
+bus_name = &"Master"
+reset = NodePath("MasterButton")
+slider = NodePath("MasterSlider")
+percentage = NodePath("Percentage")
+
+[node name="MasterButton" type="Button" parent="PauseMenu/Contents/Master"]
+custom_minimum_size = Vector2(31, 0)
+layout_mode = 2
+disabled = true
+text = "⟳"
+
+[node name="MasterSlider" type="HSlider" parent="PauseMenu/Contents/Master"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 2.0
+step = 0.02
+value = 1.0
+
+[node name="Percentage" type="Label" parent="PauseMenu/Contents/Master"]
+custom_minimum_size = Vector2(42, 0)
+layout_mode = 2
+text = "100%"
+
+[node name="BGMText" type="Label" parent="PauseMenu/Contents"]
+layout_mode = 2
+text = "BGM Volume"
+
+[node name="BGM" type="HBoxContainer" parent="PauseMenu/Contents" node_paths=PackedStringArray("reset", "slider", "percentage")]
+layout_mode = 2
+script = ExtResource("14_466vg")
+bus_name = &"Music"
+reset = NodePath("BGMButton")
+slider = NodePath("BGMSlider")
+percentage = NodePath("Percentage")
+
+[node name="BGMButton" type="Button" parent="PauseMenu/Contents/BGM"]
+custom_minimum_size = Vector2(31, 0)
+layout_mode = 2
+disabled = true
+text = "⟳"
+
+[node name="BGMSlider" type="HSlider" parent="PauseMenu/Contents/BGM"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 2.0
+step = 0.02
+value = 1.0
+
+[node name="Percentage" type="Label" parent="PauseMenu/Contents/BGM"]
+custom_minimum_size = Vector2(42, 0)
+layout_mode = 2
+text = "100%"
+
+[node name="SFXText" type="Label" parent="PauseMenu/Contents"]
+layout_mode = 2
+text = "SFX Volume"
+
+[node name="SFX" type="HBoxContainer" parent="PauseMenu/Contents" node_paths=PackedStringArray("reset", "slider", "percentage")]
+layout_mode = 2
+script = ExtResource("14_466vg")
+bus_name = &"SFX"
+reset = NodePath("SFXButton")
+slider = NodePath("SFXSlider")
+percentage = NodePath("Percentage")
+
+[node name="SFXButton" type="Button" parent="PauseMenu/Contents/SFX"]
+custom_minimum_size = Vector2(31, 0)
+layout_mode = 2
+disabled = true
+text = "⟳"
+
+[node name="SFXSlider" type="HSlider" parent="PauseMenu/Contents/SFX"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 2.0
+step = 0.02
+value = 1.0
+
+[node name="Percentage" type="Label" parent="PauseMenu/Contents/SFX"]
+custom_minimum_size = Vector2(42, 0)
+layout_mode = 2
+text = "100%"
+
+[node name="Space" type="Control" parent="PauseMenu/Contents"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Bindings" type="Button" parent="PauseMenu/Contents"]
+layout_mode = 2
+text = "Bindings"
+
+[node name="Notifications" type="Node" parent="."]

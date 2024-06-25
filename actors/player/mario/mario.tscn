@@ -1602,13 +1602,13 @@ force_new = false
 cutoff_sfx = false
 overwrite_other = false
 
-[sub_resource type="Resource" id="Resource_ax73p"]
+[sub_resource type="Resource" id="Resource_bloag"]
 script = ExtResource("49_apkmk")
-sfx_list = [null, null]
+sfx_list = [ExtResource("120_qvxml"), ExtResource("121_se657"), ExtResource("122_r00kr"), ExtResource("123_v30he"), ExtResource("124_02vep"), ExtResource("125_l4e5j"), ExtResource("126_3xy3c")]
 bus = &"Voice"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = true
+cutoff_sfx = false
 overwrite_other = true
 
 [sub_resource type="Resource" id="Resource_2nfvq"]
@@ -1782,7 +1782,7 @@ force_new = false
 cutoff_sfx = false
 overwrite_other = false
 
-[sub_resource type="Resource" id="Resource_dwh1f"]
+[sub_resource type="Resource" id="Resource_ujdp5"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("120_qvxml"), ExtResource("121_se657"), ExtResource("122_r00kr"), ExtResource("123_v30he"), ExtResource("124_02vep"), ExtResource("125_l4e5j"), ExtResource("126_3xy3c")]
 bus = &"Voice"
@@ -2040,7 +2040,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_pq6ep"), SubR
 script = ExtResource("65_echk5")
 wall_kickback_power_y = 1.5
 animation = &"spin_attack"
-sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ax73p"), SubResource("Resource_2nfvq")])
+sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_bloag"), SubResource("Resource_2nfvq")])
 
 [node name="Spinjump" type="Node" parent="StateManager/Airborne"]
 script = ExtResource("56_j6jt4")
@@ -2155,7 +2155,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_lib4c"), SubR
 script = ExtResource("115_s81vk")
 rotation_time = 45.0
 animation = &"bonk"
-sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_dwh1f")])
+sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ujdp5")])
 
 [node name="ButtSlide" type="Node" parent="StateManager"]
 script = ExtResource("105_wa8lx")
