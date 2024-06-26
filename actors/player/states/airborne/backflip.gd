@@ -31,6 +31,9 @@ func _subsequent_ticks():
 
 
 func _trans_rules():
+	if movement.is_steep_slope():
+		return &"Slip"
+	
 	if actor.push_rays.is_colliding() and input.buffered_input(&"jump"):
 		return [&"Walljump", -movement.facing_direction]
 

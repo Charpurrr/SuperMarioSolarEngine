@@ -22,9 +22,6 @@ func _trans_rules():
 	if not actor.is_on_floor():
 		return &"Fall"
 
-	if movement.is_steep_slope():
-			return &"Slip"
-
 	return &""
 
 
