@@ -87,4 +87,8 @@ func _trans_rules():
 
 		return &"DryPush"
 
+	## the following causes a weird interaction where mario constantly slips and gets back up.
+	if movement.is_steep_slope():
+		return &"Slip"
+
 	return &""

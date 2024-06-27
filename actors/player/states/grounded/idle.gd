@@ -40,4 +40,7 @@ func _trans_rules():
 	if input.buffered_input(&"jump"):
 		return &"DummyJump"
 
+	if movement.is_steep_slope():
+		return &"Slip"
+
 	return &""

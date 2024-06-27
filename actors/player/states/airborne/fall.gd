@@ -34,6 +34,9 @@ func _trans_rules():
 	if movement.can_init_wallslide():
 		return &"Wallslide"
 
+	if movement.is_steep_slope():
+		return &"Slip"
+
 	if movement.finished_freefall_timer():
 		return &"Freefall"
 

@@ -214,7 +214,7 @@ func _trans_rules():
 	if not movement.is_slide_slope() and is_equal_approx(actor.vel.x, 0):
 		return [&"Crouch", [true, false]]
 
-	if actor.is_on_floor():
+	if actor.is_on_floor() and !movement.is_steep_slope():
 		if not Input.is_action_pressed(&"down"):
 			if old_direction.y == 0 and input_dir != 0 or Input.is_action_just_pressed(&"up"):
 				return &"Idle"
