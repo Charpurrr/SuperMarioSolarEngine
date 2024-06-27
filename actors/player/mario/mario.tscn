@@ -1,4 +1,4 @@
-[gd_scene load_steps=337 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=338 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://actors/player/player.gd" id="1_3d0l6"]
 [ext_resource type="Texture2D" uid="uid://bbgppbst4akvn" path="res://actors/player/mario/anime/backflip.png" id="2_i2o54"]
@@ -83,6 +83,7 @@
 [ext_resource type="Script" path="res://actors/player/states/airborne/twirl.gd" id="57_dqusk"]
 [ext_resource type="AudioStream" uid="uid://bwsqbo0shsv1n" path="res://actors/player/mario/motion_nsmbw/triplejump.wav" id="59_wk6r7"]
 [ext_resource type="AudioStream" uid="uid://cwkfh51wv1ios" path="res://actors/player/mario/motion_nsmbw/triplejumpflip.wav" id="60_07vye"]
+[ext_resource type="Script" path="res://actors/player/states/grounded/slip.gd" id="60_456op"]
 [ext_resource type="AudioStream" uid="uid://dx127oekmmsnc" path="res://actors/player/mario/voice/yo_jump.wav" id="64_rch8v"]
 [ext_resource type="Script" path="res://actors/player/states/airborne/spin_wallbonk.gd" id="65_echk5"]
 [ext_resource type="AudioStream" uid="uid://bvngsvbfij5rl" path="res://actors/player/mario/voice/uhn_jump.wav" id="65_f1kp6"]
@@ -1971,6 +1972,11 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_t5lrn")])
 
 [node name="DiveSlide" type="Node" parent="StateManager/Grounded"]
 script = ExtResource("45_alo0d")
+hitbox_type = "Dive"
+animation = &"dive_slide"
+
+[node name="Slip" type="Node" parent="StateManager/Grounded"]
+script = ExtResource("60_456op")
 hitbox_type = "Dive"
 animation = &"dive_slide"
 
