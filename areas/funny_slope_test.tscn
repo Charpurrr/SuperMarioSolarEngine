@@ -147,9 +147,10 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="BGM" type="AudioStreamPlayer" parent="Environment"]
+process_mode = 3
 stream = ExtResource("16_x1nx0")
 autoplay = true
-bus = &"BGM"
+bus = &"Music"
 
 [node name="Goomba" parent="." instance=ExtResource("17_vusvp")]
 position = Vector2(960, 0)

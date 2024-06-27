@@ -1,6 +1,7 @@
 extends Node
 
 signal frame_advanced
+signal paused
 
 var bgm_muted: bool = false
 
@@ -10,12 +11,29 @@ var frame_timer: int
 ## Whether or not you can advance a frame.
 var can_fa: bool = false
 
+var buses: Dictionary = {
+	&"Master":
+		AudioBus.new(
+			&"Master",
+			"Master Volume",
+		),
+	&"Music":
+		AudioBus.new(
+			&"Music",
+			"BGM Volume",
+		),
+	&"SFX":
+		AudioBus.new(
+			&"SFX",
+			"SFX Volume",
+		)
+}
+
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 	bgm_muted = LocalSettings.load_setting("Audio", "Music Muted", false)
-
 	_set_muted_bgm()
 
 
@@ -48,6 +66,7 @@ func _frame_advancing():
 func _pausing():
 	if Input.is_action_just_pressed(&"pause"):
 		get_tree().paused = !get_tree().paused
+		emit_signal(&"paused")
 
 
 func _music_control():
@@ -59,7 +78,7 @@ func _music_control():
 
 
 func _set_muted_bgm():
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("BGM"), bgm_muted)
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), bgm_muted)
 
 
 func _resetting():

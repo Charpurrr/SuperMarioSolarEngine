@@ -10,15 +10,15 @@ func _init():
 		config.save(FILE_PATH)
 
 
-func load_setting(section: String, key: String, default: Variant):
+func load_setting(section: String, key: String, default: Variant) -> Variant:
 	var err = config.load(FILE_PATH)
 
 	if err == OK:
 		return config.get_value(section, key, default)
-	else:
-		push_error("Error loading config file!")
 
-		return null
+	push_error("Error loading config file!")
+
+	return null
 
 
 func change_setting(section: String, key: String, value: Variant):

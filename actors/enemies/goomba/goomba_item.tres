@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="EditorItemActor" load_steps=9 format=3 uid="uid://5t8dv0lk7haj"]
+[gd_resource type="Resource" script_class="EditorItemActor" load_steps=11 format=3 uid="uid://5t8dv0lk7haj"]
 
 [ext_resource type="PackedScene" uid="uid://cvbbpn56rtjwd" path="res://actors/enemies/goomba/goomba.tscn" id="1_3uc5t"]
 [ext_resource type="Texture2D" uid="uid://x2edebevq3c7" path="res://actors/enemies/goomba/anime/idle.png" id="1_p27l3"]
 [ext_resource type="Script" path="res://level_designer/items/editor_items/editor_item_actor.gd" id="3_hivxg"]
 [ext_resource type="Script" path="res://level_designer/items/preview_items/preview_display/static_preview_display.gd" id="3_huwe6"]
 [ext_resource type="Resource" uid="uid://dgoo836b0wfb1" path="res://level_designer/items/properties/scale.tres" id="4_kg3ba"]
+[ext_resource type="Script" path="res://level_designer/items/properties/property.gd" id="5_tc57b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0exjl"]
 atlas = ExtResource("1_p27l3")
@@ -18,10 +19,16 @@ script = ExtResource("3_huwe6")
 texture = ExtResource("1_p27l3")
 selection_shape = SubResource("ConvexPolygonShape2D_ygs4i")
 
+[sub_resource type="Resource" id="Resource_1fwvl"]
+script = ExtResource("5_tc57b")
+property_name = &""
+show_in_properties = false
+data_type = 0
+
 [resource]
 script = ExtResource("3_hivxg")
 item_scene = ExtResource("1_3uc5t")
 icon_texture = SubResource("AtlasTexture_0exjl")
 category = 3
-properties = Array[Resource("res://level_designer/items/properties/property.gd")]([ExtResource("4_kg3ba")])
+properties = Array[ExtResource("5_tc57b")]([ExtResource("4_kg3ba"), SubResource("Resource_1fwvl")])
 preview_display_data = SubResource("Resource_gf4gt")
