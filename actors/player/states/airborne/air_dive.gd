@@ -62,7 +62,7 @@ func _trans_rules():
 	if actor.push_rays.is_colliding() or actor.is_on_wall():
 		return &"Bonk"
 
-	if movement.can_air_action() and Input.is_action_just_pressed(&"down"):
+	if movement.can_air_action() and Input.is_action_just_pressed(&"groundpound"):
 		return &"GroundPound"
 
 	return &""

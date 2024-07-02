@@ -29,7 +29,7 @@ func _trans_rules():
 	if movement.should_end_wallslide():
 		return &"Fall"
 
-	if Input.is_action_just_pressed(&"down") and movement.can_air_action():
+	if Input.is_action_just_pressed(&"groundpound") and movement.can_air_action():
 		return &"GroundPound"
 
 	return &""

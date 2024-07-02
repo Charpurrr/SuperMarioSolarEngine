@@ -47,7 +47,7 @@ func _trans_rules():
 
 		return [&"Dive", false]
 
-	if Input.is_action_just_pressed(&"down") and movement.can_air_action():
+	if Input.is_action_just_pressed(&"groundpound") and movement.can_air_action():
 		return &"GroundPound"
 
 	if movement.can_init_wallslide(true):

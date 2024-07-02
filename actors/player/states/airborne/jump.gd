@@ -41,13 +41,13 @@ func _trans_rules():
 	if not movement.dived and movement.can_air_action() and input.buffered_input(&"dive"):
 		if Input.is_action_pressed(&"down"):
 			return [&"FaceplantDive", actor.vel.x]
-		else:
-			return [&"Dive", false]
+
+		return [&"Dive", false]
 
 	if movement.can_spin() and input.buffered_input(&"spin"):
 		return &"Spin"
 
-	if Input.is_action_just_pressed(&"down") and movement.can_air_action():
+	if Input.is_action_just_pressed(&"groundpound") and movement.can_air_action():
 		return &"GroundPound"
 
 	if actor.push_rays.is_colliding() and input.buffered_input(&"jump"):

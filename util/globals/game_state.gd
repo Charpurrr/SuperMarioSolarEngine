@@ -13,20 +13,29 @@ var can_fa: bool = false
 
 var buses: Dictionary = {
 	&"Master":
-		AudioBus.new(
+	(
+		AudioBus
+		. new(
 			&"Master",
 			"Master Volume",
-		),
+		)
+	),
 	&"Music":
-		AudioBus.new(
+	(
+		AudioBus
+		. new(
 			&"Music",
 			"BGM Volume",
-		),
+		)
+	),
 	&"SFX":
-		AudioBus.new(
+	(
+		AudioBus
+		. new(
 			&"SFX",
 			"SFX Volume",
 		)
+	)
 }
 
 

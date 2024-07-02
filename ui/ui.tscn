@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ccj3teu3h6xfm"]
+[gd_scene load_steps=27 format=3 uid="uid://ccj3teu3h6xfm"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_pakjx"]
 [ext_resource type="Script" path="res://ui/debug_label.gd" id="2_suudb"]
@@ -14,6 +14,16 @@
 [ext_resource type="Script" path="res://ui/pause_menu/pause_menu.gd" id="12_l4gs6"]
 [ext_resource type="Shader" path="res://ui/blur.gdshader" id="12_wqetc"]
 [ext_resource type="Script" path="res://ui/pause_menu/audio_setting.gd" id="14_466vg"]
+[ext_resource type="Script" path="res://ui/pause_menu/bindings/bindings_menu.gd" id="15_a8jrp"]
+[ext_resource type="PackedScene" uid="uid://dl3pnbtv84ekj" path="res://ui/pause_menu/bindings/bind.tscn" id="15_q65l3"]
+[ext_resource type="Texture2D" uid="uid://bxnkgtkyg67g8" path="res://ui/pause_menu/bindings/icons/left.png" id="16_s4yss"]
+[ext_resource type="Texture2D" uid="uid://dpbmlfpb8nqkt" path="res://ui/pause_menu/bindings/icons/right.png" id="17_jpe5g"]
+[ext_resource type="Texture2D" uid="uid://8v7ugt32a0d2" path="res://ui/pause_menu/bindings/icons/up.png" id="18_eumt4"]
+[ext_resource type="Texture2D" uid="uid://bii6qpjesltf3" path="res://ui/pause_menu/bindings/icons/down.png" id="19_p6uqc"]
+[ext_resource type="Texture2D" uid="uid://bstgsdh4dqbc8" path="res://ui/pause_menu/bindings/icons/jump.png" id="20_vd0xh"]
+[ext_resource type="Texture2D" uid="uid://c3qbauenpyulb" path="res://ui/pause_menu/bindings/icons/spin.png" id="21_5awg4"]
+[ext_resource type="Texture2D" uid="uid://bqqyiat6cbhsn" path="res://ui/pause_menu/bindings/icons/dive.png" id="23_a0owx"]
+[ext_resource type="Texture2D" uid="uid://48gn0c5ga52r" path="res://ui/pause_menu/bindings/icons/groundpound.png" id="24_c7i2r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8xxao"]
 shader = ExtResource("12_wqetc")
@@ -77,7 +87,7 @@ layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 1
 
-[node name="Z" type="TextureRect" parent="InputDisplay/HBoxContainer/ActionButtons"]
+[node name="W" type="TextureRect" parent="InputDisplay/HBoxContainer/ActionButtons"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 2
@@ -131,7 +141,7 @@ modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 2
 texture = ExtResource("5_cgoe6")
 
-[node name="PauseMenu" type="Control" parent="."]
+[node name="PauseMenu" type="Control" parent="." node_paths=PackedStringArray("contents_menu", "bindings_menu", "bindings_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -141,6 +151,9 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("12_l4gs6")
+contents_menu = NodePath("ContentsMenu")
+bindings_menu = NodePath("BindingsMenu")
+bindings_button = NodePath("ContentsMenu/BindingsToggle")
 
 [node name="Blur" type="ColorRect" parent="PauseMenu"]
 material = SubResource("ShaderMaterial_8xxao")
@@ -151,30 +164,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Contents" type="VBoxContainer" parent="PauseMenu"]
+[node name="ContentsMenu" type="VBoxContainer" parent="PauseMenu"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -213.5
-offset_top = -203.5
-offset_right = 213.5
-offset_bottom = 203.5
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 150.0
+offset_top = 150.0
+offset_right = -150.0
+offset_bottom = -150.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
-[node name="Paused" type="Label" parent="PauseMenu/Contents"]
+[node name="Paused" type="Label" parent="PauseMenu/ContentsMenu"]
 layout_mode = 2
 text = "PUASED"
 label_settings = SubResource("LabelSettings_20l3y")
+horizontal_alignment = 1
+vertical_alignment = 3
 
-[node name="MasterText" type="Label" parent="PauseMenu/Contents"]
+[node name="MasterText" type="Label" parent="PauseMenu/ContentsMenu"]
 layout_mode = 2
 text = "Master Volume"
 
-[node name="Master" type="HBoxContainer" parent="PauseMenu/Contents" node_paths=PackedStringArray("reset", "slider", "percentage")]
+[node name="Master" type="HBoxContainer" parent="PauseMenu/ContentsMenu" node_paths=PackedStringArray("reset", "slider", "percentage")]
 layout_mode = 2
 script = ExtResource("14_466vg")
 bus_name = &"Master"
@@ -182,13 +196,13 @@ reset = NodePath("MasterButton")
 slider = NodePath("MasterSlider")
 percentage = NodePath("Percentage")
 
-[node name="MasterButton" type="Button" parent="PauseMenu/Contents/Master"]
+[node name="MasterButton" type="Button" parent="PauseMenu/ContentsMenu/Master"]
 custom_minimum_size = Vector2(31, 0)
 layout_mode = 2
 disabled = true
 text = "⟳"
 
-[node name="MasterSlider" type="HSlider" parent="PauseMenu/Contents/Master"]
+[node name="MasterSlider" type="HSlider" parent="PauseMenu/ContentsMenu/Master"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -196,16 +210,16 @@ max_value = 2.0
 step = 0.02
 value = 1.0
 
-[node name="Percentage" type="Label" parent="PauseMenu/Contents/Master"]
+[node name="Percentage" type="Label" parent="PauseMenu/ContentsMenu/Master"]
 custom_minimum_size = Vector2(42, 0)
 layout_mode = 2
 text = "100%"
 
-[node name="BGMText" type="Label" parent="PauseMenu/Contents"]
+[node name="BGMText" type="Label" parent="PauseMenu/ContentsMenu"]
 layout_mode = 2
 text = "BGM Volume"
 
-[node name="BGM" type="HBoxContainer" parent="PauseMenu/Contents" node_paths=PackedStringArray("reset", "slider", "percentage")]
+[node name="BGM" type="HBoxContainer" parent="PauseMenu/ContentsMenu" node_paths=PackedStringArray("reset", "slider", "percentage")]
 layout_mode = 2
 script = ExtResource("14_466vg")
 bus_name = &"Music"
@@ -213,13 +227,13 @@ reset = NodePath("BGMButton")
 slider = NodePath("BGMSlider")
 percentage = NodePath("Percentage")
 
-[node name="BGMButton" type="Button" parent="PauseMenu/Contents/BGM"]
+[node name="BGMButton" type="Button" parent="PauseMenu/ContentsMenu/BGM"]
 custom_minimum_size = Vector2(31, 0)
 layout_mode = 2
 disabled = true
 text = "⟳"
 
-[node name="BGMSlider" type="HSlider" parent="PauseMenu/Contents/BGM"]
+[node name="BGMSlider" type="HSlider" parent="PauseMenu/ContentsMenu/BGM"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -227,16 +241,16 @@ max_value = 2.0
 step = 0.02
 value = 1.0
 
-[node name="Percentage" type="Label" parent="PauseMenu/Contents/BGM"]
+[node name="Percentage" type="Label" parent="PauseMenu/ContentsMenu/BGM"]
 custom_minimum_size = Vector2(42, 0)
 layout_mode = 2
 text = "100%"
 
-[node name="SFXText" type="Label" parent="PauseMenu/Contents"]
+[node name="SFXText" type="Label" parent="PauseMenu/ContentsMenu"]
 layout_mode = 2
 text = "SFX Volume"
 
-[node name="SFX" type="HBoxContainer" parent="PauseMenu/Contents" node_paths=PackedStringArray("reset", "slider", "percentage")]
+[node name="SFX" type="HBoxContainer" parent="PauseMenu/ContentsMenu" node_paths=PackedStringArray("reset", "slider", "percentage")]
 layout_mode = 2
 script = ExtResource("14_466vg")
 bus_name = &"SFX"
@@ -244,13 +258,13 @@ reset = NodePath("SFXButton")
 slider = NodePath("SFXSlider")
 percentage = NodePath("Percentage")
 
-[node name="SFXButton" type="Button" parent="PauseMenu/Contents/SFX"]
+[node name="SFXButton" type="Button" parent="PauseMenu/ContentsMenu/SFX"]
 custom_minimum_size = Vector2(31, 0)
 layout_mode = 2
 disabled = true
 text = "⟳"
 
-[node name="SFXSlider" type="HSlider" parent="PauseMenu/Contents/SFX"]
+[node name="SFXSlider" type="HSlider" parent="PauseMenu/ContentsMenu/SFX"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -258,17 +272,139 @@ max_value = 2.0
 step = 0.02
 value = 1.0
 
-[node name="Percentage" type="Label" parent="PauseMenu/Contents/SFX"]
+[node name="Percentage" type="Label" parent="PauseMenu/ContentsMenu/SFX"]
 custom_minimum_size = Vector2(42, 0)
 layout_mode = 2
 text = "100%"
 
-[node name="Space" type="Control" parent="PauseMenu/Contents"]
+[node name="Space" type="Control" parent="PauseMenu/ContentsMenu"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="Bindings" type="Button" parent="PauseMenu/Contents"]
+[node name="BindingsToggle" type="Button" parent="PauseMenu/ContentsMenu"]
 layout_mode = 2
-text = "Bindings"
+text = "Open Bindings Menu"
+
+[node name="BindingsMenu" type="VBoxContainer" parent="PauseMenu" node_paths=PackedStringArray("bindings_list")]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 150.0
+offset_top = 150.0
+offset_right = -150.0
+offset_bottom = -150.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_a8jrp")
+bindings_list = NodePath("Bindings/BindingsList")
+
+[node name="Header" type="HBoxContainer" parent="PauseMenu/BindingsMenu"]
+layout_mode = 2
+
+[node name="FakeLabel" type="Control" parent="PauseMenu/BindingsMenu/Header"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="FakeReset" type="Control" parent="PauseMenu/BindingsMenu/Header"]
+custom_minimum_size = Vector2(31, 31)
+layout_mode = 2
+
+[node name="Keyboard" type="Label" parent="PauseMenu/BindingsMenu/Header"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "KEYBOARD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="PauseMenu/BindingsMenu/Header"]
+layout_mode = 2
+
+[node name="Controller" type="Label" parent="PauseMenu/BindingsMenu/Header"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CONTROLLER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FakeReset2" type="Control" parent="PauseMenu/BindingsMenu/Header"]
+custom_minimum_size = Vector2(31, 31)
+layout_mode = 2
+
+[node name="FakeIcon" type="Control" parent="PauseMenu/BindingsMenu/Header"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="FakeScrollbar" type="Control" parent="PauseMenu/BindingsMenu/Header"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="Bindings" type="ScrollContainer" parent="PauseMenu/BindingsMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="BindingsList" type="VBoxContainer" parent="PauseMenu/BindingsMenu/Bindings"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Bind" parent="PauseMenu/BindingsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
+layout_mode = 2
+visual_name = &"Left"
+internal_name = &"left"
+action_icon = ExtResource("16_s4yss")
+
+[node name="Bind2" parent="PauseMenu/BindingsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
+layout_mode = 2
+visual_name = &"Right"
+internal_name = &"right"
+action_icon = ExtResource("17_jpe5g")
+
+[node name="Bind3" parent="PauseMenu/BindingsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
+layout_mode = 2
+visual_name = &"Up"
+internal_name = &"up"
+action_icon = ExtResource("18_eumt4")
+
+[node name="Bind4" parent="PauseMenu/BindingsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
+layout_mode = 2
+visual_name = &"Down"
+internal_name = &"down"
+action_icon = ExtResource("19_p6uqc")
+
+[node name="Bind5" parent="PauseMenu/BindingsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
+layout_mode = 2
+visual_name = &"Jump"
+internal_name = &"jump"
+action_icon = ExtResource("20_vd0xh")
+
+[node name="Bind6" parent="PauseMenu/BindingsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
+layout_mode = 2
+visual_name = &"Spin"
+internal_name = &"spin"
+action_icon = ExtResource("21_5awg4")
+
+[node name="Bind7" parent="PauseMenu/BindingsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
+layout_mode = 2
+visual_name = &"Dive"
+internal_name = &"dive"
+action_icon = ExtResource("23_a0owx")
+
+[node name="Bind8" parent="PauseMenu/BindingsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
+layout_mode = 2
+visual_name = &"Groundpound"
+internal_name = &"groundpound"
+action_icon = ExtResource("24_c7i2r")
+
+[node name="BindingsToggle2" type="Button" parent="PauseMenu/BindingsMenu"]
+layout_mode = 2
+text = "Close Bindings Menu"
 
 [node name="Notifications" type="Node" parent="."]
+
+[connection signal="pressed" from="PauseMenu/ContentsMenu/BindingsToggle" to="PauseMenu" method="_on_bindings_pressed"]
+[connection signal="pressed" from="PauseMenu/BindingsMenu/BindingsToggle2" to="PauseMenu" method="_on_bindings_pressed"]

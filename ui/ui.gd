@@ -13,7 +13,7 @@ var current_notifs: Array = []
 #region Input Display variables
 @onready var sprite_dictionary: Dictionary = {
 	KEY_SHIFT: %Shift,
-	KEY_Z: %Z,
+	KEY_W: %W,
 	KEY_X: %X,
 	KEY_C: %C,
 	KEY_UP: %Up,
@@ -66,7 +66,7 @@ func _display_input(event: InputEvent):
 	if not event is InputEventKey:
 		return
 
-	var event_str: Key = event.keycode
+	var event_str: Key = event.physical_keycode
 
 	if not sprite_dictionary.has(event_str):
 		return
