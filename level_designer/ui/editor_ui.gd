@@ -23,7 +23,7 @@ func _process(_delta):
 
 func _unhandled_input(event):
 	if event.is_action_pressed(&"e_toggle_ui"):
-		visible = !visible
+		visible = not visible
 
 
 func _notification(what):
@@ -40,4 +40,4 @@ func _on_quit_confirm_confirmed():
 
 
 func _on_search_pressed():
-	search_menu.visible = !search_menu.visible
+	search_menu.visible = not search_menu.visible

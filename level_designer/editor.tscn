@@ -27,12 +27,13 @@ quit_confirm = NodePath("UI/QuitConfirm")
 selection_box = NodePath("SelectionBox")
 level = NodePath("LevelPreview")
 
-[node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("z_toggle", "z_layer", "quit_confirm", "search_menu")]
+[node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("z_toggle", "z_layer", "quit_confirm", "search_menu", "toolbar")]
 script = ExtResource("2_w6sns")
 z_toggle = NodePath("Panels/TopBarPanel/Top/ZView/ZViewToggle")
 z_layer = NodePath("Panels/TopBarPanel/Top/ZView/ZViewLayer")
 quit_confirm = NodePath("QuitConfirm")
 search_menu = NodePath("Panels/OtherBars/OtherSides/BottomSide/ObjectSearch")
+toolbar = NodePath("Panels/OtherBars/OtherSides/BottomSide/ToolbarContainer")
 
 [node name="Panels" type="VBoxContainer" parent="UI"]
 anchors_preset = 15
@@ -62,7 +63,6 @@ theme_override_constants/separation = 5
 [node name="Help" type="Button" parent="UI/Panels/TopBarPanel/Top"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-theme_override_font_sizes/font_size = 23
 text = "ⓘ"
 
 [node name="VSeparator4" type="VSeparator" parent="UI/Panels/TopBarPanel/Top"]
@@ -107,7 +107,6 @@ alignment = 2
 [node name="CounterHelp" type="Button" parent="UI/Panels/TopBarPanel/Top/ObjectCounter"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-theme_override_font_sizes/font_size = 23
 text = "ⓘ"
 
 [node name="ObjectCount" type="Label" parent="UI/Panels/TopBarPanel/Top/ObjectCounter"]
@@ -123,7 +122,6 @@ size_flags_stretch_ratio = 0.5
 [node name="Save" type="Button" parent="UI/Panels/TopBarPanel/Top"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-theme_override_font_sizes/font_size = 23
 text = "💾"
 
 [node name="VSeparator5" type="VSeparator" parent="UI/Panels/TopBarPanel/Top"]
@@ -134,7 +132,6 @@ size_flags_stretch_ratio = 0.5
 [node name="Options" type="Button" parent="UI/Panels/TopBarPanel/Top"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-theme_override_font_sizes/font_size = 23
 text = "≡"
 
 [node name="OtherBars" type="HBoxContainer" parent="UI/Panels"]
