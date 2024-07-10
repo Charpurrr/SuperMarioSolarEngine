@@ -4,7 +4,7 @@ extends Jump
 
 
 func _physics_tick():
-	movement.move_x(0.15, false)
+	movement.move_x_analog(0.15, false)
 
 
 func _subsequent_ticks():

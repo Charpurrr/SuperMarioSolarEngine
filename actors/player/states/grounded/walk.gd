@@ -21,7 +21,7 @@ func _physics_tick():
 
 	movement.update_prev_direction()
 	movement.activate_coyote_timer()
-	movement.move_x("ground", true)
+	movement.move_x_analog("ground", true, "ground")
 
 	actor.doll.speed_scale = actor.vel.x / movement.max_speed * 2
 	_set_appropriate_anim()
@@ -72,7 +72,7 @@ func _trans_rules():
 		movement.update_prev_direction()
 		return [&"Skid", [0, 16]]
 
-	if !InputManager.is_moving_x():
+	if not InputManager.is_moving_x():
 		return &"Idle"
 
 	if Input.is_action_pressed(&"down"):
@@ -81,7 +81,7 @@ func _trans_rules():
 
 		return [&"Crouch", [false, true]]
 
-	if InputManager.get_x() != 0 and actor.is_on_wall():
+	if InputManager.get_x_dir() != 0 and actor.is_on_wall():
 		if actor.push_rays.is_colliding():
 			return &"Push"
 

@@ -30,7 +30,7 @@ func _subsequent_ticks():
 
 
 func _physics_tick():
-	movement.move_x("air", true)
+	movement.move_x_analog("air", true)
 
 	if movement.can_release_jump(applied_variation, min_jump_power):
 		applied_variation = true

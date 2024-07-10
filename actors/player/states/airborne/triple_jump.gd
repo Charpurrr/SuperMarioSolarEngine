@@ -13,10 +13,7 @@ func _on_enter(handover):
 
 
 func _physics_tick():
-	if actor.vel.y < 0:
-		movement.move_x(0.15, false)
-	else:
-		movement.move_x(0.15, true)
+	movement.move_x_analog(0.15, actor.vel.y < 0)
 
 	if movement.can_release_jump(applied_variation, min_jump_power):
 		applied_variation = true

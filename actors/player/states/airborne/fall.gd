@@ -12,7 +12,7 @@ func _subsequent_ticks():
 
 
 func _physics_tick():
-	movement.move_x("air", true)
+	movement.move_x_analog("air", true)
 
 
 func _trans_rules():

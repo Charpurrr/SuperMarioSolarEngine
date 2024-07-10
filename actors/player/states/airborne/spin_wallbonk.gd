@@ -27,7 +27,7 @@ func _subsequent_ticks():
 
 
 func _physics_tick():
-	movement.move_x("air", false)
+	movement.move_x_analog("air", false)
 
 	if not actor.doll.is_playing():
 		finished_init = true

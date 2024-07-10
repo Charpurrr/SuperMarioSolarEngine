@@ -29,9 +29,9 @@ func _physics_tick():
 	should_flip = actor.position.y > movement.walljump_start_y + movement.walljump_turn_threshold
 
 	if InputManager.get_x_dir() != movement.facing_direction:
-		movement.move_x(0.13, should_flip)
+		movement.move_x_analog(0.13, should_flip)
 	elif InputManager.is_moving_x():
-		movement.move_x("air", should_flip)
+		movement.move_x_analog("air", should_flip)
 
 	movement.apply_gravity(-actor.vel.y / jump_power)
 	movement.decelerate(0.01)
