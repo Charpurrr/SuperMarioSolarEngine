@@ -8,20 +8,20 @@ var filtered_settings_events: Array
 var current_binds: Array
 
 ## Should be set in the child class' _ready().
-var reset_button = null
+var reset_button: Button = null
 ## Should be set in the child class' _ready().
-var clear_button = null
+var clear_button: Button = null
 
-@onready var internal_name = get_parent().internal_name
-@onready var settings_events = InputMap.action_get_events(internal_name)
+@onready var internal_name: StringName = get_parent().internal_name
+@onready var settings_events: Array[InputEvent] = InputMap.action_get_events(internal_name)
 
-@onready var response_timer = $KeyTimer
+@onready var response_timer: Timer = $KeyTimer
 var awaiting_response: bool = false
 
 
 func _ready():
 	for event in settings_events:
-		if event is InputEventKey:
+		if _is_valid_event(event):
 			filtered_settings_events.append(event)
 
 	current_binds = filtered_settings_events.duplicate()
@@ -33,6 +33,10 @@ func _ready():
 	)
 
 	_update_input(_decode_events(saved_events))
+
+	clear_button.pressed.connect(_clear_bindings)
+	reset_button.pressed.connect(_reset_bindings)
+	pressed.connect(_on_pressed)
 
 
 func _input(event):
@@ -64,13 +68,13 @@ func _is_valid_event(_event: InputEvent) -> bool:
 
 
 ## Should be overridden by the child class.
-func _encode_events(_events: Array[InputEvent]) -> Array:
+func _encode_events(_events: Array) -> Array:
 	push_warning("This function should be overridden in a child class.")
 	return []
 
 
 ## Should be overridden by the child class.
-func _decode_events(_encoded_events: Array) -> Array[InputEvent]:
+func _decode_events(_encoded_events: Array) -> Array:
 	push_warning("This function should be overridden in a child class.")
 	return []
 
@@ -95,7 +99,7 @@ func _add_input(input: InputEvent):
 	_update_input(current_binds)
 
 
-func _update_input(new_binds: Array[InputEvent]):
+func _update_input(new_binds: Array):
 	for bind in current_binds:
 		InputMap.action_erase_event(internal_name, bind)
 
@@ -111,13 +115,17 @@ func _update_input(new_binds: Array[InputEvent]):
 	_update_reset_state()
 
 
-func _set_text(events: Array[InputEvent]):
+func _set_text(events: Array):
 	var names: Array = []
 
 	for event in events:
 		names.append(_get_human_name(event))
 
 	text = ", ".join(names)
+
+
+func _reset_bindings():
+	_update_input(filtered_settings_events)
 
 
 func _update_reset_state():
@@ -135,9 +143,26 @@ func _should_disable_reset() -> bool:
 	return true
 
 
+func _clear_bindings():
+	_update_input([])
+
+
 func _update_clear_state():
 	clear_button.disabled = _should_disable_clear()
 
 
 func _should_disable_clear() -> bool:
 	return current_binds.is_empty()
+
+
+func _on_pressed():
+	response_timer.start()
+
+	awaiting_response = true
+	text = "..."
+
+	# timeout
+	await response_timer.timeout
+
+	awaiting_response = false
+	_set_text(current_binds)

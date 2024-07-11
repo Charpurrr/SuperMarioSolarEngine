@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dl3pnbtv84ekj"]
+[gd_scene load_steps=4 format=3 uid="uid://dl3pnbtv84ekj"]
 
 [ext_resource type="Script" path="res://ui/pause_menu/bindings/bind.gd" id="1_j7k3t"]
-[ext_resource type="Script" path="res://ui/pause_menu/bindings/button_key.gd" id="2_rub4j"]
+[ext_resource type="Script" path="res://ui/pause_menu/bindings/bind_button_key.gd" id="2_kcnjn"]
+[ext_resource type="Script" path="res://ui/pause_menu/bindings/bind_button_joy.gd" id="3_xdjs1"]
 
 [node name="Bind" type="HBoxContainer"]
 script = ExtResource("1_j7k3t")
@@ -40,7 +41,7 @@ clip_text = true
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("2_rub4j")
+script = ExtResource("2_kcnjn")
 
 [node name="KeyTimer" type="Timer" parent="KeyButton"]
 one_shot = true
@@ -52,6 +53,10 @@ layout_mode = 2
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 3
+script = ExtResource("3_xdjs1")
+
+[node name="JoyTimer" type="Timer" parent="JoyButton"]
+one_shot = true
 
 [node name="ControllerFunctions" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -59,6 +64,7 @@ theme_override_constants/separation = 2
 alignment = 1
 
 [node name="ClearJoy" type="Button" parent="ControllerFunctions"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -68,6 +74,7 @@ text = "X"
 clip_text = true
 
 [node name="ResetJoy" type="Button" parent="ControllerFunctions"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -80,7 +87,3 @@ clip_text = true
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 8
-
-[connection signal="pressed" from="KeyFunctions/ClearKey" to="KeyButton" method="_on_clear_key_pressed"]
-[connection signal="pressed" from="KeyFunctions/ResetKey" to="KeyButton" method="_on_reset_key_pressed"]
-[connection signal="pressed" from="KeyButton" to="KeyButton" method="_on_pressed"]

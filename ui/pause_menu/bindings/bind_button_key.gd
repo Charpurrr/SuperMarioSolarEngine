@@ -1,8 +1,15 @@
 class_name BindButtonKey
 extends BindButton
 ## A bind button catered towards keyboard inputs.
-## All functions in this script are defined by its parent class.
+## Lots of functions in this script are defined by its parent class.
 ## See BindButton for descriptions and types.
+
+
+func _ready():
+	clear_button = %ClearKey
+	reset_button = %ResetKey
+
+	super()
 
 
 func _is_valid_event(event):
