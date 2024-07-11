@@ -8,8 +8,8 @@ extends HBoxContainer
 @export var action_icon: Texture2D
 
 @onready var label: Label = $Label
-@onready var button_keyboard: Button = $Button
-@onready var button_controller: Button = $Button2
+@onready var button_keyboard: Button = $KeyButton
+@onready var button_joy: Button = $JoyButton
 @onready var texture: TextureRect = $TextureRect
 
 

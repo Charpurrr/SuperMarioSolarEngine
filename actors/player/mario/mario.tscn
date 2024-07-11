@@ -1911,10 +1911,7 @@ animation = &"idle"
 script = ExtResource("13_olbq0")
 footstep_frames = Array[int]([0, 4])
 animation_run = &"run"
-anim_offset_r = null
-hitbox_type = null
 animation = &"walk"
-anim_offset = null
 on_enter = false
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_8p2oq")])
 
