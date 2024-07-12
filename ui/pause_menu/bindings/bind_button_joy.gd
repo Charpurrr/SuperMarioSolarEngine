@@ -134,5 +134,5 @@ func _get_brand_id():
 				push_warning("""Unidentified joypad brand.
 				Update this function and the JOY_BUTTONS array to support this brand.""")
 				return 0
-	else:
-		return 0
+
+	return 0
