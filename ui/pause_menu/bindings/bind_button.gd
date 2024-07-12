@@ -8,15 +8,17 @@ var filtered_settings_events: Array
 var current_binds: Array
 
 ## Should be set in the child class' _ready().
+var input_device_name: StringName = &"Unidentified Device Type"
+## Should be set in the child class' _ready().
 var reset_button: Button = null
 ## Should be set in the child class' _ready().
 var clear_button: Button = null
+## Should be set in the child class' _ready().
+var response_timer: Timer
+var awaiting_response: bool = false
 
 @onready var internal_name: StringName = get_parent().internal_name
 @onready var settings_events: Array[InputEvent] = InputMap.action_get_events(internal_name)
-
-@onready var response_timer: Timer = $KeyTimer
-var awaiting_response: bool = false
 
 
 func _ready():
@@ -27,7 +29,7 @@ func _ready():
 	current_binds = filtered_settings_events.duplicate()
 
 	var saved_events = LocalSettings.load_setting(
-		"Controls",
+		input_device_name + " Bindings",
 		internal_name,
 		_encode_events(filtered_settings_events)
 	)
@@ -43,6 +45,8 @@ func _input(event):
 	if not awaiting_response:
 		return
 	if not _is_valid_event(event):
+		return
+	if not _check_outside_deadzone(event):
 		return
 
 	get_viewport().set_input_as_handled()
@@ -67,35 +71,60 @@ func _is_valid_event(_event: InputEvent) -> bool:
 	return false
 
 
-## Should be overridden by the child class.
+## Should be overridden by the child class.[br][br]
+## Defines how inputs get encoded in the [LocalSettings] file.[br]
+## E.g. [InputEventKey] as keycode, [InputEventJoyButton] as button_index, etc.
 func _encode_events(_events: Array) -> Array:
 	push_warning("This function should be overridden in a child class.")
 	return []
 
 
-## Should be overridden by the child class.
+## Should be overridden by the child class.[br][br]
+## Defines how inputs get decoded from the [LocalSettings] file.[br]
+## E.g. keycode as [InputEventKey], button_index as [InputEventJoyButton], etc.
 func _decode_events(_encoded_events: Array) -> Array:
 	push_warning("This function should be overridden in a child class.")
 	return []
 
 
+## Should be overridden by the child class.[br][br]
+## Defines how inputs are compared.
 func _check_equivalent_inputs(_input_a: InputEvent, _input_b: InputEvent) -> bool:
 	push_warning("This function should be overridden in a child class.")
 	return false
 
 
+## Should be overridden by the child class.[br][br]
+## Defines what shows up in the [BindButton] label.
 func _get_human_name(_event: InputEvent) -> StringName:
 	push_warning("This function should be overridden in a child class.")
 	return &""
+
+
+## Can be overridden by the child class, but not required.[br][br]
+## Returns whether or not an input with a deadzone (as set in [ProjectSettings])
+## is outside of its deadzone, and therefor usable.[br]
+## Digital inputs do not require this function, so it defaults to true.
+func _check_outside_deadzone(_event: InputEvent) -> bool:
+	return true
+
+
+## Can be overridden by the child class, but not required.[br][br]
+## Defines how inputs get "cleaned up".[br]
+## E.g. normalising joystick input.
+func _clean_input(input: InputEvent) -> InputEvent:
+	return input
 #endregion
 
 
 func _add_input(input: InputEvent):
+	var cleaned_input: InputEvent = _clean_input(input)
+
 	for bind in current_binds:
-		if _check_equivalent_inputs(input, bind):
+		if _check_equivalent_inputs(cleaned_input, bind):
 			return
 
-	current_binds.append(input)
+	current_binds.append(_clean_input(input))
 	_update_input(current_binds)
 
 
@@ -106,7 +135,11 @@ func _update_input(new_binds: Array):
 	for bind in new_binds:
 		InputMap.action_add_event(internal_name, bind)
 
-	LocalSettings.change_setting("Controls", internal_name, _encode_events(new_binds))
+	LocalSettings.change_setting(
+		input_device_name + " Bindings",
+		internal_name,
+		_encode_events(new_binds)
+	)
 
 	current_binds = new_binds.duplicate()
 

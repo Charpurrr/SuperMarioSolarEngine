@@ -2,10 +2,13 @@ class_name BindButtonKey
 extends BindButton
 ## A bind button catered towards keyboard inputs.
 ## Lots of functions in this script are defined by its parent class.
-## See BindButton for descriptions and types.
+## See [BindButton] for descriptions and types.
 
 
 func _ready():
+	input_device_name = &"Keyboard"
+
+	response_timer = $KeyTimer
 	clear_button = %ClearKey
 	reset_button = %ResetKey
 
@@ -29,7 +32,10 @@ func _decode_events(encoded_events):
 	var gen_keys: Array[InputEvent] = []
 
 	for keycode in encoded_events:
-		var input = InputEventKey.new()
+		if not keycode is int:
+			continue
+
+		var input := InputEventKey.new()
 
 		input.physical_keycode = keycode
 		gen_keys.append(input)
