@@ -1,18 +1,22 @@
-class_name BindingsMenu
+class_name ControlsMenu
 extends VBoxContainer
-## Bindings menu functionality.
+## Controls menu functionality.
 
 @export var bindings_list: VBoxContainer
-#@export var header: HBoxContainer
 
-@onready var fake_label: Control = $Header/FakeLabel
-@onready var header_keyboard: Label = $Header/Keyboard
-@onready var header_controller: Label = $Header/Controller
+@export var fake_label: Control
+@export var header_keyboard: Label
+@export var header_controller: Label
 
 @onready var bindings_children: Array[Node] = bindings_list.get_children()
 
 
 func _ready():
+	_update_header()
+
+
+## Updates the header for the bindings to fit correctly
+func _update_header():
 	var biggest_w: float
 
 	for child in bindings_children:

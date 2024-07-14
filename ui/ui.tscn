@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ccj3teu3h6xfm"]
+[gd_scene load_steps=32 format=3 uid="uid://ccj3teu3h6xfm"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_pakjx"]
 [ext_resource type="Script" path="res://ui/debug_label.gd" id="2_suudb"]
@@ -14,8 +14,10 @@
 [ext_resource type="Script" path="res://ui/pause_menu/pause_menu.gd" id="12_l4gs6"]
 [ext_resource type="Shader" path="res://ui/blur.gdshader" id="12_wqetc"]
 [ext_resource type="Script" path="res://ui/pause_menu/audio_setting.gd" id="14_466vg"]
+[ext_resource type="FontFile" uid="uid://dwjboqsj8b8xd" path="res://ui/fonts/super_mario.ttf" id="14_n0vgh"]
 [ext_resource type="Script" path="res://ui/pause_menu/bindings/bindings_menu.gd" id="15_a8jrp"]
 [ext_resource type="PackedScene" uid="uid://dl3pnbtv84ekj" path="res://ui/pause_menu/bindings/bind.tscn" id="15_q65l3"]
+[ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="15_y78en"]
 [ext_resource type="Texture2D" uid="uid://bxnkgtkyg67g8" path="res://ui/pause_menu/bindings/icons/left.png" id="16_s4yss"]
 [ext_resource type="Texture2D" uid="uid://dpbmlfpb8nqkt" path="res://ui/pause_menu/bindings/icons/right.png" id="17_jpe5g"]
 [ext_resource type="Texture2D" uid="uid://8v7ugt32a0d2" path="res://ui/pause_menu/bindings/icons/up.png" id="18_eumt4"]
@@ -30,14 +32,36 @@ shader = ExtResource("12_wqetc")
 shader_parameter/lod = 1.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_20l3y"]
-font_size = 111
+font = ExtResource("14_n0vgh")
+font_size = 150
+outline_size = 35
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 35
+shadow_color = Color(0, 0, 0, 0.392157)
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="LabelSettings" id="LabelSettings_b067h"]
+font = ExtResource("14_n0vgh")
+font_size = 40
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p5bk4"]
+font = ExtResource("15_y78en")
+font_size = 25
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_70wox"]
+font = ExtResource("15_y78en")
+font_size = 20
 
 [node name="UI" type="CanvasLayer" node_paths=PackedStringArray("notif_list", "pause_menu")]
 process_mode = 3
 script = ExtResource("1_pakjx")
 notif_scene = ExtResource("2_ufvuv")
 notif_list = NodePath("Notifications")
-pause_menu = NodePath("PauseMenu")
+pause_menu = NodePath("PauseScreen")
 
 [node name="DebugLabel" type="Label" parent="."]
 offset_right = 86.0
@@ -141,7 +165,7 @@ modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 2
 texture = ExtResource("5_cgoe6")
 
-[node name="PauseMenu" type="Control" parent="." node_paths=PackedStringArray("contents_menu", "bindings_menu", "bindings_button")]
+[node name="PauseScreen" type="Control" parent="." node_paths=PackedStringArray("contents_menu", "bindings_menu", "bindings_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -152,10 +176,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("12_l4gs6")
 contents_menu = NodePath("ContentsMenu")
-bindings_menu = NodePath("BindingsMenu")
-bindings_button = NodePath("ContentsMenu/BindingsToggle")
+bindings_menu = NodePath("ControlsMenu")
+bindings_button = NodePath("ContentsMenu/ControlsToggle")
 
-[node name="Blur" type="ColorRect" parent="PauseMenu"]
+[node name="Blur" type="ColorRect" parent="PauseScreen"]
 material = SubResource("ShaderMaterial_8xxao")
 layout_mode = 1
 anchors_preset = 15
@@ -164,7 +188,153 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ContentsMenu" type="VBoxContainer" parent="PauseMenu"]
+[node name="PauseMenu" type="HBoxContainer" parent="PauseScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftSide" type="VBoxContainer" parent="PauseScreen/PauseMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.3
+
+[node name="Paused" type="Label" parent="PauseScreen/PauseMenu/LeftSide"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "PUASED"
+label_settings = SubResource("LabelSettings_20l3y")
+horizontal_alignment = 1
+vertical_alignment = 3
+
+[node name="Info" type="Control" parent="PauseScreen/PauseMenu/LeftSide"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="InfoPanel" type="Panel" parent="PauseScreen/PauseMenu/LeftSide/Info"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextContainer" type="VBoxContainer" parent="PauseScreen/PauseMenu/LeftSide/Info/InfoPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 10.0
+offset_right = -30.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelInfo" type="VBoxContainer" parent="PauseScreen/PauseMenu/LeftSide/Info/InfoPanel/TextContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LevelTitle" type="Label" parent="PauseScreen/PauseMenu/LeftSide/Info/InfoPanel/TextContainer/LevelInfo"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Technicolor Testbed"
+label_settings = SubResource("LabelSettings_b067h")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PauseScreen/PauseMenu/LeftSide/Info/InfoPanel/TextContainer/LevelInfo"]
+layout_mode = 2
+
+[node name="MissionTitle" type="Label" parent="PauseScreen/PauseMenu/LeftSide/Info/InfoPanel/TextContainer/LevelInfo"]
+custom_minimum_size = Vector2(418, 24)
+layout_mode = 2
+size_flags_vertical = 6
+text = "FIND THE BUG"
+label_settings = SubResource("LabelSettings_p5bk4")
+horizontal_alignment = 1
+autowrap_mode = 3
+uppercase = true
+
+[node name="MissionInfo" type="Label" parent="PauseScreen/PauseMenu/LeftSide/Info/InfoPanel/TextContainer"]
+custom_minimum_size = Vector2(418, 19)
+layout_mode = 2
+size_flags_vertical = 3
+text = "Just keep debugging...
+just keep debugging...
+just keep debugging...
+just keep debugging..."
+label_settings = SubResource("LabelSettings_70wox")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="Control" type="Control" parent="PauseScreen/PauseMenu/LeftSide"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RightSide" type="VBoxContainer" parent="PauseScreen/PauseMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ChoicesPanel" type="Panel" parent="PauseScreen/PauseMenu/RightSide"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Choices" type="VBoxContainer" parent="PauseScreen/PauseMenu/RightSide/ChoicesPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_right = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpaceTop" type="Control" parent="PauseScreen/PauseMenu/RightSide/ChoicesPanel/Choices"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Resume" type="Button" parent="PauseScreen/PauseMenu/RightSide/ChoicesPanel/Choices"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("14_n0vgh")
+theme_override_font_sizes/font_size = 60
+text = "▶️ RESUME"
+
+[node name="Retry" type="Button" parent="PauseScreen/PauseMenu/RightSide/ChoicesPanel/Choices"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("14_n0vgh")
+theme_override_font_sizes/font_size = 60
+text = "↻ RETRY"
+
+[node name="Options" type="Button" parent="PauseScreen/PauseMenu/RightSide/ChoicesPanel/Choices"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("14_n0vgh")
+theme_override_font_sizes/font_size = 60
+text = "⚙️ OPTIONS"
+
+[node name="Quit" type="Button" parent="PauseScreen/PauseMenu/RightSide/ChoicesPanel/Choices"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("14_n0vgh")
+theme_override_font_sizes/font_size = 60
+text = "𐄂 QUIT"
+
+[node name="SpaceBottom" type="Control" parent="PauseScreen/PauseMenu/RightSide/ChoicesPanel/Choices"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="ContentsMenu" type="VBoxContainer" parent="PauseScreen"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -177,18 +347,11 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Paused" type="Label" parent="PauseMenu/ContentsMenu"]
-layout_mode = 2
-text = "PUASED"
-label_settings = SubResource("LabelSettings_20l3y")
-horizontal_alignment = 1
-vertical_alignment = 3
-
-[node name="MasterText" type="Label" parent="PauseMenu/ContentsMenu"]
+[node name="MasterText" type="Label" parent="PauseScreen/ContentsMenu"]
 layout_mode = 2
 text = "Master Volume"
 
-[node name="Master" type="HBoxContainer" parent="PauseMenu/ContentsMenu" node_paths=PackedStringArray("reset", "slider", "percentage")]
+[node name="Master" type="HBoxContainer" parent="PauseScreen/ContentsMenu" node_paths=PackedStringArray("reset", "slider", "percentage")]
 layout_mode = 2
 script = ExtResource("14_466vg")
 bus_name = &"Master"
@@ -196,13 +359,13 @@ reset = NodePath("MasterButton")
 slider = NodePath("MasterSlider")
 percentage = NodePath("Percentage")
 
-[node name="MasterButton" type="Button" parent="PauseMenu/ContentsMenu/Master"]
+[node name="MasterButton" type="Button" parent="PauseScreen/ContentsMenu/Master"]
 custom_minimum_size = Vector2(31, 0)
 layout_mode = 2
 disabled = true
 text = "⟳"
 
-[node name="MasterSlider" type="HSlider" parent="PauseMenu/ContentsMenu/Master"]
+[node name="MasterSlider" type="HSlider" parent="PauseScreen/ContentsMenu/Master"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -210,16 +373,16 @@ max_value = 2.0
 step = 0.02
 value = 1.0
 
-[node name="Percentage" type="Label" parent="PauseMenu/ContentsMenu/Master"]
+[node name="Percentage" type="Label" parent="PauseScreen/ContentsMenu/Master"]
 custom_minimum_size = Vector2(42, 0)
 layout_mode = 2
 text = "100%"
 
-[node name="BGMText" type="Label" parent="PauseMenu/ContentsMenu"]
+[node name="BGMText" type="Label" parent="PauseScreen/ContentsMenu"]
 layout_mode = 2
 text = "BGM Volume"
 
-[node name="BGM" type="HBoxContainer" parent="PauseMenu/ContentsMenu" node_paths=PackedStringArray("reset", "slider", "percentage")]
+[node name="BGM" type="HBoxContainer" parent="PauseScreen/ContentsMenu" node_paths=PackedStringArray("reset", "slider", "percentage")]
 layout_mode = 2
 script = ExtResource("14_466vg")
 bus_name = &"Music"
@@ -227,13 +390,13 @@ reset = NodePath("BGMButton")
 slider = NodePath("BGMSlider")
 percentage = NodePath("Percentage")
 
-[node name="BGMButton" type="Button" parent="PauseMenu/ContentsMenu/BGM"]
+[node name="BGMButton" type="Button" parent="PauseScreen/ContentsMenu/BGM"]
 custom_minimum_size = Vector2(31, 0)
 layout_mode = 2
 disabled = true
 text = "⟳"
 
-[node name="BGMSlider" type="HSlider" parent="PauseMenu/ContentsMenu/BGM"]
+[node name="BGMSlider" type="HSlider" parent="PauseScreen/ContentsMenu/BGM"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -241,16 +404,16 @@ max_value = 2.0
 step = 0.02
 value = 1.0
 
-[node name="Percentage" type="Label" parent="PauseMenu/ContentsMenu/BGM"]
+[node name="Percentage" type="Label" parent="PauseScreen/ContentsMenu/BGM"]
 custom_minimum_size = Vector2(42, 0)
 layout_mode = 2
 text = "100%"
 
-[node name="SFXText" type="Label" parent="PauseMenu/ContentsMenu"]
+[node name="SFXText" type="Label" parent="PauseScreen/ContentsMenu"]
 layout_mode = 2
 text = "SFX Volume"
 
-[node name="SFX" type="HBoxContainer" parent="PauseMenu/ContentsMenu" node_paths=PackedStringArray("reset", "slider", "percentage")]
+[node name="SFX" type="HBoxContainer" parent="PauseScreen/ContentsMenu" node_paths=PackedStringArray("reset", "slider", "percentage")]
 layout_mode = 2
 script = ExtResource("14_466vg")
 bus_name = &"SFX"
@@ -258,13 +421,13 @@ reset = NodePath("SFXButton")
 slider = NodePath("SFXSlider")
 percentage = NodePath("Percentage")
 
-[node name="SFXButton" type="Button" parent="PauseMenu/ContentsMenu/SFX"]
+[node name="SFXButton" type="Button" parent="PauseScreen/ContentsMenu/SFX"]
 custom_minimum_size = Vector2(31, 0)
 layout_mode = 2
 disabled = true
 text = "⟳"
 
-[node name="SFXSlider" type="HSlider" parent="PauseMenu/ContentsMenu/SFX"]
+[node name="SFXSlider" type="HSlider" parent="PauseScreen/ContentsMenu/SFX"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -272,20 +435,21 @@ max_value = 2.0
 step = 0.02
 value = 1.0
 
-[node name="Percentage" type="Label" parent="PauseMenu/ContentsMenu/SFX"]
+[node name="Percentage" type="Label" parent="PauseScreen/ContentsMenu/SFX"]
 custom_minimum_size = Vector2(42, 0)
 layout_mode = 2
 text = "100%"
 
-[node name="Space" type="Control" parent="PauseMenu/ContentsMenu"]
+[node name="Space" type="Control" parent="PauseScreen/ContentsMenu"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="BindingsToggle" type="Button" parent="PauseMenu/ContentsMenu"]
+[node name="ControlsToggle" type="Button" parent="PauseScreen/ContentsMenu"]
 layout_mode = 2
-text = "Open Bindings Menu"
+text = "Open Controls Menu"
 
-[node name="BindingsMenu" type="VBoxContainer" parent="PauseMenu" node_paths=PackedStringArray("bindings_list")]
+[node name="ControlsMenu" type="VBoxContainer" parent="PauseScreen" node_paths=PackedStringArray("bindings_list", "fake_label", "header_keyboard", "header_controller")]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -298,19 +462,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("15_a8jrp")
 bindings_list = NodePath("Bindings/BindingsList")
+fake_label = NodePath("BindingsHeader/FakeLabel")
+header_keyboard = NodePath("BindingsHeader/Keyboard")
+header_controller = NodePath("BindingsHeader/Controller")
 
-[node name="Header" type="HBoxContainer" parent="PauseMenu/BindingsMenu"]
+[node name="BindingsHeader" type="HBoxContainer" parent="PauseScreen/ControlsMenu"]
 layout_mode = 2
 
-[node name="FakeLabel" type="Control" parent="PauseMenu/BindingsMenu/Header"]
+[node name="FakeLabel" type="Control" parent="PauseScreen/ControlsMenu/BindingsHeader"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 
-[node name="FakeReset" type="Control" parent="PauseMenu/BindingsMenu/Header"]
+[node name="FakeReset" type="Control" parent="PauseScreen/ControlsMenu/BindingsHeader"]
 custom_minimum_size = Vector2(31, 31)
 layout_mode = 2
 
-[node name="Keyboard" type="Label" parent="PauseMenu/BindingsMenu/Header"]
+[node name="Keyboard" type="Label" parent="PauseScreen/ControlsMenu/BindingsHeader"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -318,10 +485,10 @@ text = "KEYBOARD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VSeparator" type="VSeparator" parent="PauseMenu/BindingsMenu/Header"]
+[node name="VSeparator" type="VSeparator" parent="PauseScreen/ControlsMenu/BindingsHeader"]
 layout_mode = 2
 
-[node name="Controller" type="Label" parent="PauseMenu/BindingsMenu/Header"]
+[node name="Controller" type="Label" parent="PauseScreen/ControlsMenu/BindingsHeader"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -329,82 +496,82 @@ text = "CONTROLLER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FakeReset2" type="Control" parent="PauseMenu/BindingsMenu/Header"]
+[node name="FakeReset2" type="Control" parent="PauseScreen/ControlsMenu/BindingsHeader"]
 custom_minimum_size = Vector2(31, 31)
 layout_mode = 2
 
-[node name="FakeIcon" type="Control" parent="PauseMenu/BindingsMenu/Header"]
+[node name="FakeIcon" type="Control" parent="PauseScreen/ControlsMenu/BindingsHeader"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 
-[node name="FakeScrollbar" type="Control" parent="PauseMenu/BindingsMenu/Header"]
+[node name="FakeScrollbar" type="Control" parent="PauseScreen/ControlsMenu/BindingsHeader"]
 custom_minimum_size = Vector2(4, 0)
 layout_mode = 2
 
-[node name="Bindings" type="ScrollContainer" parent="PauseMenu/BindingsMenu"]
+[node name="Bindings" type="ScrollContainer" parent="PauseScreen/ControlsMenu"]
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="BindingsList" type="VBoxContainer" parent="PauseMenu/BindingsMenu/Bindings"]
+[node name="BindingsList" type="VBoxContainer" parent="PauseScreen/ControlsMenu/Bindings"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Bind" parent="PauseMenu/BindingsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
+[node name="Bind" parent="PauseScreen/ControlsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
 layout_mode = 2
 visual_name = &"Left"
 internal_name = &"left"
 action_icon = ExtResource("16_s4yss")
 
-[node name="Bind2" parent="PauseMenu/BindingsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
+[node name="Bind2" parent="PauseScreen/ControlsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
 layout_mode = 2
 visual_name = &"Right"
 internal_name = &"right"
 action_icon = ExtResource("17_jpe5g")
 
-[node name="Bind3" parent="PauseMenu/BindingsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
+[node name="Bind3" parent="PauseScreen/ControlsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
 layout_mode = 2
 visual_name = &"Up"
 internal_name = &"up"
 action_icon = ExtResource("18_eumt4")
 
-[node name="Bind4" parent="PauseMenu/BindingsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
+[node name="Bind4" parent="PauseScreen/ControlsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
 layout_mode = 2
 visual_name = &"Down"
 internal_name = &"down"
 action_icon = ExtResource("19_p6uqc")
 
-[node name="Bind5" parent="PauseMenu/BindingsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
+[node name="Bind5" parent="PauseScreen/ControlsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
 layout_mode = 2
 visual_name = &"Jump"
 internal_name = &"jump"
 action_icon = ExtResource("20_vd0xh")
 
-[node name="Bind6" parent="PauseMenu/BindingsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
+[node name="Bind6" parent="PauseScreen/ControlsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
 layout_mode = 2
 visual_name = &"Spin"
 internal_name = &"spin"
 action_icon = ExtResource("21_5awg4")
 
-[node name="Bind7" parent="PauseMenu/BindingsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
+[node name="Bind7" parent="PauseScreen/ControlsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
 layout_mode = 2
 visual_name = &"Dive"
 internal_name = &"dive"
 action_icon = ExtResource("23_a0owx")
 
-[node name="Bind8" parent="PauseMenu/BindingsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
+[node name="Bind8" parent="PauseScreen/ControlsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
 layout_mode = 2
 visual_name = &"Groundpound"
 internal_name = &"groundpound"
 action_icon = ExtResource("24_c7i2r")
 
-[node name="BindingsToggle2" type="Button" parent="PauseMenu/BindingsMenu"]
+[node name="ControlsToggle" type="Button" parent="PauseScreen/ControlsMenu"]
 layout_mode = 2
-text = "Close Bindings Menu"
+text = "Close Controls Menu"
 
 [node name="Notifications" type="Node" parent="."]
 
-[connection signal="pressed" from="PauseMenu/ContentsMenu/BindingsToggle" to="PauseMenu" method="_on_bindings_pressed"]
-[connection signal="pressed" from="PauseMenu/BindingsMenu/BindingsToggle2" to="PauseMenu" method="_on_bindings_pressed"]
+[connection signal="pressed" from="PauseScreen/ContentsMenu/ControlsToggle" to="PauseScreen" method="_on_bindings_pressed"]
+[connection signal="pressed" from="PauseScreen/ControlsMenu/ControlsToggle" to="PauseScreen" method="_on_bindings_pressed"]
