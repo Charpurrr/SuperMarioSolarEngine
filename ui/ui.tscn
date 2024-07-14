@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://ccj3teu3h6xfm"]
+[gd_scene load_steps=33 format=3 uid="uid://ccj3teu3h6xfm"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_pakjx"]
 [ext_resource type="Script" path="res://ui/debug_label.gd" id="2_suudb"]
@@ -11,21 +11,22 @@
 [ext_resource type="Texture2D" uid="uid://7p0auiyqcgk3" path="res://ui/input_display/input_display_ico6.png" id="8_nyjo7"]
 [ext_resource type="Texture2D" uid="uid://dir44lhfrdcxu" path="res://ui/input_display/input_display_ico7.png" id="9_smbrs"]
 [ext_resource type="Texture2D" uid="uid://15yce5ngma24" path="res://ui/input_display/input_display_ico8.png" id="10_5r8on"]
-[ext_resource type="Script" path="res://ui/pause_menu/pause_menu.gd" id="12_l4gs6"]
+[ext_resource type="Script" path="res://ui/pause_screen/pause_menu.gd" id="12_l4gs6"]
 [ext_resource type="Shader" path="res://ui/blur.gdshader" id="12_wqetc"]
-[ext_resource type="Script" path="res://ui/pause_menu/audio_setting.gd" id="14_466vg"]
+[ext_resource type="Script" path="res://ui/pause_screen/audio_setting.gd" id="14_466vg"]
 [ext_resource type="FontFile" uid="uid://dwjboqsj8b8xd" path="res://ui/fonts/super_mario.ttf" id="14_n0vgh"]
-[ext_resource type="Script" path="res://ui/pause_menu/bindings/bindings_menu.gd" id="15_a8jrp"]
-[ext_resource type="PackedScene" uid="uid://dl3pnbtv84ekj" path="res://ui/pause_menu/bindings/bind.tscn" id="15_q65l3"]
+[ext_resource type="Script" path="res://ui/pause_screen/bindings/bindings_menu.gd" id="15_a8jrp"]
+[ext_resource type="PackedScene" uid="uid://dl3pnbtv84ekj" path="res://ui/pause_screen/bindings/bind.tscn" id="15_q65l3"]
 [ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="15_y78en"]
-[ext_resource type="Texture2D" uid="uid://bxnkgtkyg67g8" path="res://ui/pause_menu/bindings/icons/left.png" id="16_s4yss"]
-[ext_resource type="Texture2D" uid="uid://dpbmlfpb8nqkt" path="res://ui/pause_menu/bindings/icons/right.png" id="17_jpe5g"]
-[ext_resource type="Texture2D" uid="uid://8v7ugt32a0d2" path="res://ui/pause_menu/bindings/icons/up.png" id="18_eumt4"]
-[ext_resource type="Texture2D" uid="uid://bii6qpjesltf3" path="res://ui/pause_menu/bindings/icons/down.png" id="19_p6uqc"]
-[ext_resource type="Texture2D" uid="uid://bstgsdh4dqbc8" path="res://ui/pause_menu/bindings/icons/jump.png" id="20_vd0xh"]
-[ext_resource type="Texture2D" uid="uid://c3qbauenpyulb" path="res://ui/pause_menu/bindings/icons/spin.png" id="21_5awg4"]
-[ext_resource type="Texture2D" uid="uid://bqqyiat6cbhsn" path="res://ui/pause_menu/bindings/icons/dive.png" id="23_a0owx"]
-[ext_resource type="Texture2D" uid="uid://48gn0c5ga52r" path="res://ui/pause_menu/bindings/icons/groundpound.png" id="24_c7i2r"]
+[ext_resource type="Script" path="res://ui/pause_screen/choices.gd" id="16_0su14"]
+[ext_resource type="Texture2D" uid="uid://bxnkgtkyg67g8" path="res://ui/pause_screen/bindings/icons/left.png" id="16_s4yss"]
+[ext_resource type="Texture2D" uid="uid://dpbmlfpb8nqkt" path="res://ui/pause_screen/bindings/icons/right.png" id="17_jpe5g"]
+[ext_resource type="Texture2D" uid="uid://8v7ugt32a0d2" path="res://ui/pause_screen/bindings/icons/up.png" id="18_eumt4"]
+[ext_resource type="Texture2D" uid="uid://bii6qpjesltf3" path="res://ui/pause_screen/bindings/icons/down.png" id="19_p6uqc"]
+[ext_resource type="Texture2D" uid="uid://bstgsdh4dqbc8" path="res://ui/pause_screen/bindings/icons/jump.png" id="20_vd0xh"]
+[ext_resource type="Texture2D" uid="uid://c3qbauenpyulb" path="res://ui/pause_screen/bindings/icons/spin.png" id="21_5awg4"]
+[ext_resource type="Texture2D" uid="uid://bqqyiat6cbhsn" path="res://ui/pause_screen/bindings/icons/dive.png" id="23_a0owx"]
+[ext_resource type="Texture2D" uid="uid://48gn0c5ga52r" path="res://ui/pause_screen/bindings/icons/groundpound.png" id="24_c7i2r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8xxao"]
 shader = ExtResource("12_wqetc")
@@ -56,12 +57,12 @@ shadow_color = Color(0, 0, 0, 1)
 font = ExtResource("15_y78en")
 font_size = 20
 
-[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("notif_list", "pause_menu")]
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("pause_screen", "notif_list")]
 process_mode = 3
 script = ExtResource("1_pakjx")
+pause_screen = NodePath("PauseScreen")
 notif_scene = ExtResource("2_ufvuv")
 notif_list = NodePath("Notifications")
-pause_menu = NodePath("PauseScreen")
 
 [node name="DebugLabel" type="Label" parent="."]
 offset_right = 86.0
@@ -165,7 +166,8 @@ modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 2
 texture = ExtResource("5_cgoe6")
 
-[node name="PauseScreen" type="Control" parent="." node_paths=PackedStringArray("contents_menu", "bindings_menu", "bindings_button")]
+[node name="PauseScreen" type="Control" parent="." node_paths=PackedStringArray("choices")]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -175,9 +177,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("12_l4gs6")
-contents_menu = NodePath("ContentsMenu")
-bindings_menu = NodePath("ControlsMenu")
-bindings_button = NodePath("ContentsMenu/ControlsToggle")
+choices = NodePath("PauseMenu/RightSide/ChoicesPanel/Choices")
 
 [node name="Blur" type="ColorRect" parent="PauseScreen"]
 material = SubResource("ShaderMaterial_8xxao")
@@ -285,7 +285,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Choices" type="VBoxContainer" parent="PauseScreen/PauseMenu/RightSide/ChoicesPanel"]
+[node name="Choices" type="VBoxContainer" parent="PauseScreen/PauseMenu/RightSide/ChoicesPanel" node_paths=PackedStringArray("resume", "retry", "options", "quit")]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -294,6 +294,11 @@ offset_left = 50.0
 offset_right = -50.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("16_0su14")
+resume = NodePath("Resume")
+retry = NodePath("Retry")
+options = NodePath("Options")
+quit = NodePath("Quit")
 
 [node name="SpaceTop" type="Control" parent="PauseScreen/PauseMenu/RightSide/ChoicesPanel/Choices"]
 layout_mode = 2
@@ -572,6 +577,3 @@ layout_mode = 2
 text = "Close Controls Menu"
 
 [node name="Notifications" type="Node" parent="."]
-
-[connection signal="pressed" from="PauseScreen/ContentsMenu/ControlsToggle" to="PauseScreen" method="_on_bindings_pressed"]
-[connection signal="pressed" from="PauseScreen/ControlsMenu/ControlsToggle" to="PauseScreen" method="_on_bindings_pressed"]

@@ -2,6 +2,8 @@ class_name UserInterface
 extends CanvasLayer
 ## UI and utility.
 
+@export var pause_screen: Control
+
 #region Notification variables
 @export var notif_scene: PackedScene
 
@@ -22,18 +24,19 @@ var current_notifs: Array = []
 	KEY_LEFT: %Left,
 }
 
-@export var pause_menu: Control
-
 var input_event: InputEvent
 #endregion
 
 
 func _ready():
 	GameState.connect(&"frame_advanced", _push_notif.bind(&"push", "Advanced 1 frame."))
-	GameState.connect(&"paused", pause_menu.enable_disable)
 
 
 func _process(_delta):
+	if Input.is_action_just_pressed(&"pause"):
+		GameState.emit_signal(&"paused")
+		pause_screen.enable_disable()
+
 	for i in current_notifs:
 		if not is_instance_valid(i):
 			current_notifs.erase(i)

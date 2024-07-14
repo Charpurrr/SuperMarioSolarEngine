@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8v7ugt32a0d2"
-path="res://.godot/imported/up.png-aa0e058cee8c838b6d1bf08e4e729c93.ctex"
+uid="uid://48gn0c5ga52r"
+path="res://.godot/imported/groundpound.png-fde414217f9ceeeb756235c82d0bac66.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/pause_menu/bindings/icons/up.png"
-dest_files=["res://.godot/imported/up.png-aa0e058cee8c838b6d1bf08e4e729c93.ctex"]
+source_file="res://ui/pause_screen/bindings/icons/groundpound.png"
+dest_files=["res://.godot/imported/groundpound.png-fde414217f9ceeeb756235c82d0bac66.ctex"]
 
 [params]
 
