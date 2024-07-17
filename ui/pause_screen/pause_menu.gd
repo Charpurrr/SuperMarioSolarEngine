@@ -1,40 +1,47 @@
-class_name PauseMenu
+class_name PauseScreen
 extends Control
-## Pause menu functionality. Does not handle functionality for its children.
+## Pause screen functionality.
 
 @export var choices: VBoxContainer
-
-#@export var contents_menu: VBoxContainer
-#@export var controls_menu: VBoxContainer
-#@export var bindings_button: Button
+@export var pause_menu: HBoxContainer
+@export var settings_menu: Control
 
 
 func _ready():
 	choices.resume.pressed.connect(_resume)
 	choices.retry.pressed.connect(_retry)
+	choices.settings.pressed.connect(_settings)
 	choices.quit.pressed.connect(_quit)
 
 	visible = false
-	#controls_menu.visible = false
+	update_settings_visibility(false)
 
 
-func enable_disable():
+func enable_disable_screen():
 	visible = !visible
+
+
+func update_settings_visibility(settings_visible: bool):
+	pause_menu.visible = !settings_visible
+	settings_menu.visible = settings_visible
 
 
 func _resume():
 	GameState.emit_signal(&"paused")
-	enable_disable()
+	enable_disable_screen()
 
 
 func _retry():
 	GameState.emit_signal(&"reload")
 
 
+func _settings():
+	update_settings_visibility(true)
+
+
 func _quit():
 	get_tree().quit()
 
 
-#func _on_bindings_pressed():
-	#contents_menu.visible = !contents_menu.visible
-	#controls_menu.visible = !controls_menu.visible
+func _on_return_settings_pressed():
+	update_settings_visibility(false)

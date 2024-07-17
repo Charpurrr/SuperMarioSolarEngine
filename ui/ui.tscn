@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://ccj3teu3h6xfm"]
+[gd_scene load_steps=42 format=3 uid="uid://ccj3teu3h6xfm"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_pakjx"]
 [ext_resource type="Script" path="res://ui/debug_label.gd" id="2_suudb"]
@@ -13,20 +13,23 @@
 [ext_resource type="Texture2D" uid="uid://15yce5ngma24" path="res://ui/input_display/input_display_ico8.png" id="10_5r8on"]
 [ext_resource type="Script" path="res://ui/pause_screen/pause_menu.gd" id="12_l4gs6"]
 [ext_resource type="Shader" path="res://ui/blur.gdshader" id="12_wqetc"]
-[ext_resource type="Script" path="res://ui/pause_screen/audio_setting.gd" id="14_466vg"]
+[ext_resource type="Script" path="res://ui/pause_screen/settings/audio/audio_setting.gd" id="14_466vg"]
 [ext_resource type="FontFile" uid="uid://dwjboqsj8b8xd" path="res://ui/fonts/super_mario.ttf" id="14_n0vgh"]
-[ext_resource type="Script" path="res://ui/pause_screen/bindings/bindings_menu.gd" id="15_a8jrp"]
-[ext_resource type="PackedScene" uid="uid://dl3pnbtv84ekj" path="res://ui/pause_screen/bindings/bind.tscn" id="15_q65l3"]
+[ext_resource type="Script" path="res://ui/pause_screen/settings/controls/controls_tab.gd" id="15_a8jrp"]
+[ext_resource type="PackedScene" uid="uid://dl3pnbtv84ekj" path="res://ui/pause_screen/settings/controls/bindings/bind.tscn" id="15_q65l3"]
 [ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="15_y78en"]
 [ext_resource type="Script" path="res://ui/pause_screen/choices.gd" id="16_0su14"]
-[ext_resource type="Texture2D" uid="uid://bxnkgtkyg67g8" path="res://ui/pause_screen/bindings/icons/left.png" id="16_s4yss"]
-[ext_resource type="Texture2D" uid="uid://dpbmlfpb8nqkt" path="res://ui/pause_screen/bindings/icons/right.png" id="17_jpe5g"]
-[ext_resource type="Texture2D" uid="uid://8v7ugt32a0d2" path="res://ui/pause_screen/bindings/icons/up.png" id="18_eumt4"]
-[ext_resource type="Texture2D" uid="uid://bii6qpjesltf3" path="res://ui/pause_screen/bindings/icons/down.png" id="19_p6uqc"]
-[ext_resource type="Texture2D" uid="uid://bstgsdh4dqbc8" path="res://ui/pause_screen/bindings/icons/jump.png" id="20_vd0xh"]
-[ext_resource type="Texture2D" uid="uid://c3qbauenpyulb" path="res://ui/pause_screen/bindings/icons/spin.png" id="21_5awg4"]
-[ext_resource type="Texture2D" uid="uid://bqqyiat6cbhsn" path="res://ui/pause_screen/bindings/icons/dive.png" id="23_a0owx"]
-[ext_resource type="Texture2D" uid="uid://48gn0c5ga52r" path="res://ui/pause_screen/bindings/icons/groundpound.png" id="24_c7i2r"]
+[ext_resource type="Texture2D" uid="uid://bxnkgtkyg67g8" path="res://ui/pause_screen/settings/controls/bindings/icons/left.png" id="16_s4yss"]
+[ext_resource type="Texture2D" uid="uid://dpbmlfpb8nqkt" path="res://ui/pause_screen/settings/controls/bindings/icons/right.png" id="17_jpe5g"]
+[ext_resource type="Texture2D" uid="uid://8v7ugt32a0d2" path="res://ui/pause_screen/settings/controls/bindings/icons/up.png" id="18_eumt4"]
+[ext_resource type="Texture2D" uid="uid://bii6qpjesltf3" path="res://ui/pause_screen/settings/controls/bindings/icons/down.png" id="19_p6uqc"]
+[ext_resource type="Texture2D" uid="uid://cekiel7bt2lgi" path="res://ui/pause_screen/settings/controls/rumble/rumble_icons.png" id="19_y7lf8"]
+[ext_resource type="Shader" path="res://ui/pause_screen/settings/controls/rumble/triangular_progress_bar.gdshader" id="20_l7kfr"]
+[ext_resource type="Texture2D" uid="uid://bstgsdh4dqbc8" path="res://ui/pause_screen/settings/controls/bindings/icons/jump.png" id="20_vd0xh"]
+[ext_resource type="Texture2D" uid="uid://c3qbauenpyulb" path="res://ui/pause_screen/settings/controls/bindings/icons/spin.png" id="21_5awg4"]
+[ext_resource type="Script" path="res://ui/pause_screen/settings/controls/rumble/triangular_progress_bar.gd" id="21_yele6"]
+[ext_resource type="Texture2D" uid="uid://bqqyiat6cbhsn" path="res://ui/pause_screen/settings/controls/bindings/icons/dive.png" id="23_a0owx"]
+[ext_resource type="Texture2D" uid="uid://48gn0c5ga52r" path="res://ui/pause_screen/settings/controls/bindings/icons/groundpound.png" id="24_c7i2r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8xxao"]
 shader = ExtResource("12_wqetc")
@@ -56,6 +59,34 @@ shadow_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_70wox"]
 font = ExtResource("15_y78en")
 font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_bsikt"]
+font = ExtResource("14_n0vgh")
+font_size = 100
+outline_size = 30
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ja8q"]
+atlas = ExtResource("19_y7lf8")
+region = Rect2(0, 0, 60, 60)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pqwu3"]
+shader = ExtResource("20_l7kfr")
+shader_parameter/bounding_box = Vector2(331, 120)
+shader_parameter/color_progress = Color(1, 1, 1, 1)
+shader_parameter/color_background = Color(0.392157, 0.392157, 0.392157, 1)
+shader_parameter/color_seperator = Color(0.29, 0.29, 0.29, 1)
+shader_parameter/value = 0.0
+
+[sub_resource type="InputEventKey" id="InputEventKey_hwwni"]
+device = -1
+keycode = 88
+unicode = 120
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_bmfaf"]
+
+[sub_resource type="Shortcut" id="Shortcut_bglev"]
+events = [SubResource("InputEventKey_hwwni"), SubResource("InputEventJoypadButton_bmfaf")]
 
 [node name="UI" type="CanvasLayer" node_paths=PackedStringArray("pause_screen", "notif_list")]
 process_mode = 3
@@ -166,8 +197,7 @@ modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 2
 texture = ExtResource("5_cgoe6")
 
-[node name="PauseScreen" type="Control" parent="." node_paths=PackedStringArray("choices")]
-visible = false
+[node name="PauseScreen" type="Control" parent="." node_paths=PackedStringArray("choices", "pause_menu", "settings_menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -178,6 +208,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("12_l4gs6")
 choices = NodePath("PauseMenu/RightSide/ChoicesPanel/Choices")
+pause_menu = NodePath("PauseMenu")
+settings_menu = NodePath("Settings")
 
 [node name="Blur" type="ColorRect" parent="PauseScreen"]
 material = SubResource("ShaderMaterial_8xxao")
@@ -189,6 +221,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PauseMenu" type="HBoxContainer" parent="PauseScreen"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -285,7 +318,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Choices" type="VBoxContainer" parent="PauseScreen/PauseMenu/RightSide/ChoicesPanel" node_paths=PackedStringArray("resume", "retry", "options", "quit")]
+[node name="Choices" type="VBoxContainer" parent="PauseScreen/PauseMenu/RightSide/ChoicesPanel" node_paths=PackedStringArray("resume", "retry", "settings", "quit")]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -297,7 +330,7 @@ grow_vertical = 2
 script = ExtResource("16_0su14")
 resume = NodePath("Resume")
 retry = NodePath("Retry")
-options = NodePath("Options")
+settings = NodePath("Settings")
 quit = NodePath("Quit")
 
 [node name="SpaceTop" type="Control" parent="PauseScreen/PauseMenu/RightSide/ChoicesPanel/Choices"]
@@ -319,12 +352,12 @@ theme_override_fonts/font = ExtResource("14_n0vgh")
 theme_override_font_sizes/font_size = 60
 text = "↻ RETRY"
 
-[node name="Options" type="Button" parent="PauseScreen/PauseMenu/RightSide/ChoicesPanel/Choices"]
+[node name="Settings" type="Button" parent="PauseScreen/PauseMenu/RightSide/ChoicesPanel/Choices"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("14_n0vgh")
 theme_override_font_sizes/font_size = 60
-text = "⚙️ OPTIONS"
+text = "⚙️ SETTINGS"
 
 [node name="Quit" type="Button" parent="PauseScreen/PauseMenu/RightSide/ChoicesPanel/Choices"]
 layout_mode = 2
@@ -338,25 +371,287 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 
-[node name="ContentsMenu" type="VBoxContainer" parent="PauseScreen"]
-visible = false
+[node name="Settings" type="Control" parent="PauseScreen"]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 150.0
-offset_top = 150.0
-offset_right = -150.0
-offset_bottom = -150.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="SettingsMenu" type="VBoxContainer" parent="PauseScreen/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Header" type="Panel" parent="PauseScreen/Settings/SettingsMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.22
+
+[node name="Settings" type="Label" parent="PauseScreen/Settings/SettingsMenu/Header"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "settings"
+label_settings = SubResource("LabelSettings_bsikt")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Tabs" type="TabContainer" parent="PauseScreen/Settings/SettingsMenu"]
+self_modulate = Color(1, 1, 1, 0.588235)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Controls" type="VBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs"]
+layout_mode = 2
+
+[node name="SpaceTop" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="Rest" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SpaceLeft" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Options" type="VBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer" node_paths=PackedStringArray("motion_toggle", "rumble_menu_toggle", "rumble_menu", "bindings_list", "fake_label", "header_keyboard", "header_controller")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("15_a8jrp")
+motion_toggle = NodePath("MotionToggle")
+rumble_menu_toggle = NodePath("RumbleMenuToggle")
+rumble_menu = NodePath("RumbleMenu")
+bindings_list = NodePath("BindingsList")
+fake_label = NodePath("BindingsHeader/FakeLabel")
+header_keyboard = NodePath("BindingsHeader/Keyboard")
+header_controller = NodePath("BindingsHeader/Controller")
+
+[node name="MotionToggle" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("15_y78en")
+theme_override_font_sizes/font_size = 25
+toggle_mode = true
+text = "Motion Controls: DISABLED"
+
+[node name="RumbleMenuToggle" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("15_y78en")
+theme_override_font_sizes/font_size = 25
+toggle_mode = true
+text = "Open Rumble Settings"
+
+[node name="RumbleMenu" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="SpaceLeft" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="PanelContainer" type="PanelContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RumbleSettings" type="VBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Indicators" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu/PanelContainer/RumbleSettings"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu/PanelContainer/RumbleSettings/Indicators"]
+custom_minimum_size = Vector2(0, 135)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_0ja8q")
+stretch_mode = 5
+
+[node name="TriangularProgressBar" type="ColorRect" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu/PanelContainer/RumbleSettings/Indicators"]
+material = SubResource("ShaderMaterial_pqwu3")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+script = ExtResource("21_yele6")
+
+[node name="Mode" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu/PanelContainer/RumbleSettings"]
+layout_mode = 2
+
+[node name="Off" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu/PanelContainer/RumbleSettings/Mode"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("15_y78en")
+theme_override_font_sizes/font_size = 20
+text = "Off"
+
+[node name="Weak" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu/PanelContainer/RumbleSettings/Mode"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("15_y78en")
+theme_override_font_sizes/font_size = 20
+text = "Weak"
+
+[node name="Normal" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu/PanelContainer/RumbleSettings/Mode"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("15_y78en")
+theme_override_font_sizes/font_size = 20
+text = "Normal"
+
+[node name="Strong" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu/PanelContainer/RumbleSettings/Mode"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("15_y78en")
+theme_override_font_sizes/font_size = 20
+text = "Strong"
+
+[node name="SpaceRight" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="BindingsHeader" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options"]
+layout_mode = 2
+
+[node name="FakeLabel" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsHeader"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="FakeButtons" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsHeader"]
+custom_minimum_size = Vector2(31, 31)
+layout_mode = 2
+
+[node name="Keyboard" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsHeader"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("15_y78en")
+theme_override_font_sizes/font_size = 25
+text = "KEYBOARD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsHeader"]
+layout_mode = 2
+
+[node name="Controller" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsHeader"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("15_y78en")
+theme_override_font_sizes/font_size = 25
+text = "CONTROLLER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FakeButtons2" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsHeader"]
+custom_minimum_size = Vector2(31, 31)
+layout_mode = 2
+
+[node name="FakeIcon" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsHeader"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="BindingsList" type="VBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Bind" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsList" instance=ExtResource("15_q65l3")]
+layout_mode = 2
+visual_name = &"Left"
+internal_name = &"left"
+action_icon = ExtResource("16_s4yss")
+
+[node name="Bind2" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsList" instance=ExtResource("15_q65l3")]
+layout_mode = 2
+visual_name = &"Right"
+internal_name = &"right"
+action_icon = ExtResource("17_jpe5g")
+
+[node name="Bind3" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsList" instance=ExtResource("15_q65l3")]
+layout_mode = 2
+visual_name = &"Up"
+internal_name = &"up"
+action_icon = ExtResource("18_eumt4")
+
+[node name="Bind4" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsList" instance=ExtResource("15_q65l3")]
+layout_mode = 2
+visual_name = &"Down"
+internal_name = &"down"
+action_icon = ExtResource("19_p6uqc")
+
+[node name="Bind5" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsList" instance=ExtResource("15_q65l3")]
+layout_mode = 2
+visual_name = &"Jump"
+internal_name = &"jump"
+action_icon = ExtResource("20_vd0xh")
+
+[node name="Bind6" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsList" instance=ExtResource("15_q65l3")]
+layout_mode = 2
+visual_name = &"Spin"
+internal_name = &"spin"
+action_icon = ExtResource("21_5awg4")
+
+[node name="Bind7" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsList" instance=ExtResource("15_q65l3")]
+layout_mode = 2
+visual_name = &"Dive"
+internal_name = &"dive"
+action_icon = ExtResource("23_a0owx")
+
+[node name="Bind8" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsList" instance=ExtResource("15_q65l3")]
+layout_mode = 2
+visual_name = &"Groundpound"
+internal_name = &"groundpound"
+action_icon = ExtResource("24_c7i2r")
+
+[node name="SpaceRight" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="Audio" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs"]
+visible = false
+layout_mode = 2
+
+[node name="SpaceLeft" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="Options" type="VBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio"]
+layout_mode = 2
+size_flags_horizontal = 3
 alignment = 1
 
-[node name="MasterText" type="Label" parent="PauseScreen/ContentsMenu"]
+[node name="MasterText" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options"]
 layout_mode = 2
 text = "Master Volume"
 
-[node name="Master" type="HBoxContainer" parent="PauseScreen/ContentsMenu" node_paths=PackedStringArray("reset", "slider", "percentage")]
+[node name="Master" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options" node_paths=PackedStringArray("reset", "slider", "percentage")]
 layout_mode = 2
 script = ExtResource("14_466vg")
 bus_name = &"Master"
@@ -364,13 +659,13 @@ reset = NodePath("MasterButton")
 slider = NodePath("MasterSlider")
 percentage = NodePath("Percentage")
 
-[node name="MasterButton" type="Button" parent="PauseScreen/ContentsMenu/Master"]
+[node name="MasterButton" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/Master"]
 custom_minimum_size = Vector2(31, 0)
 layout_mode = 2
 disabled = true
 text = "⟳"
 
-[node name="MasterSlider" type="HSlider" parent="PauseScreen/ContentsMenu/Master"]
+[node name="MasterSlider" type="HSlider" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/Master"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -378,16 +673,16 @@ max_value = 2.0
 step = 0.02
 value = 1.0
 
-[node name="Percentage" type="Label" parent="PauseScreen/ContentsMenu/Master"]
+[node name="Percentage" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/Master"]
 custom_minimum_size = Vector2(42, 0)
 layout_mode = 2
 text = "100%"
 
-[node name="BGMText" type="Label" parent="PauseScreen/ContentsMenu"]
+[node name="BGMText" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options"]
 layout_mode = 2
 text = "BGM Volume"
 
-[node name="BGM" type="HBoxContainer" parent="PauseScreen/ContentsMenu" node_paths=PackedStringArray("reset", "slider", "percentage")]
+[node name="BGM" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options" node_paths=PackedStringArray("reset", "slider", "percentage")]
 layout_mode = 2
 script = ExtResource("14_466vg")
 bus_name = &"Music"
@@ -395,13 +690,13 @@ reset = NodePath("BGMButton")
 slider = NodePath("BGMSlider")
 percentage = NodePath("Percentage")
 
-[node name="BGMButton" type="Button" parent="PauseScreen/ContentsMenu/BGM"]
+[node name="BGMButton" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/BGM"]
 custom_minimum_size = Vector2(31, 0)
 layout_mode = 2
 disabled = true
 text = "⟳"
 
-[node name="BGMSlider" type="HSlider" parent="PauseScreen/ContentsMenu/BGM"]
+[node name="BGMSlider" type="HSlider" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/BGM"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -409,16 +704,16 @@ max_value = 2.0
 step = 0.02
 value = 1.0
 
-[node name="Percentage" type="Label" parent="PauseScreen/ContentsMenu/BGM"]
+[node name="Percentage" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/BGM"]
 custom_minimum_size = Vector2(42, 0)
 layout_mode = 2
 text = "100%"
 
-[node name="SFXText" type="Label" parent="PauseScreen/ContentsMenu"]
+[node name="SFXText" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options"]
 layout_mode = 2
 text = "SFX Volume"
 
-[node name="SFX" type="HBoxContainer" parent="PauseScreen/ContentsMenu" node_paths=PackedStringArray("reset", "slider", "percentage")]
+[node name="SFX" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options" node_paths=PackedStringArray("reset", "slider", "percentage")]
 layout_mode = 2
 script = ExtResource("14_466vg")
 bus_name = &"SFX"
@@ -426,13 +721,13 @@ reset = NodePath("SFXButton")
 slider = NodePath("SFXSlider")
 percentage = NodePath("Percentage")
 
-[node name="SFXButton" type="Button" parent="PauseScreen/ContentsMenu/SFX"]
+[node name="SFXButton" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/SFX"]
 custom_minimum_size = Vector2(31, 0)
 layout_mode = 2
 disabled = true
 text = "⟳"
 
-[node name="SFXSlider" type="HSlider" parent="PauseScreen/ContentsMenu/SFX"]
+[node name="SFXSlider" type="HSlider" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/SFX"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -440,140 +735,41 @@ max_value = 2.0
 step = 0.02
 value = 1.0
 
-[node name="Percentage" type="Label" parent="PauseScreen/ContentsMenu/SFX"]
+[node name="Percentage" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/SFX"]
 custom_minimum_size = Vector2(42, 0)
 layout_mode = 2
 text = "100%"
 
-[node name="Space" type="Control" parent="PauseScreen/ContentsMenu"]
+[node name="Space" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="ControlsToggle" type="Button" parent="PauseScreen/ContentsMenu"]
+[node name="SpaceRight" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio"]
 layout_mode = 2
-text = "Open Controls Menu"
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
 
-[node name="ControlsMenu" type="VBoxContainer" parent="PauseScreen" node_paths=PackedStringArray("bindings_list", "fake_label", "header_keyboard", "header_controller")]
-visible = false
+[node name="ReturnSettings" type="Button" parent="PauseScreen/Settings"]
+self_modulate = Color(1, 0, 0, 1)
+custom_minimum_size = Vector2(43, 43)
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
+anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 150.0
-offset_top = 150.0
-offset_right = -150.0
-offset_bottom = -150.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("15_a8jrp")
-bindings_list = NodePath("Bindings/BindingsList")
-fake_label = NodePath("BindingsHeader/FakeLabel")
-header_keyboard = NodePath("BindingsHeader/Keyboard")
-header_controller = NodePath("BindingsHeader/Controller")
-
-[node name="BindingsHeader" type="HBoxContainer" parent="PauseScreen/ControlsMenu"]
-layout_mode = 2
-
-[node name="FakeLabel" type="Control" parent="PauseScreen/ControlsMenu/BindingsHeader"]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-
-[node name="FakeReset" type="Control" parent="PauseScreen/ControlsMenu/BindingsHeader"]
-custom_minimum_size = Vector2(31, 31)
-layout_mode = 2
-
-[node name="Keyboard" type="Label" parent="PauseScreen/ControlsMenu/BindingsHeader"]
-custom_minimum_size = Vector2(0, 48)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "KEYBOARD"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="VSeparator" type="VSeparator" parent="PauseScreen/ControlsMenu/BindingsHeader"]
-layout_mode = 2
-
-[node name="Controller" type="Label" parent="PauseScreen/ControlsMenu/BindingsHeader"]
-custom_minimum_size = Vector2(0, 48)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "CONTROLLER"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="FakeReset2" type="Control" parent="PauseScreen/ControlsMenu/BindingsHeader"]
-custom_minimum_size = Vector2(31, 31)
-layout_mode = 2
-
-[node name="FakeIcon" type="Control" parent="PauseScreen/ControlsMenu/BindingsHeader"]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-
-[node name="FakeScrollbar" type="Control" parent="PauseScreen/ControlsMenu/BindingsHeader"]
-custom_minimum_size = Vector2(4, 0)
-layout_mode = 2
-
-[node name="Bindings" type="ScrollContainer" parent="PauseScreen/ControlsMenu"]
-layout_mode = 2
-size_flags_vertical = 3
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 2
-
-[node name="BindingsList" type="VBoxContainer" parent="PauseScreen/ControlsMenu/Bindings"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Bind" parent="PauseScreen/ControlsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
-layout_mode = 2
-visual_name = &"Left"
-internal_name = &"left"
-action_icon = ExtResource("16_s4yss")
-
-[node name="Bind2" parent="PauseScreen/ControlsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
-layout_mode = 2
-visual_name = &"Right"
-internal_name = &"right"
-action_icon = ExtResource("17_jpe5g")
-
-[node name="Bind3" parent="PauseScreen/ControlsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
-layout_mode = 2
-visual_name = &"Up"
-internal_name = &"up"
-action_icon = ExtResource("18_eumt4")
-
-[node name="Bind4" parent="PauseScreen/ControlsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
-layout_mode = 2
-visual_name = &"Down"
-internal_name = &"down"
-action_icon = ExtResource("19_p6uqc")
-
-[node name="Bind5" parent="PauseScreen/ControlsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
-layout_mode = 2
-visual_name = &"Jump"
-internal_name = &"jump"
-action_icon = ExtResource("20_vd0xh")
-
-[node name="Bind6" parent="PauseScreen/ControlsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
-layout_mode = 2
-visual_name = &"Spin"
-internal_name = &"spin"
-action_icon = ExtResource("21_5awg4")
-
-[node name="Bind7" parent="PauseScreen/ControlsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
-layout_mode = 2
-visual_name = &"Dive"
-internal_name = &"dive"
-action_icon = ExtResource("23_a0owx")
-
-[node name="Bind8" parent="PauseScreen/ControlsMenu/Bindings/BindingsList" instance=ExtResource("15_q65l3")]
-layout_mode = 2
-visual_name = &"Groundpound"
-internal_name = &"groundpound"
-action_icon = ExtResource("24_c7i2r")
-
-[node name="ControlsToggle" type="Button" parent="PauseScreen/ControlsMenu"]
-layout_mode = 2
-text = "Close Controls Menu"
+offset_left = 10.0
+offset_top = -53.0
+offset_right = 53.0
+offset_bottom = -10.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 25
+shortcut = SubResource("Shortcut_bglev")
+text = "↵"
+clip_text = true
 
 [node name="Notifications" type="Node" parent="."]
+
+[connection signal="toggled" from="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/MotionToggle" to="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options" method="_on_motion_toggle_toggled"]
+[connection signal="toggled" from="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenuToggle" to="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options" method="_on_rumble_menu_toggle_toggled"]
+[connection signal="pressed" from="PauseScreen/Settings/ReturnSettings" to="PauseScreen" method="_on_return_settings_pressed"]

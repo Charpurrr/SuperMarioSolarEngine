@@ -35,7 +35,8 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_just_pressed(&"pause"):
 		GameState.emit_signal(&"paused")
-		pause_screen.enable_disable()
+		pause_screen.enable_disable_screen()
+		pause_screen.update_settings_visibility(false)
 
 	for i in current_notifs:
 		if not is_instance_valid(i):
