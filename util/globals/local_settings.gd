@@ -23,5 +23,4 @@ func load_setting(section: String, key: String, default: Variant) -> Variant:
 
 func change_setting(section: String, key: String, value: Variant):
 	config.set_value(section, key, value)
-
 	config.save(FILE_PATH)
