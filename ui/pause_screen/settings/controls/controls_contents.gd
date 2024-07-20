@@ -1,12 +1,16 @@
-class_name ControlsMenu
+class_name ControlsContents
 extends VBoxContainer
-## Controls menu functionality.
+## Functionality for the contents of the controls menu.
 
+@export var player: int = 0
+@export var device_port: int = 0
+
+@export_category(&"Motion References")
 @export var motion_toggle: Button
 
 @export_category(&"Rumble References")
 @export var rumble_menu_toggle: Button
-@export var rumble_menu: HBoxContainer
+@export var rumble_menu: Control
 @export var rumble_icon: TextureRect
 @export var rumble_progress: ColorRect
 @export var rumble_modes: HBoxContainer
@@ -27,6 +31,9 @@ func _ready():
 	_update_rumble_visible(false)
 	_update_header()
 
+	for bind in bindings_list.get_children():
+		bind.setup_buttons(device_port, player)
+
 	for mode in rumble_modes.get_children():
 		if mode is Button:
 			var mode_name = mode.name
@@ -38,6 +45,12 @@ func _ready():
 
 	rumble_progress.size_flags_stretch_ratio = mode_count
 	_set_rumble_shader_param(&"segment_count", mode_count)
+
+
+## Update the bind buttons if [member device_port] was changed.
+func update_buttons():
+	for bind in bindings_list.get_children():
+		bind.update_buttons(device_port)
 
 
 func _update_motion_toggle(toggled_on: bool):
@@ -67,15 +80,22 @@ func _update_rumble_visible(menu_visible: bool):
 ## Updates the rumble setting the relating graphics.
 func _update_rumble(strength: StringName):
 	var strength_id: int
+	var strength_count = rumble_names.size()
 	var icon_texture = rumble_icon.texture as AtlasTexture
 
 	strength_id = rumble_names.find(strength)
 
+	# Update graphics
 	icon_texture.region.position.x = icon_texture.region.size.x * strength_id
-
 	_set_rumble_shader_param(&"value", strength_id)
 
-	LocalSettings.change_setting("Rumble", "Strength", strength)
+	#
+	var magnitude: float = 1.0 / strength_count * strength_id
+
+	Input.start_joy_vibration(device_port, magnitude, magnitude, 0.1)
+
+	# Save the value to LocalSettings
+	LocalSettings.change_setting("Rumble (Player: %d)" % player, "Strength", strength)
 
 
 func _set_rumble_shader_param(parameter: StringName, value: Variant):

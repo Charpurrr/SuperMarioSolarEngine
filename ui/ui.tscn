@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://ccj3teu3h6xfm"]
+[gd_scene load_steps=46 format=3 uid="uid://ccj3teu3h6xfm"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_pakjx"]
 [ext_resource type="Script" path="res://ui/debug_label.gd" id="2_suudb"]
@@ -15,12 +15,13 @@
 [ext_resource type="Shader" path="res://ui/blur.gdshader" id="12_wqetc"]
 [ext_resource type="Script" path="res://ui/pause_screen/settings/audio/audio_setting.gd" id="14_466vg"]
 [ext_resource type="FontFile" uid="uid://dwjboqsj8b8xd" path="res://ui/fonts/super_mario.ttf" id="14_n0vgh"]
-[ext_resource type="Script" path="res://ui/pause_screen/settings/controls/controls_tab.gd" id="15_a8jrp"]
+[ext_resource type="Script" path="res://ui/pause_screen/settings/controls/controls_contents.gd" id="15_a8jrp"]
 [ext_resource type="PackedScene" uid="uid://dl3pnbtv84ekj" path="res://ui/pause_screen/settings/controls/bindings/bind.tscn" id="15_q65l3"]
 [ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="15_y78en"]
 [ext_resource type="Script" path="res://ui/pause_screen/choices.gd" id="16_0su14"]
 [ext_resource type="Texture2D" uid="uid://bxnkgtkyg67g8" path="res://ui/pause_screen/settings/controls/bindings/icons/left.png" id="16_s4yss"]
 [ext_resource type="Texture2D" uid="uid://dpbmlfpb8nqkt" path="res://ui/pause_screen/settings/controls/bindings/icons/right.png" id="17_jpe5g"]
+[ext_resource type="Script" path="res://ui/pause_screen/settings/controls/controller_select/select_controller.gd" id="18_chrtf"]
 [ext_resource type="Texture2D" uid="uid://8v7ugt32a0d2" path="res://ui/pause_screen/settings/controls/bindings/icons/up.png" id="18_eumt4"]
 [ext_resource type="Texture2D" uid="uid://bii6qpjesltf3" path="res://ui/pause_screen/settings/controls/bindings/icons/down.png" id="19_p6uqc"]
 [ext_resource type="Texture2D" uid="uid://cekiel7bt2lgi" path="res://ui/pause_screen/settings/controls/rumble/rumble_icons.png" id="19_y7lf8"]
@@ -67,6 +68,10 @@ font_size = 100
 outline_size = 30
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_2gqs2"]
+font = ExtResource("15_y78en")
+font_size = 25
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ja8q"]
 atlas = ExtResource("19_y7lf8")
 region = Rect2(0, 0, 60, 60)
@@ -80,6 +85,10 @@ shader_parameter/color_seperator = Color(0.29, 0.29, 0.29, 1)
 shader_parameter/segment_count = 3.0
 shader_parameter/segment_width = 10.0
 shader_parameter/value = 0.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_n5ujh"]
+font = ExtResource("15_y78en")
+font_color = Color(0.498039, 0.901961, 0.854902, 1)
 
 [sub_resource type="InputEventKey" id="InputEventKey_hwwni"]
 device = -1
@@ -449,6 +458,41 @@ fake_label = NodePath("BindingsHeader/FakeLabel")
 header_keyboard = NodePath("BindingsHeader/Keyboard")
 header_controller = NodePath("BindingsHeader/Controller")
 
+[node name="PortOptions" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+alignment = 1
+
+[node name="SpaceLeft" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/PortOptions"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="Label" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/PortOptions"]
+layout_mode = 2
+text = "Controller: "
+label_settings = SubResource("LabelSettings_2gqs2")
+
+[node name="OptionButton" type="OptionButton" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/PortOptions" node_paths=PackedStringArray("options")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("15_y78en")
+theme_override_font_sizes/font_size = 16
+alignment = 1
+text_overrun_behavior = 1
+selected = 0
+script = ExtResource("18_chrtf")
+options = NodePath("../..")
+
+[node name="SpaceRight" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/PortOptions"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="Control" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
 [node name="MotionToggle" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
@@ -538,6 +582,20 @@ size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("15_y78en")
 theme_override_font_sizes/font_size = 20
 text = "Strong"
+
+[node name="SpaceTop" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu/RumblePanel/RumbleSettings"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu/RumblePanel/RumbleSettings"]
+layout_mode = 2
+text = "(Note that not every controller type supports rumble functionality)"
+label_settings = SubResource("LabelSettings_n5ujh")
+horizontal_alignment = 1
+
+[node name="SpaceBottom" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu/RumblePanel/RumbleSettings"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
 
 [node name="SpaceRight" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu"]
 layout_mode = 2
@@ -782,6 +840,7 @@ clip_text = true
 
 [node name="Notifications" type="Node" parent="."]
 
+[connection signal="item_selected" from="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/PortOptions/OptionButton" to="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/PortOptions/OptionButton" method="_on_item_selected"]
 [connection signal="toggled" from="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/MotionToggle" to="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options" method="_on_motion_toggle_toggled"]
 [connection signal="toggled" from="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenuToggle" to="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options" method="_on_rumble_menu_toggle_toggled"]
 [connection signal="pressed" from="PauseScreen/Settings/ReturnSettings" to="PauseScreen" method="_on_return_settings_pressed"]

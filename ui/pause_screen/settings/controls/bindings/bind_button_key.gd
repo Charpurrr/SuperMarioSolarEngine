@@ -12,8 +12,6 @@ func _ready():
 	clear_button = %ClearKey
 	reset_button = %ResetKey
 
-	super()
-
 
 func _is_valid_event(event):
 	return event is InputEventKey

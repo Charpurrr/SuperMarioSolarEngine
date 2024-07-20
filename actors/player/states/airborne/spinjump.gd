@@ -28,6 +28,7 @@ func _trans_rules():
 			return [&"Dive", false]
 
 	if actor.vel.y > 0 and input.buffered_input(&"spin"):
+		movement.update_direction(InputManager.get_x_dir())
 		return &"Twirl"
 
 	if movement.finished_freefall_timer():

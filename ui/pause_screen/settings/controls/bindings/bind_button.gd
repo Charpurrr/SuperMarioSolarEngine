@@ -7,38 +7,25 @@ extends Button
 var filtered_settings_events: Array
 var current_binds: Array
 
-## Should be set in the child class' _ready().
+## Should be set in the child class' [method _ready].
 var input_device_name: StringName = &"Unidentified Device Type"
-## Should be set in the child class' _ready().
+## Only relevant when working with non-keyboard input devices.
+## Should be set in the child class' [method _ready].
 var reset_button: Button = null
-## Should be set in the child class' _ready().
+## Should be set in the child class' [method _ready].
 var clear_button: Button = null
-## Should be set in the child class' _ready().
+## Should be set in the child class' [method _ready].
 var response_timer: Timer
 var awaiting_response: bool = false
 
-@onready var internal_name: StringName = get_parent().internal_name
+## Set by [ControlsContents].
+var device_port: int
+## Set by [ControlsContents].
+var player: int
+
+@onready var parent: HBoxContainer = get_parent()
+@onready var internal_name: StringName = parent.internal_name
 @onready var settings_events: Array[InputEvent] = InputMap.action_get_events(internal_name)
-
-
-func _ready():
-	for event in settings_events:
-		if _is_valid_event(event):
-			filtered_settings_events.append(event)
-
-	current_binds = filtered_settings_events.duplicate()
-
-	var saved_events = LocalSettings.load_setting(
-		input_device_name + " Bindings",
-		internal_name,
-		_encode_events(filtered_settings_events)
-	)
-
-	_update_input(_decode_events(saved_events))
-
-	clear_button.pressed.connect(_clear_bindings)
-	reset_button.pressed.connect(_reset_bindings)
-	pressed.connect(_on_pressed)
 
 
 func _input(event):
@@ -54,6 +41,34 @@ func _input(event):
 	awaiting_response = false
 
 	_add_input(event)
+
+
+func setup(setup_port: int, setup_player: int):
+	clear_button.pressed.connect(_clear_bindings)
+	reset_button.pressed.connect(_reset_bindings)
+	pressed.connect(_on_pressed)
+
+	for event in settings_events:
+		if _is_valid_event(event):
+			filtered_settings_events.append(event)
+
+	current_binds = filtered_settings_events.duplicate()
+
+	device_port = setup_port
+	player = setup_player
+
+	var saved_events = LocalSettings.load_setting(
+		input_device_name + " Bindings",
+		internal_name,
+		_encode_events(filtered_settings_events)
+	)
+
+	_update_input(_decode_events(saved_events))
+
+
+func update(updated_port: int):
+	device_port = updated_port
+	_set_text(current_binds)
 
 
 #region Overriden Functions
@@ -136,7 +151,7 @@ func _update_input(new_binds: Array):
 		InputMap.action_add_event(internal_name, bind)
 
 	LocalSettings.change_setting(
-		input_device_name + " Bindings",
+		input_device_name + " Bindings (Player: %d)" % player,
 		internal_name,
 		_encode_events(new_binds)
 	)

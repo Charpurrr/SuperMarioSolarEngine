@@ -37,8 +37,6 @@ func _ready():
 	clear_button = %ClearJoy
 	reset_button = %ResetJoy
 
-	super()
-
 
 func _is_valid_event(event):
 	return event is InputEventJoypadButton or event is InputEventJoypadMotion
@@ -119,20 +117,28 @@ func _clean_input(input):
 
 ## Returns a number based on vendor ID.
 func _get_brand_id():
-	if Input.get_connected_joypads().size() > 0:
-		var guid = Input.get_joy_guid(0)
-		var vendor_id = guid.substr(8, 4)
+	if Input.get_connected_joypads().size() == 0:
+		return 0
 
-		match vendor_id:
-			"7e05": # Nintendo
-				return 0
-			"5e04": # Microsoft
-				return 1
-			"1716", "7264", "4c05", "510a", "ce0f", "ba12": # Sony
-				return 2
-			_: # Unidentified
-				push_warning("""Unidentified joypad brand.
-				Update this function and the JOY_BUTTONS array to support this brand.""")
-				return 0
+	var guid = Input.get_joy_guid(device_port)
+	var vendor_id = guid.substr(8, 4)
 
-	return 0
+	print(guid)
+
+	match vendor_id:
+		"7e05", "d620": # Nintendo
+			return 0
+		"5e04": # Microsoft
+			return 1
+		"1716", "7264", "4c05", "510a", "ce0f", "ba12": # Sony
+			return 2
+		_: # Unidentified
+			var warning_text: String = (
+				"""Unidentified joypad device or brand in port %d.
+				Update this function and the JOY_BUTTONS array to support it""" %
+				device_port
+			)
+
+			push_warning(warning_text)
+
+			return 0
