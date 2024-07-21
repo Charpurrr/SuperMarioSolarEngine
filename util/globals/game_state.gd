@@ -17,25 +17,25 @@ var buses: Dictionary = {
 	&"Master":
 	(
 		AudioBus
-		. new(
+		.new(
 			&"Master",
-			"Master Volume",
+			"master_volume",
 		)
 	),
 	&"Music":
 	(
 		AudioBus
-		. new(
+		.new(
 			&"Music",
-			"BGM Volume",
+			"bgm_volume",
 		)
 	),
 	&"SFX":
 	(
 		AudioBus
-		. new(
+		.new(
 			&"SFX",
-			"SFX Volume",
+			"sfx_volume",
 		)
 	)
 }
@@ -47,7 +47,7 @@ func _ready():
 
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
-	bgm_muted = LocalSettings.load_setting("Audio", "Music Muted", false)
+	bgm_muted = LocalSettings.load_setting("Audio", "music_muted", false)
 	_set_muted_bgm()
 
 
@@ -82,7 +82,7 @@ func _music_control():
 	if Input.is_action_just_pressed(&"mute"):
 		bgm_muted = !bgm_muted
 
-		LocalSettings.change_setting("Audio", "Music Muted", bgm_muted)
+		LocalSettings.change_setting("Audio", "music_muted", bgm_muted)
 		_set_muted_bgm()
 
 

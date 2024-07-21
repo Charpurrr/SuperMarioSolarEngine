@@ -3,7 +3,6 @@ extends VBoxContainer
 ## Functionality for the contents of the controls menu.
 
 @export var player: int = 0
-@export var device_port: int = 0
 
 @export_category(&"Motion References")
 @export var motion_toggle: Button
@@ -24,15 +23,28 @@ var rumble_names: Array[StringName]
 @export var header_keyboard: Label
 @export var header_controller: Label
 
+var device_port: int = 0
+
 @onready var bindings_children: Array[Node] = bindings_list.get_children()
 
 
 func _ready():
-	_update_rumble_visible(false)
+	update_buttons()
+
 	_update_header()
 
-	for bind in bindings_list.get_children():
-		bind.setup_buttons(device_port, player)
+	var saved_controller: String = LocalSettings.load_setting(
+		"Controller (Player: %d)" % player,
+		"name",
+		""
+	)
+
+	for id in Input.get_connected_joypads():
+		if saved_controller == Input.get_joy_name(id):
+			device_port = id
+
+	# All the rumble stuff down here
+	_update_rumble_visible(false)
 
 	for mode in rumble_modes.get_children():
 		if mode is Button:
@@ -47,10 +59,10 @@ func _ready():
 	_set_rumble_shader_param(&"segment_count", mode_count)
 
 
-## Update the bind buttons if [member device_port] was changed.
+## Setup / update the bind buttons if [member device_port] was updated.
 func update_buttons():
 	for bind in bindings_list.get_children():
-		bind.update_buttons(device_port)
+		bind.setup_buttons(device_port, player)
 
 
 func _update_motion_toggle(toggled_on: bool):
@@ -89,7 +101,7 @@ func _update_rumble(strength: StringName):
 	icon_texture.region.position.x = icon_texture.region.size.x * strength_id
 	_set_rumble_shader_param(&"value", strength_id)
 
-	#
+	# Start a vibration
 	var magnitude: float = 1.0 / strength_count * strength_id
 
 	Input.start_joy_vibration(device_port, magnitude, magnitude, 0.1)

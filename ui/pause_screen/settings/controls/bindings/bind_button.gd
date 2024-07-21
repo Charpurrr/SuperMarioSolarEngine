@@ -28,6 +28,18 @@ var player: int
 @onready var settings_events: Array[InputEvent] = InputMap.action_get_events(internal_name)
 
 
+func _ready():
+	clear_button.pressed.connect(_clear_bindings)
+	reset_button.pressed.connect(_reset_bindings)
+	pressed.connect(_on_pressed)
+
+	for event in settings_events:
+		if _is_valid_event(event):
+			filtered_settings_events.append(event)
+
+	current_binds = filtered_settings_events.duplicate()
+
+
 func _input(event):
 	if not awaiting_response:
 		return
@@ -44,31 +56,16 @@ func _input(event):
 
 
 func setup(setup_port: int, setup_player: int):
-	clear_button.pressed.connect(_clear_bindings)
-	reset_button.pressed.connect(_reset_bindings)
-	pressed.connect(_on_pressed)
-
-	for event in settings_events:
-		if _is_valid_event(event):
-			filtered_settings_events.append(event)
-
-	current_binds = filtered_settings_events.duplicate()
-
 	device_port = setup_port
 	player = setup_player
 
 	var saved_events = LocalSettings.load_setting(
-		input_device_name + " Bindings",
+		input_device_name + " Bindings (Player: %d)" % player,
 		internal_name,
 		_encode_events(filtered_settings_events)
 	)
 
 	_update_input(_decode_events(saved_events))
-
-
-func update(updated_port: int):
-	device_port = updated_port
-	_set_text(current_binds)
 
 
 #region Overriden Functions

@@ -26,12 +26,6 @@ func setup_buttons(device_port: int, player: int):
 			bind_button.setup(device_port, player)
 
 
-func update_buttons(device_port: int):
-	for bind_button in get_children():
-		if bind_button is BindButton:
-			bind_button.update(device_port)
-
-
 func set_label_w(new_width: float):
 	label.custom_minimum_size.x = new_width
 

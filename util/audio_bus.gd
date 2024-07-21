@@ -2,7 +2,7 @@ class_name AudioBus
 extends RefCounted
 
 var bus_name: StringName  # I.e. &"Master"
-var setting_name: String  # I.e. "Master Volume"
+var setting_name: String  # I.e. "master_volume"
 
 var bus_index: int
 

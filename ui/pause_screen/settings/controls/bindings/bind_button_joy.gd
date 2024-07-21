@@ -37,6 +37,8 @@ func _ready():
 	clear_button = %ClearJoy
 	reset_button = %ResetJoy
 
+	super()
+
 
 func _is_valid_event(event):
 	return event is InputEventJoypadButton or event is InputEventJoypadMotion
@@ -68,14 +70,18 @@ func _decode_events(encoded_events):
 		if event.begins_with(PREFIX_BUTTON):
 			var input := InputEventJoypadButton.new()
 
+			input.device = device_port 
 			input.button_index = int(event.trim_prefix(PREFIX_BUTTON)) as JoyButton
+
 			decoded_events.append(input)
 		elif event.begins_with(PREFIX_MOTION):
 			var event_split = event.trim_prefix(PREFIX_MOTION).split(":")
 			var input := InputEventJoypadMotion.new()
 
+			input.device = device_port 
 			input.axis = int(event_split[0]) as JoyAxis
 			input.axis_value = float(event_split[1])
+
 			decoded_events.append(input)
 
 	return decoded_events
@@ -122,8 +128,6 @@ func _get_brand_id():
 
 	var guid = Input.get_joy_guid(device_port)
 	var vendor_id = guid.substr(8, 4)
-
-	print(guid)
 
 	match vendor_id:
 		"7e05", "d620": # Nintendo
