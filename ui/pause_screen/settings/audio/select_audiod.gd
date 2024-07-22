@@ -4,20 +4,39 @@ extends OptionButton
 
 
 func _ready():
+	var saved_device: String = LocalSettings.load_setting(
+		"Audio Device",
+		"device",
+		""
+	)
+
 	_update_speaker_label()
 	_update_list()
 
+	AudioServer.output_device = saved_device
+
+	for device in AudioServer.get_output_device_list():
+		if saved_device == device:
+			selected = get_item_index(hash(device))
+
+
+func _process(delta):
+	print(AudioServer.output_device)
+
 
 func _update_speaker_label():
-	var speaker_mode_text = "Stereo"
+	var speaker_mode_text: String
 	var speaker_mode = AudioServer.get_speaker_mode()
 
-	if speaker_mode == AudioServer.SPEAKER_SURROUND_31:
-		speaker_mode_text = "Surround 3.1"
-	elif speaker_mode == AudioServer.SPEAKER_SURROUND_51:
-		speaker_mode_text = "Surround 5.1"
-	elif speaker_mode == AudioServer.SPEAKER_SURROUND_71:
-		speaker_mode_text = "Surround 7.1"
+	match speaker_mode:
+		AudioServer.SPEAKER_MODE_STEREO:
+			speaker_mode_text = "Stereo"
+		AudioServer.SPEAKER_SURROUND_31:
+			speaker_mode_text = "Surround 3.1"
+		AudioServer.SPEAKER_SURROUND_51:
+			speaker_mode_text = "Surround 5.1"
+		AudioServer.SPEAKER_SURROUND_71:
+			speaker_mode_text = "Surround 7.1"
 
 	speaker_label.text = "Speaker Mode: %s" % speaker_mode_text
 
@@ -27,7 +46,7 @@ func _update_list():
 		clear()
 
 	for device in AudioServer.get_output_device_list():
-		add_item(device)
+		add_item(device, hash(device))
 
 
 func _on_item_selected(index):
