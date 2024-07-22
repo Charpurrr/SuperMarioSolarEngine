@@ -1,0 +1,48 @@
+extends OptionButton
+
+@export var speaker_label: Label
+
+
+func _ready():
+	_update_speaker_label()
+	_update_list()
+
+
+func _update_speaker_label():
+	var speaker_mode_text = "Stereo"
+	var speaker_mode = AudioServer.get_speaker_mode()
+
+	if speaker_mode == AudioServer.SPEAKER_SURROUND_31:
+		speaker_mode_text = "Surround 3.1"
+	elif speaker_mode == AudioServer.SPEAKER_SURROUND_51:
+		speaker_mode_text = "Surround 5.1"
+	elif speaker_mode == AudioServer.SPEAKER_SURROUND_71:
+		speaker_mode_text = "Surround 7.1"
+
+	speaker_label.text = "Speaker Mode: %s" % speaker_mode_text
+
+
+func _update_list():
+	if item_count != 0:
+		clear()
+
+	for device in AudioServer.get_output_device_list():
+		add_item(device)
+
+
+func _on_item_selected(index):
+	var device_name: String = get_item_text(index)
+
+	_update_speaker_label()
+
+	AudioServer.output_device = device_name
+
+	LocalSettings.change_setting(
+		"Audio Device",
+		"device",
+		device_name
+	)
+
+
+func _on_refresh_pressed():
+	_update_list()

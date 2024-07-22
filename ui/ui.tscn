@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://ccj3teu3h6xfm"]
+[gd_scene load_steps=47 format=3 uid="uid://ccj3teu3h6xfm"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_pakjx"]
 [ext_resource type="Script" path="res://ui/debug_label.gd" id="2_suudb"]
@@ -21,7 +21,7 @@
 [ext_resource type="Script" path="res://ui/pause_screen/choices.gd" id="16_0su14"]
 [ext_resource type="Texture2D" uid="uid://bxnkgtkyg67g8" path="res://ui/pause_screen/settings/controls/bindings/icons/left.png" id="16_s4yss"]
 [ext_resource type="Texture2D" uid="uid://dpbmlfpb8nqkt" path="res://ui/pause_screen/settings/controls/bindings/icons/right.png" id="17_jpe5g"]
-[ext_resource type="Script" path="res://ui/pause_screen/settings/controls/controller_select/select_controller.gd" id="18_chrtf"]
+[ext_resource type="Script" path="res://ui/pause_screen/settings/controls/select_controller.gd" id="18_chrtf"]
 [ext_resource type="Texture2D" uid="uid://8v7ugt32a0d2" path="res://ui/pause_screen/settings/controls/bindings/icons/up.png" id="18_eumt4"]
 [ext_resource type="Texture2D" uid="uid://bii6qpjesltf3" path="res://ui/pause_screen/settings/controls/bindings/icons/down.png" id="19_p6uqc"]
 [ext_resource type="Texture2D" uid="uid://cekiel7bt2lgi" path="res://ui/pause_screen/settings/controls/rumble/rumble_icons.png" id="19_y7lf8"]
@@ -32,6 +32,7 @@
 [ext_resource type="Script" path="res://ui/pause_screen/settings/controls/rumble/triangular_progress_bar.gd" id="21_yele6"]
 [ext_resource type="Texture2D" uid="uid://bqqyiat6cbhsn" path="res://ui/pause_screen/settings/controls/bindings/icons/dive.png" id="23_a0owx"]
 [ext_resource type="Texture2D" uid="uid://48gn0c5ga52r" path="res://ui/pause_screen/settings/controls/bindings/icons/groundpound.png" id="24_c7i2r"]
+[ext_resource type="Script" path="res://ui/pause_screen/settings/audio/select_audiod.gd" id="32_k3s7s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8xxao"]
 shader = ExtResource("12_wqetc")
@@ -421,8 +422,10 @@ uppercase = true
 self_modulate = Color(1, 1, 1, 0.588235)
 layout_mode = 2
 size_flags_vertical = 3
+current_tab = 1
 
 [node name="Controls" type="VBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs"]
+visible = false
 layout_mode = 2
 
 [node name="SpaceTop" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls"]
@@ -702,7 +705,6 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
 
 [node name="Audio" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs"]
-visible = false
 layout_mode = 2
 
 [node name="SpaceLeft" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio"]
@@ -715,8 +717,56 @@ layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
+[node name="DeviceOptions" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+alignment = 1
+
+[node name="SpaceLeft" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/DeviceOptions"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="Label" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/DeviceOptions"]
+layout_mode = 2
+text = "Audio Device: "
+label_settings = SubResource("LabelSettings_2gqs2")
+
+[node name="OptionButton" type="OptionButton" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/DeviceOptions" node_paths=PackedStringArray("speaker_label")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("15_y78en")
+theme_override_font_sizes/font_size = 16
+alignment = 1
+text_overrun_behavior = 1
+script = ExtResource("32_k3s7s")
+speaker_label = NodePath("../../SpeakerMode")
+
+[node name="Refresh" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/DeviceOptions"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+text = " REFRESH "
+
+[node name="SpaceRight" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/DeviceOptions"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="SpeakerMode" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("15_y78en")
+theme_override_font_sizes/font_size = 20
+text = "Speaker Mode:"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
 [node name="MasterText" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("15_y78en")
+theme_override_font_sizes/font_size = 20
 text = "Master Volume"
 
 [node name="Master" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options" node_paths=PackedStringArray("reset", "slider", "percentage")]
@@ -738,7 +788,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 max_value = 2.0
-step = 0.02
+step = 0.01
 value = 1.0
 
 [node name="Percentage" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/Master"]
@@ -748,6 +798,8 @@ text = "100%"
 
 [node name="BGMText" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("15_y78en")
+theme_override_font_sizes/font_size = 20
 text = "BGM Volume"
 
 [node name="BGM" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options" node_paths=PackedStringArray("reset", "slider", "percentage")]
@@ -769,7 +821,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 max_value = 2.0
-step = 0.02
+step = 0.01
 value = 1.0
 
 [node name="Percentage" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/BGM"]
@@ -779,6 +831,8 @@ text = "100%"
 
 [node name="SFXText" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("15_y78en")
+theme_override_font_sizes/font_size = 20
 text = "SFX Volume"
 
 [node name="SFX" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options" node_paths=PackedStringArray("reset", "slider", "percentage")]
@@ -800,7 +854,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 max_value = 2.0
-step = 0.02
+step = 0.01
 value = 1.0
 
 [node name="Percentage" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/SFX"]
@@ -842,4 +896,6 @@ clip_text = true
 [connection signal="item_selected" from="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/PortOptions/OptionButton" to="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/PortOptions/OptionButton" method="_on_item_selected"]
 [connection signal="toggled" from="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/MotionToggle" to="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options" method="_on_motion_toggle_toggled"]
 [connection signal="toggled" from="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenuToggle" to="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options" method="_on_rumble_menu_toggle_toggled"]
+[connection signal="item_selected" from="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/DeviceOptions/OptionButton" to="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/DeviceOptions/OptionButton" method="_on_item_selected"]
+[connection signal="pressed" from="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/DeviceOptions/Refresh" to="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/DeviceOptions/OptionButton" method="_on_refresh_pressed"]
 [connection signal="pressed" from="PauseScreen/Settings/ReturnSettings" to="PauseScreen" method="_on_return_settings_pressed"]
