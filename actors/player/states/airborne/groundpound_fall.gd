@@ -7,7 +7,7 @@ extends PlayerState
 
 
 func _physics_tick():
-	movement.move_x(0.04, false)
+	movement.move_x_analog(0.04, false)
 
 	actor.vel.y = gp_fall_vel
 

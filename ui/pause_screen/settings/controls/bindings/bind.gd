@@ -8,14 +8,22 @@ extends HBoxContainer
 @export var action_icon: Texture2D
 
 @onready var label: Label = $Label
-@onready var button_keyboard: Button = $Button
-@onready var button_controller: Button = $Button2
+@onready var button_keyboard: Button = $KeyButton
+@onready var button_joy: Button = $JoyButton
 @onready var texture: TextureRect = $TextureRect
+
+var options: VBoxContainer
 
 
 func _ready():
 	label.text = visual_name
 	texture.texture = action_icon
+
+
+func setup_buttons(device_port: int, player: int):
+	for bind_button in get_children():
+		if bind_button is BindButton:
+			bind_button.setup(device_port, player)
 
 
 func set_label_w(new_width: float):

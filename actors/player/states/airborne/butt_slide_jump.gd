@@ -3,7 +3,7 @@ extends Jump
 
 
 func _physics_tick():
-	movement.move_x(0.1, true)
+	movement.move_x_analog(0.1, true)
 
 	if movement.can_release_jump(applied_variation, min_jump_power):
 		applied_variation = true

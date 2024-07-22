@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://48gn0c5ga52r"
-path="res://.godot/imported/groundpound.png-eccb567f13ffd05d5be04f2d7c8b024e.ctex"
+uid="uid://c3qbauenpyulb"
+path="res://.godot/imported/spin.png-4ca8c8e10575cde5c425a02b6f7707c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/pause_menu/bindings/icons/groundpound.png"
-dest_files=["res://.godot/imported/groundpound.png-eccb567f13ffd05d5be04f2d7c8b024e.ctex"]
+source_file="res://ui/pause_screen/settings/controls/bindings/icons/spin.png"
+dest_files=["res://.godot/imported/spin.png-4ca8c8e10575cde5c425a02b6f7707c4.ctex"]
 
 [params]
 

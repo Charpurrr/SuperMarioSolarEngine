@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3qbauenpyulb"
-path="res://.godot/imported/spin.png-04791f9ce9845afe9a48ab8a9bad7113.ctex"
+uid="uid://dpbmlfpb8nqkt"
+path="res://.godot/imported/right.png-b7b0865428265f12df6cde2ec938ffae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/pause_menu/bindings/icons/spin.png"
-dest_files=["res://.godot/imported/spin.png-04791f9ce9845afe9a48ab8a9bad7113.ctex"]
+source_file="res://ui/pause_screen/settings/controls/bindings/icons/right.png"
+dest_files=["res://.godot/imported/right.png-b7b0865428265f12df6cde2ec938ffae.ctex"]
 
 [params]
 

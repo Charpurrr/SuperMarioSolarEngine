@@ -1,7 +1,9 @@
 extends Node
 
-signal frame_advanced
 signal paused
+signal reload
+
+signal frame_advanced
 
 var bgm_muted: bool = false
 
@@ -15,42 +17,46 @@ var buses: Dictionary = {
 	&"Master":
 	(
 		AudioBus
-		. new(
+		.new(
 			&"Master",
-			"Master Volume",
+			"master_volume",
 		)
 	),
 	&"Music":
 	(
 		AudioBus
-		. new(
+		.new(
 			&"Music",
-			"BGM Volume",
+			"bgm_volume",
 		)
 	),
 	&"SFX":
 	(
 		AudioBus
-		. new(
+		.new(
 			&"SFX",
-			"SFX Volume",
+			"sfx_volume",
 		)
 	)
 }
 
 
 func _ready():
+	paused.connect(_pause_toggle)
+	reload.connect(_reload_scene)
+
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
-	bgm_muted = LocalSettings.load_setting("Audio", "Music Muted", false)
+	bgm_muted = LocalSettings.load_setting("Audio", "music_muted", false)
 	_set_muted_bgm()
 
 
 func _process(_delta):
 	_frame_advancing()
 	_music_control()
-	_resetting()
-	_pausing()
+
+	if Input.is_action_just_pressed(&"reset"):
+		_reload_scene()
 
 	if is_inside_tree() and get_tree().paused and Input.is_action_just_pressed(&"frame_advance"):
 		can_fa = true
@@ -72,17 +78,11 @@ func _frame_advancing():
 		can_fa = false
 
 
-func _pausing():
-	if Input.is_action_just_pressed(&"pause"):
-		get_tree().paused = !get_tree().paused
-		emit_signal(&"paused")
-
-
 func _music_control():
 	if Input.is_action_just_pressed(&"mute"):
 		bgm_muted = !bgm_muted
 
-		LocalSettings.change_setting("Audio", "Music Muted", bgm_muted)
+		LocalSettings.change_setting("Audio", "music_muted", bgm_muted)
 		_set_muted_bgm()
 
 
@@ -90,9 +90,20 @@ func _set_muted_bgm():
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), bgm_muted)
 
 
-func _resetting():
-	if Input.is_action_just_pressed(&"reset"):
-		var tree = get_tree()
+## Called with the paused signal.
+func _pause_toggle():
+	get_tree().paused = !get_tree().paused
 
-		if tree:
-			tree.reload_current_scene()
+
+## Called with the reload signal.
+func _reload_scene():
+	var tree: SceneTree = get_tree()
+
+	# For disabling the pause screen if it was open
+	if tree.paused == true:
+		_pause_toggle()
+
+	# Only reload the current scene if a SceneTree exists
+	# Avoids a critical error
+	if tree:
+		tree.reload_current_scene()

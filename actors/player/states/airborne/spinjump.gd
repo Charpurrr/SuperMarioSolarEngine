@@ -4,7 +4,7 @@ extends Jump
 
 
 func _physics_tick():
-	movement.move_x(0.15, false)
+	movement.move_x_analog(0.15, false)
 
 
 func _subsequent_ticks():
@@ -28,6 +28,7 @@ func _trans_rules():
 			return [&"Dive", false]
 
 	if actor.vel.y > 0 and input.buffered_input(&"spin"):
+		movement.update_direction(InputManager.get_x_dir())
 		return &"Twirl"
 
 	if movement.finished_freefall_timer():

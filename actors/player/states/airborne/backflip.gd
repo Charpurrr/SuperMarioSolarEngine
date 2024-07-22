@@ -18,7 +18,7 @@ func _on_enter(_handover):
 
 func _physics_tick():
 	if InputManager.is_moving_x():
-		movement.move_x(0.06, false)
+		movement.move_x_analog(0.06, false)
 
 	if actor.vel.y > 0 and not start_freefall_timer:
 		start_freefall_timer = true
