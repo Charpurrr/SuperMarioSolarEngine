@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://ccj3teu3h6xfm"]
+[gd_scene load_steps=48 format=3 uid="uid://ccj3teu3h6xfm"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_pakjx"]
 [ext_resource type="Script" path="res://ui/debug_label.gd" id="2_suudb"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://bqqyiat6cbhsn" path="res://ui/pause_screen/settings/controls/bindings/icons/dive.png" id="23_a0owx"]
 [ext_resource type="Texture2D" uid="uid://48gn0c5ga52r" path="res://ui/pause_screen/settings/controls/bindings/icons/groundpound.png" id="24_c7i2r"]
 [ext_resource type="Script" path="res://ui/pause_screen/settings/audio/select_audiod.gd" id="32_k3s7s"]
+[ext_resource type="AudioStream" uid="uid://bticstbu0baju" path="res://ui/pause_screen/settings/audio/ting.wav" id="36_wmtog"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8xxao"]
 shader = ExtResource("12_wqetc")
@@ -769,13 +770,14 @@ theme_override_fonts/font = ExtResource("15_y78en")
 theme_override_font_sizes/font_size = 20
 text = "Master Volume"
 
-[node name="Master" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options" node_paths=PackedStringArray("reset", "slider", "percentage")]
+[node name="Master" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options" node_paths=PackedStringArray("reset", "slider", "percentage", "audio")]
 layout_mode = 2
 script = ExtResource("14_466vg")
 bus_name = &"Master"
 reset = NodePath("MasterButton")
 slider = NodePath("MasterSlider")
 percentage = NodePath("Percentage")
+audio = NodePath("MasterSlider/MasterEffect")
 
 [node name="MasterButton" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/Master"]
 custom_minimum_size = Vector2(31, 0)
@@ -791,6 +793,10 @@ max_value = 2.0
 step = 0.01
 value = 1.0
 
+[node name="MasterEffect" type="AudioStreamPlayer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/Master/MasterSlider"]
+stream = ExtResource("36_wmtog")
+bus = &"SFX"
+
 [node name="Percentage" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/Master"]
 custom_minimum_size = Vector2(42, 0)
 layout_mode = 2
@@ -802,13 +808,14 @@ theme_override_fonts/font = ExtResource("15_y78en")
 theme_override_font_sizes/font_size = 20
 text = "BGM Volume"
 
-[node name="BGM" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options" node_paths=PackedStringArray("reset", "slider", "percentage")]
+[node name="BGM" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options" node_paths=PackedStringArray("reset", "slider", "percentage", "audio")]
 layout_mode = 2
 script = ExtResource("14_466vg")
 bus_name = &"Music"
 reset = NodePath("BGMButton")
 slider = NodePath("BGMSlider")
 percentage = NodePath("Percentage")
+audio = NodePath("BGMSlider/BGMEffect")
 
 [node name="BGMButton" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/BGM"]
 custom_minimum_size = Vector2(31, 0)
@@ -824,6 +831,10 @@ max_value = 2.0
 step = 0.01
 value = 1.0
 
+[node name="BGMEffect" type="AudioStreamPlayer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/BGM/BGMSlider"]
+stream = ExtResource("36_wmtog")
+bus = &"SFX"
+
 [node name="Percentage" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/BGM"]
 custom_minimum_size = Vector2(42, 0)
 layout_mode = 2
@@ -835,13 +846,14 @@ theme_override_fonts/font = ExtResource("15_y78en")
 theme_override_font_sizes/font_size = 20
 text = "SFX Volume"
 
-[node name="SFX" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options" node_paths=PackedStringArray("reset", "slider", "percentage")]
+[node name="SFX" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options" node_paths=PackedStringArray("reset", "slider", "percentage", "audio")]
 layout_mode = 2
 script = ExtResource("14_466vg")
 bus_name = &"SFX"
 reset = NodePath("SFXButton")
 slider = NodePath("SFXSlider")
 percentage = NodePath("Percentage")
+audio = NodePath("SFXSlider/SFXEffect")
 
 [node name="SFXButton" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/SFX"]
 custom_minimum_size = Vector2(31, 0)
@@ -856,6 +868,10 @@ size_flags_vertical = 4
 max_value = 2.0
 step = 0.01
 value = 1.0
+
+[node name="SFXEffect" type="AudioStreamPlayer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/SFX/SFXSlider"]
+stream = ExtResource("36_wmtog")
+bus = &"SFX"
 
 [node name="Percentage" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/SFX"]
 custom_minimum_size = Vector2(42, 0)

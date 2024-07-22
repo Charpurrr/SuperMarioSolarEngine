@@ -1,15 +1,23 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
 config_version=5
 
 [application]
 
 config/name="SolarEngine"
+config/tags=PackedStringArray("mario_fangames")
 run/main_scene="res://areas/funny_slope_test.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 run/max_fps=60
 boot_splash/bg_color=Color(0.513726, 0.403922, 0.470588, 1)
 boot_splash/image="res://logo.png"
 boot_splash/use_filter=false
-config/tags=PackedStringArray("mario_fangames")
 
 [autoload]
 
