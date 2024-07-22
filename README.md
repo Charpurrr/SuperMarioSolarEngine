@@ -34,14 +34,16 @@ Most classes contain documentation that you can find using the Help menu in the 
 > Help - Search Help
 
 ## Credits
-Charlotte "Charpurrr" Fox - Project lead <br /><br />
+Charlotte "Charpurrr" Fox - Project lead and programmer <br /><br />
 
-Tricia "GTcreyon" - Additional programming
+Tricia "GTcreyon" - Major Additional programming <br /><br />
 
-"CardboardCarl" - Additional programming
+"CardboardCarl" - Additional programming <br />
+"Wyvern" - Additional programming <br /><br />
 
-"tabs" - Additional programming <br /><br />
+"KingAsylus91" - Mario & Luigi sprites <br />
+"TuffTony" - Mario & Luigi sprites <br />
+"NineBit" - Mario & Luigi sprites <br /><br />
 
-Robert "runouw" Hewitt - Inspiration
-
+Robert "runouw" Hewitt - Inspiration <br />
 "aloelucidity" - Inspiration
