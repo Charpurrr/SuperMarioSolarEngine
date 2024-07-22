@@ -1,16 +1,14 @@
-[gd_scene load_steps=337 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=338 format=3 uid="uid://dgqp3sqvmcvpu"]
 
-[ext_resource type="Script" path="res://actors/player/player.gd" id="1_3d0l6"]
+[ext_resource type="Script" path="res://actors/player/shared/player.gd" id="1_87j6i"]
 [ext_resource type="Texture2D" uid="uid://bbgppbst4akvn" path="res://actors/player/mario/anime/backflip.png" id="2_i2o54"]
 [ext_resource type="Texture2D" uid="uid://7iyxgvpx0ue7" path="res://actors/player/mario/anime/crouch.png" id="3_0c1gq"]
-[ext_resource type="Script" path="res://actors/player/player_movement.gd" id="3_3mh1j"]
 [ext_resource type="Texture2D" uid="uid://bumy61776okci" path="res://actors/player/mario/anime/bonk.png" id="3_3y25f"]
 [ext_resource type="Texture2D" uid="uid://c07igexhnolce" path="res://actors/player/mario/anime/breakdance.png" id="3_h1rp8"]
 [ext_resource type="Texture2D" uid="uid://ca2h4vnv7ywwe" path="res://actors/player/mario/anime/buttslide.png" id="3_pusam"]
 [ext_resource type="Texture2D" uid="uid://dr20l67h6d3rv" path="res://actors/player/mario/anime/dive.png" id="4_0hrc4"]
 [ext_resource type="Texture2D" uid="uid://cjfyy6hgqu8m3" path="res://actors/player/mario/anime/crouchwalk.png" id="4_b56cl"]
 [ext_resource type="Texture2D" uid="uid://dmycpbq0cmfu" path="res://actors/player/mario/anime/double_fall.png" id="5_0w3l2"]
-[ext_resource type="Texture2D" uid="uid://bqnhi25553ouo" path="res://actors/player/mario/anime_127/crouch.png" id="5_v8y6h"]
 [ext_resource type="Texture2D" uid="uid://dyojgodtydv8g" path="res://actors/player/mario/anime/double_jump.png" id="6_b0k2k"]
 [ext_resource type="Texture2D" uid="uid://sqpotm86848n" path="res://actors/player/mario/anime/freefall.png" id="6_bo6cm"]
 [ext_resource type="Texture2D" uid="uid://bxhwmwccju4gh" path="res://actors/player/mario/anime/buttslide_back.png" id="6_dks4s"]
@@ -19,127 +17,129 @@
 [ext_resource type="Texture2D" uid="uid://cy30eo1be5bya" path="res://actors/player/mario/anime/buttslide_jump.png" id="8_ugnlj"]
 [ext_resource type="Texture2D" uid="uid://c7ib3chg0q27e" path="res://actors/player/mario/anime/groundpound.png" id="9_m0w8d"]
 [ext_resource type="Texture2D" uid="uid://dqjuy6xxv6cc" path="res://actors/player/mario/anime/groundpound_jump.png" id="11_1j7yv"]
-[ext_resource type="Script" path="res://actors/player/states/grounded.gd" id="11_15kl1"]
-[ext_resource type="Script" path="res://actors/player/states/grounded/idle.gd" id="12_hqcfh"]
 [ext_resource type="Texture2D" uid="uid://ikilprgkqwhq" path="res://actors/player/mario/anime/push.png" id="12_kw6lo"]
-[ext_resource type="Script" path="res://actors/player/states/grounded/walk.gd" id="13_olbq0"]
 [ext_resource type="Texture2D" uid="uid://d4jk5b4b0xjrd" path="res://actors/player/mario/anime/sideflip.png" id="13_t23yg"]
-[ext_resource type="Texture2D" uid="uid://c1o77beyhss5t" path="res://actors/player/mario/anime_127/idle.png" id="14_esdke"]
 [ext_resource type="Texture2D" uid="uid://dqhp5oolmoum8" path="res://actors/player/mario/anime/skid.png" id="14_t6mxa"]
-[ext_resource type="Texture2D" uid="uid://bbm0ax5jngyc2" path="res://actors/player/mario/anime_127/jump.png" id="15_ql0oe"]
 [ext_resource type="Texture2D" uid="uid://djvvr1r7erxdd" path="res://actors/player/mario/anime/longjump.png" id="16_a6s6v"]
-[ext_resource type="Script" path="res://actors/player/states/grounded/dry_push.gd" id="16_dpmo1"]
 [ext_resource type="Texture2D" uid="uid://dqr2v77yuw0ug" path="res://actors/player/mario/anime/run.png" id="16_x2vr5"]
-[ext_resource type="Script" path="res://actors/player/states/grounded/push.gd" id="17_8nb4y"]
 [ext_resource type="Texture2D" uid="uid://cm52bcakxqdf0" path="res://actors/player/mario/anime/walljump.png" id="17_ko8me"]
 [ext_resource type="Texture2D" uid="uid://dc2jyd6n2utp0" path="res://actors/player/mario/anime/triple_jump.png" id="18_5kttb"]
-[ext_resource type="Script" path="res://actors/player/states/grounded/crouch.gd" id="18_h7q8u"]
 [ext_resource type="Texture2D" uid="uid://b85mddgasg6yr" path="res://actors/player/mario/anime/rollout.png" id="18_w61pa"]
 [ext_resource type="Texture2D" uid="uid://dphy1mncu78ph" path="res://actors/player/mario/anime/spin_attack.png" id="19_4jr0s"]
-[ext_resource type="Texture2D" uid="uid://cqqtkemhhju86" path="res://actors/player/mario/anime_127/look_up.png" id="19_31nk2"]
-[ext_resource type="Script" path="res://actors/player/states/grounded/turn_skid.gd" id="20_0joxb"]
-[ext_resource type="Script" path="res://actors/player/states/airborne.gd" id="20_at07q"]
-[ext_resource type="Script" path="res://actors/player/states/airborne/jump.gd" id="20_bs088"]
-[ext_resource type="Script" path="res://actors/player/states/airborne/fall.gd" id="21_cisab"]
+[ext_resource type="Texture2D" uid="uid://cx32osmtqgs5o" path="res://actors/player/mario/anime/idle.png" id="19_ti8xn"]
+[ext_resource type="Texture2D" uid="uid://bxc3upcrqu6u6" path="res://actors/player/mario/anime/jump.png" id="20_8mhw2"]
+[ext_resource type="Texture2D" uid="uid://bh1w0xdwaevbg" path="res://actors/player/mario/anime/fall.png" id="21_mm2ta"]
 [ext_resource type="Script" path="res://util/input_manager.gd" id="21_onm15"]
 [ext_resource type="Texture2D" uid="uid://b30m6nn2i6koo" path="res://actors/player/mario/anime/spinjump.png" id="21_pd4hh"]
-[ext_resource type="Script" path="res://actors/player/states/airborne/sideflip.gd" id="22_4r2ks"]
-[ext_resource type="Script" path="res://actors/player/states/airborne/backflip.gd" id="23_jcv3h"]
-[ext_resource type="Texture2D" uid="uid://t4xilspn0obp" path="res://actors/player/mario/anime_127/run.png" id="23_qkkif"]
+[ext_resource type="Texture2D" uid="uid://cuf5h3e1qk53r" path="res://actors/player/mario/anime/lookup.png" id="23_akjfu"]
 [ext_resource type="Script" path="res://util/state_machine/player_state_manager.gd" id="24_2oy80"]
-[ext_resource type="Texture2D" uid="uid://bdpghbyihiefv" path="res://actors/player/mario/anime_127/wallslide.png" id="24_dqa47"]
-[ext_resource type="Script" path="res://actors/player/push_rays.gd" id="26_qi7rb"]
-[ext_resource type="Script" path="res://actors/player/states/airborne/freefall.gd" id="26_w8jki"]
-[ext_resource type="Script" path="res://actors/player/crouchlock.gd" id="27_y8r5l"]
-[ext_resource type="AudioStream" uid="uid://3pdkpw4ui60n" path="res://actors/player/mario/motion_nsmbw/land1_hard.wav" id="32_85yci"]
-[ext_resource type="AudioStream" uid="uid://dttsovlcc1lhh" path="res://actors/player/mario/motion_nsmbw/land2_hard.wav" id="33_hm8uh"]
-[ext_resource type="AudioStream" uid="uid://c5u3cdm0rwdx2" path="res://actors/player/mario/motion_nsmbw/step1_hard.wav" id="34_a3ogi"]
-[ext_resource type="AudioStream" uid="uid://y8j8f2el3re6" path="res://actors/player/mario/motion_nsmbw/step2_hard.wav" id="35_mc2n0"]
-[ext_resource type="Script" path="res://actors/player/states/airborne/double_jump.gd" id="36_f2q1o"]
-[ext_resource type="Script" path="res://actors/player/states/airborne/stylish.gd" id="37_5bhpx"]
-[ext_resource type="Script" path="res://actors/player/states/airborne/triple_jump.gd" id="38_wnh1u"]
-[ext_resource type="Script" path="res://actors/player/states/grounded/crouch_walk.gd" id="39_eiqna"]
-[ext_resource type="Script" path="res://actors/player/states/airborne/wallslide.gd" id="40_hk2sj"]
-[ext_resource type="Script" path="res://actors/player/states/airborne/walljump.gd" id="41_re2yk"]
-[ext_resource type="AudioStream" uid="uid://cjspfb0k3f8qd" path="res://actors/player/mario/motion_nsmbw/crouch.wav" id="42_3fc5f"]
-[ext_resource type="Script" path="res://actors/player/states/grounded/groundpound_land.gd" id="42_q3uxx"]
-[ext_resource type="Script" path="res://actors/player/states/airborne/dummy_jump.gd" id="44_f7pc6"]
-[ext_resource type="Script" path="res://actors/player/states/grounded/dive_slide.gd" id="45_alo0d"]
-[ext_resource type="Script" path="res://actors/player/states/airborne/groundpound.gd" id="46_4mnp2"]
-[ext_resource type="Script" path="res://actors/player/states/grounded/breakdance.gd" id="46_ayg2w"]
-[ext_resource type="AudioStream" uid="uid://cs863ebdk8ate" path="res://actors/player/mario/motion_nsmbw/groundpoundland.wav" id="47_1l3qp"]
-[ext_resource type="Script" path="res://actors/player/states/airborne/groundpound_fall.gd" id="47_bnupp"]
+[ext_resource type="Texture2D" uid="uid://bwppo3kubftbl" path="res://actors/player/mario/anime/walk.png" id="32_rdvib"]
+[ext_resource type="Script" path="res://actors/player/shared/crouchlock.gd" id="34_ndbt5"]
+[ext_resource type="Texture2D" uid="uid://hlcl3ptyjqfe" path="res://actors/player/mario/anime/wallslide.png" id="34_yliku"]
+[ext_resource type="Script" path="res://actors/player/shared/push_rays.gd" id="35_g7d1t"]
+[ext_resource type="Script" path="res://actors/player/shared/player_movement.gd" id="37_quca3"]
+[ext_resource type="Script" path="res://actors/player/shared/states/grounded.gd" id="39_ut6cw"]
+[ext_resource type="AudioStream" uid="uid://3pdkpw4ui60n" path="res://actors/player/shared/motion_nsmbw/land1_hard.wav" id="41_vhr45"]
+[ext_resource type="AudioStream" uid="uid://dttsovlcc1lhh" path="res://actors/player/shared/motion_nsmbw/land2_hard.wav" id="42_k4dq2"]
+[ext_resource type="Script" path="res://actors/player/shared/states/grounded/idle.gd" id="43_i08cf"]
+[ext_resource type="Script" path="res://actors/player/shared/states/grounded/walk.gd" id="44_vdwtr"]
+[ext_resource type="AudioStream" uid="uid://c5u3cdm0rwdx2" path="res://actors/player/shared/motion_nsmbw/step1_hard.wav" id="45_mh7x3"]
+[ext_resource type="AudioStream" uid="uid://y8j8f2el3re6" path="res://actors/player/shared/motion_nsmbw/step2_hard.wav" id="46_q6juv"]
+[ext_resource type="Script" path="res://actors/player/shared/states/grounded/turn_skid.gd" id="47_r01yg"]
+[ext_resource type="Script" path="res://actors/player/shared/states/grounded/push.gd" id="48_cgjig"]
 [ext_resource type="Script" path="res://util/sfx_layer.gd" id="49_apkmk"]
-[ext_resource type="AudioStream" uid="uid://ce1hs2wi4j1jx" path="res://actors/player/mario/motion_nsmbw/jump2.wav" id="49_ym08k"]
-[ext_resource type="Script" path="res://actors/player/states/spin.gd" id="50_mq1bv"]
-[ext_resource type="AudioStream" uid="uid://c6fe7mxpb00mb" path="res://actors/player/mario/motion_nsmbw/doublejump.wav" id="50_snfws"]
-[ext_resource type="AudioStream" uid="uid://dcx3sjeavtd8r" path="res://actors/player/mario/motion_nsmbw/jump1.wav" id="51_26k4x"]
-[ext_resource type="AudioStream" uid="uid://c8nogtutvpse6" path="res://actors/player/mario/motion_nsmbw/headbump.wav" id="53_k5674"]
+[ext_resource type="Script" path="res://actors/player/shared/states/grounded/dry_push.gd" id="49_evaoh"]
+[ext_resource type="Script" path="res://actors/player/shared/states/grounded/crouch.gd" id="50_efkab"]
+[ext_resource type="AudioStream" uid="uid://cjspfb0k3f8qd" path="res://actors/player/shared/motion_nsmbw/crouch.wav" id="51_ge5km"]
+[ext_resource type="Script" path="res://actors/player/shared/states/grounded/crouch_walk.gd" id="52_ae103"]
+[ext_resource type="Script" path="res://actors/player/shared/states/grounded/breakdance.gd" id="53_ebexl"]
 [ext_resource type="AudioStream" uid="uid://cwwws3ymysh84" path="res://actors/player/mario/voice_64/hoo.wav" id="54_nx8es"]
-[ext_resource type="Script" path="res://actors/player/states/airborne/air_dive.gd" id="54_rdldk"]
-[ext_resource type="Script" path="res://actors/player/states/airborne/spinjump.gd" id="56_j6jt4"]
+[ext_resource type="Script" path="res://actors/player/shared/states/airborne/stylish.gd" id="55_ep0tt"]
 [ext_resource type="AudioStream" uid="uid://dv5jygdhaf8dy" path="res://actors/player/mario/voice_64/haha.wav" id="56_o7gy0"]
-[ext_resource type="Script" path="res://actors/player/states/airborne/groundpound_jump.gd" id="57_2m6wb"]
-[ext_resource type="Script" path="res://actors/player/states/airborne/twirl.gd" id="57_dqusk"]
-[ext_resource type="AudioStream" uid="uid://bwsqbo0shsv1n" path="res://actors/player/mario/motion_nsmbw/triplejump.wav" id="59_wk6r7"]
-[ext_resource type="AudioStream" uid="uid://cwkfh51wv1ios" path="res://actors/player/mario/motion_nsmbw/triplejumpflip.wav" id="60_07vye"]
+[ext_resource type="Script" path="res://actors/player/shared/states/grounded/groundpound_land.gd" id="57_2vp23"]
+[ext_resource type="AudioStream" uid="uid://cs863ebdk8ate" path="res://actors/player/shared/motion_nsmbw/groundpoundland.wav" id="58_lmjof"]
+[ext_resource type="Script" path="res://actors/player/shared/states/grounded/dive_slide.gd" id="59_g3ton"]
+[ext_resource type="Script" path="res://actors/player/shared/states/airborne.gd" id="60_y4m3q"]
+[ext_resource type="AudioStream" uid="uid://c8nogtutvpse6" path="res://actors/player/shared/motion_nsmbw/headbump.wav" id="61_4m4nv"]
+[ext_resource type="Script" path="res://actors/player/shared/states/airborne/dummy_jump.gd" id="62_cmbf3"]
+[ext_resource type="Script" path="res://actors/player/shared/states/airborne/jump.gd" id="63_6rf85"]
+[ext_resource type="AudioStream" uid="uid://ce1hs2wi4j1jx" path="res://actors/player/shared/motion_nsmbw/jump2.wav" id="64_nkubm"]
 [ext_resource type="AudioStream" uid="uid://dx127oekmmsnc" path="res://actors/player/mario/voice/yo_jump.wav" id="64_rch8v"]
-[ext_resource type="Script" path="res://actors/player/states/airborne/spin_wallbonk.gd" id="65_echk5"]
+[ext_resource type="AudioStream" uid="uid://dcx3sjeavtd8r" path="res://actors/player/shared/motion_nsmbw/jump1.wav" id="65_2xkjx"]
 [ext_resource type="AudioStream" uid="uid://bvngsvbfij5rl" path="res://actors/player/mario/voice/uhn_jump.wav" id="65_f1kp6"]
 [ext_resource type="AudioStream" uid="uid://bl466g1qpkv8s" path="res://actors/player/mario/voice/mhpm_jump.wav" id="66_8j4lt"]
-[ext_resource type="AudioStream" uid="uid://diawt3pefpy36" path="res://actors/player/mario/motion/spin_wallbonk.wav" id="67_cc7at"]
 [ext_resource type="AudioStream" uid="uid://b10tiodi2lahq" path="res://actors/player/mario/voice/yah_jump.wav" id="67_ny3my"]
 [ext_resource type="AudioStream" uid="uid://cdx15t1tf0d3n" path="res://actors/player/mario/voice/hoo_jump.wav" id="68_idf2v"]
-[ext_resource type="AudioStream" uid="uid://u1no4en1bdf0" path="res://actors/player/mario/motion_nsmbw/wallslide.wav" id="68_w4awc"]
 [ext_resource type="AudioStream" uid="uid://mm5nj0apxbql" path="res://actors/player/mario/voice/oo_jump.wav" id="69_7jcwv"]
-[ext_resource type="AudioStream" uid="uid://dg3rs2qtqhhqe" path="res://actors/player/mario/motion/back_sideflip.wav" id="69_th0h2"]
 [ext_resource type="AudioStream" uid="uid://dvh6rb40f4deu" path="res://actors/player/mario/voice/muh_double.wav" id="71_ohc7q"]
-[ext_resource type="AudioStream" uid="uid://bfgn747nbjogx" path="res://actors/player/mario/motion_nsmbw/walljump.wav" id="72_qiukt"]
+[ext_resource type="Script" path="res://actors/player/shared/states/airborne/double_jump.gd" id="72_dpir0"]
 [ext_resource type="AudioStream" uid="uid://ch85xj14nesnx" path="res://actors/player/mario/voice/ho_double.wav" id="72_r33o8"]
 [ext_resource type="AudioStream" uid="uid://dl0l7340snklm" path="res://actors/player/mario/voice/you_double.wav" id="73_cg0sx"]
 [ext_resource type="AudioStream" uid="uid://dkm12417vwbtl" path="res://actors/player/mario/voice/wah_double.wav" id="74_nvtw8"]
 [ext_resource type="AudioStream" uid="uid://clon8dsd11p34" path="res://actors/player/mario/voice/aa_double.wav" id="75_2xld2"]
-[ext_resource type="Script" path="res://actors/player/states/airborne/groundpound_cancel.gd" id="75_tu65i"]
-[ext_resource type="AudioStream" uid="uid://bbw3474fd3uxc" path="res://actors/player/mario/motion/spinattack_shine.wav" id="78_6j3mr"]
+[ext_resource type="AudioStream" uid="uid://c6fe7mxpb00mb" path="res://actors/player/shared/motion_nsmbw/doublejump.wav" id="78_b3o3d"]
 [ext_resource type="AudioStream" uid="uid://clelmpbxfm81m" path="res://actors/player/mario/voice_64/yahoo.wav" id="78_wqfjo"]
+[ext_resource type="Script" path="res://actors/player/shared/states/airborne/triple_jump.gd" id="79_ftdih"]
 [ext_resource type="AudioStream" uid="uid://crchf1m7nfdld" path="res://actors/player/mario/voice/heh_hoo.wav" id="79_ofamm"]
 [ext_resource type="AudioStream" uid="uid://bu35ebaa736la" path="res://actors/player/mario/voice_64/waha.wav" id="80_rcac4"]
 [ext_resource type="AudioStream" uid="uid://dl2rkl65qo0n5" path="res://actors/player/mario/voice/wee_hee.wav" id="81_27gn5"]
-[ext_resource type="AudioStream" uid="uid://bowyc14wpkcra" path="res://actors/player/mario/motion/dive.wav" id="82_2iou6"]
 [ext_resource type="AudioStream" uid="uid://cjkuogop5wxlx" path="res://actors/player/mario/voice/yihhee.wav" id="82_6e7m6"]
-[ext_resource type="Script" path="res://actors/player/states/airborne/longjump.gd" id="82_b7kjt"]
-[ext_resource type="AudioStream" uid="uid://1fibybjdw7pc" path="res://actors/player/mario/motion_nsmbw/groundpound.wav" id="83_6bb16"]
+[ext_resource type="AudioStream" uid="uid://bwsqbo0shsv1n" path="res://actors/player/shared/motion_nsmbw/triplejump.wav" id="85_a2b2e"]
+[ext_resource type="AudioStream" uid="uid://cwkfh51wv1ios" path="res://actors/player/shared/motion_nsmbw/triplejumpflip.wav" id="86_v7cq7"]
+[ext_resource type="Script" path="res://actors/player/shared/states/airborne/fall.gd" id="87_1pv3a"]
 [ext_resource type="AudioStream" uid="uid://djmdntd4jgdnb" path="res://actors/player/mario/voice_64/falling.wav" id="87_4kpcy"]
-[ext_resource type="Script" path="res://actors/player/states/airborne/groundpound_homing.gd" id="88_wydnf"]
-[ext_resource type="Script" path="res://actors/player/states/airborne/groundpound_homing_fall.gd" id="90_yms6y"]
-[ext_resource type="Script" path="res://actors/player/states/airborne/faceplant_dive.gd" id="93_2rear"]
+[ext_resource type="Script" path="res://actors/player/shared/states/airborne/freefall.gd" id="88_fuf4c"]
+[ext_resource type="Script" path="res://actors/player/shared/states/airborne/wallslide.gd" id="90_45fwo"]
+[ext_resource type="AudioStream" uid="uid://u1no4en1bdf0" path="res://actors/player/shared/motion_nsmbw/wallslide.wav" id="91_k5qq6"]
+[ext_resource type="Script" path="res://actors/player/shared/states/airborne/walljump.gd" id="92_6m0ot"]
+[ext_resource type="AudioStream" uid="uid://bfgn747nbjogx" path="res://actors/player/shared/motion_nsmbw/walljump.wav" id="93_ehd5h"]
+[ext_resource type="Script" path="res://actors/player/shared/states/airborne/spin_wallbonk.gd" id="94_2cgab"]
 [ext_resource type="AudioStream" uid="uid://6c2qigoliuq6" path="res://actors/player/mario/voice/weehoo.wav" id="95_hftyd"]
 [ext_resource type="AudioStream" uid="uid://bh1233d8ipiv8" path="res://actors/player/mario/voice/whoopie.wav" id="96_bh3id"]
 [ext_resource type="AudioStream" uid="uid://btour6vgmjit1" path="res://actors/player/mario/voice/ah_ha.wav" id="97_3dng3"]
 [ext_resource type="AudioStream" uid="uid://byfx5dgky5fhm" path="res://actors/player/mario/voice/hurray.wav" id="98_teiu1"]
 [ext_resource type="AudioStream" uid="uid://cgg6daqx3r72c" path="res://actors/player/mario/voice/woo_hooo.wav" id="99_2gl2i"]
 [ext_resource type="AudioStream" uid="uid://bjy2sht4p55aj" path="res://actors/player/mario/voice/yah.wav" id="100_3q48c"]
-[ext_resource type="AudioStream" uid="uid://djqa3wceoa2j5" path="res://actors/player/mario/motion_nsmbw/twirl.wav" id="100_iksxt"]
 [ext_resource type="AudioStream" uid="uid://l2rxgn62cb1g" path="res://actors/player/mario/voice/wo_hoo.wav" id="100_qovm2"]
 [ext_resource type="AudioStream" uid="uid://irebqk2058mi" path="res://actors/player/mario/voice/hmph.wav" id="101_wodpm"]
-[ext_resource type="Script" path="res://actors/player/states/airborne/rollout.gd" id="103_p6px5"]
-[ext_resource type="Script" path="res://actors/player/states/airborne/butt_slide_jump.gd" id="103_vw86a"]
-[ext_resource type="Script" path="res://actors/player/states/butt_slide.gd" id="105_wa8lx"]
+[ext_resource type="AudioStream" uid="uid://diawt3pefpy36" path="res://actors/player/shared/motion/spin_wallbonk.wav" id="102_6yrjd"]
+[ext_resource type="Script" path="res://actors/player/shared/states/airborne/spinjump.gd" id="103_ksrxe"]
 [ext_resource type="AudioStream" uid="uid://bhklahfo0oipn" path="res://actors/player/mario/voice/ya_hoo.wav" id="108_e31o1"]
 [ext_resource type="AudioStream" uid="uid://b17lwsuovnc5t" path="res://actors/player/mario/voice/wahahoo.wav" id="109_s2cvh"]
 [ext_resource type="AudioStream" uid="uid://cug0bull4md7o" path="res://actors/player/mario/voice/doh.wav" id="110_eavfs"]
 [ext_resource type="AudioStream" uid="uid://b87cfbxjjqiqq" path="res://actors/player/mario/voice/waf.wav" id="111_vejrh"]
-[ext_resource type="Script" path="res://actors/player/states/bonk.gd" id="115_s81vk"]
+[ext_resource type="Script" path="res://actors/player/shared/states/airborne/longjump.gd" id="111_veoi1"]
+[ext_resource type="Script" path="res://actors/player/shared/states/airborne/sideflip.gd" id="112_t3qrh"]
+[ext_resource type="AudioStream" uid="uid://dg3rs2qtqhhqe" path="res://actors/player/shared/motion/back_sideflip.wav" id="113_7rxe5"]
+[ext_resource type="Script" path="res://actors/player/shared/states/airborne/backflip.gd" id="114_b24up"]
+[ext_resource type="Script" path="res://actors/player/shared/states/airborne/groundpound.gd" id="115_nlac8"]
+[ext_resource type="AudioStream" uid="uid://1fibybjdw7pc" path="res://actors/player/shared/motion_nsmbw/groundpound.wav" id="116_078t4"]
+[ext_resource type="Script" path="res://actors/player/shared/states/airborne/groundpound_fall.gd" id="119_qvysm"]
 [ext_resource type="AudioStream" uid="uid://23at2s4l6qjv" path="res://actors/player/mario/voice/watch_it.wav" id="120_qvxml"]
+[ext_resource type="Script" path="res://actors/player/shared/states/airborne/groundpound_homing.gd" id="120_t5jue"]
+[ext_resource type="Script" path="res://actors/player/shared/states/airborne/groundpound_homing_fall.gd" id="121_k7y83"]
 [ext_resource type="AudioStream" uid="uid://lktt3ecwf5nm" path="res://actors/player/mario/voice/oh_surprised.wav" id="121_se657"]
+[ext_resource type="Script" path="res://actors/player/shared/states/airborne/groundpound_cancel.gd" id="122_fp5j2"]
 [ext_resource type="AudioStream" uid="uid://udnnj6t7h54x" path="res://actors/player/mario/voice/mhpm.wav" id="122_r00kr"]
+[ext_resource type="Script" path="res://actors/player/shared/states/airborne/groundpound_jump.gd" id="123_f3pgf"]
 [ext_resource type="AudioStream" uid="uid://b05vmfwqtohny" path="res://actors/player/mario/voice/ow.wav" id="123_v30he"]
 [ext_resource type="AudioStream" uid="uid://bxvxr0hy1yiou" path="res://actors/player/mario/voice/woah.wav" id="124_02vep"]
+[ext_resource type="Script" path="res://actors/player/shared/states/airborne/twirl.gd" id="125_grtbq"]
 [ext_resource type="AudioStream" uid="uid://c8rgqspjrtakq" path="res://actors/player/mario/voice/oh_bonk.wav" id="125_l4e5j"]
 [ext_resource type="AudioStream" uid="uid://cgx5jnqrn8xk7" path="res://actors/player/mario/voice/ouch.wav" id="126_3xy3c"]
+[ext_resource type="AudioStream" uid="uid://djqa3wceoa2j5" path="res://actors/player/shared/motion_nsmbw/twirl.wav" id="126_6gu1v"]
 [ext_resource type="AudioStream" uid="uid://dm72woypee3vc" path="res://actors/player/mario/voice/wah_ho.wav" id="126_onkkq"]
+[ext_resource type="Script" path="res://actors/player/shared/states/airborne/faceplant_dive.gd" id="127_kgdlk"]
 [ext_resource type="AudioStream" uid="uid://dev6wksv27l0i" path="res://actors/player/mario/voice/yah_kick.wav" id="127_skj22"]
 [ext_resource type="AudioStream" uid="uid://xpf0g652x833" path="res://actors/player/mario/voice/ha.wav" id="128_r0wmf"]
+[ext_resource type="Script" path="res://actors/player/shared/states/airborne/rollout.gd" id="130_6jpkc"]
+[ext_resource type="Script" path="res://actors/player/shared/states/airborne/butt_slide_jump.gd" id="131_gr5h0"]
+[ext_resource type="Script" path="res://actors/player/shared/states/spin.gd" id="132_wjtuh"]
+[ext_resource type="AudioStream" uid="uid://bbw3474fd3uxc" path="res://actors/player/shared/motion/spinattack_shine.wav" id="136_a6kal"]
+[ext_resource type="Script" path="res://actors/player/shared/states/airborne/air_dive.gd" id="137_sye8u"]
+[ext_resource type="AudioStream" uid="uid://bowyc14wpkcra" path="res://actors/player/shared/motion/dive.wav" id="138_88upi"]
+[ext_resource type="Script" path="res://actors/player/shared/states/bonk.gd" id="139_qeya8"]
+[ext_resource type="Script" path="res://actors/player/shared/states/butt_slide.gd" id="140_82nva"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8n85e"]
 atlas = ExtResource("2_i2o54")
@@ -257,13 +257,13 @@ region = Rect2(0, 0, 48, 48)
 atlas = ExtResource("8_ugnlj")
 region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_au3y7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhgfe"]
 atlas = ExtResource("3_0c1gq")
 region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f5jpw"]
-atlas = ExtResource("5_v8y6h")
-region = Rect2(0, 0, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6j5y"]
+atlas = ExtResource("3_0c1gq")
+region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fdxak"]
 atlas = ExtResource("4_b56cl")
@@ -389,29 +389,41 @@ region = Rect2(528, 0, 48, 48)
 atlas = ExtResource("9_m0w8d")
 region = Rect2(576, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_naxvm"]
-atlas = ExtResource("14_esdke")
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5uo8"]
+atlas = ExtResource("19_ti8xn")
 region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eeboy"]
-atlas = ExtResource("15_ql0oe")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0j43o"]
-atlas = ExtResource("15_ql0oe")
+[sub_resource type="AtlasTexture" id="AtlasTexture_app88"]
+atlas = ExtResource("19_ti8xn")
 region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6crpk"]
-atlas = ExtResource("15_ql0oe")
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7ijs"]
+atlas = ExtResource("19_ti8xn")
 region = Rect2(96, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t12mv"]
-atlas = ExtResource("15_ql0oe")
-region = Rect2(48, 48, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikjyd"]
+atlas = ExtResource("19_ti8xn")
+region = Rect2(144, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vgo6g"]
-atlas = ExtResource("15_ql0oe")
-region = Rect2(96, 48, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbv4k"]
+atlas = ExtResource("19_ti8xn")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68up5"]
+atlas = ExtResource("19_ti8xn")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8ni8"]
+atlas = ExtResource("19_ti8xn")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqowt"]
+atlas = ExtResource("20_8mhw2")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmf4f"]
+atlas = ExtResource("21_mm2ta")
+region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_su7q6"]
 atlas = ExtResource("16_a6s6v")
@@ -432,10 +444,6 @@ region = Rect2(144, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_eaoan"]
 atlas = ExtResource("16_a6s6v")
 region = Rect2(192, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xjbsg"]
-atlas = ExtResource("19_31nk2")
-region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i0dhx"]
 atlas = ExtResource("12_kw6lo")
@@ -693,49 +701,45 @@ region = Rect2(528, 0, 48, 48)
 atlas = ExtResource("18_5kttb")
 region = Rect2(576, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lg77q"]
-atlas = ExtResource("23_qkkif")
+[sub_resource type="AtlasTexture" id="AtlasTexture_omlnq"]
+atlas = ExtResource("32_rdvib")
 region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1a4an"]
-atlas = ExtResource("23_qkkif")
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6p15"]
+atlas = ExtResource("32_rdvib")
 region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1otbb"]
-atlas = ExtResource("23_qkkif")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qjkm"]
+atlas = ExtResource("32_rdvib")
 region = Rect2(96, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_unyj8"]
-atlas = ExtResource("23_qkkif")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3y73d"]
+atlas = ExtResource("32_rdvib")
 region = Rect2(144, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k4idm"]
-atlas = ExtResource("23_qkkif")
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbit0"]
+atlas = ExtResource("32_rdvib")
 region = Rect2(192, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s3dyr"]
-atlas = ExtResource("23_qkkif")
+[sub_resource type="AtlasTexture" id="AtlasTexture_qk4mk"]
+atlas = ExtResource("32_rdvib")
 region = Rect2(240, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3ahhn"]
-atlas = ExtResource("23_qkkif")
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlc4m"]
+atlas = ExtResource("32_rdvib")
 region = Rect2(288, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ushjr"]
-atlas = ExtResource("23_qkkif")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4aln3"]
+atlas = ExtResource("32_rdvib")
 region = Rect2(336, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ajosc"]
 atlas = ExtResource("17_ko8me")
 region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_86n6a"]
-atlas = ExtResource("24_dqa47")
+[sub_resource type="AtlasTexture" id="AtlasTexture_odbgd"]
+atlas = ExtResource("34_yliku")
 region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h3fg3"]
-atlas = ExtResource("24_dqa47")
-region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hmp25"]
 animations = [{
@@ -866,10 +870,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_au3y7")
+"texture": SubResource("AtlasTexture_yhgfe")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f5jpw")
+"texture": SubResource("AtlasTexture_j6j5y")
 }],
 "loop": false,
 "name": &"crouch",
@@ -1032,21 +1036,33 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_naxvm")
+"texture": SubResource("AtlasTexture_x5uo8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_app88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7ijs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikjyd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbv4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68up5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8ni8")
 }],
-"loop": false,
+"loop": true,
 "name": &"idle",
 "speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_eeboy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0j43o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6crpk")
+"texture": SubResource("AtlasTexture_oqowt")
 }],
 "loop": false,
 "name": &"jump",
@@ -1054,10 +1070,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_t12mv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vgo6g")
+"texture": SubResource("AtlasTexture_mmf4f")
 }],
 "loop": false,
 "name": &"jump_fall",
@@ -1085,7 +1098,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xjbsg")
+"texture": ExtResource("23_akjfu")
 }],
 "loop": true,
 "name": &"look_up",
@@ -1360,32 +1373,32 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lg77q")
+"texture": SubResource("AtlasTexture_omlnq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1a4an")
+"texture": SubResource("AtlasTexture_q6p15")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1otbb")
+"texture": SubResource("AtlasTexture_8qjkm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_unyj8")
+"texture": SubResource("AtlasTexture_3y73d")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k4idm")
+"texture": SubResource("AtlasTexture_vbit0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s3dyr")
+"texture": SubResource("AtlasTexture_qk4mk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3ahhn")
+"texture": SubResource("AtlasTexture_nlc4m")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ushjr")
+"texture": SubResource("AtlasTexture_4aln3")
 }],
 "loop": true,
 "name": &"walk",
-"speed": 12.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1397,10 +1410,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_86n6a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h3fg3")
+"texture": SubResource("AtlasTexture_odbgd")
 }],
 "loop": true,
 "name": &"wallslide",
@@ -1424,7 +1434,7 @@ size = Vector2(44, 26)
 
 [sub_resource type="Resource" id="Resource_r5xry"]
 script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("32_85yci"), ExtResource("33_hm8uh")]
+sfx_list = [ExtResource("41_vhr45"), ExtResource("42_k4dq2")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
@@ -1433,7 +1443,7 @@ overwrite_other = false
 
 [sub_resource type="Resource" id="Resource_8p2oq"]
 script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("34_a3ogi"), ExtResource("35_mc2n0")]
+sfx_list = [ExtResource("45_mh7x3"), ExtResource("46_q6juv")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
@@ -1442,7 +1452,7 @@ overwrite_other = false
 
 [sub_resource type="Resource" id="Resource_ql55k"]
 script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("42_3fc5f")]
+sfx_list = [ExtResource("51_ge5km")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
@@ -1451,7 +1461,7 @@ overwrite_other = false
 
 [sub_resource type="Resource" id="Resource_lybx2"]
 script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("34_a3ogi"), ExtResource("35_mc2n0")]
+sfx_list = [ExtResource("45_mh7x3"), ExtResource("46_q6juv")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
@@ -1487,7 +1497,7 @@ overwrite_other = true
 
 [sub_resource type="Resource" id="Resource_t5lrn"]
 script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("47_1l3qp")]
+sfx_list = [ExtResource("58_lmjof")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
@@ -1496,7 +1506,7 @@ overwrite_other = false
 
 [sub_resource type="Resource" id="Resource_oau5y"]
 script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("53_k5674")]
+sfx_list = [ExtResource("61_4m4nv")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
@@ -1505,7 +1515,7 @@ overwrite_other = true
 
 [sub_resource type="Resource" id="Resource_2esv2"]
 script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("49_ym08k"), ExtResource("51_26k4x")]
+sfx_list = [ExtResource("64_nkubm"), ExtResource("65_2xkjx")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
@@ -1532,7 +1542,7 @@ overwrite_other = true
 
 [sub_resource type="Resource" id="Resource_cjrlj"]
 script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("50_snfws")]
+sfx_list = [ExtResource("78_b3o3d")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
@@ -1550,7 +1560,7 @@ overwrite_other = true
 
 [sub_resource type="Resource" id="Resource_0beus"]
 script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("59_wk6r7")]
+sfx_list = [ExtResource("85_a2b2e")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
@@ -1559,7 +1569,7 @@ overwrite_other = false
 
 [sub_resource type="Resource" id="Resource_32052"]
 script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("60_07vye")]
+sfx_list = [ExtResource("86_v7cq7")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
@@ -1577,7 +1587,7 @@ overwrite_other = true
 
 [sub_resource type="Resource" id="Resource_w3vn1"]
 script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("68_w4awc")]
+sfx_list = [ExtResource("91_k5qq6")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
@@ -1595,7 +1605,7 @@ overwrite_other = true
 
 [sub_resource type="Resource" id="Resource_a2hl0"]
 script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("72_qiukt")]
+sfx_list = [ExtResource("93_ehd5h")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
@@ -1613,7 +1623,7 @@ overwrite_other = true
 
 [sub_resource type="Resource" id="Resource_2nfvq"]
 script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("67_cc7at")]
+sfx_list = [ExtResource("102_6yrjd")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
@@ -1649,7 +1659,7 @@ overwrite_other = true
 
 [sub_resource type="Resource" id="Resource_foa8p"]
 script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("69_th0h2")]
+sfx_list = [ExtResource("113_7rxe5")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
@@ -1667,7 +1677,7 @@ overwrite_other = true
 
 [sub_resource type="Resource" id="Resource_l81lv"]
 script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("69_th0h2")]
+sfx_list = [ExtResource("113_7rxe5")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
@@ -1676,7 +1686,7 @@ overwrite_other = false
 
 [sub_resource type="Resource" id="Resource_7r27p"]
 script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("83_6bb16")]
+sfx_list = [ExtResource("116_078t4")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
@@ -1703,7 +1713,7 @@ overwrite_other = true
 
 [sub_resource type="Resource" id="Resource_nl575"]
 script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("59_wk6r7")]
+sfx_list = [ExtResource("85_a2b2e")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
@@ -1712,7 +1722,7 @@ overwrite_other = false
 
 [sub_resource type="Resource" id="Resource_2y8iw"]
 script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("100_iksxt")]
+sfx_list = [ExtResource("126_6gu1v")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
@@ -1757,7 +1767,7 @@ overwrite_other = true
 
 [sub_resource type="Resource" id="Resource_0hpnu"]
 script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("78_6j3mr")]
+sfx_list = [ExtResource("136_a6kal")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
@@ -1775,7 +1785,7 @@ overwrite_other = true
 
 [sub_resource type="Resource" id="Resource_6roi5"]
 script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("82_2iou6")]
+sfx_list = [ExtResource("138_88upi")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
@@ -1795,7 +1805,7 @@ overwrite_other = true
 collision_layer = 2
 floor_max_angle = 1.55334
 floor_snap_length = 16.0
-script = ExtResource("1_3d0l6")
+script = ExtResource("1_87j6i")
 doll = NodePath("Doll")
 state_manager = NodePath("StateManager")
 movement = NodePath("Movement")
@@ -1811,7 +1821,7 @@ spin_hitbox = NodePath("Areas/SpinHitbox")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_hmp25")
-animation = &"walk"
+animation = &"stylish"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
@@ -1841,7 +1851,7 @@ polygon = PackedVector2Array(-141.4, 141.4, -100, 173.2, -51.8, 193.2, 0, 200, 5
 
 [node name="Crouchlock" type="Area2D" parent="Areas"]
 collision_layer = 0
-script = ExtResource("27_y8r5l")
+script = ExtResource("34_ndbt5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Crouchlock"]
 position = Vector2(0, -24)
@@ -1859,7 +1869,7 @@ shape = SubResource("RectangleShape2D_gh08o")
 debug_color = Color(1, 0, 0.145098, 0.141176)
 
 [node name="PushRays" type="Node2D" parent="." node_paths=PackedStringArray("movement")]
-script = ExtResource("26_qi7rb")
+script = ExtResource("35_g7d1t")
 movement = NodePath("../Movement")
 
 [node name="PushRayR" type="RayCast2D" parent="PushRays"]
@@ -1877,7 +1887,7 @@ script = ExtResource("21_onm15")
 buffer_duration = 6
 
 [node name="Movement" type="Node" parent="." node_paths=PackedStringArray("actor")]
-script = ExtResource("3_3mh1j")
+script = ExtResource("37_quca3")
 actor = NodePath("..")
 max_speed = 3.0
 ground_accel_time = 17.0
@@ -1897,18 +1907,18 @@ target_actor = NodePath("..")
 initial_state = NodePath("Airborne")
 
 [node name="Grounded" type="Node" parent="StateManager"]
-script = ExtResource("11_15kl1")
+script = ExtResource("39_ut6cw")
 hitbox_type = "None"
 on_enter = false
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_r5xry")])
 
 [node name="Idle" type="Node" parent="StateManager/Grounded"]
-script = ExtResource("12_hqcfh")
+script = ExtResource("43_i08cf")
 animation_look_up = &"look_up"
 animation = &"idle"
 
 [node name="Walk" type="Node" parent="StateManager/Grounded"]
-script = ExtResource("13_olbq0")
+script = ExtResource("44_vdwtr")
 footstep_frames = Array[int]([0, 4])
 animation_run = &"run"
 animation = &"walk"
@@ -1916,28 +1926,28 @@ on_enter = false
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_8p2oq")])
 
 [node name="Skid" type="Node" parent="StateManager/Grounded"]
-script = ExtResource("20_0joxb")
+script = ExtResource("47_r01yg")
 skid_accel_time = 8.0
 over_accel = 1.0
 animation = &"skid"
 
 [node name="Push" type="Node" parent="StateManager/Grounded"]
-script = ExtResource("17_8nb4y")
+script = ExtResource("48_cgjig")
 animation = &"push"
 
 [node name="DryPush" type="Node" parent="StateManager/Grounded/Push"]
-script = ExtResource("16_dpmo1")
+script = ExtResource("49_evaoh")
 animation = &"idle"
 
 [node name="Crouch" type="Node" parent="StateManager/Grounded"]
-script = ExtResource("18_h7q8u")
+script = ExtResource("50_efkab")
 hitbox_type = "Small"
 animation = &"crouch"
 on_enter = false
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ql55k")])
 
 [node name="Waddle" type="Node" parent="StateManager/Grounded"]
-script = ExtResource("39_eiqna")
+script = ExtResource("52_ae103")
 footstep_frames = Array[int]([1, 3])
 hitbox_type = "Small"
 animation = &"crouch_walk"
@@ -1945,46 +1955,46 @@ on_enter = false
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_lybx2")])
 
 [node name="Breakdance" type="Node" parent="StateManager/Grounded"]
-script = ExtResource("46_ayg2w")
+script = ExtResource("53_ebexl")
 hitbox_type = "Small"
 animation = &"breakdance"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_upqlf")])
 
 [node name="BackflipStyle" type="Node" parent="StateManager/Grounded"]
-script = ExtResource("37_5bhpx")
+script = ExtResource("55_ep0tt")
 animation = &"stylish"
 anim_offset = Vector2i(0, 5)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_sitp4")])
 
 [node name="TripleJumpStyle" type="Node" parent="StateManager/Grounded"]
-script = ExtResource("37_5bhpx")
+script = ExtResource("55_ep0tt")
 animation = &"stylish"
 anim_offset = Vector2i(0, 5)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_fdxka")])
 
 [node name="GroundPoundLand" type="Node" parent="StateManager/Grounded"]
-script = ExtResource("42_q3uxx")
+script = ExtResource("57_2vp23")
 hitbox_type = "Small"
 animation = &"gp_land"
 anim_offset = Vector2i(0, 9)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_t5lrn")])
 
 [node name="DiveSlide" type="Node" parent="StateManager/Grounded"]
-script = ExtResource("45_alo0d")
+script = ExtResource("59_g3ton")
 hitbox_type = "Dive"
 animation = &"dive_slide"
 
 [node name="Airborne" type="Node" parent="StateManager"]
-script = ExtResource("20_at07q")
+script = ExtResource("60_y4m3q")
 hitbox_type = "None"
 on_enter = false
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_oau5y")])
 
 [node name="DummyJump" type="Node" parent="StateManager/Airborne"]
-script = ExtResource("44_f7pc6")
+script = ExtResource("62_cmbf3")
 
 [node name="Jump" type="Node" parent="StateManager/Airborne/DummyJump"]
-script = ExtResource("20_bs088")
+script = ExtResource("63_6rf85")
 jump_power = 5.3
 min_jump_percent = 20.0
 jump_number = 1
@@ -1993,7 +2003,7 @@ anim_offset = Vector2i(0, 5)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_2esv2"), SubResource("Resource_qmxtc")])
 
 [node name="DoubleJump" type="Node" parent="StateManager/Airborne/DummyJump"]
-script = ExtResource("36_f2q1o")
+script = ExtResource("72_dpir0")
 jump_power = 6.7
 min_jump_percent = 35.0
 jump_number = 2
@@ -2002,7 +2012,7 @@ animation = &"double_jump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_js1ac"), SubResource("Resource_cjrlj")])
 
 [node name="TripleJump" type="Node" parent="StateManager/Airborne/DummyJump"]
-script = ExtResource("38_wnh1u")
+script = ExtResource("79_ftdih")
 jump_power = 8.0
 min_jump_percent = 50.0
 animation = &"triple_jump"
@@ -2010,40 +2020,40 @@ anim_offset = Vector2i(0, 5)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_c6n5s"), SubResource("Resource_0beus"), SubResource("Resource_32052")])
 
 [node name="Fall" type="Node" parent="StateManager/Airborne"]
-script = ExtResource("21_cisab")
+script = ExtResource("87_1pv3a")
 animation = &"jump_fall"
 anim_offset = Vector2i(0, 5)
 
 [node name="Freefall" type="Node" parent="StateManager/Airborne/Fall"]
-script = ExtResource("26_w8jki")
+script = ExtResource("88_fuf4c")
 animation = &"freefall"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_5kqsg")])
 
 [node name="DoubleFall" type="Node" parent="StateManager/Airborne"]
-script = ExtResource("21_cisab")
+script = ExtResource("87_1pv3a")
 animation = &"double_fall"
 
 [node name="Wallslide" type="Node" parent="StateManager/Airborne"]
-script = ExtResource("40_hk2sj")
+script = ExtResource("90_45fwo")
 term_vel = 2.0
 animation = &"wallslide"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_w3vn1")])
 
 [node name="Walljump" type="Node" parent="StateManager/Airborne"]
-script = ExtResource("41_re2yk")
+script = ExtResource("92_6m0ot")
 jump_power = 5.3
 push_power = 4.0
 animation = &"walljump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_pq6ep"), SubResource("Resource_a2hl0")])
 
 [node name="SpinWallbonk" type="Node" parent="StateManager/Airborne"]
-script = ExtResource("65_echk5")
+script = ExtResource("94_2cgab")
 wall_kickback_power_y = 1.5
 animation = &"spin_attack"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_bloag"), SubResource("Resource_2nfvq")])
 
 [node name="Spinjump" type="Node" parent="StateManager/Airborne"]
-script = ExtResource("56_j6jt4")
+script = ExtResource("103_ksrxe")
 jump_power = 6.7
 min_jump_percent = 100.0
 jump_number = 2
@@ -2052,49 +2062,49 @@ animation = &"spinjump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_h8xfq")])
 
 [node name="Longjump" type="Node" parent="StateManager/Airborne"]
-script = ExtResource("82_b7kjt")
+script = ExtResource("111_veoi1")
 jump_power = 3.6
 push_power = 6.0
 animation = &"longjump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_5f3i0")])
 
 [node name="Sideflip" type="Node" parent="StateManager/Airborne"]
-script = ExtResource("22_4r2ks")
+script = ExtResource("112_t3qrh")
 jump_power = 7.2
 animation = &"sideflip"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ts3h6"), SubResource("Resource_foa8p")])
 
 [node name="Backflip" type="Node" parent="StateManager/Airborne"]
-script = ExtResource("23_jcv3h")
+script = ExtResource("114_b24up")
 jump_power = 7.5
 animation = &"backflip"
 anim_offset = Vector2i(0, 5)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_yrs16"), SubResource("Resource_l81lv")])
 
 [node name="GroundPound" type="Node" parent="StateManager/Airborne"]
-script = ExtResource("46_4mnp2")
+script = ExtResource("115_nlac8")
 linger_time = 5.0
 animation = &"gp"
 anim_offset = Vector2i(0, 9)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_7r27p"), SubResource("Resource_rgxnc")])
 
 [node name="GroundPoundFall" type="Node" parent="StateManager/Airborne/GroundPound"]
-script = ExtResource("47_bnupp")
+script = ExtResource("119_qvysm")
 animation = &"gp_fall"
 anim_offset = Vector2i(0, 9)
 
 [node name="HomingGroundPound" type="Node" parent="StateManager/Airborne"]
-script = ExtResource("88_wydnf")
+script = ExtResource("120_t5jue")
 
 [node name="HomingGroundPoundFall" type="Node" parent="StateManager/Airborne/HomingGroundPound"]
-script = ExtResource("90_yms6y")
+script = ExtResource("121_k7y83")
 
 [node name="GroundPoundCancel" type="Node" parent="StateManager/Airborne"]
-script = ExtResource("75_tu65i")
+script = ExtResource("122_fp5j2")
 animation = &"jump_fall"
 
 [node name="GroundPoundJump" type="Node" parent="StateManager/Airborne"]
-script = ExtResource("57_2m6wb")
+script = ExtResource("123_f3pgf")
 jump_power = 6.7
 min_jump_percent = 35.0
 jump_number = 1
@@ -2102,13 +2112,13 @@ animation = &"gp_jump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_8711x"), SubResource("Resource_nl575")])
 
 [node name="Twirl" type="Node" parent="StateManager/Airborne"]
-script = ExtResource("57_dqusk")
+script = ExtResource("125_grtbq")
 spin_power = 0.0
 animation = &"spin_attack"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_2y8iw")])
 
 [node name="FaceplantDive" type="Node" parent="StateManager/Airborne"]
-script = ExtResource("93_2rear")
+script = ExtResource("127_kgdlk")
 y_power = 6.0
 accel_cap = 8.0
 hitbox_type = "Dive"
@@ -2116,7 +2126,7 @@ animation = &"dive"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_7x71p")])
 
 [node name="Rollout" type="Node" parent="StateManager/Airborne"]
-script = ExtResource("103_p6px5")
+script = ExtResource("130_6jpkc")
 x_multiplier = 1.2
 accel_cap = 8.0
 jump_power = 3.0
@@ -2128,7 +2138,7 @@ anim_offset = Vector2i(0, 6)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_4xwjg")])
 
 [node name="ButtSlideJump" type="Node" parent="StateManager/Airborne"]
-script = ExtResource("103_vw86a")
+script = ExtResource("131_gr5h0")
 jump_power = 5.3
 min_jump_percent = 20.0
 jump_number = 1
@@ -2138,13 +2148,13 @@ anim_offset = Vector2i(0, 3)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_jo8kb")])
 
 [node name="Spin" type="Node" parent="StateManager"]
-script = ExtResource("50_mq1bv")
+script = ExtResource("132_wjtuh")
 spin_power = 3.0
 animation = &"spin_attack"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_vehmo"), SubResource("Resource_0hpnu")])
 
 [node name="Dive" type="Node" parent="StateManager"]
-script = ExtResource("54_rdldk")
+script = ExtResource("137_sye8u")
 x_power = 3.0
 accel_cap = 8.0
 hitbox_type = "Dive"
@@ -2152,13 +2162,13 @@ animation = &"dive"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_lib4c"), SubResource("Resource_6roi5")])
 
 [node name="Bonk" type="Node" parent="StateManager"]
-script = ExtResource("115_s81vk")
+script = ExtResource("139_qeya8")
 rotation_time = 45.0
 animation = &"bonk"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ujdp5")])
 
 [node name="ButtSlide" type="Node" parent="StateManager"]
-script = ExtResource("105_wa8lx")
+script = ExtResource("140_82nva")
 max_speed = 15.0
 turn_forgiveness = 1.5
 shallow_penalty = 0.25

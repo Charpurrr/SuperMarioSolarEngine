@@ -27,12 +27,13 @@ func update_settings_visibility(settings_visible: bool):
 
 
 func _resume():
-	GameState.emit_signal(&"paused")
+	GameState.paused.emit()
 	enable_disable_screen()
 
 
 func _retry():
-	GameState.emit_signal(&"reload")
+	GameState.reload.emit()
+	enable_disable_screen()
 
 
 func _settings():

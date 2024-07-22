@@ -235,7 +235,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PauseMenu" type="HBoxContainer" parent="PauseScreen"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -386,6 +385,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 
 [node name="Settings" type="Control" parent="PauseScreen"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -423,10 +423,8 @@ uppercase = true
 self_modulate = Color(1, 1, 1, 0.588235)
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 1
 
 [node name="Controls" type="VBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs"]
-visible = false
 layout_mode = 2
 
 [node name="SpaceTop" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls"]
@@ -706,6 +704,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
 
 [node name="Audio" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs"]
+visible = false
 layout_mode = 2
 
 [node name="SpaceLeft" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio"]

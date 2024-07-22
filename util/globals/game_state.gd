@@ -1,7 +1,7 @@
 extends Node
 
-signal paused
 signal reload
+signal paused
 
 signal frame_advanced
 
@@ -42,8 +42,7 @@ var buses: Dictionary = {
 
 
 func _ready():
-	paused.connect(_pause_toggle)
-	reload.connect(_reload_scene)
+	paused.connect(pause_toggle)
 
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
@@ -51,14 +50,11 @@ func _ready():
 	_set_muted_bgm()
 
 
-func _process(_delta):
+func _unhandled_input(event):
 	_frame_advancing()
 	_music_control()
 
-	if Input.is_action_just_pressed(&"reset"):
-		_reload_scene()
-
-	if is_inside_tree() and get_tree().paused and Input.is_action_just_pressed(&"frame_advance"):
+	if is_inside_tree() and get_tree().paused and event.is_action_pressed(&"frame_advance"):
 		can_fa = true
 
 
@@ -91,19 +87,5 @@ func _set_muted_bgm():
 
 
 ## Called with the paused signal.
-func _pause_toggle():
+func pause_toggle():
 	get_tree().paused = !get_tree().paused
-
-
-## Called with the reload signal.
-func _reload_scene():
-	var tree: SceneTree = get_tree()
-
-	# For disabling the pause screen if it was open
-	if tree.paused == true:
-		_pause_toggle()
-
-	# Only reload the current scene if a SceneTree exists
-	# Avoids a critical error
-	if tree:
-		tree.reload_current_scene()

@@ -20,10 +20,6 @@ func _ready():
 			selected = get_item_index(hash(device))
 
 
-func _process(delta):
-	print(AudioServer.output_device)
-
-
 func _update_speaker_label():
 	var speaker_mode_text: String
 	var speaker_mode = AudioServer.get_speaker_mode()

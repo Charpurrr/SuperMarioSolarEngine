@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://bite6o37o0mpt"]
+
+[ext_resource type="Script" path="res://areas/world_machine.gd" id="1_gcjeb"]
+[ext_resource type="PackedScene" uid="uid://ernfgv2twpy4" path="res://areas/funny_slope_test.tscn" id="2_7jsli"]
+[ext_resource type="PackedScene" uid="uid://ccj3teu3h6xfm" path="res://ui/ui.tscn" id="3_pcjjq"]
+
+[node name="WorldMachine" type="Node2D"]
+script = ExtResource("1_gcjeb")
+loaded_level = ExtResource("2_7jsli")
+user_interface = ExtResource("3_pcjjq")

@@ -39,6 +39,7 @@ enabled=PackedStringArray("res://addons/button_property/plugin.cfg", "res://addo
 
 folder_colors={
 "res://actors/": "blue",
+"res://actors/player/luigi/": "green",
 "res://actors/player/mario/": "red",
 "res://areas/": "green",
 "res://level_designer/": "teal",
