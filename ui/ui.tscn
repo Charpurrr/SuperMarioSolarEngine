@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://ccj3teu3h6xfm"]
+[gd_scene load_steps=31 format=3 uid="uid://ccj3teu3h6xfm"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_pakjx"]
 [ext_resource type="Script" path="res://ui/debug_label.gd" id="2_suudb"]
@@ -15,23 +15,9 @@
 [ext_resource type="Shader" path="res://ui/blur.gdshader" id="12_wqetc"]
 [ext_resource type="Script" path="res://ui/pause_screen/settings/audio/audio_setting.gd" id="14_466vg"]
 [ext_resource type="FontFile" uid="uid://dwjboqsj8b8xd" path="res://ui/fonts/super_mario.ttf" id="14_n0vgh"]
-[ext_resource type="Script" path="res://ui/pause_screen/settings/controls/controls_contents.gd" id="15_a8jrp"]
-[ext_resource type="PackedScene" uid="uid://dl3pnbtv84ekj" path="res://ui/pause_screen/settings/controls/bindings/bind.tscn" id="15_q65l3"]
 [ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="15_y78en"]
 [ext_resource type="Script" path="res://ui/pause_screen/choices.gd" id="16_0su14"]
-[ext_resource type="Texture2D" uid="uid://bxnkgtkyg67g8" path="res://ui/pause_screen/settings/controls/bindings/icons/left.png" id="16_s4yss"]
-[ext_resource type="Texture2D" uid="uid://dpbmlfpb8nqkt" path="res://ui/pause_screen/settings/controls/bindings/icons/right.png" id="17_jpe5g"]
-[ext_resource type="Script" path="res://ui/pause_screen/settings/controls/select_controller.gd" id="18_chrtf"]
-[ext_resource type="Texture2D" uid="uid://8v7ugt32a0d2" path="res://ui/pause_screen/settings/controls/bindings/icons/up.png" id="18_eumt4"]
-[ext_resource type="Texture2D" uid="uid://bii6qpjesltf3" path="res://ui/pause_screen/settings/controls/bindings/icons/down.png" id="19_p6uqc"]
-[ext_resource type="Texture2D" uid="uid://cekiel7bt2lgi" path="res://ui/pause_screen/settings/controls/rumble/rumble_icons.png" id="19_y7lf8"]
-[ext_resource type="Shader" path="res://ui/pause_screen/settings/controls/rumble/triangular_progress_bar.gdshader" id="20_l7kfr"]
-[ext_resource type="Texture2D" uid="uid://bstgsdh4dqbc8" path="res://ui/pause_screen/settings/controls/bindings/icons/jump.png" id="20_vd0xh"]
-[ext_resource type="Texture2D" uid="uid://c3qbauenpyulb" path="res://ui/pause_screen/settings/controls/bindings/icons/spin.png" id="21_5awg4"]
-[ext_resource type="Script" path="res://ui/pause_screen/settings/controls/rumble/modes.gd" id="21_ybemc"]
-[ext_resource type="Script" path="res://ui/pause_screen/settings/controls/rumble/triangular_progress_bar.gd" id="21_yele6"]
-[ext_resource type="Texture2D" uid="uid://bqqyiat6cbhsn" path="res://ui/pause_screen/settings/controls/bindings/icons/dive.png" id="23_a0owx"]
-[ext_resource type="Texture2D" uid="uid://48gn0c5ga52r" path="res://ui/pause_screen/settings/controls/bindings/icons/groundpound.png" id="24_c7i2r"]
+[ext_resource type="PackedScene" uid="uid://cxqj15hquutxq" path="res://ui/pause_screen/settings/controls/tab.tscn" id="17_7m8yr"]
 [ext_resource type="Script" path="res://ui/pause_screen/settings/audio/select_audiod.gd" id="32_k3s7s"]
 [ext_resource type="AudioStream" uid="uid://bticstbu0baju" path="res://ui/pause_screen/settings/audio/ting.wav" id="36_wmtog"]
 
@@ -73,24 +59,6 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_2gqs2"]
 font = ExtResource("15_y78en")
 font_size = 25
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0ja8q"]
-atlas = ExtResource("19_y7lf8")
-region = Rect2(0, 0, 60, 60)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pqwu3"]
-shader = ExtResource("20_l7kfr")
-shader_parameter/bounding_box = Vector2(331, 120)
-shader_parameter/color_progress = Color(1, 1, 1, 1)
-shader_parameter/color_background = Color(0.392157, 0.392157, 0.392157, 1)
-shader_parameter/color_seperator = Color(0.29, 0.29, 0.29, 1)
-shader_parameter/segment_count = 3.0
-shader_parameter/segment_width = 10.0
-shader_parameter/value = 0.0
-
-[sub_resource type="LabelSettings" id="LabelSettings_n5ujh"]
-font = ExtResource("15_y78en")
-font_color = Color(0.498039, 0.901961, 0.854902, 1)
 
 [sub_resource type="InputEventKey" id="InputEventKey_hwwni"]
 device = -1
@@ -424,282 +392,27 @@ self_modulate = Color(1, 1, 1, 0.588235)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Controls" type="VBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs"]
+[node name="Controls" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs"]
 layout_mode = 2
 
-[node name="SpaceTop" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.1
-
-[node name="Rest" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="SpaceLeft" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest"]
+[node name="SpaceLeft" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Options" type="VBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer" node_paths=PackedStringArray("motion_toggle", "rumble_menu_toggle", "rumble_menu", "rumble_icon", "rumble_progress", "rumble_modes", "bindings_list", "fake_label", "header_keyboard", "header_controller")]
-layout_mode = 2
-size_flags_horizontal = 3
-script = ExtResource("15_a8jrp")
-motion_toggle = NodePath("MotionToggle")
-rumble_menu_toggle = NodePath("RumbleMenuToggle")
-rumble_menu = NodePath("RumbleMenu")
-rumble_icon = NodePath("RumbleMenu/RumblePanel/RumbleSettings/Indicators/Icon")
-rumble_progress = NodePath("RumbleMenu/RumblePanel/RumbleSettings/Indicators/TriangularProgressBar")
-rumble_modes = NodePath("RumbleMenu/RumblePanel/RumbleSettings/Modes")
-bindings_list = NodePath("BindingsList")
-fake_label = NodePath("BindingsHeader/FakeLabel")
-header_keyboard = NodePath("BindingsHeader/Keyboard")
-header_controller = NodePath("BindingsHeader/Controller")
-
-[node name="PortOptions" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options"]
-custom_minimum_size = Vector2(0, 48)
-layout_mode = 2
-alignment = 1
-
-[node name="SpaceLeft" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/PortOptions"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.3
-
-[node name="Label" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/PortOptions"]
-layout_mode = 2
-text = "Controller: "
-label_settings = SubResource("LabelSettings_2gqs2")
-
-[node name="OptionButton" type="OptionButton" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/PortOptions" node_paths=PackedStringArray("options")]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("15_y78en")
-theme_override_font_sizes/font_size = 16
-alignment = 1
-text_overrun_behavior = 1
-selected = 0
-script = ExtResource("18_chrtf")
-options = NodePath("../..")
-
-[node name="SpaceRight" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/PortOptions"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.3
-
-[node name="Control" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options"]
-custom_minimum_size = Vector2(0, 48)
-layout_mode = 2
-
-[node name="MotionToggle" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options"]
-custom_minimum_size = Vector2(0, 48)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("15_y78en")
-theme_override_font_sizes/font_size = 25
-toggle_mode = true
-text = "Motion Controls: DISABLED"
-
-[node name="RumbleMenuToggle" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options"]
-custom_minimum_size = Vector2(0, 48)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("15_y78en")
-theme_override_font_sizes/font_size = 25
-toggle_mode = true
-text = "Open Rumble Settings"
-
-[node name="RumbleMenu" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options"]
-custom_minimum_size = Vector2(0, 48)
-layout_mode = 2
-
-[node name="SpaceLeft" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.1
-
-[node name="RumblePanel" type="PanelContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="RumbleSettings" type="VBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu/RumblePanel"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Indicators" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu/RumblePanel/RumbleSettings"]
-layout_mode = 2
-
-[node name="Icon" type="TextureRect" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu/RumblePanel/RumbleSettings/Indicators"]
-custom_minimum_size = Vector2(0, 135)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = SubResource("AtlasTexture_0ja8q")
-stretch_mode = 5
-
-[node name="TriangularProgressBar" type="ColorRect" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu/RumblePanel/RumbleSettings/Indicators"]
-material = SubResource("ShaderMaterial_pqwu3")
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.0
-script = ExtResource("21_yele6")
-
-[node name="Modes" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu/RumblePanel/RumbleSettings" node_paths=PackedStringArray("off", "weak", "normal", "strong")]
-layout_mode = 2
-script = ExtResource("21_ybemc")
-off = NodePath("Off")
-weak = NodePath("Weak")
-normal = NodePath("Normal")
-strong = NodePath("Strong")
-
-[node name="Off" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu/RumblePanel/RumbleSettings/Modes"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("15_y78en")
-theme_override_font_sizes/font_size = 20
-text = "Off"
-
-[node name="Weak" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu/RumblePanel/RumbleSettings/Modes"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("15_y78en")
-theme_override_font_sizes/font_size = 20
-text = "Weak"
-
-[node name="Normal" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu/RumblePanel/RumbleSettings/Modes"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("15_y78en")
-theme_override_font_sizes/font_size = 20
-text = "Normal"
-
-[node name="Strong" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu/RumblePanel/RumbleSettings/Modes"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("15_y78en")
-theme_override_font_sizes/font_size = 20
-text = "Strong"
-
-[node name="SpaceTop" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu/RumblePanel/RumbleSettings"]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu/RumblePanel/RumbleSettings"]
-layout_mode = 2
-text = "(Note that not every controller type supports rumble functionality)"
-label_settings = SubResource("LabelSettings_n5ujh")
-horizontal_alignment = 1
-
-[node name="SpaceBottom" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu/RumblePanel/RumbleSettings"]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-
-[node name="SpaceRight" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenu"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.1
-
-[node name="BindingsHeader" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options"]
-layout_mode = 2
-
-[node name="FakeLabel" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsHeader"]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-
-[node name="FakeButtons" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsHeader"]
-custom_minimum_size = Vector2(31, 31)
-layout_mode = 2
-
-[node name="Keyboard" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsHeader"]
-custom_minimum_size = Vector2(0, 48)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("15_y78en")
-theme_override_font_sizes/font_size = 25
-text = "KEYBOARD"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="VSeparator" type="VSeparator" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsHeader"]
-layout_mode = 2
-
-[node name="Controller" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsHeader"]
-custom_minimum_size = Vector2(0, 48)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("15_y78en")
-theme_override_font_sizes/font_size = 25
-text = "CONTROLLER"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="FakeButtons2" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsHeader"]
-custom_minimum_size = Vector2(31, 31)
-layout_mode = 2
-
-[node name="FakeIcon" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsHeader"]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-
-[node name="BindingsList" type="VBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options"]
+[node name="PlayerTabs" type="TabContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Bind" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsList" instance=ExtResource("15_q65l3")]
+[node name="P1" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/PlayerTabs" instance=ExtResource("17_7m8yr")]
 layout_mode = 2
-visual_name = &"Left"
-internal_name = &"left"
-action_icon = ExtResource("16_s4yss")
 
-[node name="Bind2" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsList" instance=ExtResource("15_q65l3")]
+[node name="P2" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/PlayerTabs" instance=ExtResource("17_7m8yr")]
+visible = false
 layout_mode = 2
-visual_name = &"Right"
-internal_name = &"right"
-action_icon = ExtResource("17_jpe5g")
 
-[node name="Bind3" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsList" instance=ExtResource("15_q65l3")]
-layout_mode = 2
-visual_name = &"Up"
-internal_name = &"up"
-action_icon = ExtResource("18_eumt4")
-
-[node name="Bind4" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsList" instance=ExtResource("15_q65l3")]
-layout_mode = 2
-visual_name = &"Down"
-internal_name = &"down"
-action_icon = ExtResource("19_p6uqc")
-
-[node name="Bind5" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsList" instance=ExtResource("15_q65l3")]
-layout_mode = 2
-visual_name = &"Jump"
-internal_name = &"jump"
-action_icon = ExtResource("20_vd0xh")
-
-[node name="Bind6" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsList" instance=ExtResource("15_q65l3")]
-layout_mode = 2
-visual_name = &"Spin"
-internal_name = &"spin"
-action_icon = ExtResource("21_5awg4")
-
-[node name="Bind7" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsList" instance=ExtResource("15_q65l3")]
-layout_mode = 2
-visual_name = &"Dive"
-internal_name = &"dive"
-action_icon = ExtResource("23_a0owx")
-
-[node name="Bind8" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/BindingsList" instance=ExtResource("15_q65l3")]
-layout_mode = 2
-visual_name = &"Groundpound"
-internal_name = &"groundpound"
-action_icon = ExtResource("24_c7i2r")
-
-[node name="SpaceRight" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest"]
+[node name="SpaceRight" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
@@ -909,9 +622,6 @@ clip_text = true
 
 [node name="Notifications" type="Node" parent="."]
 
-[connection signal="item_selected" from="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/PortOptions/OptionButton" to="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/PortOptions/OptionButton" method="_on_item_selected"]
-[connection signal="toggled" from="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/MotionToggle" to="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options" method="_on_motion_toggle_toggled"]
-[connection signal="toggled" from="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options/RumbleMenuToggle" to="PauseScreen/Settings/SettingsMenu/Tabs/Controls/Rest/ScrollContainer/Options" method="_on_rumble_menu_toggle_toggled"]
 [connection signal="item_selected" from="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/DeviceOptions/OptionButton" to="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/DeviceOptions/OptionButton" method="_on_item_selected"]
 [connection signal="pressed" from="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/DeviceOptions/Refresh" to="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/DeviceOptions/OptionButton" method="_on_refresh_pressed"]
 [connection signal="pressed" from="PauseScreen/Settings/ReturnSettings" to="PauseScreen" method="_on_return_settings_pressed"]
