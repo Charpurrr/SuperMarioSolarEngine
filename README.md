@@ -11,15 +11,21 @@ Also comes with a barebones level-editor that you can build off for your own in-
 [<img src="https://github.com/Charpurrr/SuperMarioSolarEngine/assets/66517745/d7a119e2-0fdc-4895-93c4-d5478bd73184">](https://sm63redux.com/)
 
 ## Current status
-**Unplayable** ([Bugfixing](https://github.com/Charpurrr/SuperMarioSolarEngine/issues) and [fine tuning](https://docs.google.com/document/d/1hzFKpgm-1IukFWBig9A5ZsCQQEqVqJFVrNOAVmHSHJI/edit))
+**Playable** ([Bugfixing](https://github.com/Charpurrr/SuperMarioSolarEngine/issues) and [fine tuning](https://docs.google.com/document/d/1hzFKpgm-1IukFWBig9A5ZsCQQEqVqJFVrNOAVmHSHJI/edit))
 
-*(Currently not advised to submit feedback!)*
+*(Currently accepting feedback!)*
 
 ### To-do
-2. Clear issues tab, incorperate feedback from the feedback document.
-1. Finalise moveset.
-3. Player camera.
-4. Terrain edit tool.
+1. FLUDD mechanics
+2. Misc player movement mechanics
+3. Implement rumble and motion controls into gameplay
+4. Player camera
+5. Player health and attacking
+6. Proper enemy support
+7. Basic enemy AI
+8. Level Editor properties system
+9. Cutscene editor
+10. Dialogue system
 
 ## How to use
 You can use Super Mario Solar Engine for any projects that fit under the MIT license.
