@@ -1868,7 +1868,8 @@ ground_decel_time = 8.0
 air_decel_time = 13.0
 return_res = 60.0
 term_vel = 8.0
-min_grav = 0.215
+max_grav = 0.2
+min_grav = 0.195
 snap_length = 8.0
 min_slide_incline = 0.4
 

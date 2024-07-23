@@ -235,6 +235,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PauseMenu" type="HBoxContainer" parent="PauseScreen"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -385,7 +386,6 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 
 [node name="Settings" type="Control" parent="PauseScreen"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -482,6 +482,7 @@ theme_override_fonts/font = ExtResource("15_y78en")
 theme_override_font_sizes/font_size = 16
 alignment = 1
 text_overrun_behavior = 1
+selected = 0
 script = ExtResource("18_chrtf")
 options = NodePath("../..")
 
