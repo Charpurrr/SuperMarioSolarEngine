@@ -71,6 +71,7 @@ _data = {
 
 [node name="Notification" type="Control"]
 layout_mode = 3
+anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -89,7 +90,7 @@ centered = false
 
 [node name="Label" type="Label" parent="Panel"]
 unique_name_in_owner = true
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 30.0

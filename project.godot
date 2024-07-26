@@ -34,7 +34,7 @@ mouse_cursor/custom_image="res://level_designer/tools/select_tool/select.png"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/button_property/plugin.cfg")
+enabled=PackedStringArray("res://addons/button_property/plugin.cfg", "res://addons/rmsmartshape/plugin.cfg")
 
 [file_customization]
 
