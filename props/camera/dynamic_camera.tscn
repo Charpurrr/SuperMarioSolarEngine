@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx6jxqtqfcxsw"]
+
+[ext_resource type="Script" path="res://props/camera/dynamic_camera.gd" id="1_7ecxy"]
+
+[node name="dynamic_camera" type="Camera2D"]
+offset = Vector2(0, -100)
+zoom = Vector2(2, 2)
+drag_vertical_enabled = true
+script = ExtResource("1_7ecxy")
