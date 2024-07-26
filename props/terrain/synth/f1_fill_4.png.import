@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3pp3x8c713m3"
-path="res://.godot/imported/synth2.png-f88e4d3f7b052509ac3bf4cde6644e5d.ctex"
+uid="uid://bkkhnpd6qwun3"
+path="res://.godot/imported/f1_fill_4.png-cd53d54df37849df4fb31a91c9ebe2e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://props/bgs/synth/synth2.png"
-dest_files=["res://.godot/imported/synth2.png-f88e4d3f7b052509ac3bf4cde6644e5d.ctex"]
+source_file="res://props/terrain/synth/f1_fill_4.png"
+dest_files=["res://.godot/imported/f1_fill_4.png-cd53d54df37849df4fb31a91c9ebe2e8.ctex"]
 
 [params]
 

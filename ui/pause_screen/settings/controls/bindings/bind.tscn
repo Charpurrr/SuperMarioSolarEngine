@@ -5,40 +5,39 @@
 [ext_resource type="Script" path="res://ui/pause_screen/settings/controls/bindings/bind_button_joy.gd" id="3_rxhk8"]
 
 [node name="Bind" type="HBoxContainer"]
+custom_minimum_size = Vector2(168, 30)
+offset_right = 64.0
+offset_bottom = 30.0
 script = ExtResource("1_m7nbo")
 
 [node name="Label" type="Label" parent="."]
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 vertical_alignment = 1
 
 [node name="KeyFunctions" type="VBoxContainer" parent="."]
 layout_mode = 2
-theme_override_constants/separation = 2
+theme_override_constants/separation = 1
 alignment = 1
 
 [node name="ClearKey" type="Button" parent="KeyFunctions"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(22, 22)
+modulate = Color(1, 0, 0, 1)
+custom_minimum_size = Vector2(13, 13)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 10
-text = "X"
+theme_override_font_sizes/font_size = 1
 clip_text = true
 
 [node name="ResetKey" type="Button" parent="KeyFunctions"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(22, 22)
+modulate = Color(0, 1, 1, 1)
+custom_minimum_size = Vector2(13, 13)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 10
-text = "↻"
+theme_override_font_sizes/font_size = 3
 clip_text = true
 
 [node name="KeyButton" type="Button" parent="."]
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 3
 text_overrun_behavior = 4
@@ -51,7 +50,7 @@ one_shot = true
 layout_mode = 2
 
 [node name="JoyButton" type="Button" parent="."]
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 3
 text_overrun_behavior = 4
@@ -67,25 +66,25 @@ alignment = 1
 
 [node name="ClearJoy" type="Button" parent="ControllerFunctions"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(22, 22)
+modulate = Color(1, 0, 0, 1)
+custom_minimum_size = Vector2(13, 13)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 10
-text = "X"
+theme_override_font_sizes/font_size = 1
 clip_text = true
 
 [node name="ResetJoy" type="Button" parent="ControllerFunctions"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(22, 22)
+modulate = Color(0, 1, 1, 1)
+custom_minimum_size = Vector2(13, 13)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 10
-text = "↻"
+theme_override_font_sizes/font_size = 1
 clip_text = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 8

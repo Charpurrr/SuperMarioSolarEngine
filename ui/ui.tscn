@@ -27,38 +27,38 @@ shader_parameter/lod = 1.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_20l3y"]
 font = ExtResource("14_n0vgh")
-font_size = 150
-outline_size = 35
+font_size = 90
+outline_size = 20
 outline_color = Color(0, 0, 0, 1)
-shadow_size = 35
+shadow_size = 20
 shadow_color = Color(0, 0, 0, 0.392157)
-shadow_offset = Vector2(10, 10)
+shadow_offset = Vector2(5, 5)
 
 [sub_resource type="LabelSettings" id="LabelSettings_b067h"]
 font = ExtResource("14_n0vgh")
-font_size = 40
+font_size = 25
 shadow_size = 10
 shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_p5bk4"]
 font = ExtResource("15_y78en")
-font_size = 25
-shadow_size = 10
+font_size = 15
+shadow_size = 8
 shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_70wox"]
 font = ExtResource("15_y78en")
-font_size = 20
+font_size = 13
 
 [sub_resource type="LabelSettings" id="LabelSettings_bsikt"]
 font = ExtResource("14_n0vgh")
-font_size = 100
-outline_size = 30
+font_size = 50
+outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_2gqs2"]
 font = ExtResource("15_y78en")
-font_size = 25
+font_size = 20
 
 [sub_resource type="InputEventKey" id="InputEventKey_hwwni"]
 device = -1
@@ -80,6 +80,7 @@ notif_list = NodePath("Notifications")
 [node name="DebugLabel" type="Label" parent="."]
 offset_right = 86.0
 offset_bottom = 179.0
+theme_override_font_sizes/font_size = 10
 text = "fps =
 
 velocity.x =
@@ -100,7 +101,6 @@ offset_top = -16.0
 offset_right = 16.0
 offset_bottom = -16.0
 grow_vertical = 0
-scale = Vector2(2, 2)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="InputDisplay"]
 layout_mode = 1
@@ -180,6 +180,7 @@ layout_mode = 2
 texture = ExtResource("5_cgoe6")
 
 [node name="PauseScreen" type="Control" parent="." node_paths=PackedStringArray("choices", "pause_menu", "settings_menu")]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -203,7 +204,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PauseMenu" type="HBoxContainer" parent="PauseScreen"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -227,13 +227,14 @@ vertical_alignment = 3
 [node name="Info" type="Control" parent="PauseScreen/PauseMenu/LeftSide"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 1.3
 
 [node name="InfoPanel" type="Panel" parent="PauseScreen/PauseMenu/LeftSide/Info"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -60.0
+offset_right = -30.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -242,10 +243,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 30.0
-offset_top = 10.0
-offset_right = -30.0
-offset_bottom = -10.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -255,7 +256,6 @@ size_flags_vertical = 3
 
 [node name="LevelTitle" type="Label" parent="PauseScreen/PauseMenu/LeftSide/Info/InfoPanel/TextContainer/LevelInfo"]
 layout_mode = 2
-size_flags_vertical = 6
 text = "Technicolor Testbed"
 label_settings = SubResource("LabelSettings_b067h")
 horizontal_alignment = 1
@@ -264,7 +264,7 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="MissionTitle" type="Label" parent="PauseScreen/PauseMenu/LeftSide/Info/InfoPanel/TextContainer/LevelInfo"]
-custom_minimum_size = Vector2(418, 24)
+custom_minimum_size = Vector2(319, 0)
 layout_mode = 2
 size_flags_vertical = 6
 text = "FIND THE BUG"
@@ -274,13 +274,13 @@ autowrap_mode = 3
 uppercase = true
 
 [node name="MissionInfo" type="Label" parent="PauseScreen/PauseMenu/LeftSide/Info/InfoPanel/TextContainer"]
-custom_minimum_size = Vector2(418, 19)
+custom_minimum_size = Vector2(319, 0)
 layout_mode = 2
 size_flags_vertical = 3
 text = "Just keep debugging...
 just keep debugging...
 just keep debugging...
-just keep debugging..."
+"
 label_settings = SubResource("LabelSettings_70wox")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -324,28 +324,28 @@ size_flags_stretch_ratio = 0.5
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("14_n0vgh")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 40
 text = "▶️ RESUME"
 
 [node name="Retry" type="Button" parent="PauseScreen/PauseMenu/RightSide/ChoicesPanel/Choices"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("14_n0vgh")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 40
 text = "↻ RETRY"
 
 [node name="Settings" type="Button" parent="PauseScreen/PauseMenu/RightSide/ChoicesPanel/Choices"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("14_n0vgh")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 40
 text = "⚙️ SETTINGS"
 
 [node name="Quit" type="Button" parent="PauseScreen/PauseMenu/RightSide/ChoicesPanel/Choices"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("14_n0vgh")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 40
 text = "𐄂 QUIT"
 
 [node name="SpaceBottom" type="Control" parent="PauseScreen/PauseMenu/RightSide/ChoicesPanel/Choices"]
@@ -354,6 +354,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 
 [node name="Settings" type="Control" parent="PauseScreen"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -398,7 +399,7 @@ layout_mode = 2
 [node name="SpaceLeft" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.3
+size_flags_stretch_ratio = 0.1
 
 [node name="PlayerTabs" type="TabContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls"]
 layout_mode = 2
@@ -415,38 +416,69 @@ layout_mode = 2
 [node name="SpaceRight" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.3
+size_flags_stretch_ratio = 0.1
 
 [node name="Audio" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs"]
 visible = false
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="SpaceLeft" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.3
+size_flags_stretch_ratio = 0.1
 
-[node name="Options" type="VBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio"]
+[node name="AudioPanel" type="Panel" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+follow_focus = true
+
+[node name="Spacings" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpaceLeft" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="Options" type="VBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="DeviceOptions" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options"]
-custom_minimum_size = Vector2(0, 48)
+[node name="SpaceAbove" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="DeviceOptions" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 alignment = 1
 
-[node name="SpaceLeft" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/DeviceOptions"]
+[node name="SpaceLeft" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
 
-[node name="Label" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/DeviceOptions"]
+[node name="Label" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions"]
 layout_mode = 2
 text = "Audio Device: "
 label_settings = SubResource("LabelSettings_2gqs2")
 
-[node name="OptionButton" type="OptionButton" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/DeviceOptions" node_paths=PackedStringArray("speaker_label")]
+[node name="OptionButton" type="OptionButton" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions" node_paths=PackedStringArray("speaker_label")]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("15_y78en")
@@ -456,34 +488,34 @@ text_overrun_behavior = 1
 script = ExtResource("32_k3s7s")
 speaker_label = NodePath("../../SpeakerMode")
 
-[node name="Refresh" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/DeviceOptions"]
+[node name="Refresh" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions"]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 text = " REFRESH "
 
-[node name="SpaceRight" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/DeviceOptions"]
+[node name="SpaceRight" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
 
-[node name="SpeakerMode" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options"]
+[node name="SpeakerMode" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("15_y78en")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 15
 text = "Speaker Mode:"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options"]
-custom_minimum_size = Vector2(0, 48)
+[node name="SpaceUnder" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="MasterText" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options"]
+[node name="MasterText" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("15_y78en")
 theme_override_font_sizes/font_size = 20
 text = "Master Volume"
 
-[node name="Master" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options" node_paths=PackedStringArray("reset", "slider", "percentage", "audio")]
+[node name="Master" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options" node_paths=PackedStringArray("reset", "slider", "percentage", "audio")]
 layout_mode = 2
 script = ExtResource("14_466vg")
 bus_name = &"Master"
@@ -492,13 +524,14 @@ slider = NodePath("MasterSlider")
 percentage = NodePath("Percentage")
 audio = NodePath("MasterSlider/MasterEffect")
 
-[node name="MasterButton" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/Master"]
-custom_minimum_size = Vector2(31, 0)
+[node name="MasterButton" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/Master"]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+theme_override_font_sizes/font_size = 15
 disabled = true
 text = "⟳"
 
-[node name="MasterSlider" type="HSlider" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/Master"]
+[node name="MasterSlider" type="HSlider" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/Master"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -506,22 +539,22 @@ max_value = 2.0
 step = 0.01
 value = 1.0
 
-[node name="MasterEffect" type="AudioStreamPlayer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/Master/MasterSlider"]
+[node name="MasterEffect" type="AudioStreamPlayer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/Master/MasterSlider"]
 stream = ExtResource("36_wmtog")
 bus = &"SFX"
 
-[node name="Percentage" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/Master"]
+[node name="Percentage" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/Master"]
 custom_minimum_size = Vector2(42, 0)
 layout_mode = 2
 text = "100%"
 
-[node name="BGMText" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options"]
+[node name="BGMText" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("15_y78en")
 theme_override_font_sizes/font_size = 20
 text = "BGM Volume"
 
-[node name="BGM" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options" node_paths=PackedStringArray("reset", "slider", "percentage", "audio")]
+[node name="BGM" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options" node_paths=PackedStringArray("reset", "slider", "percentage", "audio")]
 layout_mode = 2
 script = ExtResource("14_466vg")
 bus_name = &"Music"
@@ -530,13 +563,14 @@ slider = NodePath("BGMSlider")
 percentage = NodePath("Percentage")
 audio = NodePath("BGMSlider/BGMEffect")
 
-[node name="BGMButton" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/BGM"]
-custom_minimum_size = Vector2(31, 0)
+[node name="BGMButton" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/BGM"]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+theme_override_font_sizes/font_size = 15
 disabled = true
 text = "⟳"
 
-[node name="BGMSlider" type="HSlider" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/BGM"]
+[node name="BGMSlider" type="HSlider" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/BGM"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -544,22 +578,22 @@ max_value = 2.0
 step = 0.01
 value = 1.0
 
-[node name="BGMEffect" type="AudioStreamPlayer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/BGM/BGMSlider"]
+[node name="BGMEffect" type="AudioStreamPlayer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/BGM/BGMSlider"]
 stream = ExtResource("36_wmtog")
 bus = &"SFX"
 
-[node name="Percentage" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/BGM"]
+[node name="Percentage" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/BGM"]
 custom_minimum_size = Vector2(42, 0)
 layout_mode = 2
 text = "100%"
 
-[node name="SFXText" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options"]
+[node name="SFXText" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("15_y78en")
 theme_override_font_sizes/font_size = 20
 text = "SFX Volume"
 
-[node name="SFX" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options" node_paths=PackedStringArray("reset", "slider", "percentage", "audio")]
+[node name="SFX" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options" node_paths=PackedStringArray("reset", "slider", "percentage", "audio")]
 layout_mode = 2
 script = ExtResource("14_466vg")
 bus_name = &"SFX"
@@ -568,13 +602,14 @@ slider = NodePath("SFXSlider")
 percentage = NodePath("Percentage")
 audio = NodePath("SFXSlider/SFXEffect")
 
-[node name="SFXButton" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/SFX"]
-custom_minimum_size = Vector2(31, 0)
+[node name="SFXButton" type="Button" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/SFX"]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+theme_override_font_sizes/font_size = 15
 disabled = true
 text = "⟳"
 
-[node name="SFXSlider" type="HSlider" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/SFX"]
+[node name="SFXSlider" type="HSlider" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/SFX"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -582,23 +617,28 @@ max_value = 2.0
 step = 0.01
 value = 1.0
 
-[node name="SFXEffect" type="AudioStreamPlayer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/SFX/SFXSlider"]
+[node name="SFXEffect" type="AudioStreamPlayer" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/SFX/SFXSlider"]
 stream = ExtResource("36_wmtog")
 bus = &"SFX"
 
-[node name="Percentage" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/SFX"]
+[node name="Percentage" type="Label" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/SFX"]
 custom_minimum_size = Vector2(42, 0)
 layout_mode = 2
 text = "100%"
 
-[node name="Space" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options"]
+[node name="SpaceBottom" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
+
+[node name="SpaceRight" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.05
 
 [node name="SpaceRight" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.3
+size_flags_stretch_ratio = 0.1
 
 [node name="ReturnSettings" type="Button" parent="PauseScreen/Settings"]
 self_modulate = Color(1, 0, 0, 1)
@@ -622,6 +662,6 @@ clip_text = true
 
 [node name="Notifications" type="Node" parent="."]
 
-[connection signal="item_selected" from="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/DeviceOptions/OptionButton" to="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/DeviceOptions/OptionButton" method="_on_item_selected"]
-[connection signal="pressed" from="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/DeviceOptions/Refresh" to="PauseScreen/Settings/SettingsMenu/Tabs/Audio/Options/DeviceOptions/OptionButton" method="_on_refresh_pressed"]
+[connection signal="item_selected" from="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions/OptionButton" to="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions/OptionButton" method="_on_item_selected"]
+[connection signal="pressed" from="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions/Refresh" to="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions/OptionButton" method="_on_refresh_pressed"]
 [connection signal="pressed" from="PauseScreen/Settings/ReturnSettings" to="PauseScreen" method="_on_return_settings_pressed"]

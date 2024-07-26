@@ -1,5 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://ernfgv2twpy4"]
+[gd_scene load_steps=14 format=3 uid="uid://ernfgv2twpy4"]
 
+[ext_resource type="Script" path="res://areas/level_info.gd" id="1_0lcsw"]
 [ext_resource type="PackedScene" uid="uid://dgqp3sqvmcvpu" path="res://actors/player/mario/mario.tscn" id="1_0md33"]
 [ext_resource type="Texture2D" uid="uid://gewkm3vuow1" path="res://props/terrain/synth.png" id="3_j68gy"]
 [ext_resource type="Script" path="res://props/terrain/terrain.gd" id="4_fbq2w"]
@@ -9,11 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://deaf7c51bxjrn" path="res://level_designer/terrain_edit/polyline_segment4.png" id="8_bkr2x"]
 [ext_resource type="Texture2D" uid="uid://fgjreysoh48j" path="res://level_designer/terrain_edit/polyline_segment5.png" id="9_1pkr1"]
 [ext_resource type="Script" path="res://props/terrain/funny_terrain.gd" id="10_k2ubo"]
-[ext_resource type="Shader" path="res://props/environment_light.gdshader" id="12_gy24f"]
-[ext_resource type="Texture2D" uid="uid://1nelqqfhfo5a" path="res://props/bgs/synth/synth1.png" id="13_w8e5w"]
-[ext_resource type="Texture2D" uid="uid://c3pp3x8c713m3" path="res://props/bgs/synth/synth2.png" id="14_2ucq7"]
-[ext_resource type="Texture2D" uid="uid://tfvxnw4vaqmj" path="res://props/bgs/synth/synth3.png" id="15_hm368"]
-[ext_resource type="AudioStream" uid="uid://dp0qulyplgfih" path="res://props/music/knitted_frustration.ogg" id="16_x1nx0"]
 [ext_resource type="PackedScene" uid="uid://cvbbpn56rtjwd" path="res://actors/enemies/goomba/goomba.tscn" id="17_vusvp"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_akk4i"]
@@ -32,29 +28,26 @@ frame_4/duration = 1.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_fqbrv"]
 radius = 4.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_35kp6"]
-shader = ExtResource("12_gy24f")
-shader_parameter/brightness = 1.0
-shader_parameter/contrast = 1.0
-shader_parameter/saturation = 1.0
-shader_parameter/color_tint = Color(0.811765, 0, 0, 1)
-shader_parameter/mix_amount = 1.4
-
-[node name="FunnySlopeTest" type="Node2D"]
+[node name="TechnicolorTestbed" type="Node2D" node_paths=PackedStringArray("player", "camera")]
+script = ExtResource("1_0lcsw")
+level_name = &"Technicolor Testbed"
+mission_name = &"Find the bug"
+mission_info = "Just keep debugging...
+Just keep debugging...
+Just keep debugging..."
+player = NodePath("Mario")
+camera = NodePath("Mario/Camera2D")
 
 [node name="Mario" parent="." instance=ExtResource("1_0md33")]
-position = Vector2(-70, 0)
 
 [node name="Camera2D" type="Camera2D" parent="Mario"]
-position = Vector2(70, 0)
 offset = Vector2(0, -100)
-zoom = Vector2(2, 2)
 drag_vertical_enabled = true
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 texture_repeat = 2
 texture = ExtResource("3_j68gy")
-polygon = PackedVector2Array(1152, 0, 1280, -64, 1408, 0, 1600, 0, 1664, -64, 1728, 0, 1920, 0, 2880, -832, 2304, 0, 2496, 0, 2496, 256, -31, 1534, 34, 931, -120, 256, -568, 0)
+polygon = PackedVector2Array(1152, 0, 1280, -64, 1408, 0, 1600, 0, 1664, -64, 1728, 0, 1920, 0, 2880, -832, 2304, 0, 2496, 0, 2496, 256, -1640, 256, -568, 0)
 uv = PackedVector2Array(200, 0, 200, -8, 232, -8, 232, 0, 280, 0, 280, -16, 312, -16, 312, 0, 384, 0, 640, -64, 896, 0, 1152, 0, 1280, -64, 1408, 0, 1600, 0, 1664, -64, 1728, 0, 1920, 0, 1984, -128, 2048, 0, 2240, 0, 2272, -128, 2304, 0, 2496, 0, 2496, 256, -31, 1534, 34, 931, -120, 256, -568, 0, -256, 0, -261.989, -103.448, -192, -192, -192, -128, -128, -128, -128, -64, -64, -64, -64, 0, -39.3632, 0)
 script = ExtResource("4_fbq2w")
 
@@ -89,63 +82,6 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FunnyTerrain/Button"]
 shape = SubResource("CircleShape2D_fqbrv")
-
-[node name="Environment" type="ColorRect" parent="."]
-top_level = true
-material = SubResource("ShaderMaterial_35kp6")
-metadata/_edit_use_anchors_ = true
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="Environment"]
-scroll_offset = Vector2(768, 768)
-scroll_base_scale = Vector2(2, 2)
-
-[node name="Stars" type="ParallaxLayer" parent="Environment/ParallaxBackground"]
-texture_repeat = 2
-motion_scale = Vector2(0.01, 0)
-motion_mirroring = Vector2(512, 0)
-metadata/_edit_lock_ = true
-
-[node name="TextureRect" type="TextureRect" parent="Environment/ParallaxBackground/Stars"]
-offset_right = 512.0
-offset_bottom = 512.0
-texture = ExtResource("13_w8e5w")
-stretch_mode = 1
-metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
-
-[node name="Hills" type="ParallaxLayer" parent="Environment/ParallaxBackground"]
-texture_repeat = 2
-motion_scale = Vector2(0.05, 0)
-motion_mirroring = Vector2(512, 0)
-metadata/_edit_lock_ = true
-
-[node name="TextureRect" type="TextureRect" parent="Environment/ParallaxBackground/Hills"]
-offset_right = 512.0
-offset_bottom = 512.0
-texture = ExtResource("14_2ucq7")
-stretch_mode = 1
-metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
-
-[node name="Floor" type="ParallaxLayer" parent="Environment/ParallaxBackground"]
-texture_repeat = 2
-motion_scale = Vector2(0.03, 0)
-motion_mirroring = Vector2(512, 0)
-metadata/_edit_lock_ = true
-
-[node name="TextureRect" type="TextureRect" parent="Environment/ParallaxBackground/Floor"]
-offset_right = 512.0
-offset_bottom = 512.0
-texture = ExtResource("15_hm368")
-stretch_mode = 1
-metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
-
-[node name="BGM" type="AudioStreamPlayer" parent="Environment"]
-process_mode = 3
-stream = ExtResource("16_x1nx0")
-autoplay = true
-bus = &"Music"
 
 [node name="Goomba" parent="." instance=ExtResource("17_vusvp")]
 position = Vector2(960, 0)

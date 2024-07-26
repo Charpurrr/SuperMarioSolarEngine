@@ -27,9 +27,15 @@ var current_notifs: Array = []
 var input_event: InputEvent
 #endregion
 
+@onready var world_machine: WorldMachine = get_parent()
+@onready var player: CharacterBody2D
+
 
 func _ready():
-	GameState.connect(&"frame_advanced", _push_notif.bind(&"push", "Advanced 1 frame."))
+	_set_player()
+
+	GameState.frame_advanced.connect(_push_notif.bind(&"push", "Advanced 1 frame."))
+	world_machine.level_reloaded.connect(_set_player)
 
 
 func _process(_delta):
@@ -51,7 +57,7 @@ func _input(event: InputEvent):
 
 ## Creates a visual "notification" type indicator on the screen.
 func _push_notif(type: StringName, input: String):
-	var notif: Node = notif_scene.instantiate()
+	var notif: Control = notif_scene.instantiate()
 
 	notif.type = type
 	notif.input = input
@@ -59,7 +65,8 @@ func _push_notif(type: StringName, input: String):
 	if current_notifs != []:
 		for i in current_notifs:
 			if is_instance_valid(i):
-				i.position.y -= 80
+				print(notif.size.y)
+				i.position.y -= 35
 
 	current_notifs.append(notif)
 
@@ -81,3 +88,7 @@ func _display_input(event: InputEvent):
 		texture.set_modulate(Color(1, 1, 1, 1))
 	else:
 		texture.set_modulate(Color(1, 1, 1, 0.5))
+
+
+func _set_player():
+	player = world_machine.level_node.player

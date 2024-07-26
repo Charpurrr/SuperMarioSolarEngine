@@ -20,7 +20,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_2gqs2"]
 font = ExtResource("2_tiedc")
-font_size = 25
+font_size = 20
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ja8q"]
 atlas = ExtResource("4_3ykdi")
@@ -41,12 +41,26 @@ font = ExtResource("2_tiedc")
 font_color = Color(0.498039, 0.901961, 0.854902, 1)
 
 [node name="Tab" type="ScrollContainer"]
-offset_right = 1080.0
-offset_bottom = 720.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
 script = ExtResource("1_bn16p")
 
-[node name="Options" type="VBoxContainer" parent="." node_paths=PackedStringArray("motion_toggle", "rumble_menu_toggle", "rumble_menu", "rumble_icon", "rumble_progress", "rumble_modes", "bindings_list", "fake_label", "header_keyboard", "header_controller")]
+[node name="Spacings" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpaceLeft" type="Control" parent="Spacings"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="Options" type="VBoxContainer" parent="Spacings" node_paths=PackedStringArray("motion_toggle", "rumble_menu_toggle", "rumble_menu", "rumble_icon", "rumble_progress", "rumble_modes", "bindings_list", "fake_label", "header_keyboard", "header_controller")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("1_8mpup")
@@ -61,26 +75,26 @@ fake_label = NodePath("BindingsHeader/FakeLabel")
 header_keyboard = NodePath("BindingsHeader/Keyboard")
 header_controller = NodePath("BindingsHeader/Controller")
 
-[node name="SpaceTop" type="Control" parent="Options"]
-custom_minimum_size = Vector2(0, 48)
+[node name="SpaceAbove" type="Control" parent="Spacings/Options"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="PortOptions" type="HBoxContainer" parent="Options"]
-custom_minimum_size = Vector2(0, 48)
+[node name="PortOptions" type="HBoxContainer" parent="Spacings/Options"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 alignment = 1
 
-[node name="SpaceLeft" type="Control" parent="Options/PortOptions"]
+[node name="SpaceLeft" type="Control" parent="Spacings/Options/PortOptions"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
 
-[node name="Label" type="Label" parent="Options/PortOptions"]
+[node name="Label" type="Label" parent="Spacings/Options/PortOptions"]
 layout_mode = 2
 text = "Controller: "
 label_settings = SubResource("LabelSettings_2gqs2")
 
-[node name="OptionButton" type="OptionButton" parent="Options/PortOptions" node_paths=PackedStringArray("options")]
+[node name="OptionButton" type="OptionButton" parent="Spacings/Options/PortOptions" node_paths=PackedStringArray("options")]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_tiedc")
@@ -90,66 +104,70 @@ text_overrun_behavior = 1
 script = ExtResource("3_6yt6n")
 options = NodePath("../..")
 
-[node name="SpaceRight" type="Control" parent="Options/PortOptions"]
+[node name="SpaceRight" type="Control" parent="Spacings/Options/PortOptions"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
 
-[node name="SpaceUnder" type="Control" parent="Options"]
-custom_minimum_size = Vector2(0, 48)
+[node name="SpaceUnder" type="Control" parent="Spacings/Options"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="MotionToggle" type="Button" parent="Options"]
-custom_minimum_size = Vector2(0, 48)
+[node name="MotionToggle" type="Button" parent="Spacings/Options"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_tiedc")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 20
 toggle_mode = true
 text = "Motion Controls: DISABLED"
 
-[node name="RumbleMenuToggle" type="Button" parent="Options"]
-custom_minimum_size = Vector2(0, 48)
+[node name="RumbleMenuToggle" type="Button" parent="Spacings/Options"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_tiedc")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 20
 toggle_mode = true
 text = "Open Rumble Settings"
 
-[node name="RumbleMenu" type="HBoxContainer" parent="Options"]
+[node name="SpaceUnder2" type="Control" parent="Spacings/Options"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="RumbleMenu" type="HBoxContainer" parent="Spacings/Options"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="SpaceLeft" type="Control" parent="Options/RumbleMenu"]
+[node name="SpaceLeft" type="Control" parent="Spacings/Options/RumbleMenu"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.1
+size_flags_stretch_ratio = 0.2
 
-[node name="RumblePanel" type="PanelContainer" parent="Options/RumbleMenu"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="RumbleSettings" type="VBoxContainer" parent="Options/RumbleMenu/RumblePanel"]
+[node name="RumblePanel" type="PanelContainer" parent="Spacings/Options/RumbleMenu"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Indicators" type="HBoxContainer" parent="Options/RumbleMenu/RumblePanel/RumbleSettings"]
+[node name="RumbleSettings" type="VBoxContainer" parent="Spacings/Options/RumbleMenu/RumblePanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Indicators" type="HBoxContainer" parent="Spacings/Options/RumbleMenu/RumblePanel/RumbleSettings"]
 layout_mode = 2
 
-[node name="Icon" type="TextureRect" parent="Options/RumbleMenu/RumblePanel/RumbleSettings/Indicators"]
-custom_minimum_size = Vector2(0, 135)
+[node name="Icon" type="TextureRect" parent="Spacings/Options/RumbleMenu/RumblePanel/RumbleSettings/Indicators"]
+custom_minimum_size = Vector2(0, 110)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = SubResource("AtlasTexture_0ja8q")
 stretch_mode = 5
 
-[node name="TriangularProgressBar" type="ColorRect" parent="Options/RumbleMenu/RumblePanel/RumbleSettings/Indicators"]
+[node name="TriangularProgressBar" type="ColorRect" parent="Spacings/Options/RumbleMenu/RumblePanel/RumbleSettings/Indicators"]
 material = SubResource("ShaderMaterial_pqwu3")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
 script = ExtResource("6_ktbuk")
 
-[node name="Modes" type="HBoxContainer" parent="Options/RumbleMenu/RumblePanel/RumbleSettings" node_paths=PackedStringArray("off", "weak", "normal", "strong")]
+[node name="Modes" type="HBoxContainer" parent="Spacings/Options/RumbleMenu/RumblePanel/RumbleSettings" node_paths=PackedStringArray("off", "weak", "normal", "strong")]
 layout_mode = 2
 script = ExtResource("7_ea0g1")
 off = NodePath("Off")
@@ -157,7 +175,7 @@ weak = NodePath("Weak")
 normal = NodePath("Normal")
 strong = NodePath("Strong")
 
-[node name="Off" type="Button" parent="Options/RumbleMenu/RumblePanel/RumbleSettings/Modes"]
+[node name="Off" type="Button" parent="Spacings/Options/RumbleMenu/RumblePanel/RumbleSettings/Modes"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -165,7 +183,7 @@ theme_override_fonts/font = ExtResource("2_tiedc")
 theme_override_font_sizes/font_size = 20
 text = "Off"
 
-[node name="Weak" type="Button" parent="Options/RumbleMenu/RumblePanel/RumbleSettings/Modes"]
+[node name="Weak" type="Button" parent="Spacings/Options/RumbleMenu/RumblePanel/RumbleSettings/Modes"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -173,7 +191,7 @@ theme_override_fonts/font = ExtResource("2_tiedc")
 theme_override_font_sizes/font_size = 20
 text = "Weak"
 
-[node name="Normal" type="Button" parent="Options/RumbleMenu/RumblePanel/RumbleSettings/Modes"]
+[node name="Normal" type="Button" parent="Spacings/Options/RumbleMenu/RumblePanel/RumbleSettings/Modes"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -181,7 +199,7 @@ theme_override_fonts/font = ExtResource("2_tiedc")
 theme_override_font_sizes/font_size = 20
 text = "Normal"
 
-[node name="Strong" type="Button" parent="Options/RumbleMenu/RumblePanel/RumbleSettings/Modes"]
+[node name="Strong" type="Button" parent="Spacings/Options/RumbleMenu/RumblePanel/RumbleSettings/Modes"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -189,120 +207,129 @@ theme_override_fonts/font = ExtResource("2_tiedc")
 theme_override_font_sizes/font_size = 20
 text = "Strong"
 
-[node name="SpaceTop" type="Control" parent="Options/RumbleMenu/RumblePanel/RumbleSettings"]
+[node name="SpaceTop" type="Control" parent="Spacings/Options/RumbleMenu/RumblePanel/RumbleSettings"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Options/RumbleMenu/RumblePanel/RumbleSettings"]
+[node name="Label" type="Label" parent="Spacings/Options/RumbleMenu/RumblePanel/RumbleSettings"]
 layout_mode = 2
-text = "(Note that not every controller type supports rumble functionality)"
+text = "(Note that not every controller type 
+supports rumble functionality)"
 label_settings = SubResource("LabelSettings_n5ujh")
 horizontal_alignment = 1
 
-[node name="SpaceBottom" type="Control" parent="Options/RumbleMenu/RumblePanel/RumbleSettings"]
+[node name="SpaceBottom" type="Control" parent="Spacings/Options/RumbleMenu/RumblePanel/RumbleSettings"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="SpaceRight" type="Control" parent="Options/RumbleMenu"]
+[node name="SpaceRight" type="Control" parent="Spacings/Options/RumbleMenu"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.1
+size_flags_stretch_ratio = 0.2
 
-[node name="BindingsHeader" type="HBoxContainer" parent="Options"]
+[node name="BindingsHeader" type="HBoxContainer" parent="Spacings/Options"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="FakeLabel" type="Control" parent="Options/BindingsHeader"]
-custom_minimum_size = Vector2(48, 48)
+[node name="FakeLabel" type="Control" parent="Spacings/Options/BindingsHeader"]
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 
-[node name="FakeButtons" type="Control" parent="Options/BindingsHeader"]
+[node name="FakeButtons" type="Control" parent="Spacings/Options/BindingsHeader"]
 custom_minimum_size = Vector2(31, 31)
 layout_mode = 2
 
-[node name="Keyboard" type="Label" parent="Options/BindingsHeader"]
-custom_minimum_size = Vector2(0, 48)
+[node name="Keyboard" type="Label" parent="Spacings/Options/BindingsHeader"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_tiedc")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 20
 text = "KEYBOARD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VSeparator" type="VSeparator" parent="Options/BindingsHeader"]
+[node name="VSeparator" type="VSeparator" parent="Spacings/Options/BindingsHeader"]
 layout_mode = 2
 
-[node name="Controller" type="Label" parent="Options/BindingsHeader"]
-custom_minimum_size = Vector2(0, 48)
+[node name="Controller" type="Label" parent="Spacings/Options/BindingsHeader"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_tiedc")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 20
 text = "CONTROLLER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FakeButtons2" type="Control" parent="Options/BindingsHeader"]
+[node name="FakeButtons2" type="Control" parent="Spacings/Options/BindingsHeader"]
 custom_minimum_size = Vector2(31, 31)
 layout_mode = 2
 
-[node name="FakeIcon" type="Control" parent="Options/BindingsHeader"]
-custom_minimum_size = Vector2(48, 48)
+[node name="FakeIcon" type="Control" parent="Spacings/Options/BindingsHeader"]
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 
-[node name="BindingsList" type="VBoxContainer" parent="Options"]
+[node name="BindingsList" type="VBoxContainer" parent="Spacings/Options"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Bind" parent="Options/BindingsList" instance=ExtResource("8_tc6mq")]
+[node name="Bind" parent="Spacings/Options/BindingsList" instance=ExtResource("8_tc6mq")]
 layout_mode = 2
 visual_name = &"Left"
 internal_name = &"left"
 action_icon = ExtResource("9_hq1c0")
 
-[node name="Bind2" parent="Options/BindingsList" instance=ExtResource("8_tc6mq")]
+[node name="Bind2" parent="Spacings/Options/BindingsList" instance=ExtResource("8_tc6mq")]
 layout_mode = 2
 visual_name = &"Right"
 internal_name = &"right"
 action_icon = ExtResource("10_cpodn")
 
-[node name="Bind3" parent="Options/BindingsList" instance=ExtResource("8_tc6mq")]
+[node name="Bind3" parent="Spacings/Options/BindingsList" instance=ExtResource("8_tc6mq")]
 layout_mode = 2
 visual_name = &"Up"
 internal_name = &"up"
 action_icon = ExtResource("11_y6u6s")
 
-[node name="Bind4" parent="Options/BindingsList" instance=ExtResource("8_tc6mq")]
+[node name="Bind4" parent="Spacings/Options/BindingsList" instance=ExtResource("8_tc6mq")]
 layout_mode = 2
 visual_name = &"Down"
 internal_name = &"down"
 action_icon = ExtResource("12_6pinb")
 
-[node name="Bind5" parent="Options/BindingsList" instance=ExtResource("8_tc6mq")]
+[node name="Bind5" parent="Spacings/Options/BindingsList" instance=ExtResource("8_tc6mq")]
 layout_mode = 2
 visual_name = &"Jump"
 internal_name = &"jump"
 action_icon = ExtResource("13_d5c0w")
 
-[node name="Bind6" parent="Options/BindingsList" instance=ExtResource("8_tc6mq")]
+[node name="Bind6" parent="Spacings/Options/BindingsList" instance=ExtResource("8_tc6mq")]
 layout_mode = 2
 visual_name = &"Spin"
 internal_name = &"spin"
 action_icon = ExtResource("14_46w68")
 
-[node name="Bind7" parent="Options/BindingsList" instance=ExtResource("8_tc6mq")]
+[node name="Bind7" parent="Spacings/Options/BindingsList" instance=ExtResource("8_tc6mq")]
 layout_mode = 2
 visual_name = &"Dive"
 internal_name = &"dive"
 action_icon = ExtResource("15_dwxqh")
 
-[node name="Bind8" parent="Options/BindingsList" instance=ExtResource("8_tc6mq")]
+[node name="Bind8" parent="Spacings/Options/BindingsList" instance=ExtResource("8_tc6mq")]
 layout_mode = 2
 visual_name = &"Groundpound"
 internal_name = &"groundpound"
 action_icon = ExtResource("16_mubbd")
 
-[connection signal="item_selected" from="Options/PortOptions/OptionButton" to="Options/PortOptions/OptionButton" method="_on_item_selected"]
-[connection signal="toggled" from="Options/MotionToggle" to="Options" method="_on_motion_toggle_toggled"]
-[connection signal="toggled" from="Options/RumbleMenuToggle" to="Options" method="_on_rumble_menu_toggle_toggled"]
+[node name="SpaceBottom" type="Control" parent="Spacings/Options"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="SpaceRight" type="Control" parent="Spacings"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.05
+
+[connection signal="item_selected" from="Spacings/Options/PortOptions/OptionButton" to="Spacings/Options/PortOptions/OptionButton" method="_on_item_selected"]
+[connection signal="toggled" from="Spacings/Options/MotionToggle" to="Spacings/Options" method="_on_motion_toggle_toggled"]
+[connection signal="toggled" from="Spacings/Options/RumbleMenuToggle" to="Spacings/Options" method="_on_rumble_menu_toggle_toggled"]

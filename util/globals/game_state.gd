@@ -7,9 +7,6 @@ signal frame_advanced
 
 var bgm_muted: bool = false
 
-const FRAME_TIME: int = 2
-var frame_timer: int
-
 ## Whether or not you can advance a frame.
 var can_fa: bool = false
 
@@ -61,17 +58,15 @@ func _unhandled_input(event):
 ## Frame advancing only works while paused.
 func _frame_advancing():
 	if not can_fa:
-		frame_timer = FRAME_TIME
 		return
 
 	get_tree().paused = false
-	frame_timer = max(frame_timer - 1, 0)
 
-	if frame_timer == 0:
-		emit_signal(&"frame_advanced")
+	await get_tree().process_frame
+	emit_signal(&"frame_advanced")
 
-		get_tree().paused = true
-		can_fa = false
+	get_tree().paused = true
+	can_fa = false
 
 
 func _music_control():
