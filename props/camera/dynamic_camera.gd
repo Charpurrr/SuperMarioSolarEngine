@@ -19,8 +19,9 @@ var default_offset: Vector2
 
 @export var shift_trigger: float = 4 ## actor velocity threshold which triggers cam shifting.
 
-@export var hold_duration: int = 30 ## Duration for holding down 'up'/'down' until cam shift is triggered
+@export var hold_duration: int = 100 ## Duration for holding down 'up'/'down' until cam shift is triggered
 var hold_time: int = 0
+var y_shiftable: bool = false
 
 func _ready(): 
 	default_offset = offset 
@@ -28,6 +29,7 @@ func _ready():
 
 
 func _process(delta):
+	hold_timer()
 	shift_x()
 	shift_y()
 	return
@@ -46,11 +48,12 @@ func shift_x():
 
 
 func shift_y(): # currntly works but needs to be rewritten.
-	if Input.is_action_pressed("up"): # and actor.vel == Vector2.ZERO: <- is this needed?
+	if Input.is_action_pressed("up"):
 		offset.y  = lerpf(offset.y, -max_y_shift, y_shift_speed)
-	#elif Input.is_action_pressed("down") and actor.vel == Vector2.ZERO: # requires frame counting or should be removed entirely
-		#offset.y  = lerpf(offset.y, max_y_shift, y_shift_speed) # this line needs tweaking
+	elif Input.is_action_pressed("down") and y_shiftable and actor.vel == Vector2.ZERO:
+		offset.y  = lerpf(offset.y, max_y_shift, y_shift_speed) # this line needs tweaking
 	else:
+		y_shiftable = false
 		offset.y = lerpf(offset.y, default_offset.y, y_reset_speed)
 
 
@@ -58,12 +61,11 @@ func is_default_offset() -> bool: ## to check if the camera is at its default of
 	return offset == default_offset
 
 
-func y_shiftable(): # Is there a better way to use a counter in this situation?
+func hold_timer(): # Is there a better way to use a counter in this situation?
 	if hold_time < hold_duration:
 		hold_time += 1
-		return false
 	else:
 		hold_time = 0
-		return true
+		y_shiftable = true
 	
 		

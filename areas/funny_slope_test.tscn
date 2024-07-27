@@ -46,7 +46,8 @@ shader_parameter/mix_amount = 1.4
 [node name="Mario" parent="." instance=ExtResource("1_0md33")]
 position = Vector2(-70, 0)
 
-[node name="dynamic_camera" parent="Mario" instance=ExtResource("2_84t0q")]
+[node name="dynamic_camera" parent="Mario" node_paths=PackedStringArray("actor") instance=ExtResource("2_84t0q")]
+actor = NodePath("..")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 texture_repeat = 2
