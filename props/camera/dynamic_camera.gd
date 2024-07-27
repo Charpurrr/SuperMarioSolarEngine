@@ -19,8 +19,7 @@ var default_offset: Vector2
 
 @export var shift_trigger: float = 4 ## actor velocity threshold which triggers cam shifting.
 
-func _ready():
-	actor = get_parent() # completely unnecessary line 
+func _ready(): 
 	default_offset = offset 
 	max_y_shift -= default_offset.y
 
