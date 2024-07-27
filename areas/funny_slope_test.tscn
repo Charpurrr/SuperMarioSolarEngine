@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://ernfgv2twpy4"]
+[gd_scene load_steps=20 format=3 uid="uid://ernfgv2twpy4"]
 
 [ext_resource type="PackedScene" uid="uid://dgqp3sqvmcvpu" path="res://actors/player/mario/mario.tscn" id="1_0md33"]
+[ext_resource type="PackedScene" uid="uid://dx6jxqtqfcxsw" path="res://props/camera/dynamic_camera.tscn" id="2_84t0q"]
 [ext_resource type="Texture2D" uid="uid://gewkm3vuow1" path="res://props/terrain/synth.png" id="3_j68gy"]
 [ext_resource type="Script" path="res://props/terrain/terrain.gd" id="4_fbq2w"]
 [ext_resource type="Texture2D" uid="uid://bvlq5mbmdnk2b" path="res://level_designer/terrain_edit/polyline_segment1.png" id="5_gxajj"]
@@ -45,11 +46,7 @@ shader_parameter/mix_amount = 1.4
 [node name="Mario" parent="." instance=ExtResource("1_0md33")]
 position = Vector2(-70, 0)
 
-[node name="Camera2D" type="Camera2D" parent="Mario"]
-position = Vector2(70, 0)
-offset = Vector2(0, -100)
-zoom = Vector2(2, 2)
-drag_vertical_enabled = true
+[node name="dynamic_camera" parent="Mario" instance=ExtResource("2_84t0q")]
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 texture_repeat = 2
