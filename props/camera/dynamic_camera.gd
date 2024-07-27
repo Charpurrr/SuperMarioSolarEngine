@@ -30,22 +30,16 @@ func _process(delta):
 func shift_x():
 	if abs(actor.vel.x) > shift_trigger:
 		if actor.movement.facing_direction == 1:
-			offset.x = accel_shift(offset.x, max_x_shift, x_shift_speed)
+			offset.x = lerpf(offset.x, max_x_shift, x_shift_speed)
 		elif actor.movement.facing_direction == -1:
-			offset.x = accel_shift(offset.x, -max_x_shift, x_shift_speed)
+			offset.x = lerpf(offset.x, -max_x_shift, x_shift_speed)
 
 
 func shift_y():
 	if Input.is_action_pressed("up") and actor.vel == Vector2.ZERO:
-		offset.y  = accel_shift(offset.y, -max_y_shift, y_shift_speed)
+		offset.y  = lerpf(offset.y, -max_y_shift, y_shift_speed)
 	else:
 		offset.y = default_offset.y	
-
-
-func accel_shift(current_offset, target_offset, shift_speed):
-	var new_offset: int
-	new_offset = lerpf(current_offset, target_offset, shift_speed)
-	return new_offset
 
 
 func is_default_offset() -> bool: ## to check if the camera is at its default offset
