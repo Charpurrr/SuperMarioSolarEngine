@@ -19,6 +19,9 @@ var default_offset: Vector2
 
 @export var shift_trigger: float = 4 ## actor velocity threshold which triggers cam shifting.
 
+@export var hold_duration: int = 30 ## Duration for holding down 'up'/'down' until cam shift is triggered
+var hold_time: int = 0
+
 func _ready(): 
 	default_offset = offset 
 	max_y_shift -= default_offset.y
@@ -53,3 +56,14 @@ func shift_y(): # currntly works but needs to be rewritten.
 
 func is_default_offset() -> bool: ## to check if the camera is at its default offset
 	return offset == default_offset
+
+
+func y_shiftable(): # Is there a better way to use a counter in this situation?
+	if hold_time < hold_duration:
+		hold_time += 1
+		return false
+	else:
+		hold_time = 0
+		return true
+	
+		
