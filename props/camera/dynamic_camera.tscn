@@ -7,3 +7,6 @@ offset = Vector2(0, -100)
 zoom = Vector2(2, 2)
 drag_vertical_enabled = true
 script = ExtResource("1_7ecxy")
+
+[node name="DEMO PURPOSES" type="RayCast2D" parent="."]
+position = Vector2(0, -120)
