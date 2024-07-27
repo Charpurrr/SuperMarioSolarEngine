@@ -8,6 +8,8 @@ extends Camera2D
 var default_offset: Vector2 
 ## For resetting camera back to default offsets.
 ## Accounts for manually adjusted camera positions in editor.
+
+# variables could use better names
 @export var max_x_shift: int = 50
 @export var max_y_shift: int = 15
 @export var x_shift_speed: float = 0.07
@@ -38,11 +40,13 @@ func shift_x():
 		offset.x = lerpf(offset.x, 0, x_shift_speed_two)
 
 
-func shift_y():
-	if Input.is_action_pressed("up") and actor.vel == Vector2.ZERO:
+func shift_y(): # currntly works but needs to be rewritten.
+	if Input.is_action_pressed("up"): # and actor.vel == Vector2.ZERO: <- is this needed?
 		offset.y  = lerpf(offset.y, -max_y_shift, y_shift_speed)
+	elif Input.is_action_pressed("down"):
+		offset.y  = lerpf(offset.y, max_y_shift, y_shift_speed) # this line needs twaeking
 	else:
-		offset.y = default_offset.y	
+		offset.y = default_offset.y
 
 
 func is_default_offset() -> bool: ## to check if the camera is at its default offset
