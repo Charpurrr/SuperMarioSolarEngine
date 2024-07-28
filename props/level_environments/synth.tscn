@@ -59,8 +59,8 @@ texture = ExtResource("4_fkliv")
 emission_shape = 3
 emission_rect_extents = Vector2(1024, 256)
 gravity = Vector2(0, 0)
-anim_speed_min = 2.0
-anim_speed_max = 2.0
+anim_speed_min = 0.5
+anim_speed_max = 1.0
 
 [node name="Mountains" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_repeat = 2

@@ -27,7 +27,9 @@ var current_notifs: Array = []
 var input_event: InputEvent
 #endregion
 
-@onready var world_machine: WorldMachine = get_parent()
+## This variable is set in [code]world_machine.tscn[/code].
+var world_machine: WorldMachine
+
 @onready var player: CharacterBody2D
 
 

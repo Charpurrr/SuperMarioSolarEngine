@@ -8,5 +8,10 @@
 [node name="WorldMachine" type="Node2D"]
 script = ExtResource("1_gcjeb")
 loaded_level = ExtResource("2_7jsli")
+level_name = &"Technicolor Testbed"
+mission_name = &"Operation: System Unnoticed"
+mission_info = "Just keep debugging...
+Just keep debugging...
+Just keep debugging..."
 loaded_environment = ExtResource("3_emc2i")
 user_interface = ExtResource("3_pcjjq")

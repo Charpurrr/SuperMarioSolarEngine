@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ccj3teu3h6xfm"]
+[gd_scene load_steps=32 format=3 uid="uid://ccj3teu3h6xfm"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_pakjx"]
 [ext_resource type="Script" path="res://ui/debug_label.gd" id="2_suudb"]
@@ -15,6 +15,7 @@
 [ext_resource type="Shader" path="res://ui/blur.gdshader" id="12_wqetc"]
 [ext_resource type="Script" path="res://ui/pause_screen/settings/audio/audio_setting.gd" id="14_466vg"]
 [ext_resource type="FontFile" uid="uid://dwjboqsj8b8xd" path="res://ui/fonts/super_mario.ttf" id="14_n0vgh"]
+[ext_resource type="Script" path="res://ui/pause_screen/level_info.gd" id="15_ihj7k"]
 [ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="15_y78en"]
 [ext_resource type="Script" path="res://ui/pause_screen/choices.gd" id="16_0su14"]
 [ext_resource type="PackedScene" uid="uid://cxqj15hquutxq" path="res://ui/pause_screen/settings/controls/tab.tscn" id="17_7m8yr"]
@@ -180,7 +181,6 @@ layout_mode = 2
 texture = ExtResource("5_cgoe6")
 
 [node name="PauseScreen" type="Control" parent="." node_paths=PackedStringArray("choices", "pause_menu", "settings_menu")]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -250,24 +250,29 @@ offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LevelInfo" type="VBoxContainer" parent="PauseScreen/PauseMenu/LeftSide/Info/InfoPanel/TextContainer"]
+[node name="LevelInfo" type="VBoxContainer" parent="PauseScreen/PauseMenu/LeftSide/Info/InfoPanel/TextContainer" node_paths=PackedStringArray("user_interface", "level_name", "mission_name", "mission_info")]
 layout_mode = 2
 size_flags_vertical = 3
+script = ExtResource("15_ihj7k")
+user_interface = NodePath("../../../../../../..")
+level_name = NodePath("LevelName")
+mission_name = NodePath("MissionName")
+mission_info = NodePath("../MissionInfo")
 
-[node name="LevelTitle" type="Label" parent="PauseScreen/PauseMenu/LeftSide/Info/InfoPanel/TextContainer/LevelInfo"]
+[node name="LevelName" type="Label" parent="PauseScreen/PauseMenu/LeftSide/Info/InfoPanel/TextContainer/LevelInfo"]
 layout_mode = 2
-text = "Technicolor Testbed"
+text = "Super Mario Solar Engine"
 label_settings = SubResource("LabelSettings_b067h")
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="PauseScreen/PauseMenu/LeftSide/Info/InfoPanel/TextContainer/LevelInfo"]
 layout_mode = 2
 
-[node name="MissionTitle" type="Label" parent="PauseScreen/PauseMenu/LeftSide/Info/InfoPanel/TextContainer/LevelInfo"]
+[node name="MissionName" type="Label" parent="PauseScreen/PauseMenu/LeftSide/Info/InfoPanel/TextContainer/LevelInfo"]
 custom_minimum_size = Vector2(319, 0)
 layout_mode = 2
 size_flags_vertical = 6
-text = "FIND THE BUG"
+text = "the secret of darius"
 label_settings = SubResource("LabelSettings_p5bk4")
 horizontal_alignment = 1
 autowrap_mode = 3
@@ -277,9 +282,8 @@ uppercase = true
 custom_minimum_size = Vector2(319, 0)
 layout_mode = 2
 size_flags_vertical = 3
-text = "Just keep debugging...
-just keep debugging...
-just keep debugging...
+text = "If you're seeing this,
+something went wrong!
 "
 label_settings = SubResource("LabelSettings_70wox")
 horizontal_alignment = 1
