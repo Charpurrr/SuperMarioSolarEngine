@@ -45,7 +45,7 @@ Charlotte "Charpurrr" Fox - Project lead and programmer <br /><br />
 Tricia "GTcreyon" - Major Additional programming <br /><br />
 
 "CardboardCarl" - Additional programming <br />
-"Wyvern" - Additional programming <br /><br />
+"Unequipped" - Additional programming <br /><br />
 
 "KingAsylus91" - Mario & Luigi sprites <br />
 "TuffTony" - Mario & Luigi sprites <br />
