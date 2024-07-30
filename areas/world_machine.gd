@@ -42,6 +42,8 @@ func _ready():
 ## Called with [GameState]'s reload signal.
 func _reload_level():
 	var new_level: Node2D = loaded_level.instantiate()
+	var new_env: LevelEnvironment = loaded_environment.instantiate()
+
 	var tree: SceneTree = get_tree()
 
 	# For disabling the pause screen if it was open
@@ -50,7 +52,11 @@ func _reload_level():
 
 	# Free the level and then re-add it.
 	level_node.queue_free()
+
 	level_node = new_level
+	new_env.camera = new_level.camera
+
 	add_child(level_node)
+	level_node.add_child(new_env)
 
 	emit_signal("level_reloaded")
