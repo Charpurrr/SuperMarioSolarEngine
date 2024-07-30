@@ -1,8 +1,11 @@
-[gd_scene format=3 uid="uid://bf1fop2elpnih"]
+[gd_scene load_steps=2 format=3 uid="uid://bf1fop2elpnih"]
+
+[ext_resource type="Theme" uid="uid://c53wuaais37yi" path="res://level_designer/ui/editor_theme.tres" id="1_e81bo"]
 
 [node name="InspectorPanel" type="Panel"]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(100, 0)
 size_flags_vertical = 3
+theme = ExtResource("1_e81bo")
 
 [node name="Inspector" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -17,11 +20,11 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ObjectHistory" type="HBoxContainer" parent="Inspector"]
-custom_minimum_size = Vector2(0, 31)
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
 [node name="PrevObj" type="Button" parent="Inspector/ObjectHistory"]
-custom_minimum_size = Vector2(31, 31)
+custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 disabled = true
 text = "<"
@@ -47,13 +50,13 @@ vertical_alignment = 1
 text_overrun_behavior = 3
 
 [node name="NextObj" type="Button" parent="Inspector/ObjectHistory"]
-custom_minimum_size = Vector2(31, 31)
+custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 disabled = true
 text = ">"
 
 [node name="Search" type="LineEdit" parent="Inspector"]
-custom_minimum_size = Vector2(0, 31)
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 placeholder_text = "Filter Properties        🔍"
 context_menu_enabled = false

@@ -1,16 +1,27 @@
-[gd_scene load_steps=13 format=3 uid="uid://bfrw3lh0b17ri"]
+[gd_scene load_steps=19 format=3 uid="uid://bfrw3lh0b17ri"]
 
 [ext_resource type="Script" path="res://level_designer/editor_camera.gd" id="1_7pwxt"]
 [ext_resource type="Script" path="res://level_designer/editor.gd" id="1_uwmd0"]
 [ext_resource type="Script" path="res://level_designer/ui/editor_ui.gd" id="2_w6sns"]
 [ext_resource type="Script" path="res://level_designer/items/hotbar_items/hotbar.gd" id="3_12gsu"]
 [ext_resource type="PackedScene" uid="uid://dpgxxjf6ip6lp" path="res://level_designer/ui/item_search_menu.tscn" id="3_gtqtc"]
+[ext_resource type="Theme" uid="uid://c53wuaais37yi" path="res://level_designer/ui/editor_theme.tres" id="3_mavvg"]
 [ext_resource type="PackedScene" uid="uid://c537c7fubd6rx" path="res://level_designer/items/hotbar_items/hotbar_item.tscn" id="4_jtwvy"]
 [ext_resource type="PackedScene" uid="uid://b7fc22e7d8hap" path="res://level_designer/ui/toolbar.tscn" id="6_5sjl1"]
 [ext_resource type="PackedScene" uid="uid://bf1fop2elpnih" path="res://level_designer/ui/inspector.tscn" id="6_58xql"]
 [ext_resource type="Texture2D" uid="uid://bwuodtones7dv" path="res://level_designer/tools/select_tool/selection_box.png" id="8_plyee"]
 [ext_resource type="Script" path="res://level_designer/tools/select_tool/select_box.gd" id="9_qeiqb"]
 [ext_resource type="Script" path="res://level_designer/level_preview.gd" id="11_rylk5"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rcr4i"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_j7cs2"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_og3yj"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_g7mmt"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tcfrr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1gkqx"]
 
@@ -41,10 +52,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_mavvg")
 theme_override_constants/separation = 0
 
 [node name="TopBarPanel" type="Panel" parent="UI/Panels"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 
 [node name="Top" type="HBoxContainer" parent="UI/Panels/TopBarPanel"]
@@ -53,27 +65,31 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 5.0
-offset_top = 5.0
+offset_top = 2.0
 offset_right = -5.0
-offset_bottom = -5.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 5
 
-[node name="Help" type="Button" parent="UI/Panels/TopBarPanel/Top"]
-custom_minimum_size = Vector2(40, 40)
+[node name="Help" type="TextureButton" parent="UI/Panels/TopBarPanel/Top"]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-text = "ⓘ"
+size_flags_vertical = 4
+texture_normal = SubResource("PlaceholderTexture2D_rcr4i")
+stretch_mode = 0
 
 [node name="VSeparator4" type="VSeparator" parent="UI/Panels/TopBarPanel/Top"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 
-[node name="TangibilityLayer" type="Button" parent="UI/Panels/TopBarPanel/Top"]
-custom_minimum_size = Vector2(40, 40)
+[node name="TangibilityLayer" type="TextureButton" parent="UI/Panels/TopBarPanel/Top"]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-text = "G"
+size_flags_vertical = 4
+texture_normal = SubResource("PlaceholderTexture2D_j7cs2")
+stretch_mode = 0
 
 [node name="VSeparator" type="VSeparator" parent="UI/Panels/TopBarPanel/Top"]
 layout_mode = 2
@@ -104,35 +120,42 @@ size_flags_horizontal = 3
 layout_mode = 2
 alignment = 2
 
-[node name="CounterHelp" type="Button" parent="UI/Panels/TopBarPanel/Top/ObjectCounter"]
-custom_minimum_size = Vector2(40, 40)
+[node name="CounterHelp" type="TextureButton" parent="UI/Panels/TopBarPanel/Top/ObjectCounter"]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-text = "ⓘ"
+size_flags_vertical = 4
+texture_normal = SubResource("PlaceholderTexture2D_og3yj")
+stretch_mode = 0
 
 [node name="ObjectCount" type="Label" parent="UI/Panels/TopBarPanel/Top/ObjectCounter"]
-custom_minimum_size = Vector2(170, 23)
+custom_minimum_size = Vector2(80, 20)
 layout_mode = 2
 text = "Object Count: 999.999"
+vertical_alignment = 1
 
 [node name="VSeparator3" type="VSeparator" parent="UI/Panels/TopBarPanel/Top"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 
-[node name="Save" type="Button" parent="UI/Panels/TopBarPanel/Top"]
-custom_minimum_size = Vector2(40, 40)
+[node name="Save" type="TextureButton" parent="UI/Panels/TopBarPanel/Top"]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-text = "💾"
+size_flags_vertical = 4
+texture_normal = SubResource("PlaceholderTexture2D_g7mmt")
+stretch_mode = 0
 
 [node name="VSeparator5" type="VSeparator" parent="UI/Panels/TopBarPanel/Top"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 
-[node name="Options" type="Button" parent="UI/Panels/TopBarPanel/Top"]
-custom_minimum_size = Vector2(40, 40)
+[node name="Options" type="TextureButton" parent="UI/Panels/TopBarPanel/Top"]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-text = "≡"
+size_flags_vertical = 4
+texture_normal = SubResource("PlaceholderTexture2D_tcfrr")
+stretch_mode = 0
 
 [node name="OtherBars" type="HBoxContainer" parent="UI/Panels"]
 layout_mode = 2
@@ -145,7 +168,7 @@ theme_override_constants/separation = 0
 vertical = true
 
 [node name="ItemPanel" type="Panel" parent="UI/Panels/OtherBars/LeftSide"]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -163,7 +186,7 @@ grow_vertical = 2
 theme_override_constants/separation = 5
 
 [node name="Search" type="Button" parent="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList"]
-custom_minimum_size = Vector2(0, 31)
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 text = "Object List 🔍"
 
@@ -241,7 +264,7 @@ layout_mode = 2
 
 [node name="PlayButton" type="Button" parent="UI/Panels/OtherBars/LeftSide"]
 modulate = Color(0, 1, 0, 1)
-custom_minimum_size = Vector2(0, 120)
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 text = "PLAY"
 
@@ -275,11 +298,12 @@ theme_override_constants/separation = 0
 vertical = true
 
 [node name="InspectorPanel" parent="UI/Panels/OtherBars/OtherSides/RightSide" instance=ExtResource("6_58xql")]
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 
 [node name="PalettePanel" type="Panel" parent="UI/Panels/OtherBars/OtherSides/RightSide"]
 modulate = Color(1, 0, 1, 1)
-custom_minimum_size = Vector2(0, 140)
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 
 [node name="QuitConfirm" type="ConfirmationDialog" parent="UI"]

@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://level_designer/tools/gravity_tool.gd" id="7_oq4tl"]
 
 [node name="ToolbarContainer" type="PanelContainer" node_paths=PackedStringArray("select", "pen")]
-custom_minimum_size = Vector2(0, 60)
+custom_minimum_size = Vector2(0, 30)
 script = ExtResource("1_an7pt")
 select = NodePath("Toolbar/Select")
 pen = NodePath("Toolbar/Pen")
@@ -26,11 +26,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Select" type="Button" parent="Toolbar" node_paths=PackedStringArray("toolbar")]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 3
 icon = ExtResource("3_jip52")
 icon_alignment = 1
+expand_icon = true
 script = ExtResource("2_4xoly")
 toolbar = NodePath("../..")
 default_mouse_icon = ExtResource("3_jip52")
@@ -40,11 +41,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Pen" type="Button" parent="Toolbar" node_paths=PackedStringArray("toolbar")]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 3
 icon = ExtResource("5_03ff0")
 icon_alignment = 1
+expand_icon = true
 script = ExtResource("3_tuarx")
 toolbar = NodePath("../..")
 default_mouse_icon = ExtResource("5_03ff0")
@@ -54,7 +56,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Erase" type="Button" parent="Toolbar" node_paths=PackedStringArray("toolbar")]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("4_y2rc6")
@@ -65,7 +67,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Eyedrop" type="Button" parent="Toolbar" node_paths=PackedStringArray("toolbar")]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("5_s38ce")
@@ -76,7 +78,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Shape" type="Button" parent="Toolbar" node_paths=PackedStringArray("toolbar")]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("6_xogfa")
@@ -87,7 +89,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Gravity" type="Button" parent="Toolbar" node_paths=PackedStringArray("toolbar")]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("7_oq4tl")

@@ -1,0 +1,49 @@
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://c53wuaais37yi"]
+
+[ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="1_y7g8o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ge4lq"]
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ukrr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iffc7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ik3c3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hcqrm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vtkna"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2y2bm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7rw7"]
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="FontVariation" id="FontVariation_88bjv"]
+base_font = ExtResource("1_y7g8o")
+spacing_bottom = -2
+
+[resource]
+default_font = SubResource("FontVariation_88bjv")
+default_font_size = 11
+Button/styles/normal = SubResource("StyleBoxFlat_ge4lq")
+CheckButton/styles/disabled = SubResource("StyleBoxEmpty_1ukrr")
+CheckButton/styles/focus = SubResource("StyleBoxEmpty_iffc7")
+CheckButton/styles/hover = SubResource("StyleBoxEmpty_ik3c3")
+CheckButton/styles/hover_pressed = SubResource("StyleBoxEmpty_hcqrm")
+CheckButton/styles/normal = SubResource("StyleBoxEmpty_vtkna")
+CheckButton/styles/pressed = SubResource("StyleBoxEmpty_2y2bm")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_i7rw7")
