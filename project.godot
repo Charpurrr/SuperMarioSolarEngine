@@ -182,8 +182,9 @@ e_pin_hotbar_item={
 
 2d_physics/layer_1="Solid"
 2d_physics/layer_2="Player"
-2d_physics/layer_3="Enemy"
+2d_physics/layer_3="NPC"
 2d_physics/layer_4="Homeable (GroundPound)"
+2d_physics/layer_5="Water"
 2d_physics/layer_9="Preview (Editor)"
 
 [rendering]

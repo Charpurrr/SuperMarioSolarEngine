@@ -214,12 +214,14 @@ func _trans_rules():
 	if not movement.is_slide_slope() and is_equal_approx(actor.vel.x, 0):
 		return [&"Crouch", [true, false]]
 
-	if actor.is_on_floor():
-		if not Input.is_action_pressed(&"down"):
+	if not Input.is_action_pressed(&"down"):
+		if actor.is_on_floor():
 			if old_direction.y == 0 and input_dir != 0 or Input.is_action_just_pressed(&"up"):
 				return &"Idle"
 			if input_dir == -sign(old_direction.x):
 				return &"Walk"
+		else:
+			return &"Fall"
 
 		if input.buffered_input(&"jump"):
 			return &"ButtSlideJump"
