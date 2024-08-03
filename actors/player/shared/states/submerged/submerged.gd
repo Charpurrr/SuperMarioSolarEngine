@@ -12,3 +12,7 @@ func _trans_rules():
 		return &"Dry"
 
 	return &""
+
+
+func _defer_rules():
+	return &"SwimIdle"

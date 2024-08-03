@@ -22,25 +22,9 @@ extends Node
 @export var air_accel_time: float = 20
 @onready var air_accel_step: float = max_speed / air_accel_time
 
-# Currently unused in this version of the engine, but could be
-# implemented to be used with air resistance.
 ## How long it takes to decelerate (when airborne.)
 @export var air_decel_time: float = 18
 @onready var air_decel_step: float = max_speed / air_decel_time
-
-## List of different types of acceleration/deceleration values.
-@onready var cels: Dictionary = {
-	"ground":
-	{
-		"accel": ground_accel_step,
-		"decel": ground_decel_step,
-	},
-	"air":
-	{
-		"accel": air_accel_step,
-		"decel": air_decel_step,
-	},
-}
 
 ## How many frames have to progress before you can accelerate forward again.
 ## Has some nieche use-cases, in-engine is only used to handle wallbonk spins.
@@ -163,6 +147,33 @@ func accelerate(
 		actor.vel.x += direction * accel
 	elif actor.vel.x * direction < speed_cap:
 		actor.vel.x = direction * speed_cap
+
+
+## Accelerate by a given velocity, up to a certain limit.
+## If already above the limit due to external forces, this will not reduce speed.
+func accel_capped(add_vel: Vector2, cap: float) -> void:
+	# Normalising a zero vector will result in unexpected behavior
+	if add_vel.is_zero_approx():
+		return
+
+	var direction = add_vel.normalized()
+	
+	var speed = actor.vel.dot(direction)
+	var speed_step = add_vel.length()
+
+	# How much speed allowed to be add before getting capped
+	var cap_difference = cap - speed
+
+	speed_step = min(speed, cap_difference)
+	
+	# Break if less than zero to avoid deceleration
+	if speed_step <= 0:
+		return
+	
+	# Apply the speed in the correct direction.
+	var speed_step_vec = speed_step * direction
+
+	actor.vel += speed_step_vec
 
 
 func decelerate(decel_val: Variant):

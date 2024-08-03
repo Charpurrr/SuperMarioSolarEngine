@@ -1,4 +1,4 @@
-[gd_scene load_steps=340 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=362 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://actors/player/shared/player.gd" id="1_87j6i"]
 [ext_resource type="Texture2D" uid="uid://bbgppbst4akvn" path="res://actors/player/mario/anime/backflip.png" id="2_i2o54"]
@@ -32,16 +32,24 @@
 [ext_resource type="Script" path="res://util/input_manager.gd" id="21_onm15"]
 [ext_resource type="Texture2D" uid="uid://b30m6nn2i6koo" path="res://actors/player/mario/anime/spinjump.png" id="21_pd4hh"]
 [ext_resource type="Texture2D" uid="uid://cuf5h3e1qk53r" path="res://actors/player/mario/anime/lookup.png" id="23_akjfu"]
+[ext_resource type="Texture2D" uid="uid://co1jxdpg5vvx6" path="res://actors/player/mario/anime/swim_move.png" id="30_aftyo"]
+[ext_resource type="Texture2D" uid="uid://kt8ucqk4vmgx" path="res://actors/player/mario/anime/swim_hard.png" id="31_5f6y8"]
+[ext_resource type="Texture2D" uid="uid://bldev5k3xvqbo" path="res://actors/player/mario/anime/swim_idle.png" id="32_kx1l5"]
 [ext_resource type="Texture2D" uid="uid://bwppo3kubftbl" path="res://actors/player/mario/anime/walk.png" id="32_rdvib"]
+[ext_resource type="Texture2D" uid="uid://dltfdiwxlnrwa" path="res://actors/player/mario/anime/swim_spin.png" id="33_k6je2"]
 [ext_resource type="Script" path="res://actors/player/shared/crouchlock.gd" id="34_ndbt5"]
 [ext_resource type="Texture2D" uid="uid://hlcl3ptyjqfe" path="res://actors/player/mario/anime/wallslide.png" id="34_yliku"]
 [ext_resource type="Script" path="res://actors/player/shared/push_rays.gd" id="35_g7d1t"]
 [ext_resource type="Script" path="res://actors/player/shared/player_movement.gd" id="37_quca3"]
 [ext_resource type="Script" path="res://actors/player/shared/player_state_manager.gd" id="38_vxs65"]
+[ext_resource type="Script" path="res://actors/player/shared/states/submerged/swim_idle.gd" id="40_aeui7"]
 [ext_resource type="Script" path="res://actors/player/shared/states/dry/dry.gd" id="40_q8vpo"]
 [ext_resource type="Script" path="res://actors/player/shared/states/dry/grounded/grounded.gd" id="40_s2gar"]
 [ext_resource type="AudioStream" uid="uid://3pdkpw4ui60n" path="res://actors/player/shared/motion_nsmbw/land1_hard.wav" id="41_vhr45"]
+[ext_resource type="Script" path="res://actors/player/shared/states/submerged/swim.gd" id="41_x14c0"]
+[ext_resource type="Script" path="res://actors/player/shared/states/submerged/swim_hard.gd" id="42_7ru02"]
 [ext_resource type="AudioStream" uid="uid://dttsovlcc1lhh" path="res://actors/player/shared/motion_nsmbw/land2_hard.wav" id="42_k4dq2"]
+[ext_resource type="Script" path="res://actors/player/shared/states/submerged/swim_spin.gd" id="43_vu16w"]
 [ext_resource type="Script" path="res://actors/player/shared/states/dry/grounded/idle.gd" id="44_87kyt"]
 [ext_resource type="Script" path="res://actors/player/shared/states/dry/grounded/walk.gd" id="45_ka4vl"]
 [ext_resource type="AudioStream" uid="uid://c5u3cdm0rwdx2" path="res://actors/player/shared/motion_nsmbw/step1_hard.wav" id="45_mh7x3"]
@@ -650,6 +658,62 @@ region = Rect2(672, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_dego1"]
 atlas = ExtResource("2_i2o54")
 region = Rect2(720, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkxe5"]
+atlas = ExtResource("30_aftyo")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jvc5"]
+atlas = ExtResource("31_5f6y8")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30of0"]
+atlas = ExtResource("31_5f6y8")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lluoj"]
+atlas = ExtResource("31_5f6y8")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfcca"]
+atlas = ExtResource("31_5f6y8")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gha1d"]
+atlas = ExtResource("31_5f6y8")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8v3g"]
+atlas = ExtResource("31_5f6y8")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ae6n"]
+atlas = ExtResource("32_kx1l5")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnbyb"]
+atlas = ExtResource("32_kx1l5")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5r4i"]
+atlas = ExtResource("32_kx1l5")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqlhy"]
+atlas = ExtResource("33_k6je2")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4ttd"]
+atlas = ExtResource("33_k6je2")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1shsc"]
+atlas = ExtResource("33_k6je2")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50pq3"]
+atlas = ExtResource("33_k6je2")
+region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0bnjn"]
 atlas = ExtResource("18_5kttb")
@@ -1331,6 +1395,71 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_nkxe5")
+}],
+"loop": false,
+"name": &"swim",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jvc5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30of0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lluoj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfcca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gha1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8v3g")
+}],
+"loop": false,
+"name": &"swim_hard",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ae6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnbyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5r4i")
+}],
+"loop": true,
+"name": &"swim_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqlhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4ttd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1shsc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50pq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqlhy")
+}],
+"loop": false,
+"name": &"swim_spin",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_0bnjn")
 }, {
 "duration": 1.0,
@@ -1819,7 +1948,7 @@ spin_hitbox = NodePath("Areas/SpinHitbox")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_hmp25")
-animation = &"idle"
+animation = &"swim"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
@@ -1888,12 +2017,21 @@ actor = NodePath("..")
 max_speed = 3.0
 ground_accel_time = 17.0
 ground_decel_time = 8.0
+air_accel_time = null
 air_decel_time = 13.0
 return_res = 60.0
 term_vel = 8.0
+max_grav = null
 min_grav = 0.215
+air_margin = null
 snap_length = 8.0
+walljump_turn_threshold = null
+coyote_time = null
+consec_jump_time = null
+ground_spin_cooldown_time = null
+freefall_time = null
 min_slide_incline = 0.4
+min_steep_incline = null
 
 [node name="StateManager" type="Node" parent="." node_paths=PackedStringArray("input", "movement", "target_actor", "initial_state")]
 script = ExtResource("38_vxs65")
@@ -1904,6 +2042,24 @@ initial_state = NodePath("Dry/Airborne")
 
 [node name="Submerged" type="Node" parent="StateManager"]
 script = ExtResource("135_2utkk")
+
+[node name="SwimIdle" type="Node" parent="StateManager/Submerged"]
+script = ExtResource("40_aeui7")
+decel_time = 75
+animation = &"swim_idle"
+
+[node name="Swim" type="Node" parent="StateManager/Submerged"]
+script = ExtResource("41_x14c0")
+swimming_speed = 4.0
+animation = &"swim"
+
+[node name="SwimHard" type="Node" parent="StateManager/Submerged"]
+script = ExtResource("42_7ru02")
+animation = &"swim_hard"
+
+[node name="SwimSpin" type="Node" parent="StateManager/Submerged"]
+script = ExtResource("43_vu16w")
+animation = &"swim_spin"
 
 [node name="Dry" type="Node" parent="StateManager"]
 script = ExtResource("40_q8vpo")
@@ -2031,6 +2187,8 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_h8xfq")])
 script = ExtResource("100_6d35n")
 jump_power = 3.6
 push_power = 6.0
+forward_accel_time = 3
+backward_accel_time = 6
 animation = &"longjump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_5f3i0")])
 

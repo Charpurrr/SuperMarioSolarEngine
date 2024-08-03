@@ -54,6 +54,11 @@ static func get_vec() -> Vector2:
 	return Input.get_vector("left", "right", "up", "down")
 
 
+## Returns true if the player is trying to move in any axis.
+static func is_moving_any() -> bool:
+	return get_vec() != Vector2(0, 0)
+
+
 ## Queue an input to have its buffer consumed.
 func queue_consume(id: StringName) -> void:
 	_consume_queue.append(id)

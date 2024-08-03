@@ -6,6 +6,11 @@ extends PlayerState
 ## How much the longjump sends you forwards.
 @export var push_power: float = 1.2
 
+@export var forward_accel_time: int
+@export var backward_accel_time: int
+
+var accel_val: Vector2
+
 ## If the activate_freefall_timer() function should be called.
 var start_freefall_timer: bool = false
 
@@ -25,9 +30,13 @@ func _subsequent_ticks():
 
 func _physics_tick():
 	if InputManager.get_x_dir() == movement.facing_direction:
-		movement.accelerate(0.4, movement.facing_direction, push_power)
+		var forward_accel_step: float = push_power / forward_accel_time
+		accel_val = Vector2.RIGHT * forward_accel_step * movement.facing_direction
 	else:
-		movement.accelerate(0.2, InputManager.get_x_dir(), push_power)
+		var backward_accel_step: float = push_power + backward_accel_time
+		accel_val = Vector2.RIGHT * backward_accel_step * InputManager.get_x_dir()
+
+	movement.accelerate(accel_val, push_power)
 
 	if actor.vel.y > 0 and not start_freefall_timer:
 		start_freefall_timer = true

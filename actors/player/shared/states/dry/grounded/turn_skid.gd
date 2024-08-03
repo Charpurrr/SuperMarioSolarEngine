@@ -9,6 +9,8 @@ extends PlayerState
 ## How much the skid should accelerate over max_speed.
 @export var over_accel: float = 0.3
 
+var accel_val: Vector2
+
 
 # The first entry in the array is what frame the animation should skip to,
 # the second entry is how long it should take to accelerate.
@@ -22,7 +24,8 @@ func _on_enter(array):
 
 
 func _physics_tick():
-	movement.accelerate(skid_accel_step, movement.facing_direction, INF)
+	accel_val = Vector2.RIGHT * skid_accel_step * movement.facing_direction
+	movement.accelerate(accel_val, INF)
 
 
 func _trans_rules():
