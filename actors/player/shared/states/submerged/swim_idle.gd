@@ -17,7 +17,7 @@ func _on_enter(_param):
 
 func _physics_tick():
 	if decel_timer != 0:
-		actor.vel -= entered_vel_vec / decel_time
+		movement.decelerate(entered_vel_vec / decel_time)
 		decel_timer -= 1
 
 

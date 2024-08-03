@@ -153,8 +153,18 @@ func accelerate(add_vel: Vector2, cap: float) -> void:
 	actor.vel += speed_step_vec
 
 
-func decelerate(decel: float):
-	actor.vel.x = move_toward(actor.vel.x, 0, decel)
+## Decelerate by a given velocity.
+## The sign of the vector does not matter - will always decelerate towards zero.
+func decelerate(sub_vel: Vector2):
+	# Normalising a zero vector will result in unexpected behavior
+	if sub_vel.is_zero_approx():
+		return
+
+	var direction = sub_vel.normalized()
+	var speed = actor.vel.dot(direction)
+	var speed_step = sub_vel.length()
+	print( actor.vel.slide(direction))
+	actor.vel = move_toward(speed, 0, speed_step) * direction + actor.vel.slide(direction)
 
 
 ## Handles movement on the X axis.
@@ -182,7 +192,7 @@ func move_x_analog(
 	accelerate(accel_val * Vector2.RIGHT * input, speed_cap * analog_input)
 
 	if abs(actor.vel.x) > speed_cap * analog_input:
-		decelerate(friction_val)
+		decelerate(friction_val * Vector2.RIGHT)
 
 
 ## Updates the player's visual facing direction.

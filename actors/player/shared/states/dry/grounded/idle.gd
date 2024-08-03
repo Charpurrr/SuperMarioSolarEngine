@@ -9,7 +9,7 @@ extends PlayerState
 
 func _physics_tick():
 	movement.update_prev_direction()
-	movement.decelerate(movement.ground_decel_step)
+	movement.decelerate(movement.ground_decel_step * Vector2.RIGHT)
 
 	if Input.is_action_pressed(&"up"):
 		actor.doll.play(animation_look_up)

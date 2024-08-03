@@ -34,7 +34,7 @@ func _physics_tick():
 		movement.move_x_analog(movement.air_accel_step, should_flip)
 
 	movement.apply_gravity(-actor.vel.y / jump_power)
-	movement.decelerate(0.01)
+	movement.decelerate(0.01 * Vector2.RIGHT)
 
 
 func _trans_rules():

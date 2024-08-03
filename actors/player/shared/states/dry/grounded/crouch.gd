@@ -17,7 +17,7 @@ func _on_enter(array):
 
 func _physics_tick():
 	movement.update_direction(InputManager.get_x_dir())
-	movement.decelerate(0.07)
+	movement.decelerate(0.07 * Vector2.RIGHT)
 
 
 ## Return whether or not you can crouchwalk.
