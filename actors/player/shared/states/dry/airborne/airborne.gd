@@ -21,5 +21,5 @@ func _trans_rules():
 	return &""
 
 
-func _tell_defer():
+func _defer_rules():
 	return &"Fall"

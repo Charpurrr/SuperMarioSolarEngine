@@ -10,7 +10,7 @@ func _on_enter(_param):
 	movement.consume_coyote_timer()
 
 
-func _tell_defer():
+func _defer_rules():
 	if not movement.active_consec_time():
 		return &"Jump"
 
