@@ -1,6 +1,6 @@
-class_name HomingGroundPound
+class_name GroundPound
 extends PlayerState
-## Homing towards objects that have it enabled through the usage of a ground pound.
+## Pressing down while airborne.
 
 ## How much the groundpound offsets you on the Y axis.
 @export var gp_offset: float = -5
@@ -11,10 +11,8 @@ var linger_timer: float
 ## The horizontal velocity you had before the groundpound, used for FaceplantDives.
 var queued_speed: float
 
-var nearby_entities: Array = []
 
-
-func _on_enter(_handover):
+func _on_enter(_param):
 	queued_speed = actor.vel.x
 
 	movement.consume_coyote_timer()
@@ -37,6 +35,6 @@ func _trans_rules():
 		return [&"FaceplantDive", queued_speed]
 
 	if linger_timer == 0:
-		return &"HomingGroundPoundFall"
+		return &"GroundPoundFall"
 
 	return &""

@@ -13,7 +13,7 @@ var finished_init: bool
 var nearby_entities: Array = []
 
 
-func _on_enter(_handover):
+func _on_enter(_param):
 	is_airspin = movement.can_air_action()
 
 	actor.spin_hitbox.monitoring = true
@@ -90,9 +90,6 @@ func _air_rules() -> Variant:
 		return &"Freefall"
 
 	if Input.is_action_just_pressed(&"groundpound") and movement.can_air_action():
-		if not finished_init:
-			return &"HomingGroundPound"
-
 		return &"GroundPound"
 
 	if finished_init and actor.push_rays.is_colliding() and input.buffered_input(&"jump"):

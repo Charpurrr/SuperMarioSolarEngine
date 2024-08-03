@@ -6,7 +6,7 @@ extends PlayerState
 @export var triple_min_vel: float = 1.0
 
 
-func _on_enter(_handover):
+func _on_enter(_param):
 	movement.consume_coyote_timer()
 
 

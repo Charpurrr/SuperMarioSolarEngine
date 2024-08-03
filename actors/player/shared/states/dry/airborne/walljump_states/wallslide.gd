@@ -6,7 +6,7 @@ extends PlayerState
 @export var term_vel: float = 1.10
 
 
-func _on_enter(_handover):
+func _on_enter(_param):
 	movement.consume_coyote_timer()
 	movement.consec_jumps = 0
 

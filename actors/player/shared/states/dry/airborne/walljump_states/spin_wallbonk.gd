@@ -11,7 +11,7 @@ extends PlayerState
 var finished_init: bool
 
 
-func _on_enter(_handover):
+func _on_enter(_param):
 	movement.return_res_prog = movement.return_res
 	movement.air_spun = true
 

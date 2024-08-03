@@ -3,7 +3,7 @@ extends Fall
 ## Uninterupted falling at terminal velocity.
 
 
-func _on_enter(_handover):
+func _on_enter(_param):
 	movement.consume_freefall_timer()
 
 

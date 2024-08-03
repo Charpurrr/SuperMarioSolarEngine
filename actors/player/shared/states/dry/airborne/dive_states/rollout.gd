@@ -9,7 +9,7 @@ extends Jump
 @export var accel_cap: float = 10.0
 
 
-func _on_enter(_handover):
+func _on_enter(_param):
 	movement.consume_coyote_timer()
 
 	actor.vel.y = -jump_power

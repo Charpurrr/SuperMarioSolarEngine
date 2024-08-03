@@ -16,7 +16,7 @@ var min_jump_power: float
 var applied_variation: bool = false
 
 
-func _on_enter(_handover):
+func _on_enter(_param):
 	applied_variation = false
 	actor.vel.y = -jump_power
 

@@ -1,12 +1,12 @@
 class_name Skid
 extends PlayerState
-## Turning from grounded movement at max speed.
+## Turning around.
 
 ## How long it takes to accelerate from a skid.
 @export var skid_accel_time: float = 16
 @onready var skid_accel_step: float
 
-## How much the skid should accelerate over max_speed
+## How much the skid should accelerate over max_speed.
 @export var over_accel: float = 0.3
 
 
@@ -22,7 +22,7 @@ func _on_enter(array):
 
 
 func _physics_tick():
-	movement.accelerate(skid_accel_step, movement.facing_direction, movement.max_speed + over_accel)
+	movement.accelerate(skid_accel_step, movement.facing_direction, INF)
 
 
 func _trans_rules():
@@ -32,7 +32,7 @@ func _trans_rules():
 	if InputManager.get_x_dir() == -movement.facing_direction:
 		reset_state([0, 16])
 
-	if is_equal_approx(abs(actor.vel.x), movement.max_speed + over_accel):
+	if abs(actor.vel.x) > movement.max_speed + over_accel:
 		return &"Walk"
 
 	if movement.can_spin() and input.buffered_input(&"spin"):

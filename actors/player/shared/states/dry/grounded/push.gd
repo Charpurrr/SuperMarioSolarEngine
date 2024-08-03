@@ -3,7 +3,7 @@ extends PlayerState
 ## Walking against a solid body while the ray_shape is colliding.
 
 
-func _on_enter(_handover):
+func _on_enter(_param):
 	movement.consume_consec_timer()
 
 

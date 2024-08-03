@@ -1,24 +1,23 @@
-class_name Backflip
-extends PlayerState
-## Jumping backwards from a crouch.
-
-@export var jump_power: float = 9.1
-## How much the backflip sends you backwards.
-@export var push_power: float = 1.4
+class_name TripleJump
+extends Jump
+## Third consecutively timed jump.
 
 ## If the activate_freefall_timer() function should be called.
 var start_freefall_timer: bool = false
 
 
-func _on_enter(_handover):
+func _on_enter(handover):
+	super(handover)
+
 	start_freefall_timer = false
-	actor.vel.y = -jump_power
-	actor.vel.x = push_power * -movement.facing_direction
 
 
 func _physics_tick():
-	if InputManager.is_moving_x():
-		movement.move_x_analog(0.06, false)
+	movement.move_x_analog(0.15, actor.vel.y < 0)
+
+	if movement.can_release_jump(applied_variation, min_jump_power):
+		applied_variation = true
+		actor.vel.y *= 0.5
 
 	if actor.vel.y > 0 and not start_freefall_timer:
 		start_freefall_timer = true
@@ -26,17 +25,7 @@ func _physics_tick():
 		movement.activate_freefall_timer()
 
 
-func _subsequent_ticks():
-	movement.apply_gravity()
-
-
 func _trans_rules():
-	if actor.push_rays.is_colliding() and input.buffered_input(&"jump"):
-		return [&"Walljump", -movement.facing_direction]
-
-	if movement.can_init_wallslide():
-		return &"Wallslide"
-
 	if not movement.dived and movement.can_air_action() and input.buffered_input(&"dive"):
 		if Input.is_action_pressed(&"down"):
 			return [&"FaceplantDive", actor.vel.x]
@@ -49,8 +38,14 @@ func _trans_rules():
 	if Input.is_action_just_pressed(&"groundpound") and movement.can_air_action():
 		return &"GroundPound"
 
+	if actor.push_rays.is_colliding() and input.buffered_input(&"jump"):
+		return [&"Walljump", -movement.facing_direction]
+
 	if actor.is_on_floor():
-		return &"BackflipStyle"
+		return &"Cheer"
+
+	if movement.can_init_wallslide():
+		return &"Wallslide"
 
 	if movement.finished_freefall_timer():
 		return &"Freefall"

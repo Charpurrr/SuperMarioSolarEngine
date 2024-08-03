@@ -6,7 +6,7 @@ extends PlayerState
 @export var can_ignore: bool = true
 
 
-func _on_enter(_handover):
+func _on_enter(_param):
 	actor.vel.x = 0
 
 

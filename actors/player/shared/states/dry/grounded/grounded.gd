@@ -11,11 +11,13 @@ func _on_enter(play_land_sfx):
 
 	actor.set_floor_snap_length(movement.snap_length)
 
-	actor.vel.y = 0
-
 	if play_land_sfx:
 		for sfx_list in sfx_layers:
 			sfx_list.play_sfx_at(self)
+
+
+func _physics_tick():
+	actor.vel.y += 1
 
 
 func _trans_rules():

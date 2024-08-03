@@ -67,7 +67,6 @@ func _push_notif(type: StringName, input: String):
 	if current_notifs != []:
 		for i in current_notifs:
 			if is_instance_valid(i):
-				print(notif.size.y)
 				i.position.y -= 35
 
 	current_notifs.append(notif)

@@ -1,33 +1,31 @@
-class_name Longjump
+class_name Sideflip
 extends PlayerState
-## Jumping forwards from a crouch.
+## Jumping after turning.
 
 @export var jump_power: float = 8.8
-## How much the longjump sends you forwards.
+## How much the sideflip sends you forwards.
 @export var push_power: float = 1.2
 
 ## If the activate_freefall_timer() function should be called.
 var start_freefall_timer: bool = false
 
 
-func _on_enter(_handover):
+func _on_enter(_param):
 	start_freefall_timer = false
 
 	movement.update_direction(sign(movement.get_input_x()))
-	movement.consec_jumps = 0
+	movement.consec_jumps = 1
 
 	actor.vel.y = -jump_power
+	actor.vel.x = push_power * InputManager.get_x_dir()
 
 
 func _subsequent_ticks():
-	movement.apply_gravity(-actor.vel.y / jump_power, 1.2)
+	movement.apply_gravity(-actor.vel.y / jump_power)
 
 
 func _physics_tick():
-	if InputManager.get_x_dir() == movement.facing_direction:
-		movement.accelerate(0.4, movement.facing_direction, push_power)
-	else:
-		movement.accelerate(0.2, InputManager.get_x_dir(), push_power)
+	movement.move_x_analog(0.1, false)
 
 	if actor.vel.y > 0 and not start_freefall_timer:
 		start_freefall_timer = true

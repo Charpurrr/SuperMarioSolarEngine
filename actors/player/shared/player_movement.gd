@@ -384,4 +384,8 @@ func can_spin() -> bool:
 ## Avoids accidental air movement inputs.
 func can_air_action() -> bool:
 	return not actor.test_move(actor.transform, Vector2i(0, air_margin)) or actor.vel.y < 0
+
+
+func is_submerged() -> bool:
+	return actor.water_detector.has_overlapping_areas()
 #endregion

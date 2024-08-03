@@ -3,7 +3,7 @@ extends PlayerState
 ## Sliding on the ground after a dive.
 
 
-func _on_enter(_handover):
+func _on_enter(_param):
 	actor.floor_stop_on_slope = false
 	actor.doll.rotation = movement.body_rotation
 

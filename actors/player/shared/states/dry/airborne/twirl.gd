@@ -9,7 +9,7 @@ extends PlayerState
 var finished_init: bool
 
 
-func _on_enter(_handover):
+func _on_enter(_param):
 	if movement.can_air_action():
 		actor.vel.y = -spin_power
 

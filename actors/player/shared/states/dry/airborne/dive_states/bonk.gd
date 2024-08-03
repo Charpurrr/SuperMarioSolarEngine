@@ -16,7 +16,7 @@ var rotation_timer: float
 var finished_rotating: bool
 
 
-func _on_enter(_handover):
+func _on_enter(_param):
 	movement.activate_freefall_timer()
 
 	actor.vel.x = wall_kickback_power_x * -movement.facing_direction
