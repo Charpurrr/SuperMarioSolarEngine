@@ -13,7 +13,7 @@ func _physics_tick():
 	var angle: float = normal_angle + TAU / 2 * Math.sign_positive(movement.facing_direction)
 
 	actor.doll.rotation = lerp_angle(actor.doll.rotation, angle, 0.5)
-	movement.decelerate("ground")
+	movement.decelerate(movement.ground_decel_step)
 
 
 func _on_exit():

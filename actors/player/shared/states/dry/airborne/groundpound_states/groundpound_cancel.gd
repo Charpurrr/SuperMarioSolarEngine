@@ -8,7 +8,7 @@ func _physics_tick():
 
 	should_flip = actor.position.y > movement.walljump_start_y + movement.walljump_turn_threshold
 
-	movement.move_x_analog("air", should_flip)
+	movement.move_x_analog(movement.air_accel_step, should_flip)
 
 
 func _trans_rules():

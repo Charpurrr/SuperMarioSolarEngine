@@ -33,7 +33,7 @@ func _physics_tick():
 		var forward_accel_step: float = push_power / forward_accel_time
 		accel_val = Vector2.RIGHT * forward_accel_step * movement.facing_direction
 	else:
-		var backward_accel_step: float = push_power + backward_accel_time
+		var backward_accel_step: float = push_power / backward_accel_time
 		accel_val = Vector2.RIGHT * backward_accel_step * InputManager.get_x_dir()
 
 	movement.accelerate(accel_val, push_power)

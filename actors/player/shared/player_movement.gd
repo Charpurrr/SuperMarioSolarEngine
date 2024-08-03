@@ -126,32 +126,9 @@ func _physics_process(_delta):
 
 
 #region X Functions
-func accelerate(
-	accel_val: Variant, direction: float, speed_cap: float = max_speed, analog: float = 1
-):
-	var accel: float
-
-	if accel_val is float or accel_val is int:
-		accel = accel_val
-	elif accel_val is String:
-		accel = cels[accel_val].accel
-	else:
-		push_error("Not a number or string!")
-
-	speed_cap *= analog
-	accel *= analog
-
-	accel *= (1 - return_res_prog / return_res)
-
-	if actor.vel.x * direction + accel < speed_cap:
-		actor.vel.x += direction * accel
-	elif actor.vel.x * direction < speed_cap:
-		actor.vel.x = direction * speed_cap
-
-
 ## Accelerate by a given velocity, up to a certain limit.
 ## If already above the limit due to external forces, this will not reduce speed.
-func accel_capped(add_vel: Vector2, cap: float) -> void:
+func accelerate(add_vel: Vector2, cap: float) -> void:
 	# Normalising a zero vector will result in unexpected behavior
 	if add_vel.is_zero_approx():
 		return
@@ -164,7 +141,7 @@ func accel_capped(add_vel: Vector2, cap: float) -> void:
 	# How much speed allowed to be add before getting capped
 	var cap_difference = cap - speed
 
-	speed_step = min(speed, cap_difference)
+	speed_step = min(speed_step, cap_difference)
 	
 	# Break if less than zero to avoid deceleration
 	if speed_step <= 0:
@@ -176,42 +153,33 @@ func accel_capped(add_vel: Vector2, cap: float) -> void:
 	actor.vel += speed_step_vec
 
 
-func decelerate(decel_val: Variant):
-	var decel: float
-
-	if decel_val is float:
-		decel = decel_val
-	elif decel_val is String:
-		decel = cels[decel_val].decel
-	else:
-		push_error("Not a float or string!")
-
+func decelerate(decel: float):
 	actor.vel.x = move_toward(actor.vel.x, 0, decel)
 
 
 ## Handles movement on the X axis.
-func move_x(accel_val: Variant, should_flip: bool, speed_cap: float = max_speed):
-	var input_direction: int = InputManager.get_x_dir()
+func move_x(accel_val: float, should_flip: bool, speed_cap: float = max_speed):
+	var input: int = InputManager.get_x_dir()
 
 	if should_flip:
-		update_direction(input_direction)
+		update_direction(input)
 
-	accelerate(accel_val, input_direction, speed_cap)
+	accelerate(accel_val * Vector2.RIGHT * input, speed_cap)
 
 
 ## Handles movement on the X axis for joystick analog inputs.
 func move_x_analog(
 	accel_val: Variant, should_flip: bool, friction_val: Variant = 0.0, speed_cap: float = max_speed
 ):
-	var input_direction: float = InputManager.get_x()
+	var input: float = InputManager.get_x()
 
-	var normalised_input: float = sign(input_direction)
-	var analog_input: float = abs(input_direction)
+	var normalised_input: float = sign(input)
+	var analog_input: float = abs(input)
 
 	if should_flip:
 		update_direction(int(normalised_input))
 
-	accelerate(accel_val, normalised_input, speed_cap, analog_input)
+	accelerate(accel_val * Vector2.RIGHT * input, speed_cap * analog_input)
 
 	if abs(actor.vel.x) > speed_cap * analog_input:
 		decelerate(friction_val)
