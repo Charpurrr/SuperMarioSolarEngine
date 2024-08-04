@@ -4,7 +4,7 @@ extends PlayerState
 
 
 func _physics_tick():
-	movement.decelerate("ground")
+	movement.decelerate(movement.ground_decel_step * Vector2.RIGHT)
 
 
 func _trans_rules():

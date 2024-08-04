@@ -44,9 +44,9 @@ func _physics_tick():
 	is_airspin = movement.can_air_action()
 
 	if is_airspin:
-		movement.move_x_analog("air", false)
+		movement.move_x_analog(movement.air_accel_step, false)
 	else:
-		movement.move_x_analog("ground", false)
+		movement.move_x_analog(movement.ground_accel_step, false)
 
 	if not actor.doll.is_playing():
 		finished_init = true

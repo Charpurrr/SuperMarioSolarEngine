@@ -21,7 +21,7 @@ func _physics_tick():
 
 	movement.update_prev_direction()
 	movement.activate_coyote_timer()
-	movement.move_x_analog("ground", true, "ground")
+	movement.move_x_analog(movement.ground_accel_step, true, movement.ground_decel_step)
 
 	actor.doll.speed_scale = actor.vel.x / movement.max_speed * 2
 	_set_appropriate_anim()
