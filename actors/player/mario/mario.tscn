@@ -1,4 +1,4 @@
-[gd_scene load_steps=361 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=362 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://actors/player/shared/player.gd" id="1_87j6i"]
 [ext_resource type="Texture2D" uid="uid://bbgppbst4akvn" path="res://actors/player/mario/anime/backflip.png" id="2_i2o54"]
@@ -32,6 +32,7 @@
 [ext_resource type="Script" path="res://util/input_manager.gd" id="21_onm15"]
 [ext_resource type="Texture2D" uid="uid://b30m6nn2i6koo" path="res://actors/player/mario/anime/spinjump.png" id="21_pd4hh"]
 [ext_resource type="Texture2D" uid="uid://cuf5h3e1qk53r" path="res://actors/player/mario/anime/lookup.png" id="23_akjfu"]
+[ext_resource type="Texture2D" uid="uid://bctgrctdkiaf6" path="res://actors/player/mario/anime/swim.png" id="30_1ykdx"]
 [ext_resource type="Texture2D" uid="uid://kt8ucqk4vmgx" path="res://actors/player/mario/anime/swim_hard.png" id="31_5f6y8"]
 [ext_resource type="Texture2D" uid="uid://bldev5k3xvqbo" path="res://actors/player/mario/anime/swim_idle.png" id="32_kx1l5"]
 [ext_resource type="Texture2D" uid="uid://bwppo3kubftbl" path="res://actors/player/mario/anime/walk.png" id="32_rdvib"]
@@ -658,7 +659,8 @@ region = Rect2(672, 0, 48, 48)
 atlas = ExtResource("2_i2o54")
 region = Rect2(720, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nkxe5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_utu1s"]
+atlas = ExtResource("30_1ykdx")
 region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5jvc5"]
@@ -1393,7 +1395,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nkxe5")
+"texture": SubResource("AtlasTexture_utu1s")
 }],
 "loop": false,
 "name": &"swim",
@@ -1946,7 +1948,7 @@ spin_hitbox = NodePath("Areas/SpinHitbox")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_hmp25")
-animation = &"swim"
+animation = &"idle"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
@@ -2034,21 +2036,25 @@ script = ExtResource("135_2utkk")
 
 [node name="SwimIdle" type="Node" parent="StateManager/Submerged"]
 script = ExtResource("40_aeui7")
-decel_time = 75
+decel_time = 45
 animation = &"swim_idle"
+anim_offset = Vector2i(0, 5)
 
 [node name="Swim" type="Node" parent="StateManager/Submerged"]
 script = ExtResource("41_x14c0")
 swimming_speed = 4.0
 animation = &"swim"
+anim_offset = Vector2i(0, 5)
 
 [node name="SwimHard" type="Node" parent="StateManager/Submerged"]
 script = ExtResource("42_7ru02")
 animation = &"swim_hard"
+anim_offset = Vector2i(0, 5)
 
 [node name="SwimSpin" type="Node" parent="StateManager/Submerged"]
 script = ExtResource("43_vu16w")
 animation = &"swim_spin"
+anim_offset = Vector2i(0, 5)
 
 [node name="Dry" type="Node" parent="StateManager"]
 script = ExtResource("40_q8vpo")

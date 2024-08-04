@@ -4,7 +4,10 @@ extends PlayerState
 
 
 func _on_enter(_handover):
-	pass
+	movement.activate_consec_timer()
+	movement.consume_freefall_timer()
+	movement.air_spun = false
+	movement.dived = false
 
 
 func _trans_rules():

@@ -142,12 +142,12 @@ func accelerate(add_vel: Vector2, cap: float) -> void:
 	var cap_difference = cap - speed
 
 	speed_step = min(speed_step, cap_difference)
-	
+
 	# Break if less than zero to avoid deceleration
 	if speed_step <= 0:
 		return
 	
-	# Apply the speed in the correct direction.
+	# Apply the speed in the correct direction
 	var speed_step_vec = speed_step * direction
 
 	actor.vel += speed_step_vec
@@ -163,7 +163,7 @@ func decelerate(sub_vel: Vector2):
 	var direction = sub_vel.normalized()
 	var speed = actor.vel.dot(direction)
 	var speed_step = sub_vel.length()
-	print( actor.vel.slide(direction))
+
 	actor.vel = move_toward(speed, 0, speed_step) * direction + actor.vel.slide(direction)
 
 
