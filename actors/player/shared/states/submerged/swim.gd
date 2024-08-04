@@ -7,7 +7,9 @@ extends PlayerState
 
 
 func _physics_tick():
-	movement.accelerate(InputManager.get_vec(), swimming_speed)
+	var accel_step: float = swimming_speed / float(swimming_accel_time)
+	movement.accelerate(InputManager.get_vec() * accel_step, swimming_speed, 0.03125)
+	movement.radial_friction(0.0625, swimming_speed)
 
 
 func _trans_rules():

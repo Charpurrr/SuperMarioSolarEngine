@@ -128,7 +128,10 @@ func _physics_process(_delta):
 #region X Functions
 ## Accelerate by a given velocity, up to a certain limit.
 ## If already above the limit due to external forces, this will not reduce speed.
-func accelerate(add_vel: Vector2, cap: float) -> void:
+## If [param angular_friction] is greater than [code]0[/code], the cap will be applied in all directions.
+## Attempting to accelerate perpendicular to the currend direction of motion while over the cap
+## will decelerate in the previous direction in order to avoid accelerating overall.
+func accelerate(add_vel: Vector2, cap: float, angular_friction: float = 0) -> void:
 	# Normalising a zero vector will result in unexpected behavior
 	if add_vel.is_zero_approx():
 		return
@@ -144,13 +147,23 @@ func accelerate(add_vel: Vector2, cap: float) -> void:
 	speed_step = min(speed_step, cap_difference)
 
 	# Break if less than zero to avoid deceleration
-	if speed_step <= 0:
-		return
+	speed_step = max(speed_step, 0)
 	
 	# Apply the speed in the correct direction
-	var speed_step_vec = speed_step * direction
+	var speed_step_vec: Vector2 = speed_step * direction
 
-	actor.vel += speed_step_vec
+	var target_vel: Vector2 = actor.vel + speed_step_vec
+	if angular_friction > 0:
+		var target_speed: float = target_vel.length()
+		var current_absolute_difference: float = min(cap - actor.vel.length(), 0)
+		var target_absolute_difference: float = cap - target_vel.length()
+		var speed_overshoot: float = min(target_absolute_difference - current_absolute_difference, 0)
+		target_vel = target_vel.limit_length(target_speed + speed_overshoot)
+		var perp = target_vel.slide(direction)
+		var perp_len_reduced = max(perp.length() - add_vel.length() * angular_friction, 0)
+		target_vel = perp.limit_length(perp_len_reduced) + target_vel.project(direction)
+		
+	actor.vel = target_vel
 
 
 ## Decelerate by a given velocity.
@@ -165,6 +178,14 @@ func decelerate(sub_vel: Vector2):
 	var speed_step = sub_vel.length()
 
 	actor.vel = move_toward(speed, 0, speed_step) * direction + actor.vel.slide(direction)
+
+
+## Force friction when above a certain threshold.
+func radial_friction(friction: float, threshold: float) -> void:
+	var speed = actor.vel.length()
+	if speed > threshold:
+		speed = move_toward(speed, threshold, friction)
+	actor.vel = actor.vel.limit_length(speed)
 
 
 ## Handles movement on the X axis.

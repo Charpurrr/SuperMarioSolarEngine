@@ -2043,6 +2043,7 @@ anim_offset = Vector2i(0, 5)
 [node name="Swim" type="Node" parent="StateManager/Submerged"]
 script = ExtResource("41_x14c0")
 swimming_speed = 4.0
+swimming_accel_time = 4
 animation = &"swim"
 anim_offset = Vector2i(0, 5)
 
