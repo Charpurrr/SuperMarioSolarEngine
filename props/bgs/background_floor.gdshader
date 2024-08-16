@@ -6,7 +6,7 @@ uniform vec3 mapPosition;  // Position of the camera within 2D/3D space
 
 void fragment()
 {
-	// Calculate yaw rotation matrix
+	// Calculate roll rotation matrix
 	mat3 rollMatrix = mat3(
 		vec3(1.0, 0.0, 0.0),
 		vec3(0.0, cos(rollRotation), -sin(rollRotation)),
