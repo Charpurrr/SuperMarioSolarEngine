@@ -1,0 +1,18 @@
+name: Discord Notif
+
+on:
+  push:
+    branches: [ main ] # Replace main with your branch name.
+
+jobs:
+  Notify:
+    runs-on: ubuntu-latest
+    name: Send Notification
+    steps:
+      - name: Send Notification
+        uses: charpurrr/supermariosolarengine@main
+        with:
+          webhook-url: ${{ secrets.WEBHOOK_LINK }}
+          embed-color: '16037068'
+          footer-icon: 'https://discord.com/assets/7c2bf519ee13934638c0.svg'
+          ignore-hidden: 'true'
