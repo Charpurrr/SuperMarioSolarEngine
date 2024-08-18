@@ -14,5 +14,5 @@ jobs:
         with:
           webhook-url: ${{ secrets.WEBHOOK_LINK }}
           embed-color: '16037068'
-          footer-icon: 'https://discord.com/assets/7c2bf519ee13934638c0.svg'
+          footer-icon: 'https://cdn.discordapp.com/emojis/1251920499639062698.png'
           ignore-hidden: 'true'
