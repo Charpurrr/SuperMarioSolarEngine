@@ -33,7 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://bxp03mky56ngu" path="res://actors/player/luigi/anime/walk.png" id="31_0sk1g"]
 [ext_resource type="Texture2D" uid="uid://c33latqk85125" path="res://actors/player/luigi/anime/walljump.png" id="32_t3l0x"]
 [ext_resource type="Texture2D" uid="uid://nstjjpw57a1q" path="res://actors/player/luigi/anime/wallslide.png" id="33_7hmb3"]
-[ext_resource type="Script" path="res://actors/player/shared/crouchlock.gd" id="34_1y7gm"]
+[ext_resource type="Script" path="res://actors/player/shared/areas/crouchlock.gd" id="34_1y7gm"]
 [ext_resource type="Script" path="res://actors/player/shared/push_rays.gd" id="35_i3dlv"]
 [ext_resource type="Script" path="res://util/input_manager.gd" id="36_we0xs"]
 [ext_resource type="Script" path="res://actors/player/shared/player_movement.gd" id="37_f4g0g"]

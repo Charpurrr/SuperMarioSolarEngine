@@ -10,25 +10,24 @@ extends Node
 ## Max horizontal speed.
 @export var max_speed: float = 2.8
 
-## How long it takes to accelerate (when grounded.)
+## How long it takes to accelerate. (when grounded)
 @export var ground_accel_time: float = 22.5
 @onready var ground_accel_step: float = max_speed / ground_accel_time
 
-## How long it takes to decelerate (when grounded.)
+## How long it takes to decelerate. (when grounded)
 @export var ground_decel_time: float = 13.5
 @onready var ground_decel_step: float = max_speed / ground_decel_time
 
-## How long it takes to accelerate (when airborne.)
-@export var air_accel_time: float = 20
+## How long it takes to accelerate. (when airborne)
+@export var air_accel_time: float = 20.0
 @onready var air_accel_step: float = max_speed / air_accel_time
 
-## How long it takes to decelerate (when airborne.)
-@export var air_decel_time: float = 18
+## How long it takes to decelerate. (when airborne)
+@export var air_decel_time: float = 18.0
 @onready var air_decel_step: float = max_speed / air_decel_time
 
 ## How many frames have to progress before you can accelerate forward again.
-## Has some nieche use-cases, in-engine is only used to handle wallbonk spins.
-@export var return_res: float = 15
+@export var return_res: int = 15
 var return_res_prog: float
 #endregion
 
@@ -56,6 +55,17 @@ var walljump_start_y: float
 ## in order to be turned around. See 'walljump_start_y'.
 ## Defaulted to roughly the amount of height you can get from a spin.
 @export var walljump_turn_threshold: float = 10.0
+#endregion
+
+#region Swimming Variables
+@export_category("Swimming Variables")
+
+## The normal maximum swimming speed.[br][br]
+## (Abnormal swimming speed would come from manual velocity overrides.)
+@export var swim_speed: float = 4.0
+
+@export var swim_accel_time: float = 15.0
+@onready var swim_accel_step: float = swim_speed / float(swim_accel_time)
 #endregion
 
 #region Timer Variables
@@ -153,16 +163,20 @@ func accelerate(add_vel: Vector2, cap: float, angular_friction: float = 0) -> vo
 	var speed_step_vec: Vector2 = speed_step * direction
 
 	var target_vel: Vector2 = actor.vel + speed_step_vec
+
 	if angular_friction > 0:
 		var target_speed: float = target_vel.length()
 		var current_absolute_difference: float = min(cap - actor.vel.length(), 0)
 		var target_absolute_difference: float = cap - target_vel.length()
 		var speed_overshoot: float = min(target_absolute_difference - current_absolute_difference, 0)
+
 		target_vel = target_vel.limit_length(target_speed + speed_overshoot)
+
 		var perp = target_vel.slide(direction)
 		var perp_len_reduced = max(perp.length() - add_vel.length() * angular_friction, 0)
+
 		target_vel = perp.limit_length(perp_len_reduced) + target_vel.project(direction)
-		
+
 	actor.vel = target_vel
 
 
@@ -183,8 +197,10 @@ func decelerate(sub_vel: Vector2):
 ## Force friction when above a certain threshold.
 func radial_friction(friction: float, threshold: float) -> void:
 	var speed = actor.vel.length()
+
 	if speed > threshold:
 		speed = move_toward(speed, threshold, friction)
+
 	actor.vel = actor.vel.limit_length(speed)
 
 
@@ -397,5 +413,5 @@ func can_air_action() -> bool:
 
 
 func is_submerged() -> bool:
-	return actor.water_detector.has_overlapping_areas()
+	return actor.water_check.has_overlapping_areas()
 #endregion

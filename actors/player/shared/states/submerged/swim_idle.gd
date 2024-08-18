@@ -25,4 +25,7 @@ func _trans_rules():
 	if InputManager.is_moving_any():
 		return &"Swim"
 
+	if input.buffered_input(&"jump"):
+		return &"SwimHard"
+
 	return &""
