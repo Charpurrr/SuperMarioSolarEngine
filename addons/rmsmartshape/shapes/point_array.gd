@@ -74,7 +74,8 @@ func set_points(ps: Dictionary) -> void:
 	# Called by Godot when loading from a saved scene
 	for k in ps:
 		var p: SS2D_Point = ps[k]
-		p.connect("changed", self._on_point_changed.bind(p))
+		if not is_connected("changed", _on_point_changed):
+			p.connect("changed", self._on_point_changed.bind(p))
 	_points = ps
 	notify_property_list_changed()
 

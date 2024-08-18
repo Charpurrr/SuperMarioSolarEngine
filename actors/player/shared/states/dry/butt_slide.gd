@@ -221,7 +221,7 @@ func _trans_rules():
 			if input_dir == -sign(old_direction.x):
 				return &"Walk"
 		else:
-			return &"DummyJump"
+			return &"Fall"
 
 	if input.buffered_input(&"jump"):
 		return &"ButtSlideJump"
