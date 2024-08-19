@@ -1,0 +1,149 @@
+[gd_scene load_steps=14 format=3 uid="uid://drxuxwpvv3gco"]
+
+[ext_resource type="Script" path="res://props/level_environments/environment.gd" id="1_866sg"]
+[ext_resource type="Texture2D" uid="uid://pgqrhm605ba" path="res://props/bgs/grass/day.png" id="2_pbuba"]
+[ext_resource type="Texture2D" uid="uid://dk76vr4rcjn8x" path="res://props/bgs/synth/star_twinkle.png" id="3_rwp08"]
+[ext_resource type="Texture2D" uid="uid://f2jspln46mjf" path="res://props/bgs/grass/back.png" id="4_64mbl"]
+[ext_resource type="Texture2D" uid="uid://lvwyq06v7tyg" path="res://props/bgs/grass/front.png" id="4_pbfkc"]
+[ext_resource type="Shader" path="res://props/bgs/background_floor.gdshader" id="5_1p8o7"]
+[ext_resource type="Texture2D" uid="uid://co084pbasb00v" path="res://props/bgs/grass/middle_back.png" id="5_a0xr4"]
+[ext_resource type="Texture2D" uid="uid://dqbkjiigw6yil" path="res://props/bgs/grass/middle_front.png" id="6_lykth"]
+[ext_resource type="Texture2D" uid="uid://neo05pg3n3hs" path="res://props/bgs/grass/grass_bigger.png" id="8_i6q3b"]
+[ext_resource type="Script" path="res://props/level_environments/bg_floor_mode_7.gd" id="9_oco75"]
+[ext_resource type="AudioStream" uid="uid://dp0qulyplgfih" path="res://props/music/knitted_frustration.ogg" id="10_iupbe"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_47xr2"]
+particles_animation = true
+particles_anim_h_frames = 10
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_67hw6"]
+shader = ExtResource("5_1p8o7")
+shader_parameter/rollRotation = -0.185
+shader_parameter/scale = 2.0
+shader_parameter/mapPosition = Vector3(0, -2, 0)
+
+[node name="Environment" type="CanvasLayer"]
+layer = -1
+script = ExtResource("1_866sg")
+metadata/_edit_use_anchors_ = true
+
+[node name="ParallaxBackground" type="Node2D" parent="."]
+z_index = -3
+
+[node name="Sky" type="Parallax2D" parent="ParallaxBackground"]
+texture_repeat = 2
+
+[node name="Sky" type="TextureRect" parent="ParallaxBackground/Sky"]
+offset_right = 2048.0
+offset_bottom = 512.0
+texture = ExtResource("2_pbuba")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Stars" type="CPUParticles2D" parent="ParallaxBackground/Sky"]
+visible = false
+material = SubResource("CanvasItemMaterial_47xr2")
+position = Vector2(1024, 256)
+amount = 500
+explosiveness = 0.1
+texture = ExtResource("3_rwp08")
+emission_shape = 3
+emission_rect_extents = Vector2(1024, 256)
+gravity = Vector2(0, 0)
+anim_speed_min = 0.5
+anim_speed_max = 1.0
+
+[node name="MountainsBack" type="Parallax2D" parent="ParallaxBackground"]
+texture_repeat = 2
+scroll_scale = Vector2(1.01, 1)
+scroll_offset = Vector2(0, -170)
+repeat_size = Vector2(960, 0)
+repeat_times = 20
+limit_begin = Vector2(-1e+07, -0.1)
+limit_end = Vector2(1e+07, 0.1)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/MountainsBack"]
+offset_top = -10.0
+offset_right = 960.0
+offset_bottom = 530.0
+texture = ExtResource("4_64mbl")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="MountainsMiddleBack" type="Parallax2D" parent="ParallaxBackground"]
+texture_repeat = 2
+scroll_scale = Vector2(1.02, 1)
+scroll_offset = Vector2(0, -170)
+repeat_size = Vector2(960, 0)
+repeat_times = 20
+limit_begin = Vector2(-1e+07, -0.1)
+limit_end = Vector2(1e+07, 0.1)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/MountainsMiddleBack"]
+offset_top = -10.0
+offset_right = 960.0
+offset_bottom = 530.0
+texture = ExtResource("5_a0xr4")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="MountainsMiddleFront" type="Parallax2D" parent="ParallaxBackground"]
+texture_repeat = 2
+scroll_scale = Vector2(1.03, 1)
+scroll_offset = Vector2(0, -170)
+repeat_size = Vector2(960, 0)
+repeat_times = 20
+limit_begin = Vector2(-1e+07, -0.1)
+limit_end = Vector2(1e+07, 0.1)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/MountainsMiddleFront"]
+offset_top = -10.0
+offset_right = 960.0
+offset_bottom = 530.0
+texture = ExtResource("6_lykth")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="MountainsFront" type="Parallax2D" parent="ParallaxBackground"]
+texture_repeat = 2
+scroll_scale = Vector2(1.05, 1)
+scroll_offset = Vector2(0, -170)
+repeat_size = Vector2(960, 0)
+repeat_times = 20
+limit_begin = Vector2(-1e+07, -0.1)
+limit_end = Vector2(1e+07, 0.1)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/MountainsFront"]
+anchors_preset = -1
+anchor_left = -1.1375
+anchor_right = -1.1375
+offset_top = -10.0
+offset_right = 960.0
+offset_bottom = 530.0
+texture = ExtResource("4_pbfkc")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="BGFloorGrass" type="TextureRect" parent="."]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_67hw6")
+anchors_preset = -1
+anchor_top = 0.7
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("8_i6q3b")
+expand_mode = 1
+script = ExtResource("9_oco75")
+scroll_factor = 0.63
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("10_iupbe")
+autoplay = true
+bus = &"Music"
