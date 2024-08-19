@@ -1567,7 +1567,7 @@ size = Vector2(16, 16)
 size = Vector2(44, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p3btq"]
-size = Vector2(10, 7)
+size = Vector2(10, 6)
 
 [sub_resource type="Resource" id="Resource_r5xry"]
 script = ExtResource("49_apkmk")
@@ -2000,7 +2000,7 @@ debug_color = Color(1, 0, 0.145098, 0.141176)
 [node name="CeilingCheck" type="Area2D" parent="Areas"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/CeilingCheck"]
-position = Vector2(1, -32.5)
+position = Vector2(1, -32)
 shape = SubResource("RectangleShape2D_p3btq")
 
 [node name="PushRays" type="Node2D" parent="." node_paths=PackedStringArray("movement")]
@@ -2051,8 +2051,6 @@ anim_offset = Vector2i(0, 5)
 
 [node name="Swim" type="Node" parent="StateManager/Submerged"]
 script = ExtResource("41_x14c0")
-swimming_speed = null
-swimming_accel_time = null
 animation = &"swim"
 anim_offset = Vector2i(0, 5)
 

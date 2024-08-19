@@ -413,5 +413,5 @@ func can_air_action() -> bool:
 
 
 func is_submerged() -> bool:
-	return actor.water_check.has_overlapping_areas()
+	return actor.water_detector.has_overlapping_areas()
 #endregion
