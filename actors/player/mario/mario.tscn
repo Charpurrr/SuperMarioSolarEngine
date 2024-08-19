@@ -1,4 +1,4 @@
-[gd_scene load_steps=365 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=363 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://actors/player/shared/player.gd" id="1_87j6i"]
 [ext_resource type="Texture2D" uid="uid://bbgppbst4akvn" path="res://actors/player/mario/anime/backflip.png" id="2_i2o54"]
@@ -37,11 +37,11 @@
 [ext_resource type="Texture2D" uid="uid://bldev5k3xvqbo" path="res://actors/player/mario/anime/swim_idle.png" id="32_kx1l5"]
 [ext_resource type="Texture2D" uid="uid://bwppo3kubftbl" path="res://actors/player/mario/anime/walk.png" id="32_rdvib"]
 [ext_resource type="Texture2D" uid="uid://dltfdiwxlnrwa" path="res://actors/player/mario/anime/swim_spin.png" id="33_k6je2"]
+[ext_resource type="Script" path="res://actors/player/shared/crouchlock.gd" id="34_ndbt5"]
 [ext_resource type="Texture2D" uid="uid://hlcl3ptyjqfe" path="res://actors/player/mario/anime/wallslide.png" id="34_yliku"]
 [ext_resource type="Script" path="res://actors/player/shared/push_rays.gd" id="35_g7d1t"]
 [ext_resource type="Script" path="res://actors/player/shared/player_movement.gd" id="37_quca3"]
 [ext_resource type="Script" path="res://actors/player/shared/player_state_manager.gd" id="38_vxs65"]
-[ext_resource type="Script" path="res://actors/player/shared/areas/crouchlock.gd" id="39_n5dp2"]
 [ext_resource type="Script" path="res://actors/player/shared/states/submerged/swim_idle.gd" id="40_aeui7"]
 [ext_resource type="Script" path="res://actors/player/shared/states/dry/dry.gd" id="40_q8vpo"]
 [ext_resource type="Script" path="res://actors/player/shared/states/dry/grounded/grounded.gd" id="40_s2gar"]
@@ -54,7 +54,6 @@
 [ext_resource type="Script" path="res://actors/player/shared/states/dry/grounded/walk.gd" id="45_ka4vl"]
 [ext_resource type="AudioStream" uid="uid://c5u3cdm0rwdx2" path="res://actors/player/shared/motion_nsmbw/step1_hard.wav" id="45_mh7x3"]
 [ext_resource type="AudioStream" uid="uid://y8j8f2el3re6" path="res://actors/player/shared/motion_nsmbw/step2_hard.wav" id="46_q6juv"]
-[ext_resource type="Script" path="res://actors/player/shared/states/submerged/swim_flutter.gd" id="46_ukpqj"]
 [ext_resource type="Script" path="res://actors/player/shared/states/dry/grounded/turn_skid.gd" id="48_w11sb"]
 [ext_resource type="Script" path="res://actors/player/shared/states/dry/grounded/push.gd" id="49_6rakc"]
 [ext_resource type="Script" path="res://util/sfx_layer.gd" id="49_apkmk"]
@@ -71,6 +70,7 @@
 [ext_resource type="Script" path="res://actors/player/shared/states/dry/grounded/dive_slide.gd" id="60_d4aqs"]
 [ext_resource type="Script" path="res://actors/player/shared/states/dry/airborne/airborne.gd" id="61_1r6ji"]
 [ext_resource type="AudioStream" uid="uid://c8nogtutvpse6" path="res://actors/player/shared/motion_nsmbw/headbump.wav" id="61_4m4nv"]
+[ext_resource type="Script" path="res://actors/player/shared/player_state.gd" id="64_47hvr"]
 [ext_resource type="AudioStream" uid="uid://ce1hs2wi4j1jx" path="res://actors/player/shared/motion_nsmbw/jump2.wav" id="64_nkubm"]
 [ext_resource type="AudioStream" uid="uid://dx127oekmmsnc" path="res://actors/player/mario/voice/yo_jump.wav" id="64_rch8v"]
 [ext_resource type="AudioStream" uid="uid://dcx3sjeavtd8r" path="res://actors/player/shared/motion_nsmbw/jump1.wav" id="65_2xkjx"]
@@ -83,7 +83,6 @@
 [ext_resource type="AudioStream" uid="uid://mm5nj0apxbql" path="res://actors/player/mario/voice/oo_jump.wav" id="69_7jcwv"]
 [ext_resource type="AudioStream" uid="uid://dvh6rb40f4deu" path="res://actors/player/mario/voice/muh_double.wav" id="71_ohc7q"]
 [ext_resource type="AudioStream" uid="uid://ch85xj14nesnx" path="res://actors/player/mario/voice/ho_double.wav" id="72_r33o8"]
-[ext_resource type="Script" path="res://actors/player/shared/states/player_state.gd" id="73_acu3g"]
 [ext_resource type="AudioStream" uid="uid://dl0l7340snklm" path="res://actors/player/mario/voice/you_double.wav" id="73_cg0sx"]
 [ext_resource type="AudioStream" uid="uid://dkm12417vwbtl" path="res://actors/player/mario/voice/wah_double.wav" id="74_nvtw8"]
 [ext_resource type="AudioStream" uid="uid://clon8dsd11p34" path="res://actors/player/mario/voice/aa_double.wav" id="75_2xld2"]
@@ -664,18 +663,6 @@ region = Rect2(720, 0, 48, 48)
 atlas = ExtResource("30_1ykdx")
 region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pma1r"]
-atlas = ExtResource("31_5f6y8")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c8omn"]
-atlas = ExtResource("31_5f6y8")
-region = Rect2(144, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ecjd6"]
-atlas = ExtResource("31_5f6y8")
-region = Rect2(192, 0, 48, 48)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_5jvc5"]
 atlas = ExtResource("31_5f6y8")
 region = Rect2(0, 0, 48, 48)
@@ -688,13 +675,17 @@ region = Rect2(48, 0, 48, 48)
 atlas = ExtResource("31_5f6y8")
 region = Rect2(96, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_busd7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfcca"]
 atlas = ExtResource("31_5f6y8")
 region = Rect2(144, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kts2t"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gha1d"]
 atlas = ExtResource("31_5f6y8")
 region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8v3g"]
+atlas = ExtResource("31_5f6y8")
+region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ae6n"]
 atlas = ExtResource("32_kx1l5")
@@ -1412,23 +1403,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pma1r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c8omn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ecjd6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c8omn")
-}],
-"loop": true,
-"name": &"swim_flutter",
-"speed": 13.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_5jvc5")
 }, {
 "duration": 1.0,
@@ -1438,10 +1412,13 @@ animations = [{
 "texture": SubResource("AtlasTexture_lluoj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_busd7")
+"texture": SubResource("AtlasTexture_rfcca")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kts2t")
+"texture": SubResource("AtlasTexture_gha1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8v3g")
 }],
 "loop": false,
 "name": &"swim_hard",
@@ -1581,13 +1558,16 @@ size = Vector2(16, 16)
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gw1ji"]
-size = Vector2(6, 6)
+size = Vector2(16, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2tafv"]
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gh08o"]
 size = Vector2(44, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3btq"]
+size = Vector2(10, 7)
 
 [sub_resource type="Resource" id="Resource_r5xry"]
 script = ExtResource("49_apkmk")
@@ -1949,11 +1929,11 @@ force_new = false
 cutoff_sfx = false
 overwrite_other = false
 
-[node name="Mario" type="CharacterBody2D" node_paths=PackedStringArray("doll", "state_manager", "movement", "input", "push_rays", "hitbox", "dive_hitbox", "small_hitbox", "water_check", "crouchlock", "spin_hitbox")]
+[node name="Mario" type="CharacterBody2D" node_paths=PackedStringArray("doll", "state_manager", "movement", "input", "push_rays", "hitbox", "dive_hitbox", "small_hitbox", "water_detector", "crouchlock", "spin_hitbox", "ceiling_check")]
 position = Vector2(-1, 0)
 collision_layer = 2
 floor_constant_speed = true
-floor_max_angle = 1.39626
+floor_max_angle = 1.55334
 floor_snap_length = 16.0
 script = ExtResource("1_87j6i")
 doll = NodePath("Doll")
@@ -1964,48 +1944,43 @@ push_rays = NodePath("PushRays")
 hitbox = NodePath("Hitbox")
 dive_hitbox = NodePath("DiveHitbox")
 small_hitbox = NodePath("SmallHitbox")
-water_check = NodePath("Areas/WaterCheck")
+water_detector = NodePath("Areas/WaterDetector")
 crouchlock = NodePath("Areas/Crouchlock")
 spin_hitbox = NodePath("Areas/SpinHitbox")
+ceiling_check = NodePath("Areas/CeilingCheck")
 
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_hmp25")
-animation = &"swim_flutter"
-frame_progress = 0.264062
+animation = &"idle"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_u4b58")
 
 [node name="SmallHitbox" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_1emcl")
 debug_color = Color(0.371138, 0.615246, 1.54018e-06, 0.42)
 
 [node name="DiveHitbox" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_c86nk")
 debug_color = Color(0.79996, 0.0297055, 1, 0.42)
 
 [node name="Areas" type="Node2D" parent="."]
 
-[node name="WaterCheck" type="Area2D" parent="Areas"]
-position = Vector2(0, -24)
+[node name="WaterDetector" type="Area2D" parent="Areas"]
 collision_layer = 0
 collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/WaterCheck"]
-position = Vector2(0, 8)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/WaterDetector"]
+position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_gw1ji")
 
 [node name="Crouchlock" type="Area2D" parent="Areas"]
-visible = false
 collision_layer = 0
-script = ExtResource("39_n5dp2")
+script = ExtResource("34_ndbt5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Crouchlock"]
 position = Vector2(0, -24)
@@ -2013,7 +1988,6 @@ shape = SubResource("RectangleShape2D_2tafv")
 debug_color = Color(0.792157, 0.380392, 0.52549, 0.419608)
 
 [node name="SpinHitbox" type="Area2D" parent="Areas"]
-visible = false
 collision_layer = 0
 collision_mask = 4
 monitoring = false
@@ -2022,6 +1996,12 @@ monitoring = false
 position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_gh08o")
 debug_color = Color(1, 0, 0.145098, 0.141176)
+
+[node name="CeilingCheck" type="Area2D" parent="Areas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/CeilingCheck"]
+position = Vector2(1, -32.5)
+shape = SubResource("RectangleShape2D_p3btq")
 
 [node name="PushRays" type="Node2D" parent="." node_paths=PackedStringArray("movement")]
 script = ExtResource("35_g7d1t")
@@ -2045,10 +2025,12 @@ buffer_duration = 6
 script = ExtResource("37_quca3")
 actor = NodePath("..")
 max_speed = 3.0
+ground_accel_time = 17.0
+ground_decel_time = 8.0
+air_decel_time = 13.0
 term_vel = 8.0
 min_grav = 0.215
 snap_length = 8.0
-swim_speed = 3.0
 min_slide_incline = 0.4
 
 [node name="StateManager" type="Node" parent="." node_paths=PackedStringArray("input", "movement", "target_actor", "initial_state")]
@@ -2064,30 +2046,25 @@ script = ExtResource("135_2utkk")
 [node name="SwimIdle" type="Node" parent="StateManager/Submerged"]
 script = ExtResource("40_aeui7")
 decel_time = 45
-hitbox_type = "Dive"
 animation = &"swim_idle"
+anim_offset = Vector2i(0, 5)
 
 [node name="Swim" type="Node" parent="StateManager/Submerged"]
 script = ExtResource("41_x14c0")
-hitbox_type = "Dive"
+swimming_speed = null
+swimming_accel_time = null
 animation = &"swim"
+anim_offset = Vector2i(0, 5)
 
 [node name="SwimHard" type="Node" parent="StateManager/Submerged"]
 script = ExtResource("42_7ru02")
-extra_boost_speed = 0.5
-hitbox_type = "Dive"
 animation = &"swim_hard"
-
-[node name="SwimFlutter" type="Node" parent="StateManager/Submerged"]
-script = ExtResource("46_ukpqj")
-hitbox_type = "Dive"
-animation = &"swim_flutter"
+anim_offset = Vector2i(0, 5)
 
 [node name="SwimSpin" type="Node" parent="StateManager/Submerged"]
 script = ExtResource("43_vu16w")
-extra_boost_speed = 2.0
-hitbox_type = "Dive"
 animation = &"swim_spin"
+anim_offset = Vector2i(0, 5)
 
 [node name="Dry" type="Node" parent="StateManager"]
 script = ExtResource("40_q8vpo")
@@ -2174,7 +2151,7 @@ on_enter = false
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_oau5y")])
 
 [node name="JumpStates" type="Node" parent="StateManager/Dry/Airborne"]
-script = ExtResource("73_acu3g")
+script = ExtResource("64_47hvr")
 
 [node name="DummyJump" type="Node" parent="StateManager/Dry/Airborne/JumpStates"]
 script = ExtResource("65_6w5qc")
@@ -2255,7 +2232,7 @@ animation = &"gp_jump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_8711x"), SubResource("Resource_nl575")])
 
 [node name="WalljumpStates" type="Node" parent="StateManager/Dry/Airborne"]
-script = ExtResource("73_acu3g")
+script = ExtResource("64_47hvr")
 
 [node name="Wallslide" type="Node" parent="StateManager/Dry/Airborne/WalljumpStates"]
 script = ExtResource("105_6ryk6")
@@ -2277,7 +2254,7 @@ animation = &"spin_attack"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_bloag"), SubResource("Resource_2nfvq")])
 
 [node name="FallStates" type="Node" parent="StateManager/Dry/Airborne"]
-script = ExtResource("73_acu3g")
+script = ExtResource("64_47hvr")
 
 [node name="Fall" type="Node" parent="StateManager/Dry/Airborne/FallStates"]
 script = ExtResource("113_j3k6p")
@@ -2301,7 +2278,7 @@ script = ExtResource("113_j3k6p")
 animation = &"double_fall"
 
 [node name="GroundPoundStates" type="Node" parent="StateManager/Dry/Airborne"]
-script = ExtResource("73_acu3g")
+script = ExtResource("64_47hvr")
 
 [node name="GroundPound" type="Node" parent="StateManager/Dry/Airborne/GroundPoundStates"]
 script = ExtResource("107_us6gm")
@@ -2320,7 +2297,7 @@ script = ExtResource("112_02mke")
 animation = &"jump_fall"
 
 [node name="DiveStates" type="Node" parent="StateManager/Dry/Airborne"]
-script = ExtResource("73_acu3g")
+script = ExtResource("64_47hvr")
 
 [node name="Dive" type="Node" parent="StateManager/Dry/Airborne/DiveStates"]
 script = ExtResource("134_dsbpr")
@@ -2381,3 +2358,4 @@ hitbox_type = "Small"
 animation = &"butt_slide"
 
 [connection signal="body_entered" from="Areas/SpinHitbox" to="StateManager/Dry/Spin" method="_on_spin_hitbox_body_entered"]
+[connection signal="body_entered" from="Areas/CeilingCheck" to="StateManager/Dry/Airborne" method="_on_ceiling_check_body_entered"]
