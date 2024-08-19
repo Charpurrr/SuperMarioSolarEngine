@@ -396,9 +396,11 @@ uppercase = true
 self_modulate = Color(1, 1, 1, 0.588235)
 layout_mode = 2
 size_flags_vertical = 3
+current_tab = 0
 
 [node name="Controls" type="HBoxContainer" parent="PauseScreen/Settings/SettingsMenu/Tabs"]
 layout_mode = 2
+metadata/_tab_index = 0
 
 [node name="SpaceLeft" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls"]
 layout_mode = 2
@@ -409,13 +411,16 @@ size_flags_stretch_ratio = 0.1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+current_tab = 0
 
 [node name="P1" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/PlayerTabs" instance=ExtResource("17_7m8yr")]
 layout_mode = 2
+metadata/_tab_index = 0
 
 [node name="P2" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls/PlayerTabs" instance=ExtResource("17_7m8yr")]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="SpaceRight" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Controls"]
 layout_mode = 2
@@ -427,6 +432,7 @@ visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+metadata/_tab_index = 1
 
 [node name="SpaceLeft" type="Control" parent="PauseScreen/Settings/SettingsMenu/Tabs/Audio"]
 layout_mode = 2
