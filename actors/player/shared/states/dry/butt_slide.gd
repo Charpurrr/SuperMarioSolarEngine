@@ -223,7 +223,7 @@ func _trans_rules():
 		else:
 			return &"Fall"
 
-	if input.buffered_input(&"jump"):
+	if actor.is_on_floor() and input.buffered_input(&"jump"):
 		return &"ButtSlideJump"
 
 	if input.buffered_input(&"spin"):

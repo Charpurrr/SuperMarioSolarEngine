@@ -1971,8 +1971,7 @@ spin_hitbox = NodePath("Areas/SpinHitbox")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_hmp25")
-animation = &"swim_flutter"
-frame_progress = 0.264062
+animation = &"idle"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 visible = false
