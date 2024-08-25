@@ -8,13 +8,8 @@ extends PlayerState
 @export var linger_time: float = 20
 var linger_timer: float
 
-## The horizontal velocity you had before the groundpound, used for FaceplantDives.
-var queued_speed: float
-
 
 func _on_enter(_param):
-	queued_speed = actor.vel.x
-
 	movement.consume_coyote_timer()
 
 	actor.vel.y = 0
@@ -32,7 +27,7 @@ func _physics_tick():
 
 func _trans_rules():
 	if not movement.dived and movement.can_air_action() and input.buffered_input(&"dive"):
-		return [&"FaceplantDive", queued_speed]
+		return [&"Dive", false]
 
 	if linger_timer == 0:
 		return &"GroundPoundFall"

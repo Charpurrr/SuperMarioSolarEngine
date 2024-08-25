@@ -56,9 +56,6 @@ func _trans_rules():
 
 	if finished_rotating:
 		if not movement.dived and movement.can_air_action() and input.buffered_input(&"dive"):
-			if Input.is_action_pressed(&"down"):
-				return [&"FaceplantDive", actor.vel.x]
-
 			return [&"Dive", false]
 
 		if movement.can_air_action() and input.buffered_input(&"spin"):

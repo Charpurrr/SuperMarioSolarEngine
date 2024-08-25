@@ -12,9 +12,6 @@ func _physics_tick():
 
 func _trans_rules():
 	if not movement.dived and movement.can_air_action() and input.buffered_input(&"dive"):
-		if Input.is_action_pressed(&"down"):
-			return [&"FaceplantDive", actor.vel.x]
-		else:
 			return [&"Dive", false]
 
 	if movement.can_spin() and input.buffered_input(&"spin"):

@@ -1,7 +1,6 @@
 class_name Dive
 extends PlayerState
 ## General diving state.
-## See FaceplantDive for diving downwards.
 
 ## The horizontal dive power added to your current velocity.
 @export var x_power: float = 6.0
@@ -28,14 +27,15 @@ func _on_enter(bellyflop):
 	if movement.facing_direction != sign(actor.vel.x):
 		actor.vel.x = 0
 
-	if abs(actor.vel.x) < accel_cap:
-		if abs(actor.vel.x) > accel_cap - x_power:
-			actor.vel.x = accel_cap * movement.facing_direction
-		else:
-			actor.vel.x += x_power * movement.facing_direction
+	#if abs(actor.vel.x) > accel_cap - x_power:
+			#actor.vel.x = accel_cap * movement.facing_direction
+		#else:
+			#actor.vel.x += x_power * movement.facing_direction
 
-	# Sprite rotation starts at 0 when neutral, which actually corresponds with 90° or PI / 2.
-	# To get around this problem we use the opposite complement of the velocity angle:
+	# Sprite rotation starts at 0 when neutral, 
+	# which actually corresponds with 90° or PI / 2.
+	# To get around this problem we use the 
+	# opposite complement of the velocity angle:
 	# (TAU / 4 - alpha)
 	actor.doll.rotation = TAU / 4 + actor.vel.angle()
 
@@ -43,6 +43,8 @@ func _on_enter(bellyflop):
 func _physics_tick():
 	if not actor.is_on_floor():
 		movement.body_rotation = TAU / 4 + actor.vel.angle()
+
+	movement.move_x_analog(0.1, false, 0.0, accel_cap)
 
 	actor.doll.rotation = lerp_angle(actor.doll.rotation, movement.body_rotation, 0.5)
 

@@ -1,10 +1,8 @@
 extends Node
 
-#@warning_ignore("unused_signal")
 signal reload
 signal paused
 
-#@warning_ignore("unused_signal")
 signal frame_advanced
 
 var bgm_muted: bool = false
@@ -65,7 +63,7 @@ func _frame_advancing():
 	get_tree().paused = false
 
 	await get_tree().process_frame
-	emit_signal(&"frame_advanced")
+	frame_advanced.emit()
 
 	get_tree().paused = true
 	can_fa = false
@@ -86,3 +84,7 @@ func _set_muted_bgm():
 ## Called with the paused signal.
 func pause_toggle():
 	get_tree().paused = !get_tree().paused
+
+
+func emit_reload():
+	reload.emit()

@@ -32,7 +32,7 @@ func _resume():
 
 
 func _retry():
-	GameState.reload.emit()
+	GameState.emit_reload()
 	enable_disable_screen()
 
 

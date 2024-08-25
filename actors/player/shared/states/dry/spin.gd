@@ -80,10 +80,7 @@ func _air_rules() -> Variant:
 		if input.buffered_input(&"spin"):
 			return &"Twirl"
 
-		if not movement.dived and movement.can_air_action() and input.buffered_input(&"dive"):
-			if Input.is_action_pressed(&"down"):
-				return [&"FaceplantDive", actor.vel.x]
-
+		if not movement.dived and input.buffered_input(&"dive"):
 			return [&"Dive", false]
 
 	if movement.finished_freefall_timer():

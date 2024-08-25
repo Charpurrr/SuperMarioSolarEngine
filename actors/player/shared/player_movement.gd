@@ -102,7 +102,7 @@ var prev_facing_direction: int
 
 ## Whether or not you've performed an airborne spin.
 var air_spun: bool = false
-## Whether or not you've performed an airborne or faceplant dive.
+## Whether or not you've performed a dive.
 var dived: bool = false
 
 ## Amount of consecutive jumps performed for a triple jump.

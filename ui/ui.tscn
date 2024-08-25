@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=4 uid="uid://ccj3teu3h6xfm"]
+[gd_scene load_steps=66 format=4 uid="uid://ccj3teu3h6xfm"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_pakjx"]
 [ext_resource type="Script" path="res://ui/debug_label.gd" id="2_suudb"]
@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bbu4m0gd3b85w" path="res://ui/pause_screen/gradient_maps/synth_gradient.tres" id="14_qpmjx"]
 [ext_resource type="Script" path="res://ui/pause_screen/level_info.gd" id="15_ihj7k"]
 [ext_resource type="Texture2D" uid="uid://qslbjwvvnw28" path="res://ui/pause_screen/textures/pattern_solar.png" id="15_uxr3e"]
-[ext_resource type="Shader" uid="uid://c74gv6d18p2ax" path="res://props/shaders/pause_panel.tres" id="15_w8105"]
+[ext_resource type="Shader" uid="uid://dvwfqhrunuxy2" path="res://props/shaders/pause_panel.tres" id="15_w8105"]
 [ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="15_y78en"]
 [ext_resource type="Script" path="res://ui/pause_screen/choices.gd" id="16_0su14"]
 [ext_resource type="PackedScene" uid="uid://cxqj15hquutxq" path="res://ui/pause_screen/settings/controls/tab.tscn" id="17_7m8yr"]
@@ -50,18 +50,11 @@ shader_parameter/gradient = ExtResource("14_qpmjx")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_awrho"]
 shader = ExtResource("15_w8105")
-shader_parameter/background_scroll = Vector2(0, 0)
+shader_parameter/background_scroll = Vector2(0.05, 0.05)
 shader_parameter/modulate_alpha = 0.7
-shader_parameter/spike_dimensions = Vector2(168, 168)
-shader_parameter/spike_scroll_speed = 0.0
-shader_parameter/background = ExtResource("15_uxr3e")
+shader_parameter/spike_scroll_speed = 0.05
+shader_parameter/spike_dimensions = Vector2(16, 30)
 shader_parameter/spike_texture = ExtResource("17_au2sq")
-
-[sub_resource type="Gradient" id="Gradient_3hx6s"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_m2mel"]
-gradient = SubResource("Gradient_3hx6s")
 
 [sub_resource type="LabelSettings" id="LabelSettings_20l3y"]
 font = ExtResource("14_n0vgh")
@@ -1956,8 +1949,9 @@ material = SubResource("ShaderMaterial_awrho")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = SubResource("GradientTexture2D_m2mel")
+texture = ExtResource("15_uxr3e")
 stretch_mode = 1
+flip_h = true
 
 [node name="Choices" type="VBoxContainer" parent="PauseScreen/PauseMenu/ChoicesPanel"]
 layout_mode = 1

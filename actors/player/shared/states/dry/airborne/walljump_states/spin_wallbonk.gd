@@ -42,10 +42,7 @@ func _trans_rules():
 		return &"Idle"
 
 	if not movement.dived and movement.can_air_action() and input.buffered_input(&"dive"):
-		if Input.is_action_pressed(&"down"):
-			return [&"FaceplantDive", actor.vel.x]
-		else:
-			return [&"Dive", false]
+		return [&"Dive", false]
 
 	if finished_init and movement.can_air_action() and input.buffered_input(&"spin"):
 		return &"Twirl"

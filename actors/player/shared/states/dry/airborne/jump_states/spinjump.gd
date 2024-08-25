@@ -22,10 +22,7 @@ func _trans_rules():
 		return &"Fall"
 
 	if not movement.dived and movement.can_air_action() and input.buffered_input(&"dive"):
-		if Input.is_action_pressed(&"down"):
-			return [&"FaceplantDive", actor.vel.x]
-		else:
-			return [&"Dive", false]
+		return [&"Dive", false]
 
 	if actor.vel.y > 0 and input.buffered_input(&"spin"):
 		movement.update_direction(InputManager.get_x_dir())
