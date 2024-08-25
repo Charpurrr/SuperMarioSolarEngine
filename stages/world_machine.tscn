@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bite6o37o0mpt"]
 
-[ext_resource type="Script" path="res://areas/world_machine.gd" id="1_gcjeb"]
-[ext_resource type="PackedScene" uid="uid://ernfgv2twpy4" path="res://areas/technicolor_testbed.tscn" id="2_7jsli"]
+[ext_resource type="Script" path="res://stages/world_machine.gd" id="1_gcjeb"]
+[ext_resource type="PackedScene" uid="uid://ernfgv2twpy4" path="res://stages/technicolor_testbed.tscn" id="2_7jsli"]
 [ext_resource type="PackedScene" uid="uid://bfb4xq874buf6" path="res://props/level_environments/synth.tscn" id="3_emc2i"]
 [ext_resource type="PackedScene" uid="uid://ccj3teu3h6xfm" path="res://ui/ui.tscn" id="3_pcjjq"]
 
@@ -10,8 +10,9 @@ script = ExtResource("1_gcjeb")
 loaded_level = ExtResource("2_7jsli")
 level_name = &"Technicolor Testbed"
 mission_name = &"Operation: System Unnoticed"
-mission_info = "Just keep debugging...
-Just keep debugging...
-Just keep debugging..."
+mission_info = "Just keep debugging... Just keep debugging...
+Just keep debugging... Just keep debugging...
+Just keep debugging... Just keep debugging...
+"
 loaded_environment = ExtResource("3_emc2i")
 user_interface = ExtResource("3_pcjjq")

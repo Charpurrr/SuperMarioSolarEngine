@@ -8,10 +8,10 @@ extends Control
 
 
 func _ready():
-	choices.resume.pressed.connect(_resume)
-	choices.retry.pressed.connect(_retry)
-	choices.settings.pressed.connect(_settings)
-	choices.quit.pressed.connect(_quit)
+	#choices.resume.pressed.connect(_resume)
+	#choices.retry.pressed.connect(_retry)
+	#choices.settings.pressed.connect(_settings)
+	#choices.quit.pressed.connect(_quit)
 
 	visible = false
 	update_settings_visibility(false)

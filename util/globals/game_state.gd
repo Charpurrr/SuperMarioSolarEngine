@@ -1,8 +1,10 @@
 extends Node
 
+#@warning_ignore("unused_signal")
 signal reload
 signal paused
 
+#@warning_ignore("unused_signal")
 signal frame_advanced
 
 var bgm_muted: bool = false

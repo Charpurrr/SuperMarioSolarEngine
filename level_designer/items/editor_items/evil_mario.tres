@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EditorItemActor" load_steps=189 format=3 uid="uid://dpd72iqj6b5te"]
+[gd_resource type="Resource" script_class="EditorItemActor" load_steps=190 format=3 uid="uid://dpd72iqj6b5te"]
 
 [ext_resource type="Script" path="res://level_designer/items/editor_items/editor_item_actor.gd" id="1_cmbnh"]
 [ext_resource type="PackedScene" uid="uid://dgqp3sqvmcvpu" path="res://actors/player/mario/mario.tscn" id="2_5mp1p"]
@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://dc2jyd6n2utp0" path="res://actors/player/mario/anime/triple_jump.png" id="33_lrblb"]
 [ext_resource type="Texture2D" uid="uid://t4xilspn0obp" path="res://actors/player/mario/anime_127/run.png" id="34_no5rx"]
 [ext_resource type="Texture2D" uid="uid://cm52bcakxqdf0" path="res://actors/player/mario/anime/walljump.png" id="35_1s0t0"]
+[ext_resource type="Script" path="res://level_designer/items/properties/property.gd" id="35_yq5sy"]
 [ext_resource type="Texture2D" uid="uid://bdpghbyihiefv" path="res://actors/player/mario/anime_127/wallslide.png" id="36_3pufb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eusuh"]
@@ -1317,5 +1318,5 @@ script = ExtResource("1_cmbnh")
 item_scene = ExtResource("2_5mp1p")
 icon_texture = SubResource("AtlasTexture_eusuh")
 category = 3
-properties = Array[Resource("res://level_designer/items/properties/property.gd")]([ExtResource("3_ifq1m")])
+properties = Array[ExtResource("35_yq5sy")]([ExtResource("3_ifq1m")])
 preview_display_data = SubResource("Resource_prs5l")

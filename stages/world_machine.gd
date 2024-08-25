@@ -59,4 +59,4 @@ func _reload_level():
 	add_child(level_node)
 	level_node.add_child(new_env)
 
-	emit_signal("level_reloaded")
+	emit_signal(&"level_reloaded")

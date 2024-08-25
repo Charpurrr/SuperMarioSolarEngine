@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="EditorItemActor" load_steps=9 format=3 uid="uid://cwlmuqietmfqn"]
+[gd_resource type="Resource" script_class="EditorItemActor" load_steps=10 format=3 uid="uid://cwlmuqietmfqn"]
 
 [ext_resource type="Script" path="res://level_designer/items/editor_items/editor_item_actor.gd" id="1_2ssve"]
 [ext_resource type="Texture2D" uid="uid://x2edebevq3c7" path="res://actors/enemies/goomba/anime/idle.png" id="1_di0nm"]
 [ext_resource type="PackedScene" uid="uid://cvbbpn56rtjwd" path="res://actors/enemies/goomba/goomba.tscn" id="2_ojfii"]
 [ext_resource type="Script" path="res://level_designer/items/preview_items/preview_display/static_preview_display.gd" id="3_wurxy"]
+[ext_resource type="Script" path="res://level_designer/items/properties/property.gd" id="4_6m2bb"]
 [ext_resource type="Resource" uid="uid://dgoo836b0wfb1" path="res://level_designer/items/properties/scale.tres" id="4_xg446"]
 [ext_resource type="Resource" uid="uid://dgglm8uxlfcgf" path="res://level_designer/items/properties/tint.tres" id="5_ucmka"]
 
@@ -20,5 +21,5 @@ script = ExtResource("1_2ssve")
 item_scene = ExtResource("2_ojfii")
 icon_texture = ExtResource("1_di0nm")
 category = 3
-properties = Array[Resource("res://level_designer/items/properties/property.gd")]([ExtResource("4_xg446"), ExtResource("5_ucmka")])
+properties = Array[ExtResource("4_6m2bb")]([ExtResource("4_xg446"), ExtResource("5_ucmka")])
 preview_display_data = SubResource("Resource_3pb3e")

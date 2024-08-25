@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="EditorItemTerrain" load_steps=6 format=3 uid="uid://b54qj4s6iwq0v"]
+[gd_resource type="Resource" script_class="EditorItemTerrain" load_steps=7 format=3 uid="uid://b54qj4s6iwq0v"]
 
 [ext_resource type="Texture2D" uid="uid://d2d23lf2h8era" path="res://props/terrain/grass/grass.png" id="1_4xw2n"]
 [ext_resource type="Script" path="res://level_designer/items/editor_items/editor_item_terrain.gd" id="1_wopmr"]
 [ext_resource type="Resource" uid="uid://di8no2s3qpemd" path="res://props/terrain/grass/grass.tres" id="2_mdg3u"]
 [ext_resource type="Script" path="res://level_designer/items/preview_items/preview_display/complex_preview_display.gd" id="3_lnp4v"]
+[ext_resource type="Script" path="res://level_designer/items/properties/property.gd" id="4_15fd5"]
 
 [sub_resource type="Resource" id="Resource_uu1w6"]
 script = ExtResource("3_lnp4v")
@@ -13,5 +14,5 @@ script = ExtResource("1_wopmr")
 item_resource = ExtResource("2_mdg3u")
 icon_texture = ExtResource("1_4xw2n")
 category = 0
-properties = Array[Resource("res://level_designer/items/properties/property.gd")]([])
+properties = Array[ExtResource("4_15fd5")]([])
 preview_display_data = SubResource("Resource_uu1w6")
