@@ -13,13 +13,13 @@
 [ext_resource type="Texture2D" uid="uid://dir44lhfrdcxu" path="res://ui/input_display/input_display_ico7.png" id="9_smbrs"]
 [ext_resource type="Texture2D" uid="uid://15yce5ngma24" path="res://ui/input_display/input_display_ico8.png" id="10_5r8on"]
 [ext_resource type="Script" path="res://ui/pause_screen/pause_menu.gd" id="12_l4gs6"]
-[ext_resource type="Shader" path="res://props/shaders/map_gradient.gdshader" id="12_wqetc"]
+[ext_resource type="Shader" path="res://util/shaders/map_gradient.gdshader" id="12_wqetc"]
 [ext_resource type="Script" path="res://ui/pause_screen/settings/audio/audio_setting.gd" id="14_466vg"]
 [ext_resource type="FontFile" uid="uid://dwjboqsj8b8xd" path="res://ui/fonts/super_mario.ttf" id="14_n0vgh"]
 [ext_resource type="Texture2D" uid="uid://bbu4m0gd3b85w" path="res://ui/pause_screen/gradient_maps/synth_gradient.tres" id="14_qpmjx"]
 [ext_resource type="Script" path="res://ui/pause_screen/level_info.gd" id="15_ihj7k"]
 [ext_resource type="Texture2D" uid="uid://qslbjwvvnw28" path="res://ui/pause_screen/textures/pattern_solar.png" id="15_uxr3e"]
-[ext_resource type="Shader" uid="uid://dvwfqhrunuxy2" path="res://props/shaders/pause_panel.tres" id="15_w8105"]
+[ext_resource type="Shader" uid="uid://dvwfqhrunuxy2" path="res://ui/pause_screen/pause_panel.tres" id="15_w8105"]
 [ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="15_y78en"]
 [ext_resource type="Script" path="res://ui/pause_screen/choices.gd" id="16_0su14"]
 [ext_resource type="PackedScene" uid="uid://cxqj15hquutxq" path="res://ui/pause_screen/settings/controls/tab.tscn" id="17_7m8yr"]
@@ -45,7 +45,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_01jq4"]
 font = ExtResource("4_ko57l")
-font_size = 30
+font_size = 28
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8xxao"]
 shader = ExtResource("12_wqetc")
@@ -1816,7 +1816,6 @@ notif_scene = ExtResource("2_ufvuv")
 notif_list = NodePath("Notifications")
 
 [node name="CoinCounter" type="HBoxContainer" parent="."]
-anchors_preset = -1
 offset_left = 1.0
 offset_top = 5.0
 offset_right = 103.0

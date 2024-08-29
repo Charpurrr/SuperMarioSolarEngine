@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="EditorItemActor" load_steps=10 format=3 uid="uid://cwlmuqietmfqn"]
 
 [ext_resource type="Script" path="res://level_designer/items/editor_items/editor_item_actor.gd" id="1_2ssve"]
-[ext_resource type="Texture2D" uid="uid://x2edebevq3c7" path="res://actors/enemies/goomba/anime/idle.png" id="1_di0nm"]
-[ext_resource type="PackedScene" uid="uid://cvbbpn56rtjwd" path="res://actors/enemies/goomba/goomba.tscn" id="2_ojfii"]
+[ext_resource type="Texture2D" uid="uid://x2edebevq3c7" path="res://entities/enemies/goomba/anime/idle.png" id="1_di0nm"]
+[ext_resource type="PackedScene" uid="uid://cvbbpn56rtjwd" path="res://entities/enemies/goomba/goomba.tscn" id="2_ojfii"]
 [ext_resource type="Script" path="res://level_designer/items/preview_items/preview_display/static_preview_display.gd" id="3_wurxy"]
 [ext_resource type="Script" path="res://level_designer/items/properties/property.gd" id="4_6m2bb"]
 [ext_resource type="Resource" uid="uid://dgoo836b0wfb1" path="res://level_designer/items/properties/scale.tres" id="4_xg446"]

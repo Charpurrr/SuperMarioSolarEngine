@@ -1,7 +1,7 @@
 [gd_scene load_steps=111 format=3 uid="uid://ernfgv2twpy4"]
 
 [ext_resource type="Script" path="res://stages/level_info.gd" id="1_0lcsw"]
-[ext_resource type="PackedScene" uid="uid://dgqp3sqvmcvpu" path="res://actors/player/mario/mario.tscn" id="1_0md33"]
+[ext_resource type="PackedScene" uid="uid://dgqp3sqvmcvpu" path="res://entities/player/mario/mario.tscn" id="1_0md33"]
 [ext_resource type="Texture2D" uid="uid://bvlq5mbmdnk2b" path="res://level_designer/terrain_edit/polyline_segment1.png" id="5_gxajj"]
 [ext_resource type="Texture2D" uid="uid://dlk1ab78py0wb" path="res://level_designer/terrain_edit/polyline_segment2.png" id="6_88gl8"]
 [ext_resource type="Texture2D" uid="uid://wf3l8upofoip" path="res://level_designer/terrain_edit/polyline_segment3.png" id="7_hq04b"]
@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://dhy6xyxjkigxc" path="res://props/terrain/synth/f1_corner_out.png" id="17_3pxte"]
 [ext_resource type="Texture2D" uid="uid://bkkhnpd6qwun3" path="res://props/terrain/synth/f1_fill_4.png" id="17_op5j5"]
 [ext_resource type="Script" path="res://addons/rmsmartshape/normal_range.gd" id="17_qbass"]
-[ext_resource type="PackedScene" uid="uid://cvbbpn56rtjwd" path="res://actors/enemies/goomba/goomba.tscn" id="17_vusvp"]
+[ext_resource type="PackedScene" uid="uid://cvbbpn56rtjwd" path="res://entities/enemies/goomba/goomba.tscn" id="17_vusvp"]
 [ext_resource type="Script" path="res://addons/rmsmartshape/materials/shape_material.gd" id="18_b7ui1"]
 [ext_resource type="Script" path="res://addons/rmsmartshape/materials/edge_material_metadata.gd" id="18_pr87g"]
 [ext_resource type="Script" path="res://util/polyshape.gd" id="25_j37i1"]
