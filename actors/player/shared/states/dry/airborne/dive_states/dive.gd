@@ -4,8 +4,6 @@ extends PlayerState
 
 ## The horizontal dive power added to your current velocity.
 @export var x_power: float = 6.0
-## The vertical dive power only applied in certain cases.
-@export var y_power: float = 1.88
 ## The minimum horizontal acceleration step.
 @export var min_accel: float = 0.05
 ## The maximum horizontal acceleration step.

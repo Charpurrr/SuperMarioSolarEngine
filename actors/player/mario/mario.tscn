@@ -2311,7 +2311,6 @@ script = ExtResource("73_acu3g")
 [node name="Dive" type="Node" parent="StateManager/Dry/Airborne/DiveStates"]
 script = ExtResource("134_dsbpr")
 x_power = 3.2
-y_power = 2.5
 max_accel = 0.4
 hitbox_type = "Dive"
 animation = &"dive"

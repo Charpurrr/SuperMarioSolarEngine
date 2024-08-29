@@ -1,10 +1,9 @@
-[gd_scene load_steps=70 format=4 uid="uid://ccj3teu3h6xfm"]
+[gd_scene load_steps=68 format=4 uid="uid://ccj3teu3h6xfm"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_pakjx"]
 [ext_resource type="Script" path="res://ui/debug_label.gd" id="2_suudb"]
 [ext_resource type="PackedScene" uid="uid://b41sl5v4p501f" path="res://ui/notification/notification.tscn" id="2_ufvuv"]
 [ext_resource type="Texture2D" uid="uid://rqmk8y0h1450" path="res://ui/input_display/input_display_ico1.png" id="3_4oo64"]
-[ext_resource type="Shader" path="res://props/shaders/outline_dropshadow.gdshader" id="3_bw15m"]
 [ext_resource type="Texture2D" uid="uid://jbm5npuy3yok" path="res://ui/input_display/input_display_ico2.png" id="4_8x05r"]
 [ext_resource type="FontFile" uid="uid://e821cxxeybxh" path="res://ui/fonts/mario_sunshine.ttf" id="4_ko57l"]
 [ext_resource type="Texture2D" uid="uid://bwh5yg024sqag" path="res://ui/input_display/input_display_ico3.png" id="5_cgoe6"]
@@ -44,26 +43,9 @@
 [ext_resource type="Script" path="res://ui/pause_screen/settings/audio/select_audiod.gd" id="32_k3s7s"]
 [ext_resource type="AudioStream" uid="uid://bticstbu0baju" path="res://ui/pause_screen/settings/audio/ting.wav" id="36_wmtog"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3yjhr"]
-shader = ExtResource("3_bw15m")
-shader_parameter/thickness = 100.0
-shader_parameter/ring_count = 16
-shader_parameter/ring_offset = 0.0
-shader_parameter/outline_color = Color(0, 0, 0, 1)
-shader_parameter/border_clipping_fix = false
-shader_parameter/aspect_ratio = 1.0
-shader_parameter/square_border = false
-shader_parameter/offset = null
-shader_parameter/max_or_add = false
-
 [sub_resource type="LabelSettings" id="LabelSettings_01jq4"]
 font = ExtResource("4_ko57l")
 font_size = 30
-font_color = Color(1, 0.952941, 0.129412, 1)
-outline_size = 9
-outline_color = Color(0.709804, 0.188235, 0.0941176, 1)
-shadow_size = 9
-shadow_color = Color(0.117647, 0, 0.431373, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8xxao"]
 shader = ExtResource("12_wqetc")
@@ -1834,10 +1816,11 @@ notif_scene = ExtResource("2_ufvuv")
 notif_list = NodePath("Notifications")
 
 [node name="CoinCounter" type="HBoxContainer" parent="."]
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 40.0
-offset_bottom = 23.0
+anchors_preset = -1
+offset_left = 1.0
+offset_top = 5.0
+offset_right = 103.0
+offset_bottom = 30.0
 theme_override_constants/separation = 0
 
 [node name="Control" type="Control" parent="CoinCounter"]
@@ -1845,17 +1828,14 @@ custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="CoinCounter/Control"]
-modulate = Color(1, 1, 0, 1)
 z_index = 1
-material = SubResource("ShaderMaterial_3yjhr")
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = -2.0
-offset_bottom = -2.0
+offset_left = 8.0
+offset_top = 4.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("30_7ngu7")
