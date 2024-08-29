@@ -6,31 +6,31 @@ extends PlayerState
 @export var x_power: float = 6.0
 ## The vertical dive power only applied in certain cases.
 @export var y_power: float = 1.88
+## The minimum horizontal acceleration step.
+@export var min_accel: float = 0.05
+## The maximum horizontal acceleration step.
+@export var max_accel: float = 0.2
 ## The maximum horizontal speed you need to reach before dives no longer
 ## contribute to your x velocity.
-@export var accel_cap: float = 10.0
+@export var speed_cap: float = 8.0
 
 
-func _on_enter(bellyflop):
+# dive_direction is an integer that defines the direction in which 
+# the dive will initially send you.
+func _on_enter(dive_direction):
+	if dive_direction is int:
+		movement.update_direction(dive_direction)
+
 	movement.consume_coyote_timer()
 	movement.consec_jumps = 0
 	movement.dived = true
 
 	actor.set_floor_snap_length(movement.snap_length)
 
-	if bellyflop:
-		actor.doll.set_frame(2)
-
-	if actor.vel.y > -y_power or is_equal_approx(actor.vel.x, 0):
-		actor.vel.y = -y_power
-
 	if movement.facing_direction != sign(actor.vel.x):
 		actor.vel.x = 0
 
-	#if abs(actor.vel.x) > accel_cap - x_power:
-			#actor.vel.x = accel_cap * movement.facing_direction
-		#else:
-			#actor.vel.x += x_power * movement.facing_direction
+	movement.accelerate(Vector2.RIGHT * movement.facing_direction * x_power, speed_cap)
 
 	# Sprite rotation starts at 0 when neutral, 
 	# which actually corresponds with 90° or PI / 2.
@@ -44,7 +44,10 @@ func _physics_tick():
 	if not actor.is_on_floor():
 		movement.body_rotation = TAU / 4 + actor.vel.angle()
 
-	movement.move_x_analog(0.1, false, 0.0, accel_cap)
+	var speed_factor: float = min(1.0, inverse_lerp(0.0, speed_cap, abs(actor.vel.x)))
+	var accel: float = lerp(min_accel, max_accel, speed_factor)
+
+	movement.move_x_analog(accel, false)
 
 	actor.doll.rotation = lerp_angle(actor.doll.rotation, movement.body_rotation, 0.5)
 

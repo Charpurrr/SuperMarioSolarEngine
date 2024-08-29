@@ -27,7 +27,7 @@ func _physics_tick():
 
 func _trans_rules():
 	if not movement.dived and movement.can_air_action() and input.buffered_input(&"dive"):
-		return [&"Dive", false]
+		return &"Dive"
 
 	if linger_timer == 0:
 		return &"GroundPoundFall"

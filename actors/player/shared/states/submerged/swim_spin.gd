@@ -9,7 +9,12 @@ extends PlayerState
 func _physics_tick():
 	var boost_speed = movement.swim_speed + extra_boost_speed
 
-	movement.accelerate(Vector2.from_angle(actor.doll.rotation) * boost_speed, boost_speed, 0.03125)
+	movement.accelerate(
+		Vector2.from_angle(actor.doll.rotation) * boost_speed * movement.facing_direction,
+		boost_speed,
+		0.03125
+	)
+
 	movement.radial_friction(0.0625, boost_speed)
 
 

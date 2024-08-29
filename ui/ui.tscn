@@ -1,10 +1,12 @@
-[gd_scene load_steps=66 format=4 uid="uid://ccj3teu3h6xfm"]
+[gd_scene load_steps=70 format=4 uid="uid://ccj3teu3h6xfm"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_pakjx"]
 [ext_resource type="Script" path="res://ui/debug_label.gd" id="2_suudb"]
 [ext_resource type="PackedScene" uid="uid://b41sl5v4p501f" path="res://ui/notification/notification.tscn" id="2_ufvuv"]
 [ext_resource type="Texture2D" uid="uid://rqmk8y0h1450" path="res://ui/input_display/input_display_ico1.png" id="3_4oo64"]
+[ext_resource type="Shader" path="res://props/shaders/outline_dropshadow.gdshader" id="3_bw15m"]
 [ext_resource type="Texture2D" uid="uid://jbm5npuy3yok" path="res://ui/input_display/input_display_ico2.png" id="4_8x05r"]
+[ext_resource type="FontFile" uid="uid://e821cxxeybxh" path="res://ui/fonts/mario_sunshine.ttf" id="4_ko57l"]
 [ext_resource type="Texture2D" uid="uid://bwh5yg024sqag" path="res://ui/input_display/input_display_ico3.png" id="5_cgoe6"]
 [ext_resource type="Texture2D" uid="uid://bkvicbrah3ltp" path="res://ui/input_display/input_display_ico4.png" id="6_7ipv2"]
 [ext_resource type="Texture2D" uid="uid://cnypyennkpxux" path="res://ui/input_display/input_display_ico5.png" id="7_yer77"]
@@ -41,6 +43,27 @@
 [ext_resource type="Texture2D" uid="uid://b203e7fny4xhg" path="res://ui/pause_screen/textures/coin_bag.png" id="31_s5ogs"]
 [ext_resource type="Script" path="res://ui/pause_screen/settings/audio/select_audiod.gd" id="32_k3s7s"]
 [ext_resource type="AudioStream" uid="uid://bticstbu0baju" path="res://ui/pause_screen/settings/audio/ting.wav" id="36_wmtog"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3yjhr"]
+shader = ExtResource("3_bw15m")
+shader_parameter/thickness = 100.0
+shader_parameter/ring_count = 16
+shader_parameter/ring_offset = 0.0
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/border_clipping_fix = false
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/square_border = false
+shader_parameter/offset = null
+shader_parameter/max_or_add = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_01jq4"]
+font = ExtResource("4_ko57l")
+font_size = 30
+font_color = Color(1, 0.952941, 0.129412, 1)
+outline_size = 9
+outline_color = Color(0.709804, 0.188235, 0.0941176, 1)
+shadow_size = 9
+shadow_color = Color(0.117647, 0, 0.431373, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8xxao"]
 shader = ExtResource("12_wqetc")
@@ -1810,7 +1833,41 @@ pause_screen = NodePath("PauseScreen")
 notif_scene = ExtResource("2_ufvuv")
 notif_list = NodePath("Notifications")
 
+[node name="CoinCounter" type="HBoxContainer" parent="."]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_constants/separation = 0
+
+[node name="Control" type="Control" parent="CoinCounter"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CoinCounter/Control"]
+modulate = Color(1, 1, 0, 1)
+z_index = 1
+material = SubResource("ShaderMaterial_3yjhr")
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("30_7ngu7")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="CoinCounter"]
+layout_mode = 2
+text = "x999"
+label_settings = SubResource("LabelSettings_01jq4")
+
 [node name="DebugLabel" type="Label" parent="."]
+visible = false
 offset_right = 86.0
 offset_bottom = 179.0
 theme_override_font_sizes/font_size = 10
@@ -1913,6 +1970,7 @@ layout_mode = 2
 texture = ExtResource("5_cgoe6")
 
 [node name="PauseScreen" type="Control" parent="." node_paths=PackedStringArray("choices", "pause_menu", "settings_menu")]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -2281,20 +2339,30 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
 
-[node name="ActiveNozzles" type="HBoxContainer" parent="PauseScreen/PauseMenu/Info/Contents/Bottom"]
+[node name="ActiveNozzles" type="VBoxContainer" parent="PauseScreen/PauseMenu/Info/Contents/Bottom"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpaceTop" type="Control" parent="PauseScreen/PauseMenu/Info/Contents/Bottom/ActiveNozzles"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Icons" type="HBoxContainer" parent="PauseScreen/PauseMenu/Info/Contents/Bottom/ActiveNozzles"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Hover" type="TextureRect" parent="PauseScreen/PauseMenu/Info/Contents/Bottom/ActiveNozzles"]
+[node name="Hover" type="TextureRect" parent="PauseScreen/PauseMenu/Info/Contents/Bottom/ActiveNozzles/Icons"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
 texture = ExtResource("19_wa1aj")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Turbo" type="TextureRect" parent="PauseScreen/PauseMenu/Info/Contents/Bottom/ActiveNozzles"]
+[node name="Turbo" type="TextureRect" parent="PauseScreen/PauseMenu/Info/Contents/Bottom/ActiveNozzles/Icons"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -2303,19 +2371,25 @@ texture = ExtResource("20_yd3bl")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Rocket" type="TextureRect" parent="PauseScreen/PauseMenu/Info/Contents/Bottom/ActiveNozzles"]
+[node name="Rocket" type="TextureRect" parent="PauseScreen/PauseMenu/Info/Contents/Bottom/ActiveNozzles/Icons"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
 texture = ExtResource("21_xk5tc")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="SpaceBottom" type="Control" parent="PauseScreen/PauseMenu/Info/Contents/Bottom/ActiveNozzles"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
 [node name="SpaceMiddle" type="Control" parent="PauseScreen/PauseMenu/Info/Contents/Bottom"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.1
+size_flags_stretch_ratio = 0.2
 
 [node name="CoinInfo" type="VBoxContainer" parent="PauseScreen/PauseMenu/Info/Contents/Bottom"]
 layout_mode = 2

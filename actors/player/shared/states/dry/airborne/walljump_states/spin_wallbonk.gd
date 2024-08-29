@@ -42,7 +42,7 @@ func _trans_rules():
 		return &"Idle"
 
 	if not movement.dived and movement.can_air_action() and input.buffered_input(&"dive"):
-		return [&"Dive", false]
+		return &"Dive"
 
 	if finished_init and movement.can_air_action() and input.buffered_input(&"spin"):
 		return &"Twirl"

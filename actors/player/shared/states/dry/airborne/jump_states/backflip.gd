@@ -38,7 +38,7 @@ func _trans_rules():
 		return &"Wallslide"
 
 	if not movement.dived and movement.can_air_action() and input.buffered_input(&"dive"):
-		return [&"Dive", false]
+		return &"Dive"
 
 	if movement.can_spin() and input.buffered_input(&"spin"):
 		return &"Spin"

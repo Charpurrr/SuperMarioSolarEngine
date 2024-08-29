@@ -48,6 +48,6 @@ func _trans_rules():
 		return [&"Crouch", [false, true]]
 
 	if input.buffered_input(&"dive"):
-		return [&"Dive", false]
+		return &"Dive"
 
 	return &""

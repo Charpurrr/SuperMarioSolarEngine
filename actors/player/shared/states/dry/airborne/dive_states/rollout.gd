@@ -28,7 +28,7 @@ func _trans_rules():
 		and actor.vel.y > 0
 		and (input.buffered_input(&"dive") or Input.is_action_pressed(&"dive"))
 	):
-		return [&"Dive", false]
+		return &"Dive"
 
 	if actor.is_on_floor():
 		return &"Idle"

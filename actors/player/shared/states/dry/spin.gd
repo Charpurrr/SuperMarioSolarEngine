@@ -76,12 +76,12 @@ func _air_rules() -> Variant:
 	if actor.is_on_floor():
 		return &"Idle"
 
-	if finished_init and movement.can_air_action():
-		if input.buffered_input(&"spin"):
+	if movement.can_air_action():
+		if finished_init and input.buffered_input(&"spin"):
 			return &"Twirl"
 
 		if not movement.dived and input.buffered_input(&"dive"):
-			return [&"Dive", false]
+			return [&"Dive", input.get_x_dir()]
 
 	if movement.finished_freefall_timer():
 		return &"Freefall"

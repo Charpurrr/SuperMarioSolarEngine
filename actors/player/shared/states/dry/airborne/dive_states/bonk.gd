@@ -56,7 +56,7 @@ func _trans_rules():
 
 	if finished_rotating:
 		if not movement.dived and movement.can_air_action() and input.buffered_input(&"dive"):
-			return [&"Dive", false]
+			return &"Dive"
 
 		if movement.can_air_action() and input.buffered_input(&"spin"):
 			return &"Twirl"

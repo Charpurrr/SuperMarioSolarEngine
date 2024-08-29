@@ -27,7 +27,7 @@ func _trans_rules():
 			return &"Spin"
 
 		if input.buffered_input(&"dive"):
-			return [&"Dive", true]
+			return &"Dive"
 
 		if (
 			(InputManager.get_x_dir() == movement.facing_direction or InputManager.get_x_dir() == 0)
