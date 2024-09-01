@@ -6,6 +6,8 @@ extends Node2D
 
 signal level_reloaded
 
+## Whether or not [member level_scene] should be automatically loaded.
+@export var autoload: bool = true
 @export var level_scene: PackedScene
 
 @export var level_name: StringName
@@ -25,19 +27,21 @@ var ui_node: UserInterface
 func _ready():
 	GameState.reload.connect(_reload_level)
 
-	if level_scene != null:
+	if autoload and level_scene != null:
 		var level = level_scene.instantiate()
 		handle_level_node(level)
 
 
-func store_level_scene(scene: PackedScene) -> void:
+## Stores a level as a scene, so it can be reloaded.
+func store_level_scene(level: Level) -> void:
+	var scene = PackedScene.new()
+	scene.pack(level)
 	level_scene = scene
 
 
 func handle_level_node(level: Level, store: bool = false) -> void:
 	if store:
-		var scene = PackedScene.new()
-		scene.pack(level)
+		store_level_scene(level)
 
 	level_node = level
 

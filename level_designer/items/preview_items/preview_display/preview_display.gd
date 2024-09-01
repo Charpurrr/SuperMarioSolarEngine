@@ -1,6 +1,10 @@
 @tool
 class_name PreviewDisplayData
 extends Resource
+## Stores data about a preview item display node.
+##
+## Stores data about a preview item display node,
+## allowing it to be created and added to a [PreviewItem].
 
 
 func create() -> Node2D:

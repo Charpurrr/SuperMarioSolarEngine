@@ -2,12 +2,15 @@ class_name PropertyDisplay
 extends Node2D
 ## Handles the display of properties in the editor.
 
-## The preview item this property affects.
-@onready var preview: PreviewItem = get_parent()
+## The preview display this property affects.
+var preview_display: Node2D
+
+## The [PreviewItem] this property affects.
+var preview_item: PreviewItem
 
 
 ## Called when the associated property is changed externally.
-func property_changed(_new_value: Variant) -> void:
+func value_changed(_new_value: Variant) -> void:
 	pass
 
 

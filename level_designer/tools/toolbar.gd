@@ -20,7 +20,7 @@ func _ready():
 
 
 func update_active_tool(new_tool: Tool):
-	editor.level.cancel_brush()
+	editor.level_preview.cancel_brush()
 	if active_tool != null:
 		active_tool.deactivate()
 	new_tool.activate()

@@ -1,0 +1,40 @@
+[gd_scene load_steps=9 format=3 uid="uid://b6d0a158by2pt"]
+
+[ext_resource type="Texture2D" uid="uid://bvlq5mbmdnk2b" path="res://level_designer/terrain_edit/polyline_segment1.png" id="1_xnw7c"]
+[ext_resource type="Texture2D" uid="uid://dlk1ab78py0wb" path="res://level_designer/terrain_edit/polyline_segment2.png" id="2_wtnye"]
+[ext_resource type="Texture2D" uid="uid://wf3l8upofoip" path="res://level_designer/terrain_edit/polyline_segment3.png" id="3_ee4k3"]
+[ext_resource type="Texture2D" uid="uid://deaf7c51bxjrn" path="res://level_designer/terrain_edit/polyline_segment4.png" id="4_o4ur7"]
+[ext_resource type="Texture2D" uid="uid://fgjreysoh48j" path="res://level_designer/terrain_edit/polyline_segment5.png" id="5_jrtrr"]
+[ext_resource type="Script" path="res://props/terrain/terrain_editor.gd" id="6_gc08b"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_akk4i"]
+frames = 5
+speed_scale = 20.0
+frame_0/texture = ExtResource("1_xnw7c")
+frame_1/texture = ExtResource("2_wtnye")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_ee4k3")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("4_o4ur7")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("5_jrtrr")
+frame_4/duration = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fqbrv"]
+radius = 4.0
+
+[node name="TerrainEditor" type="Line2D"]
+visible = false
+texture_repeat = 2
+width = 2.0
+texture = SubResource("AnimatedTexture_akk4i")
+texture_mode = 1
+script = ExtResource("6_gc08b")
+
+[node name="Button" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Button"]
+shape = SubResource("CircleShape2D_fqbrv")
+
+[connection signal="input_event" from="Button" to="." method="_on_button_input_event"]

@@ -21,4 +21,4 @@ text = "x"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[connection signal="value_changed" from="Input" to="." method="_on_value_changed"]
+[connection signal="value_changed" from="Input" to="." method="_on_child_value_changed"]

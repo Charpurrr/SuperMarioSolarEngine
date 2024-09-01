@@ -8,7 +8,7 @@ extends Button
 ## The shape of the tool.
 @export var mouse_shape: Input.CursorShape
 ## The hotspot location of the cursor.
-## [br][br][i]The hotspot is the point in the cursor that interacts with other elements on the screen.[/i]
+## [i]This is the point in the cursor that interacts with other elements on the screen.[/i]
 @export var hotspot: Vector2i
 
 ## Whether or not the tool is active for use.

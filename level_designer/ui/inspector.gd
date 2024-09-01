@@ -34,4 +34,4 @@ func _on_ui_selection_changed(items: Array[PreviewItem]) -> void:
 
 func _on_property_value_changed(value: Variant, prop_name: StringName) -> void:
 	for item in selected_items:
-		item.property_values[prop_name] = value
+		item.set_property(value, prop_name)

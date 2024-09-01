@@ -8,7 +8,7 @@ offset_right = 8.0
 offset_bottom = 8.0
 script = ExtResource("1_0gyyj")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="ItemIcon" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

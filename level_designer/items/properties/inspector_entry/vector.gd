@@ -9,6 +9,7 @@ func _ready():
 	create_components(components)
 
 
+## Creates labelled number entries to act as components of the vector.
 func create_components(component_labels: Array[String]) -> void:
 	var first: bool = true
 	for child in component_list.get_children():
@@ -23,26 +24,38 @@ func create_components(component_labels: Array[String]) -> void:
 			first = false
 
 
+## Sets the vector value of this entry.
+## Decomposes the input vector, setting the child components to equal the components of the input.
 func set_value(value: Variant) -> void:
 	var num
 	for i in components.size():
 		component_list.get_child(i).set_value(value[i])
 
 
+## Updates the stored vector value based on the components' values.
 func _update_vector() -> void:
-	value_changed.emit(_get_vector())
+	## Manually call [method _on_child_value_changed] to update the stored value.
+	_on_child_value_changed(_get_vector())
 
 
-func _get_vector():
-	match components.size():
+## Composes a vector from the individual values of the components.
+## Returns a [Vector2], [Vector3] or [Vector4], depending on how many components this vector has.
+func _get_vector() -> Variant:
+	var vec
+	var component_count = components.size()
+	match component_count:
 		2:
-			return Vector2(_get_component_value(0), _get_component_value(1))
+			vec = Vector2()
 		3:
-			return Vector3(_get_component_value(0), _get_component_value(1), _get_component_value(2))
+			vec = Vector3()
 		4:
-			return Vector4(_get_component_value(0), _get_component_value(1), _get_component_value(2), _get_component_value(3))
+			vec = Vector4()
 		_:
 			assert(false, "No support for vectors of size %d." % components.size())
+
+	for i in component_count:
+		vec[i] = _get_component_value(i)
+	return vec
 
 
 func _get_component_value(idx: int) -> float:

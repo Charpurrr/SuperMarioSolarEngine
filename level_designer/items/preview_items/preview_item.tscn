@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" path="res://level_designer/items/preview_items/preview_item.gd" id="1_83u1r"]
 
-[node name="PreviewItem" type="Node2D"]
+[node name="PreviewItem" type="Node2D" node_paths=PackedStringArray("selection_shape")]
 script = ExtResource("1_83u1r")
+selection_shape = NodePath("SelectionArea/SelectionShape")
 
 [node name="SelectionArea" type="Area2D" parent="."]
 collision_layer = 256

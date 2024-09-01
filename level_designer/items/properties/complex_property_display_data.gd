@@ -1,10 +1,12 @@
 class_name ComplexPropertyDisplayData
 extends PropertyDisplayData
-## TODO: doc
+## [PropertyDisplayData] that uses a scene for the display.
 
+## Scene used to display the property.
 @export var scene: PackedScene
 
 
-func add_to(node: Node):
+func add_to(target: Node):
 	var inst = scene.instantiate()
-	node.add_child(inst)
+	target.add_child(inst)
+	return inst

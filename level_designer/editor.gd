@@ -2,12 +2,13 @@ class_name LevelEditor
 extends Node
 ## Base class for the level editor.
 
-@export var user_interface: CanvasLayer
+@export var user_interface: LevelEditorUI
 @export var quit_confirm: ConfirmationDialog
 @export var selection_box: NinePatchRect
-@export var level: LevelPreview
+@export var level_preview: LevelPreview
 @export var camera: Camera2D
 @export var world_machine: WorldMachine
+@export var player_scene: PackedScene
 
 
 func _ready():
@@ -15,8 +16,13 @@ func _ready():
 
 
 func _on_play_button_pressed() -> void:
+	# TODO: Proper UI disabling
+	# TODO: A way to return to the editor (like backspace from og 63)
+	user_interface.visible = false
+	level_preview.visible = false
+
 	var created_level = Level.new()
-	for preview in level.get_children():
+	for preview in level_preview.get_children():
 		preview = preview as PreviewItem
 		var data = preview.item_data
 		if data is EditorItemActor:
@@ -28,11 +34,16 @@ func _on_play_button_pressed() -> void:
 			inst.position = preview.position
 			created_level.add_child(inst)
 
-	var mario = preload("res://entities/player/mario/mario.tscn").instantiate()
-	created_level.add_child(mario)
-	created_level.player = mario
+	# Create the player node and place it in the level.
+	# TODO: Place the player at the start position
+	var player_node = player_scene.instantiate()
+	created_level.add_child(player_node)
+	created_level.player = player_node
+
+	# Create a camera and parent it to the player.
 	var cam = Camera2D.new()
-	mario.add_child(cam)
+	player_node.add_child(cam)
 	created_level.camera = cam
 	cam.enabled = true
+
 	world_machine.handle_level_node(created_level, true)

@@ -108,7 +108,7 @@ func switch_substate(new_state: State, handover: Variant):
 ## This is based on its transition rules defined in _trans_rules().
 ## If a state is found, switch to that state.
 func probe_switch(defer: bool = false) -> void:
-	if !_is_live():
+	if not _is_live():
 		return
 
 	var link_name
@@ -118,7 +118,6 @@ func probe_switch(defer: bool = false) -> void:
 		link_name = _defer_rules()
 	else:
 		var data
-
 		data = _trans_rules()
 
 		if data is Array:
@@ -130,6 +129,7 @@ func probe_switch(defer: bool = false) -> void:
 	# Only switch if we need to.
 	if not link_name.is_empty():
 		var link = _get_link(link_name)
+
 		_switch_leaf(link, handover)
 
 
@@ -151,9 +151,10 @@ func _get_link(key: StringName) -> StateLink:
 ## Cache a link to a state.
 func _cache_link(key: StringName) -> StateLink:
 	var target = manager.find_child(key)
-	if target == null:
-		push_error("State %s does not exist!" % key)
-		return null
+
+	# To find where the invalid state is referenced, use the CTRL+SHIFT+F
+	# hotkey to search for its name in every script file.
+	assert(target != null, "State %s does not exist." % key)
 
 	var link = StateLink.new(self, target)
 	_link_cache[key] = link

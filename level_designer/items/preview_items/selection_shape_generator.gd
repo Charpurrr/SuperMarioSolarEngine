@@ -26,7 +26,7 @@ var preview_display: Node2D = null
 
 
 ## Saves edits to the selected item.
-func _save_edits():
+func _save_edits() -> void:
 	var shape = ConvexPolygonShape2D.new()
 
 	shape.points = edit_polygon.polygon
@@ -38,7 +38,7 @@ func _save_edits():
 
 
 ## Updates the edit preview to match the selected edit item.
-func _update_edit_preview():
+func _update_edit_preview() -> void:
 	if edit_polygon == null:
 		await ready
 	_clear_edit_preview()
@@ -50,28 +50,46 @@ func _update_edit_preview():
 	if shape == null:
 		return
 
-	edit_polygon.polygon = display_data.get_selection_shape().points
+	if shape is ConvexPolygonShape2D:
+		edit_polygon.polygon = shape.points
+	elif shape is RectangleShape2D:
+		var polygon = rect_size_to_polygon(shape.size)
+		edit_polygon.polygon = polygon
+
 	var inst = manual_edit_item.preview_display_data.create()
 	preview_display = inst
 	add_child(inst)
 
 
+func rect_size_to_polygon(size: Vector2) -> PackedVector2Array:
+	var halfsize = size * 0.5
+	var polygon: PackedVector2Array = []
+
+	# Clockwise mapping.
+	for y in [-1, 1]:
+		for x in [-1, 1]:
+			polygon.append(Vector2(x * -y, y) * halfsize)
+
+	return polygon
+
+
 ## Clears the edit preview.
-func _clear_edit_preview():
+func _clear_edit_preview() -> void:
 	edit_polygon.polygon = []
 	if preview_display != null:
 		preview_display.queue_free()
 		preview_display = null
 
 
-func _is_correct_type(resource):
+func _is_correct_type(resource) -> bool:
 	return resource is EditorItem
 
 
-func _process_all(filesystem, resource_list):
+func _process_all(filesystem, resource_list) -> void:
 	var paths = PackedStringArray()
 	for item in resource_list:
 		item = item as EditorItem
+
 		var display_data = item.preview_display_data as PreviewDisplayData
 		if display_data == null:
 			continue
@@ -98,9 +116,18 @@ func _process_all(filesystem, resource_list):
 	_update_edit_preview()
 
 
-func _shape_from_texture(texture):
+func _shape_from_texture(texture) -> Shape2D:
+	var image = texture.get_image()
+
+	if image == null:
+		# Probably a PlaceholderTexture2D, which cannot generate a proper image.
+		assert(texture is PlaceholderTexture2D)
+		var shape = RectangleShape2D.new()
+		shape.size = texture.get_size()
+		return shape
+
 	var bitmap = BitMap.new()
-	bitmap.create_from_image_alpha(texture.get_image())
+	bitmap.create_from_image_alpha(image)
 
 	var bitmap_size = bitmap.get_size()
 	var polygons = bitmap.opaque_to_polygons(Rect2(Vector2.ZERO, bitmap_size))
