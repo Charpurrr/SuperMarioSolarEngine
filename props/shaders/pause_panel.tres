@@ -1,12 +1,12 @@
 [gd_resource type="VisualShader" load_steps=27 format=3 uid="uid://dvwfqhrunuxy2"]
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_vgxyu"]
-size = Vector2(992, 418)
+size = Vector2(964, 318)
 title = "Panning BG Texture"
 attached_nodes = PackedInt32Array(5, 6, 8, 9, 26, 39)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_60535"]
-size = Vector2(544, 322)
+size = Vector2(544, 138)
 title = "Alpha Modulate"
 attached_nodes = PackedInt32Array(34, 35)
 
@@ -67,7 +67,7 @@ input_name = "texture"
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_mhgos"]
 linked_parent_graph_frame = 50
-size = Vector2(244, 221)
+size = Vector2(244, 118)
 title = "Scroll"
 attached_nodes = PackedInt32Array(31, 37, 33, 54)
 
@@ -77,7 +77,7 @@ linked_parent_graph_frame = 11
 source = 5
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_fhq5k"]
-size = Vector2(1784, 641)
+size = Vector2(1784, 538)
 title = "Spike Alpha"
 attached_nodes = PackedInt32Array(18, 24, 23, 55, 49, 52, 56, 47)
 
@@ -110,7 +110,7 @@ op_type = 0
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_lst23"]
 linked_parent_graph_frame = 50
-size = Vector2(904, 521)
+size = Vector2(904, 418)
 title = "Dimensions"
 attached_nodes = PackedInt32Array(53, 40, 51, 36)
 
@@ -201,8 +201,6 @@ void fragment() {
 
 // Vector2Parameter:36
 	vec2 n_out36p0 = spike_dimensions;
-	float n_out36p1 = n_out36p0.r;
-	float n_out36p2 = n_out36p0.g;
 
 
 // VectorOp:51
@@ -231,7 +229,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-844.748, 82.7484)
 mode = 1
 flags/light_only = false
 nodes/vertex/0/position = Vector2(1140, 520)

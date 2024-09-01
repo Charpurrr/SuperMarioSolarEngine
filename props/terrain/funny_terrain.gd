@@ -60,7 +60,7 @@ func _is_viable_creation() -> bool:
 	if closed:
 		return false
 
-	if not Input.is_action_just_pressed("left_mouse"):
+	if not Input.is_action_just_pressed(&"select"):
 		return false
 
 	if not _check_not_intersect(points, cursor_pos):
@@ -91,6 +91,6 @@ func _check_not_intersect(poly: PackedVector2Array, new_pos: Vector2) -> bool:
 
 
 func _on_button_input_event(_viewport, _event, _shape_idx):
-	if Input.is_action_just_pressed("left_mouse") and _check_not_intersect(points, Vector2.ZERO):
+	if Input.is_action_just_pressed(&"select") and _check_not_intersect(points, Vector2.ZERO):
 		modulate = Color.AQUAMARINE
 		closed = true

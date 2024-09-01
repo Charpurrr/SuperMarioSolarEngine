@@ -5,7 +5,7 @@ extends PanelContainer
 @export var editor: LevelEditor
 
 @export_category(&"Local References")
-@export var select: Tool
+@export var select: SelectTool
 @export var pen: Tool
 @export var erase: Tool
 @export var eyedrop: Tool

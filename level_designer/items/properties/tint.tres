@@ -10,7 +10,8 @@ root_script = ExtResource("1_hcrar")
 
 [resource]
 script = ExtResource("1_rph4c")
-property_name = &"tint"
+name = &"tint"
 show_in_properties = true
 data_type = 20
 display = SubResource("Resource_d18c8")
+default = []

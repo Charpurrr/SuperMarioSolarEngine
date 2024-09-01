@@ -5,6 +5,7 @@ extends Node2D
 var is_grabbed: bool = false
 var item_data: EditorItem
 var display: Node2D
+var property_values: Dictionary = {}
 
 @onready var selection_shape: CollisionShape2D = %SelectionShape
 
@@ -18,6 +19,8 @@ func _ready():
 func create(data: EditorItem):
 	item_data = data
 	display = data.preview_display_data.create()
+	for property in data.properties:
+		property_values[property.name] = property.default[0]
 	add_child(display)
 
 

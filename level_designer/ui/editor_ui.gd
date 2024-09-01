@@ -1,6 +1,8 @@
 class_name LevelEditorUI
 extends CanvasLayer
 
+signal selection_changed(items: Array[PreviewItem])
+
 @export_category(&"UI Buttons")
 @export var z_toggle: CheckButton
 @export var z_layer: SpinBox
@@ -14,6 +16,7 @@ extends CanvasLayer
 
 
 func _ready():
+	toolbar.select.selection_changed.connect(selection_changed.emit)
 	get_window().min_size = Vector2i(800, 300)
 
 
