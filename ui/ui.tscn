@@ -1948,7 +1948,6 @@ layout_mode = 2
 texture = ExtResource("5_cgoe6")
 
 [node name="PauseScreen" type="Control" parent="." node_paths=PackedStringArray("choices", "pause_menu", "settings_menu")]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -2340,22 +2339,22 @@ texture = ExtResource("19_wa1aj")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Turbo" type="TextureRect" parent="PauseScreen/PauseMenu/Info/Contents/Bottom/ActiveNozzles/Icons"]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("20_yd3bl")
-expand_mode = 1
-stretch_mode = 5
-
 [node name="Rocket" type="TextureRect" parent="PauseScreen/PauseMenu/Info/Contents/Bottom/ActiveNozzles/Icons"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
 texture = ExtResource("21_xk5tc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Turbo" type="TextureRect" parent="PauseScreen/PauseMenu/Info/Contents/Bottom/ActiveNozzles/Icons"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.7
+texture = ExtResource("20_yd3bl")
 expand_mode = 1
 stretch_mode = 5
 

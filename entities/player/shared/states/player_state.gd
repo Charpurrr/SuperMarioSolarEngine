@@ -19,8 +19,9 @@ extends State
 ## sound effects it can cycle through.
 @export var sfx_layers: Array[SFXLayer]
 
-@onready var input: InputManager = null
-@onready var movement: PMovement = null
+var input: InputManager = null
+var fludd: FluddManager = null
+var movement: PMovement = null
 
 
 func trigger_enter(handover):
