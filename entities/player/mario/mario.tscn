@@ -2236,7 +2236,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_jo8kb")])
 script = ExtResource("105_g4v7o")
 jump_power = 6.7
 min_jump_percent = 35.0
-jump_number = 1
+jump_number = 2
 animation = &"gp_jump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_8711x"), SubResource("Resource_nl575")])
 
@@ -2357,5 +2357,7 @@ animation_backward = &"butt_slide_backwards"
 animation_airborne = &"butt_slide_jump"
 hitbox_type = "Small"
 animation = &"butt_slide"
+
+[node name="FluddManager" type="Node" parent="."]
 
 [connection signal="body_entered" from="Areas/SpinHitbox" to="StateManager/Dry/Spin" method="_on_spin_hitbox_body_entered"]

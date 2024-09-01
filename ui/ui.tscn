@@ -1827,7 +1827,6 @@ custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="CoinCounter/Control"]
-z_index = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
