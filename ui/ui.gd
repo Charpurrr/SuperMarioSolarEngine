@@ -29,8 +29,8 @@ var input_event: InputEvent
 
 ## This variable is set in [code]world_machine.tscn[/code].
 var world_machine: WorldMachine
-
-@onready var player: CharacterBody2D
+## See [code]_set_player()[/code].
+var player: CharacterBody2D
 
 
 func _ready():
