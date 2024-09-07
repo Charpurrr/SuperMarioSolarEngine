@@ -1941,7 +1941,6 @@ cutoff_sfx = false
 overwrite_other = false
 
 [node name="Mario" type="CharacterBody2D" node_paths=PackedStringArray("doll", "state_manager", "movement", "input", "push_rays", "hitbox", "dive_hitbox", "small_hitbox", "water_check", "crouchlock", "spin_hitbox")]
-position = Vector2(-1, 0)
 collision_layer = 2
 floor_constant_speed = true
 floor_max_angle = 1.39626
@@ -2020,12 +2019,12 @@ movement = NodePath("../Movement")
 [node name="PushRayR" type="RayCast2D" parent="PushRays"]
 modulate = Color(1, 1, 0.164706, 1)
 position = Vector2(0, -14)
-target_position = Vector2(10, 0)
+target_position = Vector2(16, 0)
 
 [node name="PushRayL" type="RayCast2D" parent="PushRays"]
 modulate = Color(1, 1, 0.164706, 1)
 position = Vector2(0, -14)
-target_position = Vector2(-9, 0)
+target_position = Vector2(-16, 0)
 
 [node name="InputManager" type="Node" parent="."]
 script = ExtResource("21_onm15")
@@ -2044,8 +2043,13 @@ snap_length = 8.0
 swim_speed = 3.0
 min_slide_incline = 0.4
 
-[node name="StateManager" type="Node" parent="."]
+[node name="StateManager" type="Node" parent="." node_paths=PackedStringArray("input", "fludd", "movement", "target_actor", "initial_state")]
 script = ExtResource("38_vxs65")
+input = NodePath("../InputManager")
+fludd = NodePath("../FluddManager")
+movement = NodePath("../Movement")
+target_actor = NodePath("..")
+initial_state = NodePath("Dry/Airborne")
 
 [node name="Submerged" type="Node" parent="StateManager"]
 script = ExtResource("135_2utkk")

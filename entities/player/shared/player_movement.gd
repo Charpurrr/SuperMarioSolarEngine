@@ -409,7 +409,10 @@ func can_spin() -> bool:
 ## Return whether or not you can perform an airborne action.
 ## Avoids accidental air movement inputs.
 func can_air_action() -> bool:
-	return not actor.test_move(actor.transform, Vector2i(0, air_margin)) or actor.vel.y < 0
+	var collision := KinematicCollision2D.new()
+	actor.test_move(actor.transform, Vector2i(0, air_margin), collision)
+
+	return collision.get_angle() > actor.floor_max_angle or actor.vel.y < 0
 
 
 func is_submerged() -> bool:
