@@ -3,7 +3,7 @@ extends TextureRect
 @export_color_no_alpha var line_color: Color
 @export var scroll_divisor: float = 8
 
-const LINE_H_COUNT: int = 8
+const LINE_H_COUNT: int = 16
 const LINE_V_COUNT: int = 25
 
 const LINE_H_EXP: float = 1.5
@@ -13,7 +13,7 @@ const LINE_WIDTH_PX: int = 2
 
 var cam_x: float
 
-@onready var environment: LevelEnvironment = get_parent()
+@onready var environment: LevelEnvironment = owner
 
 
 func _physics_process(_delta):

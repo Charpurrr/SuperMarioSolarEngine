@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=4 uid="uid://ccj3teu3h6xfm"]
+[gd_scene load_steps=70 format=4 uid="uid://ccj3teu3h6xfm"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_pakjx"]
 [ext_resource type="Script" path="res://ui/debug_label.gd" id="2_suudb"]
@@ -42,6 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://b203e7fny4xhg" path="res://ui/pause_screen/textures/coin_bag.png" id="31_s5ogs"]
 [ext_resource type="Script" path="res://ui/pause_screen/settings/audio/select_audiod.gd" id="32_k3s7s"]
 [ext_resource type="AudioStream" uid="uid://bticstbu0baju" path="res://ui/pause_screen/settings/audio/ting.wav" id="36_wmtog"]
+[ext_resource type="Shader" path="res://util/shaders/crt.gdshader" id="43_sb4ki"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_01jq4"]
 font = ExtResource("4_ko57l")
@@ -1808,6 +1809,23 @@ unicode = 120
 [sub_resource type="Shortcut" id="Shortcut_bglev"]
 events = [SubResource("InputEventKey_hwwni"), SubResource("InputEventJoypadButton_bmfaf")]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jw2es"]
+shader = ExtResource("43_sb4ki")
+shader_parameter/resolution = Vector2(640, 360)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.44
+shader_parameter/noise_amount = 0.092
+shader_parameter/interference_amount = 1.0
+shader_parameter/grille_amount = 0.133
+shader_parameter/grille_size = 5.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
+
 [node name="UI" type="CanvasLayer" node_paths=PackedStringArray("pause_screen", "notif_list")]
 process_mode = 3
 script = ExtResource("1_pakjx")
@@ -2720,6 +2738,15 @@ text = "↵"
 clip_text = true
 
 [node name="Notifications" type="Node" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_jw2es")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="item_selected" from="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions/OptionButton" to="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions/OptionButton" method="_on_item_selected"]
 [connection signal="pressed" from="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions/Refresh" to="PauseScreen/Settings/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions/OptionButton" method="_on_refresh_pressed"]

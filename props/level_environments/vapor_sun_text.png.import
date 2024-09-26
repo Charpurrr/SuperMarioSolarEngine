@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wf1kmhrykhbo"
-path="res://.godot/imported/synth_mountain.png-1dc41888929b3d5177ff104244eb3230.ctex"
+uid="uid://bymqw6y1llo8u"
+path="res://.godot/imported/vapor_sun_text.png-b4fd48252c1c4275cf50dd87645c530c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://props/bgs/synth/synth_mountain.png"
-dest_files=["res://.godot/imported/synth_mountain.png-1dc41888929b3d5177ff104244eb3230.ctex"]
+source_file="res://props/level_environments/vapor_sun_text.png"
+dest_files=["res://.godot/imported/vapor_sun_text.png-b4fd48252c1c4275cf50dd87645c530c.ctex"]
 
 [params]
 

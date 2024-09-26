@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dk76vr4rcjn8x"
-path="res://.godot/imported/star_twinkle.png-a022f1498c237d4933d7cd6a7c1ef24d.ctex"
+path="res://.godot/imported/star_twinkle.png-0628e5705616cb19ff54f7ec505eac37.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://props/bgs/synth/star_twinkle.png"
-dest_files=["res://.godot/imported/star_twinkle.png-a022f1498c237d4933d7cd6a7c1ef24d.ctex"]
+source_file="res://props/level_environments/synth/star_twinkle.png"
+dest_files=["res://.godot/imported/star_twinkle.png-0628e5705616cb19ff54f7ec505eac37.ctex"]
 
 [params]
 
