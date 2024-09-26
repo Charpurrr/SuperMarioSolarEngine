@@ -3,12 +3,7 @@ extends Node
 signal reload
 signal paused
 
-signal frame_advanced
-
 var bgm_muted: bool = false
-
-## Whether or not you can advance a frame.
-var can_fa: bool = false
 
 var buses: Dictionary = {
 	&"Master":
@@ -48,33 +43,15 @@ func _ready():
 
 
 func _unhandled_input(event):
-	_frame_advancing()
-	_music_control()
-
-	if is_inside_tree() and get_tree().paused and event.is_action_pressed(&"frame_advance"):
-		can_fa = true
-
-
-## Frame advancing only works while paused.
-func _frame_advancing():
-	if not can_fa:
-		return
-
-	get_tree().paused = false
-
-	await get_tree().process_frame
-	frame_advanced.emit()
-
-	get_tree().paused = true
-	can_fa = false
+	if event.is_action_pressed(&"mute"):
+		_music_control()
 
 
 func _music_control():
-	if Input.is_action_just_pressed(&"mute"):
-		bgm_muted = !bgm_muted
+	bgm_muted = !bgm_muted
 
-		LocalSettings.change_setting("Audio", "music_muted", bgm_muted)
-		_set_muted_bgm()
+	LocalSettings.change_setting("Audio", "music_muted", bgm_muted)
+	_set_muted_bgm()
 
 
 func _set_muted_bgm():

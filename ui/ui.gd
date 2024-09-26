@@ -36,7 +36,6 @@ var player: CharacterBody2D
 func _ready():
 	_set_player()
 
-	GameState.frame_advanced.connect(_push_notif.bind(&"push", "Advanced 1 frame."))
 	world_machine.level_reloaded.connect(_set_player)
 
 
