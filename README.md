@@ -47,6 +47,8 @@ Tricia "GTcreyon" - Major Additional programming <br /><br />
 "CardboardCarl" - Additional programming <br />
 "Unequipped" - Additional programming <br /><br />
 
+"goatsoup.mp3" - Synth Stratnum Soundtrack <br /><br >
+
 "KingAsylus91" - Mario & Luigi sprites <br />
 "TuffTony" - Mario & Luigi sprites <br />
 "NineBit" - Mario & Luigi sprites <br /><br />

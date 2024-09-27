@@ -2,7 +2,7 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://dva3wpeceymrl"
+uid="uid://culmhggeo84vi"
 path="res://.godot/imported/synth_stratnum.mp3-f6671aa7fd7218039d46a9e8757371ad.mp3str"
 
 [deps]
@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/synth_stratnum.mp3-f6671aa7fd7218039d46a9e875
 
 [params]
 
-loop=true
-loop_offset=0.0
-bpm=0.0
+loop=false
+loop_offset=0
+bpm=0
 beat_count=0
 bar_beats=4

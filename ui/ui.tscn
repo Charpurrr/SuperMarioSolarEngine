@@ -2740,7 +2740,6 @@ clip_text = true
 [node name="Notifications" type="Node" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_jw2es")
 anchors_preset = 15
 anchor_right = 1.0
