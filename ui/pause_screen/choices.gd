@@ -1,6 +1,9 @@
 extends VBoxContainer
 
-@export var resume: Button
-@export var retry: Button
-@export var settings: Button
-@export var quit: Button
+@export var resume: Panel
+@export var retry: Panel
+@export var restart: Panel
+
+@export var guide: Panel
+@export var settings: Panel
+@export var quit: Panel

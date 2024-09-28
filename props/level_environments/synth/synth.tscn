@@ -103,6 +103,8 @@ script = ExtResource("1_dubgv")
 line_color = Color(0.376471, 0.0901961, 0.858824, 1)
 scroll_divisor = 20.0
 
+[node name="Parallax2D" type="Parallax2D" parent="ParallaxBackground"]
+
 [node name="CRT" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_e8pha")
 anchors_preset = 15

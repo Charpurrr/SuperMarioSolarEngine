@@ -60,7 +60,14 @@ func _set_muted_bgm():
 
 ## Called with the paused signal.
 func pause_toggle():
-	get_tree().paused = !get_tree().paused
+	get_tree().paused = !is_paused()
+
+	if not bgm_muted:
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), is_paused())
+
+
+func is_paused() -> bool:
+	return get_tree().paused
 
 
 func emit_reload():

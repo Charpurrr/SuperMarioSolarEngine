@@ -13,15 +13,15 @@ extends HBoxContainer
 
 
 func _ready():
-	reset.pressed.connect(_reset_pressed)
-	slider.value_changed.connect(_slider_updated)
+	reset.pressed.connect(reset_pressed)
+	slider.value_changed.connect(slider_updated)
 
 	slider.set_value_no_signal(bus.current_vol_linear)
 
 	_update_graphics(bus.current_vol_linear)
 
 
-func _slider_updated(new_value: float):
+func slider_updated(new_value: float):
 	_update_graphics(new_value)
 
 	# Cute but messes with audio perception.
@@ -31,12 +31,12 @@ func _slider_updated(new_value: float):
 	audio.play()
 
 
+func reset_pressed():
+	slider.value = 1.0
+
+
 func _update_graphics(new_value: float):
 	bus.update_volume(new_value)
 
 	reset.disabled = new_value == 1.0
 	percentage.text = "%d%%" % (new_value * 100)
-
-
-func _reset_pressed():
-	slider.value = 1.0
