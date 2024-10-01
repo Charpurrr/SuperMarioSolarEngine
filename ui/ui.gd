@@ -2,7 +2,9 @@ class_name UserInterface
 extends CanvasLayer
 ## UI and utility.
 
-@export var pause_screen: PauseScreen
+@export var screen_manager: ScreenManager
+@export var color_blur: ColorRect
+@export var game_pause_sfx: AudioStream
 
 #region Notification variables
 @export var notif_scene: PackedScene
@@ -40,6 +42,8 @@ func _ready():
 
 
 func _process(_delta):
+	color_blur.visible = GameState.is_paused()
+
 	for i in current_notifs:
 		if not is_instance_valid(i):
 			current_notifs.erase(i)
@@ -48,11 +52,14 @@ func _process(_delta):
 func _input(event: InputEvent):
 	input_event = event
 
-	if event.is_action_pressed(&"pause") and not pause_screen.anime_player.is_playing():
+	if event.is_action_pressed(&"pause"):
 		GameState.emit_signal(&"paused")
 
-		pause_screen.enable_disable_screen()
-		pause_screen.update_settings_visibility(false)
+		if GameState.is_paused():
+			SFX.play_sfx(game_pause_sfx, &"UI", screen_manager)
+			screen_manager.switch_screen(null, screen_manager.pause_screen)
+		else:
+			screen_manager.switch_screen(screen_manager.pause_screen, null)
 
 	_display_input(input_event)
 

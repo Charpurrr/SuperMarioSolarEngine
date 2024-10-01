@@ -30,7 +30,6 @@ func play_sfx_at(node: Node):
 	if node == null:
 		return
 
-	var player := AudioStreamPlayer.new()
 	new_pick = sfx_list.pick_random()
 
 	if force_new and sfx_list.size() > 1:
@@ -40,14 +39,6 @@ func play_sfx_at(node: Node):
 	if overwrite_other:
 		node.get_tree().call_group(bus, &"queue_free")
 
-	player.stream = new_pick
-	player.autoplay = true
-
-	player.bus = bus
-	player.add_to_group(bus)
-
-	node.add_child(player)
-
-	player.connect(&"finished", player.queue_free)
+	SFX.play_sfx(new_pick, bus, node)
 
 	last_pick = new_pick

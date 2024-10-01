@@ -3,6 +3,8 @@ extends Node
 signal reload
 signal paused
 
+var fullscreened: bool = false
+
 var bgm_muted: bool = false
 
 var buses: Dictionary = {
@@ -38,6 +40,9 @@ func _ready():
 
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
+	if LocalSettings.load_setting("Window", "fullscreened", false) == true:
+		toggle_fullscreen()
+
 	bgm_muted = LocalSettings.load_setting("Audio", "music_muted", false)
 	_set_muted_bgm()
 
@@ -45,6 +50,9 @@ func _ready():
 func _unhandled_input(event):
 	if event.is_action_pressed(&"mute"):
 		_music_control()
+
+	if event.is_action_pressed(&"fullscreen"):
+		toggle_fullscreen()
 
 
 func _music_control():
@@ -56,6 +64,17 @@ func _music_control():
 
 func _set_muted_bgm():
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), bgm_muted)
+
+
+func toggle_fullscreen():
+	if fullscreened == false:
+		get_window().mode = Window.MODE_FULLSCREEN
+		fullscreened = true
+	else:
+		get_window().mode = Window.MODE_WINDOWED
+		fullscreened = false
+
+	LocalSettings.change_setting("Window", "fullscreened", fullscreened)
 
 
 ## Called with the paused signal.
