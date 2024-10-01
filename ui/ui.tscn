@@ -1053,6 +1053,7 @@ stream = ExtResource("16_jehsk")
 bus = &"UI"
 
 [node name="WarningScreen" type="TextureRect" parent="ScreenManager" node_paths=PackedStringArray("warning_text", "focus_grabber")]
+visible = false
 z_index = 3
 material = SubResource("ShaderMaterial_scrfv")
 layout_mode = 1
