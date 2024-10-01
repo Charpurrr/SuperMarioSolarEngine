@@ -14,6 +14,12 @@ func _on_retry_pressed() -> void:
 
 
 func _on_reset_pressed() -> void:
+	manager.warning_screen.text = """
+	[center]Restart the level from the beginning?
+	(Any unsaved progress will be [color=red]LOST[/color].)"""
+
+	manager.warning_screen.confirm_behaviour = manager.warning_screen.restart
+
 	manager.switch_screen(self, manager.warning_screen)
 
 
@@ -26,5 +32,10 @@ func _on_settings_pressed() -> void:
 
 
 func _on_quit_pressed() -> void:
+	manager.warning_screen.text = """
+	[center]Exit to title screen?
+	(Any unsaved progress will be [color=red]LOST[/color].)"""
+
+	manager.warning_screen.confirm_behaviour = manager.warning_screen.quit
+
 	manager.switch_screen(self, manager.warning_screen)
-	#get_tree().quit()

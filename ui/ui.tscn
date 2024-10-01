@@ -1052,8 +1052,7 @@ size_flags_stretch_ratio = 0.8
 stream = ExtResource("16_jehsk")
 bus = &"UI"
 
-[node name="WarningScreen" type="TextureRect" parent="ScreenManager" node_paths=PackedStringArray("focus_grabber")]
-visible = false
+[node name="WarningScreen" type="TextureRect" parent="ScreenManager" node_paths=PackedStringArray("warning_text", "focus_grabber")]
 z_index = 3
 material = SubResource("ShaderMaterial_scrfv")
 layout_mode = 1
@@ -1066,6 +1065,7 @@ texture = ExtResource("15_uxr3e")
 stretch_mode = 1
 flip_h = true
 script = ExtResource("40_wsdjf")
+warning_text = NodePath("Spacing/Main/WarningText")
 open_sfx = ExtResource("41_ywjj4")
 close_sfx = ExtResource("41_1bnq8")
 open_anim = &"warning_peek"
@@ -1099,9 +1099,9 @@ size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("15_y78en")
 theme_override_font_sizes/normal_font_size = 22
 bbcode_enabled = true
-text = "[center]Restart this stage from the beginning?
-
-(Any progress will be [color=red]LOST[/color].)"
+text = "[center]This is a placeholder text!
+Isn't it lovely?
+"
 scroll_active = false
 
 [node name="SpaceMiddle" type="Control" parent="ScreenManager/WarningScreen/Spacing/Main"]
@@ -1118,7 +1118,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
-focus_neighbor_top = NodePath("../../../BottomButtons/Settings")
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
@@ -1169,7 +1168,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
-focus_neighbor_top = NodePath("../../../BottomButtons/Settings")
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
