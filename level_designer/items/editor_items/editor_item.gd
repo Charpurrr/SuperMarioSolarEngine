@@ -2,6 +2,15 @@ class_name EditorItem
 extends Resource
 ## Data for an item inside of the Level Editor.
 
+enum Category {
+	TERRAIN,
+	OBJECT,
+	DECORATION,
+	ENTITY,
+	NPC,
+	UTILITY,
+}
+
 const PREVIEW_ITEM: PackedScene = preload(
 	"res://level_designer/items/preview_items/preview_item.tscn"
 )
@@ -18,21 +27,9 @@ const PREVIEW_ITEM: PackedScene = preload(
 ## PreviewDisplayData associated with this item.
 @export var preview_display_data: PreviewDisplayData
 
-enum Category {
-	TERRAIN,
-	OBJECT,
-	DECORATION,
-	ENTITY,
-	NPC,
-	UTILITY,
-}
 
-
+## Create a [PreviewItem] for this item.
 func create_preview() -> PreviewItem:
 	var inst = PREVIEW_ITEM.instantiate()
 	inst.create(self)
 	return inst
-
-
-func get_selection_hull() -> Shape2D:
-	return null

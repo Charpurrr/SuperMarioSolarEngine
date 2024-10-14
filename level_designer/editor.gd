@@ -2,11 +2,48 @@ class_name LevelEditor
 extends Node
 ## Base class for the level editor.
 
-@export var user_interface: CanvasLayer
+@export var user_interface: LevelEditorUI
 @export var quit_confirm: ConfirmationDialog
 @export var selection_box: NinePatchRect
-@export var level: LevelPreview
+@export var level_preview: LevelPreview
+@export var camera: Camera2D
+@export var world_machine: WorldMachine
+@export var player_scene: PackedScene
 
 
 func _ready():
 	get_tree().set_auto_accept_quit(false)
+
+
+func _on_play_button_pressed() -> void:
+	# TODO: Proper UI disabling
+	# TODO: A way to return to the editor (like backspace from og 63)
+	user_interface.visible = false
+	level_preview.visible = false
+
+	var created_level = Level.new()
+	for preview in level_preview.get_children():
+		preview = preview as PreviewItem
+		var data = preview.item_data
+		if data is EditorItemActor:
+			var inst = data.item_scene.instantiate()
+			for property in data.properties:
+				var prop_name = property.name
+				assert(prop_name in inst)
+				inst.set(prop_name, preview.property_values[prop_name])
+			inst.position = preview.position
+			created_level.add_child(inst)
+
+	# Create the player node and place it in the level.
+	# TODO: Place the player at the start position
+	var player_node = player_scene.instantiate()
+	created_level.add_child(player_node)
+	created_level.player = player_node
+
+	# Create a camera and parent it to the player.
+	var cam = Camera2D.new()
+	player_node.add_child(cam)
+	created_level.camera = cam
+	cam.enabled = true
+
+	world_machine.handle_level_node(created_level, true)

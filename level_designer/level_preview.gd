@@ -19,7 +19,7 @@ func spawn_item(item_data: EditorItem) -> PreviewItem:
 
 
 func _unhandled_input(event):
-	if event.is_action_pressed("left_mouse") and brush_item != null:
+	if event.is_action_pressed(&"select") and brush_item != null:
 		spawn_item(brush_item.item_data)
 
 

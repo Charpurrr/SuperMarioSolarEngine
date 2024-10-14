@@ -1,13 +1,14 @@
 @tool
 class_name AnimatedPreviewDisplayData
 extends PreviewDisplayData
+## A [PreviewDisplayData] that uses an animated sprite to display the preview item.
 
 @export var animation: StringName
 @export var sprite_frames: SpriteFrames
 @export var selection_shape: Shape2D
 
 
-func create():
+func create() -> AnimatedSprite2D:
 	var inst = AnimatedSprite2D.new()
 	inst.sprite_frames = sprite_frames
 	inst.animation = animation
@@ -15,7 +16,7 @@ func create():
 	return inst
 
 
-func get_selection_shape():
+func get_selection_shape() -> Shape2D:
 	return selection_shape
 
 
@@ -23,7 +24,7 @@ func set_selection_shape(shape: Shape2D):
 	selection_shape = shape
 
 
-func needs_static_selection_shape():
+func needs_static_selection_shape() -> bool:
 	return true
 
 

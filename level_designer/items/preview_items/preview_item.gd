@@ -2,11 +2,13 @@ class_name PreviewItem
 extends Node2D
 ## An item placed inside of the level designer.
 
+@export var selection_shape: CollisionShape2D
+
 var is_grabbed: bool = false
 var item_data: EditorItem
 var display: Node2D
-
-@onready var selection_shape: CollisionShape2D = %SelectionShape
+var property_values: Dictionary = {}
+var property_displays: Dictionary = {}
 
 
 func _ready():
@@ -19,6 +21,23 @@ func create(data: EditorItem):
 	item_data = data
 	display = data.preview_display_data.create()
 	add_child(display)
+	for property in data.properties:
+		var prop_name = property.name
+		var prop_display_data = property.display_data
+
+		var prop_display = prop_display_data.add_to(display)
+		prop_display.preview_display = display
+		prop_display.preview_item = self
+		property_displays[prop_name] = prop_display
+
+		# TODO: Find a better way of exporting variant types.
+		# https://github.com/godotengine/godot/pull/89324?
+		set_property(property.default[0], prop_name)
+
+
+func set_property(value: Variant, prop_name: StringName) -> void:
+	property_values[prop_name] = value
+	property_displays[prop_name].set_value(value)
 
 
 func grab() -> void:

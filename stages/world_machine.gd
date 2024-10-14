@@ -6,7 +6,9 @@ extends Node2D
 
 signal level_reloaded
 
-@export var loaded_level: PackedScene
+## Whether or not [member level_scene] should be automatically loaded.
+@export var autoload: bool = true
+@export var level_scene: PackedScene
 
 @export var level_name: StringName
 @export var mission_name: StringName
@@ -25,8 +27,30 @@ var ui_node: UserInterface
 func _ready():
 	GameState.reload.connect(_reload_level)
 
-	level_node = loaded_level.instantiate()
+	if autoload and level_scene != null:
+		var level = level_scene.instantiate()
+		handle_level_node(level)
+
+
+## Stores a level as a scene, so it can be reloaded.
+func store_level_scene(level: Level) -> void:
+	var scene = PackedScene.new()
+	scene.pack(level)
+	level_scene = scene
+
+
+func handle_level_node(level: Level, store: bool = false) -> void:
+	if store:
+		store_level_scene(level)
+
+	level_node = level
+
+	if env_node != null:
+		env_node.queue_free()
 	env_node = loaded_environment.instantiate()
+
+	if ui_node != null:
+		ui_node.queue_free()
 	ui_node = user_interface.instantiate()
 
 	env_node.camera = level_node.camera
@@ -38,12 +62,12 @@ func _ready():
 
 	add_child(ui_node)
 
+	level_node.camera.make_current()
+
 
 ## Called with [GameState]'s reload signal.
 func _reload_level():
-	var new_level: Node2D = loaded_level.instantiate()
-	var new_env: LevelEnvironment = loaded_environment.instantiate()
-
+	var new_level: Node2D = level_scene.instantiate()
 	var tree: SceneTree = get_tree()
 
 	# For disabling the pause screen if it was open
@@ -53,10 +77,6 @@ func _reload_level():
 	# Free the level and then re-add it.
 	level_node.queue_free()
 
-	level_node = new_level
-	new_env.camera = new_level.camera
-
-	add_child(level_node)
-	level_node.add_child(new_env)
+	handle_level_node(new_level)
 
 	level_reloaded.emit()

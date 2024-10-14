@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://c53wuaais37yi"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://c53wuaais37yi"]
 
 [ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="1_y7g8o"]
 
@@ -22,10 +22,32 @@ corner_detail = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2y2bm"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06oxx"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7rw7"]
 bg_color = Color(0.1, 0.1, 0.1, 0.6)
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hwlov"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
@@ -46,4 +68,7 @@ CheckButton/styles/hover = SubResource("StyleBoxEmpty_ik3c3")
 CheckButton/styles/hover_pressed = SubResource("StyleBoxEmpty_hcqrm")
 CheckButton/styles/normal = SubResource("StyleBoxEmpty_vtkna")
 CheckButton/styles/pressed = SubResource("StyleBoxEmpty_2y2bm")
+InspectorLabel/base_type = &"Label"
+InspectorLabel/styles/normal = SubResource("StyleBoxFlat_06oxx")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_i7rw7")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_hwlov")

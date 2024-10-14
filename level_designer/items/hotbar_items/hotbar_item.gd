@@ -8,21 +8,38 @@ extends Button
 @export var pin_release_time: float
 
 @export_category(&"References")
+## The icon for this item.
 @export var item_icon: TextureRect
+## The progress bar for pinning this item.
 @export var pin_progress: ProgressBar
+## The pin icon that appears when the item is pinned.
 @export var pin_icon: Sprite2D
 
-@onready var hotbar: Hotbar = get_parent()
-@onready var toolbar: Toolbar = %ToolbarContainer
-
-@onready var _tween = null
-
+## The [EditorItem] data stored in this slot.
 var item_data: EditorItem
+
+## Whether or not this item is pinned.
 var pinned: bool
 
+## Stored tween for the pin progress bar.
+var _tween = null
 
-func create_data(data: EditorItem):
+## Reference to the parent hotbar.
+@onready var hotbar: Hotbar = get_parent()
+## Reference to the toolbar.
+@onready var toolbar: Toolbar = %ToolbarContainer
+
+
+## Store an [EditorItem] in this slot.
+func store_item(data: EditorItem):
 	item_icon.texture = data.icon_texture
+
+	# Apply half-pixel offset to ensure the texture is on an integer position.
+	var tex_size = data.icon_texture.get_size()
+	var tex_offset = tex_size.posmod(2.0) * 0.5
+	item_icon.offset_left = tex_offset.x
+	item_icon.offset_top = tex_offset.y
+
 	item_icon.visible = true
 	item_data = data
 
@@ -115,11 +132,11 @@ func _can_drop_data(_at_position, data):
 
 func _drop_data(_at_position, data):
 	if item_icon.texture and item_data:
-		hotbar.swap_data(item_data)
+		hotbar.give_swap_data(item_data)
 		hotbar.swapping_item = null
-		create_data(data)
+		store_item(data)
 	else:
-		create_data(data)
+		store_item(data)
 
 
 func _clear_data():
@@ -133,5 +150,5 @@ func _clear_data():
 func _on_pressed():
 	if item_data == null:
 		return
-	hotbar.editor.level.new_brush(item_data)
+	hotbar.editor.level_preview.new_brush(item_data)
 	toolbar.drop_tools()

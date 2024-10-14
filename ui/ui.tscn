@@ -20,7 +20,7 @@
 [ext_resource type="Script" path="res://ui/screen_manager/pause_screen/level_info.gd" id="15_ihj7k"]
 [ext_resource type="AudioStream" uid="uid://dsokoktxblw41" path="res://ui/sfx/cursor.wav" id="15_l2qix"]
 [ext_resource type="Texture2D" uid="uid://qslbjwvvnw28" path="res://ui/pattern_solar.png" id="15_uxr3e"]
-[ext_resource type="Shader" uid="uid://dvwfqhrunuxy2" path="res://ui/screen_manager/pause_screen/pause_panel.tres" id="15_w8105"]
+[ext_resource type="Shader" uid="uid://byfa3t51pf655" path="res://ui/screen_manager/pause_screen/pause_panel.tres" id="15_w8105"]
 [ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="15_y78en"]
 [ext_resource type="AudioStream" uid="uid://b58aveo75onan" path="res://ui/sfx/pause.wav" id="16_jehsk"]
 [ext_resource type="PackedScene" uid="uid://cxqj15hquutxq" path="res://ui/screen_manager/settings_screen/controls/tab.tscn" id="17_7m8yr"]
@@ -204,6 +204,7 @@ anti_aliasing = false
 
 [sub_resource type="LabelSettings" id="LabelSettings_05wpc"]
 font = ExtResource("15_y78en")
+font_size = 22
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52uul"]
 bg_color = Color(0.103744, 0.103744, 0.103743, 0.768627)

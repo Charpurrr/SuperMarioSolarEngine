@@ -1,6 +1,7 @@
 extends PropertyDisplay
 
 
-func property_changed(new_value: Variant):
+func set_value(new_value: Variant):
 	new_value = new_value as Vector2
-	preview.scale = new_value
+	preview_display.scale = new_value
+	preview_item.selection_shape.scale = new_value

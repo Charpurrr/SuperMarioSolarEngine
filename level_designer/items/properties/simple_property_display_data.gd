@@ -1,10 +1,12 @@
 class_name SimplePropertyDisplayData
 extends PropertyDisplayData
-## TODO: doc
+## [PropertyDisplayData] that uses a single node with a script for the display.
 
+## Script used for the display.
 @export var root_script: Script
 
 
-func add_to(node: Node):
+func add_to(target: Node):
 	var inst = root_script.new()
-	node.add_child(inst)
+	target.add_child(inst)
+	return inst

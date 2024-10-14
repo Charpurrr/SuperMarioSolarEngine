@@ -2,12 +2,17 @@ class_name Hotbar
 extends HFlowContainer
 ## The level designer hotbar.
 
-var pinned_items: Array = []
-var swapping_item: HotbarItem
-
+## Reference to the parent [LevelEditor].
 @export var editor: LevelEditor
 
+## List of pinned [HotbarItem]s.
+var pinned_items: Array = []
 
+## Current [HotbarItem] held to be swapped.
+var swapping_item: HotbarItem
+
+
+## Add an [EditorItem] to a [HotbarItem] slot.
 func add_item(item_data: EditorItem):
 	var last_slot: HotbarItem = null
 	var slots: Array[Node] = get_children()
@@ -26,7 +31,7 @@ func add_item(item_data: EditorItem):
 	if last_slot == null:
 		return
 
-	last_slot.create_data(item_data)
+	last_slot.store_item(item_data)
 
 	move_child(last_slot, 0)
 
@@ -35,14 +40,17 @@ func add_item(item_data: EditorItem):
 			move_child(item, item.get_index() - 1)
 
 
+## Pin an item so that it doesn't change slot.
 func pin_item(item: HotbarItem):
 	pinned_items.append(item)
 
 
+## Unpin an item.
 func unpin_item(item: HotbarItem):
 	pinned_items.erase(item)
 
 
-func swap_data(item_data: EditorItem):
+## Swap data into the pending swap slot.
+func give_swap_data(item_data: EditorItem):
 	if swapping_item:
-		swapping_item.create_data(item_data)
+		swapping_item.store_item(item_data)
