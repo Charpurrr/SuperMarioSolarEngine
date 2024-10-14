@@ -1,4 +1,4 @@
-[gd_scene load_steps=363 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=364 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://entities/player/shared/player.gd" id="1_87j6i"]
 [ext_resource type="Texture2D" uid="uid://bbgppbst4akvn" path="res://entities/player/mario/anime/backflip.png" id="2_i2o54"]
@@ -129,7 +129,7 @@
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/fall_states/fall.gd" id="113_j3k6p"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/fall_states/freefall.gd" id="114_mgnux"]
 [ext_resource type="AudioStream" uid="uid://1fibybjdw7pc" path="res://entities/player/shared/motion_nsmbw/groundpound.wav" id="116_078t4"]
-[ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/fall_states/water_exit.gd" id="116_wolak"]
+[ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/lazy_jump.gd" id="116_wolak"]
 [ext_resource type="AudioStream" uid="uid://23at2s4l6qjv" path="res://entities/player/mario/voice/watch_it.wav" id="120_qvxml"]
 [ext_resource type="AudioStream" uid="uid://lktt3ecwf5nm" path="res://entities/player/mario/voice/oh_surprised.wav" id="121_se657"]
 [ext_resource type="AudioStream" uid="uid://udnnj6t7h54x" path="res://entities/player/mario/voice/mhpm.wav" id="122_r00kr"]
@@ -150,6 +150,7 @@
 [ext_resource type="AudioStream" uid="uid://bbw3474fd3uxc" path="res://entities/player/shared/motion/spinattack_shine.wav" id="136_a6kal"]
 [ext_resource type="AudioStream" uid="uid://bowyc14wpkcra" path="res://entities/player/shared/motion/dive.wav" id="138_88upi"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/butt_slide.gd" id="140_lfmwr"]
+[ext_resource type="Script" path="res://entities/player/shared/fludd_manager.gd" id="151_4womg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8n85e"]
 atlas = ExtResource("2_i2o54")
@@ -1940,7 +1941,6 @@ cutoff_sfx = false
 overwrite_other = false
 
 [node name="Mario" type="CharacterBody2D" node_paths=PackedStringArray("doll", "state_manager", "movement", "input", "push_rays", "hitbox", "dive_hitbox", "small_hitbox", "water_check", "crouchlock", "spin_hitbox")]
-position = Vector2(-1, 0)
 collision_layer = 2
 floor_constant_speed = true
 floor_max_angle = 1.39626
@@ -2019,16 +2019,19 @@ movement = NodePath("../Movement")
 [node name="PushRayR" type="RayCast2D" parent="PushRays"]
 modulate = Color(1, 1, 0.164706, 1)
 position = Vector2(0, -14)
-target_position = Vector2(10, 0)
+target_position = Vector2(16, 0)
 
 [node name="PushRayL" type="RayCast2D" parent="PushRays"]
 modulate = Color(1, 1, 0.164706, 1)
 position = Vector2(0, -14)
-target_position = Vector2(-9, 0)
+target_position = Vector2(-16, 0)
 
 [node name="InputManager" type="Node" parent="."]
 script = ExtResource("21_onm15")
 buffer_duration = 6
+
+[node name="FluddManager" type="Node" parent="."]
+script = ExtResource("151_4womg")
 
 [node name="Movement" type="Node" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("37_quca3")
@@ -2191,6 +2194,11 @@ animation = &"triple_jump"
 anim_offset = Vector2i(0, 5)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_c6n5s"), SubResource("Resource_0beus"), SubResource("Resource_32052")])
 
+[node name="LazyJump" type="Node" parent="StateManager/Dry/Airborne/JumpStates"]
+script = ExtResource("116_wolak")
+animation = &"jump"
+anim_offset = Vector2i(0, 5)
+
 [node name="Spinjump" type="Node" parent="StateManager/Dry/Airborne/JumpStates"]
 script = ExtResource("92_pwmyp")
 jump_power = 6.7
@@ -2236,7 +2244,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_jo8kb")])
 script = ExtResource("105_g4v7o")
 jump_power = 6.7
 min_jump_percent = 35.0
-jump_number = 1
+jump_number = 2
 animation = &"gp_jump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_8711x"), SubResource("Resource_nl575")])
 
@@ -2274,13 +2282,6 @@ anim_offset = Vector2i(0, 5)
 script = ExtResource("114_mgnux")
 animation = &"freefall"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_5kqsg")])
-
-[node name="WaterExit" type="Node" parent="StateManager/Dry/Airborne/FallStates"]
-script = ExtResource("116_wolak")
-animation_jump = &"jump"
-anim_offset_j = Vector2(0, 5)
-animation = &"jump_fall"
-anim_offset = Vector2i(0, 5)
 
 [node name="DoubleFall" type="Node" parent="StateManager/Dry/Airborne/FallStates"]
 script = ExtResource("113_j3k6p")

@@ -3,12 +3,9 @@ extends Node
 signal reload
 signal paused
 
-signal frame_advanced
+var fullscreened: bool = false
 
 var bgm_muted: bool = false
-
-## Whether or not you can advance a frame.
-var can_fa: bool = false
 
 var buses: Dictionary = {
 	&"Master":
@@ -43,47 +40,53 @@ func _ready():
 
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
+	if LocalSettings.load_setting("Window", "fullscreened", false) == true:
+		toggle_fullscreen()
+
 	bgm_muted = LocalSettings.load_setting("Audio", "music_muted", false)
 	_set_muted_bgm()
 
 
 func _unhandled_input(event):
-	_frame_advancing()
-	_music_control()
+	if event.is_action_pressed(&"mute"):
+		_music_control()
 
-	if is_inside_tree() and get_tree().paused and event.is_action_pressed(&"frame_advance"):
-		can_fa = true
-
-
-## Frame advancing only works while paused.
-func _frame_advancing():
-	if not can_fa:
-		return
-
-	get_tree().paused = false
-
-	await get_tree().process_frame
-	frame_advanced.emit()
-
-	get_tree().paused = true
-	can_fa = false
+	if event.is_action_pressed(&"fullscreen"):
+		toggle_fullscreen()
 
 
 func _music_control():
-	if Input.is_action_just_pressed(&"mute"):
-		bgm_muted = !bgm_muted
+	bgm_muted = !bgm_muted
 
-		LocalSettings.change_setting("Audio", "music_muted", bgm_muted)
-		_set_muted_bgm()
+	LocalSettings.change_setting("Audio", "music_muted", bgm_muted)
+	_set_muted_bgm()
 
 
 func _set_muted_bgm():
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), bgm_muted)
 
 
+func toggle_fullscreen():
+	if fullscreened == false:
+		get_window().mode = Window.MODE_FULLSCREEN
+		fullscreened = true
+	else:
+		get_window().mode = Window.MODE_WINDOWED
+		fullscreened = false
+
+	LocalSettings.change_setting("Window", "fullscreened", fullscreened)
+
+
 ## Called with the paused signal.
 func pause_toggle():
-	get_tree().paused = !get_tree().paused
+	get_tree().paused = !is_paused()
+
+	if not bgm_muted:
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), is_paused())
+
+
+func is_paused() -> bool:
+	return get_tree().paused
 
 
 func emit_reload():

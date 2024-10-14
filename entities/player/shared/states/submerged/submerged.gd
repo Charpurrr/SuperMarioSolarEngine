@@ -3,7 +3,7 @@ extends PlayerState
 ## A base state for being submerged in water.
 
 
-func _on_enter(_handover):
+func _on_enter(_param):
 	movement.activate_consec_timer()
 	movement.consume_freefall_timer()
 	movement.air_spun = false

@@ -13,6 +13,8 @@ func _on_enter(_param):
 
 func _physics_tick():
 	actor.vel.y = min(actor.vel.y, term_vel)
+	# Vertical push force so the player stays on the wall.
+	actor.vel.x = 10 * movement.facing_direction
 
 
 func _subsequent_ticks():
