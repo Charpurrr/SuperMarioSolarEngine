@@ -10,6 +10,7 @@ extends Control
 @export_category("Screens")
 @export var pause_screen: PauseScreen
 @export var warning_screen: WarningScreen
+@export var options_screen: OptionsScreen
 
 
 func _ready() -> void:
@@ -62,11 +63,3 @@ func switch_screen(from: Screen = null, to: Screen = null) -> void:
 	await anime_player.animation_finished
 
 	to.call_deferred(&"_on_enter")
-
-
-#func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	#if not enabled:
-		#get_viewport().gui_release_focus()
-		#visible = false
-	#elif anim_name == &"pause_peek":
-		#anime_player.play(&"warning_peek")
