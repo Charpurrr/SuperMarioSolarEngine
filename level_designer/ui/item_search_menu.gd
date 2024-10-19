@@ -15,12 +15,12 @@ extends Panel
 @export var catg_utility: HFlowContainer
 
 @onready var category_connections: Dictionary = {
-	EditorItem.Category.TERRAIN: catg_terrain,
-	EditorItem.Category.OBJECT: catg_object,
-	EditorItem.Category.DECORATION: catg_decoration,
-	EditorItem.Category.ENTITY: catg_entity,
-	EditorItem.Category.NPC: catg_npc,
-	EditorItem.Category.UTILITY: catg_utility,
+	EditorItemData.Category.TERRAIN: catg_terrain,
+	EditorItemData.Category.OBJECT: catg_object,
+	EditorItemData.Category.DECORATION: catg_decoration,
+	EditorItemData.Category.ENTITY: catg_entity,
+	EditorItemData.Category.NPC: catg_npc,
+	EditorItemData.Category.UTILITY: catg_utility,
 }
 
 
