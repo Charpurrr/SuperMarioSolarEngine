@@ -1,14 +1,19 @@
 extends PanelContainer
 
+## List of properties that are available to edit.
 @export var property_list: VBoxContainer
 
+## Array of items that are currently selected.
 var selected_items: Array[PreviewItem]
 
 
+## Called when the selection changes.
 func _on_ui_selection_changed(items: Array[PreviewItem]) -> void:
 	selected_items = items
 	for child in property_list.get_children():
 		child.queue_free()
+
+	# If there are no selected items, don't attempt to display any properties.
 	if items.size() == 0:
 		return
 
@@ -27,11 +32,12 @@ func _on_ui_selection_changed(items: Array[PreviewItem]) -> void:
 		var inst = property.inspector_entry.instantiate()
 		var prop_name = property.name
 		inst.set_label(prop_name)
-		inst.value_changed.connect(_on_property_value_changed.bind(prop_name))
+		inst.value_changed.connect(func(value): _on_property_value_changed(prop_name, value))
 		property_list.add_child(inst)
 		inst.set_value(first_item.property_values[prop_name])
 
 
-func _on_property_value_changed(value: Variant, prop_name: StringName) -> void:
+## Called when the value of the property changes.
+func _on_property_value_changed(prop_name: StringName, value: Variant) -> void:
 	for item in selected_items:
-		item.set_property(value, prop_name)
+		item.set_property(prop_name, value)

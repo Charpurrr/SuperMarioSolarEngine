@@ -18,6 +18,7 @@ func _ready() -> void:
 		selection_shape.shape = shape
 
 
+## Loads data from an [EditorItemData] to create a display and attach properties.
 func load_item_data(data: EditorItemData) -> void:
 	item_data = data
 
@@ -37,10 +38,11 @@ func load_item_data(data: EditorItemData) -> void:
 
 		# TODO: Find a better way of exporting variant types.
 		# https://github.com/godotengine/godot/pull/89324?
-		set_property(property.default[0], prop_name)
+		set_property(prop_name, property.default[0])
 
 
-func set_property(value: Variant, prop_name: StringName) -> void:
+## Sets the value of a property to a given value.
+func set_property(prop_name: StringName, value: Variant) -> void:
 	property_values[prop_name] = value
 	property_displays[prop_name].set_value(value)
 
