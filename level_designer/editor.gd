@@ -16,7 +16,6 @@ func _ready():
 
 
 func _on_play_button_pressed() -> void:
-	# TODO: Proper UI disabling
 	# TODO: A way to return to the editor (like backspace from og 63)
 	user_interface.visible = false
 	level_preview.visible = false
@@ -25,7 +24,7 @@ func _on_play_button_pressed() -> void:
 	for preview in level_preview.get_children():
 		preview = preview as PreviewItem
 		var data = preview.item_data
-		if data is EditorItemActor:
+		if data is EditorItemDataActor:
 			var inst = data.item_scene.instantiate()
 			for property in data.properties:
 				var prop_name = property.name

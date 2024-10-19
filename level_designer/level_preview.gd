@@ -4,14 +4,14 @@ extends Node2D
 var brush_item: PreviewItem
 
 
-func new_brush(item_data: EditorItem):
+func new_brush(item_data: EditorItemData):
 	if brush_item != null:
 		brush_item.queue_free()
 	brush_item = spawn_item(item_data)
 	brush_item.grab()
 
 
-func spawn_item(item_data: EditorItem) -> PreviewItem:
+func spawn_item(item_data: EditorItemData) -> PreviewItem:
 	var inst = item_data.create_preview()
 	add_child(inst)
 	inst.position = get_local_mouse_position()
