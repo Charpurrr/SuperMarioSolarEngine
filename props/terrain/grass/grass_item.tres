@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EditorItemTerrain" load_steps=8 format=3 uid="uid://b54qj4s6iwq0v"]
+[gd_resource type="Resource" script_class="EditorItemDataTerrain" load_steps=8 format=3 uid="uid://b54qj4s6iwq0v"]
 
 [ext_resource type="Texture2D" uid="uid://d2d23lf2h8era" path="res://props/terrain/grass/grass.png" id="1_4xw2n"]
 [ext_resource type="Script" path="res://level_designer/item_classes/editor_item/editor_item_data_terrain.gd" id="1_wopmr"]
