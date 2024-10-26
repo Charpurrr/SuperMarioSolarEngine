@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bfb4xq874buf6"]
+[gd_scene load_steps=14 format=3 uid="uid://bfb4xq874buf6"]
 
 [ext_resource type="Script" path="res://props/level_environments/synth/synth_floor.gd" id="1_dubgv"]
 [ext_resource type="Script" path="res://props/level_environments/environment.gd" id="1_xeoqd"]
@@ -21,6 +21,9 @@ colors = PackedColorArray(0.0980392, 0.0784314, 0.117647, 1, 0.113725, 0, 0.1882
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ko2tk"]
 gradient = SubResource("Gradient_4rbya")
 fill_to = Vector2(0, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oe8qa"]
+blend_mode = 3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e8pha"]
 shader = ExtResource("7_e2awe")
@@ -104,6 +107,15 @@ line_color = Color(0.376471, 0.0901961, 0.858824, 1)
 scroll_divisor = 20.0
 
 [node name="Parallax2D" type="Parallax2D" parent="ParallaxBackground"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("CanvasItemMaterial_oe8qa")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.639216, 0.627451, 1, 1)
 
 [node name="CRT" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_e8pha")
