@@ -11,7 +11,7 @@ var text: String
 var confirm_behaviour: Callable
 
 
-func _on_enter():
+func on_load():
 	warning_text.text = text
 
 

@@ -32,9 +32,8 @@ func _ready() -> void:
 
 ## Leave from or to as null if wanting to transition out of or into gameplay.
 func switch_screen(from: Screen = null, to: Screen = null) -> void:
+#region FROM
 	if not from == null:
-		from.call_deferred(&"_on_exit")
-
 		SFX.play_sfx(from.close_sfx, &"UI", self)
 
 		if from.close_anim == &"BACKWARDS":
@@ -44,24 +43,31 @@ func switch_screen(from: Screen = null, to: Screen = null) -> void:
 
 		get_viewport().gui_release_focus()
 
+		from.on_exit()
+
 		await anime_player.animation_finished
 
+		from.on_gone()
 		from.visible = false
+#endregion
 
+#region TO
 	if to == null:
 		return
 
 	SFX.play_sfx(to.open_sfx, &"UI", self)
 
-	to.visible = true
-
 	anime_player.play(to.open_anim)
 
+	to.visible = true
 	to.focus_grabber.grab_focus()
+
+	to.on_load()
 
 	await anime_player.animation_finished
 
-	to.call_deferred(&"_on_enter")
+	to.on_enter()
+#endregion
 
 
 #func _on_animation_player_animation_finished(anim_name: StringName) -> void:

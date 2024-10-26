@@ -61,7 +61,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [832]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -73,7 +73,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(0, 360)]
 }
 
 [sub_resource type="Animation" id="Animation_3o3ms"]
@@ -471,14 +471,13 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PauseScreen" type="HBoxContainer" parent="ScreenManager" node_paths=PackedStringArray("focus_grabber")]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = 832
 script = ExtResource("17_372ku")
 open_anim = &"pause_peek"
 close_anim = &"BACKWARDS"
@@ -1061,6 +1060,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 360.0
+offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("15_uxr3e")
