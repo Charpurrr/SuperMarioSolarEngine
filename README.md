@@ -42,12 +42,17 @@ Most classes contain documentation that you can find using the Help menu in the 
 ## Credits
 Charlotte "Charpurrr" Fox - Project lead and programmer <br /><br />
 
-Tricia "GTcreyon" - Major Additional programming <br /><br />
+Tricia "GTcreyon" - Major Additional programming <br />
+Kito "qtkito" - Major Additional programming <br /><br />
 
 "CardboardCarl" - Additional programming <br />
-"Unequipped" - Additional programming <br /><br />
+"Unequipped" - Additional programming <br />
+"aloelucidity" - Additional programming <br /><br />
 
-"goatsoup.mp3" - Synth Stratnum Soundtrack <br /><br >
+"goatsoup.mp3" - Synth Stratnum soundtrack <br /><br >
+
+Mack "masterminer176" - Miscellaneous sprites <br />
+"KrystalPhantasm" - Miscellaneous sprites <br /><br >
 
 "KenneyNL" - UI Input Icons <br /><br >
 
@@ -55,5 +60,4 @@ Tricia "GTcreyon" - Major Additional programming <br /><br />
 "TuffTony" - Mario & Luigi sprites <br />
 "NineBit" - Mario & Luigi sprites <br /><br />
 
-Robert "runouw" Hewitt - Inspiration <br />
-"aloelucidity" - Inspiration
+Robert "runouw" Hewitt - Main inspiration <br />

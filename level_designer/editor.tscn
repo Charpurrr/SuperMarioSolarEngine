@@ -1,17 +1,19 @@
-[gd_scene load_steps=19 format=3 uid="uid://bfrw3lh0b17ri"]
+[gd_scene load_steps=21 format=3 uid="uid://bfrw3lh0b17ri"]
 
 [ext_resource type="Script" path="res://level_designer/editor_camera.gd" id="1_7pwxt"]
 [ext_resource type="Script" path="res://level_designer/editor.gd" id="1_uwmd0"]
+[ext_resource type="PackedScene" uid="uid://dgqp3sqvmcvpu" path="res://entities/player/mario/mario.tscn" id="2_v2pr4"]
 [ext_resource type="Script" path="res://level_designer/ui/editor_ui.gd" id="2_w6sns"]
-[ext_resource type="Script" path="res://level_designer/items/hotbar_items/hotbar.gd" id="3_12gsu"]
+[ext_resource type="Script" path="res://level_designer/item_classes/hotbar_item/hotbar.gd" id="3_12gsu"]
 [ext_resource type="PackedScene" uid="uid://dpgxxjf6ip6lp" path="res://level_designer/ui/item_search_menu.tscn" id="3_gtqtc"]
 [ext_resource type="Theme" uid="uid://c53wuaais37yi" path="res://level_designer/ui/editor_theme.tres" id="3_mavvg"]
-[ext_resource type="PackedScene" uid="uid://c537c7fubd6rx" path="res://level_designer/items/hotbar_items/hotbar_item.tscn" id="4_jtwvy"]
+[ext_resource type="PackedScene" uid="uid://c537c7fubd6rx" path="res://level_designer/item_classes/hotbar_item/hotbar_item.tscn" id="4_jtwvy"]
 [ext_resource type="PackedScene" uid="uid://b7fc22e7d8hap" path="res://level_designer/ui/toolbar.tscn" id="6_5sjl1"]
 [ext_resource type="PackedScene" uid="uid://bf1fop2elpnih" path="res://level_designer/ui/inspector.tscn" id="6_58xql"]
 [ext_resource type="Texture2D" uid="uid://bwuodtones7dv" path="res://level_designer/tools/select_tool/selection_box.png" id="8_plyee"]
 [ext_resource type="Script" path="res://level_designer/tools/select_tool/select_box.gd" id="9_qeiqb"]
 [ext_resource type="Script" path="res://level_designer/level_preview.gd" id="11_rylk5"]
+[ext_resource type="PackedScene" uid="uid://bite6o37o0mpt" path="res://stages/world_machine.tscn" id="13_hxrm3"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rcr4i"]
 
@@ -25,7 +27,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1gkqx"]
 
-[node name="Editor" type="Control" node_paths=PackedStringArray("user_interface", "quit_confirm", "selection_box", "level")]
+[node name="Editor" type="Control" node_paths=PackedStringArray("user_interface", "quit_confirm", "selection_box", "level_preview", "camera", "world_machine")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,7 +38,10 @@ script = ExtResource("1_uwmd0")
 user_interface = NodePath("UI")
 quit_confirm = NodePath("UI/QuitConfirm")
 selection_box = NodePath("SelectionBox")
-level = NodePath("LevelPreview")
+level_preview = NodePath("LevelPreview")
+camera = NodePath("EditorCam")
+world_machine = NodePath("WorldMachine")
+player_scene = ExtResource("2_v2pr4")
 
 [node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("z_toggle", "z_layer", "quit_confirm", "search_menu", "toolbar")]
 script = ExtResource("2_w6sns")
@@ -316,7 +321,6 @@ dialog_text = "Are you sure you want to quit the game?"
 
 [node name="EditorCam" type="Camera2D" parent="."]
 anchor_mode = 0
-zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0
 script = ExtResource("1_7pwxt")
@@ -350,7 +354,10 @@ shape = SubResource("RectangleShape2D_1gkqx")
 [node name="LevelPreview" type="Node2D" parent="."]
 script = ExtResource("11_rylk5")
 
+[node name="WorldMachine" parent="." instance=ExtResource("13_hxrm3")]
+autoload = false
+
+[connection signal="selection_changed" from="UI" to="UI/Panels/OtherBars/OtherSides/RightSide/InspectorPanel" method="_on_ui_selection_changed"]
 [connection signal="pressed" from="UI/Panels/OtherBars/LeftSide/ItemPanel/ItemList/Search" to="UI" method="_on_search_pressed"]
+[connection signal="pressed" from="UI/Panels/OtherBars/LeftSide/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="confirmed" from="UI/QuitConfirm" to="UI" method="_on_quit_confirm_confirmed"]
-[connection signal="area_entered" from="SelectionBox/Area2D" to="SelectionBox" method="item_entered"]
-[connection signal="area_exited" from="SelectionBox/Area2D" to="SelectionBox" method="item_exited"]

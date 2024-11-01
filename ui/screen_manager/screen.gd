@@ -22,11 +22,25 @@ var enabled: bool = false
 var manager: ScreenManager
 
 
-## Ran once when this screen is transitioned to.
-func _on_enter() -> void:
+## Ran as soon as this screen starts being transitioned to.
+## (Does not wait for the transition animation to finish first.)
+func on_load() -> void:
 	pass
 
 
-## Ran once when this screen is transitioned from.
-func _on_exit() -> void:
+## Ran once when this screen has been transitioned to.
+## (Waits for the transition animation to finish first.)
+func on_enter() -> void:
+	pass
+
+
+## Ran once when this screen starts being transitioned from.
+## (Does not wait for the transition animation to finish first.)
+func on_exit() -> void:
+	pass
+
+
+## Ran once when this screen has been transitioned from.
+## (Waits for the transition animation to finish first.)
+func on_gone() -> void:
 	pass

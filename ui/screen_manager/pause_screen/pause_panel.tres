@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=27 format=3 uid="uid://dvwfqhrunuxy2"]
+[gd_resource type="VisualShader" load_steps=27 format=3 uid="uid://byfa3t51pf655"]
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_vgxyu"]
 size = Vector2(964, 318)

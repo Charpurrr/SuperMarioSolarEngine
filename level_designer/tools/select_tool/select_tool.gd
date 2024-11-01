@@ -2,10 +2,10 @@ class_name SelectTool
 extends Tool
 ## Default all-purpose selection tool.
 
-var selected_previews: Array[PreviewItem] = []
+signal selection_changed(items: Array[PreviewItem])
 
-var started_selection: bool
-
+var selected_items: Array[PreviewItem] = []
+var selecting: bool
 var point_start: Vector2
 var point_end: Vector2
 
@@ -16,51 +16,54 @@ var point_end: Vector2
 
 func _ready():
 	super()
-	selection_area.connect("area_entered", item_entered)
-	selection_area.connect("area_exited", item_exited)
+	selection_area.area_entered.connect(item_entered)
+	selection_area.area_exited.connect(item_exited)
 
 
 func _tick():
 	if not active:
 		return
-	_set_point_end()
+	if selecting:
+		_set_point_end()
 
-	var point_top_l := Vector2(min(point_start.x, point_end.x), min(point_start.y, point_end.y))
-	var point_bot_r := Vector2(max(point_start.x, point_end.x), max(point_start.y, point_end.y))
+		var point_top_l := Vector2(min(point_start.x, point_end.x), min(point_start.y, point_end.y))
+		var point_bot_r := Vector2(max(point_start.x, point_end.x), max(point_start.y, point_end.y))
 
-	var center_size: Vector2 = point_bot_r - point_top_l
+		var center_size: Vector2 = point_bot_r - point_top_l
 
-	var left: float = selection_box.patch_margin_left
-	var right: float = selection_box.patch_margin_right
-	var top: float = selection_box.patch_margin_top
-	var bottom: float = selection_box.patch_margin_bottom
+		var left: float = selection_box.patch_margin_left
+		var right: float = selection_box.patch_margin_right
+		var top: float = selection_box.patch_margin_top
+		var bottom: float = selection_box.patch_margin_bottom
 
-	selection_box.size = center_size + Vector2(left + right, top + bottom)
-	selection_box.position = point_top_l - Vector2(left, right)
-	selection_box.visible = started_selection
+		selection_box.size = center_size + Vector2(left + right, top + bottom)
+		selection_box.position = point_top_l - Vector2(left, right)
 
-	selection_shape.position = center_size / 2 + Vector2(left, right)
-	selection_shape.shape.size = center_size
+		selection_shape.position = center_size / 2 + Vector2(left, right)
+		selection_shape.shape.size = center_size
 
-	if Input.is_action_just_released(&"left_mouse"):
-		started_selection = false
+	selection_box.visible = selecting
 
 
-func _unhandled_input(_event):
+func _unhandled_input(event):
 	if not active:
 		return
-	_set_point_start()
+	if selecting:
+		if event.is_action_released(&"select"):
+			selecting = false
+			selection_changed.emit(selected_items)
+	elif event.is_action_pressed(&"select"):
+		selected_items.clear()
+		_set_point_start()
 
 
 func _set_point_start():
-	if Input.is_action_just_pressed(&"left_mouse") and not started_selection:
-		point_start = selection_box.get_global_mouse_position()
-		started_selection = true
+	point_start = selection_box.get_global_mouse_position()
+	selecting = true
 
 
 func _set_point_end():
-	if started_selection:
-		point_end = selection_box.get_global_mouse_position()
+	point_end = selection_box.get_global_mouse_position()
 
 
 func _on_activate():
@@ -72,16 +75,16 @@ func _on_deactivate():
 
 
 func item_entered(area: Area2D):
-	if not active or not started_selection:
+	if not active or not selecting:
 		return
 	var preview_item = area.get_parent()
-	selected_previews.append(preview_item)
+	selected_items.append(preview_item)
 	preview_item.select()
 
 
 func item_exited(area: Area2D):
-	if not active or not started_selection:
+	if not active or not selecting:
 		return
 	var preview_item = area.get_parent()
-	selected_previews.erase(preview_item)
+	selected_items.erase(preview_item)
 	preview_item.deselect()

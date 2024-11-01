@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="EditorItemDataActor" load_steps=10 format=3 uid="uid://cmtrn0pk7xt4c"]
+
+[ext_resource type="PackedScene" uid="uid://d1q63wy87qdsk" path="res://entities/debug/debug_block.tscn" id="1_0gg43"]
+[ext_resource type="Script" path="res://level_designer/item_classes/property/property.gd" id="1_jppkn"]
+[ext_resource type="Script" path="res://level_designer/item_classes/preview_item/preview_display/static_preview_display_data.gd" id="2_a7yc0"]
+[ext_resource type="Script" path="res://level_designer/item_classes/editor_item/editor_item_data_actor.gd" id="2_pmb1j"]
+[ext_resource type="Resource" uid="uid://dgoo836b0wfb1" path="res://level_designer/item_classes/property/property_definitions/scale/scale.tres" id="3_1l3a0"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3nokd"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ebvnt"]
+size = Vector2(32, 32)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_hhk8y"]
+size = Vector2(32, 32)
+
+[sub_resource type="Resource" id="Resource_yoapv"]
+script = ExtResource("2_a7yc0")
+texture = SubResource("PlaceholderTexture2D_hhk8y")
+selection_shape = SubResource("RectangleShape2D_ebvnt")
+
+[resource]
+script = ExtResource("2_pmb1j")
+item_scene = ExtResource("1_0gg43")
+icon_texture = SubResource("PlaceholderTexture2D_3nokd")
+category = 1
+properties = Array[ExtResource("1_jppkn")]([ExtResource("3_1l3a0")])
+preview_display_data = SubResource("Resource_yoapv")

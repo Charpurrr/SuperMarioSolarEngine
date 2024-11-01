@@ -2043,10 +2043,9 @@ snap_length = 8.0
 swim_speed = 3.0
 min_slide_incline = 0.4
 
-[node name="StateManager" type="Node" parent="." node_paths=PackedStringArray("input", "fludd", "movement", "target_actor", "initial_state")]
+[node name="StateManager" type="Node" parent="." node_paths=PackedStringArray("input", "movement", "target_actor", "initial_state")]
 script = ExtResource("38_vxs65")
 input = NodePath("../InputManager")
-fludd = NodePath("../FluddManager")
 movement = NodePath("../Movement")
 target_actor = NodePath("..")
 initial_state = NodePath("Dry/Airborne")
