@@ -54,6 +54,8 @@ Kito "qtkito" - Major Additional programming <br /><br />
 Mack "masterminer176" - Miscellaneous sprites <br />
 "KrystalPhantasm" - Miscellaneous sprites <br /><br >
 
+"KenneyNL" - UI Input Icons <br /><br >
+
 "KingAsylus91" - Mario & Luigi sprites <br />
 "TuffTony" - Mario & Luigi sprites <br />
 "NineBit" - Mario & Luigi sprites <br /><br />

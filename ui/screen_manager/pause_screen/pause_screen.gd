@@ -27,8 +27,8 @@ func _on_action_guide_pressed() -> void:
 	pass # Replace with function body.
 
 
-func _on_settings_pressed() -> void:
-	pass
+func _on_options_pressed() -> void:
+	manager.switch_screen(self, manager.options_screen)
 
 
 func _on_quit_pressed() -> void:

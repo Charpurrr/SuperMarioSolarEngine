@@ -4,7 +4,9 @@ extends CanvasLayer
 
 @export var screen_manager: ScreenManager
 @export var color_blur: ColorRect
+
 @export var game_pause_sfx: AudioStream
+@export var game_unpause_sfx: AudioStream
 
 #region Notification variables
 @export var notif_scene: PackedScene
@@ -14,8 +16,7 @@ extends CanvasLayer
 var current_notifs: Array = []
 #endregion
 
-#region Input Display variables
-@onready var sprite_dictionary: Dictionary = {
+@onready var input_display_sprites: Dictionary = {
 	KEY_SHIFT: %Shift,
 	KEY_W: %W,
 	KEY_X: %X,
@@ -25,9 +26,6 @@ var current_notifs: Array = []
 	KEY_DOWN: %Down,
 	KEY_LEFT: %Left,
 }
-
-var input_event: InputEvent
-#endregion
 
 ## This variable is set in [code]world_machine.tscn[/code].
 var world_machine: WorldMachine
@@ -50,18 +48,30 @@ func _process(_delta):
 
 
 func _input(event: InputEvent):
-	input_event = event
-
 	if event.is_action_pressed(&"pause"):
+		_pause_logic()
+
+	_display_input(event)
+
+
+func _pause_logic():
+	# Ignore the pause input if a screen is being transitioned to/from.
+	if screen_manager.anime_player.is_playing():
+		return
+
+	if not GameState.is_paused():
+		SFX.play_sfx(game_pause_sfx, &"UI", screen_manager)
+
+		screen_manager.switch_screen(null, screen_manager.pause_screen)
 		GameState.emit_signal(&"paused")
+	elif screen_manager.current_screen is PauseScreen:
+		SFX.play_sfx(game_unpause_sfx, &"UI", screen_manager)
+		screen_manager.switch_screen(screen_manager.pause_screen, null)
+		GameState.emit_signal(&"paused")
+	else:
+		screen_manager.switch_screen(screen_manager.current_screen, screen_manager.pause_screen)
 
-		if GameState.is_paused():
-			SFX.play_sfx(game_pause_sfx, &"UI", screen_manager)
-			screen_manager.switch_screen(null, screen_manager.pause_screen)
-		else:
-			screen_manager.switch_screen(screen_manager.pause_screen, null)
-
-	_display_input(input_event)
+	print(screen_manager.current_screen)
 
 
 ## Creates a visual "notification" type indicator on the screen.
@@ -85,12 +95,12 @@ func _display_input(event: InputEvent):
 	if not event is InputEventKey:
 		return
 
-	var event_str: Key = event.physical_keycode
+	var event_str: Key = event.keycode
 
-	if not sprite_dictionary.has(event_str):
+	if not input_display_sprites.has(event_str):
 		return
 
-	var texture: TextureRect = sprite_dictionary[event_str]
+	var texture: TextureRect = input_display_sprites[event_str]
 
 	if event.is_pressed():
 		texture.set_modulate(Color(1, 1, 1, 1))

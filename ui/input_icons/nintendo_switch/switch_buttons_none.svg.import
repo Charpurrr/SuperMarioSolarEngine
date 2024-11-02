@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw18e3jvu7l70"
-path="res://.godot/imported/settings.png-4b9ebd9f77e5344adb80d96a4c5eac72.ctex"
+uid="uid://dd3o2vbeh8pq0"
+path="res://.godot/imported/switch_buttons_none.svg-a24382a8ece90ebe3142eb824b90ffe1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/screen_manager/pause_screen/textures/settings.png"
-dest_files=["res://.godot/imported/settings.png-4b9ebd9f77e5344adb80d96a4c5eac72.ctex"]
+source_file="res://ui/input_icons/nintendo_switch/switch_buttons_none.svg"
+dest_files=["res://.godot/imported/switch_buttons_none.svg-a24382a8ece90ebe3142eb824b90ffe1.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
