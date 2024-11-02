@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=4 uid="uid://ccj3teu3h6xfm"]
+[gd_scene load_steps=85 format=4 uid="uid://ccj3teu3h6xfm"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_pakjx"]
 [ext_resource type="Script" path="res://ui/debug_label.gd" id="2_suudb"]
@@ -96,6 +96,42 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ScreenManager/WarningScreen:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ScreenManager/OptionsScreen:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -360)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ScreenManager/OptionsScreen:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_3o3ms"]
 resource_name = "pause_peek"
@@ -129,9 +165,26 @@ tracks/0/keys = {
 "values": [Vector2(0, 360), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_jg56u"]
+resource_name = "options_peek"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScreenManager/OptionsScreen:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -360), Vector2(0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fpb10"]
 _data = {
 "RESET": SubResource("Animation_unrd8"),
+"options_peek": SubResource("Animation_jg56u"),
 "pause_peek": SubResource("Animation_3o3ms"),
 "warning_peek": SubResource("Animation_snnpc")
 }
@@ -279,6 +332,7 @@ script = ExtResource("1_pakjx")
 screen_manager = NodePath("ScreenManager")
 color_blur = NodePath("ScreenManager/ColorBlurEffect")
 game_pause_sfx = ExtResource("16_jehsk")
+game_unpause_sfx = ExtResource("41_1bnq8")
 notif_scene = ExtResource("2_ufvuv")
 notif_list = NodePath("Notifications")
 
@@ -866,12 +920,16 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -360.0
+offset_bottom = -360.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 script = ExtResource("41_enp1b")
 open_sfx = ExtResource("42_svai8")
 close_sfx = ExtResource("41_1bnq8")
+open_anim = &"options_peek"
+close_anim = &"BACKWARDS"
 focus_grabber = NodePath("TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/Timer/ToggleButton")
 
 [node name="Header" type="Panel" parent="ScreenManager/OptionsScreen"]
@@ -919,6 +977,7 @@ size_flags_stretch_ratio = 0.1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.06
+focus_mode = 0
 theme_override_fonts/font = ExtResource("15_y78en")
 theme_override_font_sizes/font_size = 0
 icon = ExtResource("45_63yew")
@@ -936,6 +995,7 @@ theme_override_font_sizes/font_size = 16
 theme_override_styles/panel = SubResource("StyleBoxEmpty_xvn74")
 tab_alignment = 1
 current_tab = 0
+tab_focus_mode = 0
 
 [node name="General" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs"]
 layout_mode = 2
@@ -1244,6 +1304,7 @@ text = "CONTROLLER"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.06
+focus_mode = 0
 theme_override_fonts/font = ExtResource("15_y78en")
 theme_override_font_sizes/font_size = 0
 icon = ExtResource("46_eppju")
@@ -1315,6 +1376,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -360.0
+offset_bottom = -360.0
 grow_horizontal = 2
 grow_vertical = 2
 

@@ -12,6 +12,13 @@ extends Control
 @export var warning_screen: WarningScreen
 @export var options_screen: OptionsScreen
 
+## What screen is currently enabled.
+var current_screen: Screen
+
+
+#func _process(_delta: float) -> void:
+	#print(current_sceen)
+
 
 func _ready() -> void:
 	# Plays the cursor sound effect when switching between buttons.
@@ -67,5 +74,6 @@ func switch_screen(from: Screen = null, to: Screen = null) -> void:
 
 	await anime_player.animation_finished
 
+	current_screen = to
 	to.on_enter()
 #endregion
