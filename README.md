@@ -1,16 +1,14 @@
-# SuperMarioSolarEngine
-![image](https://github.com/Charpurrr/SuperMarioSolarEngine/assets/66517745/45890c20-6fdc-4183-88bb-8c3b8bd0a12f)
+# Super Mario Solar Engine
+![image](https://github.com/user-attachments/assets/4676a6f6-cf7f-406d-a697-e271c8ed35da)
 
 ## An open source 2D Mario engine.
 Incorperates elements from a handful of 3D Mario titles, like Super Mario Galaxy and Super Mario 64.
 Also comes with a barebones level-editor that you can build off for your own in-game level designers!
 
-## Supported projects
-[<img src="https://github.com/Charpurrr/SuperMarioSolarEngine/assets/66517745/be15e3c3-ddd0-4566-9f6c-89b779595e1c">](https://discord.gg/qgfErCy)
+## Supported Projects
+[<img src="https://github.com/user-attachments/assets/2b9f2372-16cc-4275-9964-4ef19121b9dd">](https://discord.gg/qgfErCy)
 
-[<img src="https://github.com/Charpurrr/SuperMarioSolarEngine/assets/66517745/d7a119e2-0fdc-4895-93c4-d5478bd73184">](https://sm63redux.com/)
-
-## Current status
+## Current Status
 **Playable** ([Bugfixing](https://github.com/Charpurrr/SuperMarioSolarEngine/issues) and [fine tuning](https://docs.google.com/document/d/1hzFKpgm-1IukFWBig9A5ZsCQQEqVqJFVrNOAVmHSHJI/edit))
 
 *(Currently accepting feedback!)*
@@ -41,9 +39,6 @@ Most classes contain documentation that you can find using the Help menu in the 
 
 ## Credits
 Charlotte "Charpurrr" Fox - Project lead and programmer <br /><br />
-
-Tricia "GTcreyon" - Major Additional programming <br />
-Kito "qtkito" - Major Additional programming <br /><br />
 
 "CardboardCarl" - Additional programming <br />
 "Unequipped" - Additional programming <br />
