@@ -1,5 +1,5 @@
 # Super Mario Solar Engine
-![image](https://github.com/user-attachments/assets/4676a6f6-cf7f-406d-a697-e271c8ed35da)
+![image](https://github.com/user-attachments/assets/b219d341-682b-418e-9fc2-95bf85fb2d6b)
 
 ## An open source 2D Mario engine.
 Incorperates elements from a handful of 3D Mario titles, like Super Mario Galaxy and Super Mario 64.
