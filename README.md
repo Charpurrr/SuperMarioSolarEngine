@@ -2,8 +2,8 @@
 ![image](https://github.com/user-attachments/assets/b219d341-682b-418e-9fc2-95bf85fb2d6b)
 
 ## An open source 2D Mario engine.
-Incorperates elements from a handful of 3D Mario titles, like Super Mario Galaxy and Super Mario 64.
-Also comes with a barebones level-editor that you can build off for your own in-game level designers!
+Incorporates elements from a handful of 3D Mario titles, like Super Mario Galaxy and Super Mario 64.
+Also comes with a bare-bones level-editor that you can build off for your own in-game level designers!
 
 ## Supported Projects
 [<img src="https://github.com/user-attachments/assets/2b9f2372-16cc-4275-9964-4ef19121b9dd">](https://discord.gg/qgfErCy)
