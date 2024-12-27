@@ -6,6 +6,9 @@ extends Resource
 ## Creates an [AudioStreamPlayer], assigns the corresponding data,
 ## adds it to node, then destroys it when finished.
 static func play_sfx(stream: AudioStream, bus: StringName, node: Node) -> void:
+	if not node.is_inside_tree():
+		return
+
 	var player := AudioStreamPlayer.new()
 
 	player.set_stream(stream)
@@ -15,5 +18,4 @@ static func play_sfx(stream: AudioStream, bus: StringName, node: Node) -> void:
 	node.add_child(player)
 
 	player.play()
-	
 	player.connect(&"finished", player.queue_free)

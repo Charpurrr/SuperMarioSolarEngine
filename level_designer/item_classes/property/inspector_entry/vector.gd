@@ -27,7 +27,6 @@ func create_components(component_labels: Array[String]) -> void:
 ## Sets the vector value of this entry.
 ## Decomposes the input vector, setting the child components to equal the components of the input.
 func set_value(value: Variant) -> void:
-	var num
 	for i in components.size():
 		component_list.get_child(i).set_value(value[i])
 

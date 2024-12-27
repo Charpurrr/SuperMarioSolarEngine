@@ -10,5 +10,5 @@ var preview_item: PreviewItem
 
 
 ## Abstract method. Sets the value of the property to a new value.
-func set_value(new_value: Variant) -> void:
+func set_value(_new_value: Variant) -> void:
 	pass

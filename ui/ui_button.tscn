@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwpk23qq30keu"]
+[gd_scene load_steps=9 format=3 uid="uid://bb6wf0meej6ox"]
 
 [ext_resource type="FontFile" uid="uid://e821cxxeybxh" path="res://ui/fonts/mario_sunshine.ttf" id="1_yyajw"]
 [ext_resource type="Script" path="res://ui/ui_button.gd" id="3_gmvcm"]

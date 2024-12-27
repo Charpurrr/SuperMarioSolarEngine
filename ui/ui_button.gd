@@ -11,15 +11,6 @@ func _ready() -> void:
 
 ## The audio visual effects of a pause button.
 func avfx() -> void:
-	var audio_player := AudioStreamPlayer.new()
-
-	audio_player.set_stream(press_sfx)
-	audio_player.set_bus(&"UI")
-
-	add_child(audio_player)
-
-	audio_player.play()
-	
-	audio_player.connect(&"finished", audio_player.queue_free)
+	SFX.play_sfx(press_sfx, &"UI", self)
 
 	# Could optionally add visual effects too, I relied on the button themes instead.

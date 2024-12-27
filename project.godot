@@ -13,11 +13,11 @@ config_version=5
 config/name="Solar Engine"
 config/version="0.1.x"
 config/tags=PackedStringArray("mario_fangames")
-run/main_scene="res://stages/world_machine.tscn"
+run/main_scene="res://ui/title_screen/title_screen.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 run/max_fps=60
-boot_splash/bg_color=Color(0.513726, 0.403922, 0.470588, 1)
-boot_splash/image="res://logo.png"
+boot_splash/bg_color=Color(0.0862745, 0.0862745, 0.0862745, 1)
+boot_splash/image="res://splash.png"
 boot_splash/use_filter=false
 config/icon="res://icon.png"
 
