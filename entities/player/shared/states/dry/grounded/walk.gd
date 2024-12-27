@@ -68,7 +68,7 @@ func _trans_rules():
 	if input.buffered_input(&"jump"):
 		return &"DummyJump"
 
-	if InputManager.get_x_dir() == -movement.prev_facing_direction:
+	if InputManager.get_x_dir() == -movement.prev_facing_direction and abs(actor.vel.x) > 1:
 		movement.update_prev_direction()
 		return [&"Skid", [0, 16]]
 

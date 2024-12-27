@@ -27,15 +27,15 @@ func _trans_rules():
 	if movement.can_spin() and input.buffered_input(&"spin"):
 		return &"Spin"
 
-	if InputManager.get_x_dir() == movement.prev_facing_direction:
+	if InputManager.get_x_dir() != 0:
 		return &"Walk"
 
-	if InputManager.get_x_dir() == -movement.prev_facing_direction:
-		# Tiny margin to avoid making the skidding animation change frame perfect.
-		if abs(actor.vel.x) < 1:
-			return [&"Skid", [2, 8]]
-
-		return [&"Skid", [0, 16]]
+	#if InputManager.get_x_dir() == -movement.prev_facing_direction and actor.vel.x != 0:
+		### Tiny margin to avoid making the skidding animation change frame perfect.
+		##if abs(actor.vel.x) < 1:
+			##return [&"Skid", [2, 8]]
+#
+		#return [&"Skid", [0, 16]]
 
 	if input.buffered_input(&"jump"):
 		return &"DummyJump"
