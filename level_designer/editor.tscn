@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bfrw3lh0b17ri"]
+[gd_scene load_steps=22 format=3 uid="uid://bfrw3lh0b17ri"]
 
 [ext_resource type="Script" path="res://level_designer/editor_camera.gd" id="1_7pwxt"]
 [ext_resource type="Script" path="res://level_designer/editor.gd" id="1_uwmd0"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c537c7fubd6rx" path="res://level_designer/item_classes/hotbar_item/hotbar_item.tscn" id="4_jtwvy"]
 [ext_resource type="PackedScene" uid="uid://b7fc22e7d8hap" path="res://level_designer/ui/toolbar.tscn" id="6_5sjl1"]
 [ext_resource type="PackedScene" uid="uid://bf1fop2elpnih" path="res://level_designer/ui/inspector.tscn" id="6_58xql"]
+[ext_resource type="PackedScene" uid="uid://dvvb6v5hvrool" path="res://level_designer/tools/menus/pen_menu.tscn" id="8_7fhkl"]
 [ext_resource type="Texture2D" uid="uid://bwuodtones7dv" path="res://level_designer/tools/select_tool/selection_box.png" id="8_plyee"]
 [ext_resource type="Script" path="res://level_designer/tools/select_tool/select_box.gd" id="9_qeiqb"]
 [ext_resource type="Script" path="res://level_designer/level_preview.gd" id="11_rylk5"]
@@ -291,6 +292,24 @@ visible = false
 clip_contents = true
 layout_mode = 2
 hotbar = NodePath("../../../LeftSide/ItemPanel/ItemList/HotbarScroll/HotbarFlow")
+
+[node name="ToolMenuContainer" type="Control" parent="UI/Panels/OtherBars/OtherSides/BottomSide"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Panels/OtherBars/OtherSides/BottomSide/ToolMenuContainer"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -294.0
+offset_right = 49.0
+offset_bottom = -1.0
+mouse_filter = 2
+alignment = 2
+
+[node name="PenMenu" parent="UI/Panels/OtherBars/OtherSides/BottomSide/ToolMenuContainer/VBoxContainer" instance=ExtResource("8_7fhkl")]
+visible = false
+layout_mode = 2
 
 [node name="ToolbarContainer" parent="UI/Panels/OtherBars/OtherSides/BottomSide" node_paths=PackedStringArray("editor") instance=ExtResource("6_5sjl1")]
 unique_name_in_owner = true

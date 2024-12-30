@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvvb6v5hvrool"]
+
+[ext_resource type="Script" path="res://level_designer/tools/menus/pen_menu.gd" id="1_yi3er"]
+[ext_resource type="Texture2D" uid="uid://bvke8v6vvby2n" path="res://level_designer/tools/menus/pen_menu_icons.png" id="2_hnp23"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qck3b"]
+atlas = ExtResource("2_hnp23")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3oyin"]
+atlas = ExtResource("2_hnp23")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bpck"]
+atlas = ExtResource("2_hnp23")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qe3c"]
+atlas = ExtResource("2_hnp23")
+region = Rect2(32, 32, 32, 32)
+
+[node name="PenMenu" type="PanelContainer"]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 40.0
+offset_bottom = 86.0
+script = ExtResource("1_yi3er")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="LineDraw" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+icon = SubResource("AtlasTexture_qck3b")
+icon_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="CurveDraw" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+icon = SubResource("AtlasTexture_3oyin")
+icon_alignment = 1
+
+[node name="CurveSubMenu" type="Control" parent="."]
+unique_name_in_owner = true
+show_behind_parent = true
+z_index = -1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="CurveSubMenu"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 38.0
+offset_right = 126.0
+offset_bottom = 78.0
+grow_vertical = 0
+mouse_filter = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CurveSubMenu/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="CurveAddPoint" type="Button" parent="CurveSubMenu/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+icon = SubResource("AtlasTexture_1bpck")
+icon_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="CurveSubMenu/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="CurveUnlockHandles" type="Button" parent="CurveSubMenu/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+icon = SubResource("AtlasTexture_6qe3c")
+
+[connection signal="toggled" from="VBoxContainer/LineDraw" to="." method="_on_line_draw_toggled"]
+[connection signal="toggled" from="VBoxContainer/CurveDraw" to="." method="_on_curve_draw_toggled"]
