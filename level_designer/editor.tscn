@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bfrw3lh0b17ri"]
+[gd_scene load_steps=22 format=3 uid="uid://bfrw3lh0b17ri"]
 
 [ext_resource type="Script" path="res://level_designer/editor_camera.gd" id="1_7pwxt"]
 [ext_resource type="Script" path="res://level_designer/editor.gd" id="1_uwmd0"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://level_designer/tools/select_tool/select_box.gd" id="9_qeiqb"]
 [ext_resource type="Script" path="res://level_designer/level_preview.gd" id="11_rylk5"]
 [ext_resource type="PackedScene" uid="uid://bite6o37o0mpt" path="res://stages/world_machine.tscn" id="13_hxrm3"]
+[ext_resource type="PackedScene" uid="uid://dbt3exrjb6tdc" path="res://level_designer/spawn_point.tscn" id="13_s4nx5"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rcr4i"]
 
@@ -27,7 +28,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1gkqx"]
 
-[node name="Editor" type="Control" node_paths=PackedStringArray("user_interface", "quit_confirm", "selection_box", "level_preview", "camera", "world_machine")]
+[node name="Editor" type="Control" node_paths=PackedStringArray("user_interface", "quit_confirm", "spawn_point", "selection_box", "level_preview", "camera", "world_machine")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,6 +38,7 @@ grow_vertical = 2
 script = ExtResource("1_uwmd0")
 user_interface = NodePath("UI")
 quit_confirm = NodePath("UI/QuitConfirm")
+spawn_point = NodePath("SpawnPoint")
 selection_box = NodePath("SelectionBox")
 level_preview = NodePath("LevelPreview")
 camera = NodePath("EditorCam")
@@ -106,7 +108,7 @@ layout_mode = 2
 
 [node name="ZViewToggle" type="CheckButton" parent="UI/Panels/TopBarPanel/Top/ZView"]
 layout_mode = 2
-text = "Z-view"
+text = "Layer Focus"
 
 [node name="ZViewLayer" type="SpinBox" parent="UI/Panels/TopBarPanel/Top/ZView"]
 layout_mode = 2
@@ -326,9 +328,11 @@ position_smoothing_speed = 20.0
 script = ExtResource("1_7pwxt")
 metadata/_edit_lock_ = true
 
+[node name="SpawnPoint" parent="." instance=ExtResource("13_s4nx5")]
+position = Vector2(320, 180)
+
 [node name="SelectionBox" type="NinePatchRect" parent="." node_paths=PackedStringArray("selection_area", "shape")]
 visible = false
-layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 texture = ExtResource("8_plyee")

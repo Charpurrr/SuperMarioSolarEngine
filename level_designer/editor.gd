@@ -4,6 +4,7 @@ extends Node
 
 @export var user_interface: LevelEditorUI
 @export var quit_confirm: ConfirmationDialog
+@export var spawn_point: AnimatedSprite2D
 @export var selection_box: NinePatchRect
 @export var level_preview: LevelPreview
 @export var camera: Camera2D
@@ -19,8 +20,11 @@ func _on_play_button_pressed() -> void:
 	# TODO: A way to return to the editor (like backspace from og 63)
 	user_interface.visible = false
 	level_preview.visible = false
+	spawn_point.visible = false
 
 	var created_level = Level.new()
+
+	# Turn all the preview objects into real stage props.
 	for preview in level_preview.get_children():
 		preview = preview as PreviewItem
 		var data = preview.item_data
@@ -34,9 +38,10 @@ func _on_play_button_pressed() -> void:
 			created_level.add_child(inst)
 
 	# Create the player node and place it in the level.
-	# TODO: Place the player at the start position
 	var player_node = player_scene.instantiate()
 	created_level.add_child(player_node)
+
+	player_node.position = spawn_point.global_position
 	created_level.player = player_node
 
 	# Create a camera and parent it to the player.

@@ -4,4 +4,4 @@
 
 [node name="Generator" type="Node"]
 script = ExtResource("1_yxf8y")
-item_list_path = "res://level_designer/items/editor_items/editor_item_list.tres"
+item_list_path = "res://level_designer/item_classes/editor_item/editor_item_list.tres"

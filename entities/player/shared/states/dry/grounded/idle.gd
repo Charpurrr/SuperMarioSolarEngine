@@ -4,7 +4,7 @@ extends PlayerState
 
 @export_category(&"Animation (Unique to State)")
 @export var animation_look_up: StringName
-@export var anim_offset_l_u: Vector2
+@export var anim_offset_look_up: Vector2
 
 
 func _physics_tick():
@@ -13,8 +13,10 @@ func _physics_tick():
 
 	if Input.is_action_pressed(&"up"):
 		actor.doll.play(animation_look_up)
+		actor.doll.offset = anim_offset_look_up
 	else:
 		actor.doll.play(animation)
+		actor.doll.offset = anim_offset
 
 
 func _trans_rules():
