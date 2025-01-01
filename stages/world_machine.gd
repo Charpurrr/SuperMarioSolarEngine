@@ -70,7 +70,7 @@ func _reload_level():
 	var new_level: Node2D = level_scene.instantiate()
 	var tree: SceneTree = get_tree()
 
-	# For disabling the pause screen if it was open
+	# For disabling the pause screen if it was open.
 	if tree.paused == true:
 		GameState.pause_toggle()
 

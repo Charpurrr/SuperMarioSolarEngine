@@ -333,6 +333,7 @@ position = Vector2(320, 180)
 
 [node name="SelectionBox" type="NinePatchRect" parent="." node_paths=PackedStringArray("selection_area", "shape")]
 visible = false
+layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 texture = ExtResource("8_plyee")

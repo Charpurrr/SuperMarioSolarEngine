@@ -18,73 +18,19 @@ extends Button
 ## The [EditorItemData] stored in this slot.
 var item_data: EditorItemData
 
+## Whether or not this slot is currently selected.
+var selected: bool
+
 ## Whether or not this item is pinned.
 var pinned: bool
 
 ## Stored tween for the pin progress bar.
-var _tween = null
+var tween = null
 
 ## Reference to the parent hotbar.
 @onready var hotbar: Hotbar = get_parent()
 ## Reference to the toolbar.
 @onready var toolbar: Toolbar = %ToolbarContainer
-
-
-## Store an [EditorItemData] in this slot.
-func store_item(data: EditorItemData):
-	item_icon.texture = data.icon_texture
-
-	# Apply half-pixel offset to ensure the texture is on an integer position.
-	var tex_size = data.icon_texture.get_size()
-	var tex_offset = tex_size.posmod(2.0) * 0.5
-	item_icon.offset_left = tex_offset.x
-	item_icon.offset_top = tex_offset.y
-
-	item_icon.visible = true
-	item_data = data
-
-
-func _gui_input(event):
-	if event.is_action_pressed("e_clear_hotbar_item"):
-		_clear()
-
-	if event.is_action_pressed("e_pin_hotbar_item"):
-		_tween_inrease()
-
-	if event.is_action_released("e_pin_hotbar_item"):
-		_tween_decrease()
-
-
-func _tween_inrease():
-	if _tween != null:
-		_tween.kill()
-
-	_tween = get_tree().create_tween()
-	_tween.set_ease(Tween.EASE_IN)
-
-	_tween.tween_property(pin_progress, "value", 100.0, pin_hold_time)
-	_tween.connect(&"finished", _pin_unpin_item)
-
-
-func _tween_decrease():
-	if _tween != null:
-		_tween.kill()
-
-	_tween = get_tree().create_tween()
-	_tween.tween_property(pin_progress, "value", 0.0, pin_release_time)
-
-
-func _pin_unpin_item():
-	_tween.kill()
-	pin_progress.value = 0
-
-	pinned = !pinned
-	pin_icon.visible = pinned
-
-	if pinned == true:
-		hotbar.pin_item(self)
-	else:
-		hotbar.unpin_item(self)
 
 
 func _notification(what):
@@ -96,6 +42,9 @@ func _notification(what):
 
 	if what == NOTIFICATION_MOUSE_EXIT:
 		_tween_decrease()
+
+	if what == NOTIFICATION_FOCUS_EXIT:
+		selected = false
 
 
 func _get_drag_data(_at_position):
@@ -139,6 +88,64 @@ func _drop_data(_at_position, data):
 		store_item(data)
 
 
+func _gui_input(event):
+	if event.is_action_pressed("e_clear_hotbar_item"):
+		_clear()
+
+	if selected:
+		if event.is_action_pressed("e_pin_hotbar_item"):
+			_tween_inrease()
+
+		if event.is_action_released("e_pin_hotbar_item"):
+			_tween_decrease()
+
+
+## Store an [EditorItemData] in this slot.
+func store_item(data: EditorItemData):
+	item_icon.texture = data.icon_texture
+
+	# Apply half-pixel offset to ensure the texture is on an integer position.
+	var tex_size = data.icon_texture.get_size()
+	var tex_offset = tex_size.posmod(2.0) * 0.5
+	item_icon.offset_left = tex_offset.x
+	item_icon.offset_top = tex_offset.y
+
+	item_icon.visible = true
+	item_data = data
+
+
+func _tween_inrease():
+	if tween != null:
+		tween.kill()
+
+	tween = get_tree().create_tween()
+	tween.set_ease(Tween.EASE_IN)
+
+	tween.tween_property(pin_progress, "value", 100.0, pin_hold_time)
+	tween.connect(&"finished", _pin_unpin_item)
+
+
+func _tween_decrease():
+	if tween != null:
+		tween.kill()
+
+	tween = get_tree().create_tween()
+	tween.tween_property(pin_progress, "value", 0.0, pin_release_time)
+
+
+func _pin_unpin_item():
+	tween.kill()
+	pin_progress.value = 0
+
+	pinned = !pinned
+	pin_icon.visible = pinned
+
+	if pinned == true:
+		hotbar.pin_item(self)
+	else:
+		hotbar.unpin_item(self)
+
+
 ## Clear this slot, removing stored data and texture.
 func _clear():
 	if pinned:
@@ -151,5 +158,8 @@ func _clear():
 func _on_pressed():
 	if item_data == null:
 		return
+
 	hotbar.editor.level_preview.new_brush(item_data)
 	toolbar.drop_tools()
+
+	selected = true
