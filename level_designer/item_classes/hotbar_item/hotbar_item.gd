@@ -61,7 +61,7 @@ func _get_drag_data(_at_position):
 
 	preview_texture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	preview_texture.texture = item_data.icon_texture
-	preview_texture.size = item_icon.size * 1.2
+	preview_texture.size = item_icon.size * 0.7
 
 	preview_texture.position = -preview_texture.size / 2
 
