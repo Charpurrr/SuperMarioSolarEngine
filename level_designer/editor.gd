@@ -51,3 +51,7 @@ func _on_play_button_pressed() -> void:
 	cam.enabled = true
 
 	world_machine.handle_level_node(created_level, true)
+
+
+func cursor_in_preview_field() -> bool:
+	return user_interface.preview_detector.cursor_in_preview_field

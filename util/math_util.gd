@@ -1,4 +1,5 @@
 class_name Math
+## Provides useful math functions that you can call using [code]Math.function_name[/code].
 
 
 ## Round a value to a specific decimal place.

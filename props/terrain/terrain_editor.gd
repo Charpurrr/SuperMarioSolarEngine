@@ -8,10 +8,11 @@ var last_click_pos := -Vector2.INF
 var drawn_once: bool = false
 
 
-func _physics_process(_delta):
+func _process(_delta: float) -> void:
 	if not closed:
 		_line_edit_mode()
 		return
+
 	if Input.is_action_just_pressed("end_polygon_creation"):
 		var body := Polygon2D.new()
 
@@ -46,7 +47,7 @@ func _line_edit_mode():
 			pos = Vector2.ZERO
 			drawn_once = true
 
-		# Jank godot fix.
+		# Jank Godot fix.
 		var poly = points
 		poly.append(pos)
 		points = poly

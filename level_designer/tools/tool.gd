@@ -4,7 +4,7 @@ extends Button
 
 @export var toolbar: Toolbar
 ## The visual icon of the tool.
-@export var default_mouse_icon: Texture2D
+@export var mouse_icon: Texture2D
 ## The shape of the tool.
 @export var mouse_shape: Input.CursorShape
 ## The hotspot location of the cursor.

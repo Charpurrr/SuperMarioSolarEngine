@@ -32,7 +32,7 @@ window/size/viewport_width=640
 window/size/viewport_height=360
 window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_height"
-mouse_cursor/custom_image="res://level_designer/tools/select_tool/select.png"
+mouse_cursor/custom_image="res://level_designer/tools/cursors/select.png"
 
 [editor_plugins]
 
@@ -205,6 +205,7 @@ fullscreen={
 2d_physics/layer_4="Homeable (GroundPound)"
 2d_physics/layer_5="Water"
 2d_physics/layer_9="Preview (Editor)"
+2d_physics/layer_10="Level Preview Field (Editor)"
 
 [rendering]
 

@@ -12,6 +12,7 @@ signal selection_changed(items: Array[PreviewItem])
 @export var search_menu: Panel
 
 @export_category(&"Other Elements")
+@export var preview_detector: Control
 @export var toolbar: Toolbar
 
 
@@ -44,3 +45,9 @@ func _on_quit_confirm_confirmed():
 
 func _on_search_pressed():
 	search_menu.visible = not search_menu.visible
+
+
+func _on_object_search_visibility_changed() -> void:
+	# Toggle the playing field detector when the search menu is active,
+	# to avoid placing things when selecting objects.
+	preview_detector.visible = !preview_detector.visible

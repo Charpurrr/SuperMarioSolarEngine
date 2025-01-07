@@ -24,7 +24,6 @@ frame_4/duration = 1.0
 radius = 4.0
 
 [node name="TerrainEditor" type="Line2D"]
-visible = false
 texture_repeat = 2
 width = 2.0
 texture = SubResource("AnimatedTexture_akk4i")
