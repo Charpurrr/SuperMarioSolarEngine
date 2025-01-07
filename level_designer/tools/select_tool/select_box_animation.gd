@@ -10,6 +10,8 @@ extends NinePatchRect
 
 ## Delay between animation steps in frames.
 @export var animation_delay: float
+@export var frame_count: int
+
 var timer: float = 0
 
 
@@ -18,8 +20,16 @@ func _ready():
 
 
 func _process(_delta):
+	if visible == false:
+		return
+
 	timer = max(timer - 1, 0)
 
 	if timer == 0:
-		region_rect.position.x = wrap(region_rect.position.x + 28, 0, 140)
+		region_rect.position.x = wrap(
+			region_rect.position.x + region_rect.size.x,
+			0,
+			frame_count * region_rect.size.x
+		)
+
 		timer = animation_delay
