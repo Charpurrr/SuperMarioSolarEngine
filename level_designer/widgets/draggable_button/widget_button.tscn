@@ -1,0 +1,39 @@
+[gd_scene load_steps=11 format=3 uid="uid://cn7kvuvr72qyy"]
+
+[ext_resource type="Texture2D" uid="uid://b0hev8oqv4b3v" path="res://level_designer/widgets/draggable_button/normal.png" id="1_vae0d"]
+[ext_resource type="Script" path="res://level_designer/widgets/draggable_button/widget_button.gd" id="1_wk6ee"]
+[ext_resource type="Script" path="res://level_designer/widgets/draggable_button/button_costume.gd" id="2_0yngx"]
+[ext_resource type="Texture2D" uid="uid://dlkjucnn2wrdq" path="res://level_designer/widgets/draggable_button/pressed.png" id="2_g5w00"]
+[ext_resource type="Texture2D" uid="uid://ces2dcjtixuyg" path="res://level_designer/widgets/draggable_button/hover.png" id="3_onq1d"]
+[ext_resource type="Texture2D" uid="uid://cut8gjl1ok1nf" path="res://level_designer/widgets/draggable_button/hover_red.png" id="6_bohpw"]
+[ext_resource type="Texture2D" uid="uid://btke6yfqyplyg" path="res://level_designer/widgets/draggable_button/normal_red.png" id="7_ynhlh"]
+[ext_resource type="Texture2D" uid="uid://c4ac7ae1pnkkj" path="res://level_designer/widgets/draggable_button/pressed_red.png" id="8_jhsw2"]
+
+[sub_resource type="Resource" id="Resource_hbpnl"]
+script = ExtResource("2_0yngx")
+normal_graphic = ExtResource("1_vae0d")
+hover_graphic = ExtResource("3_onq1d")
+pressed_graphic = ExtResource("2_g5w00")
+
+[sub_resource type="Resource" id="Resource_2jha5"]
+script = ExtResource("2_0yngx")
+normal_graphic = ExtResource("7_ynhlh")
+hover_graphic = ExtResource("6_bohpw")
+pressed_graphic = ExtResource("8_jhsw2")
+
+[node name="WidgetButton" type="Node2D" node_paths=PackedStringArray("button")]
+script = ExtResource("1_wk6ee")
+button = NodePath("Button")
+common_costume_data = SubResource("Resource_hbpnl")
+red_costume_data = SubResource("Resource_2jha5")
+
+[node name="Button" type="TextureButton" parent="."]
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+pivot_offset = Vector2(5, 5)
+focus_mode = 0
+texture_normal = ExtResource("1_vae0d")
+texture_pressed = ExtResource("2_g5w00")
+texture_hover = ExtResource("3_onq1d")

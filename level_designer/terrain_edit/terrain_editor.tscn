@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://deaf7c51bxjrn" path="res://level_designer/terrain_edit/polyline_segment4.png" id="4_o4ur7"]
 [ext_resource type="Texture2D" uid="uid://fgjreysoh48j" path="res://level_designer/terrain_edit/polyline_segment5.png" id="5_jrtrr"]
 [ext_resource type="Script" path="res://props/terrain/terrain_editor.gd" id="6_gc08b"]
+[ext_resource type="PackedScene" uid="uid://cn7kvuvr72qyy" path="res://level_designer/widgets/draggable_button/widget_button.tscn" id="7_6wh0j"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_akk4i"]
 frames = 5
@@ -20,20 +21,10 @@ frame_3/duration = 1.0
 frame_4/texture = ExtResource("5_jrtrr")
 frame_4/duration = 1.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fqbrv"]
-radius = 4.0
-
 [node name="TerrainEditor" type="Line2D"]
 texture_repeat = 2
 width = 2.0
 texture = SubResource("AnimatedTexture_akk4i")
 texture_mode = 1
 script = ExtResource("6_gc08b")
-
-[node name="Button" type="Area2D" parent="."]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Button"]
-shape = SubResource("CircleShape2D_fqbrv")
-
-[connection signal="input_event" from="Button" to="." method="_on_button_input_event"]
+button_widget = ExtResource("7_6wh0j")
