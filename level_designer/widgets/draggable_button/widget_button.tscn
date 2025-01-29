@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cn7kvuvr72qyy"]
+[gd_scene load_steps=13 format=3 uid="uid://cn7kvuvr72qyy"]
 
 [ext_resource type="Texture2D" uid="uid://b0hev8oqv4b3v" path="res://level_designer/widgets/draggable_button/normal.png" id="1_vae0d"]
 [ext_resource type="Script" path="res://level_designer/widgets/draggable_button/widget_button.gd" id="1_wk6ee"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cut8gjl1ok1nf" path="res://level_designer/widgets/draggable_button/hover_red.png" id="6_bohpw"]
 [ext_resource type="Texture2D" uid="uid://btke6yfqyplyg" path="res://level_designer/widgets/draggable_button/normal_red.png" id="7_ynhlh"]
 [ext_resource type="Texture2D" uid="uid://c4ac7ae1pnkkj" path="res://level_designer/widgets/draggable_button/pressed_red.png" id="8_jhsw2"]
+[ext_resource type="Texture2D" uid="uid://cwvnysjvjmmla" path="res://level_designer/widgets/draggable_button/axis_lock_x.png" id="9_jew42"]
+[ext_resource type="Texture2D" uid="uid://ceo1xm64g7pe0" path="res://level_designer/widgets/draggable_button/axis_lock_y.png" id="10_rbsdj"]
 
 [sub_resource type="Resource" id="Resource_hbpnl"]
 script = ExtResource("2_0yngx")
@@ -21,9 +23,11 @@ normal_graphic = ExtResource("7_ynhlh")
 hover_graphic = ExtResource("6_bohpw")
 pressed_graphic = ExtResource("8_jhsw2")
 
-[node name="WidgetButton" type="Node2D" node_paths=PackedStringArray("button")]
+[node name="WidgetButton" type="Node2D" node_paths=PackedStringArray("button", "x_lock", "y_lock")]
 script = ExtResource("1_wk6ee")
 button = NodePath("Button")
+x_lock = NodePath("LockX")
+y_lock = NodePath("LockY")
 common_costume_data = SubResource("Resource_hbpnl")
 red_costume_data = SubResource("Resource_2jha5")
 
@@ -34,6 +38,21 @@ offset_right = 4.0
 offset_bottom = 4.0
 pivot_offset = Vector2(5, 5)
 focus_mode = 0
+keep_pressed_outside = true
 texture_normal = ExtResource("1_vae0d")
 texture_pressed = ExtResource("2_g5w00")
 texture_hover = ExtResource("3_onq1d")
+metadata/_edit_use_anchors_ = true
+
+[node name="LockX" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("9_jew42")
+
+[node name="LockY" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("10_rbsdj")
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
