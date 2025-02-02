@@ -12,8 +12,16 @@ func _on_retry_pressed() -> void:
 	GameState.emit_reload()
 	manager.switch_screen(self)
 
+func _unhandled_input(event):
+	if event is InputEventKey:
+		if event.pressed and event.keycode == KEY_R:
+			get_tree().reload_current_scene()
+			GameState.paused.emit()
 
-func _on_reset_pressed() -> void:
+func _on_reset_pressed(event) -> void:
+	if event is InputEventKey:
+		if event.pressed and event.keycode == KEY_ENTER:
+			get_tree().reload_current_scene()
 	manager.warning_screen.text = """
 	[center]Restart the level from the beginning?
 	(Any unsaved progress will be [color=red]LOST[/color].)"""
@@ -21,7 +29,6 @@ func _on_reset_pressed() -> void:
 	manager.warning_screen.confirm_behaviour = manager.warning_screen.restart
 
 	manager.switch_screen(self, manager.warning_screen)
-
 
 func _on_action_guide_pressed() -> void:
 	pass # Replace with function body.
@@ -35,6 +42,8 @@ func _on_quit_pressed() -> void:
 	manager.warning_screen.text = """
 	[center]Exit to title screen?
 	(Any unsaved progress will be [color=red]LOST[/color].)"""
+	
+	
 
 	manager.warning_screen.confirm_behaviour = manager.warning_screen.quit
 
