@@ -1595,8 +1595,8 @@ sfx_list = [ExtResource("41_vhr45"), ExtResource("42_k4dq2")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = false
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_8p2oq"]
 script = ExtResource("49_apkmk")
@@ -1604,8 +1604,8 @@ sfx_list = [ExtResource("45_mh7x3"), ExtResource("46_q6juv")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = true
 overwrite_other = false
+cutoff_sfx = true
 
 [sub_resource type="Resource" id="Resource_sitp4"]
 script = ExtResource("49_apkmk")
@@ -1613,8 +1613,8 @@ sfx_list = [ExtResource("56_o7gy0")]
 bus = &"Voice"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = true
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_ql55k"]
 script = ExtResource("49_apkmk")
@@ -1622,8 +1622,8 @@ sfx_list = [ExtResource("51_ge5km")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = false
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_lybx2"]
 script = ExtResource("49_apkmk")
@@ -1631,8 +1631,8 @@ sfx_list = [ExtResource("45_mh7x3"), ExtResource("46_q6juv")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = false
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_upqlf"]
 script = ExtResource("49_apkmk")
@@ -1640,8 +1640,8 @@ sfx_list = [ExtResource("54_nx8es")]
 bus = &"Voice"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = true
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_t5lrn"]
 script = ExtResource("49_apkmk")
@@ -1649,8 +1649,8 @@ sfx_list = [ExtResource("58_lmjof")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = false
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_oau5y"]
 script = ExtResource("49_apkmk")
@@ -1658,8 +1658,8 @@ sfx_list = [ExtResource("61_4m4nv")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = true
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_2esv2"]
 script = ExtResource("49_apkmk")
@@ -1667,8 +1667,8 @@ sfx_list = [ExtResource("64_nkubm"), ExtResource("65_2xkjx")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = false
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_qmxtc"]
 script = ExtResource("49_apkmk")
@@ -1676,8 +1676,8 @@ sfx_list = [ExtResource("64_rch8v"), ExtResource("65_f1kp6"), ExtResource("66_8j
 bus = &"Voice"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = true
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_js1ac"]
 script = ExtResource("49_apkmk")
@@ -1685,8 +1685,8 @@ sfx_list = [ExtResource("71_ohc7q"), ExtResource("72_r33o8"), ExtResource("73_cg
 bus = &"Voice"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = true
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_cjrlj"]
 script = ExtResource("49_apkmk")
@@ -1694,8 +1694,8 @@ sfx_list = [ExtResource("78_b3o3d")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = false
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_c6n5s"]
 script = ExtResource("49_apkmk")
@@ -1703,8 +1703,8 @@ sfx_list = [ExtResource("78_wqfjo"), ExtResource("79_ofamm"), ExtResource("80_rc
 bus = &"Voice"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = true
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_0beus"]
 script = ExtResource("49_apkmk")
@@ -1712,8 +1712,8 @@ sfx_list = [ExtResource("85_a2b2e")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = false
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_32052"]
 script = ExtResource("49_apkmk")
@@ -1721,8 +1721,8 @@ sfx_list = [ExtResource("86_v7cq7")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = false
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_h8xfq"]
 script = ExtResource("49_apkmk")
@@ -1730,8 +1730,8 @@ sfx_list = [ExtResource("95_hftyd"), ExtResource("96_bh3id"), ExtResource("97_3d
 bus = &"Voice"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = true
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_5f3i0"]
 script = ExtResource("49_apkmk")
@@ -1739,8 +1739,8 @@ sfx_list = [ExtResource("78_wqfjo"), ExtResource("82_6e7m6")]
 bus = &"Voice"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = true
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_ts3h6"]
 script = ExtResource("49_apkmk")
@@ -1748,8 +1748,8 @@ sfx_list = [ExtResource("78_wqfjo"), ExtResource("79_ofamm"), ExtResource("80_rc
 bus = &"Voice"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = true
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_foa8p"]
 script = ExtResource("49_apkmk")
@@ -1757,8 +1757,8 @@ sfx_list = [ExtResource("113_7rxe5")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = false
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_yrs16"]
 script = ExtResource("49_apkmk")
@@ -1766,8 +1766,8 @@ sfx_list = [ExtResource("78_wqfjo"), ExtResource("79_ofamm"), ExtResource("80_rc
 bus = &"Voice"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = true
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_l81lv"]
 script = ExtResource("49_apkmk")
@@ -1775,8 +1775,8 @@ sfx_list = [ExtResource("113_7rxe5")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = false
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_jo8kb"]
 script = ExtResource("49_apkmk")
@@ -1784,8 +1784,8 @@ sfx_list = [ExtResource("64_rch8v"), ExtResource("65_f1kp6"), ExtResource("66_8j
 bus = &"Voice"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = true
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_8711x"]
 script = ExtResource("49_apkmk")
@@ -1793,8 +1793,8 @@ sfx_list = [ExtResource("81_27gn5"), ExtResource("108_e31o1"), ExtResource("109_
 bus = &"Voice"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = true
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_nl575"]
 script = ExtResource("49_apkmk")
@@ -1802,8 +1802,8 @@ sfx_list = [ExtResource("85_a2b2e")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = false
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_w3vn1"]
 script = ExtResource("49_apkmk")
@@ -1811,8 +1811,8 @@ sfx_list = [ExtResource("91_k5qq6")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = true
 overwrite_other = false
+cutoff_sfx = true
 
 [sub_resource type="Resource" id="Resource_pq6ep"]
 script = ExtResource("49_apkmk")
@@ -1820,8 +1820,8 @@ sfx_list = [ExtResource("71_ohc7q"), ExtResource("72_r33o8"), ExtResource("73_cg
 bus = &"Voice"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = true
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_a2hl0"]
 script = ExtResource("49_apkmk")
@@ -1829,8 +1829,8 @@ sfx_list = [ExtResource("93_ehd5h")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = false
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_bloag"]
 script = ExtResource("49_apkmk")
@@ -1838,8 +1838,8 @@ sfx_list = [ExtResource("120_qvxml"), ExtResource("121_se657"), ExtResource("122
 bus = &"Voice"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = true
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_2nfvq"]
 script = ExtResource("49_apkmk")
@@ -1847,8 +1847,8 @@ sfx_list = [ExtResource("102_6yrjd")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = true
 overwrite_other = false
+cutoff_sfx = true
 
 [sub_resource type="Resource" id="Resource_5kqsg"]
 script = ExtResource("49_apkmk")
@@ -1856,8 +1856,8 @@ sfx_list = [ExtResource("87_4kpcy")]
 bus = &"Voice"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = true
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_7r27p"]
 script = ExtResource("49_apkmk")
@@ -1865,8 +1865,8 @@ sfx_list = [ExtResource("116_078t4")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = true
 overwrite_other = false
+cutoff_sfx = true
 
 [sub_resource type="Resource" id="Resource_rgxnc"]
 script = ExtResource("49_apkmk")
@@ -1874,8 +1874,8 @@ sfx_list = [ExtResource("100_3q48c"), ExtResource("101_wodpm")]
 bus = &"Voice"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = true
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_lib4c"]
 script = ExtResource("49_apkmk")
@@ -1883,8 +1883,8 @@ sfx_list = [ExtResource("110_eavfs"), ExtResource("111_vejrh")]
 bus = &"Voice"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = true
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_6roi5"]
 script = ExtResource("49_apkmk")
@@ -1892,8 +1892,8 @@ sfx_list = [ExtResource("138_88upi")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = false
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_4xwjg"]
 script = ExtResource("49_apkmk")
@@ -1901,8 +1901,8 @@ sfx_list = [ExtResource("72_r33o8")]
 bus = &"Voice"
 delay_time = 0.1
 force_new = false
-cutoff_sfx = false
 overwrite_other = true
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_ujdp5"]
 script = ExtResource("49_apkmk")
@@ -1910,8 +1910,8 @@ sfx_list = [ExtResource("120_qvxml"), ExtResource("121_se657"), ExtResource("122
 bus = &"Voice"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = true
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_2y8iw"]
 script = ExtResource("49_apkmk")
@@ -1919,8 +1919,8 @@ sfx_list = [ExtResource("126_6gu1v")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = false
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_vehmo"]
 script = ExtResource("49_apkmk")
@@ -1928,8 +1928,8 @@ sfx_list = [ExtResource("126_onkkq"), ExtResource("127_skj22"), ExtResource("80_
 bus = &"Voice"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = true
+cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_0hpnu"]
 script = ExtResource("49_apkmk")
@@ -1937,8 +1937,8 @@ sfx_list = [ExtResource("136_a6kal")]
 bus = &"Motion"
 delay_time = 0.0
 force_new = false
-cutoff_sfx = false
 overwrite_other = false
+cutoff_sfx = false
 
 [node name="Mario" type="CharacterBody2D" node_paths=PackedStringArray("doll", "state_manager", "movement", "input", "push_rays", "hitbox", "dive_hitbox", "small_hitbox", "water_check", "crouchlock", "spin_hitbox")]
 collision_layer = 2

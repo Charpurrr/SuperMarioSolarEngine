@@ -10,11 +10,12 @@ extends Resource
 @export var delay_time: float = 0.0
 ## Whether or not a sound effect can play more than once in a row.
 @export var force_new: bool = false
-## Whether or not changing the state should end the sound effect(s) early.
-@export var cutoff_sfx: bool = true
 ## Whether or not playing these sound effect(s) should end
 ## all the other sound effects in the same AudioBus.
 @export var overwrite_other: bool = true
+## State machine only:[br]
+## Whether or not changing the state should end the sound effect(s) early.
+@export var cutoff_sfx: bool = true
 
 var last_pick: AudioStream
 var new_pick: AudioStream

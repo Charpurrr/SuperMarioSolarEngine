@@ -1,55 +1,49 @@
 class_name PlayerCamera
-extends Node2D
-## Camera specifically for player characters.
+extends Camera2D
 
-@export var enabled = true
+@export var zoom_in_sfx: SFXLayer
+@export var zoom_out_sfx: SFXLayer
 
-@export_category("Camera Transform")
-@export var zoom: float = 1
-@export var offset: Vector2
+@export var zoom_max: float = 200
+@export var zoom_min: float = 50
 
-@onready var player: CharacterBody2D = get_parent()
-@onready var viewport: Viewport = get_viewport()
+## The current camera zoom in percentage.
+## (Note: higher zoom percentage means you can see more level.)
+var zoom_percentage: float
 
-## Center of the viewport.
-@onready var center_offset: Vector2
-
-@export_category("Camera Movement")
-## How far the camera gets pushed past the center of the screen
-## while continuously walking in one direction.
-@export var x_push: int
-
-## How many frames the player continuously has to move in a direction
-## for the camera to start pushing past the center of the screen.
-@export var x_push_time: int
-var x_push_timer: int
+## The zoom value the camera gets tweened to.
+var target_zoom: float = 100
 
 
-func _physics_process(_delta):
-	if not enabled:
-		return
+func _physics_process(delta: float) -> void:
+	zoom_percentage = lerp(zoom_percentage, target_zoom, delta * 5)
 
-	var trans := Transform2D.IDENTITY
+	var zoom_factor: float = 1 / (zoom_percentage / 100)
 
-	center_offset = DisplayServer.window_get_size() / 2
-	trans = trans.scaled(Vector2.ONE * zoom)
+	zoom = Vector2(zoom_factor, zoom_factor)
 
-	if player.vel.x != 0:
-		x_push_timer = max(x_push_timer - 1, 0)
-	else:
-		x_push_timer = x_push_time
 
-	if x_push_timer == 0:
-		match player.input.get_x_dir():
-			1:
-				@warning_ignore("integer_division")
-				position.x = min(position.x + x_push / x_push_time, position.x + x_push)
-			-1:
-				@warning_ignore("integer_division")
-				position.x = max(-position.x + x_push / x_push_time, position.x - x_push)
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(&"camera_zoom_in"):
+		if target_zoom != zoom_min:
+			zoom_in_sfx.play_sfx_at(self)
 
-	trans.origin = (-player.position * zoom) + center_offset
+		if target_zoom <= 100:
+			target_zoom -= 25
+		else:
+			target_zoom -= 50
+	if event.is_action_pressed(&"camera_zoom_out"):
+		if target_zoom != zoom_max:
+			zoom_out_sfx.play_sfx_at(self)
 
-	trans.origin = (Vector2(-player.position.x, 0) * zoom) + center_offset + offset
+		if target_zoom <= 100:
+			target_zoom += 25
+		else:
+			target_zoom += 50
 
-	viewport.canvas_transform = trans
+	target_zoom = clamp(target_zoom, zoom_min, zoom_max)
+
+	#var tween = get_tree().create_tween()
+#
+	#tween.set_ease(Tween.EASE_OUT_IN)
+	#tween.tween_property(self, "zoom", Vector2(zoom_factor, zoom_factor), deltaT * 10)

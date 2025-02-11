@@ -2,19 +2,21 @@ class_name UserInterface
 extends CanvasLayer
 ## UI and utility.
 
+@export_category(&"Pause Variables")
 @export var screen_manager: ScreenManager
 @export var color_blur: ColorRect
-
 @export var game_pause_sfx: AudioStream
 @export var game_unpause_sfx: AudioStream
 
-#region Notification variables
+@export_category(&"Camera Variables")
+@export var zoom_blur_player: AnimationPlayer
+
+@export_category(&"Notification Variables")
 @export var notif_scene: PackedScene
 
 @export var notif_list: Node
 
 var current_notifs: Array = []
-#endregion
 
 @onready var input_display_sprites: Dictionary = {
 	KEY_SHIFT: %Shift,
@@ -31,10 +33,13 @@ var current_notifs: Array = []
 var world_machine: WorldMachine
 ## See [code]_set_player()[/code].
 var player: CharacterBody2D
+## See [code]_set_camera()[/code].
+var camera: PlayerCamera
 
 
 func _ready():
 	_set_player()
+	_set_camera()
 
 	world_machine.level_reloaded.connect(_set_player)
 
@@ -48,6 +53,12 @@ func _process(_delta):
 
 
 func _input(event: InputEvent):
+	if (
+		(event.is_action_pressed(&"camera_zoom_in") and camera.target_zoom != camera.zoom_min) or
+		(event.is_action_pressed(&"camera_zoom_out") and camera.target_zoom != camera.zoom_max)
+	):
+		zoom_blur_player.play(&"camera_focus")
+
 	if event.is_action_pressed(&"pause"):
 		_pause_logic()
 
@@ -110,3 +121,7 @@ func _display_input(event: InputEvent):
 
 func _set_player():
 	player = world_machine.level_node.player
+
+
+func _set_camera():
+	camera = world_machine.level_node.camera

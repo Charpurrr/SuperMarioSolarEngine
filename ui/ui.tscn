@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=4 uid="uid://ccj3teu3h6xfm"]
+[gd_scene load_steps=90 format=4 uid="uid://ccj3teu3h6xfm"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_pakjx"]
 [ext_resource type="Script" path="res://ui/debug_label.gd" id="2_suudb"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://rqmk8y0h1450" path="res://ui/input_display/input_display_ico1.png" id="3_4oo64"]
 [ext_resource type="Texture2D" uid="uid://jbm5npuy3yok" path="res://ui/input_display/input_display_ico2.png" id="4_8x05r"]
 [ext_resource type="FontFile" uid="uid://e821cxxeybxh" path="res://ui/fonts/mario_sunshine.ttf" id="4_ko57l"]
+[ext_resource type="Shader" path="res://util/shaders/smw_mozaic.gdshader" id="5_8wim4"]
 [ext_resource type="Texture2D" uid="uid://bwh5yg024sqag" path="res://ui/input_display/input_display_ico3.png" id="5_cgoe6"]
 [ext_resource type="Texture2D" uid="uid://bkvicbrah3ltp" path="res://ui/input_display/input_display_ico4.png" id="6_7ipv2"]
 [ext_resource type="Texture2D" uid="uid://cnypyennkpxux" path="res://ui/input_display/input_display_ico5.png" id="7_yer77"]
@@ -53,6 +54,71 @@
 [ext_resource type="Texture2D" uid="uid://c5dbwjmvnh6p1" path="res://ui/input_icons/nintendo_switch/switch_stick_l.svg" id="47_adiwi"]
 [ext_resource type="Texture2D" uid="uid://bhvukbqm4v5f3" path="res://ui/input_icons/nintendo_switch/controller_switch_rumble.svg" id="47_yaddp"]
 [ext_resource type="Texture2D" uid="uid://c8t2udtmy6oac" path="res://ui/input_icons/nintendo_switch/switch_button_x.svg" id="48_in08l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j6vdi"]
+shader = ExtResource("5_8wim4")
+shader_parameter/cell_size = 1
+
+[sub_resource type="Animation" id="Animation_lfi41"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/blur_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/cell_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_mnpvh"]
+resource_name = "camera_focus"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/blur_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.4),
+"transitions": PackedFloat32Array(0.406126, -0.615572, 1),
+"update": 0,
+"values": [0.0, 2.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/cell_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.4),
+"transitions": PackedFloat32Array(0.406126, -0.615572, 1),
+"update": 0,
+"values": [1, 8, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_01nno"]
+_data = {
+"RESET": SubResource("Animation_lfi41"),
+"camera_focus": SubResource("Animation_mnpvh")
+}
 
 [sub_resource type="LabelSettings" id="LabelSettings_01jq4"]
 font = ExtResource("4_ko57l")
@@ -326,15 +392,32 @@ unicode = 120
 [sub_resource type="Shortcut" id="Shortcut_bglev"]
 events = [SubResource("InputEventKey_hwwni"), SubResource("InputEventJoypadButton_bmfaf")]
 
-[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("screen_manager", "color_blur", "notif_list")]
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("screen_manager", "color_blur", "zoom_blur_player", "notif_list")]
 process_mode = 3
 script = ExtResource("1_pakjx")
 screen_manager = NodePath("ScreenManager")
 color_blur = NodePath("ScreenManager/ColorBlurEffect")
 game_pause_sfx = ExtResource("16_jehsk")
 game_unpause_sfx = ExtResource("41_1bnq8")
+zoom_blur_player = NodePath("CameraZoomMosaic/AnimationPlayer")
 notif_scene = ExtResource("2_ufvuv")
 notif_list = NodePath("Notifications")
+
+[node name="BackBufferFront" type="BackBufferCopy" parent="."]
+copy_mode = 2
+
+[node name="CameraZoomMosaic" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_j6vdi")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CameraZoomMosaic"]
+libraries = {
+"": SubResource("AnimationLibrary_01nno")
+}
 
 [node name="CoinCounter" type="HBoxContainer" parent="."]
 offset_left = 1.0
@@ -493,6 +576,9 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_fpb10")
 }
+
+[node name="BackBufferBack" type="BackBufferCopy" parent="ScreenManager"]
+copy_mode = 2
 
 [node name="ColorBlurEffect" type="ColorRect" parent="ScreenManager"]
 visible = false
