@@ -9,7 +9,7 @@ extends Camera2D
 
 ## The current camera zoom in percentage.
 ## (Note: higher zoom percentage means you can see more level.)
-var zoom_percentage: float
+var zoom_percentage: float = 100
 
 ## The zoom value the camera gets tweened to.
 var target_zoom: float = 100
