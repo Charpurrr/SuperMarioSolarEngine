@@ -72,28 +72,28 @@
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/airborne.gd" id="61_1r6ji"]
 [ext_resource type="AudioStream" uid="uid://c8nogtutvpse6" path="res://entities/player/shared/motion_nsmbw/headbump.wav" id="61_4m4nv"]
 [ext_resource type="AudioStream" uid="uid://ce1hs2wi4j1jx" path="res://entities/player/shared/motion_nsmbw/jump2.wav" id="64_nkubm"]
-[ext_resource type="AudioStream" uid="uid://dx127oekmmsnc" path="res://entities/player/mario/voice/yo_jump.wav" id="64_rch8v"]
+[ext_resource type="AudioStream" uid="uid://dx127oekmmsnc" path="res://entities/player/mario/voice_sunshine/yo_jump.wav" id="64_rch8v"]
 [ext_resource type="AudioStream" uid="uid://dcx3sjeavtd8r" path="res://entities/player/shared/motion_nsmbw/jump1.wav" id="65_2xkjx"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/jump_states/dummy_jump.gd" id="65_6w5qc"]
-[ext_resource type="AudioStream" uid="uid://bvngsvbfij5rl" path="res://entities/player/mario/voice/uhn_jump.wav" id="65_f1kp6"]
+[ext_resource type="AudioStream" uid="uid://bvngsvbfij5rl" path="res://entities/player/mario/voice_sunshine/uhn_jump.wav" id="65_f1kp6"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/jump_states/jump.gd" id="66_2qkrt"]
-[ext_resource type="AudioStream" uid="uid://bl466g1qpkv8s" path="res://entities/player/mario/voice/mhpm_jump.wav" id="66_8j4lt"]
-[ext_resource type="AudioStream" uid="uid://b10tiodi2lahq" path="res://entities/player/mario/voice/yah_jump.wav" id="67_ny3my"]
-[ext_resource type="AudioStream" uid="uid://cdx15t1tf0d3n" path="res://entities/player/mario/voice/hoo_jump.wav" id="68_idf2v"]
-[ext_resource type="AudioStream" uid="uid://mm5nj0apxbql" path="res://entities/player/mario/voice/oo_jump.wav" id="69_7jcwv"]
-[ext_resource type="AudioStream" uid="uid://dvh6rb40f4deu" path="res://entities/player/mario/voice/muh_double.wav" id="71_ohc7q"]
-[ext_resource type="AudioStream" uid="uid://ch85xj14nesnx" path="res://entities/player/mario/voice/ho_double.wav" id="72_r33o8"]
+[ext_resource type="AudioStream" uid="uid://bl466g1qpkv8s" path="res://entities/player/mario/voice_sunshine/mhpm_jump.wav" id="66_8j4lt"]
+[ext_resource type="AudioStream" uid="uid://b10tiodi2lahq" path="res://entities/player/mario/voice_sunshine/yah_jump.wav" id="67_ny3my"]
+[ext_resource type="AudioStream" uid="uid://cdx15t1tf0d3n" path="res://entities/player/mario/voice_sunshine/hoo_jump.wav" id="68_idf2v"]
+[ext_resource type="AudioStream" uid="uid://mm5nj0apxbql" path="res://entities/player/mario/voice_sunshine/oo_jump.wav" id="69_7jcwv"]
+[ext_resource type="AudioStream" uid="uid://dvh6rb40f4deu" path="res://entities/player/mario/voice_sunshine/muh_double.wav" id="71_ohc7q"]
+[ext_resource type="AudioStream" uid="uid://ch85xj14nesnx" path="res://entities/player/mario/voice_sunshine/ho_double.wav" id="72_r33o8"]
 [ext_resource type="Script" path="res://entities/player/shared/states/player_state.gd" id="73_acu3g"]
-[ext_resource type="AudioStream" uid="uid://dl0l7340snklm" path="res://entities/player/mario/voice/you_double.wav" id="73_cg0sx"]
-[ext_resource type="AudioStream" uid="uid://dkm12417vwbtl" path="res://entities/player/mario/voice/wah_double.wav" id="74_nvtw8"]
-[ext_resource type="AudioStream" uid="uid://clon8dsd11p34" path="res://entities/player/mario/voice/aa_double.wav" id="75_2xld2"]
+[ext_resource type="AudioStream" uid="uid://dl0l7340snklm" path="res://entities/player/mario/voice_sunshine/you_double.wav" id="73_cg0sx"]
+[ext_resource type="AudioStream" uid="uid://dkm12417vwbtl" path="res://entities/player/mario/voice_sunshine/wah_double.wav" id="74_nvtw8"]
+[ext_resource type="AudioStream" uid="uid://clon8dsd11p34" path="res://entities/player/mario/voice_sunshine/aa_double.wav" id="75_2xld2"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/jump_states/double_jump.gd" id="75_nf276"]
 [ext_resource type="AudioStream" uid="uid://c6fe7mxpb00mb" path="res://entities/player/shared/motion_nsmbw/doublejump.wav" id="78_b3o3d"]
 [ext_resource type="AudioStream" uid="uid://clelmpbxfm81m" path="res://entities/player/mario/voice_64/yahoo.wav" id="78_wqfjo"]
-[ext_resource type="AudioStream" uid="uid://crchf1m7nfdld" path="res://entities/player/mario/voice/heh_hoo.wav" id="79_ofamm"]
+[ext_resource type="AudioStream" uid="uid://crchf1m7nfdld" path="res://entities/player/mario/voice_sunshine/heh_hoo.wav" id="79_ofamm"]
 [ext_resource type="AudioStream" uid="uid://bu35ebaa736la" path="res://entities/player/mario/voice_64/waha.wav" id="80_rcac4"]
-[ext_resource type="AudioStream" uid="uid://dl2rkl65qo0n5" path="res://entities/player/mario/voice/wee_hee.wav" id="81_27gn5"]
-[ext_resource type="AudioStream" uid="uid://cjkuogop5wxlx" path="res://entities/player/mario/voice/yihhee.wav" id="82_6e7m6"]
+[ext_resource type="AudioStream" uid="uid://dl2rkl65qo0n5" path="res://entities/player/mario/voice_sunshine/wee_hee.wav" id="81_27gn5"]
+[ext_resource type="AudioStream" uid="uid://cjkuogop5wxlx" path="res://entities/player/mario/voice_sunshine/yihhee.wav" id="82_6e7m6"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/jump_states/triple_jump.gd" id="82_h02h3"]
 [ext_resource type="AudioStream" uid="uid://bwsqbo0shsv1n" path="res://entities/player/shared/motion_nsmbw/triplejump.wav" id="85_a2b2e"]
 [ext_resource type="AudioStream" uid="uid://cwkfh51wv1ios" path="res://entities/player/shared/motion_nsmbw/triplejumpflip.wav" id="86_v7cq7"]
@@ -102,46 +102,46 @@
 [ext_resource type="AudioStream" uid="uid://u1no4en1bdf0" path="res://entities/player/shared/motion_nsmbw/wallslide.wav" id="91_k5qq6"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/jump_states/spinjump.gd" id="92_pwmyp"]
 [ext_resource type="AudioStream" uid="uid://bfgn747nbjogx" path="res://entities/player/shared/motion_nsmbw/walljump.wav" id="93_ehd5h"]
-[ext_resource type="AudioStream" uid="uid://6c2qigoliuq6" path="res://entities/player/mario/voice/weehoo.wav" id="95_hftyd"]
-[ext_resource type="AudioStream" uid="uid://bh1233d8ipiv8" path="res://entities/player/mario/voice/whoopie.wav" id="96_bh3id"]
-[ext_resource type="AudioStream" uid="uid://btour6vgmjit1" path="res://entities/player/mario/voice/ah_ha.wav" id="97_3dng3"]
-[ext_resource type="AudioStream" uid="uid://byfx5dgky5fhm" path="res://entities/player/mario/voice/hurray.wav" id="98_teiu1"]
-[ext_resource type="AudioStream" uid="uid://cgg6daqx3r72c" path="res://entities/player/mario/voice/woo_hooo.wav" id="99_2gl2i"]
-[ext_resource type="AudioStream" uid="uid://bjy2sht4p55aj" path="res://entities/player/mario/voice/yah.wav" id="100_3q48c"]
+[ext_resource type="AudioStream" uid="uid://6c2qigoliuq6" path="res://entities/player/mario/voice_sunshine/weehoo.wav" id="95_hftyd"]
+[ext_resource type="AudioStream" uid="uid://bh1233d8ipiv8" path="res://entities/player/mario/voice_sunshine/whoopie.wav" id="96_bh3id"]
+[ext_resource type="AudioStream" uid="uid://btour6vgmjit1" path="res://entities/player/mario/voice_sunshine/ah_ha.wav" id="97_3dng3"]
+[ext_resource type="AudioStream" uid="uid://byfx5dgky5fhm" path="res://entities/player/mario/voice_sunshine/hurray.wav" id="98_teiu1"]
+[ext_resource type="AudioStream" uid="uid://cgg6daqx3r72c" path="res://entities/player/mario/voice_sunshine/woo_hooo.wav" id="99_2gl2i"]
+[ext_resource type="AudioStream" uid="uid://bjy2sht4p55aj" path="res://entities/player/mario/voice_sunshine/yah.wav" id="100_3q48c"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/jump_states/longjump.gd" id="100_6d35n"]
-[ext_resource type="AudioStream" uid="uid://l2rxgn62cb1g" path="res://entities/player/mario/voice/wo_hoo.wav" id="100_qovm2"]
+[ext_resource type="AudioStream" uid="uid://l2rxgn62cb1g" path="res://entities/player/mario/voice_sunshine/wo_hoo.wav" id="100_qovm2"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/jump_states/sideflip.gd" id="101_4gu6d"]
-[ext_resource type="AudioStream" uid="uid://irebqk2058mi" path="res://entities/player/mario/voice/hmph.wav" id="101_wodpm"]
+[ext_resource type="AudioStream" uid="uid://irebqk2058mi" path="res://entities/player/mario/voice_sunshine/hmph.wav" id="101_wodpm"]
 [ext_resource type="AudioStream" uid="uid://diawt3pefpy36" path="res://entities/player/shared/motion/spin_wallbonk.wav" id="102_6yrjd"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/jump_states/backflip.gd" id="103_ky35g"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/jump_states/butt_slide_jump.gd" id="104_py71u"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/walljump_states/wallslide.gd" id="105_6ryk6"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/jump_states/groundpound_jump.gd" id="105_g4v7o"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/groundpound_states/groundpound.gd" id="107_us6gm"]
-[ext_resource type="AudioStream" uid="uid://bhklahfo0oipn" path="res://entities/player/mario/voice/ya_hoo.wav" id="108_e31o1"]
-[ext_resource type="AudioStream" uid="uid://b17lwsuovnc5t" path="res://entities/player/mario/voice/wahahoo.wav" id="109_s2cvh"]
+[ext_resource type="AudioStream" uid="uid://bhklahfo0oipn" path="res://entities/player/mario/voice_sunshine/ya_hoo.wav" id="108_e31o1"]
+[ext_resource type="AudioStream" uid="uid://b17lwsuovnc5t" path="res://entities/player/mario/voice_sunshine/wahahoo.wav" id="109_s2cvh"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/walljump_states/spin_wallbonk.gd" id="109_w8m04"]
-[ext_resource type="AudioStream" uid="uid://cug0bull4md7o" path="res://entities/player/mario/voice/doh.wav" id="110_eavfs"]
+[ext_resource type="AudioStream" uid="uid://cug0bull4md7o" path="res://entities/player/mario/voice_sunshine/doh.wav" id="110_eavfs"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/groundpound_states/groundpound_fall.gd" id="111_fyebu"]
-[ext_resource type="AudioStream" uid="uid://b87cfbxjjqiqq" path="res://entities/player/mario/voice/waf.wav" id="111_vejrh"]
+[ext_resource type="AudioStream" uid="uid://b87cfbxjjqiqq" path="res://entities/player/mario/voice_sunshine/waf.wav" id="111_vejrh"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/groundpound_states/groundpound_cancel.gd" id="112_02mke"]
 [ext_resource type="AudioStream" uid="uid://dg3rs2qtqhhqe" path="res://entities/player/shared/motion/back_sideflip.wav" id="113_7rxe5"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/fall_states/fall.gd" id="113_j3k6p"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/fall_states/freefall.gd" id="114_mgnux"]
 [ext_resource type="AudioStream" uid="uid://1fibybjdw7pc" path="res://entities/player/shared/motion_nsmbw/groundpound.wav" id="116_078t4"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/lazy_jump.gd" id="116_wolak"]
-[ext_resource type="AudioStream" uid="uid://23at2s4l6qjv" path="res://entities/player/mario/voice/watch_it.wav" id="120_qvxml"]
-[ext_resource type="AudioStream" uid="uid://lktt3ecwf5nm" path="res://entities/player/mario/voice/oh_surprised.wav" id="121_se657"]
-[ext_resource type="AudioStream" uid="uid://udnnj6t7h54x" path="res://entities/player/mario/voice/mhpm.wav" id="122_r00kr"]
-[ext_resource type="AudioStream" uid="uid://b05vmfwqtohny" path="res://entities/player/mario/voice/ow.wav" id="123_v30he"]
-[ext_resource type="AudioStream" uid="uid://bxvxr0hy1yiou" path="res://entities/player/mario/voice/woah.wav" id="124_02vep"]
+[ext_resource type="AudioStream" uid="uid://23at2s4l6qjv" path="res://entities/player/mario/voice_sunshine/watch_it.wav" id="120_qvxml"]
+[ext_resource type="AudioStream" uid="uid://lktt3ecwf5nm" path="res://entities/player/mario/voice_sunshine/oh_surprised.wav" id="121_se657"]
+[ext_resource type="AudioStream" uid="uid://udnnj6t7h54x" path="res://entities/player/mario/voice_sunshine/mhpm.wav" id="122_r00kr"]
+[ext_resource type="AudioStream" uid="uid://b05vmfwqtohny" path="res://entities/player/mario/voice_sunshine/ow.wav" id="123_v30he"]
+[ext_resource type="AudioStream" uid="uid://bxvxr0hy1yiou" path="res://entities/player/mario/voice_sunshine/woah.wav" id="124_02vep"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/twirl.gd" id="124_swcs3"]
-[ext_resource type="AudioStream" uid="uid://c8rgqspjrtakq" path="res://entities/player/mario/voice/oh_bonk.wav" id="125_l4e5j"]
-[ext_resource type="AudioStream" uid="uid://cgx5jnqrn8xk7" path="res://entities/player/mario/voice/ouch.wav" id="126_3xy3c"]
+[ext_resource type="AudioStream" uid="uid://c8rgqspjrtakq" path="res://entities/player/mario/voice_sunshine/oh_bonk.wav" id="125_l4e5j"]
+[ext_resource type="AudioStream" uid="uid://cgx5jnqrn8xk7" path="res://entities/player/mario/voice_sunshine/ouch.wav" id="126_3xy3c"]
 [ext_resource type="AudioStream" uid="uid://djqa3wceoa2j5" path="res://entities/player/shared/motion_nsmbw/twirl.wav" id="126_6gu1v"]
-[ext_resource type="AudioStream" uid="uid://dm72woypee3vc" path="res://entities/player/mario/voice/wah_ho.wav" id="126_onkkq"]
-[ext_resource type="AudioStream" uid="uid://dev6wksv27l0i" path="res://entities/player/mario/voice/yah_kick.wav" id="127_skj22"]
-[ext_resource type="AudioStream" uid="uid://xpf0g652x833" path="res://entities/player/mario/voice/ha.wav" id="128_r0wmf"]
+[ext_resource type="AudioStream" uid="uid://dm72woypee3vc" path="res://entities/player/mario/voice_sunshine/wah_ho.wav" id="126_onkkq"]
+[ext_resource type="AudioStream" uid="uid://dev6wksv27l0i" path="res://entities/player/mario/voice_sunshine/yah_kick.wav" id="127_skj22"]
+[ext_resource type="AudioStream" uid="uid://xpf0g652x833" path="res://entities/player/mario/voice_sunshine/ha.wav" id="128_r0wmf"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/dive_states/rollout.gd" id="129_e0h20"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/dive_states/bonk.gd" id="131_f03w0"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/dive_states/dive.gd" id="134_dsbpr"]
@@ -1877,6 +1877,33 @@ force_new = false
 overwrite_other = true
 cutoff_sfx = false
 
+[sub_resource type="Resource" id="Resource_2y8iw"]
+script = ExtResource("49_apkmk")
+sfx_list = [ExtResource("126_6gu1v")]
+bus = &"Motion"
+delay_time = 0.0
+force_new = false
+overwrite_other = false
+cutoff_sfx = false
+
+[sub_resource type="Resource" id="Resource_vehmo"]
+script = ExtResource("49_apkmk")
+sfx_list = [ExtResource("126_onkkq"), ExtResource("127_skj22"), ExtResource("80_rcac4"), ExtResource("54_nx8es"), ExtResource("128_r0wmf"), ExtResource("100_qovm2")]
+bus = &"Voice"
+delay_time = 0.0
+force_new = false
+overwrite_other = true
+cutoff_sfx = false
+
+[sub_resource type="Resource" id="Resource_0hpnu"]
+script = ExtResource("49_apkmk")
+sfx_list = [ExtResource("136_a6kal")]
+bus = &"Motion"
+delay_time = 0.0
+force_new = false
+overwrite_other = false
+cutoff_sfx = false
+
 [sub_resource type="Resource" id="Resource_lib4c"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("110_eavfs"), ExtResource("111_vejrh")]
@@ -1911,33 +1938,6 @@ bus = &"Voice"
 delay_time = 0.0
 force_new = false
 overwrite_other = true
-cutoff_sfx = false
-
-[sub_resource type="Resource" id="Resource_2y8iw"]
-script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("126_6gu1v")]
-bus = &"Motion"
-delay_time = 0.0
-force_new = false
-overwrite_other = false
-cutoff_sfx = false
-
-[sub_resource type="Resource" id="Resource_vehmo"]
-script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("126_onkkq"), ExtResource("127_skj22"), ExtResource("80_rcac4"), ExtResource("54_nx8es"), ExtResource("128_r0wmf"), ExtResource("100_qovm2")]
-bus = &"Voice"
-delay_time = 0.0
-force_new = false
-overwrite_other = true
-cutoff_sfx = false
-
-[sub_resource type="Resource" id="Resource_0hpnu"]
-script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("136_a6kal")]
-bus = &"Motion"
-delay_time = 0.0
-force_new = false
-overwrite_other = false
 cutoff_sfx = false
 
 [node name="Mario" type="CharacterBody2D" node_paths=PackedStringArray("doll", "state_manager", "movement", "input", "push_rays", "hitbox", "dive_hitbox", "small_hitbox", "water_check", "crouchlock", "spin_hitbox")]
@@ -2306,35 +2306,6 @@ anim_offset = Vector2i(0, 9)
 script = ExtResource("112_02mke")
 animation = &"jump_fall"
 
-[node name="DiveStates" type="Node" parent="StateManager/Dry/Airborne"]
-script = ExtResource("73_acu3g")
-
-[node name="Dive" type="Node" parent="StateManager/Dry/Airborne/DiveStates"]
-script = ExtResource("134_dsbpr")
-x_power = 3.2
-max_accel = 0.4
-hitbox_type = "Dive"
-animation = &"dive"
-sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_lib4c"), SubResource("Resource_6roi5")])
-
-[node name="Rollout" type="Node" parent="StateManager/Dry/Airborne/DiveStates"]
-script = ExtResource("129_e0h20")
-x_multiplier = 1.2
-accel_cap = 8.0
-jump_power = 3.0
-min_jump_percent = 100.0
-jump_number = 1
-fall_state = &""
-animation = &"rollout"
-anim_offset = Vector2i(0, 6)
-sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_4xwjg")])
-
-[node name="Bonk" type="Node" parent="StateManager/Dry/Airborne/DiveStates"]
-script = ExtResource("131_f03w0")
-rotation_time = 45.0
-animation = &"bonk"
-sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ujdp5")])
-
 [node name="Twirl" type="Node" parent="StateManager/Dry/Airborne"]
 script = ExtResource("124_swcs3")
 spin_power = 0.0
@@ -2346,6 +2317,35 @@ script = ExtResource("135_qf53u")
 spin_power = 3.0
 animation = &"spin_attack"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_vehmo"), SubResource("Resource_0hpnu")])
+
+[node name="DiveStates" type="Node" parent="StateManager/Dry"]
+script = ExtResource("73_acu3g")
+
+[node name="Dive" type="Node" parent="StateManager/Dry/DiveStates"]
+script = ExtResource("134_dsbpr")
+x_power = 3.2
+max_accel = 0.4
+hitbox_type = "Dive"
+animation = &"dive"
+sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_lib4c"), SubResource("Resource_6roi5")])
+
+[node name="Rollout" type="Node" parent="StateManager/Dry/DiveStates"]
+script = ExtResource("129_e0h20")
+x_multiplier = 1.2
+accel_cap = 8.0
+jump_power = 3.0
+min_jump_percent = 100.0
+jump_number = 1
+fall_state = &""
+animation = &"rollout"
+anim_offset = Vector2i(0, 6)
+sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_4xwjg")])
+
+[node name="Bonk" type="Node" parent="StateManager/Dry/DiveStates"]
+script = ExtResource("131_f03w0")
+rotation_time = 45.0
+animation = &"bonk"
+sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ujdp5")])
 
 [node name="ButtSlide" type="Node" parent="StateManager/Dry"]
 script = ExtResource("140_lfmwr")

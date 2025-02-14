@@ -36,14 +36,9 @@ func _input(event: InputEvent) -> void:
 		if target_zoom != zoom_max:
 			zoom_out_sfx.play_sfx_at(self)
 
-		if target_zoom <= 100:
+		if target_zoom < 100:
 			target_zoom += 25
 		else:
 			target_zoom += 50
 
 	target_zoom = clamp(target_zoom, zoom_min, zoom_max)
-
-	#var tween = get_tree().create_tween()
-#
-	#tween.set_ease(Tween.EASE_OUT_IN)
-	#tween.tween_property(self, "zoom", Vector2(zoom_factor, zoom_factor), deltaT * 10)
