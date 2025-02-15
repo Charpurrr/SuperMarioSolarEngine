@@ -4,6 +4,8 @@ extends PlayerState
 
 ## The horizontal dive power added to your current velocity.
 @export var x_power: float = 6.0
+## The vertical power added to your velocity when performing a bellyflop.
+@export var bellyflop_power: float = 3.0
 ## The minimum horizontal acceleration step.
 @export var min_accel: float = 0.05
 ## The maximum horizontal acceleration step.
@@ -16,7 +18,7 @@ extends PlayerState
 # dive_direction is an integer that defines the direction in which 
 # the dive will initially send you.
 func _on_enter(dive_direction):
-	if dive_direction is int:
+	if dive_direction != null:
 		movement.update_direction(dive_direction)
 
 	movement.consume_coyote_timer()
@@ -24,6 +26,9 @@ func _on_enter(dive_direction):
 	movement.dived = true
 
 	actor.set_floor_snap_length(movement.snap_length)
+
+	if actor.is_on_floor():
+		actor.vel.y = -bellyflop_power
 
 	if movement.facing_direction != sign(actor.vel.x):
 		actor.vel.x = 0

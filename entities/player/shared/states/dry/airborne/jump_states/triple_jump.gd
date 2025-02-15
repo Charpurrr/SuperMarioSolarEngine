@@ -6,12 +6,6 @@ extends Jump
 var start_freefall_timer: bool = false
 
 
-func _on_enter(handover):
-	super(handover)
-
-	start_freefall_timer = false
-
-
 func _physics_tick():
 	movement.move_x_analog(0.15, actor.vel.y < 0)
 

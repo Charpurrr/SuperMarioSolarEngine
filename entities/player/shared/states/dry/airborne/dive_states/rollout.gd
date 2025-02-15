@@ -11,6 +11,7 @@ extends Jump
 
 func _on_enter(_param):
 	movement.consume_coyote_timer()
+	movement.activate_freefall_timer()
 
 	actor.vel.y = -jump_power
 
