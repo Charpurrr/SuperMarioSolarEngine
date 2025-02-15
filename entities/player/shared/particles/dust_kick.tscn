@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk5fem7pwebyq"]
+
+[ext_resource type="Texture2D" uid="uid://chws3rokc6d0i" path="res://entities/player/shared/particles/dust.png" id="1_k1dfk"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ivan8"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[node name="Kick" type="CPUParticles2D"]
+material = SubResource("CanvasItemMaterial_ivan8")
+amount = 1
+texture = ExtResource("1_k1dfk")
+gravity = Vector2(0, -200)
+anim_speed_min = 2.0
+anim_speed_max = 2.0

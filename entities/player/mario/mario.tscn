@@ -1,4 +1,4 @@
-[gd_scene load_steps=373 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=377 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://entities/player/shared/player.gd" id="1_87j6i"]
 [ext_resource type="Texture2D" uid="uid://bbgppbst4akvn" path="res://entities/player/mario/anime/backflip.png" id="2_i2o54"]
@@ -64,6 +64,8 @@
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/grounded/crouch_walk.gd" id="53_blm5r"]
 [ext_resource type="AudioStream" uid="uid://cwwws3ymysh84" path="res://entities/player/mario/voice_64/hoo.wav" id="54_nx8es"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/grounded/breakdance.gd" id="54_rxsl3"]
+[ext_resource type="Script" path="res://util/particle_effect.gd" id="55_bxnxc"]
+[ext_resource type="PackedScene" uid="uid://hjhbi0f6lfow" path="res://entities/player/shared/particles/dust_explosion.tscn" id="55_seugk"]
 [ext_resource type="AudioStream" uid="uid://dv5jygdhaf8dy" path="res://entities/player/mario/voice_64/haha.wav" id="56_o7gy0"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/grounded/stylish.gd" id="57_p7lxf"]
 [ext_resource type="AudioStream" uid="uid://cs863ebdk8ate" path="res://entities/player/shared/motion_nsmbw/groundpoundland.wav" id="58_lmjof"]
@@ -1635,6 +1637,12 @@ force_new = false
 overwrite_other = false
 cutoff_sfx = false
 
+[sub_resource type="Resource" id="Resource_n4l32"]
+script = ExtResource("55_bxnxc")
+particle_scene = ExtResource("55_seugk")
+oneshot = true
+emit_delay = 0.0
+
 [sub_resource type="Resource" id="Resource_8p2oq"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("45_mh7x3"), ExtResource("46_q6juv")]
@@ -1697,6 +1705,12 @@ delay_time = 0.0
 force_new = false
 overwrite_other = true
 cutoff_sfx = false
+
+[sub_resource type="Resource" id="Resource_kvfvp"]
+script = ExtResource("55_bxnxc")
+particle_scene = ExtResource("55_seugk")
+oneshot = true
+emit_delay = 0.0
 
 [sub_resource type="Resource" id="Resource_2esv2"]
 script = ExtResource("49_apkmk")
@@ -2008,7 +2022,7 @@ spin_hitbox = NodePath("Areas/SpinHitbox")
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_hmp25")
 animation = &"idle"
-frame_progress = 0.320955
+frame_progress = 0.839726
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 visible = false
@@ -2136,6 +2150,7 @@ script = ExtResource("40_s2gar")
 hitbox_type = "None"
 on_enter = false
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_r5xry")])
+particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_n4l32")])
 
 [node name="Idle" type="Node" parent="StateManager/Dry/Grounded"]
 script = ExtResource("44_87kyt")
@@ -2211,6 +2226,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_oau5y")])
 
 [node name="JumpStates" type="Node" parent="StateManager/Dry/Airborne"]
 script = ExtResource("73_acu3g")
+particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_kvfvp")])
 
 [node name="DummyJump" type="Node" parent="StateManager/Dry/Airborne/JumpStates"]
 script = ExtResource("65_6w5qc")
