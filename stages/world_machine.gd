@@ -52,7 +52,8 @@ func handle_level_node(level: Level, store: bool = false) -> void:
 	if ui_node != null:
 		ui_node.queue_free()
 	ui_node = user_interface.instantiate()
-
+	
+	level_node.camera.player = level_node.player
 	env_node.camera = level_node.camera
 	ui_node.world_machine = self
 
