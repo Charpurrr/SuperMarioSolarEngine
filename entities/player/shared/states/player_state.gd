@@ -19,6 +19,9 @@ extends State
 ## sound effects it can cycle through.
 @export var sfx_layers: Array[SFXLayer]
 
+## The associated particles that should emit when the state is activated.
+@export var particles: Array[ParticleEffect]
+
 var input: InputManager = null
 var fludd: FluddManager = null
 var movement: PMovement = null
@@ -27,6 +30,7 @@ var movement: PMovement = null
 func trigger_enter(handover):
 	_set_animation()
 	_play_sounds()
+	_emit_particles()
 	_set_hitbox()
 
 	super(handover)
@@ -70,6 +74,11 @@ func _play_sounds():
 	if on_enter and not sfx_layers.is_empty():
 		for sfx_list in sfx_layers:
 			sfx_list.play_sfx_at(self)
+
+
+func _emit_particles():
+	for effect in particles:
+		effect.emit_at(actor)
 
 
 func trigger_exit():
