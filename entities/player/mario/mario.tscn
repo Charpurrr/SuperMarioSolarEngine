@@ -1,4 +1,4 @@
-[gd_scene load_steps=364 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=373 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" path="res://entities/player/shared/player.gd" id="1_87j6i"]
 [ext_resource type="Texture2D" uid="uid://bbgppbst4akvn" path="res://entities/player/mario/anime/backflip.png" id="2_i2o54"]
@@ -142,15 +142,19 @@
 [ext_resource type="AudioStream" uid="uid://dm72woypee3vc" path="res://entities/player/mario/voice_sunshine/wah_ho.wav" id="126_onkkq"]
 [ext_resource type="AudioStream" uid="uid://dev6wksv27l0i" path="res://entities/player/mario/voice_sunshine/yah_kick.wav" id="127_skj22"]
 [ext_resource type="AudioStream" uid="uid://xpf0g652x833" path="res://entities/player/mario/voice_sunshine/ha.wav" id="128_r0wmf"]
-[ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/dive_states/rollout.gd" id="129_e0h20"]
-[ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/dive_states/bonk.gd" id="131_f03w0"]
-[ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/dive_states/dive.gd" id="134_dsbpr"]
+[ext_resource type="Script" path="res://entities/player/shared/states/dry/dive_states/rollout.gd" id="129_e0h20"]
+[ext_resource type="Script" path="res://entities/player/shared/states/dry/dive_states/bonk.gd" id="131_f03w0"]
+[ext_resource type="Script" path="res://entities/player/shared/states/dry/dive_states/dive.gd" id="134_dsbpr"]
 [ext_resource type="Script" path="res://entities/player/shared/states/submerged/submerged.gd" id="135_2utkk"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/spin.gd" id="135_qf53u"]
 [ext_resource type="AudioStream" uid="uid://bbw3474fd3uxc" path="res://entities/player/shared/motion/spinattack_shine.wav" id="136_a6kal"]
 [ext_resource type="AudioStream" uid="uid://bowyc14wpkcra" path="res://entities/player/shared/motion/dive.wav" id="138_88upi"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/butt_slide.gd" id="140_lfmwr"]
+[ext_resource type="Script" path="res://entities/player/shared/states/dry/dive_states/super_rollout.gd" id="150_4duxu"]
 [ext_resource type="Script" path="res://entities/player/shared/fludd_manager.gd" id="151_4womg"]
+[ext_resource type="AudioStream" uid="uid://b1orysswk33x1" path="res://entities/player/mario/voice_sunshine/woah_ledge.wav" id="151_u7cu3"]
+[ext_resource type="AudioStream" uid="uid://ddjllqvgrxfqj" path="res://entities/player/mario/voice_sunshine/woah2_ledge.wav" id="152_7j1yj"]
+[ext_resource type="AudioStream" uid="uid://cutedbxm5o46d" path="res://entities/player/mario/voice_sunshine/woah3_ledge.wav" id="153_5c2b3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8n85e"]
 atlas = ExtResource("2_i2o54")
@@ -659,6 +663,22 @@ region = Rect2(672, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_dego1"]
 atlas = ExtResource("2_i2o54")
 region = Rect2(720, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4f14"]
+atlas = ExtResource("18_5kttb")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyp5g"]
+atlas = ExtResource("18_5kttb")
+region = Rect2(384, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukbr2"]
+atlas = ExtResource("18_5kttb")
+region = Rect2(432, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqgjq"]
+atlas = ExtResource("18_5kttb")
+region = Rect2(480, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_utu1s"]
 atlas = ExtResource("30_1ykdx")
@@ -1404,6 +1424,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_f4f14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xyp5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukbr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqgjq")
+}],
+"loop": true,
+"name": &"super_rollout",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_utu1s")
 }],
 "loop": false,
@@ -1931,6 +1968,15 @@ force_new = false
 overwrite_other = true
 cutoff_sfx = false
 
+[sub_resource type="Resource" id="Resource_m87ta"]
+script = ExtResource("49_apkmk")
+sfx_list = [ExtResource("151_u7cu3"), ExtResource("152_7j1yj"), ExtResource("153_5c2b3")]
+bus = &"Voice"
+delay_time = 0.0
+force_new = true
+overwrite_other = true
+cutoff_sfx = false
+
 [sub_resource type="Resource" id="Resource_ujdp5"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("120_qvxml"), ExtResource("121_se657"), ExtResource("122_r00kr"), ExtResource("123_v30he"), ExtResource("124_02vep"), ExtResource("125_l4e5j"), ExtResource("126_3xy3c")]
@@ -1962,6 +2008,7 @@ spin_hitbox = NodePath("Areas/SpinHitbox")
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_hmp25")
 animation = &"idle"
+frame_progress = 0.320955
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 visible = false
@@ -2341,6 +2388,18 @@ fall_state = &""
 animation = &"rollout"
 anim_offset = Vector2i(0, 6)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_4xwjg")])
+
+[node name="SuperRollout" type="Node" parent="StateManager/Dry/DiveStates"]
+script = ExtResource("150_4duxu")
+x_power = 3.2
+x_multiplier = 1.2
+accel_cap = 8.0
+jump_power = 3.2
+min_jump_percent = 100.0
+jump_number = 1
+fall_state = &""
+animation = &"super_rollout"
+sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_m87ta")])
 
 [node name="Bonk" type="Node" parent="StateManager/Dry/DiveStates"]
 script = ExtResource("131_f03w0")

@@ -22,17 +22,20 @@ func _on_exit():
 
 
 func _trans_rules():
+	var rollout_check: bool = (
+		(InputManager.get_x_dir() == movement.facing_direction or InputManager.get_x_dir() == 0)
+		and (input.buffered_input(&"jump") or Input.is_action_pressed(&"jump"))
+	)
+
 	if not actor.crouchlock.enabled:
 		if movement.can_spin() and input.buffered_input(&"spin"):
 			return &"Spin"
 
-		if input.buffered_input(&"dive"):
+		if input.buffered_input(&"dive") and rollout_check == true:
+			return &"SuperRollout"
+		elif input.buffered_input(&"dive"):
 			return &"Dive"
-
-		if (
-			(InputManager.get_x_dir() == movement.facing_direction or InputManager.get_x_dir() == 0)
-			and (input.buffered_input(&"jump") or Input.is_action_pressed(&"jump"))
-		):
+		elif rollout_check == true:
 			return &"Rollout"
 
 	if Input.is_action_pressed(&"down"):
