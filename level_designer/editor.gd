@@ -15,11 +15,13 @@ extends Node
 func _ready():
 	get_tree().set_auto_accept_quit(false)
 
-
+func _unhandled_input(event):
+	if event is InputEventKey:
+		if event.pressed and event.keycode == KEY_ESCAPE:
+			get_tree().change_scene_to_file("res://ui/title_screen/title_screen.tscn")
 func _on_play_button_pressed() -> void:
-	# TODO: A way to return to the editor (like backspace from og 63)
 	user_interface.visible = false
-	level_preview.visible = false
+	level_preview.visible = true
 	spawn_point.visible = false
 
 	var created_level = Level.new()
