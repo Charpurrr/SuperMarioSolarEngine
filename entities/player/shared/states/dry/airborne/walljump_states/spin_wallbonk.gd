@@ -41,8 +41,8 @@ func _trans_rules():
 	if actor.is_on_floor():
 		return &"Idle"
 
-	if not movement.dived and movement.can_air_action() and input.buffered_input(&"dive"):
-		return &"Dive"
+	if not movement.dived and input.buffered_input(&"dive"):
+		return [&"Dive", InputManager.get_x_dir()]
 
 	if finished_init and movement.can_air_action() and input.buffered_input(&"spin"):
 		return &"Twirl"

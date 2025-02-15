@@ -45,8 +45,8 @@ func _trans_rules():
 	if not movement.can_air_action() and input.buffered_input(&"spin"):
 		return &"Spin"
 
-	if not movement.dived and movement.can_air_action() and input.buffered_input(&"dive"):
-		return &"Dive"
+	if not movement.dived and input.buffered_input(&"dive"):
+		return [&"Dive", InputManager.get_x_dir()]
 
 	if movement.finished_freefall_timer():
 		return &"Freefall"

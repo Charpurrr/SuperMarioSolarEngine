@@ -33,3 +33,4 @@ editor_draw_drag_margin = true
 script = ExtResource("1_8exb6")
 zoom_in_sfx = SubResource("Resource_dq0cd")
 zoom_out_sfx = SubResource("Resource_rtieh")
+velocity_pan_factor = 6.0
