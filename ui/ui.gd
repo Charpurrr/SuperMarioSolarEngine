@@ -82,8 +82,6 @@ func _pause_logic():
 	else:
 		screen_manager.switch_screen(screen_manager.current_screen, screen_manager.pause_screen)
 
-	print(screen_manager.current_screen)
-
 
 ## Creates a visual "notification" type indicator on the screen.
 func _push_notif(type: StringName, input: String):
