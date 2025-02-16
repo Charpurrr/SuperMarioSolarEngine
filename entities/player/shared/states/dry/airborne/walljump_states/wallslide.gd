@@ -4,6 +4,9 @@ extends PlayerState
 
 ## How fast you can slide downwards during a wallslide.
 @export var term_vel: float = 1.10
+## How fast you accelerate to the terminal velocity (basically).
+@export var gravity_friction: float = 8.0
+
 
 func _on_enter(_param):
 	movement.consume_coyote_timer()
@@ -17,7 +20,7 @@ func _physics_tick():
 
 
 func _subsequent_ticks():
-	movement.apply_gravity(1, 8)
+	movement.apply_gravity(1, gravity_friction)
 
 	var offset_hand := Vector2(
 		particles[0].particle_offset.x * movement.facing_direction,
