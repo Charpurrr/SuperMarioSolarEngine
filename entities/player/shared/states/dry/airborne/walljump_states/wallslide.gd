@@ -5,7 +5,6 @@ extends PlayerState
 ## How fast you can slide downwards during a wallslide.
 @export var term_vel: float = 1.10
 
-
 func _on_enter(_param):
 	movement.consume_coyote_timer()
 	movement.consec_jumps = 0
@@ -20,6 +19,17 @@ func _physics_tick():
 func _subsequent_ticks():
 	movement.apply_gravity(1, 8)
 
+	var offset_hand := Vector2(
+		particles[0].particle_offset.x * movement.facing_direction,
+		particles[0].particle_offset.y
+	)
+	particles[0].emit_at(actor, offset_hand)
+
+	var offset_foot := Vector2(
+		particles[1].particle_offset.x * movement.facing_direction,
+		particles[1].particle_offset.y
+	)
+	particles[1].emit_at(actor, offset_foot)
 
 func _trans_rules():
 	if input.buffered_input(&"spin"):

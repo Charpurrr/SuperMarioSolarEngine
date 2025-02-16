@@ -15,7 +15,9 @@ func _physics_tick():
 	actor.doll.rotation = lerp_angle(actor.doll.rotation, angle, 0.5)
 	movement.decelerate(movement.ground_decel_step * Vector2.RIGHT)
 
-	particles[0].emit_at(actor) # Emit the first particle (dust kick) every frame.
+
+func _subsequent_ticks():
+	particles[0].emit_at(actor)
 
 
 func _on_exit():

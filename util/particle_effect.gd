@@ -12,8 +12,9 @@ extends Resource
 var timer: int = loop_delay
 
 
-## Emit the particle at a specific node.
-func emit_at(node: Node):
+## Emit the particle at a specific node.[br]
+## [code]offset_overwrite[/code] is useful if you want to use logic defined offsets instead.
+func emit_at(node: Node, offset_overwrite := Vector2.ZERO):
 	if timer > 0:
 		timer = max(timer - 1, 0)
 	else:
@@ -23,7 +24,11 @@ func emit_at(node: Node):
 
 		node.add_child(particle)
 
-		particle.position = particle_offset
+		if offset_overwrite != Vector2.ZERO:
+			particle.position = offset_overwrite
+		else:
+			particle.position = particle_offset
+
 		particle.emitting = true
 
 		particle.connect(&"finished", particle.queue_free)

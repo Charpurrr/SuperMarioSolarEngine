@@ -15,3 +15,9 @@ func _on_enter(_param):
 	super(_param)
 
 	movement.accelerate(Vector2.RIGHT * movement.facing_direction * x_power, speed_cap)
+
+
+func _subsequent_ticks():
+	super()
+
+	particles[1].emit_at(actor)

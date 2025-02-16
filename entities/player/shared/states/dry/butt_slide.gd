@@ -64,6 +64,11 @@ func _physics_tick():
 	_set_appropriate_anim()
 
 
+func _subsequent_ticks():
+	if actor.is_on_floor():
+		particles[0].emit_at(actor)
+
+
 ## Buttsliding on the ground / slope.
 func _grounded():
 	var floor_normal: Vector2 = actor.get_floor_normal()
