@@ -10,8 +10,13 @@ particles_anim_loop = false
 
 [node name="Kick" type="CPUParticles2D"]
 material = SubResource("CanvasItemMaterial_ivan8")
+emitting = false
 amount = 1
+lifetime = 0.6
+one_shot = true
 texture = ExtResource("1_k1dfk")
 gravity = Vector2(0, -200)
+scale_amount_min = 0.8
+scale_amount_max = 1.2
 anim_speed_min = 2.0
 anim_speed_max = 2.0

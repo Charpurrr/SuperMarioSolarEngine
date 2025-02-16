@@ -27,7 +27,10 @@ func _physics_tick():
 	_set_appropriate_anim()
 
 	if current_frame != last_frame:
-		_play_footstep_sfx()
+		for frame in footstep_frames:
+			if frame == current_frame:
+				particles[0].emit_at(actor) # Emit the first particle (dust kick) every footstep.
+				_play_footstep_sfx()
 
 	last_frame = current_frame
 
@@ -46,12 +49,10 @@ func _set_appropriate_anim():
 		actor.doll.set_frame_and_progress(current_frame, current_progress)
 
 
-## Play a footstep sound effect depending on the current frame.
+## Play the footstep sound effect.
 func _play_footstep_sfx():
-	for frame in footstep_frames:
-		if frame == current_frame:
-			for sfx_list in sfx_layers:
-				sfx_list.play_sfx_at(self)
+	for sfx_list in sfx_layers:
+		sfx_list.play_sfx_at(self)
 
 
 func _on_exit():

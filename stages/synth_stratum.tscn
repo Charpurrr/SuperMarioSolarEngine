@@ -2038,7 +2038,6 @@ camera = NodePath("Mario/PlayerCamera")
 position = Vector2(601, 0)
 
 [node name="PlayerCamera" parent="Mario" instance=ExtResource("3_vwmkt")]
-velocity_pan_factor = 10.0
 
 [node name="Goomba" parent="." instance=ExtResource("9_3n06u")]
 position = Vector2(960, 0)

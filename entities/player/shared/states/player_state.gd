@@ -78,7 +78,7 @@ func _play_sounds():
 
 func _emit_particles():
 	for effect in particles:
-		effect.emit_once_at(actor)
+		effect.emit_at(actor)
 
 
 func trigger_exit():
