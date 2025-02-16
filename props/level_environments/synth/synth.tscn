@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bfb4xq874buf6"]
+[gd_scene load_steps=17 format=3 uid="uid://bfb4xq874buf6"]
 
 [ext_resource type="Script" path="res://props/level_environments/synth/synth_floor.gd" id="1_dubgv"]
 [ext_resource type="Script" path="res://props/level_environments/environment.gd" id="1_xeoqd"]
@@ -14,6 +14,14 @@ particles_animation = true
 particles_anim_h_frames = 10
 particles_anim_v_frames = 1
 particles_anim_loop = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8i7lr"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1024, 256, 0)
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 0.5
+anim_speed_max = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e8pha"]
 shader = ExtResource("7_e2awe")
@@ -72,16 +80,15 @@ texture = ExtResource("2_oiv80")
 stretch_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Stars" type="CPUParticles2D" parent="ParallaxBackground/Sky"]
+[node name="Stars" type="GPUParticles2D" parent="ParallaxBackground/Sky"]
 material = SubResource("CanvasItemMaterial_47xr2")
 position = Vector2(1024, 256)
 amount = 2000
+process_material = SubResource("ParticleProcessMaterial_8i7lr")
 texture = ExtResource("4_fkliv")
-emission_shape = 3
-emission_rect_extents = Vector2(1024, 256)
-gravity = Vector2(0, 0)
-anim_speed_min = 0.5
-anim_speed_max = 1.0
+fixed_fps = 0
+visibility_rect = Rect2(-512, -128, 1024, 256)
+draw_order = 0
 
 [node name="Sun" type="TextureRect" parent="ParallaxBackground"]
 anchors_preset = 15
