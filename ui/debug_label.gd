@@ -11,7 +11,7 @@ func _physics_process(_delta):
 		return
 
 	text = (
-		"""fps = %s \n
+		"""FPS = %s \n
 		is_on_floor() = %s
 		can_air_action() = %s
 		get_floor_angle / TAU = %.3f

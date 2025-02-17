@@ -3,6 +3,10 @@ extends Node
 signal reload
 signal paused
 
+signal debug_toggled
+
+var debug_toggle: bool = false
+
 var fullscreened: bool = false
 
 var bgm_muted: bool = false
@@ -47,12 +51,20 @@ func _ready():
 	_set_muted_bgm()
 
 
+#func _process(delta: float) -> void:
+	#print(debug_toggle)
+
+
 func _unhandled_input(event):
 	if event.is_action_pressed(&"mute"):
 		_music_control()
 
 	if event.is_action_pressed(&"fullscreen"):
 		toggle_fullscreen()
+
+	if event.is_action_pressed(&"debug_toggle"):
+		debug_toggle = !debug_toggle
+		debug_toggled.emit()
 
 
 func _music_control():

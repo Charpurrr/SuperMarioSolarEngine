@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=4 uid="uid://ccj3teu3h6xfm"]
+[gd_scene load_steps=91 format=4 uid="uid://ccj3teu3h6xfm"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_pakjx"]
 [ext_resource type="Script" path="res://ui/debug_label.gd" id="2_suudb"]
@@ -123,6 +123,11 @@ _data = {
 [sub_resource type="LabelSettings" id="LabelSettings_01jq4"]
 font = ExtResource("4_ko57l")
 font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_pm0uo"]
+font_size = 10
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_unrd8"]
 length = 0.001
@@ -392,7 +397,7 @@ unicode = 120
 [sub_resource type="Shortcut" id="Shortcut_bglev"]
 events = [SubResource("InputEventKey_hwwni"), SubResource("InputEventJoypadButton_bmfaf")]
 
-[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("screen_manager", "color_blur", "zoom_blur_player", "notif_list")]
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("screen_manager", "color_blur", "zoom_blur_player", "notif_list", "debug_label", "input_display")]
 process_mode = 3
 script = ExtResource("1_pakjx")
 screen_manager = NodePath("ScreenManager")
@@ -402,6 +407,8 @@ game_unpause_sfx = ExtResource("41_1bnq8")
 zoom_blur_player = NodePath("CameraZoomMosaic/AnimationPlayer")
 notif_scene = ExtResource("2_ufvuv")
 notif_list = NodePath("Notifications")
+debug_label = NodePath("DebugLabel")
+input_display = NodePath("InputDisplay")
 
 [node name="BackBufferFront" type="BackBufferCopy" parent="."]
 copy_mode = 2
@@ -452,13 +459,20 @@ label_settings = SubResource("LabelSettings_01jq4")
 offset_right = 86.0
 offset_bottom = 179.0
 theme_override_font_sizes/font_size = 10
-text = "fps =
-
-velocity.x =
-velocity.y =
-
-state =
-SCL ="
+text = "		FPS = %s \\n
+		is_on_floor() = %s
+		can_air_action() = %s
+		get_floor_angle / TAU = %.3f
+		floor_incline = %.3f \\n
+		position.x = %.3f
+		position.y = %.3f
+		velocity.x = %.3f
+		velocity.y = %.3f \\n
+		body_rotation = %.3f
+		doll.rotation = %.3f
+		facing = %d
+		state = %s"
+label_settings = SubResource("LabelSettings_pm0uo")
 script = ExtResource("2_suudb")
 metadata/_edit_lock_ = true
 

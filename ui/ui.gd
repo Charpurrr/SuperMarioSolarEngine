@@ -18,6 +18,10 @@ extends CanvasLayer
 
 var current_notifs: Array = []
 
+@export_category(&"Debug Variables")
+@export var debug_label: Label
+@export var input_display: Control
+
 @onready var input_display_sprites: Dictionary = {
 	KEY_SHIFT: %Shift,
 	KEY_W: %W,
@@ -38,10 +42,12 @@ var camera: PlayerCamera
 
 
 func _ready():
+	_toggle_debug()
 	_set_player()
 	_set_camera()
 
 	world_machine.level_reloaded.connect(_set_player)
+	GameState.debug_toggled.connect(_toggle_debug)
 
 
 func _process(_delta):
@@ -115,6 +121,12 @@ func _display_input(event: InputEvent):
 		texture.set_modulate(Color(1, 1, 1, 1))
 	else:
 		texture.set_modulate(Color(1, 1, 1, 0.5))
+
+
+func _toggle_debug():
+	var toggle = GameState.debug_toggle
+	input_display.visible = toggle
+	debug_label.visible = toggle
 
 
 func _set_player():
