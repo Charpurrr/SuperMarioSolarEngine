@@ -1818,13 +1818,6 @@ clip_text = true
 
 [node name="Notifications" type="Node" parent="."]
 
-[node name="Label" type="Label" parent="."]
-offset_left = 229.0
-offset_top = 156.0
-offset_right = 395.0
-offset_bottom = 179.0
-text = "This is a new commit!"
-
 [connection signal="pressed" from="ScreenManager/PauseScreen/LeftPanel/Content/MainButtons/Buttons/Resume" to="ScreenManager/PauseScreen" method="_on_resume_pressed"]
 [connection signal="pressed" from="ScreenManager/PauseScreen/LeftPanel/Content/MainButtons/Buttons/LevelStateChoices/Retry" to="ScreenManager/PauseScreen" method="_on_retry_pressed"]
 [connection signal="pressed" from="ScreenManager/PauseScreen/LeftPanel/Content/MainButtons/Buttons/LevelStateChoices/Reset" to="ScreenManager/PauseScreen" method="_on_reset_pressed"]
