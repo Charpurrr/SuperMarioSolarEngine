@@ -51,8 +51,6 @@ Mack "masterminer176" - Miscellaneous sprites <br />
 
 "KenneyNL" - UI Input Icons <br /><br >
 
-hello!
-
 "KingAsylus91" - Mario & Luigi sprites <br />
 "TuffTony" - Mario & Luigi sprites <br />
 "NineBit" - Mario & Luigi sprites <br /><br />
