@@ -36,7 +36,6 @@
 [ext_resource type="Texture2D" uid="uid://c84gehfwldto" path="res://ui/screen_manager/pause_screen/textures/rocket_icon.png" id="21_xk5tc"]
 [ext_resource type="Texture2D" uid="uid://rps7nhfiherr" path="res://ui/screen_manager/pause_screen/textures/quit.png" id="22_uf17g"]
 [ext_resource type="PackedScene" uid="uid://bb6wf0meej6ox" path="res://ui/ui_button.tscn" id="23_mtuia"]
-[ext_resource type="AudioStream" uid="uid://b3ltff8ees3d4" path="res://ui/sfx/decide.wav" id="25_1jflk"]
 [ext_resource type="Texture2D" uid="uid://c8kahcqao7t20" path="res://ui/screen_manager/pause_screen/textures/reset.png" id="27_0c4e2"]
 [ext_resource type="Texture2D" uid="uid://bw18e3jvu7l70" path="res://ui/screen_manager/pause_screen/textures/options.png" id="29_jpk5x"]
 [ext_resource type="Texture2D" uid="uid://b6wn6aak61xrn" path="res://ui/screen_manager/pause_screen/textures/coin.png" id="30_7ngu7"]
@@ -52,6 +51,7 @@
 [ext_resource type="Texture2D" uid="uid://y343nq5v4ud5" path="res://ui/input_icons/nintendo_switch/switch_button_b.svg" id="46_6uhvl"]
 [ext_resource type="Texture2D" uid="uid://dkjx263nlcra" path="res://ui/input_icons/nintendo_switch/controller_switch_motion.svg" id="46_7gkal"]
 [ext_resource type="Texture2D" uid="uid://356g6gk2u4lq" path="res://ui/input_icons/nintendo_switch/switch_button_r.svg" id="46_eppju"]
+[ext_resource type="Script" path="res://ui/ui_button_options.gd" id="46_f3jc5"]
 [ext_resource type="Texture2D" uid="uid://c5dbwjmvnh6p1" path="res://ui/input_icons/nintendo_switch/switch_stick_l.svg" id="47_adiwi"]
 [ext_resource type="Texture2D" uid="uid://bhvukbqm4v5f3" path="res://ui/input_icons/nintendo_switch/controller_switch_rumble.svg" id="47_yaddp"]
 [ext_resource type="Texture2D" uid="uid://c8t2udtmy6oac" path="res://ui/input_icons/nintendo_switch/switch_button_x.svg" id="48_in08l"]
@@ -699,7 +699,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 27
 text = "RESUME"
 icon = ExtResource("17_is4aa")
-press_sfx = ExtResource("25_1jflk")
 
 [node name="LevelStateChoices" type="VBoxContainer" parent="ScreenManager/PauseScreen/LeftPanel/Content/MainButtons/Buttons"]
 layout_mode = 2
@@ -713,7 +712,6 @@ layout_mode = 2
 size_flags_stretch_ratio = 1.0
 text = "RETRY"
 icon = ExtResource("18_xk3ue")
-press_sfx = ExtResource("25_1jflk")
 
 [node name="Reset" parent="ScreenManager/PauseScreen/LeftPanel/Content/MainButtons/Buttons/LevelStateChoices" instance=ExtResource("23_mtuia")]
 layout_mode = 2
@@ -1032,7 +1030,6 @@ text = "CANCEL"
 [node name="Confirm" parent="ScreenManager/WarningScreen/Spacing/Main/Buttons" instance=ExtResource("23_mtuia")]
 layout_mode = 2
 text = "CONFIRM"
-press_sfx = ExtResource("25_1jflk")
 
 [node name="SpaceBottom" type="Control" parent="ScreenManager/WarningScreen/Spacing/Main"]
 layout_mode = 2
@@ -1138,6 +1135,7 @@ size_flags_stretch_ratio = 0.1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General"]
 clip_contents = false
+custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -1169,6 +1167,10 @@ layout_mode = 2
 [node name="ToggleButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/Timer" instance=ExtResource("23_mtuia")]
 layout_mode = 2
 text = "ON"
+script = ExtResource("46_f3jc5")
+options = Array[StringName]([&"ON", &"OFF"])
+save_section = "General"
+save_key = "timer_toggled"
 
 [node name="VSync" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons"]
 layout_mode = 2
@@ -1188,6 +1190,10 @@ layout_mode = 2
 [node name="ToggleButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/VSync" instance=ExtResource("23_mtuia")]
 layout_mode = 2
 text = "ON"
+script = ExtResource("46_f3jc5")
+options = Array[StringName]([&"ON", &"OFF"])
+save_section = "General"
+save_key = "vsync"
 
 [node name="Quality" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons"]
 layout_mode = 2
@@ -1207,6 +1213,10 @@ layout_mode = 2
 [node name="SelectorButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/Quality" instance=ExtResource("23_mtuia")]
 layout_mode = 2
 text = "HIGH"
+script = ExtResource("46_f3jc5")
+options = Array[StringName]([&"HIGH", &"MEDIUM", &"LOW"])
+save_section = "General"
+save_key = "quality"
 
 [node name="MiddleButtons" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content"]
 layout_mode = 2
@@ -1241,6 +1251,10 @@ layout_mode = 2
 [node name="ToggleButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons/Discord" instance=ExtResource("23_mtuia")]
 layout_mode = 2
 text = "ON"
+script = ExtResource("46_f3jc5")
+options = Array[StringName]([&"ON", &"OFF"])
+save_section = "General"
+save_key = "rich_presence"
 
 [node name="FPS" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons"]
 layout_mode = 2
@@ -1260,6 +1274,10 @@ layout_mode = 2
 [node name="SelectorButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons/FPS" instance=ExtResource("23_mtuia")]
 layout_mode = 2
 text = "60 FPS"
+script = ExtResource("46_f3jc5")
+options = Array[StringName]([&"60 FPS", &"UNLIMITED", &"30 FPS"])
+save_section = "General"
+save_key = "fps_cap"
 
 [node name="Window" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons"]
 layout_mode = 2
@@ -1279,6 +1297,10 @@ layout_mode = 2
 [node name="SelectorButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons/Window" instance=ExtResource("23_mtuia")]
 layout_mode = 2
 text = "x1 SCALE"
+script = ExtResource("46_f3jc5")
+options = Array[StringName]([&"x1 SCALE", &"x2 SCALE", &"x3 SCALE", &"FULL"])
+save_section = "General"
+save_key = "scale"
 
 [node name="BottomButtons" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content"]
 layout_mode = 2
@@ -1313,6 +1335,10 @@ layout_mode = 2
 [node name="ToggleButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/BottomButtons/MotionToggle" instance=ExtResource("23_mtuia")]
 layout_mode = 2
 text = "ON"
+script = ExtResource("46_f3jc5")
+options = Array[StringName]([&"ON", &"OFF"])
+save_section = "General"
+save_key = "motion_toggled"
 
 [node name="RumbleStrength" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/BottomButtons"]
 layout_mode = 2
@@ -1343,6 +1369,11 @@ layout_mode = 2
 [node name="SelectorButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/BottomButtons/RumbleStrength" instance=ExtResource("23_mtuia")]
 layout_mode = 2
 text = "HIGH"
+script = ExtResource("46_f3jc5")
+options = Array[StringName]([&"HIGH", &"MEDIUM", &"LOW"])
+save_section = "General"
+save_key = "rumble_strength"
+press_sfx = null
 
 [node name="Controls" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs"]
 visible = false
@@ -1489,14 +1520,14 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Reset" type="Button" parent="ScreenManager/OptionsScreen/Footer/Content"]
-custom_minimum_size = Vector2(226, 0)
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/icon_normal_color = Color(0.486275, 0, 0.4, 1)
 theme_override_fonts/font = ExtResource("15_y78en")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxEmpty_r0xoq")
-text = "Reset to Default Settings"
+text = "Reset to Default"
 icon = ExtResource("48_in08l")
 expand_icon = true
 

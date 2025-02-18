@@ -186,7 +186,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "PLAY"
 icon = ExtResource("8_tdj5p")
-press_sfx = null
 
 [node name="SpaceMiddle" type="Control" parent="Contents/Choices"]
 layout_mode = 2
@@ -198,7 +197,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "EDIT"
 icon = ExtResource("9_csve6")
-press_sfx = null
 
 [node name="SpaceRight" type="Control" parent="Contents/Choices"]
 layout_mode = 2
