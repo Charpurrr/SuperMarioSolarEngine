@@ -50,6 +50,8 @@ func _ready():
 	bgm_muted = LocalSettings.load_setting("Audio", "music_muted", false)
 	_set_muted_bgm()
 
+	debug_toggle = LocalSettings.load_setting("Developer", "debug_toggled", false)
+
 
 #func _process(delta: float) -> void:
 	#print(debug_toggle)
@@ -64,6 +66,7 @@ func _unhandled_input(event):
 
 	if event.is_action_pressed(&"debug_toggle"):
 		debug_toggle = !debug_toggle
+		LocalSettings.change_setting("Developer", "debug_toggled", debug_toggle)
 		debug_toggled.emit()
 
 

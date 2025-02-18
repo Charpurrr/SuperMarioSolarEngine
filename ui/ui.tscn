@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=4 uid="uid://ccj3teu3h6xfm"]
+[gd_scene load_steps=93 format=4 uid="uid://ccj3teu3h6xfm"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_pakjx"]
 [ext_resource type="Script" path="res://ui/debug_label.gd" id="2_suudb"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bkvicbrah3ltp" path="res://ui/input_display/input_display_ico4.png" id="6_7ipv2"]
 [ext_resource type="Texture2D" uid="uid://cnypyennkpxux" path="res://ui/input_display/input_display_ico5.png" id="7_yer77"]
 [ext_resource type="Texture2D" uid="uid://7p0auiyqcgk3" path="res://ui/input_display/input_display_ico6.png" id="8_nyjo7"]
+[ext_resource type="Script" path="res://ui/commit_label.gd" id="9_bvd2d"]
 [ext_resource type="Texture2D" uid="uid://dir44lhfrdcxu" path="res://ui/input_display/input_display_ico7.png" id="9_smbrs"]
 [ext_resource type="Texture2D" uid="uid://15yce5ngma24" path="res://ui/input_display/input_display_ico8.png" id="10_5r8on"]
 [ext_resource type="Script" path="res://ui/screen_manager/screen_manager.gd" id="12_l4gs6"]
@@ -125,6 +126,11 @@ font = ExtResource("4_ko57l")
 font_size = 28
 
 [sub_resource type="LabelSettings" id="LabelSettings_pm0uo"]
+font_size = 10
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j1nag"]
 font_size = 10
 outline_size = 7
 outline_color = Color(0, 0, 0, 1)
@@ -397,7 +403,7 @@ unicode = 120
 [sub_resource type="Shortcut" id="Shortcut_bglev"]
 events = [SubResource("InputEventKey_hwwni"), SubResource("InputEventJoypadButton_bmfaf")]
 
-[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("screen_manager", "color_blur", "zoom_blur_player", "notif_list", "debug_label", "input_display")]
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("screen_manager", "color_blur", "zoom_blur_player", "notif_list", "debug_label", "commit_labl", "input_display")]
 process_mode = 3
 script = ExtResource("1_pakjx")
 screen_manager = NodePath("ScreenManager")
@@ -408,10 +414,12 @@ zoom_blur_player = NodePath("CameraZoomMosaic/AnimationPlayer")
 notif_scene = ExtResource("2_ufvuv")
 notif_list = NodePath("Notifications")
 debug_label = NodePath("DebugLabel")
+commit_labl = NodePath("CommitLabel")
 input_display = NodePath("InputDisplay")
 
 [node name="BackBufferFront" type="BackBufferCopy" parent="."]
 copy_mode = 2
+metadata/_edit_lock_ = true
 
 [node name="CameraZoomMosaic" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_j6vdi")
@@ -420,6 +428,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CameraZoomMosaic"]
 libraries = {
@@ -474,7 +483,27 @@ text = "		FPS = %s \\n
 		state = %s"
 label_settings = SubResource("LabelSettings_pm0uo")
 script = ExtResource("2_suudb")
-metadata/_edit_lock_ = true
+
+[node name="CommitLabel" type="Label" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -171.0
+offset_top = -57.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Fetching..."
+label_settings = SubResource("LabelSettings_j1nag")
+horizontal_alignment = 2
+vertical_alignment = 1
+tab_stops = PackedFloat32Array(20)
+script = ExtResource("9_bvd2d")
 
 [node name="InputDisplay" type="Control" parent="."]
 layout_mode = 3
@@ -580,6 +609,7 @@ anime_player = NodePath("AnimationPlayer")
 pause_screen = NodePath("PauseScreen")
 warning_screen = NodePath("WarningScreen")
 options_screen = NodePath("OptionsScreen")
+metadata/_edit_lock_ = true
 
 [node name="CursorSFX" type="AudioStreamPlayer" parent="ScreenManager"]
 stream = ExtResource("15_l2qix")
@@ -593,6 +623,7 @@ libraries = {
 
 [node name="BackBufferBack" type="BackBufferCopy" parent="ScreenManager"]
 copy_mode = 2
+metadata/_edit_lock_ = true
 
 [node name="ColorBlurEffect" type="ColorRect" parent="ScreenManager"]
 visible = false

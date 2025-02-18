@@ -20,6 +20,7 @@ var current_notifs: Array = []
 
 @export_category(&"Debug Variables")
 @export var debug_label: Label
+@export var commit_labl: Label
 @export var input_display: Control
 
 @onready var input_display_sprites: Dictionary = {
@@ -124,8 +125,9 @@ func _display_input(event: InputEvent):
 
 
 func _toggle_debug():
-	var toggle = GameState.debug_toggle
+	var toggle: bool = GameState.debug_toggle
 	input_display.visible = toggle
+	commit_labl.visible = toggle
 	debug_label.visible = toggle
 
 
