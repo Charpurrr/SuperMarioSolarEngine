@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bb6wf0meej6ox"]
+[gd_scene load_steps=10 format=3 uid="uid://bb6wf0meej6ox"]
 
 [ext_resource type="FontFile" uid="uid://e821cxxeybxh" path="res://ui/fonts/mario_sunshine.ttf" id="1_yyajw"]
 [ext_resource type="Script" path="res://ui/ui_button.gd" id="3_gmvcm"]
@@ -18,16 +18,30 @@ corner_radius_bottom_left = 7
 corner_detail = 1
 anti_aliasing = false
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ykbm"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+corner_detail = 1
+anti_aliasing = false
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j7tha"]
 content_margin_left = 6.0
 content_margin_top = 6.0
 content_margin_right = 6.0
 content_margin_bottom = 6.0
 bg_color = Color(0.484569, 3.73495e-05, 0.400556, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 7
 corner_radius_top_right = 7
@@ -75,13 +89,18 @@ offset_bottom = 33.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_yyajw")
 theme_override_font_sizes/font_size = 21
 theme_override_styles/focus = SubResource("StyleBoxFlat_4pmr8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1ykbm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_j7tha")
 theme_override_styles/normal = SubResource("StyleBoxFlat_7arip")
 text = "PRESET"
@@ -102,6 +121,7 @@ offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2o8a4")
 
 [node name="Outerline" type="Panel" parent="Dropshadow"]
@@ -117,4 +137,7 @@ offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2ao57")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
