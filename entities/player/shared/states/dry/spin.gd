@@ -99,12 +99,12 @@ func _air_rules() -> Variant:
 
 
 func _ground_rules() -> Variant:
-	if actor.is_on_floor():
-		if not actor.doll.is_playing():
-			return &"Idle"
+	#if actor.is_on_floor():
+	if not actor.doll.is_playing():
+		return &"Idle"
 
-		if input.buffered_input(&"jump"):
-			return &"Spinjump"
+	if input.buffered_input(&"jump"):
+		return &"Spinjump"
 
 	return &""
 

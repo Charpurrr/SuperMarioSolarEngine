@@ -134,7 +134,7 @@ func probe_switch(defer: bool = false) -> void:
 
 
 ## Get the active leaf of the machine.
-func get_leaf():
+func get_leaf() -> State:
 	if live_substate == null:
 		return self
 	return live_substate.get_leaf()
