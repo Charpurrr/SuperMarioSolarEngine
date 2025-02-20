@@ -19,7 +19,7 @@ corner_detail = 1
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ykbm"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.486275, 0, 0.4, 1)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
