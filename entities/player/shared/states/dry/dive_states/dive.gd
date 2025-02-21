@@ -66,8 +66,8 @@ func _on_exit():
 func _trans_rules():
 	if actor.is_on_floor():
 		return &"DiveSlide"
-
-	if actor.is_on_wall():
+	
+	if actor.is_on_wall() and sign(actor.get_wall_normal().x) == -movement.facing_direction:
 		return &"Bonk"
 
 	if movement.can_air_action() and Input.is_action_just_pressed(&"groundpound"):

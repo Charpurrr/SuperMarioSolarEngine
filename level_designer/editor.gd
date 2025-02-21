@@ -45,7 +45,7 @@ func _on_play_button_pressed() -> void:
 	created_level.player = player_node
 
 	# Create a camera and parent it to the player.
-	var cam = Camera2D.new()
+	var cam = PlayerCamera.new()
 	player_node.add_child(cam)
 	created_level.camera = cam
 	cam.enabled = true
