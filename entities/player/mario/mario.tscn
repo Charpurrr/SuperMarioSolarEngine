@@ -134,7 +134,7 @@
 [ext_resource type="AudioStream" uid="uid://1fibybjdw7pc" path="res://entities/player/shared/motion_nsmbw/groundpound.wav" id="116_078t4"]
 [ext_resource type="Script" path="res://entities/player/shared/states/dry/airborne/lazy_jump.gd" id="116_wolak"]
 [ext_resource type="AudioStream" uid="uid://23at2s4l6qjv" path="res://entities/player/mario/voice_sunshine/watch_it.wav" id="120_qvxml"]
-[ext_resource type="PackedScene" uid="uid://bnl4gwa5x2dwh" path="res://entities/player/shared/particles/dust.tscn" id="121_qidyp"]
+[ext_resource type="PackedScene" path="res://entities/player/shared/particles/dust.tscn" id="121_qidyp"]
 [ext_resource type="AudioStream" uid="uid://lktt3ecwf5nm" path="res://entities/player/mario/voice_sunshine/oh_surprised.wav" id="121_se657"]
 [ext_resource type="AudioStream" uid="uid://udnnj6t7h54x" path="res://entities/player/mario/voice_sunshine/mhpm.wav" id="122_r00kr"]
 [ext_resource type="AudioStream" uid="uid://b05vmfwqtohny" path="res://entities/player/mario/voice_sunshine/ow.wav" id="123_v30he"]
@@ -159,7 +159,7 @@
 [ext_resource type="AudioStream" uid="uid://b1orysswk33x1" path="res://entities/player/mario/voice_sunshine/woah_ledge.wav" id="151_u7cu3"]
 [ext_resource type="AudioStream" uid="uid://ddjllqvgrxfqj" path="res://entities/player/mario/voice_sunshine/woah2_ledge.wav" id="152_7j1yj"]
 [ext_resource type="AudioStream" uid="uid://cutedbxm5o46d" path="res://entities/player/mario/voice_sunshine/woah3_ledge.wav" id="153_5c2b3"]
-[ext_resource type="PackedScene" uid="uid://d1wf1b4d4xfvf" path="res://entities/player/shared/particles/sparkle.tscn" id="158_1s3ss"]
+[ext_resource type="PackedScene" path="res://entities/player/shared/particles/sparkle.tscn" id="158_1s3ss"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8n85e"]
 atlas = ExtResource("2_i2o54")
@@ -2054,7 +2054,7 @@ loop_delay = 2
 [node name="Mario" type="CharacterBody2D" node_paths=PackedStringArray("doll", "state_manager", "movement", "input", "push_rays", "hitbox", "dive_hitbox", "small_hitbox", "water_check", "crouchlock", "spin_hitbox")]
 collision_layer = 2
 floor_constant_speed = true
-floor_max_angle = 1.39626
+floor_max_angle = 1.48353
 floor_snap_length = 16.0
 script = ExtResource("1_87j6i")
 doll = NodePath("Doll")
