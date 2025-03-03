@@ -16,7 +16,7 @@ func on_load():
 
 
 func restart() -> void:
-	GameState.emit_reload()
+	GameState.reload.emit()
 	manager.switch_screen(self)
 
 
@@ -25,7 +25,7 @@ func quit() -> void:
 
 
 func _on_cancel_pressed() -> void:
-	manager.switch_screen(self, manager.pause_screen)
+	manager.switch_screen(self, manager.get_screen(&"PauseScreen"))
 
 
 func _on_confirm_pressed() -> void:

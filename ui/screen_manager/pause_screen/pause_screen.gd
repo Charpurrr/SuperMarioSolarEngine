@@ -9,18 +9,20 @@ func _on_resume_pressed() -> void:
 
 
 func _on_retry_pressed() -> void:
-	GameState.emit_reload()
+	GameState.reload.emit()
 	manager.switch_screen(self)
 
 
 func _on_reset_pressed() -> void:
-	manager.warning_screen.text = """
+	var warning_screen: WarningScreen = manager.get_screen(&"WarningScreen")
+
+	warning_screen.text = """
 	[center]Restart the level from the beginning?
 	(Any unsaved progress will be [color=red]LOST[/color].)"""
 
-	manager.warning_screen.confirm_behaviour = manager.warning_screen.restart
+	warning_screen.confirm_behaviour = warning_screen.restart
 
-	manager.switch_screen(self, manager.warning_screen)
+	manager.switch_screen(self, warning_screen)
 
 
 func _on_action_guide_pressed() -> void:
@@ -28,14 +30,16 @@ func _on_action_guide_pressed() -> void:
 
 
 func _on_options_pressed() -> void:
-	manager.switch_screen(self, manager.options_screen)
+	manager.switch_screen(self, manager.get_screen(&"OptionsScreen"))
 
 
 func _on_quit_pressed() -> void:
-	manager.warning_screen.text = """
+	var warning_screen: WarningScreen = manager.get_screen(&"WarningScreen")
+
+	warning_screen.text = """
 	[center]Exit to title screen?
 	(Any unsaved progress will be [color=red]LOST[/color].)"""
 
-	manager.warning_screen.confirm_behaviour = manager.warning_screen.quit
+	warning_screen.confirm_behaviour = warning_screen.quit
 
-	manager.switch_screen(self, manager.warning_screen)
+	manager.switch_screen(self, warning_screen)

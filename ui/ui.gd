@@ -77,17 +77,20 @@ func _pause_logic():
 	if screen_manager.anime_player.is_playing():
 		return
 
+	var pause_screen: PauseScreen = screen_manager.get_screen(&"PauseScreen")
+	
+
 	if not GameState.is_paused():
 		SFX.play_sfx(game_pause_sfx, &"UI", screen_manager)
 
-		screen_manager.switch_screen(null, screen_manager.pause_screen)
+		screen_manager.switch_screen(null, pause_screen)
 		GameState.emit_signal(&"paused")
 	elif screen_manager.current_screen is PauseScreen:
 		SFX.play_sfx(game_unpause_sfx, &"UI", screen_manager)
-		screen_manager.switch_screen(screen_manager.pause_screen, null)
+		screen_manager.switch_screen(pause_screen, null)
 		GameState.emit_signal(&"paused")
 	else:
-		screen_manager.switch_screen(screen_manager.current_screen, screen_manager.pause_screen)
+		screen_manager.switch_screen(screen_manager.current_screen, pause_screen)
 
 
 ## Creates a visual "notification" type indicator on the screen.

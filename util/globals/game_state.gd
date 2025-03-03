@@ -1,16 +1,17 @@
 extends Node
 
+@warning_ignore("unused_signal")
+# Is used primarily for WorldMachine communication,
+# but makes more sense to store here.
 signal reload
 signal paused
 
 signal debug_toggled
-
 var debug_toggle: bool = false
 
 var fullscreened: bool = false
 
 var bgm_muted: bool = false
-
 var buses: Dictionary = {
 	&"Master":
 	(
@@ -102,7 +103,3 @@ func pause_toggle():
 
 func is_paused() -> bool:
 	return get_tree().paused
-
-
-func emit_reload():
-	reload.emit()

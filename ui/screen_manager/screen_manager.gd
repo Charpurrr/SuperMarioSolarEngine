@@ -8,9 +8,15 @@ extends Control
 @export var anime_player: AnimationPlayer
 
 @export_category("Screens")
-@export var pause_screen: PauseScreen
-@export var warning_screen: WarningScreen
-@export var options_screen: OptionsScreen
+## Exported node paths to the relevant screens.[br][br]
+## Use a StringName to define a name, then a NodePath
+## to define a reference for that screen.[br][br]
+## You can then reference screens from across eachother by doing[br]
+## [code]screen_manager.screens[name][/code].
+@export var screens: Dictionary
+#@export var pause_screen: PauseScreen
+#@export var warning_screen: WarningScreen
+#@export var options_screen: OptionsScreen
 
 ## What screen is currently enabled.
 var current_screen: Screen
@@ -38,7 +44,7 @@ func _ready() -> void:
 			child.call_deferred(&"set", key, pass_downs[key])
 
 
-## Leave from or to as null if wanting to transition out of or into gameplay.
+## Leave "from" or "to" as null if wanting to transition out of or into gameplay.
 func switch_screen(from: Screen = null, to: Screen = null) -> void:
 #region FROM
 	if not from == null:
@@ -77,3 +83,8 @@ func switch_screen(from: Screen = null, to: Screen = null) -> void:
 	current_screen = to
 	to.on_enter()
 #endregion
+
+
+## Returns the node reference of a screen as defined in the screens dictionary.
+func get_screen(key: StringName):
+	return get_node(screens[key])

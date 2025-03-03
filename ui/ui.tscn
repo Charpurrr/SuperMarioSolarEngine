@@ -164,7 +164,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ScreenManager/PauseScreen:visible")
+tracks/2/path = NodePath("ScreenManager/WarningScreen:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -176,31 +176,31 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("ScreenManager/WarningScreen:visible")
+tracks/3/path = NodePath("ScreenManager/OptionsScreen:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(0, -360)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("ScreenManager/OptionsScreen:position")
+tracks/4/path = NodePath("ScreenManager/OptionsScreen:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -360)]
+"update": 1,
+"values": [false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("ScreenManager/OptionsScreen:visible")
+tracks/5/path = NodePath("ScreenManager/PauseScreen:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -593,7 +593,7 @@ modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 2
 texture = ExtResource("5_cgoe6")
 
-[node name="ScreenManager" type="Control" parent="." node_paths=PackedStringArray("cursor_sfx", "color_blur", "anime_player", "pause_screen", "warning_screen", "options_screen")]
+[node name="ScreenManager" type="Control" parent="." node_paths=PackedStringArray("cursor_sfx", "color_blur", "anime_player")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -606,9 +606,11 @@ script = ExtResource("12_l4gs6")
 cursor_sfx = NodePath("CursorSFX")
 color_blur = NodePath("ColorBlurEffect")
 anime_player = NodePath("AnimationPlayer")
-pause_screen = NodePath("PauseScreen")
-warning_screen = NodePath("WarningScreen")
-options_screen = NodePath("OptionsScreen")
+screens = {
+"OptionsScreen": NodePath("OptionsScreen"),
+"PauseScreen": NodePath("PauseScreen"),
+"WarningScreen": NodePath("WarningScreen")
+}
 metadata/_edit_lock_ = true
 
 [node name="CursorSFX" type="AudioStreamPlayer" parent="ScreenManager"]
@@ -626,7 +628,6 @@ copy_mode = 2
 metadata/_edit_lock_ = true
 
 [node name="ColorBlurEffect" type="ColorRect" parent="ScreenManager"]
-visible = false
 material = SubResource("ShaderMaterial_8xxao")
 layout_mode = 1
 anchors_preset = 15
