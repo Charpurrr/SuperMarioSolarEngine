@@ -9,7 +9,6 @@ extends PlayerState
 
 func _physics_tick():
 	movement.update_prev_direction()
-	
 	movement.decelerate(movement.ground_decel_step * Vector2.RIGHT)
 
 	if Input.is_action_pressed(&"up"):
@@ -32,13 +31,6 @@ func _trans_rules():
 
 	if InputManager.get_x_dir() != 0:
 		return &"Walk"
-
-	#if InputManager.get_x_dir() == -movement.prev_facing_direction and actor.vel.x != 0:
-		### Tiny margin to avoid making the skidding animation change frame perfect.
-		##if abs(actor.vel.x) < 1:
-			##return [&"Skid", [2, 8]]
-#
-		#return [&"Skid", [0, 16]]
 
 	if input.buffered_input(&"jump"):
 		return &"DummyJump"

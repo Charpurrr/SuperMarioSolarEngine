@@ -21,6 +21,7 @@ extends CharacterBody2D
 ## Current velocity.
 var vel := Vector2.ZERO
 
+
 func _ready():
 	set_up_direction(Vector2.UP)
 
@@ -28,5 +29,5 @@ func _ready():
 func _physics_process(delta):
 	set_velocity(vel / delta)
 	move_and_slide()
-	
+
 	vel = velocity * delta
