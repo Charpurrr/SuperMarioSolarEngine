@@ -229,10 +229,6 @@ debug_toggle={
 2d_physics/layer_9="Preview (Editor)"
 2d_physics/layer_10="Level Preview Field (Editor)"
 
-
-common/physics_jitter_fix=0.0
-common/physics_interpolation=true
-
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
