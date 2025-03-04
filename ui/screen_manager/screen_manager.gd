@@ -14,16 +14,9 @@ extends Control
 ## You can then reference screens from across eachother by doing[br]
 ## [code]screen_manager.screens[name][/code].
 @export var screens: Dictionary
-#@export var pause_screen: PauseScreen
-#@export var warning_screen: WarningScreen
-#@export var options_screen: OptionsScreen
 
 ## What screen is currently enabled.
 var current_screen: Screen
-
-
-#func _process(_delta: float) -> void:
-	#print(current_sceen)
 
 
 func _ready() -> void:
