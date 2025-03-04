@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://qslbjwvvnw28" path="res://ui/pattern_solar.png" id="3_6joap"]
 [ext_resource type="PackedScene" uid="uid://bfrw3lh0b17ri" path="res://level_designer/editor.tscn" id="3_glrnx"]
 [ext_resource type="Texture2D" uid="uid://dfbwpeg0x4vwn" path="res://ui/title_screen/title.png" id="4_wkbm3"]
-[ext_resource type="PackedScene" uid="uid://bb6wf0meej6ox" path="res://ui/ui_button.tscn" id="7_rdlol"]
+[ext_resource type="PackedScene" uid="uid://bb6wf0meej6ox" path="res://ui/buttons/ui_button.tscn" id="7_rdlol"]
 [ext_resource type="Texture2D" uid="uid://c82mjoeosc2ka" path="res://ui/title_screen/play_icon.png" id="8_tdj5p"]
 [ext_resource type="Texture2D" uid="uid://b140m0l1g3u2v" path="res://ui/title_screen/edit_icon.png" id="9_csve6"]
 

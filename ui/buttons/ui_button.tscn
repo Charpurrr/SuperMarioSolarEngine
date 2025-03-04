@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bb6wf0meej6ox"]
 
 [ext_resource type="FontFile" uid="uid://e821cxxeybxh" path="res://ui/fonts/mario_sunshine.ttf" id="1_yyajw"]
-[ext_resource type="Script" uid="uid://jgdsmuvahdwi" path="res://ui/ui_button.gd" id="3_gmvcm"]
+[ext_resource type="Script" uid="uid://jgdsmuvahdwi" path="res://ui/buttons/ui_button.gd" id="3_gmvcm"]
 [ext_resource type="AudioStream" uid="uid://c4ui7ftfypsg0" path="res://ui/sfx/decide_small.wav" id="3_xygau"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4pmr8"]
