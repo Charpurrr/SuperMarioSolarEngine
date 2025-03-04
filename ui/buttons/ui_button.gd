@@ -15,6 +15,19 @@ func avfx() -> void:
 	# Could optionally add visual effects too, I relied on the button themes instead.
 
 
+func toggle_disable():
+	disabled = !disabled
+
+	if disabled:
+		focus_mode = Control.FOCUS_NONE
+		mouse_filter = Control.MOUSE_FILTER_IGNORE
+		modulate = Color.hex(0x323232ff)
+	else:
+		focus_mode = Control.FOCUS_ALL
+		mouse_filter = Control.MOUSE_FILTER_STOP
+		modulate = Color.WHITE
+
+
 func _on_mouse_entered() -> void:
 	grab_focus()
 

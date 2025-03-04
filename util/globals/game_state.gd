@@ -56,8 +56,8 @@ func _ready():
 	debug_toggle = LocalSettings.load_setting("Developer", "debug_toggled", false)
 
 
-func _process(delta: float) -> void:
-	print(DisplayServer.window_get_vsync_mode())
+#func _process(_delta: float) -> void:
+	#print(DisplayServer.window_get_vsync_mode())
 
 
 func _unhandled_input(event):
@@ -89,7 +89,7 @@ func _setting_changed(key: StringName, value: Variant):
 		"v_sync":
 			DisplayServer.window_set_vsync_mode(value)
 		"fps_cap":
-			Engine.max_fps = 30 * value # 0:0, 1:30, 2:60
+			Engine.max_fps = 30 * value # 0:INF, 1:30, 2:60
 
 
 func toggle_fullscreen():

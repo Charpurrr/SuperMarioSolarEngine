@@ -1043,7 +1043,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.2
 
-[node name="OptionsScreen" type="VBoxContainer" parent="ScreenManager" node_paths=PackedStringArray("focus_grabber")]
+[node name="OptionsScreen" type="VBoxContainer" parent="ScreenManager" node_paths=PackedStringArray("fps_cap_button", "focus_grabber")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -1055,11 +1055,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 script = ExtResource("41_enp1b")
+fps_cap_button = NodePath("TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/FPS/SelectorButton")
 open_sfx = ExtResource("42_svai8")
 close_sfx = ExtResource("41_1bnq8")
 open_anim = &"options_peek"
 close_anim = &"BACKWARDS"
-focus_grabber = NodePath("TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/FPS/SelectorButton")
+focus_grabber = NodePath("TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/VSync/ToggleButton")
 
 [node name="Header" type="Panel" parent="ScreenManager/OptionsScreen"]
 layout_mode = 2
@@ -1195,7 +1196,7 @@ layout_mode = 2
 text = "60 FPS"
 script = ExtResource("46_svocp")
 default_value = 2
-options = Array[StringName]([&"UNLIMITED", &"30 FPS", &"60 FPS"])
+options = Array[StringName]([&"OFF", &"30 FPS", &"60 FPS"])
 setting_section = "General"
 setting_key = "fps_cap"
 
