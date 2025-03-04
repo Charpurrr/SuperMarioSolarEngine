@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dl3pnbtv84ekj"]
 
-[ext_resource type="Script" path="res://ui/screen_manager/settings_screen/controls/bindings/bind.gd" id="1_m7nbo"]
-[ext_resource type="Script" path="res://ui/screen_manager/settings_screen/controls/bindings/bind_button_key.gd" id="2_k6jb4"]
-[ext_resource type="Script" path="res://ui/screen_manager/settings_screen/controls/bindings/bind_button_joy.gd" id="3_rxhk8"]
+[ext_resource type="Script" uid="uid://caykqwg46rj6l" path="res://ui/screen_manager/settings_screen/controls/bindings/bind.gd" id="1_m7nbo"]
+[ext_resource type="Script" uid="uid://df4p7lmd3gvcc" path="res://ui/screen_manager/settings_screen/controls/bindings/bind_button_key.gd" id="2_k6jb4"]
+[ext_resource type="Script" uid="uid://uxa0sm3pgkpx" path="res://ui/screen_manager/settings_screen/controls/bindings/bind_button_joy.gd" id="3_rxhk8"]
 
 [node name="Bind" type="HBoxContainer"]
 custom_minimum_size = Vector2(168, 30)

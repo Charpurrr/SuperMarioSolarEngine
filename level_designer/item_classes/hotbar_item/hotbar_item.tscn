@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c537c7fubd6rx"]
 
-[ext_resource type="Script" path="res://level_designer/item_classes/hotbar_item/hotbar_item.gd" id="1_rngah"]
+[ext_resource type="Script" uid="uid://s4l8kca746du" path="res://level_designer/item_classes/hotbar_item/hotbar_item.gd" id="1_rngah"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_1mgp8"]
 size = Vector2(12, 12)

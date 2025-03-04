@@ -15,8 +15,11 @@ extends Camera2D
 
 @export var pan_weight_factor: float = 2.0
 
+@export_category(&"")
+## Current camera properties
+
 ## This variable is set in [code]world_machine.tscn[/code].
-var player: CharacterBody2D
+var player: Player
 
 ## The current camera zoom in percentage.
 ## (Note: higher zoom percentage means you can see more level.)
@@ -30,18 +33,18 @@ var velocity_offset: Vector2 = Vector2.ZERO
 
 
 func _physics_process(delta: float) -> void:
-	zoom_percentage = lerp(zoom_percentage, target_zoom, delta * zoom_weight_factor)
+	zoom_percentage = lerp(zoom_percentage, target_zoom, zoom_weight_factor * delta)
 
 	var zoom_factor: float = 1 / (zoom_percentage / 100)
 
 	zoom = Vector2(zoom_factor, zoom_factor)
 	
 	velocity_offset = velocity_offset.lerp(
-		player.velocity * delta * velocity_pan_factor,
-		delta * pan_weight_factor
+		player.vel * velocity_pan_factor,
+		pan_weight_factor * delta
 	)
 	
-	position = velocity_offset
+	#position = velocity_offset
 
 
 func _input(event: InputEvent) -> void:

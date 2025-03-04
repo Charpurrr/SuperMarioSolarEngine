@@ -14,11 +14,11 @@ config/name="Solar Engine"
 config/version="0.1.x"
 config/tags=PackedStringArray("mario_fangames")
 run/main_scene="res://ui/title_screen/title_screen.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.4", "GL Compatibility")
 run/max_fps=60
 boot_splash/bg_color=Color(0.0862745, 0.0862745, 0.0862745, 1)
-boot_splash/image="res://splash.png"
 boot_splash/use_filter=false
+boot_splash/image="res://splash.png"
 config/icon="res://icon.png"
 
 [autoload]
@@ -228,6 +228,10 @@ debug_toggle={
 2d_physics/layer_5="Water"
 2d_physics/layer_9="Preview (Editor)"
 2d_physics/layer_10="Level Preview Field (Editor)"
+
+
+common/physics_jitter_fix=0.0
+common/physics_interpolation=true
 
 [rendering]
 
