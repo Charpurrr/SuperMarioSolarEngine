@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://cthxoel5sus6v"]
 
 [ext_resource type="Shader" uid="uid://byfa3t51pf655" path="res://ui/screen_manager/pause_screen/pause_panel.tres" id="1_gxk54"]
-[ext_resource type="Script" path="res://ui/title_screen/title_screen.gd" id="1_kmorl"]
+[ext_resource type="Script" uid="uid://diilonnsbj7qw" path="res://ui/title_screen/title_screen.gd" id="1_kmorl"]
 [ext_resource type="AudioStream" uid="uid://dsokoktxblw41" path="res://ui/sfx/cursor.wav" id="2_hwpod"]
 [ext_resource type="PackedScene" uid="uid://bite6o37o0mpt" path="res://stages/world_machine.tscn" id="2_piryc"]
 [ext_resource type="Texture2D" uid="uid://knkg28xlj4h8" path="res://ui/screen_manager/pause_screen/textures/spike.png" id="2_xb1fp"]
@@ -91,10 +91,10 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nb7wo"]
 _data = {
-"RESET": SubResource("Animation_685si"),
-"fade_out": SubResource("Animation_hpeuq"),
-"logo_float": SubResource("Animation_bgjk2"),
-"start": SubResource("Animation_x8tv6")
+&"RESET": SubResource("Animation_685si"),
+&"fade_out": SubResource("Animation_hpeuq"),
+&"logo_float": SubResource("Animation_bgjk2"),
+&"start": SubResource("Animation_x8tv6")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k4lgp"]

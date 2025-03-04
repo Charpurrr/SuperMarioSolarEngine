@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ktsvnfblp4pi"]
 
-[ext_resource type="Script" path="res://level_designer/item_classes/preview_item/selection_shape_generator.gd" id="1_5k0x5"]
+[ext_resource type="Script" uid="uid://cauxfemldsve7" path="res://level_designer/item_classes/preview_item/selection_shape_generator.gd" id="1_5k0x5"]
 
 [node name="SelectionShapeGenerator" type="Node2D"]
 script = ExtResource("1_5k0x5")

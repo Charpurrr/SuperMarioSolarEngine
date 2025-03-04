@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bmfuohwnjoej0" path="res://level_designer/item_classes/property/inspector_entry/labelled_number.tscn" id="1_seoho"]
 [ext_resource type="Theme" uid="uid://c53wuaais37yi" path="res://level_designer/ui/editor_theme.tres" id="1_sypsi"]
-[ext_resource type="Script" path="res://level_designer/item_classes/property/inspector_entry/vector.gd" id="2_vfs33"]
+[ext_resource type="Script" uid="uid://cx0u5ffewbyo" path="res://level_designer/item_classes/property/inspector_entry/vector.gd" id="2_vfs33"]
 
 [node name="Vector" type="HBoxContainer" node_paths=PackedStringArray("component_list", "label")]
 size_flags_horizontal = 3

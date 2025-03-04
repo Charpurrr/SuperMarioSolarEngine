@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://lf1w5cbvfm8e" path="res://ui/notification/error.png" id="1_xn858"]
 [ext_resource type="Texture2D" uid="uid://dd7ul2c6aw6tt" path="res://ui/notification/push.png" id="2_jv2iw"]
 [ext_resource type="Texture2D" uid="uid://b2jujpsjkjpu0" path="res://ui/notification/warning.png" id="3_f8obp"]
-[ext_resource type="Script" path="res://ui/notification/notification.gd" id="4_wy871"]
+[ext_resource type="Script" uid="uid://c4wd37agloq5v" path="res://ui/notification/notification.gd" id="4_wy871"]
 [ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="5_58pd6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gwknb"]
@@ -66,7 +66,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_87b4v"]
 _data = {
-"pop": SubResource("Animation_8w4u5")
+&"pop": SubResource("Animation_8w4u5")
 }
 
 [node name="Notification" type="Control"]

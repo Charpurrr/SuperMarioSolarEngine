@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://cn7kvuvr72qyy"]
 
 [ext_resource type="Texture2D" uid="uid://b0hev8oqv4b3v" path="res://level_designer/widgets/draggable_button/normal.png" id="1_vae0d"]
-[ext_resource type="Script" path="res://level_designer/widgets/draggable_button/widget_button.gd" id="1_wk6ee"]
-[ext_resource type="Script" path="res://level_designer/widgets/draggable_button/button_costume.gd" id="2_0yngx"]
+[ext_resource type="Script" uid="uid://d3dmcw2t2cd25" path="res://level_designer/widgets/draggable_button/widget_button.gd" id="1_wk6ee"]
+[ext_resource type="Script" uid="uid://c0gisqkikjjsm" path="res://level_designer/widgets/draggable_button/button_costume.gd" id="2_0yngx"]
 [ext_resource type="Texture2D" uid="uid://dlkjucnn2wrdq" path="res://level_designer/widgets/draggable_button/pressed.png" id="2_g5w00"]
 [ext_resource type="Texture2D" uid="uid://ces2dcjtixuyg" path="res://level_designer/widgets/draggable_button/hover.png" id="3_onq1d"]
 [ext_resource type="Texture2D" uid="uid://cut8gjl1ok1nf" path="res://level_designer/widgets/draggable_button/hover_red.png" id="6_bohpw"]
