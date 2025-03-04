@@ -43,6 +43,8 @@ var buses: Dictionary[StringName, AudioBus] = {
 func _ready():
 	paused.connect(pause_toggle)
 
+	LocalSettings.setting_changed.connect(_setting_changed.bind())
+
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 	if LocalSettings.load_setting("Window", "fullscreened", false) == true:
@@ -54,8 +56,8 @@ func _ready():
 	debug_toggle = LocalSettings.load_setting("Developer", "debug_toggled", false)
 
 
-#func _process(delta: float) -> void:
-	#print(debug_toggle)
+func _process(delta: float) -> void:
+	print(DisplayServer.window_get_vsync_mode())
 
 
 func _unhandled_input(event):
@@ -80,6 +82,14 @@ func _music_control():
 
 func _set_muted_bgm():
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), bgm_muted)
+
+
+func _setting_changed(key: StringName, value: Variant):
+	match key:
+		"v_sync":
+			DisplayServer.window_set_vsync_mode(value)
+		"fps_cap":
+			Engine.max_fps = 30 * value # 0:0, 1:30, 2:60
 
 
 func toggle_fullscreen():

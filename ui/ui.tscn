@@ -1059,7 +1059,7 @@ open_sfx = ExtResource("42_svai8")
 close_sfx = ExtResource("41_1bnq8")
 open_anim = &"options_peek"
 close_anim = &"BACKWARDS"
-focus_grabber = NodePath("TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/Timer/ToggleButton")
+focus_grabber = NodePath("TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/FPS/SelectorButton")
 
 [node name="Header" type="Panel" parent="ScreenManager/OptionsScreen"]
 layout_mode = 2
@@ -1151,29 +1151,6 @@ theme_override_constants/separation = 24
 layout_mode = 2
 theme_override_constants/separation = 32
 
-[node name="Timer" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Header" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/Timer"]
-layout_mode = 2
-text = "Speedrun Timer"
-label_settings = SubResource("LabelSettings_xphw0")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/Timer"]
-layout_mode = 2
-
-[node name="ToggleButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/Timer" instance=ExtResource("23_mtuia")]
-layout_mode = 2
-text = "OFF"
-script = ExtResource("46_q1vx3")
-default_value = null
-setting_section = "General"
-setting_key = "timer_toggled"
-
 [node name="VSync" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1192,10 +1169,35 @@ layout_mode = 2
 [node name="ToggleButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/VSync" instance=ExtResource("23_mtuia")]
 layout_mode = 2
 text = "OFF"
-script = ExtResource("46_q1vx3")
+script = ExtResource("46_svocp")
 default_value = null
+options = Array[StringName]([&"OFF", &"ON"])
 setting_section = "General"
-setting_key = "vsync"
+setting_key = "v_sync"
+
+[node name="FPS" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Header" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/FPS"]
+layout_mode = 2
+text = "FPS Cap"
+label_settings = SubResource("LabelSettings_xphw0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/FPS"]
+layout_mode = 2
+
+[node name="SelectorButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/FPS" instance=ExtResource("23_mtuia")]
+layout_mode = 2
+text = "60 FPS"
+script = ExtResource("46_svocp")
+default_value = 2
+options = Array[StringName]([&"UNLIMITED", &"30 FPS", &"60 FPS"])
+setting_section = "General"
+setting_key = "fps_cap"
 
 [node name="Quality" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons"]
 layout_mode = 2
@@ -1259,30 +1261,6 @@ default_value = true
 setting_section = "General"
 setting_key = "rich_presence"
 
-[node name="FPS" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Header" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons/FPS"]
-layout_mode = 2
-text = "FPS Cap"
-label_settings = SubResource("LabelSettings_xphw0")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons/FPS"]
-layout_mode = 2
-
-[node name="SelectorButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons/FPS" instance=ExtResource("23_mtuia")]
-layout_mode = 2
-text = "60 FPS"
-script = ExtResource("46_svocp")
-default_value = null
-options = Array[StringName]([&"60 FPS", &"UNLIMITED", &"30 FPS"])
-setting_section = "General"
-setting_key = "fps_cap"
-
 [node name="Window" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1303,7 +1281,7 @@ layout_mode = 2
 text = "x1 SCALE"
 script = ExtResource("46_svocp")
 default_value = null
-options = Array[StringName]([&"x1 SCALE", &"x2 SCALE", &"x3 SCALE", &"FULL"])
+options = Array[StringName]([&"x1 SCALE", &"x2 SCALE", &"x3 SCALE", &"FULLSCREEN"])
 setting_section = "General"
 setting_key = "scale"
 
