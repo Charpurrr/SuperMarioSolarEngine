@@ -4,11 +4,8 @@ extends ResourceGenerator
 ## Generator and editor for selection shapes of editor items.
 
 ## Press to apply the edits made to the shape.
-## The button in the inspector is added through the EditorInspectorPlugin: ButtonProperty
-@export_placeholder("Button_Apply_Manual_Edit") var apply_manual_edit:
-	set(val):
-		if not val.is_empty():
-			_save_edits()
+@export_tool_button("Apply Manual Edit", "CheckBox")
+var edit_action: Callable = _save_edits
 
 ## An [EditorItemData] resource can be dragged here to edit it.
 @export var manual_edit_item: EditorItemData = null:

@@ -4,12 +4,8 @@ extends Node
 ## Base class for toolscripts that can be used to auto-generate resources.
 
 ## Press to refresh and re-process all related resources.
-## The value isn't stored, this is just an export that triggers a refresh when clicked.
-## The button in the inspector is added through the EditorInspectorPlugin: ButtonProperty
-@export_placeholder("Button_Generate_Missing_Resources") var refresh_resources = "":
-	set(val):
-		if not val.is_empty():
-			_refresh()
+@export_tool_button("Generate Missing Resources", "Script")
+var refresh_action: Callable = _refresh
 
 
 ## Refresh and re-process all related resources.

@@ -126,7 +126,7 @@ bus = &"UI"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_nb7wo")
+&"": SubResource("AnimationLibrary_nb7wo")
 }
 autoplay = "start"
 
