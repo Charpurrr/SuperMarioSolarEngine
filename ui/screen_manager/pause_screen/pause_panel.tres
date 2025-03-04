@@ -132,7 +132,7 @@ code = "shader_type canvas_item;
 render_mode blend_mix;
 
 uniform vec2 background_scroll = vec2(-0.050000, 0.050000);
-uniform float modulate_alpha : hint_range(0, 1);
+uniform float modulate_alpha : hint_range(0.0, 1.0);
 uniform float spike_scroll_speed = 0.05000000074506;
 uniform vec2 spike_dimensions;
 uniform sampler2D spike_texture : filter_nearest, repeat_disable;

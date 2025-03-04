@@ -1,32 +1,32 @@
 [gd_scene load_steps=93 format=4 uid="uid://ccj3teu3h6xfm"]
 
-[ext_resource type="Script" path="res://ui/ui.gd" id="1_pakjx"]
-[ext_resource type="Script" path="res://ui/debug_label.gd" id="2_suudb"]
+[ext_resource type="Script" uid="uid://brof7wb075ont" path="res://ui/ui.gd" id="1_pakjx"]
+[ext_resource type="Script" uid="uid://dgat047njqsvp" path="res://ui/debug_label.gd" id="2_suudb"]
 [ext_resource type="PackedScene" uid="uid://b41sl5v4p501f" path="res://ui/notification/notification.tscn" id="2_ufvuv"]
 [ext_resource type="Texture2D" uid="uid://rqmk8y0h1450" path="res://ui/input_display/input_display_ico1.png" id="3_4oo64"]
 [ext_resource type="Texture2D" uid="uid://jbm5npuy3yok" path="res://ui/input_display/input_display_ico2.png" id="4_8x05r"]
 [ext_resource type="FontFile" uid="uid://e821cxxeybxh" path="res://ui/fonts/mario_sunshine.ttf" id="4_ko57l"]
-[ext_resource type="Shader" path="res://util/shaders/smw_mozaic.gdshader" id="5_8wim4"]
+[ext_resource type="Shader" uid="uid://cgcjxa2rl4edn" path="res://util/shaders/smw_mozaic.gdshader" id="5_8wim4"]
 [ext_resource type="Texture2D" uid="uid://bwh5yg024sqag" path="res://ui/input_display/input_display_ico3.png" id="5_cgoe6"]
 [ext_resource type="Texture2D" uid="uid://bkvicbrah3ltp" path="res://ui/input_display/input_display_ico4.png" id="6_7ipv2"]
 [ext_resource type="Texture2D" uid="uid://cnypyennkpxux" path="res://ui/input_display/input_display_ico5.png" id="7_yer77"]
 [ext_resource type="Texture2D" uid="uid://7p0auiyqcgk3" path="res://ui/input_display/input_display_ico6.png" id="8_nyjo7"]
-[ext_resource type="Script" path="res://ui/commit_label.gd" id="9_bvd2d"]
+[ext_resource type="Script" uid="uid://dg4a6r83hm158" path="res://ui/commit_label.gd" id="9_bvd2d"]
 [ext_resource type="Texture2D" uid="uid://dir44lhfrdcxu" path="res://ui/input_display/input_display_ico7.png" id="9_smbrs"]
 [ext_resource type="Texture2D" uid="uid://15yce5ngma24" path="res://ui/input_display/input_display_ico8.png" id="10_5r8on"]
-[ext_resource type="Script" path="res://ui/screen_manager/screen_manager.gd" id="12_l4gs6"]
-[ext_resource type="Shader" path="res://util/shaders/map_gradient.gdshader" id="12_wqetc"]
-[ext_resource type="Script" path="res://ui/screen_manager/settings_screen/audio/audio_setting.gd" id="14_466vg"]
+[ext_resource type="Script" uid="uid://cnhr5du0ap6ki" path="res://ui/screen_manager/screen_manager.gd" id="12_l4gs6"]
+[ext_resource type="Shader" uid="uid://c8kax0imw2g1t" path="res://util/shaders/map_gradient.gdshader" id="12_wqetc"]
+[ext_resource type="Script" uid="uid://dhqvnyonyvm3" path="res://ui/screen_manager/settings_screen/audio/audio_setting.gd" id="14_466vg"]
 [ext_resource type="FontFile" uid="uid://dwjboqsj8b8xd" path="res://ui/fonts/super_mario.ttf" id="14_n0vgh"]
 [ext_resource type="Texture2D" uid="uid://bbu4m0gd3b85w" path="res://ui/screen_manager/pause_screen/gradient_maps/synth_gradient.tres" id="14_qpmjx"]
-[ext_resource type="Script" path="res://ui/screen_manager/pause_screen/level_info.gd" id="15_ihj7k"]
+[ext_resource type="Script" uid="uid://3awpmtapljco" path="res://ui/screen_manager/pause_screen/level_info.gd" id="15_ihj7k"]
 [ext_resource type="AudioStream" uid="uid://dsokoktxblw41" path="res://ui/sfx/cursor.wav" id="15_l2qix"]
 [ext_resource type="Texture2D" uid="uid://qslbjwvvnw28" path="res://ui/pattern_solar.png" id="15_uxr3e"]
 [ext_resource type="Shader" uid="uid://byfa3t51pf655" path="res://ui/screen_manager/pause_screen/pause_panel.tres" id="15_w8105"]
 [ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="15_y78en"]
 [ext_resource type="AudioStream" uid="uid://b58aveo75onan" path="res://ui/sfx/pause.wav" id="16_jehsk"]
 [ext_resource type="PackedScene" uid="uid://cxqj15hquutxq" path="res://ui/screen_manager/settings_screen/controls/tab.tscn" id="17_7m8yr"]
-[ext_resource type="Script" path="res://ui/screen_manager/pause_screen/pause_screen.gd" id="17_372ku"]
+[ext_resource type="Script" uid="uid://trfav0yjiqxm" path="res://ui/screen_manager/pause_screen/pause_screen.gd" id="17_372ku"]
 [ext_resource type="Texture2D" uid="uid://knkg28xlj4h8" path="res://ui/screen_manager/pause_screen/textures/spike.png" id="17_au2sq"]
 [ext_resource type="Texture2D" uid="uid://dej5d4fiilqup" path="res://ui/screen_manager/pause_screen/textures/resume.png" id="17_is4aa"]
 [ext_resource type="Texture2D" uid="uid://b0l7xch1esfvg" path="res://ui/screen_manager/pause_screen/textures/retry.png" id="18_xk3ue"]
@@ -40,10 +40,10 @@
 [ext_resource type="Texture2D" uid="uid://bw18e3jvu7l70" path="res://ui/screen_manager/pause_screen/textures/options.png" id="29_jpk5x"]
 [ext_resource type="Texture2D" uid="uid://b6wn6aak61xrn" path="res://ui/screen_manager/pause_screen/textures/coin.png" id="30_7ngu7"]
 [ext_resource type="Texture2D" uid="uid://b203e7fny4xhg" path="res://ui/screen_manager/pause_screen/textures/coin_bag.png" id="31_s5ogs"]
-[ext_resource type="Script" path="res://ui/screen_manager/settings_screen/audio/select_audiod.gd" id="32_k3s7s"]
-[ext_resource type="Script" path="res://ui/screen_manager/warning_screen/warning_screen.gd" id="40_wsdjf"]
+[ext_resource type="Script" uid="uid://d18f84ruj5057" path="res://ui/screen_manager/settings_screen/audio/select_audiod.gd" id="32_k3s7s"]
+[ext_resource type="Script" uid="uid://bx0armu50awrf" path="res://ui/screen_manager/warning_screen/warning_screen.gd" id="40_wsdjf"]
 [ext_resource type="AudioStream" uid="uid://cmr5pcu7wv31v" path="res://ui/sfx/submenu_close.wav" id="41_1bnq8"]
-[ext_resource type="Script" path="res://ui/screen_manager/options_screen/options_screen.gd" id="41_enp1b"]
+[ext_resource type="Script" uid="uid://d251mwxo8lxbl" path="res://ui/screen_manager/options_screen/options_screen.gd" id="41_enp1b"]
 [ext_resource type="AudioStream" uid="uid://pbdklvoviaxp" path="res://ui/sfx/warning.wav" id="41_ywjj4"]
 [ext_resource type="AudioStream" uid="uid://bsui5m0n5a7a7" path="res://ui/sfx/submenu_open.wav" id="42_svai8"]
 [ext_resource type="Texture2D" uid="uid://cf78bvynxea03" path="res://ui/input_icons/nintendo_switch/switch_button_l.svg" id="45_63yew"]
@@ -51,7 +51,7 @@
 [ext_resource type="Texture2D" uid="uid://y343nq5v4ud5" path="res://ui/input_icons/nintendo_switch/switch_button_b.svg" id="46_6uhvl"]
 [ext_resource type="Texture2D" uid="uid://dkjx263nlcra" path="res://ui/input_icons/nintendo_switch/controller_switch_motion.svg" id="46_7gkal"]
 [ext_resource type="Texture2D" uid="uid://356g6gk2u4lq" path="res://ui/input_icons/nintendo_switch/switch_button_r.svg" id="46_eppju"]
-[ext_resource type="Script" path="res://ui/ui_button_options.gd" id="46_f3jc5"]
+[ext_resource type="Script" uid="uid://c1788ylcgb6tm" path="res://ui/ui_button_options.gd" id="46_f3jc5"]
 [ext_resource type="Texture2D" uid="uid://c5dbwjmvnh6p1" path="res://ui/input_icons/nintendo_switch/switch_stick_l.svg" id="47_adiwi"]
 [ext_resource type="Texture2D" uid="uid://bhvukbqm4v5f3" path="res://ui/input_icons/nintendo_switch/controller_switch_rumble.svg" id="47_yaddp"]
 [ext_resource type="Texture2D" uid="uid://c8t2udtmy6oac" path="res://ui/input_icons/nintendo_switch/switch_button_x.svg" id="48_in08l"]
@@ -117,8 +117,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_01nno"]
 _data = {
-"RESET": SubResource("Animation_lfi41"),
-"camera_focus": SubResource("Animation_mnpvh")
+&"RESET": SubResource("Animation_lfi41"),
+&"camera_focus": SubResource("Animation_mnpvh")
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_01jq4"]
@@ -260,10 +260,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fpb10"]
 _data = {
-"RESET": SubResource("Animation_unrd8"),
-"options_peek": SubResource("Animation_jg56u"),
-"pause_peek": SubResource("Animation_3o3ms"),
-"warning_peek": SubResource("Animation_snnpc")
+&"RESET": SubResource("Animation_unrd8"),
+&"options_peek": SubResource("Animation_jg56u"),
+&"pause_peek": SubResource("Animation_3o3ms"),
+&"warning_peek": SubResource("Animation_snnpc")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8xxao"]
@@ -432,7 +432,7 @@ metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CameraZoomMosaic"]
 libraries = {
-"": SubResource("AnimationLibrary_01nno")
+&"": SubResource("AnimationLibrary_01nno")
 }
 
 [node name="CoinCounter" type="HBoxContainer" parent="."]
@@ -620,7 +620,7 @@ bus = &"UI"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ScreenManager"]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_fpb10")
+&"": SubResource("AnimationLibrary_fpb10")
 }
 
 [node name="BackBufferBack" type="BackBufferCopy" parent="ScreenManager"]

@@ -1,12 +1,12 @@
 [gd_scene load_steps=17 format=3 uid="uid://bfb4xq874buf6"]
 
-[ext_resource type="Script" path="res://props/level_environments/synth/synth_floor.gd" id="1_dubgv"]
-[ext_resource type="Script" path="res://props/level_environments/environment.gd" id="1_xeoqd"]
+[ext_resource type="Script" uid="uid://d7edjnk21ad3" path="res://props/level_environments/synth/synth_floor.gd" id="1_dubgv"]
+[ext_resource type="Script" uid="uid://ccysh3ski6mvh" path="res://props/level_environments/environment.gd" id="1_xeoqd"]
 [ext_resource type="Texture2D" uid="uid://bnywpxepvxnxf" path="res://props/level_environments/synth/synth_sky_new.png" id="2_oiv80"]
 [ext_resource type="Texture2D" uid="uid://dk76vr4rcjn8x" path="res://props/level_environments/synth/star_twinkle.png" id="4_fkliv"]
 [ext_resource type="Texture2D" uid="uid://wf1kmhrykhbo" path="res://props/level_environments/synth/synth_mountain.png" id="4_y5k2x"]
 [ext_resource type="Texture2D" uid="uid://h55he5ne87oo" path="res://props/level_environments/synth/sunshine_sun.png" id="5_mb8pf"]
-[ext_resource type="Shader" path="res://util/shaders/crt.gdshader" id="7_e2awe"]
+[ext_resource type="Shader" uid="uid://jy8sm10bwqcu" path="res://util/shaders/crt.gdshader" id="7_e2awe"]
 [ext_resource type="AudioStream" uid="uid://culmhggeo84vi" path="res://props/music/synth_stratnum.mp3" id="7_qqdok"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_47xr2"]
@@ -84,11 +84,11 @@ metadata/_edit_use_anchors_ = true
 material = SubResource("CanvasItemMaterial_47xr2")
 position = Vector2(1024, 256)
 amount = 2000
-process_material = SubResource("ParticleProcessMaterial_8i7lr")
 texture = ExtResource("4_fkliv")
 fixed_fps = 0
 visibility_rect = Rect2(-512, -128, 1024, 256)
 draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_8i7lr")
 
 [node name="Sun" type="TextureRect" parent="ParallaxBackground"]
 anchors_preset = 15

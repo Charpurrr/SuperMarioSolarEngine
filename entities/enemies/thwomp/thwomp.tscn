@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c0idljyvqdalg"]
 
-[ext_resource type="Script" path="res://entities/enemies/thwomp/thwomp.gd" id="1_gnqgn"]
+[ext_resource type="Script" uid="uid://cnxs54qm6qepj" path="res://entities/enemies/thwomp/thwomp.gd" id="1_gnqgn"]
 [ext_resource type="Texture2D" uid="uid://twe80po5ngjk" path="res://entities/enemies/thwomp/static.png" id="1_ungj8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u2cgq"]

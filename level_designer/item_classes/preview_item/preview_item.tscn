@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://y51ba5rbxjkc"]
 
-[ext_resource type="Script" path="res://level_designer/item_classes/preview_item/preview_item.gd" id="1_83u1r"]
+[ext_resource type="Script" uid="uid://dyobleqdigq6p" path="res://level_designer/item_classes/preview_item/preview_item.gd" id="1_83u1r"]
 
 [node name="PreviewItem" type="Node2D" node_paths=PackedStringArray("selection_shape")]
 script = ExtResource("1_83u1r")

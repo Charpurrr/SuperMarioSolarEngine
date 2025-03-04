@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cwwikuogin26x"]
 
-[ext_resource type="Script" path="res://level_designer/item_classes/search_item/search_item.gd" id="1_0gyyj"]
+[ext_resource type="Script" uid="uid://ct6wcg054057p" path="res://level_designer/item_classes/search_item/search_item.gd" id="1_0gyyj"]
 
 [node name="SearchItem" type="Button"]
 custom_minimum_size = Vector2(40, 40)

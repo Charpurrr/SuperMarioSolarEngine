@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://wf3l8upofoip" path="res://level_designer/terrain_edit/polyline_segment3.png" id="3_ee4k3"]
 [ext_resource type="Texture2D" uid="uid://deaf7c51bxjrn" path="res://level_designer/terrain_edit/polyline_segment4.png" id="4_o4ur7"]
 [ext_resource type="Texture2D" uid="uid://fgjreysoh48j" path="res://level_designer/terrain_edit/polyline_segment5.png" id="5_jrtrr"]
-[ext_resource type="Script" path="res://props/terrain/terrain_editor.gd" id="6_gc08b"]
+[ext_resource type="Script" uid="uid://cn7lcacvnydhk" path="res://props/terrain/terrain_editor.gd" id="6_gc08b"]
 [ext_resource type="PackedScene" uid="uid://cn7kvuvr72qyy" path="res://level_designer/widgets/draggable_button/widget_button.tscn" id="7_6wh0j"]
 [ext_resource type="Texture2D" uid="uid://c14va1w44se27" path="res://level_designer/widgets/draggable_button/hologram.png" id="8_24dmv"]
 

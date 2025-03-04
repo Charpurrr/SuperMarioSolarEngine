@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cvbbpn56rtjwd"]
 
-[ext_resource type="Script" path="res://entities/enemies/goomba/goomba.gd" id="1_hhlu2"]
+[ext_resource type="Script" uid="uid://c8rvart030ldu" path="res://entities/enemies/goomba/goomba.gd" id="1_hhlu2"]
 [ext_resource type="Texture2D" uid="uid://x2edebevq3c7" path="res://entities/enemies/goomba/anime/idle.png" id="1_hp473"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_doiik"]
@@ -65,8 +65,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ju3gn"]
 _data = {
-"die_squish": SubResource("Animation_yvt7r"),
-"die_strike": SubResource("Animation_kc47k")
+&"die_squish": SubResource("Animation_yvt7r"),
+&"die_strike": SubResource("Animation_kc47k")
 }
 
 [node name="Goomba" type="CharacterBody2D" node_paths=PackedStringArray("hitbox", "anime", "doll")]
@@ -94,5 +94,5 @@ shape = SubResource("RectangleShape2D_4v7vj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ju3gn")
+&"": SubResource("AnimationLibrary_ju3gn")
 }

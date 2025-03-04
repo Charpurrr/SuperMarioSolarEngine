@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bf1fop2elpnih"]
 
 [ext_resource type="Theme" uid="uid://c53wuaais37yi" path="res://level_designer/ui/editor_theme.tres" id="1_e81bo"]
-[ext_resource type="Script" path="res://level_designer/ui/inspector.gd" id="2_bi7sk"]
+[ext_resource type="Script" uid="uid://p6314tbeo71t" path="res://level_designer/ui/inspector.gd" id="2_bi7sk"]
 
 [node name="InspectorPanel" type="PanelContainer" node_paths=PackedStringArray("property_list")]
 custom_minimum_size = Vector2(100, 0)
