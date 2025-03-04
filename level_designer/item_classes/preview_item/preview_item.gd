@@ -8,8 +8,8 @@ extends Node2D
 var is_grabbed: bool = false
 var item_data: EditorItemData
 var display: Node2D
-var property_values: Dictionary = {}
-var property_displays: Dictionary = {}
+var property_values: Dictionary[StringName, Variant] = {}
+var property_displays: Dictionary[StringName, Variant] = {}
 
 
 func _ready() -> void:

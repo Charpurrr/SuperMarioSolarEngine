@@ -23,7 +23,7 @@ var current_notifs: Array = []
 @export var commit_labl: Label
 @export var input_display: Control
 
-@onready var input_display_sprites: Dictionary = {
+@onready var input_display_sprites: Dictionary[Key, TextureRect] = {
 	KEY_SHIFT: %Shift,
 	KEY_W: %W,
 	KEY_X: %X,

@@ -7,7 +7,7 @@ extends Node
 @export var buffer_duration: int = 8
 
 ## Remaining frames of input buffer for an action. Entries must be defined in _buffer_cache.
-var _buffers: Dictionary = {}
+var _buffers: Dictionary[StringName, int] = {}
 
 ## The last direction on the X axis pressed by the player.
 var _last_x: int = 1

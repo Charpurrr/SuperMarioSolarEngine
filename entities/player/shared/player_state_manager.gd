@@ -8,7 +8,7 @@ extends StateManager
 @export var movement: PMovement
 
 
-func _custom_passdowns() -> Dictionary:
+func _custom_passdowns() -> Dictionary[StringName, Variant]:
 	return {
 		&"input": input,
 		&"fludd": fludd,

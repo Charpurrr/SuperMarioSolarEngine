@@ -12,7 +12,7 @@ var debug_toggle: bool = false
 var fullscreened: bool = false
 
 var bgm_muted: bool = false
-var buses: Dictionary = {
+var buses: Dictionary[StringName, AudioBus] = {
 	&"Master":
 	(
 		AudioBus

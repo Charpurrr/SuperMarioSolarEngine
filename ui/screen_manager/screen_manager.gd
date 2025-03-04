@@ -13,7 +13,7 @@ extends Control
 ## to define a reference for that screen.[br][br]
 ## You can then reference screens from across eachother by doing[br]
 ## [code]screen_manager.screens[name][/code].
-@export var screens: Dictionary
+@export var screens: Dictionary[StringName, NodePath]
 
 ## What screen is currently enabled.
 var current_screen: Screen

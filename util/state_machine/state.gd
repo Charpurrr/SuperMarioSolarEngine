@@ -12,7 +12,7 @@ var actor: Node = null
 var manager: StateManager = null
 
 ## Cache of StateLinks to other states in the machine.
-var _link_cache: Dictionary = {}
+var _link_cache: Dictionary[StringName, StateLink] = {}
 
 ## True when on the first cycle of the physics loop.
 var _first_cycle: bool = true

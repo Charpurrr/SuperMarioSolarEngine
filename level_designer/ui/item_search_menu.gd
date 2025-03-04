@@ -14,7 +14,7 @@ extends Panel
 @export var catg_npc: HFlowContainer
 @export var catg_utility: HFlowContainer
 
-@onready var category_connections: Dictionary = {
+@onready var category_connections: Dictionary[EditorItemData.Category, HFlowContainer] = {
 	EditorItemData.Category.TERRAIN: catg_terrain,
 	EditorItemData.Category.OBJECT: catg_object,
 	EditorItemData.Category.DECORATION: catg_decoration,
