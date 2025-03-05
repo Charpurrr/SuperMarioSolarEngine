@@ -7,13 +7,13 @@ extends Camera2D
 @export var zoom_max: float = 200
 @export var zoom_min: float = 50
 
-@export var zoom_weight_factor: float = 5.0
+@export var zoom_follow_speed: float = 5.0
 
 @export_category(&"Velocity Panning Variables")
 ## How much the velocity that's added to the position is multiplied by.
 @export var velocity_pan_factor: float = 8.0
 
-@export var pan_weight_factor: float = 2.0
+@export var pan_follow_speed: float = 2.0
 
 @export_category(&"")
 ## Current camera properties
@@ -33,18 +33,21 @@ var velocity_offset: Vector2 = Vector2.ZERO
 
 
 func _physics_process(delta: float) -> void:
-	zoom_percentage = lerp(zoom_percentage, target_zoom, zoom_weight_factor * delta)
+	zoom_percentage = lerp(zoom_percentage, 
+		target_zoom,
+		Math.interp_weight_idp(zoom_follow_speed, delta)
+	)
 
 	var zoom_factor: float = 1 / (zoom_percentage / 100)
 
 	zoom = Vector2(zoom_factor, zoom_factor)
-	
+
 	velocity_offset = velocity_offset.lerp(
-		player.vel * velocity_pan_factor,
-		pan_weight_factor * delta
+		player.velocity * delta * velocity_pan_factor,
+		Math.interp_weight_idp(pan_follow_speed, delta)
 	)
-	
-	#position = velocity_offset
+
+	position = velocity_offset
 
 
 func _input(event: InputEvent) -> void:
@@ -56,6 +59,7 @@ func _input(event: InputEvent) -> void:
 			target_zoom -= 25
 		else:
 			target_zoom -= 50
+
 	if event.is_action_pressed(&"camera_zoom_out"):
 		if target_zoom != zoom_max:
 			zoom_out_sfx.play_sfx_at(self)

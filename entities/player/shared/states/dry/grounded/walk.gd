@@ -39,7 +39,7 @@ func _physics_tick():
 func _set_appropriate_anim():
 	var current_progress = actor.doll.get_frame_progress()
 
-	if Math.roundp(abs(actor.vel.x), 3) > movement.max_speed:
+	if snappedf(abs(actor.vel.x), 3) > movement.max_speed:
 		actor.doll.play(animation_run)
 		actor.doll.set_frame_and_progress(current_frame, current_progress)
 
