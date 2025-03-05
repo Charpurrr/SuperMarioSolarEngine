@@ -1159,7 +1159,7 @@ size_flags_vertical = 3
 
 [node name="Header" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/VSync"]
 layout_mode = 2
-text = "V Sync Enabled"
+text = "V Sync"
 label_settings = SubResource("LabelSettings_xphw0")
 horizontal_alignment = 1
 vertical_alignment = 1

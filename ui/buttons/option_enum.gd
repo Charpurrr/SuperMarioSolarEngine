@@ -12,7 +12,7 @@ func _pressed():
 	change_setting(new_value)
 
 
-func _update_value():
+func _update_button():
 	text = options[value]
 
 

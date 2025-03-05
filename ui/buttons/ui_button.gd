@@ -15,8 +15,16 @@ func avfx() -> void:
 	# Could optionally add visual effects too, I relied on the button themes instead.
 
 
-func toggle_disable():
-	disabled = !disabled
+## Toggle the disabled state of a button. If [code]force_to[/code] is set,
+## forces the disabled state to whatever is defined.
+## (Leave empty for normal toggling.)[br][br]
+## For example: [code]toggle_disable(true)[/code] disables the button
+## without minding its previous state.
+func toggle_disable(force_to: Variant = null):
+	if force_to == null:
+		disabled = !disabled
+	else:
+		disabled = force_to
 
 	if disabled:
 		focus_mode = Control.FOCUS_NONE

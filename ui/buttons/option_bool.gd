@@ -12,7 +12,7 @@ func _pressed():
 	change_setting(!value)
 
 
-func _update_value():
+func _update_button():
 	text = ON_TEXT if value else OFF_TEXT
 
 
