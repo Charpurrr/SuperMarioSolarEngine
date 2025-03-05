@@ -5,9 +5,11 @@ class_name Math
 static func sign_positive(input: Variant) -> Variant:
 	return max(sign(input), 0)
 
+
 ## Makes a weight supplied to a [method @GlobalScope.lerp] or [method @GlobalScope.cubic_interpolate] function framerate independent (for procedural animations with either method).
 static func interp_weight_idp(weight : float, delta : float) -> float:
-	return 1-exp(-weight * delta)
+	return 1 - exp(-weight * delta)
+
 
 ### Returns the closest point on a line in relation to the reference point.
 #static func get_closest_point_line(

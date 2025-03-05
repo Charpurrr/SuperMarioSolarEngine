@@ -42,7 +42,6 @@ func _physics_process(delta: float) -> void:
 
 	zoom = Vector2(zoom_factor, zoom_factor)
 
-
 	velocity_offset = velocity_offset.lerp(
 		player.velocity * delta * velocity_pan_factor,
 		Math.interp_weight_idp(pan_follow_speed, delta)
@@ -60,8 +59,7 @@ func _input(event: InputEvent) -> void:
 			target_zoom -= 25
 		else:
 			target_zoom -= 50
-		
-		
+
 	if event.is_action_pressed(&"camera_zoom_out"):
 		if target_zoom != zoom_max:
 			zoom_out_sfx.play_sfx_at(self)
