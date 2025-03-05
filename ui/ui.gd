@@ -36,9 +36,9 @@ var current_notifs: Array = []
 
 ## This variable is set in [code]world_machine.tscn[/code].
 var world_machine: WorldMachine
-## See [code]_set_player()[/code].
+## See [method _set_player].
 var player: CharacterBody2D
-## See [code]_set_camera()[/code].
+## See [method _set_camera].
 var camera: PlayerCamera
 
 

@@ -92,7 +92,7 @@ func _line_edit_mode():
 
 
 ## Force rewrites the polygon when a point is removed.[br][br]
-## [code]to_be_removed[/code] is a reference to the point that's being removed.
+## [param to_be_removed] is a reference to the point that's being removed.
 func _remove_point_on_poly(to_be_removed: Node2D):
 	if not points.size() >= 3:
 		return

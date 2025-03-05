@@ -35,7 +35,7 @@ var velocity_offset: Vector2 = Vector2.ZERO
 func _physics_process(delta: float) -> void:
 	zoom_percentage = lerp(zoom_percentage, 
 		target_zoom,
-		Math.lerp_weight_idp(zoom_follow_speed, delta)
+		Math.interp_weight_idp(zoom_follow_speed, delta)
 	)
 
 	var zoom_factor: float = 1 / (zoom_percentage / 100)
@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 
 	velocity_offset = velocity_offset.lerp(
 		player.velocity * delta * velocity_pan_factor,
-		Math.lerp_weight_idp(pan_follow_speed, delta)
+		Math.interp_weight_idp(pan_follow_speed, delta)
 	)
 
 	position = velocity_offset

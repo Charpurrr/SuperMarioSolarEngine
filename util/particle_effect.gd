@@ -13,7 +13,7 @@ var timer: int = loop_delay
 
 
 ## Emit the particle at a specific node.[br]
-## [code]offset_overwrite[/code] is useful if you want to use logic defined offsets instead.
+## [param offset_overwrite] is useful if you want to use logic defined offsets instead.
 func emit_at(node: Node, offset_overwrite := Vector2.ZERO):
 	if timer > 0:
 		timer = max(timer - 1, 0)

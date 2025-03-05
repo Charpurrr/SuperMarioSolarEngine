@@ -2,7 +2,7 @@ class_name SwimHard
 extends PlayerState
 ## Pressing jump while underwater to get a short boost.
 
-## Gets added on top of [code]Movement[/code]'s [code]swim_speed[/code].
+## Gets added on top of [member PMovement.swim_speed].
 @export var extra_boost_speed: float
 
 var boost_speed: float
