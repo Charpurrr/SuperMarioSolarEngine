@@ -48,7 +48,7 @@ func _ready():
 	_set_camera()
 
 	world_machine.level_reloaded.connect(_set_player)
-	GameState.debug_toggled.connect(_toggle_debug)
+	LocalSettings.setting_changed.connect(_setting_changed)
 
 
 func _process(_delta):
@@ -70,6 +70,11 @@ func _input(event: InputEvent):
 		_pause_logic()
 
 	_display_input(event)
+
+
+func _setting_changed(key: String, _value: Variant) -> void:
+	if key == "debug_toggle":
+		_toggle_debug()
 
 
 func _pause_logic():
@@ -129,6 +134,7 @@ func _display_input(event: InputEvent):
 
 func _toggle_debug():
 	var toggle: bool = GameState.debug_toggle
+
 	input_display.visible = toggle
 	commit_labl.visible = toggle
 	debug_label.visible = toggle

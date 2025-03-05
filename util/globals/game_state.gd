@@ -8,7 +8,6 @@ signal setting_initialised(key: String, value: Variant)
 signal reload
 signal paused
 
-signal debug_toggled
 var debug_toggle: bool = false
 
 var fullscreened: bool = false
@@ -55,7 +54,7 @@ func _ready():
 	bgm_muted = LocalSettings.load_setting("Audio", "music_muted", false)
 	_set_muted_bgm()
 
-	debug_toggle = LocalSettings.load_setting("Developer", "debug_toggled", false)
+	debug_toggle = LocalSettings.load_setting("Developer", "debug_toggle", false)
 
 
 #func _process(_delta: float) -> void:
@@ -80,8 +79,7 @@ func _unhandled_input(event):
 
 	if event.is_action_pressed(&"debug_toggle"):
 		debug_toggle = !debug_toggle
-		LocalSettings.change_setting("Developer", "debug_toggled", debug_toggle)
-		debug_toggled.emit()
+		LocalSettings.change_setting("Developer", "debug_toggle", debug_toggle)
 
 
 func _music_control():
@@ -97,12 +95,16 @@ func _set_muted_bgm():
 
 func _setting_changed(key: String, value: Variant):
 	match key:
+		# GENERAL
 		"v_sync":
 			DisplayServer.window_set_vsync_mode(value)
 		"fps_cap":
 			Engine.max_fps = 30 * value # 0:INF, 1:30, 2:60, 3: 120
 		"scale":
 			WindowSizer.set_win_size(value)
+		# DEVELOPER
+		"debug_toggle":
+			debug_toggle = value
 
 
 ## Called with the paused signal.
