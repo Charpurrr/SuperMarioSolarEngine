@@ -1,11 +1,16 @@
 class_name WindowSizer
 
+const MAX_SCALE: int = 3
+
 static var default_size = Vector2(
 	ProjectSettings.get_setting("display/window/size/viewport_width"),
 	ProjectSettings.get_setting("display/window/size/viewport_height")
 )
 
-const MAX_SCALE: int = 3
+## The last window scale value that wasn't a fullscreen.[br]
+## Useful for reverting back to a window scale when toggling fullscreen
+## using the hotkey.
+static var last_none_fs: int = 1
 
 
 static func set_win_size(window_scale):
@@ -17,6 +22,8 @@ static func set_win_size(window_scale):
 		window_scale = MAX_SCALE
 
 	if window_scale != MAX_SCALE:
+		last_none_fs = window_scale
+
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		DisplayServer.window_set_size(window_size)
 	
