@@ -1,0 +1,189 @@
+[gd_scene load_steps=9 format=3 uid="uid://nufgv8gspxs3"]
+
+[ext_resource type="Script" uid="uid://br0et54gkpwyq" path="res://ui/buttons/ui_slider.gd" id="1_skftf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t7s5i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_esd4p"]
+bg_color = Color(0.486275, 0, 0.4, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_skftf"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wxxs"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t7s5i"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 12
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 12
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="Curve2D" id="Curve2D_skftf"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 181, 16)
+}
+point_count = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qcs8"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+corner_detail = 1
+anti_aliasing = false
+
+[node name="PresetSlider" type="Control" node_paths=PackedStringArray("slider", "grabber_path", "grabber_point", "grabber_button", "grabber_rect", "progress")]
+custom_minimum_size = Vector2(33, 33)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 201.0
+offset_bottom = 33.0
+mouse_filter = 2
+script = ExtResource("1_skftf")
+slider = NodePath("HSlider")
+grabber_path = NodePath("Path2D")
+grabber_point = NodePath("Path2D/PathFollow2D")
+grabber_button = NodePath("Path2D/PathFollow2D/Grabber")
+grabber_rect = NodePath("Path2D/PathFollow2D/Grabber/ColorRect")
+progress = NodePath("ProgressBar")
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_right = 201.0
+offset_bottom = 35.0
+theme_override_styles/slider = SubResource("StyleBoxEmpty_t7s5i")
+value = 92.0
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_right = 201.0
+offset_bottom = 33.0
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_esd4p")
+theme_override_styles/fill = SubResource("StyleBoxFlat_skftf")
+value = 50.0
+show_percentage = false
+
+[node name="Dropshadow" type="Panel" parent="ProgressBar"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6wxxs")
+
+[node name="Outerline" type="Panel" parent="ProgressBar/Dropshadow"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t7s5i")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_skftf")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(90.5, 16)
+progress = 90.5
+
+[node name="Grabber" type="Button" parent="Path2D/PathFollow2D"]
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 21.0
+mouse_filter = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_8qcs8")
+
+[node name="Dropshadow" type="Panel" parent="Path2D/PathFollow2D/Grabber"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 2.99998
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6wxxs")
+
+[node name="Outerline" type="Panel" parent="Path2D/PathFollow2D/Grabber/Dropshadow"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t7s5i")
+
+[node name="ColorRect" type="ColorRect" parent="Path2D/PathFollow2D/Grabber"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 9.0
+offset_right = 13.0
+offset_bottom = 31.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
