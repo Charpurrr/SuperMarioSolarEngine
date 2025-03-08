@@ -89,7 +89,7 @@ layout_mode = 0
 offset_right = 201.0
 offset_bottom = 35.0
 theme_override_styles/slider = SubResource("StyleBoxEmpty_t7s5i")
-value = 92.0
+value = 50.0
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 layout_mode = 0
