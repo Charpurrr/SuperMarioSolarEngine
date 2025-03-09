@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b08q042unmcxf"]
+[gd_scene load_steps=9 format=3 uid="uid://b08q042unmcxf"]
 
 [ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="1_qeidu"]
 [ext_resource type="StyleBox" uid="uid://doxigal4dp5iy" path="res://ui/buttons/button_normal.tres" id="2_nkxgv"]
 [ext_resource type="StyleBox" uid="uid://5hmjrr5vg4hn" path="res://ui/buttons/button_pressed.tres" id="2_qeidu"]
 [ext_resource type="Script" uid="uid://jgdsmuvahdwi" path="res://ui/buttons/ui_button.gd" id="4_nkxgv"]
 [ext_resource type="AudioStream" uid="uid://c4ui7ftfypsg0" path="res://ui/sfx/decide_small.wav" id="5_c7x3e"]
+[ext_resource type="AudioStream" uid="uid://dsokoktxblw41" path="res://ui/sfx/cursor.wav" id="6_urjt7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkxgv"]
 bg_color = Color(0, 0, 0, 1)
@@ -50,9 +51,10 @@ alignment = 1
 text_overrun_behavior = 1
 script = ExtResource("4_nkxgv")
 press_sfx = ExtResource("5_c7x3e")
+cursor_sfx = ExtResource("6_urjt7")
 
 [node name="Dropshadow" type="Panel" parent="."]
-z_index = -1
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -68,7 +70,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_nkxgv")
 
 [node name="Outerline" type="Panel" parent="Dropshadow"]
-z_index = -1
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

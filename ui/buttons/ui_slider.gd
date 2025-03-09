@@ -36,10 +36,14 @@ func _ready() -> void:
 	resized.connect(_update_size)
 	resized.connect(_update_slider.bind(slider.value))
 
-	_update_slider(default_value)
 	_update_size()
+	_update_slider(default_value)
 
 	initialising = false
+
+
+#func _process(_delta: float) -> void:
+	#print(get_tree().get_nodes_in_group(&"UI"))
 
 
 func _update_size() -> void:

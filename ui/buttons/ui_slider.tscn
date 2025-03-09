@@ -52,7 +52,7 @@ anti_aliasing = false
 
 [sub_resource type="Curve2D" id="Curve2D_skftf"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 306, 16)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 300, 16)
 }
 point_count = 2
 
@@ -97,7 +97,7 @@ value = 50.0
 show_percentage = false
 
 [node name="Dropshadow" type="Panel" parent="ProgressBar"]
-z_index = -1
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -113,7 +113,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6wxxs")
 
 [node name="Outerline" type="Panel" parent="ProgressBar/Dropshadow"]
-z_index = -1
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -140,8 +140,8 @@ ticks_on_borders = true
 curve = SubResource("Curve2D_skftf")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(163.476, 16)
-progress = 163.5
+position = Vector2(89.9962, 16)
+progress = 90.0
 
 [node name="Grabber" type="Button" parent="Path2D/PathFollow2D"]
 offset_top = -20.0
@@ -151,7 +151,7 @@ mouse_filter = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_8qcs8")
 
 [node name="Dropshadow" type="Panel" parent="Path2D/PathFollow2D/Grabber"]
-z_index = -1
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -167,7 +167,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6wxxs")
 
 [node name="Outerline" type="Panel" parent="Path2D/PathFollow2D/Grabber/Dropshadow"]
-z_index = -1
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=4 uid="uid://ccj3teu3h6xfm"]
+[gd_scene load_steps=101 format=4 uid="uid://ccj3teu3h6xfm"]
 
 [ext_resource type="Script" uid="uid://brof7wb075ont" path="res://ui/ui.gd" id="1_pakjx"]
 [ext_resource type="Script" uid="uid://dgat047njqsvp" path="res://ui/debug_label.gd" id="2_suudb"]
@@ -20,7 +20,6 @@
 [ext_resource type="FontFile" uid="uid://dwjboqsj8b8xd" path="res://ui/fonts/super_mario.ttf" id="14_n0vgh"]
 [ext_resource type="Texture2D" uid="uid://bbu4m0gd3b85w" path="res://ui/screen_manager/pause_screen/gradient_maps/synth_gradient.tres" id="14_qpmjx"]
 [ext_resource type="Script" uid="uid://3awpmtapljco" path="res://ui/screen_manager/pause_screen/level_info.gd" id="15_ihj7k"]
-[ext_resource type="AudioStream" uid="uid://dsokoktxblw41" path="res://ui/sfx/cursor.wav" id="15_l2qix"]
 [ext_resource type="Texture2D" uid="uid://qslbjwvvnw28" path="res://ui/pattern_solar.png" id="15_uxr3e"]
 [ext_resource type="Shader" uid="uid://byfa3t51pf655" path="res://ui/screen_manager/pause_screen/pause_panel.tres" id="15_w8105"]
 [ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="15_y78en"]
@@ -37,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://rps7nhfiherr" path="res://ui/screen_manager/pause_screen/textures/quit.png" id="22_uf17g"]
 [ext_resource type="PackedScene" uid="uid://bb6wf0meej6ox" path="res://ui/buttons/ui_button.tscn" id="23_mtuia"]
 [ext_resource type="Texture2D" uid="uid://c8kahcqao7t20" path="res://ui/screen_manager/pause_screen/textures/reset.png" id="27_0c4e2"]
+[ext_resource type="AudioStream" uid="uid://b3ltff8ees3d4" path="res://ui/sfx/decide.wav" id="28_n7xk5"]
 [ext_resource type="Texture2D" uid="uid://bw18e3jvu7l70" path="res://ui/screen_manager/pause_screen/textures/options.png" id="29_jpk5x"]
 [ext_resource type="Texture2D" uid="uid://b6wn6aak61xrn" path="res://ui/screen_manager/pause_screen/textures/coin.png" id="30_7ngu7"]
 [ext_resource type="Texture2D" uid="uid://b203e7fny4xhg" path="res://ui/screen_manager/pause_screen/textures/coin_bag.png" id="31_s5ogs"]
@@ -59,7 +59,6 @@
 [ext_resource type="Theme" uid="uid://blj83dty2taxs" path="res://ui/scrollbar.tres" id="50_m3cpd"]
 [ext_resource type="PackedScene" uid="uid://b08q042unmcxf" path="res://ui/buttons/ui_selector.tscn" id="50_svocp"]
 [ext_resource type="PackedScene" uid="uid://nufgv8gspxs3" path="res://ui/buttons/ui_slider.tscn" id="51_6apma"]
-[ext_resource type="Shader" uid="uid://8napvsca1me5" path="res://util/shaders/alpha_white_match.gdshader" id="53_n7xk5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j6vdi"]
 shader = ExtResource("5_8wim4")
@@ -374,28 +373,32 @@ load_path = "res://.godot/imported/pattern_solar.png-7851dba46d4d0fd594dcc5410d5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q1vx3"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3cpd"]
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_right = 10.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+border_width_top = 2
+border_color = Color(1, 1, 1, 1)
+corner_detail = 1
+
 [sub_resource type="LabelSettings" id="LabelSettings_xphw0"]
 font = ExtResource("15_y78en")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvot7"]
+bg_color = Color(1, 1, 1, 1)
 border_width_top = 20
 border_width_bottom = 20
 border_color = Color(1, 1, 1, 0)
 border_blend = true
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n7xk5"]
+content_margin_left = 3.0
+
 [sub_resource type="LabelSettings" id="LabelSettings_6apma"]
 font = ExtResource("15_y78en")
 font_size = 25
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y28h8"]
-shader = ExtResource("53_n7xk5")
-
-[sub_resource type="Gradient" id="Gradient_aeygf"]
-colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_gbf2f"]
-gradient = SubResource("Gradient_aeygf")
-fill_to = Vector2(0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdkor"]
 bg_color = Color(0, 0, 0, 1)
@@ -618,7 +621,7 @@ modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 2
 texture = ExtResource("5_cgoe6")
 
-[node name="ScreenManager" type="Control" parent="." node_paths=PackedStringArray("cursor_sfx", "color_blur", "anime_player")]
+[node name="ScreenManager" type="Control" parent="." node_paths=PackedStringArray("color_blur", "anime_player")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -628,7 +631,6 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("12_l4gs6")
-cursor_sfx = NodePath("CursorSFX")
 color_blur = NodePath("ColorBlurEffect")
 anime_player = NodePath("AnimationPlayer")
 screens = Dictionary[StringName, NodePath]({
@@ -637,10 +639,6 @@ screens = Dictionary[StringName, NodePath]({
 &"WarningScreen": NodePath("WarningScreen")
 })
 metadata/_edit_lock_ = true
-
-[node name="CursorSFX" type="AudioStreamPlayer" parent="ScreenManager"]
-stream = ExtResource("15_l2qix")
-bus = &"UI"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ScreenManager"]
 root_node = NodePath("../..")
@@ -727,6 +725,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 27
 text = "RESUME"
 icon = ExtResource("17_is4aa")
+press_sfx = ExtResource("28_n7xk5")
 
 [node name="LevelStateChoices" type="VBoxContainer" parent="ScreenManager/PauseScreen/LeftPanel/Content/MainButtons/Buttons"]
 layout_mode = 2
@@ -984,10 +983,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.8
 
-[node name="OpenSFX" type="AudioStreamPlayer" parent="ScreenManager/PauseScreen"]
-stream = ExtResource("16_jehsk")
-bus = &"UI"
-
 [node name="WarningScreen" type="TextureRect" parent="ScreenManager" node_paths=PackedStringArray("warning_text", "focus_grabber")]
 visible = false
 z_index = 3
@@ -1107,7 +1102,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="ScreenManager/OptionsScreen"]
-z_index = -4
 material = SubResource("ShaderMaterial_avox5")
 layout_mode = 2
 size_flags_vertical = 3
@@ -1116,6 +1110,7 @@ stretch_mode = 1
 flip_h = true
 
 [node name="Content" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect"]
+z_index = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1144,13 +1139,14 @@ vertical_icon_alignment = 0
 expand_icon = true
 
 [node name="Tabs" type="TabContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls"]
-z_as_relative = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_colors/font_unselected_color = Color(0.494118, 0.494118, 0.494118, 1)
 theme_override_fonts/font = ExtResource("15_y78en")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/panel = SubResource("StyleBoxEmpty_q1vx3")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_m3cpd")
 tab_alignment = 1
 current_tab = 2
 tab_focus_mode = 0
@@ -1478,32 +1474,34 @@ text = "CONTROLLER"
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.1
-
 [node name="Control" type="Panel" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound"]
 clip_children = 1
 clip_contents = true
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_mvot7")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control"]
-z_index = -3
-z_as_relative = false
+z_index = 1
 clip_contents = false
 custom_minimum_size = Vector2(1, 1)
-layout_mode = 0
-offset_right = 475.0
-offset_bottom = 235.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
 theme = ExtResource("50_m3cpd")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_n7xk5")
 follow_focus = true
+scroll_vertical = 65
 horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer"]
+z_index = -1
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -1512,6 +1510,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 24
+
+[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
 
 [node name="AudioDevice" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content"]
 layout_mode = 2
@@ -1533,14 +1537,12 @@ layout_mode = 2
 theme_override_constants/separation = 15
 
 [node name="AudioSelector" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice/HBoxContainer" instance=ExtResource("50_svocp")]
-z_index = 2
 layout_mode = 2
 
 [node name="RefreshButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice/HBoxContainer" instance=ExtResource("23_mtuia")]
 layout_mode = 2
 size_flags_stretch_ratio = 2.0
 text = "REFRESH"
-press_sfx = null
 
 [node name="Space2" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice"]
 custom_minimum_size = Vector2(0, 5)
@@ -1574,13 +1576,12 @@ theme_override_constants/separation = 15
 
 [node name="ResetButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/MasterVolume/HBoxContainer" instance=ExtResource("23_mtuia")]
 layout_mode = 2
-size_flags_stretch_ratio = 0.1
+size_flags_stretch_ratio = 0.11
 text = ""
 icon = ExtResource("27_0c4e2")
 icon_alignment = 1
 
 [node name="PresetSlider" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/MasterVolume/HBoxContainer" instance=ExtResource("51_6apma")]
-z_index = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -1613,13 +1614,12 @@ theme_override_constants/separation = 15
 
 [node name="ResetButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/MusicVolume/HBoxContainer" instance=ExtResource("23_mtuia")]
 layout_mode = 2
-size_flags_stretch_ratio = 0.1
+size_flags_stretch_ratio = 0.11
 text = ""
 icon = ExtResource("27_0c4e2")
 icon_alignment = 1
 
 [node name="PresetSlider" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/MusicVolume/HBoxContainer" instance=ExtResource("51_6apma")]
-z_index = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -1652,13 +1652,12 @@ theme_override_constants/separation = 15
 
 [node name="ResetButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/SoundEffectVolume/HBoxContainer" instance=ExtResource("23_mtuia")]
 layout_mode = 2
-size_flags_stretch_ratio = 0.1
+size_flags_stretch_ratio = 0.11
 text = ""
 icon = ExtResource("27_0c4e2")
 icon_alignment = 1
 
 [node name="PresetSlider" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/SoundEffectVolume/HBoxContainer" instance=ExtResource("51_6apma")]
-z_index = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -1691,13 +1690,12 @@ theme_override_constants/separation = 15
 
 [node name="ResetButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/VoiceVolume/HBoxContainer" instance=ExtResource("23_mtuia")]
 layout_mode = 2
-size_flags_stretch_ratio = 0.1
+size_flags_stretch_ratio = 0.11
 text = ""
 icon = ExtResource("27_0c4e2")
 icon_alignment = 1
 
 [node name="PresetSlider" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/VoiceVolume/HBoxContainer" instance=ExtResource("51_6apma")]
-z_index = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -1709,23 +1707,21 @@ label_settings = SubResource("LabelSettings_6apma")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer"]
+[node name="Space2" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.03
 
-[node name="ColorRect" type="TextureRect" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control"]
-material = SubResource("ShaderMaterial_y28h8")
-custom_minimum_size = Vector2(0, 33)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -33.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = SubResource("GradientTexture2D_gbf2f")
+[node name="Space2" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
 
 [node name="Accessibility" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs"]
 visible = false

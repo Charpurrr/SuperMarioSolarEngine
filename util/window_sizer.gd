@@ -31,5 +31,3 @@ static func set_win_size(window_scale):
 		DisplayServer.window_set_position(window_pos)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-	
-	#Singleton.EditorSavedSettings.stored_window_scale = window_scale

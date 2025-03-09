@@ -58,7 +58,7 @@ func _ready():
 
 
 #func _process(_delta: float) -> void:
-	#print(DisplayServer.window_get_vsync_mode(), Engine.max_fps)
+	#print(get_tree().get_nodes_in_group(&"UI"))
 
 
 func _unhandled_input(event):

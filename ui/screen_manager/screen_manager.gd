@@ -3,7 +3,6 @@ extends Control
 ## Root node of a screen manager.
 ## Manages the transitions between different screens.
 
-@export var cursor_sfx: AudioStreamPlayer
 @export var color_blur: ColorRect
 @export var anime_player: AnimationPlayer
 
@@ -20,11 +19,6 @@ var current_screen: Screen
 
 
 func _ready() -> void:
-	# Plays the cursor sound effect when switching between buttons.
-	# unbind(1) unbinds the node argument from gui_focus_changed,
-	# so it doesn't interfere with play()'s from_position parameter.
-	get_viewport().gui_focus_changed.connect(cursor_sfx.play.unbind(1))
-
 	var pass_downs = {
 		&"manager": self,
 	}
