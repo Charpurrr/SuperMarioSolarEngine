@@ -24,8 +24,12 @@ extends Control
 @export var progress: ProgressBar
 @export var tick_sound: AudioStream
 
+var initialising: bool = false
+
 
 func _ready() -> void:
+	initialising = true
+
 	slider.value = default_value
 
 	slider.value_changed.connect(_update_slider)
@@ -34,6 +38,8 @@ func _ready() -> void:
 
 	_update_slider(default_value)
 	_update_size()
+
+	initialising = false
 
 
 func _update_size() -> void:
@@ -60,6 +66,7 @@ func _update_slider(value: float) -> void:
 	progress.value = value
 	grabber_point.progress_ratio = value / 100
 
-	# If no sound effects are playing in the UI audio bus:
-	if get_tree().get_nodes_in_group(&"UI").is_empty():
+	# If not playing on ready, and no sound effects are 
+	# playing in the UI audio bus:
+	if not initialising and get_tree().get_nodes_in_group(&"UI").is_empty():
 		SFX.play_sfx(tick_sound, &"UI", self)

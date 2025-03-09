@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://b08q042unmcxf"]
+
+[ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="1_qeidu"]
+[ext_resource type="StyleBox" uid="uid://doxigal4dp5iy" path="res://ui/buttons/button_normal.tres" id="2_nkxgv"]
+[ext_resource type="StyleBox" uid="uid://5hmjrr5vg4hn" path="res://ui/buttons/button_pressed.tres" id="2_qeidu"]
+[ext_resource type="Script" uid="uid://jgdsmuvahdwi" path="res://ui/buttons/ui_button.gd" id="4_nkxgv"]
+[ext_resource type="AudioStream" uid="uid://c4ui7ftfypsg0" path="res://ui/sfx/decide_small.wav" id="5_c7x3e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkxgv"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7x3e"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 12
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 12
+corner_detail = 1
+anti_aliasing = false
+
+[node name="PresetSelector" type="OptionButton"]
+offset_right = 100.0
+offset_bottom = 33.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_qeidu")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/focus = ExtResource("2_qeidu")
+theme_override_styles/disabled = ExtResource("2_nkxgv")
+theme_override_styles/hover = ExtResource("2_qeidu")
+theme_override_styles/pressed = ExtResource("2_qeidu")
+theme_override_styles/normal = ExtResource("2_nkxgv")
+alignment = 1
+text_overrun_behavior = 1
+script = ExtResource("4_nkxgv")
+press_sfx = ExtResource("5_c7x3e")
+
+[node name="Dropshadow" type="Panel" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nkxgv")
+
+[node name="Outerline" type="Panel" parent="Dropshadow"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c7x3e")
