@@ -15,12 +15,16 @@ extends Control
 		if is_instance_valid(slider):
 			slider.max_value = val
 			_update_slider(value, false)
+		if is_instance_valid(progress):
+			progress.max_value = val
 @export var value: float = 50.0:
 	set(val):
 		value = clampf(val, 0, max_value)
 
 		if is_instance_valid(slider):
 			slider.value = val
+		if is_instance_valid(progress):
+			progress.value = val
 @export var slider_step: float = 1.0:
 	set(val):
 		slider_step = val

@@ -15,7 +15,7 @@ func _set_initial_val():
 
 func _update_slider(value: float, play_sfx: bool = true) -> void:
 	progress.value = value
-	grabber_point.progress_ratio = value / 100
+	grabber_point.progress_ratio = value / max_value
 
 	# If not playing on ready, and no sound effects are 
 	# playing in the UI audio bus:

@@ -52,7 +52,8 @@ icon_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("6_ht11o")
-slider_step = 0.5
+max_value = 200.0
+value = 100.0
 
 [node name="Percentage" type="Label" parent="HBoxContainer"]
 custom_minimum_size = Vector2(63, 24)

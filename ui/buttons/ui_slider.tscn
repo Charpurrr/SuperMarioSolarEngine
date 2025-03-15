@@ -87,7 +87,6 @@ progress = NodePath("ProgressBar")
 tick_sound = ExtResource("2_6wxxs")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 200.0
 offset_bottom = 33.0
