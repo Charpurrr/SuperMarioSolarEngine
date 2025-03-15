@@ -7,7 +7,6 @@ extends Control
 # TODO: Add ticks, but there's a bug in Godot that prevents this.
 # ISSUE LINK: https://github.com/godotengine/godot/issues/103839
 
-@export_range(0, 100) var default_value: float = 50
 @export var max_value: float = 100.0:
 	set(val):
 		max_value = val
@@ -25,6 +24,11 @@ extends Control
 			slider.value = val
 		if is_instance_valid(progress):
 			progress.value = val
+		if is_instance_valid(grabber_point) and grabber_point.is_inside_tree():
+			grabber_point.progress_ratio = val / max_value
+
+@export var default_value: float = 50.0
+
 @export var slider_step: float = 1.0:
 	set(val):
 		slider_step = val
@@ -50,16 +54,17 @@ extends Control
 
 func _ready() -> void:
 	_update_size()
-	_set_initial_val()
 
 	slider.value_changed.connect(_update_slider.bind(true))
 
 	resized.connect(_update_size)
-	resized.connect(_update_slider.bind(slider.value, false))
+	resized.connect(_update_slider.bind(value, false))
+
+	_set_initial_val()
 
 
 ## Can get overwritten by a parent class to change which value is loaded in.
-func _set_initial_val():
+func _set_initial_val() -> void:
 	slider.value = default_value
 	_update_slider(default_value, false)
 
@@ -84,11 +89,16 @@ func _update_size() -> void:
 		#slider.tick_count = 0
 
 
-func _update_slider(value: float, play_sfx: bool = true) -> void:
-	progress.value = value
-	grabber_point.progress_ratio = value / max_value
+func _update_slider(new_value: float, play_sfx: bool = true) -> void:
+	value = new_value
 
+	if play_sfx:
+		_try_sfx()
+
+
+## Tries to play the tick sound effect if the conditions are met.
+func _try_sfx():
 	# If not playing on ready, and no sound effects are 
 	# playing in the UI audio bus:
-	if play_sfx and get_tree().get_nodes_in_group(&"UI").is_empty():
+	if get_tree().get_nodes_in_group(&"UI").is_empty():
 		SFX.play_sfx(tick_sound, &"UI", self)

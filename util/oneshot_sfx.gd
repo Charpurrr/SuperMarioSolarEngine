@@ -24,7 +24,6 @@ static func play_sfx(
 	player.set_bus(bus)
 	player.add_to_group(bus)
 	player.set_volume_db(volume)
-	print(volume)
 
 	node.add_child(player)
 

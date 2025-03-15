@@ -23,7 +23,7 @@ func _ready():
 
 
 func _slider_updated(slider_val: float):
-	percentage.text = "%d%%" % (slider_val * 2)
+	percentage.text = "%d%%" % (slider_val)
 	bus.update_volume(slider_val / 50)
 
 
