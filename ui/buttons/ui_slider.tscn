@@ -52,7 +52,7 @@ anti_aliasing = false
 
 [sub_resource type="Curve2D" id="Curve2D_skftf"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 300, 16)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 180, 16)
 }
 point_count = 2
 
@@ -87,6 +87,7 @@ progress = NodePath("ProgressBar")
 tick_sound = ExtResource("2_6wxxs")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 200.0
 offset_bottom = 33.0
@@ -140,7 +141,7 @@ ticks_on_borders = true
 curve = SubResource("Curve2D_skftf")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(89.9962, 16)
+position = Vector2(90, 16)
 progress = 90.0
 
 [node name="Grabber" type="Button" parent="Path2D/PathFollow2D"]
@@ -168,6 +169,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_6wxxs")
 
 [node name="Outerline" type="Panel" parent="Path2D/PathFollow2D/Grabber/Dropshadow"]
 show_behind_parent = true
+z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -83,7 +83,6 @@ func _pause_logic():
 		return
 
 	var pause_screen: PauseScreen = screen_manager.get_screen(&"PauseScreen")
-	
 
 	if not GameState.is_paused():
 		SFX.play_sfx(game_pause_sfx, &"UI", screen_manager)

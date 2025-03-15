@@ -34,7 +34,7 @@ func _ready() -> void:
 ## Leave "from" or "to" as null if wanting to transition out of or into gameplay.
 func switch_screen(from: Screen = null, to: Screen = null) -> void:
 #region FROM
-	if not from == null:
+	if from != null:
 		SFX.play_sfx(from.close_sfx, &"UI", self)
 
 		if from.close_anim == &"BACKWARDS":
