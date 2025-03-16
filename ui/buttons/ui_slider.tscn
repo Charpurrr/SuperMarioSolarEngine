@@ -52,7 +52,7 @@ anti_aliasing = false
 
 [sub_resource type="Curve2D" id="Curve2D_skftf"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 275, 16)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 180, 16)
 }
 point_count = 2
 
@@ -85,6 +85,11 @@ grabber_button = NodePath("Path2D/PathFollow2D/Grabber")
 grabber_rect = NodePath("Path2D/PathFollow2D/Grabber/ColorRect")
 progress = NodePath("ProgressBar")
 tick_sound = ExtResource("2_6wxxs")
+
+[node name="Outerline" type="Polygon2D" parent="."]
+position = Vector2(93, -1)
+offset = Vector2(4, 51)
+polygon = PackedVector2Array(-9.99999, -48, -0.999992, -57, 7.00001, -57, 19, -45, 19, -16, 10, -7, 2.00001, -7, -9.99999, -19)
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 layout_mode = 0
@@ -140,7 +145,7 @@ ticks_on_borders = true
 curve = SubResource("Curve2D_skftf")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(89.9998, 16)
+position = Vector2(90, 16)
 progress = 90.0
 
 [node name="Grabber" type="Button" parent="Path2D/PathFollow2D"]
@@ -166,23 +171,6 @@ size_flags_vertical = 3
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6wxxs")
 
-[node name="Outerline" type="Panel" parent="Path2D/PathFollow2D/Grabber/Dropshadow"]
-show_behind_parent = true
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 3.0
-offset_bottom = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 3
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_t7s5i")
-
 [node name="ColorRect" type="ColorRect" parent="Path2D/PathFollow2D/Grabber"]
 layout_mode = 0
 offset_left = 7.0
@@ -191,3 +179,7 @@ offset_right = 13.0
 offset_bottom = 31.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D/Grabber"]
+position = Vector2(2.99999, 3)
+remote_path = NodePath("../../../../Outerline")
