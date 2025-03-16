@@ -58,7 +58,7 @@ func _ready() -> void:
 	slider.value_changed.connect(_update_slider.bind(true))
 
 	resized.connect(_update_size)
-	resized.connect(_update_slider.bind(value, false))
+	resized.connect(func(): _update_slider(value, false))
 
 	_set_initial_val()
 
