@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://nufgv8gspxs3"]
+[gd_scene load_steps=17 format=3 uid="uid://nufgv8gspxs3"]
 
 [ext_resource type="Script" uid="uid://br0et54gkpwyq" path="res://ui/buttons/ui_slider.gd" id="1_skftf"]
 [ext_resource type="AudioStream" uid="uid://dsokoktxblw41" path="res://ui/sfx/cursor.wav" id="2_6wxxs"]
@@ -24,8 +24,6 @@ border_width_top = 3
 border_width_bottom = 3
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 7
-corner_radius_top_right = 7
-corner_radius_bottom_right = 7
 corner_radius_bottom_left = 7
 corner_detail = 1
 anti_aliasing = false
@@ -48,13 +46,21 @@ corner_radius_bottom_left = 12
 corner_detail = 1
 anti_aliasing = false
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t7s5i"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cwd4y"]
+bg_color = Color(0.486275, 0, 0.4, 1)
+border_width_top = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_detail = 1
+anti_aliasing = false
 
-[sub_resource type="Curve2D" id="Curve2D_skftf"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 306, 16)
-}
-point_count = 2
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dxsau"]
+bg_color = Color(1, 1, 1, 1)
+border_width_top = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_detail = 1
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qcs8"]
 bg_color = Color(1, 1, 1, 1)
@@ -70,33 +76,51 @@ corner_radius_bottom_left = 7
 corner_detail = 1
 anti_aliasing = false
 
-[node name="PresetSlider" type="Control" node_paths=PackedStringArray("slider", "grabber_path", "grabber_point", "grabber_button", "grabber_rect", "progress")]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6wxxs"]
+size = Vector2(0, 0)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_t7s5i"]
+size = Vector2(0, 0)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8qcs8"]
+size = Vector2(0, 0)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_cwd4y"]
+size = Vector2(0, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6wxxs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t7s5i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8qcs8"]
+
+[node name="PresetSlider" type="Control" node_paths=PackedStringArray("slider", "grabber", "progress_bar")]
 custom_minimum_size = Vector2(33, 33)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 200.0
 offset_bottom = 33.0
-mouse_filter = 2
 script = ExtResource("1_skftf")
-slider = NodePath("HSlider")
-grabber_path = NodePath("Path2D")
-grabber_point = NodePath("Path2D/PathFollow2D")
-grabber_button = NodePath("Path2D/PathFollow2D/Grabber")
-grabber_rect = NodePath("Path2D/PathFollow2D/Grabber/ColorRect")
-progress = NodePath("ProgressBar")
+slider = NodePath("ProgressBarBackground/HSlider")
+grabber = NodePath("ProgressBarBackground/GrabberBounds/Grabber")
+progress_bar = NodePath("ProgressBarBackground/GrabberBounds/ProgressBar")
 tick_sound = ExtResource("2_6wxxs")
+metadata/_edit_group_ = true
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-layout_mode = 0
-offset_right = 200.0
-offset_bottom = 33.0
-mouse_filter = 2
+[node name="ProgressBarBackground" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_esd4p")
 theme_override_styles/fill = SubResource("StyleBoxFlat_skftf")
+step = 0.0
 value = 50.0
 show_percentage = false
 
-[node name="Dropshadow" type="Panel" parent="ProgressBar"]
+[node name="Dropshadow" type="Panel" parent="ProgressBarBackground"]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -109,10 +133,9 @@ offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
-mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6wxxs")
 
-[node name="Outerline" type="Panel" parent="ProgressBar/Dropshadow"]
+[node name="Outerline" type="Panel" parent="ProgressBarBackground/Dropshadow"]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -125,48 +148,64 @@ offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
-mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_t7s5i")
 
-[node name="HSlider" type="HSlider" parent="."]
-layout_mode = 0
-offset_right = 198.0
-offset_bottom = 30.0
-theme_override_styles/slider = SubResource("StyleBoxEmpty_t7s5i")
+[node name="GrabberBounds" type="Control" parent="ProgressBarBackground"]
+editor_description = "Resize this control to modify where the grabber is positioned, based on the slider value. 
+Left edge: position when value = 0, right edge: position when value = 100"
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="ProgressBarBackground/GrabberBounds"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.00113, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_cwd4y")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dxsau")
 value = 50.0
-ticks_on_borders = true
+show_percentage = false
 
-[node name="Path2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_skftf")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(163.476, 16)
-progress = 163.5
-
-[node name="Grabber" type="Button" parent="Path2D/PathFollow2D"]
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 21.0
-mouse_filter = 2
+[node name="Grabber" type="Button" parent="ProgressBarBackground/GrabberBounds"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -9.99997
+offset_top = -4.0
+offset_right = 10.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_8qcs8")
+metadata/_edit_group_ = true
 
-[node name="Dropshadow" type="Panel" parent="Path2D/PathFollow2D/Grabber"]
+[node name="Dropshadow" type="Panel" parent="ProgressBarBackground/GrabberBounds/Grabber"]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 3.0
+offset_left = 2.99999
 offset_top = 3.0
 offset_right = 2.99998
 offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
-mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6wxxs")
 
-[node name="Outerline" type="Panel" parent="Path2D/PathFollow2D/Grabber/Dropshadow"]
+[node name="Outerline" type="Panel" parent="ProgressBarBackground/GrabberBounds/Grabber/Dropshadow"]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -179,14 +218,37 @@ offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
-mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_t7s5i")
 
-[node name="ColorRect" type="ColorRect" parent="Path2D/PathFollow2D/Grabber"]
-layout_mode = 0
+[node name="ColorRect" type="ColorRect" parent="ProgressBarBackground/GrabberBounds/Grabber"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 7.0
 offset_top = 9.0
-offset_right = 13.0
-offset_bottom = 31.0
-mouse_filter = 2
+offset_right = -7.0
+offset_bottom = -10.0
 color = Color(0, 0, 0, 1)
+
+[node name="HSlider" type="HSlider" parent="ProgressBarBackground"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_right = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = SubResource("PlaceholderTexture2D_6wxxs")
+theme_override_icons/grabber_highlight = SubResource("PlaceholderTexture2D_t7s5i")
+theme_override_icons/grabber_disabled = SubResource("PlaceholderTexture2D_8qcs8")
+theme_override_icons/tick = SubResource("PlaceholderTexture2D_cwd4y")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_6wxxs")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_t7s5i")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_8qcs8")
+value = 50.0
+ticks_on_borders = true
+
+[connection signal="value_changed" from="ProgressBarBackground/HSlider" to="." method="_update_slider"]

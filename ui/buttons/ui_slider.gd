@@ -1,8 +1,8 @@
 @tool
 class_name UISlider
 extends Control
-## A common UI slider.[br]
-## The script is a tool script so the visuals update accordingly.
+## A common UI slider, with a range of 0 to 100.[br]
+## The script runs in the editor to update the visuals accordingly.
 
 # TODO: Add ticks, but there's a bug in Godot that prevents this.
 # ISSUE LINK: https://github.com/godotengine/godot/issues/103839
@@ -17,43 +17,19 @@ extends Control
 
 @export_category("References")
 @export var slider: HSlider
-@export var grabber_path: Path2D
-@export var grabber_point: PathFollow2D
-@export var grabber_button: Button
-@export var grabber_rect: ColorRect
-@export var progress: ProgressBar
+@export var grabber: Control
+@export var progress_bar: ProgressBar
 @export var tick_sound: AudioStream
 
 var initialising: bool = false
-
 
 func _ready() -> void:
 	initialising = true
 
 	slider.value = default_value
-
-	slider.value_changed.connect(_update_slider)
-	resized.connect(_update_size)
-	resized.connect(_update_slider.bind(slider.value))
-
 	_update_slider(default_value)
-	_update_size()
 
 	initialising = false
-
-
-func _update_size() -> void:
-	progress.size.x = size.x
-	slider.size.x = size.x - 2
-
-	#_update_ticks()
-
-	grabber_path.curve.clear_points()
-	var x: float = size.x - grabber_button.size.x
-	var y: float = floor(size.y / 2)
-	grabber_path.curve.add_point(Vector2(0, y))
-	grabber_path.curve.add_point(Vector2(x, y))
-
 
 #func _update_ticks():
 	#if ticked == true:
@@ -61,11 +37,19 @@ func _update_size() -> void:
 	#else:
 		#slider.tick_count = 0
 
-
+# This function is called when the slider's value changes,
+# setting the grabber and progress bar to match,
+# and playing the sound effect.
 func _update_slider(value: float) -> void:
-	progress.value = value
-	grabber_point.progress_ratio = value / 100
-
+	# Update the progress bar.
+	progress_bar.value = value
+	
+	# Set the left and right anchors of the grabber,
+	# according to the value.
+	# This moves the grabber to the right location.
+	grabber.set_anchor(SIDE_LEFT, value / 100, true)
+	grabber.set_anchor(SIDE_RIGHT, value / 100, true)
+	
 	# If not playing on ready, and no sound effects are 
 	# playing in the UI audio bus:
 	if not initialising and get_tree().get_nodes_in_group(&"UI").is_empty():
