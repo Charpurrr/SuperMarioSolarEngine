@@ -54,7 +54,7 @@ size_flags_horizontal = 3
 script = ExtResource("6_ht11o")
 max_value = 200.0
 value = 100.0
-default_value = 3.0
+default_value = 100.0
 
 [node name="Percentage" type="Label" parent="HBoxContainer"]
 custom_minimum_size = Vector2(63, 24)

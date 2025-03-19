@@ -10,7 +10,7 @@ func _set_initial_val():
 
 	if not Engine.is_editor_hint():
 		var saved_volume: float = LocalSettings.load_setting("Audio", bus.setting_name, default_value)
-		slider.value = saved_volume
+		slider.value = saved_volume * 100
 	else:
 		super()
 

@@ -1485,7 +1485,6 @@ size_flags_vertical = 3
 theme = ExtResource("50_m3cpd")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_n7xk5")
 follow_focus = true
-scroll_vertical = 100
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
@@ -1525,12 +1524,27 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="AudioSelector" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice/HBoxContainer" instance=ExtResource("50_svocp")]
+[node name="AudioDevice" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice/HBoxContainer" node_paths=PackedStringArray("selector", "speaker_label")]
 layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("32_k3s7s")
+selector = NodePath("PresetSelector")
+speaker_label = NodePath("../../SpeakerMode")
+
+[node name="PresetSelector" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice/HBoxContainer/AudioDevice" instance=ExtResource("50_svocp")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+script = null
 
 [node name="RefreshButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice/HBoxContainer" instance=ExtResource("23_mtuia")]
 layout_mode = 2
-size_flags_stretch_ratio = 2.0
+size_flags_stretch_ratio = 0.4
 text = "REFRESH"
 
 [node name="Space2" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice"]
@@ -1793,15 +1807,13 @@ layout_mode = 2
 text = "Audio Device: "
 label_settings = SubResource("LabelSettings_2gqs2")
 
-[node name="OptionButton" type="OptionButton" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions" node_paths=PackedStringArray("speaker_label")]
+[node name="OptionButton" type="OptionButton" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("15_y78en")
 theme_override_font_sizes/font_size = 16
 alignment = 1
 text_overrun_behavior = 1
-script = ExtResource("32_k3s7s")
-speaker_label = NodePath("../../SpeakerMode")
 
 [node name="Refresh" type="Button" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions"]
 custom_minimum_size = Vector2(48, 0)
