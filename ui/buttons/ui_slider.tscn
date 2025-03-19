@@ -52,7 +52,7 @@ anti_aliasing = false
 
 [sub_resource type="Curve2D" id="Curve2D_skftf"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 180, 16)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 300, 16)
 }
 point_count = 2
 
@@ -147,6 +147,7 @@ curve = SubResource("Curve2D_skftf")
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2(90, 16)
 progress = 90.0
+loop = false
 
 [node name="Grabber" type="Button" parent="Path2D/PathFollow2D"]
 offset_top = -20.0
