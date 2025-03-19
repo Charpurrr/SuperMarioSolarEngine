@@ -1540,7 +1540,6 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
-script = null
 
 [node name="RefreshButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice/HBoxContainer" instance=ExtResource("23_mtuia")]
 layout_mode = 2
@@ -1563,17 +1562,14 @@ layout_mode = 2
 
 [node name="MusicVolume2" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content" instance=ExtResource("52_n7xk5")]
 layout_mode = 2
-header_text = "Music Volume"
 bus_name = &"Music"
 
 [node name="SFXVolume" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content" instance=ExtResource("52_n7xk5")]
 layout_mode = 2
-header_text = "Sound Effects Volume"
 bus_name = &"SFX"
 
 [node name="VoiceVolume2" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content" instance=ExtResource("52_n7xk5")]
 layout_mode = 2
-header_text = "Voices Volume"
 bus_name = &"Voice"
 
 [node name="Space2" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content"]
