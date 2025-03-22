@@ -15,29 +15,13 @@ var fullscreened: bool = false
 var bgm_muted: bool = false
 var buses: Dictionary[StringName, AudioBus] = {
 	&"Master":
-	(
-		AudioBus
-		.new(
-			&"Master",
-			"master_volume",
-		)
-	),
+		AudioBus.new(&"Master", "master_volume"),
 	&"Music":
-	(
-		AudioBus
-		.new(
-			&"Music",
-			"bgm_volume",
-		)
-	),
+		AudioBus.new(&"Music", "bgm_volume"),
 	&"SFX":
-	(
-		AudioBus
-		.new(
-			&"SFX",
-			"sfx_volume",
-		)
-	)
+		AudioBus.new(&"SFX", "sfx_volume"),
+	&"Voice":
+		AudioBus.new(&"Voice", "voice_volume")
 }
 
 
@@ -58,7 +42,7 @@ func _ready():
 
 
 #func _process(_delta: float) -> void:
-	#print(DisplayServer.window_get_vsync_mode(), Engine.max_fps)
+	#print(get_tree().get_nodes_in_group(&"UI"))
 
 
 func _unhandled_input(event):

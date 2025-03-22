@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bt625ce03kjut" path="res://stages/world_machine.gd" id="1_gcjeb"]
 [ext_resource type="PackedScene" uid="uid://co7kk1h1rwbn6" path="res://stages/synth_stratum.tscn" id="2_8i65m"]
 [ext_resource type="PackedScene" uid="uid://bfb4xq874buf6" path="res://props/level_environments/synth/synth.tscn" id="3_emc2i"]
-[ext_resource type="PackedScene" uid="uid://ccj3teu3h6xfm" path="res://ui/ui.tscn" id="3_pcjjq"]
+[ext_resource type="PackedScene" uid="uid://csf56lkxqqb12" path="res://ui/ui.tscn" id="3_pcjjq"]
 
 [node name="WorldMachine" type="Node2D"]
 script = ExtResource("1_gcjeb")

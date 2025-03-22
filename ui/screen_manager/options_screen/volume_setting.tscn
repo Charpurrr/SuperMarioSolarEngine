@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://puhluie3m3cp"]
+
+[ext_resource type="Script" uid="uid://dhqvnyonyvm3" path="res://ui/screen_manager/options_screen/volume_setting.gd" id="1_8m8no"]
+[ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="1_udgn8"]
+[ext_resource type="PackedScene" uid="uid://bb6wf0meej6ox" path="res://ui/buttons/ui_button.tscn" id="2_8m8no"]
+[ext_resource type="Texture2D" uid="uid://c8kahcqao7t20" path="res://ui/screen_manager/pause_screen/textures/reset.png" id="3_ht11o"]
+[ext_resource type="PackedScene" uid="uid://nufgv8gspxs3" path="res://ui/buttons/ui_slider.tscn" id="4_ys8q8"]
+[ext_resource type="Script" uid="uid://mx34yawkolyp" path="res://ui/screen_manager/options_screen/volume_slider.gd" id="6_ht11o"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xphw0"]
+font = ExtResource("1_udgn8")
+
+[sub_resource type="LabelSettings" id="LabelSettings_6apma"]
+font = ExtResource("1_udgn8")
+font_size = 25
+
+[node name="PresetVolume" type="VBoxContainer" node_paths=PackedStringArray("header", "reset", "slider", "percentage")]
+offset_right = 420.0
+offset_bottom = 57.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_8m8no")
+header_text = "Master Volume"
+bus_name = &"Master"
+header = NodePath("Header")
+reset = NodePath("HBoxContainer/ResetButton")
+slider = NodePath("HBoxContainer/AudioSlider")
+percentage = NodePath("HBoxContainer/Percentage")
+
+[node name="Header" type="Label" parent="."]
+layout_mode = 2
+text = "Bus Volume"
+label_settings = SubResource("LabelSettings_xphw0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Space" type="Control" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="ResetButton" parent="HBoxContainer" instance=ExtResource("2_8m8no")]
+layout_mode = 2
+size_flags_stretch_ratio = 0.11
+text = ""
+icon = ExtResource("3_ht11o")
+icon_alignment = 1
+
+[node name="AudioSlider" parent="HBoxContainer" instance=ExtResource("4_ys8q8")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("6_ht11o")
+max_value = 200.0
+value = 100.0
+default_value = 100.0
+
+[node name="Percentage" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(63, 24)
+layout_mode = 2
+text = "100%"
+label_settings = SubResource("LabelSettings_6apma")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[connection signal="pressed" from="HBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
