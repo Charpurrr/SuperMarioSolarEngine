@@ -81,9 +81,7 @@ font_color = Color(0.896656, 0.896656, 0.896656, 1)
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
-[node name="LifeMeter" type="CanvasLayer"]
-
-[node name="Bounds" type="Control" parent="." node_paths=PackedStringArray("outline", "label")]
+[node name="LifeMeter" type="Control" node_paths=PackedStringArray("outline", "label")]
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
@@ -94,11 +92,11 @@ offset_right = -15.0
 offset_bottom = 75.0
 grow_horizontal = 0
 script = ExtResource("1_rqs60")
-hp = 2
+hp = 4
 outline = NodePath("OutlineInside")
 label = NodePath("HP")
 
-[node name="BorderGradient" type="Button" parent="Bounds"]
+[node name="BorderGradient" type="Button" parent="."]
 clip_children = 1
 z_index = -1
 layout_mode = 1
@@ -110,7 +108,7 @@ grow_vertical = 2
 theme_override_styles/disabled = SubResource("StyleBoxFlat_hgbqu")
 disabled = true
 
-[node name="TextureRect" type="TextureRect" parent="Bounds/BorderGradient"]
+[node name="TextureRect" type="TextureRect" parent="BorderGradient"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -119,7 +117,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_s7xgs")
 
-[node name="Outline" type="Button" parent="Bounds"]
+[node name="Outline" type="Button" parent="."]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -130,7 +128,7 @@ grow_vertical = 2
 theme_override_styles/disabled = SubResource("StyleBoxFlat_dkpll")
 disabled = true
 
-[node name="InsideGradient" type="Button" parent="Bounds"]
+[node name="InsideGradient" type="Button" parent="."]
 clip_children = 1
 z_index = -1
 layout_mode = 1
@@ -146,7 +144,7 @@ grow_vertical = 2
 theme_override_styles/disabled = SubResource("StyleBoxFlat_hgbqu")
 disabled = true
 
-[node name="TextureRect" type="TextureRect" parent="Bounds/InsideGradient"]
+[node name="TextureRect" type="TextureRect" parent="InsideGradient"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -155,7 +153,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_ohmsp")
 
-[node name="OutlineInside" type="Button" parent="Bounds"]
+[node name="OutlineInside" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -169,7 +167,7 @@ grow_vertical = 2
 theme_override_styles/disabled = SubResource("StyleBoxFlat_rpg4r")
 disabled = true
 
-[node name="HP" type="Label" parent="Bounds"]
+[node name="HP" type="Label" parent="."]
 light_mask = 524288
 material = SubResource("CanvasItemMaterial_66wu2")
 layout_mode = 1
@@ -184,12 +182,12 @@ offset_right = 33.0
 offset_bottom = 32.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "2"
+text = "4"
 label_settings = SubResource("LabelSettings_0p7qp")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PointLight2D" type="PointLight2D" parent="Bounds/HP"]
+[node name="PointLight2D" type="PointLight2D" parent="HP"]
 light_mask = 0
 blend_mode = 2
 range_layer_max = 1
@@ -197,7 +195,7 @@ range_item_cull_mask = 524288
 texture = SubResource("GradientTexture2D_nmlpw")
 offset = Vector2(33, 32.5)
 
-[node name="Title" type="Label" parent="Bounds"]
+[node name="Title" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5

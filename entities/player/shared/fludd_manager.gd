@@ -16,7 +16,7 @@ var available_nozzles: Array[Nozzle] = [
 	#Nozzle.TURBO,
 	]
 
-var active_nozzle: Nozzle = Nozzle.NONE
+static var active_nozzle: Nozzle = Nozzle.NONE
 
 
 # Done within physics process to guarantee being properly synced with the player.

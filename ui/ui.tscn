@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://csf56lkxqqb12"]
+[gd_scene load_steps=101 format=3 uid="uid://csf56lkxqqb12"]
 
 [ext_resource type="Script" uid="uid://brof7wb075ont" path="res://ui/ui.gd" id="1_75fsn"]
 [ext_resource type="AudioStream" uid="uid://b58aveo75onan" path="res://ui/sfx/pause.wav" id="2_1xskv"]
@@ -8,8 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://blb650dgb5q1i" path="res://ui/player_hud/coin_counter.tscn" id="6_6apma"]
 [ext_resource type="FontFile" uid="uid://e821cxxeybxh" path="res://ui/fonts/mario_sunshine.ttf" id="7_ctsqr"]
 [ext_resource type="PackedScene" uid="uid://bgl7f8thu2y4" path="res://ui/player_hud/life_meter.tscn" id="7_m3cpd"]
-[ext_resource type="Script" uid="uid://dgat047njqsvp" path="res://ui/debug_label.gd" id="8_2m7jo"]
-[ext_resource type="Script" uid="uid://dg4a6r83hm158" path="res://ui/commit_label.gd" id="9_bh67b"]
+[ext_resource type="Script" uid="uid://dgat047njqsvp" path="res://ui/debug/debug_label.gd" id="8_2m7jo"]
+[ext_resource type="PackedScene" uid="uid://cjavjeke51epr" path="res://ui/player_hud/fludd_tank.tscn" id="8_n7xk5"]
+[ext_resource type="Script" uid="uid://dg4a6r83hm158" path="res://ui/debug/commit_label.gd" id="9_bh67b"]
 [ext_resource type="Texture2D" uid="uid://rqmk8y0h1450" path="res://ui/input_display/input_display_ico1.png" id="10_sk3no"]
 [ext_resource type="Texture2D" uid="uid://7p0auiyqcgk3" path="res://ui/input_display/input_display_ico6.png" id="11_4acw6"]
 [ext_resource type="Texture2D" uid="uid://dir44lhfrdcxu" path="res://ui/input_display/input_display_ico7.png" id="12_a0svk"]
@@ -50,7 +51,7 @@
 [ext_resource type="Script" uid="uid://djnqumhmtso2y" path="res://ui/buttons/option_bool.gd" id="47_t7euy"]
 [ext_resource type="Texture2D" uid="uid://dkjx263nlcra" path="res://ui/input_icons/nintendo_switch/controller_switch_motion.svg" id="48_1v6c2"]
 [ext_resource type="Texture2D" uid="uid://bhvukbqm4v5f3" path="res://ui/input_icons/nintendo_switch/controller_switch_rumble.svg" id="49_lol4u"]
-[ext_resource type="Theme" uid="uid://blj83dty2taxs" path="res://ui/scrollbar.tres" id="50_5i7o0"]
+[ext_resource type="Theme" uid="uid://blj83dty2taxs" path="res://ui/buttons/scrollbar.tres" id="50_5i7o0"]
 [ext_resource type="Script" uid="uid://d18f84ruj5057" path="res://ui/screen_manager/settings_screen/audio/select_audiod.gd" id="51_oqi1b"]
 [ext_resource type="PackedScene" uid="uid://b08q042unmcxf" path="res://ui/buttons/ui_selector.tscn" id="52_sk6td"]
 [ext_resource type="PackedScene" uid="uid://puhluie3m3cp" path="res://ui/screen_manager/options_screen/volume_setting.tscn" id="53_i1icy"]
@@ -473,7 +474,10 @@ text = "0/8"
 
 [node name="LifeMeter" parent="." instance=ExtResource("7_m3cpd")]
 
+[node name="FluddTank" parent="." instance=ExtResource("8_n7xk5")]
+
 [node name="DebugLabel" type="Label" parent="."]
+visible = false
 offset_right = 86.0
 offset_bottom = 179.0
 theme_override_font_sizes/font_size = 10
@@ -632,8 +636,7 @@ copy_mode = 2
 metadata/_edit_lock_ = true
 
 [node name="ColorBlurEffect" type="ColorRect" parent="ScreenManager"]
-z_index = -4
-z_as_relative = false
+visible = false
 material = SubResource("ShaderMaterial_8xxao")
 layout_mode = 1
 anchors_preset = 15
@@ -1555,14 +1558,17 @@ layout_mode = 2
 
 [node name="MusicVolume2" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content" instance=ExtResource("53_i1icy")]
 layout_mode = 2
+header_text = "Music Volume"
 bus_name = &"Music"
 
 [node name="SFXVolume" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content" instance=ExtResource("53_i1icy")]
 layout_mode = 2
+header_text = "Sound Effects Volume"
 bus_name = &"SFX"
 
 [node name="VoiceVolume2" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content" instance=ExtResource("53_i1icy")]
 layout_mode = 2
+header_text = "Voices Volume"
 bus_name = &"Voice"
 
 [node name="Space2" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content"]

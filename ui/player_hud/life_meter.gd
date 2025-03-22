@@ -1,8 +1,8 @@
 @tool
 class_name LifeMeter
 extends Control
-## Small utility script that draws the center lines
-## of the Life Meter based on the max HP the player has.
+## Small utility script that draws the proper visuals for
+## the Life Meter based on the amount of HP the player has.
 
 const ROTATION: float = TAU / 4
 
