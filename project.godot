@@ -222,6 +222,7 @@ debug_toggle={
 
 [layer_names]
 
+2d_render/layer_20="UI"
 2d_physics/layer_1="Solid"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="NPC"

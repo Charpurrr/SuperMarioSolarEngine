@@ -52,7 +52,7 @@ anti_aliasing = false
 
 [sub_resource type="Curve2D" id="Curve2D_skftf"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 300, 16)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 180, 16)
 }
 point_count = 2
 

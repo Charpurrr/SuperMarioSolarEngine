@@ -1,66 +1,67 @@
-[gd_scene load_steps=98 format=3 uid="uid://ccj3teu3h6xfm"]
+[gd_scene load_steps=100 format=3 uid="uid://csf56lkxqqb12"]
 
-[ext_resource type="Script" uid="uid://brof7wb075ont" path="res://ui/ui.gd" id="1_pakjx"]
-[ext_resource type="Script" uid="uid://dgat047njqsvp" path="res://ui/debug_label.gd" id="2_suudb"]
-[ext_resource type="PackedScene" uid="uid://b41sl5v4p501f" path="res://ui/notification/notification.tscn" id="2_ufvuv"]
-[ext_resource type="Texture2D" uid="uid://rqmk8y0h1450" path="res://ui/input_display/input_display_ico1.png" id="3_4oo64"]
-[ext_resource type="Texture2D" uid="uid://jbm5npuy3yok" path="res://ui/input_display/input_display_ico2.png" id="4_8x05r"]
-[ext_resource type="FontFile" uid="uid://e821cxxeybxh" path="res://ui/fonts/mario_sunshine.ttf" id="4_ko57l"]
-[ext_resource type="Shader" uid="uid://cgcjxa2rl4edn" path="res://util/shaders/smw_mozaic.gdshader" id="5_8wim4"]
-[ext_resource type="Texture2D" uid="uid://bwh5yg024sqag" path="res://ui/input_display/input_display_ico3.png" id="5_cgoe6"]
-[ext_resource type="Texture2D" uid="uid://bkvicbrah3ltp" path="res://ui/input_display/input_display_ico4.png" id="6_7ipv2"]
-[ext_resource type="Texture2D" uid="uid://cnypyennkpxux" path="res://ui/input_display/input_display_ico5.png" id="7_yer77"]
-[ext_resource type="Texture2D" uid="uid://7p0auiyqcgk3" path="res://ui/input_display/input_display_ico6.png" id="8_nyjo7"]
-[ext_resource type="Script" uid="uid://dg4a6r83hm158" path="res://ui/commit_label.gd" id="9_bvd2d"]
-[ext_resource type="Texture2D" uid="uid://dir44lhfrdcxu" path="res://ui/input_display/input_display_ico7.png" id="9_smbrs"]
-[ext_resource type="Texture2D" uid="uid://15yce5ngma24" path="res://ui/input_display/input_display_ico8.png" id="10_5r8on"]
-[ext_resource type="Script" uid="uid://cnhr5du0ap6ki" path="res://ui/screen_manager/screen_manager.gd" id="12_l4gs6"]
-[ext_resource type="Shader" uid="uid://c8kax0imw2g1t" path="res://util/shaders/map_gradient.gdshader" id="12_wqetc"]
-[ext_resource type="FontFile" uid="uid://dwjboqsj8b8xd" path="res://ui/fonts/super_mario.ttf" id="14_n0vgh"]
-[ext_resource type="Texture2D" uid="uid://bbu4m0gd3b85w" path="res://ui/screen_manager/pause_screen/gradient_maps/synth_gradient.tres" id="14_qpmjx"]
-[ext_resource type="Script" uid="uid://3awpmtapljco" path="res://ui/screen_manager/pause_screen/level_info.gd" id="15_ihj7k"]
-[ext_resource type="Texture2D" uid="uid://qslbjwvvnw28" path="res://ui/pattern_solar.png" id="15_uxr3e"]
-[ext_resource type="Shader" uid="uid://byfa3t51pf655" path="res://ui/screen_manager/pause_screen/pause_panel.tres" id="15_w8105"]
-[ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="15_y78en"]
-[ext_resource type="AudioStream" uid="uid://b58aveo75onan" path="res://ui/sfx/pause.wav" id="16_jehsk"]
-[ext_resource type="PackedScene" uid="uid://cxqj15hquutxq" path="res://ui/screen_manager/settings_screen/controls/tab.tscn" id="17_7m8yr"]
-[ext_resource type="Script" uid="uid://trfav0yjiqxm" path="res://ui/screen_manager/pause_screen/pause_screen.gd" id="17_372ku"]
-[ext_resource type="Texture2D" uid="uid://knkg28xlj4h8" path="res://ui/screen_manager/pause_screen/textures/spike.png" id="17_au2sq"]
-[ext_resource type="Texture2D" uid="uid://dej5d4fiilqup" path="res://ui/screen_manager/pause_screen/textures/resume.png" id="17_is4aa"]
-[ext_resource type="Texture2D" uid="uid://b0l7xch1esfvg" path="res://ui/screen_manager/pause_screen/textures/retry.png" id="18_xk3ue"]
-[ext_resource type="Texture2D" uid="uid://dictabwcprtsa" path="res://ui/screen_manager/pause_screen/textures/hover_icon.png" id="19_wa1aj"]
-[ext_resource type="Texture2D" uid="uid://c4gag5pm74v3l" path="res://ui/screen_manager/pause_screen/textures/action_guide.png" id="20_3u6s5"]
-[ext_resource type="Texture2D" uid="uid://cc5yq8axs2y02" path="res://ui/screen_manager/pause_screen/textures/turbo_icon.png" id="20_yd3bl"]
-[ext_resource type="Texture2D" uid="uid://c84gehfwldto" path="res://ui/screen_manager/pause_screen/textures/rocket_icon.png" id="21_xk5tc"]
-[ext_resource type="Texture2D" uid="uid://rps7nhfiherr" path="res://ui/screen_manager/pause_screen/textures/quit.png" id="22_uf17g"]
-[ext_resource type="PackedScene" uid="uid://bb6wf0meej6ox" path="res://ui/buttons/ui_button.tscn" id="23_mtuia"]
-[ext_resource type="Texture2D" uid="uid://c8kahcqao7t20" path="res://ui/screen_manager/pause_screen/textures/reset.png" id="27_0c4e2"]
-[ext_resource type="AudioStream" uid="uid://b3ltff8ees3d4" path="res://ui/sfx/decide.wav" id="28_n7xk5"]
-[ext_resource type="Texture2D" uid="uid://bw18e3jvu7l70" path="res://ui/screen_manager/pause_screen/textures/options.png" id="29_jpk5x"]
-[ext_resource type="Texture2D" uid="uid://b6wn6aak61xrn" path="res://ui/screen_manager/pause_screen/textures/coin.png" id="30_7ngu7"]
-[ext_resource type="Texture2D" uid="uid://b203e7fny4xhg" path="res://ui/screen_manager/pause_screen/textures/coin_bag.png" id="31_s5ogs"]
-[ext_resource type="Script" uid="uid://d18f84ruj5057" path="res://ui/screen_manager/settings_screen/audio/select_audiod.gd" id="32_k3s7s"]
-[ext_resource type="Script" uid="uid://bx0armu50awrf" path="res://ui/screen_manager/warning_screen/warning_screen.gd" id="40_wsdjf"]
-[ext_resource type="AudioStream" uid="uid://cmr5pcu7wv31v" path="res://ui/sfx/submenu_close.wav" id="41_1bnq8"]
-[ext_resource type="Script" uid="uid://d251mwxo8lxbl" path="res://ui/screen_manager/options_screen/options_screen.gd" id="41_enp1b"]
-[ext_resource type="AudioStream" uid="uid://pbdklvoviaxp" path="res://ui/sfx/warning.wav" id="41_ywjj4"]
-[ext_resource type="AudioStream" uid="uid://bsui5m0n5a7a7" path="res://ui/sfx/submenu_open.wav" id="42_svai8"]
-[ext_resource type="Texture2D" uid="uid://cf78bvynxea03" path="res://ui/input_icons/nintendo_switch/switch_button_l.svg" id="45_63yew"]
-[ext_resource type="Texture2D" uid="uid://deall6ilfyenc" path="res://ui/screen_manager/options_screen/textures/discord_logo.png" id="45_cenwj"]
-[ext_resource type="Texture2D" uid="uid://y343nq5v4ud5" path="res://ui/input_icons/nintendo_switch/switch_button_b.svg" id="46_6uhvl"]
-[ext_resource type="Texture2D" uid="uid://dkjx263nlcra" path="res://ui/input_icons/nintendo_switch/controller_switch_motion.svg" id="46_7gkal"]
-[ext_resource type="Texture2D" uid="uid://356g6gk2u4lq" path="res://ui/input_icons/nintendo_switch/switch_button_r.svg" id="46_eppju"]
-[ext_resource type="Script" uid="uid://djnqumhmtso2y" path="res://ui/buttons/option_bool.gd" id="46_q1vx3"]
-[ext_resource type="Script" uid="uid://uwn7phrht0a8" path="res://ui/buttons/option_enum.gd" id="46_svocp"]
-[ext_resource type="Texture2D" uid="uid://c5dbwjmvnh6p1" path="res://ui/input_icons/nintendo_switch/switch_stick_l.svg" id="47_adiwi"]
-[ext_resource type="Texture2D" uid="uid://bhvukbqm4v5f3" path="res://ui/input_icons/nintendo_switch/controller_switch_rumble.svg" id="47_yaddp"]
-[ext_resource type="Texture2D" uid="uid://c8t2udtmy6oac" path="res://ui/input_icons/nintendo_switch/switch_button_x.svg" id="48_in08l"]
-[ext_resource type="Theme" uid="uid://blj83dty2taxs" path="res://ui/scrollbar.tres" id="50_m3cpd"]
-[ext_resource type="PackedScene" uid="uid://b08q042unmcxf" path="res://ui/buttons/ui_selector.tscn" id="50_svocp"]
-[ext_resource type="PackedScene" uid="uid://puhluie3m3cp" path="res://ui/screen_manager/options_screen/volume_setting.tscn" id="52_n7xk5"]
+[ext_resource type="Script" uid="uid://brof7wb075ont" path="res://ui/ui.gd" id="1_75fsn"]
+[ext_resource type="AudioStream" uid="uid://b58aveo75onan" path="res://ui/sfx/pause.wav" id="2_1xskv"]
+[ext_resource type="AudioStream" uid="uid://cmr5pcu7wv31v" path="res://ui/sfx/submenu_close.wav" id="3_cb22p"]
+[ext_resource type="PackedScene" uid="uid://b41sl5v4p501f" path="res://ui/notification/notification.tscn" id="4_oqxfb"]
+[ext_resource type="Shader" uid="uid://cgcjxa2rl4edn" path="res://util/shaders/smw_mozaic.gdshader" id="5_yrl65"]
+[ext_resource type="PackedScene" uid="uid://blb650dgb5q1i" path="res://ui/player_hud/coin_counter.tscn" id="6_6apma"]
+[ext_resource type="FontFile" uid="uid://e821cxxeybxh" path="res://ui/fonts/mario_sunshine.ttf" id="7_ctsqr"]
+[ext_resource type="PackedScene" uid="uid://bgl7f8thu2y4" path="res://ui/player_hud/life_meter.tscn" id="7_m3cpd"]
+[ext_resource type="Script" uid="uid://dgat047njqsvp" path="res://ui/debug_label.gd" id="8_2m7jo"]
+[ext_resource type="Script" uid="uid://dg4a6r83hm158" path="res://ui/commit_label.gd" id="9_bh67b"]
+[ext_resource type="Texture2D" uid="uid://rqmk8y0h1450" path="res://ui/input_display/input_display_ico1.png" id="10_sk3no"]
+[ext_resource type="Texture2D" uid="uid://7p0auiyqcgk3" path="res://ui/input_display/input_display_ico6.png" id="11_4acw6"]
+[ext_resource type="Texture2D" uid="uid://dir44lhfrdcxu" path="res://ui/input_display/input_display_ico7.png" id="12_a0svk"]
+[ext_resource type="Texture2D" uid="uid://15yce5ngma24" path="res://ui/input_display/input_display_ico8.png" id="13_488mo"]
+[ext_resource type="Texture2D" uid="uid://jbm5npuy3yok" path="res://ui/input_display/input_display_ico2.png" id="14_lye28"]
+[ext_resource type="Texture2D" uid="uid://cnypyennkpxux" path="res://ui/input_display/input_display_ico5.png" id="15_ydnvp"]
+[ext_resource type="Texture2D" uid="uid://bkvicbrah3ltp" path="res://ui/input_display/input_display_ico4.png" id="16_t5krv"]
+[ext_resource type="Texture2D" uid="uid://bwh5yg024sqag" path="res://ui/input_display/input_display_ico3.png" id="17_mof11"]
+[ext_resource type="Script" uid="uid://cnhr5du0ap6ki" path="res://ui/screen_manager/screen_manager.gd" id="18_ro5vq"]
+[ext_resource type="Shader" uid="uid://c8kax0imw2g1t" path="res://util/shaders/map_gradient.gdshader" id="19_uav4i"]
+[ext_resource type="Texture2D" uid="uid://bbu4m0gd3b85w" path="res://ui/screen_manager/pause_screen/gradient_maps/synth_gradient.tres" id="20_jdeth"]
+[ext_resource type="Script" uid="uid://trfav0yjiqxm" path="res://ui/screen_manager/pause_screen/pause_screen.gd" id="21_fwnms"]
+[ext_resource type="Shader" uid="uid://byfa3t51pf655" path="res://ui/screen_manager/pause_screen/pause_panel.tres" id="22_4tc6v"]
+[ext_resource type="Texture2D" uid="uid://knkg28xlj4h8" path="res://ui/screen_manager/pause_screen/textures/spike.png" id="23_3jqvb"]
+[ext_resource type="Texture2D" uid="uid://qslbjwvvnw28" path="res://ui/pattern_solar.png" id="24_3rbo7"]
+[ext_resource type="PackedScene" uid="uid://bb6wf0meej6ox" path="res://ui/buttons/ui_button.tscn" id="25_dlkvg"]
+[ext_resource type="Texture2D" uid="uid://dej5d4fiilqup" path="res://ui/screen_manager/pause_screen/textures/resume.png" id="26_ky4o2"]
+[ext_resource type="AudioStream" uid="uid://b3ltff8ees3d4" path="res://ui/sfx/decide.wav" id="27_fmjlm"]
+[ext_resource type="Texture2D" uid="uid://b0l7xch1esfvg" path="res://ui/screen_manager/pause_screen/textures/retry.png" id="28_if46j"]
+[ext_resource type="Texture2D" uid="uid://c8kahcqao7t20" path="res://ui/screen_manager/pause_screen/textures/reset.png" id="29_51b3m"]
+[ext_resource type="Texture2D" uid="uid://c4gag5pm74v3l" path="res://ui/screen_manager/pause_screen/textures/action_guide.png" id="30_pgukk"]
+[ext_resource type="Texture2D" uid="uid://bw18e3jvu7l70" path="res://ui/screen_manager/pause_screen/textures/options.png" id="31_k6s1b"]
+[ext_resource type="Texture2D" uid="uid://rps7nhfiherr" path="res://ui/screen_manager/pause_screen/textures/quit.png" id="32_hgt1t"]
+[ext_resource type="Texture2D" uid="uid://b203e7fny4xhg" path="res://ui/screen_manager/pause_screen/textures/coin_bag.png" id="33_f4mau"]
+[ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="34_jyo83"]
+[ext_resource type="Script" uid="uid://3awpmtapljco" path="res://ui/screen_manager/pause_screen/level_info.gd" id="35_knc46"]
+[ext_resource type="FontFile" uid="uid://dwjboqsj8b8xd" path="res://ui/fonts/super_mario.ttf" id="36_i8qiy"]
+[ext_resource type="Texture2D" uid="uid://dictabwcprtsa" path="res://ui/screen_manager/pause_screen/textures/hover_icon.png" id="37_08cx6"]
+[ext_resource type="Texture2D" uid="uid://c84gehfwldto" path="res://ui/screen_manager/pause_screen/textures/rocket_icon.png" id="38_sw3u4"]
+[ext_resource type="Texture2D" uid="uid://cc5yq8axs2y02" path="res://ui/screen_manager/pause_screen/textures/turbo_icon.png" id="39_8iv75"]
+[ext_resource type="Script" uid="uid://bx0armu50awrf" path="res://ui/screen_manager/warning_screen/warning_screen.gd" id="40_cynfm"]
+[ext_resource type="AudioStream" uid="uid://pbdklvoviaxp" path="res://ui/sfx/warning.wav" id="41_r4q0q"]
+[ext_resource type="Script" uid="uid://d251mwxo8lxbl" path="res://ui/screen_manager/options_screen/options_screen.gd" id="42_emp4r"]
+[ext_resource type="AudioStream" uid="uid://bsui5m0n5a7a7" path="res://ui/sfx/submenu_open.wav" id="43_votwh"]
+[ext_resource type="Texture2D" uid="uid://cf78bvynxea03" path="res://ui/input_icons/nintendo_switch/switch_button_l.svg" id="44_axwwv"]
+[ext_resource type="Script" uid="uid://uwn7phrht0a8" path="res://ui/buttons/option_enum.gd" id="45_23m8v"]
+[ext_resource type="Texture2D" uid="uid://deall6ilfyenc" path="res://ui/screen_manager/options_screen/textures/discord_logo.png" id="46_afcad"]
+[ext_resource type="Script" uid="uid://djnqumhmtso2y" path="res://ui/buttons/option_bool.gd" id="47_t7euy"]
+[ext_resource type="Texture2D" uid="uid://dkjx263nlcra" path="res://ui/input_icons/nintendo_switch/controller_switch_motion.svg" id="48_1v6c2"]
+[ext_resource type="Texture2D" uid="uid://bhvukbqm4v5f3" path="res://ui/input_icons/nintendo_switch/controller_switch_rumble.svg" id="49_lol4u"]
+[ext_resource type="Theme" uid="uid://blj83dty2taxs" path="res://ui/scrollbar.tres" id="50_5i7o0"]
+[ext_resource type="Script" uid="uid://d18f84ruj5057" path="res://ui/screen_manager/settings_screen/audio/select_audiod.gd" id="51_oqi1b"]
+[ext_resource type="PackedScene" uid="uid://b08q042unmcxf" path="res://ui/buttons/ui_selector.tscn" id="52_sk6td"]
+[ext_resource type="PackedScene" uid="uid://puhluie3m3cp" path="res://ui/screen_manager/options_screen/volume_setting.tscn" id="53_i1icy"]
+[ext_resource type="Texture2D" uid="uid://356g6gk2u4lq" path="res://ui/input_icons/nintendo_switch/switch_button_r.svg" id="54_lxqsa"]
+[ext_resource type="Texture2D" uid="uid://y343nq5v4ud5" path="res://ui/input_icons/nintendo_switch/switch_button_b.svg" id="55_qillv"]
+[ext_resource type="Texture2D" uid="uid://c5dbwjmvnh6p1" path="res://ui/input_icons/nintendo_switch/switch_stick_l.svg" id="56_7h42w"]
+[ext_resource type="Texture2D" uid="uid://c8t2udtmy6oac" path="res://ui/input_icons/nintendo_switch/switch_button_x.svg" id="57_h5v5y"]
+[ext_resource type="PackedScene" uid="uid://cxqj15hquutxq" path="res://ui/screen_manager/settings_screen/controls/tab.tscn" id="58_fvhia"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j6vdi"]
-shader = ExtResource("5_8wim4")
+shader = ExtResource("5_yrl65")
 shader_parameter/cell_size = 1
 
 [sub_resource type="Animation" id="Animation_lfi41"]
@@ -124,9 +125,14 @@ _data = {
 &"camera_focus": SubResource("Animation_mnpvh")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_01jq4"]
-font = ExtResource("4_ko57l")
-font_size = 28
+[sub_resource type="Gradient" id="Gradient_6apma"]
+offsets = PackedFloat32Array(0, 0.734884)
+colors = PackedColorArray(0.862745, 0.137255, 0.12549, 1, 0.676072, 0.0588219, 0.44751, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m3cpd"]
+gradient = SubResource("Gradient_6apma")
+fill_from = Vector2(0, 0.504274)
+fill_to = Vector2(0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_pm0uo"]
 font_size = 10
@@ -270,21 +276,21 @@ _data = {
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8xxao"]
-shader = ExtResource("12_wqetc")
+shader = ExtResource("19_uav4i")
 shader_parameter/blur_lod = 1.5
 shader_parameter/mix_amount = 1.0
-shader_parameter/gradient = ExtResource("14_qpmjx")
+shader_parameter/gradient = ExtResource("20_jdeth")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_awrho"]
-shader = ExtResource("15_w8105")
+shader = ExtResource("22_4tc6v")
 shader_parameter/background_scroll = Vector2(0.05, 0.05)
 shader_parameter/modulate_alpha = 1.0
 shader_parameter/spike_scroll_speed = 0.05
 shader_parameter/spike_dimensions = Vector2(16, 30)
-shader_parameter/spike_texture = ExtResource("17_au2sq")
+shader_parameter/spike_texture = ExtResource("23_3jqvb")
 
 [sub_resource type="LabelSettings" id="LabelSettings_20l3y"]
-font = ExtResource("4_ko57l")
+font = ExtResource("7_ctsqr")
 font_size = 45
 outline_size = 15
 outline_color = Color(0, 0, 0, 1)
@@ -293,7 +299,7 @@ shadow_color = Color(1, 1, 1, 1)
 shadow_offset = Vector2(0, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_05wpc"]
-font = ExtResource("15_y78en")
+font = ExtResource("34_jyo83")
 font_size = 22
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52uul"]
@@ -305,7 +311,7 @@ corner_radius_bottom_left = 7
 corner_detail = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_b067h"]
-font = ExtResource("14_n0vgh")
+font = ExtResource("36_i8qiy")
 font_size = 25
 shadow_size = 10
 shadow_color = Color(0, 0, 0, 1)
@@ -323,7 +329,7 @@ corner_detail = 1
 anti_aliasing = false
 
 [sub_resource type="LabelSettings" id="LabelSettings_p5bk4"]
-font = ExtResource("15_y78en")
+font = ExtResource("34_jyo83")
 font_size = 15
 shadow_size = 8
 shadow_color = Color(0, 0, 0, 1)
@@ -341,31 +347,31 @@ corner_detail = 1
 anti_aliasing = false
 
 [sub_resource type="LabelSettings" id="LabelSettings_70wox"]
-font = ExtResource("15_y78en")
+font = ExtResource("34_jyo83")
 font_size = 13
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_scrfv"]
-shader = ExtResource("15_w8105")
+shader = ExtResource("22_4tc6v")
 shader_parameter/background_scroll = Vector2(0.05, 0.05)
 shader_parameter/modulate_alpha = 1.0
 shader_parameter/spike_scroll_speed = 0.05
 shader_parameter/spike_dimensions = Vector2(0, 0)
-shader_parameter/spike_texture = ExtResource("17_au2sq")
+shader_parameter/spike_texture = ExtResource("23_3jqvb")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ev48a"]
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_46i77"]
-font = ExtResource("4_ko57l")
+font = ExtResource("7_ctsqr")
 font_size = 20
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_avox5"]
-shader = ExtResource("15_w8105")
+shader = ExtResource("22_4tc6v")
 shader_parameter/background_scroll = Vector2(0.05, 0.05)
 shader_parameter/modulate_alpha = 1.0
 shader_parameter/spike_scroll_speed = 0.05
 shader_parameter/spike_dimensions = Vector2(0, 0)
-shader_parameter/spike_texture = ExtResource("17_au2sq")
+shader_parameter/spike_texture = ExtResource("23_3jqvb")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nte8f"]
 load_path = "res://.godot/imported/pattern_solar.png-7851dba46d4d0fd594dcc5410d56f26b.ctex"
@@ -383,7 +389,7 @@ border_color = Color(1, 1, 1, 1)
 corner_detail = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_xphw0"]
-font = ExtResource("15_y78en")
+font = ExtResource("34_jyo83")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvot7"]
 bg_color = Color(1, 1, 1, 1)
@@ -401,13 +407,13 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r0xoq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bsikt"]
-font = ExtResource("14_n0vgh")
+font = ExtResource("36_i8qiy")
 font_size = 50
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_2gqs2"]
-font = ExtResource("15_y78en")
+font = ExtResource("34_jyo83")
 font_size = 20
 
 [sub_resource type="InputEventKey" id="InputEventKey_hwwni"]
@@ -422,13 +428,14 @@ events = [SubResource("InputEventKey_hwwni"), SubResource("InputEventJoypadButto
 
 [node name="UI" type="CanvasLayer" node_paths=PackedStringArray("screen_manager", "color_blur", "zoom_blur_player", "notif_list", "debug_label", "commit_labl", "input_display")]
 process_mode = 3
-script = ExtResource("1_pakjx")
+layer = 0
+script = ExtResource("1_75fsn")
 screen_manager = NodePath("ScreenManager")
 color_blur = NodePath("ScreenManager/ColorBlurEffect")
-game_pause_sfx = ExtResource("16_jehsk")
-game_unpause_sfx = ExtResource("41_1bnq8")
+game_pause_sfx = ExtResource("2_1xskv")
+game_unpause_sfx = ExtResource("3_cb22p")
 zoom_blur_player = NodePath("CameraZoomMosaic/AnimationPlayer")
-notif_scene = ExtResource("2_ufvuv")
+notif_scene = ExtResource("4_oqxfb")
 notif_list = NodePath("Notifications")
 debug_label = NodePath("DebugLabel")
 commit_labl = NodePath("CommitLabel")
@@ -452,34 +459,19 @@ libraries = {
 &"": SubResource("AnimationLibrary_01nno")
 }
 
-[node name="CoinCounter" type="HBoxContainer" parent="."]
-offset_left = 1.0
-offset_top = 5.0
-offset_right = 103.0
-offset_bottom = 30.0
-theme_override_constants/separation = 0
+[node name="CoinCounter" parent="." instance=ExtResource("6_6apma")]
 
-[node name="Control" type="Control" parent="CoinCounter"]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="CoinCounter/Control"]
-layout_mode = 1
+[node name="RedCoinCounter" parent="." instance=ExtResource("6_6apma")]
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = 4.0
-offset_bottom = -4.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("30_7ngu7")
-expand_mode = 3
+offset_top = 50.0
 
-[node name="Label" type="Label" parent="CoinCounter"]
-layout_mode = 2
-text = "x999"
-label_settings = SubResource("LabelSettings_01jq4")
+[node name="TextureRect" parent="RedCoinCounter/CoinIcon/Gradient" index="0"]
+texture = SubResource("GradientTexture2D_m3cpd")
+
+[node name="Count" parent="RedCoinCounter" index="1"]
+text = "0/8"
+
+[node name="LifeMeter" parent="." instance=ExtResource("7_m3cpd")]
 
 [node name="DebugLabel" type="Label" parent="."]
 offset_right = 86.0
@@ -499,7 +491,7 @@ text = "		FPS = %s \\n
 		facing = %d
 		state = %s"
 label_settings = SubResource("LabelSettings_pm0uo")
-script = ExtResource("2_suudb")
+script = ExtResource("8_2m7jo")
 
 [node name="CommitLabel" type="Label" parent="."]
 anchors_preset = 3
@@ -520,7 +512,7 @@ label_settings = SubResource("LabelSettings_j1nag")
 horizontal_alignment = 2
 vertical_alignment = 1
 tab_stops = PackedFloat32Array(20)
-script = ExtResource("9_bvd2d")
+script = ExtResource("9_bh67b")
 
 [node name="InputDisplay" type="Control" parent="."]
 layout_mode = 3
@@ -548,7 +540,7 @@ unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 2
 size_flags_vertical = 8
-texture = ExtResource("3_4oo64")
+texture = ExtResource("10_sk3no")
 stretch_mode = 4
 
 [node name="ActionButtons" type="HBoxContainer" parent="InputDisplay/HBoxContainer"]
@@ -560,19 +552,19 @@ theme_override_constants/separation = 1
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 2
-texture = ExtResource("8_nyjo7")
+texture = ExtResource("11_4acw6")
 
 [node name="X" type="TextureRect" parent="InputDisplay/HBoxContainer/ActionButtons"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 2
-texture = ExtResource("9_smbrs")
+texture = ExtResource("12_a0svk")
 
 [node name="C" type="TextureRect" parent="InputDisplay/HBoxContainer/ActionButtons"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 2
-texture = ExtResource("10_5r8on")
+texture = ExtResource("13_488mo")
 
 [node name="GridContainer" type="GridContainer" parent="InputDisplay/HBoxContainer"]
 layout_mode = 2
@@ -587,7 +579,7 @@ layout_mode = 2
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 2
-texture = ExtResource("4_8x05r")
+texture = ExtResource("14_lye28")
 
 [node name="Control2" type="Control" parent="InputDisplay/HBoxContainer/GridContainer"]
 layout_mode = 2
@@ -596,19 +588,19 @@ layout_mode = 2
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 2
-texture = ExtResource("7_yer77")
+texture = ExtResource("15_ydnvp")
 
 [node name="Down" type="TextureRect" parent="InputDisplay/HBoxContainer/GridContainer"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 2
-texture = ExtResource("6_7ipv2")
+texture = ExtResource("16_t5krv")
 
 [node name="Right" type="TextureRect" parent="InputDisplay/HBoxContainer/GridContainer"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.498039)
 layout_mode = 2
-texture = ExtResource("5_cgoe6")
+texture = ExtResource("17_mof11")
 
 [node name="ScreenManager" type="Control" parent="." node_paths=PackedStringArray("color_blur", "anime_player")]
 layout_mode = 3
@@ -619,7 +611,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("12_l4gs6")
+script = ExtResource("18_ro5vq")
 color_blur = NodePath("ColorBlurEffect")
 anime_player = NodePath("AnimationPlayer")
 screens = Dictionary[StringName, NodePath]({
@@ -649,6 +641,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="PauseScreen" type="HBoxContainer" parent="ScreenManager" node_paths=PackedStringArray("focus_grabber")]
 visible = false
@@ -659,7 +652,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 832
-script = ExtResource("17_372ku")
+script = ExtResource("21_fwnms")
 open_anim = &"pause_peek"
 close_anim = &"BACKWARDS"
 focus_grabber = NodePath("LeftPanel/Content/MainButtons/Buttons/Resume")
@@ -669,7 +662,7 @@ material = SubResource("ShaderMaterial_awrho")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource("15_uxr3e")
+texture = ExtResource("24_3rbo7")
 stretch_mode = 1
 flip_h = true
 
@@ -709,12 +702,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 20
 
-[node name="Resume" parent="ScreenManager/PauseScreen/LeftPanel/Content/MainButtons/Buttons" instance=ExtResource("23_mtuia")]
+[node name="Resume" parent="ScreenManager/PauseScreen/LeftPanel/Content/MainButtons/Buttons" instance=ExtResource("25_dlkvg")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 27
 text = "RESUME"
-icon = ExtResource("17_is4aa")
-press_sfx = ExtResource("28_n7xk5")
+icon = ExtResource("26_ky4o2")
+press_sfx = ExtResource("27_fmjlm")
 
 [node name="LevelStateChoices" type="VBoxContainer" parent="ScreenManager/PauseScreen/LeftPanel/Content/MainButtons/Buttons"]
 layout_mode = 2
@@ -723,17 +716,17 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.8
 theme_override_constants/separation = 13
 
-[node name="Retry" parent="ScreenManager/PauseScreen/LeftPanel/Content/MainButtons/Buttons/LevelStateChoices" instance=ExtResource("23_mtuia")]
+[node name="Retry" parent="ScreenManager/PauseScreen/LeftPanel/Content/MainButtons/Buttons/LevelStateChoices" instance=ExtResource("25_dlkvg")]
 layout_mode = 2
 size_flags_stretch_ratio = 1.0
 text = "RETRY"
-icon = ExtResource("18_xk3ue")
+icon = ExtResource("28_if46j")
 
-[node name="Reset" parent="ScreenManager/PauseScreen/LeftPanel/Content/MainButtons/Buttons/LevelStateChoices" instance=ExtResource("23_mtuia")]
+[node name="Reset" parent="ScreenManager/PauseScreen/LeftPanel/Content/MainButtons/Buttons/LevelStateChoices" instance=ExtResource("25_dlkvg")]
 layout_mode = 2
 size_flags_stretch_ratio = 1.0
 text = "RESET"
-icon = ExtResource("27_0c4e2")
+icon = ExtResource("29_51b3m")
 
 [node name="SpaceRight" type="Control" parent="ScreenManager/PauseScreen/LeftPanel/Content/MainButtons"]
 layout_mode = 2
@@ -756,25 +749,25 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
 
-[node name="ActionGuide" parent="ScreenManager/PauseScreen/LeftPanel/Content/BottomButtons" instance=ExtResource("23_mtuia")]
+[node name="ActionGuide" parent="ScreenManager/PauseScreen/LeftPanel/Content/BottomButtons" instance=ExtResource("25_dlkvg")]
 layout_mode = 2
 size_flags_stretch_ratio = 1.0
 text = ""
-icon = ExtResource("20_3u6s5")
+icon = ExtResource("30_pgukk")
 icon_alignment = 1
 
-[node name="Options" parent="ScreenManager/PauseScreen/LeftPanel/Content/BottomButtons" instance=ExtResource("23_mtuia")]
+[node name="Options" parent="ScreenManager/PauseScreen/LeftPanel/Content/BottomButtons" instance=ExtResource("25_dlkvg")]
 layout_mode = 2
 size_flags_stretch_ratio = 1.0
 text = ""
-icon = ExtResource("29_jpk5x")
+icon = ExtResource("31_k6s1b")
 icon_alignment = 1
 
-[node name="Quit" parent="ScreenManager/PauseScreen/LeftPanel/Content/BottomButtons" instance=ExtResource("23_mtuia")]
+[node name="Quit" parent="ScreenManager/PauseScreen/LeftPanel/Content/BottomButtons" instance=ExtResource("25_dlkvg")]
 layout_mode = 2
 size_flags_stretch_ratio = 1.0
 text = ""
-icon = ExtResource("22_uf17g")
+icon = ExtResource("32_hgt1t")
 icon_alignment = 1
 
 [node name="SpaceRight" type="Control" parent="ScreenManager/PauseScreen/LeftPanel/Content/BottomButtons"]
@@ -793,7 +786,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="ScreenManager/PauseScreen/LeftPanel/Content/GlobalCoins"]
 layout_mode = 2
-texture = ExtResource("31_s5ogs")
+texture = ExtResource("33_f4mau")
 expand_mode = 3
 stretch_mode = 5
 
@@ -853,7 +846,7 @@ grow_vertical = 2
 
 [node name="LevelInfo" type="VBoxContainer" parent="ScreenManager/PauseScreen/Info/Contents/ShineInfo/VBoxContainer/InfoPanel/TextContainer" node_paths=PackedStringArray("user_interface", "level_name", "mission_name", "mission_info")]
 layout_mode = 2
-script = ExtResource("15_ihj7k")
+script = ExtResource("35_knc46")
 user_interface = NodePath("../../../../../../../../..")
 level_name = NodePath("LevelName")
 mission_name = NodePath("MissionSelector/MissionName")
@@ -944,7 +937,7 @@ size_flags_stretch_ratio = 0.8
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource("19_wa1aj")
+texture = ExtResource("37_08cx6")
 expand_mode = 1
 stretch_mode = 5
 
@@ -953,7 +946,7 @@ modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource("21_xk5tc")
+texture = ExtResource("38_sw3u4")
 expand_mode = 1
 stretch_mode = 5
 
@@ -963,7 +956,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.7
-texture = ExtResource("20_yd3bl")
+texture = ExtResource("39_8iv75")
 expand_mode = 1
 stretch_mode = 5
 
@@ -984,13 +977,13 @@ offset_top = 360.0
 offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_uxr3e")
+texture = ExtResource("24_3rbo7")
 stretch_mode = 1
 flip_h = true
-script = ExtResource("40_wsdjf")
+script = ExtResource("40_cynfm")
 warning_text = NodePath("Spacing/Main/WarningText")
-open_sfx = ExtResource("41_ywjj4")
-close_sfx = ExtResource("41_1bnq8")
+open_sfx = ExtResource("41_r4q0q")
+close_sfx = ExtResource("3_cb22p")
 open_anim = &"warning_peek"
 close_anim = &"BACKWARDS"
 focus_grabber = NodePath("Spacing/Main/Buttons/Cancel")
@@ -1019,7 +1012,7 @@ size_flags_vertical = 3
 [node name="WarningText" type="RichTextLabel" parent="ScreenManager/WarningScreen/Spacing/Main"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/normal_font = ExtResource("15_y78en")
+theme_override_fonts/normal_font = ExtResource("34_jyo83")
 theme_override_font_sizes/normal_font_size = 22
 bbcode_enabled = true
 text = "[center]This is a placeholder text!
@@ -1035,11 +1028,11 @@ size_flags_vertical = 3
 layout_mode = 2
 theme_override_constants/separation = 60
 
-[node name="Cancel" parent="ScreenManager/WarningScreen/Spacing/Main/Buttons" instance=ExtResource("23_mtuia")]
+[node name="Cancel" parent="ScreenManager/WarningScreen/Spacing/Main/Buttons" instance=ExtResource("25_dlkvg")]
 layout_mode = 2
 text = "CANCEL"
 
-[node name="Confirm" parent="ScreenManager/WarningScreen/Spacing/Main/Buttons" instance=ExtResource("23_mtuia")]
+[node name="Confirm" parent="ScreenManager/WarningScreen/Spacing/Main/Buttons" instance=ExtResource("25_dlkvg")]
 layout_mode = 2
 text = "CONFIRM"
 
@@ -1064,10 +1057,10 @@ offset_bottom = -360.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
-script = ExtResource("41_enp1b")
+script = ExtResource("42_emp4r")
 fps_cap_button = NodePath("TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/FPS/SelectorButton")
-open_sfx = ExtResource("42_svai8")
-close_sfx = ExtResource("41_1bnq8")
+open_sfx = ExtResource("43_votwh")
+close_sfx = ExtResource("3_cb22p")
 open_anim = &"options_peek"
 close_anim = &"BACKWARDS"
 focus_grabber = NodePath("TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/VSync/ToggleButton")
@@ -1119,9 +1112,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.06
 focus_mode = 0
-theme_override_fonts/font = ExtResource("15_y78en")
+theme_override_fonts/font = ExtResource("34_jyo83")
 theme_override_font_sizes/font_size = 0
-icon = ExtResource("45_63yew")
+icon = ExtResource("44_axwwv")
 flat = true
 icon_alignment = 2
 vertical_icon_alignment = 0
@@ -1132,7 +1125,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_colors/font_unselected_color = Color(0.494118, 0.494118, 0.494118, 1)
-theme_override_fonts/font = ExtResource("15_y78en")
+theme_override_fonts/font = ExtResource("34_jyo83")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/panel = SubResource("StyleBoxEmpty_q1vx3")
 theme_override_styles/tab_selected = SubResource("StyleBoxFlat_m3cpd")
@@ -1181,10 +1174,10 @@ vertical_alignment = 1
 [node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/VSync"]
 layout_mode = 2
 
-[node name="ToggleButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/VSync" instance=ExtResource("23_mtuia")]
+[node name="ToggleButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/VSync" instance=ExtResource("25_dlkvg")]
 layout_mode = 2
 text = "OFF"
-script = ExtResource("46_svocp")
+script = ExtResource("45_23m8v")
 default_value = null
 options = Array[StringName]([&"OFF", &"ON"])
 setting_section = "General"
@@ -1205,10 +1198,10 @@ vertical_alignment = 1
 [node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/FPS"]
 layout_mode = 2
 
-[node name="SelectorButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/FPS" instance=ExtResource("23_mtuia")]
+[node name="SelectorButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/FPS" instance=ExtResource("25_dlkvg")]
 layout_mode = 2
 text = "60 FPS"
-script = ExtResource("46_svocp")
+script = ExtResource("45_23m8v")
 default_value = 2
 options = Array[StringName]([&"OFF", &"30 FPS", &"60 FPS"])
 setting_section = "General"
@@ -1229,10 +1222,10 @@ vertical_alignment = 1
 [node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/Quality"]
 layout_mode = 2
 
-[node name="SelectorButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/Quality" instance=ExtResource("23_mtuia")]
+[node name="SelectorButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/TopButtons/Quality" instance=ExtResource("25_dlkvg")]
 layout_mode = 2
 text = "HIGH"
-script = ExtResource("46_svocp")
+script = ExtResource("45_23m8v")
 default_value = null
 options = Array[StringName]([&"HIGH", &"LOW", &"MEDIUM"])
 setting_section = "General"
@@ -1254,7 +1247,7 @@ alignment = 1
 
 [node name="Icon" type="TextureRect" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons/Discord/Header"]
 layout_mode = 2
-texture = ExtResource("45_cenwj")
+texture = ExtResource("46_afcad")
 expand_mode = 2
 stretch_mode = 5
 
@@ -1268,10 +1261,10 @@ vertical_alignment = 1
 [node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons/Discord"]
 layout_mode = 2
 
-[node name="ToggleButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons/Discord" instance=ExtResource("23_mtuia")]
+[node name="ToggleButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons/Discord" instance=ExtResource("25_dlkvg")]
 layout_mode = 2
 text = "ON"
-script = ExtResource("46_q1vx3")
+script = ExtResource("47_t7euy")
 default_value = true
 setting_section = "General"
 setting_key = "rich_presence"
@@ -1291,10 +1284,10 @@ vertical_alignment = 1
 [node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons/Window"]
 layout_mode = 2
 
-[node name="SelectorButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons/Window" instance=ExtResource("23_mtuia")]
+[node name="SelectorButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/MiddleButtons/Window" instance=ExtResource("25_dlkvg")]
 layout_mode = 2
 text = "x1 SCALE"
-script = ExtResource("46_svocp")
+script = ExtResource("45_23m8v")
 default_value = null
 options = Array[StringName]([&"x1 SCALE", &"x2 SCALE", &"x3 SCALE", &"FULLSCREEN"])
 setting_section = "General"
@@ -1316,7 +1309,7 @@ alignment = 1
 
 [node name="Icon" type="TextureRect" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/BottomButtons/MotionToggle/Header"]
 layout_mode = 2
-texture = ExtResource("46_7gkal")
+texture = ExtResource("48_1v6c2")
 expand_mode = 3
 stretch_mode = 5
 
@@ -1330,10 +1323,10 @@ vertical_alignment = 1
 [node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/BottomButtons/MotionToggle"]
 layout_mode = 2
 
-[node name="ToggleButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/BottomButtons/MotionToggle" instance=ExtResource("23_mtuia")]
+[node name="ToggleButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/BottomButtons/MotionToggle" instance=ExtResource("25_dlkvg")]
 layout_mode = 2
 text = "OFF"
-script = ExtResource("46_q1vx3")
+script = ExtResource("47_t7euy")
 default_value = null
 setting_section = "General"
 setting_key = "motion_controls"
@@ -1350,7 +1343,7 @@ alignment = 1
 
 [node name="Icon" type="TextureRect" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/BottomButtons/RumbleStrength/Header"]
 layout_mode = 2
-texture = ExtResource("47_yaddp")
+texture = ExtResource("49_lol4u")
 expand_mode = 3
 stretch_mode = 5
 
@@ -1364,10 +1357,10 @@ vertical_alignment = 1
 [node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/BottomButtons/RumbleStrength"]
 layout_mode = 2
 
-[node name="SelectorButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/BottomButtons/RumbleStrength" instance=ExtResource("23_mtuia")]
+[node name="SelectorButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/General/ScrollContainer/Content/BottomButtons/RumbleStrength" instance=ExtResource("25_dlkvg")]
 layout_mode = 2
 text = "HIGH"
-script = ExtResource("46_svocp")
+script = ExtResource("45_23m8v")
 default_value = null
 options = Array[StringName]([&"HIGH", &"LOW", &"MEDIUM"])
 setting_section = "General"
@@ -1405,15 +1398,15 @@ label_settings = SubResource("LabelSettings_xphw0")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/ScrollContainer/Control/CategorySelector" instance=ExtResource("23_mtuia")]
+[node name="Player" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/ScrollContainer/Control/CategorySelector" instance=ExtResource("25_dlkvg")]
 layout_mode = 2
 text = "PLAYER"
 
-[node name="Menu" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/ScrollContainer/Control/CategorySelector" instance=ExtResource("23_mtuia")]
+[node name="Menu" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/ScrollContainer/Control/CategorySelector" instance=ExtResource("25_dlkvg")]
 layout_mode = 2
 text = "MENU"
 
-[node name="Hotkey" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/ScrollContainer/Control/CategorySelector" instance=ExtResource("23_mtuia")]
+[node name="Hotkey" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/ScrollContainer/Control/CategorySelector" instance=ExtResource("25_dlkvg")]
 layout_mode = 2
 text = "HOTKEY"
 
@@ -1433,7 +1426,7 @@ label_settings = SubResource("LabelSettings_xphw0")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SelectorButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/ScrollContainer/Control/Player/PlayerSelector" instance=ExtResource("23_mtuia")]
+[node name="SelectorButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/ScrollContainer/Control/Player/PlayerSelector" instance=ExtResource("25_dlkvg")]
 layout_mode = 2
 text = "PLAYER 1"
 
@@ -1451,11 +1444,11 @@ label_settings = SubResource("LabelSettings_xphw0")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Keyboard" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/ScrollContainer/Control/Player/InputSelector" instance=ExtResource("23_mtuia")]
+[node name="Keyboard" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/ScrollContainer/Control/Player/InputSelector" instance=ExtResource("25_dlkvg")]
 layout_mode = 2
 text = "KEYBOARD"
 
-[node name="Controller" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/ScrollContainer/Control/Player/InputSelector" instance=ExtResource("23_mtuia")]
+[node name="Controller" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/ScrollContainer/Control/Player/InputSelector" instance=ExtResource("25_dlkvg")]
 layout_mode = 2
 text = "CONTROLLER"
 
@@ -1482,7 +1475,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
-theme = ExtResource("50_m3cpd")
+theme = ExtResource("50_5i7o0")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_n7xk5")
 follow_focus = true
 horizontal_scroll_mode = 0
@@ -1527,11 +1520,11 @@ theme_override_constants/separation = 15
 [node name="AudioDevice" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice/HBoxContainer" node_paths=PackedStringArray("selector", "speaker_label")]
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("32_k3s7s")
+script = ExtResource("51_oqi1b")
 selector = NodePath("PresetSelector")
 speaker_label = NodePath("../../SpeakerMode")
 
-[node name="PresetSelector" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice/HBoxContainer/AudioDevice" instance=ExtResource("50_svocp")]
+[node name="PresetSelector" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice/HBoxContainer/AudioDevice" instance=ExtResource("52_sk6td")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1541,7 +1534,7 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RefreshButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice/HBoxContainer" instance=ExtResource("23_mtuia")]
+[node name="RefreshButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice/HBoxContainer" instance=ExtResource("25_dlkvg")]
 layout_mode = 2
 size_flags_stretch_ratio = 0.4
 text = "REFRESH"
@@ -1552,23 +1545,23 @@ layout_mode = 2
 
 [node name="SpeakerMode" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("15_y78en")
+theme_override_fonts/font = ExtResource("34_jyo83")
 theme_override_font_sizes/font_size = 15
 text = "Speaker Mode:"
 horizontal_alignment = 1
 
-[node name="MasterVolume" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content" instance=ExtResource("52_n7xk5")]
+[node name="MasterVolume" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content" instance=ExtResource("53_i1icy")]
 layout_mode = 2
 
-[node name="MusicVolume2" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content" instance=ExtResource("52_n7xk5")]
+[node name="MusicVolume2" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content" instance=ExtResource("53_i1icy")]
 layout_mode = 2
 bus_name = &"Music"
 
-[node name="SFXVolume" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content" instance=ExtResource("52_n7xk5")]
+[node name="SFXVolume" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content" instance=ExtResource("53_i1icy")]
 layout_mode = 2
 bus_name = &"SFX"
 
-[node name="VoiceVolume2" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content" instance=ExtResource("52_n7xk5")]
+[node name="VoiceVolume2" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content" instance=ExtResource("53_i1icy")]
 layout_mode = 2
 bus_name = &"Voice"
 
@@ -1603,9 +1596,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.06
 focus_mode = 0
-theme_override_fonts/font = ExtResource("15_y78en")
+theme_override_fonts/font = ExtResource("34_jyo83")
 theme_override_font_sizes/font_size = 0
-icon = ExtResource("46_eppju")
+icon = ExtResource("54_lxqsa")
 flat = true
 vertical_icon_alignment = 0
 expand_icon = true
@@ -1633,11 +1626,11 @@ custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/icon_normal_color = Color(0.486275, 0, 0.4, 1)
-theme_override_fonts/font = ExtResource("15_y78en")
+theme_override_fonts/font = ExtResource("34_jyo83")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxEmpty_r0xoq")
 text = "Return"
-icon = ExtResource("46_6uhvl")
+icon = ExtResource("55_qillv")
 expand_icon = true
 
 [node name="Select" type="Button" parent="ScreenManager/OptionsScreen/Footer/Content"]
@@ -1645,11 +1638,11 @@ custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/icon_normal_color = Color(0.486275, 0, 0.4, 1)
-theme_override_fonts/font = ExtResource("15_y78en")
+theme_override_fonts/font = ExtResource("34_jyo83")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxEmpty_r0xoq")
 text = "Select"
-icon = ExtResource("47_adiwi")
+icon = ExtResource("56_7h42w")
 expand_icon = true
 
 [node name="Control" type="Control" parent="ScreenManager/OptionsScreen/Footer/Content"]
@@ -1661,11 +1654,11 @@ custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/icon_normal_color = Color(0.486275, 0, 0.4, 1)
-theme_override_fonts/font = ExtResource("15_y78en")
+theme_override_fonts/font = ExtResource("34_jyo83")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxEmpty_r0xoq")
 text = "Reset to Default"
-icon = ExtResource("48_in08l")
+icon = ExtResource("57_h5v5y")
 expand_icon = true
 
 [node name="SettingsScreen" type="Control" parent="ScreenManager"]
@@ -1729,11 +1722,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 current_tab = 0
 
-[node name="P1" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Controls/PlayerTabs" instance=ExtResource("17_7m8yr")]
+[node name="P1" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Controls/PlayerTabs" instance=ExtResource("58_fvhia")]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="P2" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Controls/PlayerTabs" instance=ExtResource("17_7m8yr")]
+[node name="P2" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Controls/PlayerTabs" instance=ExtResource("58_fvhia")]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
@@ -1806,7 +1799,7 @@ label_settings = SubResource("LabelSettings_2gqs2")
 [node name="OptionButton" type="OptionButton" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("15_y78en")
+theme_override_fonts/font = ExtResource("34_jyo83")
 theme_override_font_sizes/font_size = 16
 alignment = 1
 text_overrun_behavior = 1
@@ -1823,7 +1816,7 @@ size_flags_stretch_ratio = 0.3
 
 [node name="SpeakerMode" type="Label" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("15_y78en")
+theme_override_fonts/font = ExtResource("34_jyo83")
 theme_override_font_sizes/font_size = 15
 text = "Speaker Mode:"
 horizontal_alignment = 1
@@ -1834,19 +1827,19 @@ layout_mode = 2
 
 [node name="MasterText" type="Label" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("15_y78en")
+theme_override_fonts/font = ExtResource("34_jyo83")
 theme_override_font_sizes/font_size = 20
 text = "Master Volume"
 
 [node name="BGMText" type="Label" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("15_y78en")
+theme_override_fonts/font = ExtResource("34_jyo83")
 theme_override_font_sizes/font_size = 20
 text = "BGM Volume"
 
 [node name="SFXText" type="Label" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("15_y78en")
+theme_override_fonts/font = ExtResource("34_jyo83")
 theme_override_font_sizes/font_size = 20
 text = "SFX Volume"
 
@@ -1896,3 +1889,5 @@ clip_text = true
 [connection signal="pressed" from="ScreenManager/WarningScreen/Spacing/Main/Buttons/Confirm" to="ScreenManager/WarningScreen" method="_on_confirm_pressed"]
 [connection signal="item_selected" from="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions/OptionButton" to="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions/OptionButton" method="_on_item_selected"]
 [connection signal="pressed" from="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions/Refresh" to="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions/OptionButton" method="_on_refresh_pressed"]
+
+[editable path="RedCoinCounter"]
