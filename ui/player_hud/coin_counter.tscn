@@ -14,12 +14,12 @@ corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
 anti_aliasing = false
 
-[sub_resource type="Gradient" id="Gradient_m3cpd"]
+[sub_resource type="Gradient" id="Gradient_m4vfq"]
 offsets = PackedFloat32Array(0, 0.734884)
 colors = PackedColorArray(1, 0.784314, 0, 1, 0.984314, 0.396078, 0.0156863, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_n7xk5"]
-gradient = SubResource("Gradient_m3cpd")
+gradient = SubResource("Gradient_m4vfq")
 fill_from = Vector2(0, 0.504274)
 fill_to = Vector2(0, 1)
 
