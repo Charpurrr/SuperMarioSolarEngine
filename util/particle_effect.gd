@@ -22,13 +22,13 @@ func emit_at(node: Node, offset_overwrite := Vector2.ZERO):
 
 		var particle: CPUParticles2D = particle_scene.instantiate()
 
-		node.add_child(particle)
-
 		if offset_overwrite != Vector2.ZERO:
 			particle.position = offset_overwrite
 		else:
 			particle.position = particle_offset
 
 		particle.emitting = true
+
+		node.add_child(particle)
 
 		particle.connect(&"finished", particle.queue_free)
