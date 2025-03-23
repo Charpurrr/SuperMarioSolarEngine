@@ -464,7 +464,8 @@ libraries = {
 
 [node name="RedCoinCounter" parent="." instance=ExtResource("6_6apma")]
 anchors_preset = -1
-offset_top = 50.0
+offset_top = 45.0
+offset_bottom = 50.0
 
 [node name="TextureRect" parent="RedCoinCounter/CoinIcon/Gradient" index="0"]
 texture = SubResource("GradientTexture2D_m3cpd")

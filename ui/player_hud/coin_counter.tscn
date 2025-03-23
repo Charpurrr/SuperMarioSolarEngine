@@ -77,7 +77,7 @@ content_margin_top = 7.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_01jq4"]
 font = ExtResource("1_m4vfq")
-font_size = 26
+font_size = 20
 outline_size = 9
 outline_color = Color(0, 0, 0, 1)
 
@@ -95,6 +95,7 @@ layout_mode = 2
 anchors_preset = 0
 offset_right = 18.0
 offset_bottom = 29.0
+scale = Vector2(0.8, 0.8)
 
 [node name="Gradient" type="Button" parent="CoinIcon"]
 clip_children = 2
@@ -181,8 +182,8 @@ disabled = true
 [node name="Count" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 22.0
-offset_right = 31.0
+offset_left = 16.0
+offset_right = 39.0
 offset_bottom = 43.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_oqxfb")
 text = "000"
