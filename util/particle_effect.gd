@@ -1,3 +1,4 @@
+@tool
 class_name ParticleEffect
 extends Resource
 
@@ -6,10 +7,12 @@ extends Resource
 
 ## Position offset for this particle effect.
 @export var particle_offset := Vector2.ZERO
+
 ## Amount of frames between continious loop particles.
 @export var loop_delay: int = 0
-
 var timer: int = loop_delay
+
+@export_tool_button("Preview Particle", "Play") var action_pressed = _preview_pressed
 
 
 ## Emit the particle at a specific node.[br]
@@ -32,3 +35,11 @@ func emit_at(node: Node, offset_overwrite := Vector2.ZERO):
 		node.add_child(particle)
 
 		particle.connect(&"finished", particle.queue_free)
+
+
+func _preview_pressed():
+	if not resource_local_to_scene:
+		printerr("Cannot preview a particle if local to scene is disabled. Check the variable under Resource -> resource_local_to_scene")
+		return
+
+	emit_at(get_local_scene(), particle_offset)
