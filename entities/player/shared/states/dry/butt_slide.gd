@@ -8,6 +8,9 @@ extends PlayerState
 @export var min_speed: float = 5
 ## Maximum sliding speed (through accelerating by holding the direction you're sliding in.)
 @export var max_speed: float = 20
+## Minimum sliding speed necessary to remain in a buttslide state.
+## (In practice: how much you'll be sliding on flat ground after sliding off a slope.)
+@export var min_remain_speed: float = 0.1
 
 ## Friction applied when sliding along flat or shallow ground.
 @export var friction: float = 0.125
@@ -216,7 +219,7 @@ func _set_appropriate_anim():
 
 
 func _trans_rules():
-	if not movement.is_slide_slope() and is_equal_approx(actor.vel.x, 0):
+	if not movement.is_slide_slope() and abs(actor.vel.x) < min_remain_speed:
 		return [&"Crouch", [true, false]]
 
 	if not Input.is_action_pressed(&"down"):
