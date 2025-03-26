@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://puhluie3m3cp"]
 
-[ext_resource type="Script" uid="uid://dhqvnyonyvm3" path="res://ui/screen_manager/options_screen/volume_setting.gd" id="1_8m8no"]
+[ext_resource type="Script" path="res://ui/screen_manager/options_screen/volume_setting.gd" id="1_8m8no"]
 [ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="1_udgn8"]
 [ext_resource type="PackedScene" uid="uid://bb6wf0meej6ox" path="res://ui/buttons/ui_button.tscn" id="2_8m8no"]
 [ext_resource type="Texture2D" uid="uid://c8kahcqao7t20" path="res://ui/screen_manager/pause_screen/textures/reset.png" id="3_ht11o"]
@@ -49,6 +49,7 @@ icon = ExtResource("3_ht11o")
 icon_alignment = 1
 
 [node name="AudioSlider" parent="HBoxContainer" instance=ExtResource("4_ys8q8")]
+custom_minimum_size = Vector2(10, 27)
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("6_ht11o")

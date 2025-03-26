@@ -2,7 +2,7 @@
 class_name UISlider
 extends Control
 ## A common UI slider.[br]
-## The script is a tool script so the visuals update accordingly.
+## The script runs in the editor to update the visuals accordingly.
 
 # TODO: Add ticks, but there's a bug in Godot that prevents this.
 # ISSUE LINK: https://github.com/godotengine/godot/issues/103839
@@ -14,20 +14,24 @@ extends Control
 		if is_instance_valid(slider):
 			slider.max_value = val
 			_update_slider(value, false)
-		if is_instance_valid(progress):
-			progress.max_value = val
+		if is_instance_valid(progress_bar):
+			progress_bar.max_value = val
+
 @export var value: float = 50.0:
 	set(val):
 		value = clampf(val, 0, max_value)
-
 		if is_instance_valid(slider):
-			slider.value = val
-		if is_instance_valid(progress):
-			progress.value = val
-		if is_instance_valid(grabber_point) and grabber_point.is_inside_tree():
-			grabber_point.progress_ratio = val / max_value
+			slider.value = value
+		if is_instance_valid(progress_bar):
+			progress_bar.value = value
+		if is_instance_valid(grabber) and grabber.is_inside_tree():
+			grabber.set_anchor(SIDE_LEFT, value / max_value, true)
+			grabber.set_anchor(SIDE_RIGHT, value / max_value, true)
+		if is_instance_valid(outline) and outline.is_inside_tree():
+			outline.set_anchor(SIDE_LEFT, value / max_value, true)
+			outline.set_anchor(SIDE_RIGHT, value / max_value, true)
 
-@export var default_value: float = 50.0
+@export var default_value: float = 50
 
 @export var slider_step: float = 1.0:
 	set(val):
@@ -35,6 +39,7 @@ extends Control
 
 		if is_instance_valid(slider):
 			slider.step = val
+
 #@export var ticked: bool = false:
 	#set(val):
 		#ticked = val
@@ -44,42 +49,14 @@ extends Control
 
 @export_category("References")
 @export var slider: HSlider
-@export var grabber_path: Path2D
-@export var grabber_point: PathFollow2D
-@export var grabber_button: Button
-@export var grabber_rect: ColorRect
-@export var progress: ProgressBar
+@export var grabber: Control
+@export var outline: Control
+@export var progress_bar: ProgressBar
 @export var tick_sound: AudioStream
 
 
 func _ready() -> void:
-	_update_size()
-
-	slider.value_changed.connect(_update_slider.bind(true))
-
-	resized.connect(_update_size)
-	resized.connect(func(): _update_slider(value, false))
-
-	_set_initial_val()
-
-
-## Can get overwritten by a parent class to change which value is loaded in.
-func _set_initial_val() -> void:
-	slider.value = default_value
 	_update_slider(default_value, false)
-
-
-func _update_size() -> void:
-	progress.size.x = size.x
-	slider.size.x = size.x - 2
-
-	#_update_ticks()
-
-	grabber_path.curve.clear_points()
-	var x: float = size.x - grabber_button.size.x
-	var y: float = floor(size.y / 2)
-	grabber_path.curve.add_point(Vector2(0, y))
-	grabber_path.curve.add_point(Vector2(x, y))
 
 
 #func _update_ticks():
@@ -89,7 +66,9 @@ func _update_size() -> void:
 		#slider.tick_count = 0
 
 
-func _update_slider(new_value: float, play_sfx: bool = true) -> void:
+# This function is called when the slider is moved,
+# updating the visuals and optionally playing a sound effect.
+func _update_slider(new_value: float, play_sfx: bool) -> void:
 	value = new_value
 
 	if play_sfx:
