@@ -1,6 +1,8 @@
 class_name AudioBus
 extends RefCounted
 
+signal bus_volume_updated(new_value)
+
 var bus_name: StringName  # I.e. &"Master"
 var setting_name: String  # I.e. "master_volume"
 
@@ -24,14 +26,22 @@ func _init(new_bus_name: StringName, new_setting_name: String):
 
 	default_db = AudioServer.get_bus_volume_db(bus_index)
 
+	LocalSettings.setting_changed.connect(_setting_changed)
 	update_volume(saved_linear)
 
 
-func update_volume(new_vol_linear: float):
+func update_volume(new_vol_linear: float, no_signal: bool = false):
 	current_vol_linear = new_vol_linear
 
 	var db = linear_to_db(new_vol_linear)
 
 	AudioServer.set_bus_volume_db(bus_index, db + default_db)
 
-	LocalSettings.change_setting("Audio", setting_name, new_vol_linear)
+	if not no_signal:
+		LocalSettings.change_setting("Audio", setting_name, new_vol_linear)
+
+
+func _setting_changed(key: String, value: Variant) -> void:
+	if key == setting_name:
+		update_volume(value, true)
+		bus_volume_updated.emit(value)
