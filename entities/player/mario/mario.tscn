@@ -1,4 +1,4 @@
-[gd_scene load_steps=388 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=390 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" uid="uid://bg4t154sge7br" path="res://entities/player/shared/player.gd" id="1_87j6i"]
 [ext_resource type="Texture2D" uid="uid://bbgppbst4akvn" path="res://entities/player/mario/anime/backflip.png" id="2_i2o54"]
@@ -154,6 +154,7 @@
 [ext_resource type="AudioStream" uid="uid://bbw3474fd3uxc" path="res://entities/player/shared/motion/spinattack_shine.wav" id="136_a6kal"]
 [ext_resource type="AudioStream" uid="uid://bowyc14wpkcra" path="res://entities/player/shared/motion/dive.wav" id="138_88upi"]
 [ext_resource type="Script" uid="uid://cbg4mbnpu1bvj" path="res://entities/player/shared/states/dry/butt_slide.gd" id="140_lfmwr"]
+[ext_resource type="PackedScene" uid="uid://yxcrkjecabc2" path="res://entities/player/shared/particles/spin_ring.tscn" id="149_qbnhj"]
 [ext_resource type="Script" uid="uid://c6f05nyrdtcd6" path="res://entities/player/shared/states/dry/dive_states/super_rollout.gd" id="150_4duxu"]
 [ext_resource type="Script" uid="uid://ftwidhx88kkq" path="res://entities/player/shared/fludd_manager.gd" id="151_4womg"]
 [ext_resource type="AudioStream" uid="uid://b1orysswk33x1" path="res://entities/player/mario/voice_sunshine/woah_ledge.wav" id="151_u7cu3"]
@@ -605,23 +606,23 @@ region = Rect2(0, 0, 48, 48)
 atlas = ExtResource("14_t6mxa")
 region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ymfgr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsr1j"]
 atlas = ExtResource("19_4jr0s")
 region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5s5kb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbnhj"]
 atlas = ExtResource("19_4jr0s")
 region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i0mf8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_efjxb"]
 atlas = ExtResource("19_4jr0s")
 region = Rect2(96, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f8n7o"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_np2tc"]
 atlas = ExtResource("19_4jr0s")
 region = Rect2(144, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u313s"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xh3w7"]
 atlas = ExtResource("19_4jr0s")
 region = Rect2(192, 0, 48, 48)
 
@@ -1339,19 +1340,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ymfgr")
+"texture": SubResource("AtlasTexture_bsr1j")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5s5kb")
+"texture": SubResource("AtlasTexture_qbnhj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i0mf8")
+"texture": SubResource("AtlasTexture_efjxb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f8n7o")
+"texture": SubResource("AtlasTexture_np2tc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_u313s")
+"texture": SubResource("AtlasTexture_xh3w7")
 }],
 "loop": false,
 "name": &"spin_attack",
@@ -1644,6 +1645,7 @@ cutoff_sfx = false
 script = ExtResource("55_bxnxc")
 particle_scene = ExtResource("55_seugk")
 particle_offset = Vector2(0, 0)
+particle_scale = null
 loop_delay = 0
 
 [sub_resource type="Resource" id="Resource_8p2oq"]
@@ -1659,6 +1661,7 @@ cutoff_sfx = false
 script = ExtResource("55_bxnxc")
 particle_scene = ExtResource("61_xttrt")
 particle_offset = Vector2(0, 0)
+particle_scale = null
 loop_delay = 0
 
 [sub_resource type="Resource" id="Resource_sitp4"]
@@ -1701,6 +1704,7 @@ cutoff_sfx = false
 script = ExtResource("55_bxnxc")
 particle_scene = ExtResource("61_xttrt")
 particle_offset = Vector2(0, -8)
+particle_scale = null
 loop_delay = 2
 
 [sub_resource type="Resource" id="Resource_t5lrn"]
@@ -1725,6 +1729,7 @@ cutoff_sfx = false
 script = ExtResource("55_bxnxc")
 particle_scene = ExtResource("55_seugk")
 particle_offset = Vector2(0, 0)
+particle_scale = null
 loop_delay = 0
 
 [sub_resource type="Resource" id="Resource_2esv2"]
@@ -1884,12 +1889,14 @@ cutoff_sfx = true
 script = ExtResource("55_bxnxc")
 particle_scene = ExtResource("121_qidyp")
 particle_offset = Vector2(8, -28)
+particle_scale = null
 loop_delay = 2
 
 [sub_resource type="Resource" id="Resource_5idsp"]
 script = ExtResource("55_bxnxc")
 particle_scene = ExtResource("121_qidyp")
 particle_offset = Vector2(8, -7)
+particle_scale = null
 loop_delay = 2
 
 [sub_resource type="Resource" id="Resource_pq6ep"]
@@ -1982,6 +1989,15 @@ force_new = false
 overwrite_other = false
 cutoff_sfx = false
 
+[sub_resource type="Resource" id="Resource_efjxb"]
+resource_local_to_scene = true
+script = ExtResource("55_bxnxc")
+particle_scene = ExtResource("149_qbnhj")
+particle_offset = Vector2(0, -18)
+particle_scale = Vector2(1, 1)
+loop_delay = 0
+metadata/_custom_type_script = "uid://dd8oyhd4nllix"
+
 [sub_resource type="Resource" id="Resource_lib4c"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("110_eavfs"), ExtResource("111_vejrh")]
@@ -2013,6 +2029,7 @@ cutoff_sfx = false
 script = ExtResource("55_bxnxc")
 particle_scene = ExtResource("55_seugk")
 particle_offset = Vector2(0, 0)
+particle_scale = null
 loop_delay = 0
 
 [sub_resource type="Resource" id="Resource_m87ta"]
@@ -2028,12 +2045,14 @@ cutoff_sfx = false
 script = ExtResource("55_bxnxc")
 particle_scene = ExtResource("55_seugk")
 particle_offset = Vector2(0, 0)
+particle_scale = null
 loop_delay = 0
 
 [sub_resource type="Resource" id="Resource_c5q6a"]
 script = ExtResource("55_bxnxc")
 particle_scene = ExtResource("158_1s3ss")
 particle_offset = Vector2(0, -16)
+particle_scale = null
 loop_delay = 2
 
 [sub_resource type="Resource" id="Resource_ujdp5"]
@@ -2049,6 +2068,7 @@ cutoff_sfx = false
 script = ExtResource("55_bxnxc")
 particle_scene = ExtResource("61_xttrt")
 particle_offset = Vector2(0, 0)
+particle_scale = null
 loop_delay = 2
 
 [node name="Mario" type="CharacterBody2D" node_paths=PackedStringArray("doll", "state_manager", "movement", "input", "push_rays", "hitbox", "dive_hitbox", "small_hitbox", "water_check", "crouchlock", "spin_hitbox")]
@@ -2072,7 +2092,9 @@ spin_hitbox = NodePath("Areas/SpinHitbox")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_hmp25")
-animation = &"idle"
+animation = &"spin_attack"
+frame = 4
+frame_progress = 1.0
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
@@ -2433,6 +2455,7 @@ script = ExtResource("135_qf53u")
 spin_power = 3.0
 animation = &"spin_attack"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_vehmo"), SubResource("Resource_0hpnu")])
+particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_efjxb")])
 
 [node name="DiveStates" type="Node" parent="StateManager/Dry"]
 script = ExtResource("73_acu3g")

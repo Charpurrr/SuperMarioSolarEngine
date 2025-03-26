@@ -28,6 +28,8 @@ func _on_enter(_param):
 	movement.activate_freefall_timer()
 	movement.consume_coyote_timer()
 
+	particles[0].emit_at(self, Vector2.ZERO, Vector2(movement.facing_direction, 0))
+
 
 func _first_tick():
 	# Gravity needs to be applied when a grounded spin is buffered.
@@ -89,10 +91,10 @@ func _air_rules() -> Variant:
 	if Input.is_action_just_pressed(&"groundpound") and movement.can_air_action():
 		return &"GroundPound"
 
-	if finished_init and actor.push_rays.is_colliding() and input.buffered_input(&"jump"):
+	if actor.push_rays.is_colliding() and input.buffered_input(&"jump"):
 		return [&"Walljump", -movement.facing_direction]
 
-	if finished_init and movement.can_init_wallslide():
+	if movement.can_init_wallslide():
 		return &"Wallslide"
 
 	return &""

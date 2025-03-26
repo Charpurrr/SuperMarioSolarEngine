@@ -8,6 +8,9 @@ extends Resource
 ## Position offset for this particle effect.
 @export var particle_offset := Vector2.ZERO
 
+## Scale for this particle effect.
+@export var particle_scale := Vector2.ONE
+
 ## Amount of frames between continious loop particles.
 @export var loop_delay: int = 0
 var timer: int = loop_delay
@@ -16,8 +19,9 @@ var timer: int = loop_delay
 
 
 ## Emit the particle at a specific node.[br]
-## [param offset_overwrite] is useful if you want to use logic defined offsets instead.
-func emit_at(node: Node, offset_overwrite := Vector2.ZERO):
+## [param offset_overwrite] is useful if you want to use logic defined offsets instead.[br]
+## [param scale_overwrite] is useful if you want to use logic defined scales instead.
+func emit_at(node: Node, offset_overwrite := Vector2.ZERO, scale_overwrite := Vector2.ONE):
 	if timer > 0:
 		timer = max(timer - 1, 0)
 	else:
@@ -29,6 +33,11 @@ func emit_at(node: Node, offset_overwrite := Vector2.ZERO):
 			particle.position = offset_overwrite
 		else:
 			particle.position = particle_offset
+
+		if scale_overwrite != Vector2.ONE:
+			particle.scale = scale_overwrite
+		else:
+			particle.scale = particle_scale
 
 		particle.emitting = true
 

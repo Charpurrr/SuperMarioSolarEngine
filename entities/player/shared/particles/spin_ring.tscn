@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://yxcrkjecabc2"]
+
+[ext_resource type="Texture2D" uid="uid://rgu54h1rd501" path="res://entities/player/shared/particles/spin_ring.png" id="1_8iae5"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8iae5"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_kclr5"]
+offsets = PackedFloat32Array(0, 0.390588)
+colors = PackedColorArray(1, 1, 1, 1, 0.761575, 0.586087, 0.552252, 1)
+
+[node name="SpinRing" type="CPUParticles2D"]
+material = SubResource("CanvasItemMaterial_8iae5")
+emitting = false
+amount = 1
+texture = ExtResource("1_8iae5")
+one_shot = true
+fixed_fps = 15
+local_coords = true
+gravity = Vector2(0, 0)
+color_ramp = SubResource("Gradient_kclr5")
+anim_speed_min = 1.88
+anim_speed_max = 1.88
