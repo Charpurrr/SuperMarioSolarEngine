@@ -95,7 +95,7 @@ size = Vector2(0, 0)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8qcs8"]
 
 [node name="PresetSlider" type="Control" node_paths=PackedStringArray("slider", "grabber", "outline", "progress_bar")]
-custom_minimum_size = Vector2(33, 33)
+custom_minimum_size = Vector2(10, 10)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 200.0

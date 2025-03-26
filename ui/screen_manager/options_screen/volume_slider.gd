@@ -5,7 +5,7 @@ extends UISlider
 @onready var bus: AudioBus
 
 
-func _set_initial_val():
+func _ready() -> void:
 	await owner.ready
 
 	if not Engine.is_editor_hint():

@@ -40,7 +40,6 @@ extends Control
 		if is_instance_valid(slider):
 			slider.step = val
 
-
 #@export var ticked: bool = false:
 	#set(val):
 		#ticked = val
@@ -55,8 +54,10 @@ extends Control
 @export var progress_bar: ProgressBar
 @export var tick_sound: AudioStream
 
+
 func _ready() -> void:
 	_update_slider(default_value, false)
+
 
 #func _update_ticks():
 	#if ticked == true:
@@ -64,12 +65,19 @@ func _ready() -> void:
 	#else:
 		#slider.tick_count = 0
 
+
 # This function is called when the slider is moved,
 # updating the visuals and optionally playing a sound effect.
 func _update_slider(new_value: float, play_sfx: bool) -> void:
 	value = new_value
-	
+
+	if play_sfx:
+		_try_sfx()
+
+
+## Tries to play the tick sound effect if the conditions are met.
+func _try_sfx():
 	# If not playing on ready, and no sound effects are 
 	# playing in the UI audio bus:
-	if play_sfx and get_tree().get_nodes_in_group(&"UI").is_empty():
+	if get_tree().get_nodes_in_group(&"UI").is_empty():
 		SFX.play_sfx(tick_sound, &"UI", self)
