@@ -1090,7 +1090,7 @@ properties = SubResource("Resource_pdbdi")
 
 [sub_resource type="Resource" id="Resource_t45ql"]
 script = ExtResource("11_opniu")
-texture_idx = 0
+texture_idx = -16
 flip = false
 width = 1.0
 
@@ -1265,7 +1265,7 @@ properties = SubResource("Resource_jhom6")
 
 [sub_resource type="Resource" id="Resource_du367"]
 script = ExtResource("11_opniu")
-texture_idx = -16
+texture_idx = 9
 flip = false
 width = 1.0
 
@@ -1317,7 +1317,7 @@ properties = SubResource("Resource_1d01w")
 
 [sub_resource type="Resource" id="Resource_psqj8"]
 script = ExtResource("11_opniu")
-texture_idx = 9
+texture_idx = 0
 flip = false
 width = 1.0
 
@@ -1387,7 +1387,7 @@ properties = SubResource("Resource_lthv1")
 
 [sub_resource type="Resource" id="Resource_vrw1e"]
 script = ExtResource("11_opniu")
-texture_idx = 0
+texture_idx = 2
 flip = false
 width = 1.0
 
@@ -1593,7 +1593,7 @@ properties = SubResource("Resource_cmf55")
 
 [sub_resource type="Resource" id="Resource_08ej6"]
 script = ExtResource("11_opniu")
-texture_idx = 2
+texture_idx = 0
 flip = false
 width = 1.0
 
@@ -1762,7 +1762,7 @@ properties = SubResource("Resource_ahgwg")
 
 [sub_resource type="Resource" id="Resource_bcr6j"]
 script = ExtResource("11_opniu")
-texture_idx = 0
+texture_idx = 12
 flip = false
 width = 1.0
 
@@ -1775,7 +1775,7 @@ properties = SubResource("Resource_bcr6j")
 
 [sub_resource type="Resource" id="Resource_5gulh"]
 script = ExtResource("11_opniu")
-texture_idx = 12
+texture_idx = 0
 flip = false
 width = 1.0
 

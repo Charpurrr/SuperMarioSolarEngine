@@ -43,7 +43,7 @@ theme_override_constants/separation = 15
 
 [node name="ResetButton" parent="HBoxContainer" instance=ExtResource("2_8m8no")]
 layout_mode = 2
-size_flags_stretch_ratio = 0.11
+size_flags_stretch_ratio = 0.09
 text = ""
 icon = ExtResource("3_ht11o")
 icon_alignment = 1
