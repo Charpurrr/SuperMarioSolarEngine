@@ -64,7 +64,9 @@ func _input(event: InputEvent):
 		(event.is_action_pressed(&"camera_zoom_in") and camera.target_zoom != camera.zoom_min) or
 		(event.is_action_pressed(&"camera_zoom_out") and camera.target_zoom != camera.zoom_max)
 	):
+		zoom_blur_player.stop()
 		zoom_blur_player.play(&"camera_focus")
+
 
 	if event.is_action_pressed(&"pause"):
 		_pause_logic()

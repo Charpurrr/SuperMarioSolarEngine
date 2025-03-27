@@ -104,10 +104,10 @@ tracks/0/path = NodePath(".:material:shader_parameter/blur_amount")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.4),
-"transitions": PackedFloat32Array(0.406126, -0.615572, 1),
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(-0.615572, 1),
 "update": 0,
-"values": [0.0, 2.0, 0.0]
+"values": [2.0, 0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -116,10 +116,10 @@ tracks/1/path = NodePath(".:material:shader_parameter/cell_size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.4),
-"transitions": PackedFloat32Array(0.406126, -0.615572, 1),
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(-0.615572, 1),
 "update": 0,
-"values": [1, 8, 1]
+"values": [32, 1]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_01nno"]

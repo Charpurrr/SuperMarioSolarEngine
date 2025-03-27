@@ -97,8 +97,8 @@ outline = NodePath("OutlineInside")
 label = NodePath("HP")
 
 [node name="BorderGradient" type="Button" parent="."]
+show_behind_parent = true
 clip_children = 1
-z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -118,7 +118,7 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_s7xgs")
 
 [node name="Outline" type="Button" parent="."]
-z_index = -1
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -129,8 +129,8 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_dkpll")
 disabled = true
 
 [node name="InsideGradient" type="Button" parent="."]
+show_behind_parent = true
 clip_children = 1
-z_index = -1
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
