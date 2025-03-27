@@ -1,4 +1,4 @@
-[gd_scene load_steps=390 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=391 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" uid="uid://bg4t154sge7br" path="res://entities/player/shared/player.gd" id="1_87j6i"]
 [ext_resource type="Texture2D" uid="uid://bbgppbst4akvn" path="res://entities/player/mario/anime/backflip.png" id="2_i2o54"]
@@ -1645,7 +1645,7 @@ cutoff_sfx = false
 script = ExtResource("55_bxnxc")
 particle_scene = ExtResource("55_seugk")
 particle_offset = Vector2(0, 0)
-particle_scale = null
+particle_scale = Vector2(1, 1)
 loop_delay = 0
 
 [sub_resource type="Resource" id="Resource_8p2oq"]
@@ -1661,7 +1661,7 @@ cutoff_sfx = false
 script = ExtResource("55_bxnxc")
 particle_scene = ExtResource("61_xttrt")
 particle_offset = Vector2(0, 0)
-particle_scale = null
+particle_scale = Vector2(1, 1)
 loop_delay = 0
 
 [sub_resource type="Resource" id="Resource_sitp4"]
@@ -1700,11 +1700,20 @@ force_new = false
 overwrite_other = true
 cutoff_sfx = false
 
+[sub_resource type="Resource" id="Resource_qbnhj"]
+resource_local_to_scene = true
+script = ExtResource("55_bxnxc")
+particle_scene = ExtResource("149_qbnhj")
+particle_offset = Vector2(0, -10)
+particle_scale = Vector2(1, 1)
+loop_delay = 0
+metadata/_custom_type_script = "uid://dd8oyhd4nllix"
+
 [sub_resource type="Resource" id="Resource_w3gxr"]
 script = ExtResource("55_bxnxc")
 particle_scene = ExtResource("61_xttrt")
 particle_offset = Vector2(0, -8)
-particle_scale = null
+particle_scale = Vector2(1, 1)
 loop_delay = 2
 
 [sub_resource type="Resource" id="Resource_t5lrn"]
@@ -1729,7 +1738,7 @@ cutoff_sfx = false
 script = ExtResource("55_bxnxc")
 particle_scene = ExtResource("55_seugk")
 particle_offset = Vector2(0, 0)
-particle_scale = null
+particle_scale = Vector2(1, 1)
 loop_delay = 0
 
 [sub_resource type="Resource" id="Resource_2esv2"]
@@ -1889,14 +1898,14 @@ cutoff_sfx = true
 script = ExtResource("55_bxnxc")
 particle_scene = ExtResource("121_qidyp")
 particle_offset = Vector2(8, -28)
-particle_scale = null
+particle_scale = Vector2(1, 1)
 loop_delay = 2
 
 [sub_resource type="Resource" id="Resource_5idsp"]
 script = ExtResource("55_bxnxc")
 particle_scene = ExtResource("121_qidyp")
 particle_offset = Vector2(8, -7)
-particle_scale = null
+particle_scale = Vector2(1, 1)
 loop_delay = 2
 
 [sub_resource type="Resource" id="Resource_pq6ep"]
@@ -2029,7 +2038,7 @@ cutoff_sfx = false
 script = ExtResource("55_bxnxc")
 particle_scene = ExtResource("55_seugk")
 particle_offset = Vector2(0, 0)
-particle_scale = null
+particle_scale = Vector2(1, 1)
 loop_delay = 0
 
 [sub_resource type="Resource" id="Resource_m87ta"]
@@ -2045,14 +2054,14 @@ cutoff_sfx = false
 script = ExtResource("55_bxnxc")
 particle_scene = ExtResource("55_seugk")
 particle_offset = Vector2(0, 0)
-particle_scale = null
+particle_scale = Vector2(1, 1)
 loop_delay = 0
 
 [sub_resource type="Resource" id="Resource_c5q6a"]
 script = ExtResource("55_bxnxc")
 particle_scene = ExtResource("158_1s3ss")
 particle_offset = Vector2(0, -16)
-particle_scale = null
+particle_scale = Vector2(1, 1)
 loop_delay = 2
 
 [sub_resource type="Resource" id="Resource_ujdp5"]
@@ -2068,7 +2077,7 @@ cutoff_sfx = false
 script = ExtResource("55_bxnxc")
 particle_scene = ExtResource("61_xttrt")
 particle_offset = Vector2(0, 0)
-particle_scale = null
+particle_scale = Vector2(1, 1)
 loop_delay = 2
 
 [node name="Mario" type="CharacterBody2D" node_paths=PackedStringArray("doll", "state_manager", "movement", "input", "push_rays", "hitbox", "dive_hitbox", "small_hitbox", "water_check", "crouchlock", "spin_hitbox")]
@@ -2277,6 +2286,7 @@ script = ExtResource("54_rxsl3")
 hitbox_type = "Small"
 animation = &"breakdance"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_upqlf")])
+particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_qbnhj")])
 
 [node name="DiveSlide" type="Node" parent="StateManager/Dry/Grounded"]
 script = ExtResource("60_d4aqs")
