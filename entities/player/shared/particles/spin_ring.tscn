@@ -10,8 +10,10 @@ particles_anim_loop = false
 
 [node name="SpinRing" type="CPUParticles2D"]
 material = SubResource("CanvasItemMaterial_8iae5")
+emitting = false
 amount = 1
 texture = ExtResource("1_8iae5")
+one_shot = true
 fixed_fps = 15
 local_coords = true
 gravity = Vector2(0, 0)

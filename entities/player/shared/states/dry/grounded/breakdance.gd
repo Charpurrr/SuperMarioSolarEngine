@@ -1,6 +1,6 @@
-class_name Breakdance
+class_name CrouchSpin
 extends Spin
-## You already know. (Spinning while crouched.)
+## I think the class name is self-explanatory.
 
 
 func _trans_rules():
