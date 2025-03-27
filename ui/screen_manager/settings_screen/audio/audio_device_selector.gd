@@ -1,11 +1,11 @@
-extends Control
+extends UISelector
 
-@export var selector: OptionButton
 @export var speaker_label: Label
+@export var refresh_button: UIButton
 
 
 func _ready():
-	await selector.ready
+	refresh_button.pressed.connect(_update_list)
 
 	var saved_device: String = LocalSettings.load_setting("Audio", "device", "")
 
@@ -16,7 +16,7 @@ func _ready():
 
 	for device in AudioServer.get_output_device_list():
 		if saved_device == device:
-			selector.selected = selector.get_item_index(hash(device))
+			selected = get_item_index(hash(device))
 
 
 func _update_speaker_label():
@@ -37,15 +37,15 @@ func _update_speaker_label():
 
 
 func _update_list():
-	if selector.item_count != 0:
-		selector.clear()
+	if item_count != 0:
+		clear()
 
 	for device in AudioServer.get_output_device_list():
-		selector.add_item(device, hash(device))
+		add_item(device.to_upper(), hash(device))
 
 
 func _on_item_selected(index):
-	var device_name: String = selector.get_item_text(index)
+	var device_name: String = get_item_text(index)
 
 	_update_speaker_label()
 
@@ -56,7 +56,3 @@ func _on_item_selected(index):
 		"device",
 		device_name
 	)
-
-
-func _on_refresh_pressed():
-	_update_list()

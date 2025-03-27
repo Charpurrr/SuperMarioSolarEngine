@@ -1,15 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://b08q042unmcxf"]
+[gd_scene load_steps=15 format=3 uid="uid://b08q042unmcxf"]
 
 [ext_resource type="Texture2D" uid="uid://cjfsg2gooi5oh" path="res://ui/buttons/radio_button_pressed.svg" id="1_kboga"]
-[ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="1_qeidu"]
 [ext_resource type="Texture2D" uid="uid://gawkicpwx8b6" path="res://ui/buttons/radio_button.svg" id="2_7d16n"]
 [ext_resource type="FontFile" uid="uid://e821cxxeybxh" path="res://ui/fonts/mario_sunshine.ttf" id="2_8waww"]
 [ext_resource type="StyleBox" uid="uid://doxigal4dp5iy" path="res://ui/buttons/button_normal.tres" id="2_nkxgv"]
 [ext_resource type="StyleBox" uid="uid://5hmjrr5vg4hn" path="res://ui/buttons/button_pressed.tres" id="2_qeidu"]
 [ext_resource type="Texture2D" uid="uid://b7d664g24cajs" path="res://ui/buttons/dropdown_arrow.svg" id="4_3xffh"]
-[ext_resource type="Script" uid="uid://jgdsmuvahdwi" path="res://ui/buttons/ui_button.gd" id="4_nkxgv"]
 [ext_resource type="AudioStream" uid="uid://c4ui7ftfypsg0" path="res://ui/sfx/decide_small.wav" id="5_c7x3e"]
 [ext_resource type="AudioStream" uid="uid://dsokoktxblw41" path="res://ui/sfx/cursor.wav" id="6_urjt7"]
+[ext_resource type="Script" uid="uid://dbt74wkarggux" path="res://ui/buttons/ui_selector.gd" id="8_8waww"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xffh"]
 bg_color = Color(0.486275, 0, 0.4, 1)
@@ -70,7 +69,7 @@ theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_qeidu")
+theme_override_fonts/font = ExtResource("2_8waww")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/focus = ExtResource("2_qeidu")
 theme_override_styles/disabled = ExtResource("2_nkxgv")
@@ -83,7 +82,7 @@ theme_override_icons/arrow = ExtResource("4_3xffh")
 alignment = 1
 text_overrun_behavior = 1
 fit_to_longest_item = false
-script = ExtResource("4_nkxgv")
+script = ExtResource("8_8waww")
 press_sfx = ExtResource("5_c7x3e")
 cursor_sfx = ExtResource("6_urjt7")
 
