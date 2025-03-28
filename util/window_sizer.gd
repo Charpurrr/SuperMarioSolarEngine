@@ -34,12 +34,12 @@ static func set_win_size(window_scale):
 		# On multi-monitor setups with different screen resolutions or orientations,
 		# the origin may be located outside any display like this:
 		#
-		#* (0, 0)        +-------+
-		#                |       |
-		#+-------------+ |       |
-		#|             | |       |
-		#|             | |       |
-		#+-------------+ +-------+
+		# * (0, 0)        +-------+
+		#                 |       |
+		# +-------------+ |       |
+		# |             | |       |
+		# |             | |       |
+		# +-------------+ +-------+
 
 		var window_pos: Vector2i = screen_top_left + (screen_size - window_size) / 2
 		DisplayServer.window_set_position(window_pos)
