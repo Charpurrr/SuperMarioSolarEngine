@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://wf1kmhrykhbo" path="res://props/level_environments/synth/synth_mountain.png" id="4_y5k2x"]
 [ext_resource type="Texture2D" uid="uid://h55he5ne87oo" path="res://props/level_environments/synth/sunshine_sun.png" id="5_mb8pf"]
 [ext_resource type="Shader" uid="uid://jy8sm10bwqcu" path="res://util/shaders/crt.gdshader" id="7_e2awe"]
-[ext_resource type="AudioStream" uid="uid://culmhggeo84vi" path="res://props/music/synth_stratnum.mp3" id="7_qqdok"]
+[ext_resource type="AudioStream" uid="uid://rohr6rj0lel5" path="res://props/music/synth_stratnum.ogg" id="7_qqdok"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_47xr2"]
 particles_animation = true
