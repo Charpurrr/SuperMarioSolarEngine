@@ -1218,7 +1218,7 @@ layout_mode = 2
 text = "60 FPS"
 script = ExtResource("45_23m8v")
 default_value = 2
-options = Array[StringName]([&"OFF", &"30 FPS", &"60 FPS"])
+options = Array[StringName]([&"OFF", &"30 FPS", &"60 FPS", &"120 FPS"])
 setting_section = "General"
 setting_key = "fps_cap"
 
