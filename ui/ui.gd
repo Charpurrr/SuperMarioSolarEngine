@@ -37,9 +37,9 @@ var current_notifs: Array = []
 ## This variable is set in [code]world_machine.tscn[/code].
 var world_machine: WorldMachine
 ## See [method _set_player].
-var player: CharacterBody2D
+var player: Player
 ## See [method _set_camera].
-var camera: PlayerCamera
+var camera: Camera2D
 
 
 func _ready():
@@ -49,11 +49,10 @@ func _ready():
 
 	world_machine.level_reloaded.connect(_set_player)
 	LocalSettings.setting_changed.connect(_setting_changed)
+	GameState.paused.connect(_toggle_color_blur)
 
 
 func _process(_delta):
-	color_blur.visible = GameState.is_paused()
-
 	for i in current_notifs:
 		if not is_instance_valid(i):
 			current_notifs.erase(i)
@@ -97,6 +96,17 @@ func _pause_logic():
 		GameState.emit_signal(&"paused")
 	else:
 		screen_manager.switch_screen(screen_manager.current_screen, pause_screen)
+
+
+func _toggle_color_blur():
+	color_blur.visible = !color_blur.visible
+
+	var environment: LevelEnvironment = world_machine.level_node.level_environment.instantiate()
+
+	if color_blur.visible and environment:
+		var gradient_map: GradientTexture1D = environment.pause_gradient_map
+
+		color_blur.material.set(&"shader_parameter/gradient", gradient_map)
 
 
 ## Creates a visual "notification" type indicator on the screen.

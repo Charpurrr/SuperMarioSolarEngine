@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gewkm3vuow1"
-path="res://.godot/imported/synth.png-be07834431e115b55c552e03723b11f6.ctex"
+uid="uid://csfiw5bvn21ve"
+path="res://.godot/imported/ground_edge.png-4d825e3de5df25ad7290cec30cb1752a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://props/terrain/synth.png"
-dest_files=["res://.godot/imported/synth.png-be07834431e115b55c552e03723b11f6.ctex"]
+source_file="res://props/terrain/graph/ground_edge.png"
+dest_files=["res://.godot/imported/ground_edge.png-4d825e3de5df25ad7290cec30cb1752a.ctex"]
 
 [params]
 

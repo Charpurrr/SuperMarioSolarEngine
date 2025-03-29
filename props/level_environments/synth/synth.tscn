@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://bfb4xq874buf6"]
+[gd_scene load_steps=18 format=3 uid="uid://bfb4xq874buf6"]
 
 [ext_resource type="Script" uid="uid://d7edjnk21ad3" path="res://props/level_environments/synth/synth_floor.gd" id="1_dubgv"]
 [ext_resource type="Script" uid="uid://ccysh3ski6mvh" path="res://props/level_environments/environment.gd" id="1_xeoqd"]
 [ext_resource type="Texture2D" uid="uid://bnywpxepvxnxf" path="res://props/level_environments/synth/synth_sky_new.png" id="2_oiv80"]
+[ext_resource type="Texture2D" uid="uid://bbu4m0gd3b85w" path="res://props/level_environments/synth/pause_gradient_map.tres" id="2_vugs5"]
 [ext_resource type="Texture2D" uid="uid://dk76vr4rcjn8x" path="res://props/level_environments/synth/star_twinkle.png" id="4_fkliv"]
 [ext_resource type="Texture2D" uid="uid://wf1kmhrykhbo" path="res://props/level_environments/synth/synth_mountain.png" id="4_y5k2x"]
 [ext_resource type="Texture2D" uid="uid://h55he5ne87oo" path="res://props/level_environments/synth/sunshine_sun.png" id="5_mb8pf"]
@@ -63,6 +64,7 @@ fill_to = Vector2(0, 0)
 [node name="Environment" type="CanvasLayer"]
 layer = -1
 script = ExtResource("1_xeoqd")
+pause_gradient_map = ExtResource("2_vugs5")
 metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]

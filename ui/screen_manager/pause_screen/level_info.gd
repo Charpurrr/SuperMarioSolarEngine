@@ -8,8 +8,8 @@ extends VBoxContainer
 
 
 func _ready():
-	var world_machine: WorldMachine = user_interface.world_machine
+	var level: Level = user_interface.world_machine.level_node
 
-	level_name.text = world_machine.level_name
-	mission_name.text = world_machine.mission_name
-	mission_info.text = world_machine.mission_info
+	level_name.text = level.level_name
+	mission_name.text = level.mission_name
+	mission_info.text = level.mission_info

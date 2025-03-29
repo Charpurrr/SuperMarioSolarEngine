@@ -10,13 +10,7 @@ signal level_reloaded
 @export var autoload: bool = true
 @export var level_scene: PackedScene
 
-@export var level_name: StringName
-@export var mission_name: StringName
-@export_multiline var mission_info: String
-
-@export var loaded_environment: PackedScene
-
-@export_category(&"References")
+@export_category("Constant")
 @export var user_interface: PackedScene
 
 var level_node: Node2D
@@ -29,7 +23,7 @@ func _ready():
 
 	if autoload and level_scene != null:
 		var level = level_scene.instantiate()
-		handle_level_node(level)
+		load_level(level)
 
 
 ## Stores a level as a scene, so it can be reloaded.
@@ -39,30 +33,37 @@ func store_level_scene(level: Level) -> void:
 	level_scene = scene
 
 
-func handle_level_node(level: Level, store: bool = false) -> void:
+func load_level(level: Level, store: bool = false) -> void:
 	if store:
 		store_level_scene(level)
 
 	level_node = level
 
-	if env_node != null:
-		env_node.queue_free()
-	env_node = loaded_environment.instantiate()
-
-	if ui_node != null:
-		ui_node.queue_free()
-	ui_node = user_interface.instantiate()
-	
-	level_node.camera.player = level_node.player
-	env_node.camera = level_node.camera
-	ui_node.world_machine = self
-
-	# Order of children matters here!
 	add_child(level_node)
-	level_node.add_child(env_node)
 
-	add_child(ui_node)
+	# Reinstantiate and configure environment node.
+	if level_node.level_environment:
+		# If a level environment is already loaded, get rid of it and replace it with the new one.
+		if env_node:
+			env_node.queue_free()
 
+		env_node = level_node.level_environment.instantiate()
+		env_node.camera = level_node.camera
+
+		level_node.add_child(env_node)
+
+	# Reinstantiate and configure UI node.
+	if user_interface:
+		ui_node = user_interface.instantiate()
+		ui_node.world_machine = self
+
+		add_child(ui_node)
+
+	# Assign player to camera if applicable.
+	if level_node.camera is PlayerCamera:
+		level_node.camera.player = level_node.player
+
+	# Set the camera as current.
 	level_node.camera.make_current()
 
 
@@ -78,6 +79,6 @@ func _reload_level():
 	# Free the level and then re-add it.
 	level_node.queue_free()
 
-	handle_level_node(new_level)
+	load_level(new_level)
 
 	level_reloaded.emit()

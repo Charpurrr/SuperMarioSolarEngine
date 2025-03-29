@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkgan6eta4xol"]
+
+[ext_resource type="Script" uid="uid://ccysh3ski6mvh" path="res://props/level_environments/environment.gd" id="1_0yola"]
+[ext_resource type="Texture2D" uid="uid://c1gp1i7bbq21b" path="res://props/level_environments/graph/pause_gradient_map.tres" id="2_ml57k"]
+
+[node name="Environment" type="CanvasLayer"]
+script = ExtResource("1_0yola")
+pause_gradient_map = ExtResource("2_ml57k")

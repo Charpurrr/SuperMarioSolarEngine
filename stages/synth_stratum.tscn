@@ -1,6 +1,7 @@
-[gd_scene load_steps=304 format=3 uid="uid://co7kk1h1rwbn6"]
+[gd_scene load_steps=305 format=3 uid="uid://co7kk1h1rwbn6"]
 
-[ext_resource type="Script" uid="uid://whyqyw8guuki" path="res://stages/level_info.gd" id="1_h1l40"]
+[ext_resource type="Script" uid="uid://whyqyw8guuki" path="res://stages/level.gd" id="1_h1l40"]
+[ext_resource type="PackedScene" uid="uid://bfb4xq874buf6" path="res://props/level_environments/synth/synth.tscn" id="2_5te55"]
 [ext_resource type="PackedScene" uid="uid://dgqp3sqvmcvpu" path="res://entities/player/mario/mario.tscn" id="2_n22sk"]
 [ext_resource type="PackedScene" uid="uid://cnd277snrwca5" path="res://entities/player/shared/player_camera.tscn" id="3_vwmkt"]
 [ext_resource type="PackedScene" uid="uid://cvbbpn56rtjwd" path="res://entities/enemies/goomba/goomba.tscn" id="9_3n06u"]
@@ -2028,6 +2029,12 @@ _material_overrides = {}
 
 [node name="SynthStratum" type="Node2D" node_paths=PackedStringArray("player", "camera")]
 script = ExtResource("1_h1l40")
+level_name = &"Synth Stratum"
+mission_name = &"Operation: System Unnoticed"
+mission_info = "Just keep debugging... Just keep debugging...
+Just keep debugging... Just keep debugging...
+Just keep debugging... Just keep debugging..."
+level_environment = ExtResource("2_5te55")
 player = NodePath("Mario")
 camera = NodePath("Mario/PlayerCamera")
 

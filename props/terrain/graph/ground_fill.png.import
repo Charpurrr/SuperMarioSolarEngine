@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwjlwl3f1b0x3"
-path="res://.godot/imported/grate.png-56c30b8dedee4b2a99e1e430378c7c1d.ctex"
+uid="uid://coyme4cebdclp"
+path="res://.godot/imported/ground_fill.png-7db31aad39b83a20478881df9e685b14.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://props/terrain/grate.png"
-dest_files=["res://.godot/imported/grate.png-56c30b8dedee4b2a99e1e430378c7c1d.ctex"]
+source_file="res://props/terrain/graph/ground_fill.png"
+dest_files=["res://.godot/imported/ground_fill.png-7db31aad39b83a20478881df9e685b14.ctex"]
 
 [params]
 

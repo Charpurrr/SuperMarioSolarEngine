@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j1pmw0npok62"
-path="res://.godot/imported/cookie.png-9394aba42e925e318336adfc1a276603.ctex"
+uid="uid://dy03xdavrr72n"
+path="res://.godot/imported/background.png-315845dc7e5472a76940add018049ceb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://props/terrain/cookie.png"
-dest_files=["res://.godot/imported/cookie.png-9394aba42e925e318336adfc1a276603.ctex"]
+source_file="res://props/terrain/graph/background.png"
+dest_files=["res://.godot/imported/background.png-315845dc7e5472a76940add018049ceb.ctex"]
 
 [params]
 
