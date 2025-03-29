@@ -41,6 +41,8 @@ var player: Player
 ## See [method _set_camera].
 var camera: Camera2D
 
+var hud_enabled: bool = true
+
 
 func _ready():
 	_toggle_debug()
@@ -66,6 +68,9 @@ func _input(event: InputEvent):
 		zoom_blur_player.stop()
 		zoom_blur_player.play(&"camera_focus")
 
+	if event.is_action_pressed(&"toggle_hud"):
+		get_tree().call_group(&"HUD", &"hide" if hud_enabled else &"show")
+		hud_enabled = !hud_enabled
 
 	if event.is_action_pressed(&"pause"):
 		_pause_logic()
