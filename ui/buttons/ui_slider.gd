@@ -40,6 +40,13 @@ extends Control
 		if is_instance_valid(slider):
 			slider.step = val
 
+@export var disabled: bool = false:
+	set(val):
+		disabled = val
+
+		if is_instance_valid(slider):
+			_set_disable(disabled)
+
 #@export var ticked: bool = false:
 	#set(val):
 		#ticked = val
@@ -81,3 +88,14 @@ func _try_sfx():
 	# playing in the UI audio bus:
 	if get_tree().get_nodes_in_group(&"UI").is_empty():
 		SFX.play_sfx(tick_sound, &"UI", self)
+
+
+func _set_disable(to: Variant = null):
+	if to == true:
+		focus_mode = Control.FOCUS_NONE
+		modulate = Color.hex(0x323232ff)
+	else:
+		focus_mode = Control.FOCUS_ALL
+		modulate = Color.WHITE
+
+	slider.editable = !to

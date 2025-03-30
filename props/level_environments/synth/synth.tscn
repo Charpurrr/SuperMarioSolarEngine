@@ -61,10 +61,11 @@ gradient = SubResource("Gradient_w7jo4")
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
 
-[node name="Environment" type="CanvasLayer"]
+[node name="Environment" type="CanvasLayer" node_paths=PackedStringArray("bgm")]
 layer = -1
 script = ExtResource("1_xeoqd")
 pause_gradient_map = ExtResource("2_vugs5")
+bgm = NodePath("BGM")
 metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]

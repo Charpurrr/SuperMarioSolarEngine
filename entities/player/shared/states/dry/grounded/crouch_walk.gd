@@ -46,7 +46,7 @@ func _trans_rules():
 		return &"ButtSlide"
 
 	if movement.can_spin() and input.buffered_input(&"spin"):
-		return &""
+		return &"CrouchSpin"
 
 	if not InputManager.is_moving_x() or actor.is_on_wall():
 		return [&"Crouch", [true, false]]

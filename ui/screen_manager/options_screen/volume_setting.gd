@@ -8,8 +8,9 @@ extends Control
 
 @export_category("References")
 @export var header: Label
-@export var reset: Button
+@export var reset: UIButton
 @export var slider: UISlider
+@export var mute_tell: Label
 @export var percentage: Label
 
 @onready var bus: AudioBus = GameState.buses[bus_name]
@@ -18,6 +19,8 @@ extends Control
 func _ready():
 	slider.slider.value_changed.connect(_slider_updated)
 	slider.bus = bus
+
+	bus.bus_mute_updated.connect(_update_mute)
 
 	header.text = header_text
 
@@ -29,3 +32,10 @@ func _slider_updated(slider_val: float):
 
 func _on_reset_button_pressed() -> void:
 	slider.slider.value = slider.default_value
+
+
+func _update_mute(muted: bool):
+	slider.disabled = muted
+	reset.toggle_disable(muted)
+
+	mute_tell.visible = muted

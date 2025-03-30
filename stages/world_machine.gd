@@ -13,7 +13,7 @@ signal level_reloaded
 @export_category("Constant")
 @export var user_interface: PackedScene
 
-var level_node: Node2D
+var level_node: Level
 var env_node: LevelEnvironment
 var ui_node: UserInterface
 
@@ -58,6 +58,10 @@ func load_level(level: Level, store: bool = false) -> void:
 		ui_node.world_machine = self
 
 		add_child(ui_node)
+
+	# Set UI's level environment if both itself and the environment exists.
+	if level_node.level_environment and user_interface:
+		ui_node.level_environment = env_node
 
 	# Assign player to camera if applicable.
 	if level_node.camera is PlayerCamera:

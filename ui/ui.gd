@@ -34,8 +34,10 @@ var current_notifs: Array = []
 	KEY_LEFT: %Left,
 }
 
-## This variable is set in [code]world_machine.tscn[/code].
+## These variables are set in [WorldMachine]
 var world_machine: WorldMachine
+var level_environment: LevelEnvironment
+
 ## See [method _set_player].
 var player: Player
 ## See [method _set_camera].
@@ -90,15 +92,19 @@ func _pause_logic():
 
 	var pause_screen: PauseScreen = screen_manager.get_screen(&"PauseScreen")
 
+	# Intial pause action:
 	if not GameState.is_paused():
 		SFX.play_sfx(game_pause_sfx, &"UI", screen_manager)
-
+		level_environment.bgm.set_stream_paused(true)
 		screen_manager.switch_screen(null, pause_screen)
 		GameState.emit_signal(&"paused")
+	# Unpausing action:
 	elif screen_manager.current_screen is PauseScreen:
 		SFX.play_sfx(game_unpause_sfx, &"UI", screen_manager)
+		level_environment.bgm.set_stream_paused(false)
 		screen_manager.switch_screen(pause_screen, null)
 		GameState.emit_signal(&"paused")
+	# Pausing when in a submenu, putting you back in the PauseScreen:
 	else:
 		screen_manager.switch_screen(screen_manager.current_screen, pause_screen)
 
@@ -106,10 +112,8 @@ func _pause_logic():
 func _toggle_color_blur():
 	color_blur.visible = !color_blur.visible
 
-	var environment: LevelEnvironment = world_machine.level_node.level_environment.instantiate()
-
-	if color_blur.visible and environment:
-		var gradient_map: GradientTexture1D = environment.pause_gradient_map
+	if color_blur.visible and level_environment:
+		var gradient_map: GradientTexture1D = level_environment.pause_gradient_map
 
 		color_blur.material.set(&"shader_parameter/gradient", gradient_map)
 

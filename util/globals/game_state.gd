@@ -12,7 +12,6 @@ var debug_toggle: bool = false
 
 var fullscreened: bool = false
 
-var bgm_muted: bool = false
 var buses: Dictionary[StringName, AudioBus] = {
 	&"Master":
 		AudioBus.new(&"Master", "master_volume"),
@@ -24,7 +23,6 @@ var buses: Dictionary[StringName, AudioBus] = {
 		AudioBus.new(&"Voice", "voice_volume")
 }
 
-
 func _ready():
 	paused.connect(pause_toggle)
 
@@ -35,8 +33,7 @@ func _ready():
 
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
-	bgm_muted = LocalSettings.load_setting("Audio", "music_muted", false)
-	_set_muted_bgm()
+	_update_bgm_mute(LocalSettings.load_setting("Audio", "music_muted", false))
 
 	debug_toggle = LocalSettings.load_setting("Developer", "debug_toggle", false)
 
@@ -47,7 +44,7 @@ func _ready():
 
 func _unhandled_input(event):
 	if event.is_action_pressed(&"mute"):
-		_music_control()
+		_update_bgm_mute(!buses[&"Music"].muted)
 
 	# Toggle between fullscreen and last non-fullscreen window scale
 	if event.is_action_pressed(&"fullscreen"):
@@ -66,15 +63,9 @@ func _unhandled_input(event):
 		LocalSettings.change_setting("Developer", "debug_toggle", debug_toggle)
 
 
-func _music_control():
-	bgm_muted = !bgm_muted
-
-	LocalSettings.change_setting("Audio", "music_muted", bgm_muted)
-	_set_muted_bgm()
-
-
-func _set_muted_bgm():
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), bgm_muted)
+func _update_bgm_mute(to: bool):
+	LocalSettings.change_setting("Audio", "music_muted", to)
+	buses[&"Music"].update_mute(to)
 
 
 func _setting_changed(key: String, value: Variant):
@@ -94,9 +85,6 @@ func _setting_changed(key: String, value: Variant):
 ## Called with the paused signal.
 func pause_toggle():
 	get_tree().paused = !is_paused()
-
-	if not bgm_muted:
-		AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), is_paused())
 
 
 func is_paused() -> bool:

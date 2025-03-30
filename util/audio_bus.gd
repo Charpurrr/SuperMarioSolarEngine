@@ -2,18 +2,18 @@ class_name AudioBus
 extends RefCounted
 
 signal bus_volume_updated(new_value)
+signal bus_mute_updated(new_value)
 
 var bus_name: StringName  # I.e. &"Master"
 var setting_name: String  # I.e. "master_volume"
 
 var bus_index: int
 
-var percentage: Label
-var reset: Button
-
 var default_db: float
 
 var current_vol_linear: float
+
+var muted: bool
 
 
 func _init(new_bus_name: StringName, new_setting_name: String):
@@ -39,6 +39,13 @@ func update_volume(new_vol_linear: float, no_signal: bool = false):
 
 	if not no_signal:
 		LocalSettings.change_setting("Audio", setting_name, new_vol_linear)
+
+
+func update_mute(to: bool):
+	muted = to
+	AudioServer.set_bus_mute(bus_index, to)
+
+	bus_mute_updated.emit(to)
 
 
 func _setting_changed(key: String, value: Variant) -> void:

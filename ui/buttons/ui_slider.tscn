@@ -102,6 +102,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 200.0
 offset_bottom = 33.0
+focus_mode = 2
 script = ExtResource("1_skftf")
 slider = NodePath("ProgressBarBackground/GrabberBounds/HSlider")
 grabber = NodePath("ProgressBarBackground/GrabberBounds/Grabber")
