@@ -3,7 +3,6 @@ extends UISelector
 signal audio_output_list_changed()
 
 @export var speaker_label: Label
-@export var refresh_button: UIButton
 
 var audio_device_list: PackedStringArray
 
@@ -26,7 +25,6 @@ func _ready() -> void:
 	for device in audio_device_list:
 		if saved_device == device:
 			selected = get_item_index(audio_device_list.find(device))
-			return
 
 
 func _process(_delta: float) -> void:

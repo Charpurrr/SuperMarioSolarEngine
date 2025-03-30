@@ -66,6 +66,11 @@ func _ready() -> void:
 	_update_slider(default_value, false)
 
 
+func _gui_input(event):
+	if event is InputEventMouseButton or event is InputEventMouseMotion:
+		get_viewport().set_input_as_handled()
+
+
 #func _update_ticks():
 	#if ticked == true:
 		#slider.tick_count = round(size.x / 8)

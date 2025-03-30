@@ -1529,12 +1529,10 @@ vertical_alignment = 1
 [node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice"]
 layout_mode = 2
 
-[node name="PresetSelector" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice" node_paths=PackedStringArray("speaker_label", "refresh_button") instance=ExtResource("52_sk6td")]
+[node name="PresetSelector" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice" node_paths=PackedStringArray("speaker_label") instance=ExtResource("52_sk6td")]
 layout_mode = 2
-selected = 0
 script = ExtResource("51_oqi1b")
 speaker_label = NodePath("../SpeakerMode")
-refresh_button = NodePath("")
 
 [node name="Space2" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice"]
 custom_minimum_size = Vector2(0, 5)
