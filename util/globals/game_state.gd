@@ -23,6 +23,7 @@ var buses: Dictionary[StringName, AudioBus] = {
 		AudioBus.new(&"Voice", "voice_volume")
 }
 
+
 func _ready():
 	paused.connect(pause_toggle)
 
@@ -33,8 +34,7 @@ func _ready():
 
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
-	_update_bgm_mute(LocalSettings.load_setting("Audio", "music_muted", false))
-
+	buses[&"Music"].update_mute(LocalSettings.load_setting("Audio", "music_muted", false))
 	debug_toggle = LocalSettings.load_setting("Developer", "debug_toggle", false)
 
 
@@ -44,7 +44,7 @@ func _ready():
 
 func _unhandled_input(event):
 	if event.is_action_pressed(&"mute"):
-		_update_bgm_mute(!buses[&"Music"].muted)
+		LocalSettings.change_setting("Audio", "music_muted",!buses[&"Music"].muted)
 
 	# Toggle between fullscreen and last non-fullscreen window scale
 	if event.is_action_pressed(&"fullscreen"):
@@ -63,11 +63,6 @@ func _unhandled_input(event):
 		LocalSettings.change_setting("Developer", "debug_toggle", debug_toggle)
 
 
-func _update_bgm_mute(to: bool):
-	LocalSettings.change_setting("Audio", "music_muted", to)
-	buses[&"Music"].update_mute(to)
-
-
 func _setting_changed(key: String, value: Variant):
 	match key:
 		# GENERAL
@@ -77,9 +72,9 @@ func _setting_changed(key: String, value: Variant):
 			Engine.max_fps = 30 * value # 0:INF, 1:30, 2:60, 3: 120
 		"scale":
 			WindowSizer.set_win_size(value)
-		# DEVELOPER
-		"debug_toggle":
-			debug_toggle = value
+		# AUDIO
+		"music_muted":
+			buses[&"Music"].update_mute(value)
 
 
 ## Called with the paused signal.

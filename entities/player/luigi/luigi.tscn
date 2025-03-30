@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bg4t154sge7br" path="res://entities/player/shared/player.gd" id="1_ynq8m"]
 [ext_resource type="Texture2D" uid="uid://d1x8w2yyvg20v" path="res://entities/player/luigi/anime/backflip.png" id="2_ujeeb"]
 [ext_resource type="Texture2D" uid="uid://cpi80richfm5t" path="res://entities/player/luigi/anime/bonk.png" id="3_guhwp"]
-[ext_resource type="Texture2D" uid="uid://c07igexhnolce" path="res://entities/player/mario/anime/breakdance.png" id="4_fxlm5"]
+[ext_resource type="Texture2D" uid="uid://c07igexhnolce" path="res://entities/player/mario/anime/crouch_spin.png" id="4_fxlm5"]
 [ext_resource type="Texture2D" uid="uid://bvxnmr5io64fo" path="res://entities/player/luigi/anime/buttslide.png" id="5_7v5l2"]
 [ext_resource type="Texture2D" uid="uid://dkhle2i3ynk0g" path="res://entities/player/luigi/anime/buttslide_back.png" id="6_aj4ws"]
 [ext_resource type="Texture2D" uid="uid://blbogym05vrty" path="res://entities/player/luigi/anime/buttslide_front.png" id="7_mlpp5"]

@@ -21,6 +21,7 @@ func _ready():
 	slider.bus = bus
 
 	bus.bus_mute_updated.connect(_update_mute)
+	_update_mute(bus.muted)
 
 	header.text = header_text
 

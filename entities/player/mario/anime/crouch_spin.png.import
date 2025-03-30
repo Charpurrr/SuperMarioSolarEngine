@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c07igexhnolce"
-path="res://.godot/imported/breakdance.png-8c90fcb04e3c47bedae9ed6f9c0fc007.ctex"
+path="res://.godot/imported/crouch_spin.png-7a0d6b11ca64e2c59d9920b4dabedc1c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/player/mario/anime/breakdance.png"
-dest_files=["res://.godot/imported/breakdance.png-8c90fcb04e3c47bedae9ed6f9c0fc007.ctex"]
+source_file="res://entities/player/mario/anime/crouch_spin.png"
+dest_files=["res://.godot/imported/crouch_spin.png-7a0d6b11ca64e2c59d9920b4dabedc1c.ctex"]
 
 [params]
 

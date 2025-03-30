@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bbgppbst4akvn" path="res://entities/player/mario/anime/backflip.png" id="2_i2o54"]
 [ext_resource type="Texture2D" uid="uid://7iyxgvpx0ue7" path="res://entities/player/mario/anime/crouch.png" id="3_0c1gq"]
 [ext_resource type="Texture2D" uid="uid://bumy61776okci" path="res://entities/player/mario/anime/bonk.png" id="3_3y25f"]
-[ext_resource type="Texture2D" uid="uid://c07igexhnolce" path="res://entities/player/mario/anime/breakdance.png" id="3_h1rp8"]
+[ext_resource type="Texture2D" uid="uid://c07igexhnolce" path="res://entities/player/mario/anime/crouch_spin.png" id="3_h1rp8"]
 [ext_resource type="Texture2D" uid="uid://ca2h4vnv7ywwe" path="res://entities/player/mario/anime/buttslide.png" id="3_pusam"]
 [ext_resource type="Texture2D" uid="uid://dr20l67h6d3rv" path="res://entities/player/mario/anime/dive.png" id="4_0hrc4"]
 [ext_resource type="Texture2D" uid="uid://cjfyy6hgqu8m3" path="res://entities/player/mario/anime/crouchwalk.png" id="4_b56cl"]
