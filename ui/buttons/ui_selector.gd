@@ -13,7 +13,9 @@ extends OptionButton
 func _ready() -> void:
 	mouse_entered.connect(grab_focus)
 	mouse_exited.connect(release_focus)
+
 	pressed.connect(avfx)
+	item_selected.connect(avfx.unbind(1))
 
 	# Plays the cursor sound effect when focus is entered.
 	var cursor_sfx_args: Array = [cursor_sfx, &"UI", self]

@@ -1144,10 +1144,11 @@ theme_override_font_sizes/font_size = 16
 theme_override_styles/panel = SubResource("StyleBoxEmpty_q1vx3")
 theme_override_styles/tab_selected = SubResource("StyleBoxFlat_m3cpd")
 tab_alignment = 1
-current_tab = 0
+current_tab = 2
 tab_focus_mode = 0
 
 [node name="General" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs" node_paths=PackedStringArray("fps_cap_button")]
+visible = false
 layout_mode = 2
 script = ExtResource("47_mvot7")
 fps_cap_button = NodePath("ScrollContainer/Content/TopButtons/FPS/SelectorButton")
@@ -1468,7 +1469,6 @@ layout_mode = 2
 text = "CONTROLLER"
 
 [node name="Sound" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -1529,31 +1529,12 @@ vertical_alignment = 1
 [node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice"]
+[node name="PresetSelector" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice" node_paths=PackedStringArray("speaker_label", "refresh_button") instance=ExtResource("52_sk6td")]
 layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="AudioDevice" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="PresetSelector" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice/HBoxContainer/AudioDevice" node_paths=PackedStringArray("speaker_label", "refresh_button") instance=ExtResource("52_sk6td")]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
+selected = 0
 script = ExtResource("51_oqi1b")
-speaker_label = NodePath("../../../SpeakerMode")
-refresh_button = NodePath("../../RefreshButton")
-
-[node name="RefreshButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice/HBoxContainer" instance=ExtResource("25_dlkvg")]
-layout_mode = 2
-size_flags_stretch_ratio = 0.4
-text = "REFRESH"
+speaker_label = NodePath("../SpeakerMode")
+refresh_button = NodePath("")
 
 [node name="Space2" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Sound/Control/ScrollContainer/HBoxContainer/Content/AudioDevice"]
 custom_minimum_size = Vector2(0, 5)

@@ -39,7 +39,7 @@ func _ready():
 
 
 #func _process(_delta: float) -> void:
-	#print(get_tree().get_nodes_in_group(&"UI"))
+	#print(get_viewport().gui_get_focus_owner())
 
 
 func _unhandled_input(event):
