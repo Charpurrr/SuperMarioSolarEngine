@@ -55,7 +55,7 @@ anti_aliasing = false
 
 [node name="PresetSelector" type="OptionButton"]
 offset_right = 100.0
-offset_bottom = 33.0
+offset_bottom = 27.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 5.0
@@ -80,7 +80,7 @@ theme_override_constants/arrow_margin = 5
 theme_override_constants/modulate_arrow = 1
 theme_override_icons/arrow = ExtResource("4_3xffh")
 alignment = 1
-text_overrun_behavior = 1
+text_overrun_behavior = 3
 fit_to_longest_item = false
 script = ExtResource("8_8waww")
 press_sfx = ExtResource("5_c7x3e")
