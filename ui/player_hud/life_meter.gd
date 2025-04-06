@@ -27,6 +27,11 @@ const ROTATION: float = TAU / 4
 @export var outline: Button 
 @export var label: Label
 
+func _ready() -> void:
+	get_tree().add_user_signal(&"player_damaged", [TYPE_INT])
+	get_tree().connect(&"player_damaged", func(amount: int) -> void:
+		hp -= amount
+	)
 
 func _draw() -> void:
 	var center: Vector2 = size / 2
