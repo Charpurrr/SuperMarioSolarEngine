@@ -5,6 +5,11 @@ extends PlayerState
 ## How fast you ground pound.
 @export var gp_fall_vel: float = 9.0
 
+func _on_enter(_param):
+	actor.foot_hitbox.damage_component.amount = 3
+
+func _on_exit():
+	actor.foot_hitbox.damage_component.amount = 1
 
 func _physics_tick():
 	movement.move_x_analog(0.04, false)
