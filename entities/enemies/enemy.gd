@@ -6,6 +6,7 @@ extends CharacterBody2D
 
 @export_category(&"References")
 @export var hitbox: CollisionShape2D
+@export var collision: CollisionShape2D
 
 @export var anime: AnimationPlayer
 @export var doll: AnimatedSprite2D
@@ -28,10 +29,10 @@ func _physics_process(delta):
 
 
 ## Behaviour for getting hit. (Gets overridden by child class.)
-func take_hit(_source: Node, _damage_type: HealthModule.DamageType):
+func take_hit(_source: Node, _damage_type: DamageComponent.DAMAGE_TYPE):
 	pass
 
 
 ## Behaviour for dying. (Gets overridden by child class.)
-func die(_source: Node, _damage_type: HealthModule.DamageType):
+func die(_source: Node, _damage_type: DamageComponent.DAMAGE_TYPE):
 	pass
