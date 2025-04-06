@@ -56,6 +56,11 @@ folder_colors={
 
 import/blender/enabled=false
 
+[global_group]
+
+player_harmable=""
+enemy_harmable=""
+
 [input]
 
 left={
