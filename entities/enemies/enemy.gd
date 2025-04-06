@@ -5,13 +5,11 @@ extends CharacterBody2D
 @export var hp: int
 
 @export_category(&"References")
-@export var hitbox: CollisionShape2D
 @export var collision: CollisionShape2D
+@export var hitbox: Hitbox
 
 @export var anime: AnimationPlayer
 @export var doll: AnimatedSprite2D
-
-@onready var health_module := HealthModule.new(hp, take_hit, die)
 
 ## Current velocity.
 var vel := Vector2.ZERO

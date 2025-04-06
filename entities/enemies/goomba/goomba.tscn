@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvbbpn56rtjwd"]
+[gd_scene load_steps=12 format=3 uid="uid://cvbbpn56rtjwd"]
 
 [ext_resource type="Script" uid="uid://c8rvart030ldu" path="res://entities/enemies/goomba/goomba.gd" id="1_hhlu2"]
 [ext_resource type="Texture2D" uid="uid://x2edebevq3c7" path="res://entities/enemies/goomba/anime/idle.png" id="1_hp473"]
+[ext_resource type="Script" uid="uid://bpvnd3iif08ha" path="res://util/components/general/damage_component.gd" id="3_qtetb"]
+[ext_resource type="Script" uid="uid://cbng7ws4jf1k6" path="res://entities/components/hitbox/hitbox.gd" id="4_vuybc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_doiik"]
 animations = [{
@@ -13,6 +15,18 @@ animations = [{
 "name": &"idle",
 "speed": 5.0
 }]
+
+[sub_resource type="Resource" id="Resource_spovy"]
+script = ExtResource("3_qtetb")
+amount = 1
+knockback = Vector2(4.5, 3.5)
+additive_knockback = false
+disabled = false
+type = 0
+metadata/_custom_type_script = "uid://bpvnd3iif08ha"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wwbio"]
+size = Vector2(15, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4v7vj"]
 size = Vector2(13, 13)
@@ -36,7 +50,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_kc47k"]
 resource_name = "die_strike"
 length = 0.6
-loop_mode = 1
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -69,12 +82,13 @@ _data = {
 &"die_strike": SubResource("Animation_kc47k")
 }
 
-[node name="Goomba" type="CharacterBody2D" node_paths=PackedStringArray("hitbox", "anime", "doll")]
+[node name="Goomba" type="CharacterBody2D" node_paths=PackedStringArray("collision", "hitbox", "anime", "doll")]
 collision_layer = 12
 collision_mask = 5
 script = ExtResource("1_hhlu2")
 gravity = 0.22
-hp = 1
+hp = 3
+collision = NodePath("Collision")
 hitbox = NodePath("Hitbox")
 anime = NodePath("AnimationPlayer")
 doll = NodePath("Node2D/Doll")
@@ -88,7 +102,17 @@ sprite_frames = SubResource("SpriteFrames_doiik")
 animation = &"idle"
 offset = Vector2(0, -24)
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." groups=["player_harmable"]]
+script = ExtResource("4_vuybc")
+damage_component = SubResource("Resource_spovy")
+metadata/_custom_type_script = "uid://8bev7l70dj8l"
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0.5, -8)
+shape = SubResource("RectangleShape2D_wwbio")
+debug_color = Color(0.984314, 0, 0.32549, 0.207843)
+
+[node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -6.5)
 shape = SubResource("RectangleShape2D_4v7vj")
 
@@ -96,3 +120,13 @@ shape = SubResource("RectangleShape2D_4v7vj")
 libraries = {
 &"": SubResource("AnimationLibrary_ju3gn")
 }
+
+[node name="HP" type="Label" parent="."]
+offset_left = -19.0
+offset_top = -41.0
+offset_right = 21.0
+offset_bottom = -18.0
+text = "0"
+horizontal_alignment = 1
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
