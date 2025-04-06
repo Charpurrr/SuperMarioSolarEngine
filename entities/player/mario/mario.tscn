@@ -2119,7 +2119,7 @@ overwrite_other = true
 cutoff_sfx = true
 metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
 
-[node name="Mario" type="CharacterBody2D" node_paths=PackedStringArray("doll", "state_manager", "movement", "input", "push_rays", "hitbox", "dive_hitbox", "small_hitbox", "water_check", "crouchlock", "spin_hitbox", "foot_hitbox")]
+[node name="Mario" type="CharacterBody2D" node_paths=PackedStringArray("doll", "state_manager", "movement", "input", "damage_manager", "push_rays", "hitbox", "dive_hitbox", "small_hitbox", "water_check", "crouchlock", "spin_hitbox", "foot_hitbox")]
 collision_layer = 2
 floor_constant_speed = true
 floor_max_angle = 1.48353
@@ -2129,6 +2129,7 @@ doll = NodePath("Doll")
 state_manager = NodePath("StateManager")
 movement = NodePath("Movement")
 input = NodePath("InputManager")
+damage_manager = NodePath("DamageManager")
 push_rays = NodePath("PushRays")
 hitbox = NodePath("Hitbox")
 dive_hitbox = NodePath("DiveHitbox")

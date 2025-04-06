@@ -87,7 +87,7 @@ collision_layer = 12
 collision_mask = 5
 script = ExtResource("1_hhlu2")
 gravity = 0.22
-hp = 3
+hp = 1
 collision = NodePath("Collision")
 hitbox = NodePath("Hitbox")
 anime = NodePath("AnimationPlayer")
@@ -120,13 +120,5 @@ shape = SubResource("RectangleShape2D_4v7vj")
 libraries = {
 &"": SubResource("AnimationLibrary_ju3gn")
 }
-
-[node name="HP" type="Label" parent="."]
-offset_left = -19.0
-offset_top = -41.0
-offset_right = 21.0
-offset_bottom = -18.0
-text = "0"
-horizontal_alignment = 1
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

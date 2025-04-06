@@ -20,4 +20,4 @@ static func can_harm_player(area: Area2D):
 	return area is Hitbox \
 	&& area.is_in_group(&"player_harmable") \
 	&& area.damage_component \
-	&& area.disabled
+	&& !area.disabled
