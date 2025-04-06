@@ -82,6 +82,7 @@ func _reload_level():
 
 	# Free the level and then re-add it.
 	level_node.queue_free()
+	ui_node.queue_free()
 
 	load_level(new_level)
 
