@@ -80,8 +80,9 @@ func _reload_level():
 	if tree.paused == true:
 		GameState.pause_toggle()
 
-	# Free the level and then re-add it.
+	# Delete the level and UI, then re-add them.
 	level_node.queue_free()
+	ui_node.queue_free()
 
 	load_level(new_level)
 
