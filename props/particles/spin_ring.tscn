@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://yxcrkjecabc2"]
 
-[ext_resource type="Texture2D" uid="uid://rgu54h1rd501" path="res://entities/player/shared/particles/spin_ring.png" id="1_8iae5"]
+[ext_resource type="Texture2D" uid="uid://rgu54h1rd501" path="res://props/particles/spin_ring.png" id="1_8iae5"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8iae5"]
 particles_animation = true

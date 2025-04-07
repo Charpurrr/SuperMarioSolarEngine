@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://blb650dgb5q1i"]
+[gd_scene load_steps=12 format=3 uid="uid://blb650dgb5q1i"]
 
 [ext_resource type="FontFile" uid="uid://rhrmsvahgm3h" path="res://ui/fonts/mario_wonder.ttf" id="1_m4vfq"]
+[ext_resource type="Script" uid="uid://cwggfgnu1xr2t" path="res://ui/player_hud/coin_counter.gd" id="1_w7o62"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6apma"]
 border_width_left = 3
@@ -81,13 +82,16 @@ font_size = 20
 outline_size = 9
 outline_color = Color(0, 0, 0, 1)
 
-[node name="CoinCounter" type="Control"]
+[node name="CoinCounter" type="Control" node_paths=PackedStringArray("label")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 15.0
 offset_top = 15.0
 offset_right = 62.0
 offset_bottom = 44.0
+script = ExtResource("1_w7o62")
+bounce_color = Color(1, 0.784314, 0, 1)
+label = NodePath("Count")
 
 [node name="CoinIcon" type="Control" parent="."]
 custom_minimum_size = Vector2(18, 0)
@@ -183,7 +187,7 @@ disabled = true
 layout_mode = 1
 anchors_preset = -1
 offset_left = 16.0
-offset_right = 39.0
+offset_right = 53.0
 offset_bottom = 43.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_oqxfb")
 text = "000"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rgu54h1rd501"
-path="res://.godot/imported/spin_ring.png-e13e8432fcaad6093946ea924c508e66.ctex"
+uid="uid://chws3rokc6d0i"
+path="res://.godot/imported/dust.png-520e3225efc521decda74a9c22ad371f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/player/shared/particles/spin_ring.png"
-dest_files=["res://.godot/imported/spin_ring.png-e13e8432fcaad6093946ea924c508e66.ctex"]
+source_file="res://props/particles/dust.png"
+dest_files=["res://.godot/imported/dust.png-520e3225efc521decda74a9c22ad371f.ctex"]
 
 [params]
 

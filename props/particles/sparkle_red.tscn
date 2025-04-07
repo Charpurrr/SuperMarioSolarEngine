@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1wf1b4d4xfvf"]
+[gd_scene load_steps=4 format=3 uid="uid://dqlsrudwj22ra"]
 
-[ext_resource type="Texture2D" uid="uid://biy1toqd5qyul" path="res://entities/player/shared/particles/stars.png" id="1_lvopr"]
+[ext_resource type="Texture2D" uid="uid://bw7ndax2yqnml" path="res://props/particles/stars_red.png" id="1_2bas3"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lbx15"]
 particles_animation = true
@@ -16,7 +16,7 @@ point_count = 4
 material = SubResource("CanvasItemMaterial_lbx15")
 emitting = false
 amount = 3
-texture = ExtResource("1_lvopr")
+texture = ExtResource("1_2bas3")
 lifetime = 0.3
 one_shot = true
 explosiveness = 0.8

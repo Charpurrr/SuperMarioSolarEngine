@@ -235,6 +235,7 @@ toggle_hud={
 2d_physics/layer_3="NPC"
 2d_physics/layer_4="Homeable (GroundPound)"
 2d_physics/layer_5="Water"
+2d_physics/layer_6="Collectible"
 2d_physics/layer_9="Preview (Editor)"
 2d_physics/layer_10="Level Preview Field (Editor)"
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://csf56lkxqqb12"]
+[gd_scene load_steps=106 format=3 uid="uid://csf56lkxqqb12"]
 
 [ext_resource type="Script" uid="uid://brof7wb075ont" path="res://ui/ui.gd" id="1_75fsn"]
 [ext_resource type="AudioStream" uid="uid://b58aveo75onan" path="res://ui/sfx/pause.wav" id="2_1xskv"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b41sl5v4p501f" path="res://ui/notification/notification.tscn" id="4_oqxfb"]
 [ext_resource type="Shader" uid="uid://cgcjxa2rl4edn" path="res://util/shaders/smw_mozaic.gdshader" id="5_yrl65"]
 [ext_resource type="PackedScene" uid="uid://blb650dgb5q1i" path="res://ui/player_hud/coin_counter.tscn" id="6_6apma"]
+[ext_resource type="Script" uid="uid://blkgg52gdx748" path="res://ui/player_hud/red_coin_counter.gd" id="7_aeygf"]
 [ext_resource type="FontFile" uid="uid://e821cxxeybxh" path="res://ui/fonts/mario_sunshine.ttf" id="7_ctsqr"]
 [ext_resource type="PackedScene" uid="uid://bgl7f8thu2y4" path="res://ui/player_hud/life_meter.tscn" id="7_m3cpd"]
 [ext_resource type="Script" uid="uid://dgat047njqsvp" path="res://ui/debug/debug_label.gd" id="8_2m7jo"]
@@ -477,12 +478,15 @@ libraries = {
 anchors_preset = -1
 offset_top = 45.0
 offset_bottom = 50.0
+script = ExtResource("7_aeygf")
+max_count = 0
+bounce_color = Color(1, 0, 0, 1)
 
 [node name="TextureRect" parent="RedCoinCounter/CoinIcon/Gradient" index="0"]
 texture = SubResource("GradientTexture2D_m3cpd")
 
 [node name="Count" parent="RedCoinCounter" index="1"]
-text = "0/8"
+text = "0/0"
 
 [node name="LifeMeter" parent="." groups=["HUD"] instance=ExtResource("7_m3cpd")]
 

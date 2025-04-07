@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chws3rokc6d0i"
-path="res://.godot/imported/dust.png-c4334bb2620a9331ef559e3e29afc424.ctex"
+uid="uid://q2j2vqb7qmoi"
+path="res://.godot/imported/dust_rot.png-80bacb4f4ec621d690d627d7b400b230.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/player/shared/particles/dust.png"
-dest_files=["res://.godot/imported/dust.png-c4334bb2620a9331ef559e3e29afc424.ctex"]
+source_file="res://props/particles/dust_rot.png"
+dest_files=["res://.godot/imported/dust_rot.png-80bacb4f4ec621d690d627d7b400b230.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biy1toqd5qyul"
-path="res://.godot/imported/stars.png-3d3dbe62cd8333805202c31227201156.ctex"
+uid="uid://b52xhh1xgcqmf"
+path="res://.godot/imported/stars_blue.png-53d7f1b2066238751413b62798b3ee7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/player/shared/particles/stars.png"
-dest_files=["res://.godot/imported/stars.png-3d3dbe62cd8333805202c31227201156.ctex"]
+source_file="res://props/particles/stars_blue.png"
+dest_files=["res://.godot/imported/stars_blue.png-53d7f1b2066238751413b62798b3ee7d.ctex"]
 
 [params]
 

@@ -84,3 +84,18 @@ func pause_toggle():
 
 func is_paused() -> bool:
 	return get_tree().paused
+
+
+#func sync_animation(sprite: AnimatedSprite2D):
+	#if not sprite: return
+#
+	#var frame_count: int = sprite.sprite_frames.get_frame_count(sprite.animation)
+	#sprite.frame = wrapi(get_tree().get_frame(), 0, frame_count - 1)
+#
+	#var t = 0
+	#while sprite and t < 1/sprite.sprite_frames.get_animation_speed(sprite.animation):
+		#t += get_process_delta_time()
+		#await Engine.get_main_loop().process_frame
+#
+	#if not sprite: return
+	#sync_animation(sprite)
