@@ -26,7 +26,7 @@ static var total_reds: int = 0
 
 func _ready() -> void:
 	play(str(type))
-	
+
 	if type == COIN_TYPE.RED:
 		add_to_group(&"red_coins")
 		total_reds += 1

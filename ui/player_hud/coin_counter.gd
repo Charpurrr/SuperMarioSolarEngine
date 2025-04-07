@@ -19,8 +19,12 @@ var call_count: int = 0
 
 
 func _ready() -> void:
-	get_tree().root.add_user_signal(&"coin_collected")
-	get_tree().root.connect(&"coin_collected", _increment)
+	var root: Window = get_tree().root
+
+	if not root.has_user_signal(&"coin_collected"):
+		root.add_user_signal(&"coin_collected")
+
+	root.connect(&"coin_collected", _increment)
 
 
 func _increment(type: Coin.COIN_TYPE):
