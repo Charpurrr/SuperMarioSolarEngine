@@ -35,7 +35,7 @@ func _ready() -> void:
 
 
 func _on_area_2d_body_entered(_body: Node2D) -> void:
-	get_tree().root.emit_signal(&"coin_collected", type)
+	get_tree().emit_signal(&"coin_collected", type)
 
 	var parent: Node = get_parent()
 

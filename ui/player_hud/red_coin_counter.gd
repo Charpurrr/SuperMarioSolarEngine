@@ -26,7 +26,7 @@ var call_count: int = 0
 
 func _ready() -> void:
 	# This signal gets added to the root in the main coin counter.
-	get_tree().root.connect(&"coin_collected", _increment)
+	get_tree().connect(&"coin_collected", _increment)
 
 	max_count = Coin.total_reds
 
