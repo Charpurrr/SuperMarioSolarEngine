@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dgqp3sqvmcvpu" path="res://entities/player/mario/mario.tscn" id="1_jyeyx"]
 [ext_resource type="SpriteFrames" uid="uid://cf4w7ogyh0ncn" path="res://entities/player/luigi/luigi_sprite_frames.res" id="2_rpjv5"]
 [ext_resource type="Script" uid="uid://dd8oyhd4nllix" path="res://util/particle_effect.gd" id="2_yf61k"]
-[ext_resource type="PackedScene" uid="uid://yxcrkjecabc2" path="res://entities/player/shared/particles/spin_ring.tscn" id="3_d8e4a"]
+[ext_resource type="PackedScene" uid="uid://yxcrkjecabc2" path="res://props/particles/spin_ring.tscn" id="3_d8e4a"]
 
 [sub_resource type="Resource" id="Resource_jkn7s"]
 resource_local_to_scene = true
@@ -27,6 +27,7 @@ metadata/_custom_type_script = "uid://dd8oyhd4nllix"
 
 [node name="Doll" parent="." index="0"]
 sprite_frames = ExtResource("2_rpjv5")
+animation = &"idle"
 
 [node name="CrouchSpin" parent="StateManager/Dry/Grounded" index="6"]
 particles = Array[ExtResource("2_yf61k")]([SubResource("Resource_jkn7s")])
