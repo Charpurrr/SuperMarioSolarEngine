@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://cvbbpn56rtjwd"]
 
 [ext_resource type="Script" uid="uid://c8rvart030ldu" path="res://entities/enemies/goomba/goomba.gd" id="1_hhlu2"]
-[ext_resource type="Texture2D" uid="uid://x2edebevq3c7" path="res://entities/enemies/goomba/anime/idle.png" id="1_hp473"]
+[ext_resource type="Texture2D" uid="uid://x2edebevq3c7" path="res://entities/enemies/goomba/sprites/idle.png" id="1_hp473"]
 [ext_resource type="Script" uid="uid://b68kv8tvc8abf" path="res://util/classes/entity/hitbox.gd" id="3_vuybc"]
 [ext_resource type="Script" uid="uid://ym7krquk6nsu" path="res://util/components/entity/damage_component.gd" id="4_qtetb"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://w28xfxapdw55" path="res://entities/enemies/goomba/goomba_state_machine.tres" id="5_g0x7x"]
