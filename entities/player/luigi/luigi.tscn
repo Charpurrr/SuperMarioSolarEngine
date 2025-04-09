@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://dd8oyhd4nllix" path="res://util/particle_effect.gd" id="2_yf61k"]
 [ext_resource type="PackedScene" uid="uid://yxcrkjecabc2" path="res://props/particles/spin_ring.tscn" id="3_d8e4a"]
 
-[sub_resource type="Resource" id="Resource_jkn7s"]
+[sub_resource type="Resource" id="Resource_yf61k"]
 resource_local_to_scene = true
 script = ExtResource("2_yf61k")
 particle_scene = ExtResource("3_d8e4a")
@@ -14,7 +14,7 @@ particle_scale = Vector2(1, 1)
 loop_delay = 0
 metadata/_custom_type_script = "uid://dd8oyhd4nllix"
 
-[sub_resource type="Resource" id="Resource_nnosw"]
+[sub_resource type="Resource" id="Resource_d8e4a"]
 resource_local_to_scene = true
 script = ExtResource("2_yf61k")
 particle_scene = ExtResource("3_d8e4a")
@@ -29,8 +29,8 @@ metadata/_custom_type_script = "uid://dd8oyhd4nllix"
 sprite_frames = ExtResource("2_rpjv5")
 animation = &"idle"
 
-[node name="CrouchSpin" parent="StateManager/Dry/Grounded" index="6"]
-particles = Array[ExtResource("2_yf61k")]([SubResource("Resource_jkn7s")])
+[node name="CrouchSpin" parent="Managers/StateManager/Dry/Grounded" index="6"]
+particles = Array[ExtResource("2_yf61k")]([SubResource("Resource_yf61k")])
 
-[node name="Spin" parent="StateManager/Dry" index="2"]
-particles = Array[ExtResource("2_yf61k")]([SubResource("Resource_nnosw")])
+[node name="Spin" parent="Managers/StateManager/Dry" index="2"]
+particles = Array[ExtResource("2_yf61k")]([SubResource("Resource_d8e4a")])

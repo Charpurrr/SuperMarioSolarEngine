@@ -17,7 +17,9 @@ extends CharacterBody2D
 @export var push_rays: Node2D
 
 @export_group("Hitboxes")
-@export var spin_hitbox: Area2D
+@export var hurtbox: Hitbox
+@export var foot_hitbox: Hitbox
+@export var spin_hitbox: Hitbox
 
 @export_group("Areas")
 @export var water_check: Area2D

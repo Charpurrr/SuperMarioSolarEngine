@@ -1,7 +1,9 @@
-[gd_scene load_steps=185 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=190 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" uid="uid://bg4t154sge7br" path="res://entities/player/shared/player.gd" id="1_87j6i"]
 [ext_resource type="SpriteFrames" uid="uid://bqn6b0xmrvxjc" path="res://entities/player/mario/mario_sprite_frames.res" id="2_ttikd"]
+[ext_resource type="Script" uid="uid://b68kv8tvc8abf" path="res://util/classes/entity/hitbox.gd" id="4_totbj"]
+[ext_resource type="Script" uid="uid://ym7krquk6nsu" path="res://util/components/entity/damage_component.gd" id="5_pxspy"]
 [ext_resource type="Script" uid="uid://clh7ssy21bpqv" path="res://util/input_manager.gd" id="21_onm15"]
 [ext_resource type="Script" uid="uid://d0q4h02e1xlo6" path="res://entities/player/shared/push_rays.gd" id="35_g7d1t"]
 [ext_resource type="Script" uid="uid://ddr3ta4g2q457" path="res://entities/player/shared/player_movement.gd" id="37_quca3"]
@@ -128,7 +130,7 @@
 [ext_resource type="PackedScene" uid="uid://d1wf1b4d4xfvf" path="res://props/particles/sparkle.tscn" id="158_1s3ss"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u4b58"]
-size = Vector2(16, 32)
+size = Vector2(14, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1emcl"]
 size = Vector2(16, 16)
@@ -141,6 +143,25 @@ size = Vector2(6, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2tafv"]
 size = Vector2(16, 16)
+
+[sub_resource type="Resource" id="Resource_8mesl"]
+script = ExtResource("5_pxspy")
+amount = 1
+type = 2
+knockback = false
+metadata/_custom_type_script = "uid://ym7krquk6nsu"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pxspy"]
+size = Vector2(4, 4)
+
+[sub_resource type="Resource" id="Resource_pxspy"]
+script = ExtResource("5_pxspy")
+amount = 1
+type = 1
+knockback = true
+knockback_amount = Vector2(4, 3)
+additive_knockback = false
+metadata/_custom_type_script = "uid://ym7krquk6nsu"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gh08o"]
 size = Vector2(44, 14)
@@ -593,7 +614,7 @@ particle_offset = Vector2(0, 0)
 particle_scale = Vector2(1, 1)
 loop_delay = 2
 
-[node name="Mario" type="CharacterBody2D" node_paths=PackedStringArray("doll", "state_manager", "movement", "input", "collision", "small_collision", "dive_collision", "push_rays", "spin_hitbox", "water_check", "crouchlock")]
+[node name="Mario" type="CharacterBody2D" node_paths=PackedStringArray("doll", "state_manager", "movement", "input", "collision", "small_collision", "dive_collision", "push_rays", "hurtbox", "foot_hitbox", "spin_hitbox", "water_check", "crouchlock")]
 collision_layer = 2
 floor_constant_speed = true
 floor_max_angle = 1.48353
@@ -607,6 +628,8 @@ collision = NodePath("Collision")
 small_collision = NodePath("SmallCollision")
 dive_collision = NodePath("DiveCollision")
 push_rays = NodePath("PushRays")
+hurtbox = NodePath("Hitboxes/Hurtbox")
+foot_hitbox = NodePath("Hitboxes/FootHitbox")
 spin_hitbox = NodePath("Hitboxes/SpinHitbox")
 water_check = NodePath("Areas/WaterCheck")
 crouchlock = NodePath("Areas/Crouchlock")
@@ -617,6 +640,7 @@ sprite_frames = ExtResource("2_ttikd")
 animation = &"spin_attack"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_u4b58")
 
@@ -655,7 +679,29 @@ debug_color = Color(0.792157, 0.380392, 0.52549, 0.419608)
 
 [node name="Hitboxes" type="Node2D" parent="."]
 
+[node name="Hurtbox" type="Area2D" parent="Hitboxes"]
+script = ExtResource("4_totbj")
+metadata/_custom_type_script = "uid://b68kv8tvc8abf"
+
+[node name="DamageBox" type="CollisionShape2D" parent="Hitboxes/Hurtbox"]
+position = Vector2(0, -17)
+shape = SubResource("RectangleShape2D_u4b58")
+
+[node name="FootHitbox" type="Area2D" parent="Hitboxes"]
+script = ExtResource("4_totbj")
+damage_component = SubResource("Resource_8mesl")
+metadata/_custom_type_script = "uid://b68kv8tvc8abf"
+
+[node name="DamageBox" type="CollisionShape2D" parent="Hitboxes/FootHitbox"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_pxspy")
+debug_color = Color(1, 0, 0.145098, 0.141176)
+
 [node name="SpinHitbox" type="Area2D" parent="Hitboxes"]
+script = ExtResource("4_totbj")
+damage_component = SubResource("Resource_pxspy")
+disabled = true
+metadata/_custom_type_script = "uid://b68kv8tvc8abf"
 
 [node name="DamageBox" type="CollisionShape2D" parent="Hitboxes/SpinHitbox"]
 position = Vector2(0, -17)

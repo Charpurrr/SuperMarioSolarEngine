@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvbbpn56rtjwd"]
+[gd_scene load_steps=12 format=3 uid="uid://cvbbpn56rtjwd"]
 
 [ext_resource type="Script" uid="uid://c8rvart030ldu" path="res://entities/enemies/goomba/goomba.gd" id="1_hhlu2"]
 [ext_resource type="Texture2D" uid="uid://x2edebevq3c7" path="res://entities/enemies/goomba/anime/idle.png" id="1_hp473"]
+[ext_resource type="Script" uid="uid://b68kv8tvc8abf" path="res://util/classes/entity/hitbox.gd" id="3_vuybc"]
+[ext_resource type="Script" uid="uid://ym7krquk6nsu" path="res://util/components/entity/damage_component.gd" id="4_qtetb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_doiik"]
 animations = [{
@@ -16,6 +18,18 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4v7vj"]
 size = Vector2(13, 13)
+
+[sub_resource type="Resource" id="Resource_04ccq"]
+script = ExtResource("4_qtetb")
+amount = 1
+type = 0
+knockback = true
+knockback_amount = Vector2(4, 3)
+additive_knockback = false
+metadata/_custom_type_script = "uid://ym7krquk6nsu"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g0x7x"]
+size = Vector2(17, 18)
 
 [sub_resource type="Animation" id="Animation_yvt7r"]
 resource_name = "die_squish"
@@ -91,6 +105,16 @@ offset = Vector2(0, -24)
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -6.5)
 shape = SubResource("RectangleShape2D_4v7vj")
+
+[node name="Hitbox" type="Area2D" parent="."]
+script = ExtResource("3_vuybc")
+damage_component = SubResource("Resource_04ccq")
+metadata/_custom_type_script = "uid://b68kv8tvc8abf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0.5, -9)
+shape = SubResource("RectangleShape2D_g0x7x")
+debug_color = Color(0.99, 0, 0.297, 0.117647)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
