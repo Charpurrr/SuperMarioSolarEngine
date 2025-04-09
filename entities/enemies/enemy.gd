@@ -5,8 +5,7 @@ extends CharacterBody2D
 @export var hp: int
 
 @export_category(&"References")
-@export var hitbox: CollisionShape2D
-
+@export var collision: CollisionShape2D
 @export var anime: AnimationPlayer
 @export var doll: AnimatedSprite2D
 

@@ -69,13 +69,13 @@ _data = {
 &"die_strike": SubResource("Animation_kc47k")
 }
 
-[node name="Goomba" type="CharacterBody2D" node_paths=PackedStringArray("hitbox", "anime", "doll")]
+[node name="Goomba" type="CharacterBody2D" node_paths=PackedStringArray("collision", "anime", "doll")]
 collision_layer = 12
 collision_mask = 5
 script = ExtResource("1_hhlu2")
 gravity = 0.22
 hp = 1
-hitbox = NodePath("Hitbox")
+collision = NodePath("Collision")
 anime = NodePath("AnimationPlayer")
 doll = NodePath("Node2D/Doll")
 
@@ -88,7 +88,7 @@ sprite_frames = SubResource("SpriteFrames_doiik")
 animation = &"idle"
 offset = Vector2(0, -24)
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -6.5)
 shape = SubResource("RectangleShape2D_4v7vj")
 
