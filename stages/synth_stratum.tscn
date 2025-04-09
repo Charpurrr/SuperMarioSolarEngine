@@ -1,4 +1,4 @@
-[gd_scene load_steps=307 format=3 uid="uid://co7kk1h1rwbn6"]
+[gd_scene load_steps=306 format=3 uid="uid://co7kk1h1rwbn6"]
 
 [ext_resource type="Script" uid="uid://whyqyw8guuki" path="res://stages/level.gd" id="1_h1l40"]
 [ext_resource type="PackedScene" uid="uid://bfb4xq874buf6" path="res://props/level_environments/synth/synth.tscn" id="2_5te55"]
@@ -22,7 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://bkkhnpd6qwun3" path="res://props/terrain/synth/f1_fill_4.png" id="23_0e76p"]
 [ext_resource type="PackedScene" uid="uid://b14pbye1baqly" path="res://entities/collectibles/coin/coin.tscn" id="23_671ct"]
 [ext_resource type="Script" uid="uid://yk0j2cwutew5" path="res://addons/rmsmartshape/materials/shape_material.gd" id="24_f6nmh"]
-[ext_resource type="PackedScene" uid="uid://bvllkfc7oj1mi" path="res://entities/player/luigi/luigi.tscn" id="24_gux41"]
 [ext_resource type="Script" uid="uid://wrg07se7dxsj" path="res://util/polyshape.gd" id="25_41m6x"]
 
 [sub_resource type="Resource" id="Resource_ilush"]
@@ -2213,155 +2212,152 @@ position = Vector2(-129, -625)
 
 [node name="Coin" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(816, -56)
-frame_progress = 0.391537
+frame_progress = 0.231142
 
 [node name="Coin4" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(840, -56)
-frame_progress = 0.391537
+frame_progress = 0.231142
 
 [node name="Coin5" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(864, -56)
-frame_progress = 0.391537
+frame_progress = 0.231142
 
 [node name="Coin6" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(888, -56)
-frame_progress = 0.391537
+frame_progress = 0.231142
 
 [node name="Coin7" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(912, -56)
-frame_progress = 0.391537
+frame_progress = 0.231142
 
 [node name="Coin8" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(816, -80)
-frame_progress = 0.391537
+frame_progress = 0.231142
 
 [node name="Coin9" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(840, -80)
-frame_progress = 0.391537
+frame_progress = 0.231142
 
 [node name="Coin10" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(864, -80)
-frame_progress = 0.391537
+frame_progress = 0.231142
 
 [node name="Coin11" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(888, -80)
-frame_progress = 0.391537
+frame_progress = 0.231142
 
 [node name="Coin12" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(912, -80)
-frame_progress = 0.391537
+frame_progress = 0.231142
 
 [node name="Coin13" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(1352, -368)
 animation = &"1"
-frame_progress = 0.40576
+frame_progress = 0.245366
 type = 1
 
 [node name="Coin14" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(1376, -368)
 animation = &"1"
-frame_progress = 0.40576
+frame_progress = 0.245366
 type = 1
 
 [node name="Coin15" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(1400, -368)
 animation = &"1"
-frame_progress = 0.40576
+frame_progress = 0.245366
 type = 1
 
 [node name="Coin16" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(1424, -368)
 animation = &"1"
-frame_progress = 0.40576
+frame_progress = 0.245366
 type = 1
 
 [node name="Coin17" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(1448, -368)
 animation = &"1"
-frame_progress = 0.40576
+frame_progress = 0.245366
 type = 1
 
 [node name="Coin18" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(1352, -392)
 animation = &"1"
-frame_progress = 0.40576
+frame_progress = 0.245366
 type = 1
 
 [node name="Coin19" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(1376, -392)
 animation = &"1"
-frame_progress = 0.40576
+frame_progress = 0.245366
 type = 1
 
 [node name="Coin20" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(1400, -392)
 animation = &"1"
-frame_progress = 0.40576
+frame_progress = 0.245366
 type = 1
 
 [node name="Coin21" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(1424, -392)
 animation = &"1"
-frame_progress = 0.40576
+frame_progress = 0.245366
 type = 1
 
 [node name="Coin22" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(1448, -392)
 animation = &"1"
-frame_progress = 0.40576
+frame_progress = 0.245366
 type = 1
 
 [node name="Coin103" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(80, -48)
-frame_progress = 0.391537
+frame_progress = 0.231142
 
 [node name="Coin3" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(1416, -600)
 animation = &"2"
-frame_progress = 0.651406
+frame_progress = 0.491014
 type = 2
 
 [node name="Coin23" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(1440, -600)
 animation = &"2"
-frame_progress = 0.651406
+frame_progress = 0.491014
 type = 2
 
 [node name="Coin24" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(1464, -600)
 animation = &"2"
-frame_progress = 0.651406
+frame_progress = 0.491014
 type = 2
 
 [node name="Coin25" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(1488, -600)
 animation = &"2"
-frame_progress = 0.651406
+frame_progress = 0.491014
 type = 2
 
 [node name="Coin26" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(1512, -600)
 animation = &"2"
-frame_progress = 0.651406
+frame_progress = 0.491014
 type = 2
 
 [node name="Coin27" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(1536, -600)
 animation = &"2"
-frame_progress = 0.651406
+frame_progress = 0.491014
 type = 2
 
 [node name="Coin28" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(1560, -600)
 animation = &"2"
-frame_progress = 0.651406
+frame_progress = 0.491014
 type = 2
 
 [node name="Coin29" parent="." instance=ExtResource("23_671ct")]
 position = Vector2(1584, -600)
 animation = &"2"
-frame_progress = 0.651406
+frame_progress = 0.491014
 type = 2
-
-[node name="Luigi" parent="." instance=ExtResource("24_gux41")]
-position = Vector2(564, 0)
