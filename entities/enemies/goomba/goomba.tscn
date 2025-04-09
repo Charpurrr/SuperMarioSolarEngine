@@ -1,10 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://cvbbpn56rtjwd"]
+[gd_scene load_steps=12 format=3 uid="uid://cvbbpn56rtjwd"]
 
 [ext_resource type="Script" uid="uid://c8rvart030ldu" path="res://entities/enemies/goomba/goomba.gd" id="1_hhlu2"]
 [ext_resource type="Texture2D" uid="uid://x2edebevq3c7" path="res://entities/enemies/goomba/anime/idle.png" id="1_hp473"]
 [ext_resource type="Script" uid="uid://b68kv8tvc8abf" path="res://util/classes/entity/hitbox.gd" id="3_vuybc"]
 [ext_resource type="Script" uid="uid://ym7krquk6nsu" path="res://util/components/entity/damage_component.gd" id="4_qtetb"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://w28xfxapdw55" path="res://entities/enemies/goomba/goomba_state_machine.tres" id="5_g0x7x"]
 [ext_resource type="Script" uid="uid://be2xsj74ekqmn" path="res://util/state_machine/state_machine.gd" id="5_qtetb"]
+[ext_resource type="AnimationLibrary" uid="uid://c5yfxl3g45xa" path="res://entities/enemies/goomba/goomba_animations.res" id="6_04ccq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_doiik"]
 animations = [{
@@ -32,60 +34,6 @@ metadata/_custom_type_script = "uid://ym7krquk6nsu"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g0x7x"]
 size = Vector2(17, 18)
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_04ccq"]
-
-[sub_resource type="Animation" id="Animation_yvt7r"]
-resource_name = "die_squish"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Doll:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.1),
-"transitions": PackedFloat32Array(0.5, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.7, 0.3), Vector2(1.2, 0.8)]
-}
-
-[sub_resource type="Animation" id="Animation_kc47k"]
-resource_name = "die_strike"
-length = 0.6
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Doll:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
-"transitions": PackedFloat32Array(2, 0.5, 2, 0.5),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.7, 1.3), Vector2(1, 1), Vector2(1.3, 0.7)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 6.28319]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ju3gn"]
-_data = {
-&"die_squish": SubResource("Animation_yvt7r"),
-&"die_strike": SubResource("Animation_kc47k")
-}
-
 [node name="Goomba" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "animation_player", "hitbox", "doll")]
 collision_layer = 12
 collision_mask = 5
@@ -94,14 +42,9 @@ hp = 1
 state_machine = NodePath("StateMachine")
 animation_player = NodePath("StateMachine/AnimationPlayer")
 hitbox = NodePath("Hitbox")
-doll = NodePath("Node2D/Doll")
+doll = NodePath("Doll")
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(0, -7.5)
-
-[node name="Doll" type="AnimatedSprite2D" parent="Node2D"]
-position = Vector2(0, 7.5)
-scale = Vector2(1e-05, 1e-05)
+[node name="Doll" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_doiik")
 animation = &"idle"
 offset = Vector2(0, -24)
@@ -121,15 +64,15 @@ shape = SubResource("RectangleShape2D_g0x7x")
 debug_color = Color(0.99, 0, 0.297, 0.117647)
 
 [node name="StateMachine" type="AnimationTree" parent="." node_paths=PackedStringArray("actor_body", "actor_sprite")]
-tree_root = SubResource("AnimationNodeStateMachine_04ccq")
+tree_root = ExtResource("5_g0x7x")
 anim_player = NodePath("AnimationPlayer")
 script = ExtResource("5_qtetb")
 actor_body = NodePath("..")
-actor_sprite = NodePath("../Node2D/Doll")
+actor_sprite = NodePath("../Doll")
 metadata/_custom_type_script = "uid://be2xsj74ekqmn"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="StateMachine"]
 root_node = NodePath("../..")
 libraries = {
-&"": SubResource("AnimationLibrary_ju3gn")
+&"": ExtResource("6_04ccq")
 }
