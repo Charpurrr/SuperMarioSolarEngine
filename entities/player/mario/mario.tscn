@@ -700,7 +700,7 @@ script = ExtResource("38_vxs65")
 input = NodePath("../InputManager")
 movement = NodePath("../Movement")
 target_actor = NodePath("../..")
-initial_state = NodePath("Dry/Airborne")
+initial_state = NodePath("Dry/Grounded/Idle")
 
 [node name="Submerged" type="Node" parent="Managers/StateManager"]
 script = ExtResource("135_2utkk")

@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var doll: AnimatedSprite2D
 
 @export_group("Managers")
-@export var state_manager: StateManager
+@export var state_manager: pStateManager
 @export var movement: PMovement
 @export var input: InputManager
 @export var fludd_manager: FluddManager

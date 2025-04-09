@@ -1,10 +1,10 @@
-class_name StateManager
-extends State
+class_name pStateManager
+extends pState
 ## Root node of a state machine.
 ## Manages the execution of hook functions in the machine.
 
 @export var target_actor: Node = null
-@export var initial_state: State = null
+@export var initial_state: pState = null
 
 
 func _ready():
@@ -22,7 +22,7 @@ func _ready():
 
 	# Switch to and initialise the initial state, if there is one.
 	if initial_state != null:
-		var link = StateLink.new(self, initial_state)
+		var link = pStateLink.new(self, initial_state)
 		_switch_leaf(link)
 		live_substate.trigger_enter(null)
 

@@ -1,5 +1,5 @@
 class_name PlayerState
-extends State
+extends pState
 ## State specialised for player characters.
 
 @export_enum("Normal", "Small", "Dive", "None") var collision_type: String = "Normal"

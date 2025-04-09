@@ -1,18 +1,18 @@
-class_name State
+class_name pState
 extends Node
 ## Abstract state class with behavior that affects a target node.
 
 ## The current active substate.
-var live_substate: State = null
+var live_substate: pState = null
 
 ## The target of this state machine's behavior.
 var actor: Node = null
 
 ## The root of the state machine.
-var manager: StateManager = null
+var manager: pStateManager = null
 
 ## Cache of StateLinks to other states in the machine.
-var _link_cache: Dictionary[StringName, StateLink] = {}
+var _link_cache: Dictionary[StringName, pStateLink] = {}
 
 ## True when on the first cycle of the physics loop.
 var _first_cycle: bool = true
@@ -45,7 +45,7 @@ func recurse_descendents(function_name: StringName, arguments := []):
 	call_func(function_name, arguments)
 
 	for child in get_children():
-		if child is State:
+		if child is pState:
 			child.recurse_descendents(function_name, arguments)
 
 
@@ -91,7 +91,7 @@ func reset_state(handover: Variant = null):
 
 
 ## Activate the given state, ditching the current state.
-func switch_substate(new_state: State, handover: Variant):
+func switch_substate(new_state: pState, handover: Variant):
 	if new_state == live_substate:
 		return
 	if new_state == null:
@@ -134,14 +134,14 @@ func probe_switch(defer: bool = false) -> void:
 
 
 ## Get the active leaf of the machine.
-func get_leaf() -> State:
+func get_leaf() -> pState:
 	if live_substate == null:
 		return self
 	return live_substate.get_leaf()
 
 
 ## Get a link to the given state.
-func _get_link(key: StringName) -> StateLink:
+func _get_link(key: StringName) -> pStateLink:
 	if _link_cache.has(key):
 		return _link_cache[key]
 
@@ -149,14 +149,14 @@ func _get_link(key: StringName) -> StateLink:
 
 
 ## Cache a link to a state.
-func _cache_link(key: StringName) -> StateLink:
+func _cache_link(key: StringName) -> pStateLink:
 	var target = manager.find_child(key)
 
 	# To find where the invalid state is referenced, use the CTRL+SHIFT+F
 	# hotkey to search for its name in every script file.
 	assert(target != null, "State %s does not exist." % key)
 
-	var link = StateLink.new(self, target)
+	var link = pStateLink.new(self, target)
 	_link_cache[key] = link
 	return link
 
@@ -201,16 +201,16 @@ func _defer_rules() -> StringName:
 
 
 ## Reroute the active path to select a given state as the active leaf.
-func _switch_leaf(link: StateLink, handover = null) -> void:
+func _switch_leaf(link: pStateLink, handover = null) -> void:
 	var path = link.get_path()
 	var peak = link.get_peak_index()
 	var length = link.get_length()
 	var last = length - 1
 	var argument = null
 
-	var current_state: State = self
+	var current_state: pState = self
 	for i in length:
-		var next_state: State = path[i]
+		var next_state: pState = path[i]
 
 		if i <= peak:
 			ditch_state()
@@ -234,7 +234,7 @@ func _call_live(function_name: StringName, arguments := []):
 ## Check if this state is live.
 func _is_live() -> bool:
 	var parent = get_parent()
-	if !parent is State:
+	if !parent is pState:
 		return true
 	if parent.live_substate == self:
 		return true
