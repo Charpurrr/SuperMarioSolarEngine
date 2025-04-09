@@ -29,7 +29,7 @@ size = Vector2(13, 13)
 [sub_resource type="Resource" id="Resource_04ccq"]
 script = ExtResource("4_qtetb")
 amount = 1
-type = 0
+type = 1
 knockback = true
 knockback_amount = Vector2(4, 3)
 additive_knockback = false
@@ -48,11 +48,15 @@ script = ExtResource("1_hhlu2")
 hp = 1
 state_machine = NodePath("StateMachine")
 animation_player = NodePath("StateMachine/AnimationPlayer")
+damage_responses = Dictionary[int, StringName]({
+1: &"strike",
+2: &"squish"
+})
 hitbox = NodePath("Hitbox")
 doll = NodePath("Doll")
 
 [node name="Doll" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1, 0.899926)
+scale = Vector2(1, 0.878649)
 sprite_frames = SubResource("SpriteFrames_doiik")
 animation = &"idle"
 offset = Vector2(0, -24)
@@ -62,6 +66,8 @@ position = Vector2(0.5, -6.5)
 shape = SubResource("RectangleShape2D_4v7vj")
 
 [node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 12
+collision_mask = 2
 script = ExtResource("3_vuybc")
 damage_component = SubResource("Resource_04ccq")
 metadata/_custom_type_script = "uid://b68kv8tvc8abf"
@@ -73,6 +79,9 @@ debug_color = Color(0.99, 0, 0.297, 0.117647)
 
 [node name="PlayerDetectArea" type="Area2D" parent="."]
 visible = false
+collision_layer = 0
+collision_mask = 2
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectArea"]
 position = Vector2(0, -9)
@@ -80,6 +89,7 @@ shape = SubResource("RectangleShape2D_jbmpu")
 
 [node name="StateMachine" type="AnimationTree" parent="." node_paths=PackedStringArray("actor_body", "actor_sprite", "states", "processes")]
 tree_root = ExtResource("5_g0x7x")
+advance_expression_base_node = NodePath("..")
 anim_player = NodePath("AnimationPlayer")
 script = ExtResource("5_qtetb")
 actor_body = NodePath("..")
