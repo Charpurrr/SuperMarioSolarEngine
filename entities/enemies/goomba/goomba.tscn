@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cvbbpn56rtjwd"]
+[gd_scene load_steps=17 format=3 uid="uid://cvbbpn56rtjwd"]
 
 [ext_resource type="Script" uid="uid://c8rvart030ldu" path="res://entities/enemies/goomba/goomba.gd" id="1_hhlu2"]
 [ext_resource type="Texture2D" uid="uid://x2edebevq3c7" path="res://entities/enemies/goomba/sprites/idle.png" id="1_hp473"]
@@ -7,6 +7,10 @@
 [ext_resource type="AnimationNodeStateMachine" uid="uid://w28xfxapdw55" path="res://entities/enemies/goomba/goomba_state_machine.tres" id="5_g0x7x"]
 [ext_resource type="Script" uid="uid://be2xsj74ekqmn" path="res://util/state_machine/state_machine.gd" id="5_qtetb"]
 [ext_resource type="AnimationLibrary" uid="uid://c5yfxl3g45xa" path="res://entities/enemies/goomba/goomba_animations.res" id="6_04ccq"]
+[ext_resource type="Script" uid="uid://dt718ijxogyfe" path="res://entities/enemies/goomba/states/chase.gd" id="8_fvrek"]
+[ext_resource type="Script" uid="uid://bh1r5msl7853g" path="res://entities/enemies/goomba/states/strike.gd" id="9_b0ahg"]
+[ext_resource type="Script" uid="uid://febeimd01j3h" path="res://entities/enemies/goomba/processes/damage_response.gd" id="10_b0ahg"]
+[ext_resource type="Script" uid="uid://bc5v4gn5blq83" path="res://entities/enemies/goomba/processes/player_range_listener.gd" id="11_jbmpu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_doiik"]
 animations = [{
@@ -34,6 +38,9 @@ metadata/_custom_type_script = "uid://ym7krquk6nsu"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g0x7x"]
 size = Vector2(17, 18)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbmpu"]
+size = Vector2(462, 72)
+
 [node name="Goomba" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "animation_player", "hitbox", "doll")]
 collision_layer = 12
 collision_mask = 5
@@ -45,6 +52,7 @@ hitbox = NodePath("Hitbox")
 doll = NodePath("Doll")
 
 [node name="Doll" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1, 0.899926)
 sprite_frames = SubResource("SpriteFrames_doiik")
 animation = &"idle"
 offset = Vector2(0, -24)
@@ -63,12 +71,24 @@ position = Vector2(0.5, -9)
 shape = SubResource("RectangleShape2D_g0x7x")
 debug_color = Color(0.99, 0, 0.297, 0.117647)
 
-[node name="StateMachine" type="AnimationTree" parent="." node_paths=PackedStringArray("actor_body", "actor_sprite")]
+[node name="PlayerDetectArea" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectArea"]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_jbmpu")
+
+[node name="StateMachine" type="AnimationTree" parent="." node_paths=PackedStringArray("actor_body", "actor_sprite", "states", "processes")]
 tree_root = ExtResource("5_g0x7x")
 anim_player = NodePath("AnimationPlayer")
 script = ExtResource("5_qtetb")
 actor_body = NodePath("..")
 actor_sprite = NodePath("../Doll")
+states = {
+&"chase": NodePath("States/Chase"),
+&"strike": NodePath("States/Strike")
+}
+processes = [NodePath("Processes/DamageResponse"), NodePath("Processes/PlayerRangeListener")]
 metadata/_custom_type_script = "uid://be2xsj74ekqmn"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="StateMachine"]
@@ -76,3 +96,23 @@ root_node = NodePath("../..")
 libraries = {
 &"": ExtResource("6_04ccq")
 }
+
+[node name="States" type="Node" parent="StateMachine"]
+
+[node name="Chase" type="Node" parent="StateMachine/States"]
+script = ExtResource("8_fvrek")
+
+[node name="Strike" type="Node" parent="StateMachine/States"]
+script = ExtResource("9_b0ahg")
+
+[node name="Processes" type="Node" parent="StateMachine"]
+
+[node name="DamageResponse" type="Node" parent="StateMachine/Processes"]
+script = ExtResource("10_b0ahg")
+
+[node name="PlayerRangeListener" type="Node" parent="StateMachine/Processes"]
+script = ExtResource("11_jbmpu")
+
+[connection signal="damage_collision" from="Hitbox" to="StateMachine/Processes/DamageResponse" method="_on_damage"]
+[connection signal="area_entered" from="PlayerDetectArea" to="StateMachine/Processes/PlayerRangeListener" method="_on_player_detect_area_entered"]
+[connection signal="area_exited" from="PlayerDetectArea" to="StateMachine/Processes/PlayerRangeListener" method="_on_player_detect_area_exited"]
