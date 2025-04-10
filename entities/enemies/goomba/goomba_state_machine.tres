@@ -11,11 +11,6 @@ animation = &"idle"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fvrek"]
 animation = &"squish"
-use_custom_timeline = true
-timeline_length = 0.2
-stretch_time_scale = true
-start_offset = 0.0
-loop_mode = 0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jbmpu"]
 animation = &"strike"

@@ -145,7 +145,7 @@ size = Vector2(16, 16)
 size = Vector2(6, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2tafv"]
-size = Vector2(16, 16)
+size = Vector2(12, 16)
 
 [sub_resource type="Resource" id="Resource_8mesl"]
 script = ExtResource("5_pxspy")
@@ -155,7 +155,7 @@ knockback = false
 metadata/_custom_type_script = "uid://ym7krquk6nsu"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pxspy"]
-size = Vector2(4, 4)
+size = Vector2(12, 4)
 
 [sub_resource type="Resource" id="Resource_pxspy"]
 script = ExtResource("5_pxspy")
@@ -167,7 +167,7 @@ additive_knockback = false
 metadata/_custom_type_script = "uid://ym7krquk6nsu"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gh08o"]
-size = Vector2(44, 14)
+size = Vector2(52, 17)
 
 [sub_resource type="Resource" id="Resource_r5xry"]
 script = ExtResource("49_apkmk")
@@ -228,7 +228,7 @@ force_new = false
 overwrite_other = true
 cutoff_sfx = false
 
-[sub_resource type="Resource" id="Resource_ttikd"]
+[sub_resource type="Resource" id="Resource_mc84f"]
 resource_local_to_scene = true
 script = ExtResource("55_bxnxc")
 particle_scene = ExtResource("149_qbnhj")
@@ -535,7 +535,7 @@ force_new = false
 overwrite_other = false
 cutoff_sfx = false
 
-[sub_resource type="Resource" id="Resource_totbj"]
+[sub_resource type="Resource" id="Resource_2mqoj"]
 resource_local_to_scene = true
 script = ExtResource("55_bxnxc")
 particle_scene = ExtResource("149_qbnhj")
@@ -619,7 +619,7 @@ loop_delay = 2
 
 [sub_resource type="Resource" id="Resource_sxalk"]
 script = ExtResource("49_apkmk")
-sfx_list = Array[AudioStreamWAV]([ExtResource("110_eavfs"), ExtResource("130_mc84f"), ExtResource("131_2mqoj"), ExtResource("125_l4e5j")])
+sfx_list = [ExtResource("110_eavfs"), ExtResource("130_mc84f"), ExtResource("131_2mqoj"), ExtResource("125_l4e5j")]
 bus = &"Voice"
 delay_time = 0.0
 force_new = true
@@ -650,7 +650,7 @@ crouchlock = NodePath("Areas/Crouchlock")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = ExtResource("2_ttikd")
-animation = &"spin_attack"
+animation = &"idle"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 visible = false
@@ -725,8 +725,9 @@ disabled = true
 metadata/_custom_type_script = "uid://b68kv8tvc8abf"
 
 [node name="DamageBox" type="CollisionShape2D" parent="Hitboxes/SpinHitbox"]
-position = Vector2(0, -17)
+position = Vector2(0, -14.5)
 shape = SubResource("RectangleShape2D_gh08o")
+disabled = true
 debug_color = Color(1, 0, 0.145098, 0.141176)
 
 [node name="PushRays" type="Node2D" parent="." node_paths=PackedStringArray("movement")]
@@ -848,7 +849,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ql55k")])
 script = ExtResource("54_rxsl3")
 animation = &"breakdance"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_upqlf")])
-particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_ttikd")])
+particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_mc84f")])
 
 [node name="Waddle" type="Node" parent="Managers/StateManager/Dry/Grounded"]
 script = ExtResource("53_blm5r")
@@ -1031,7 +1032,7 @@ script = ExtResource("135_qf53u")
 spin_power = 3.0
 animation = &"spin_attack"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_vehmo"), SubResource("Resource_0hpnu")])
-particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_totbj")])
+particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_2mqoj")])
 
 [node name="DiveStates" type="Node" parent="Managers/StateManager/Dry"]
 script = ExtResource("73_acu3g")
