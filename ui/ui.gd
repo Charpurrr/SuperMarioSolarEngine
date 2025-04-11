@@ -48,6 +48,7 @@ var hud_enabled: bool = true
 
 func _ready():
 	_toggle_debug()
+	_toggle_debug_hitboxes()
 	_set_player()
 	_set_camera()
 
@@ -83,6 +84,8 @@ func _input(event: InputEvent):
 func _setting_changed(key: String, _value: Variant) -> void:
 	if key == "debug_toggle":
 		_toggle_debug()
+	if key == "debug_toggle_collision_shapes":
+		_toggle_debug_hitboxes()
 
 
 func _pause_logic():
@@ -158,6 +161,13 @@ func _toggle_debug():
 	input_display.visible = toggle
 	commit_labl.visible = toggle
 	debug_label.visible = toggle
+	_toggle_debug_hitboxes()
+
+func _toggle_debug_hitboxes():
+	var toggle: bool = GameState.debug_toggle_collision_shapes
+	get_tree().set_debug_collisions_hint(toggle)
+	# This fixes some buggy behavior which causes the changes to not be visible unless the window is resized.
+	get_tree().root.emit_signal(&"visibility_changed")
 
 
 func _set_player():
