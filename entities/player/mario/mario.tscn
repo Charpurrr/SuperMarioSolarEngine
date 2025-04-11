@@ -155,7 +155,7 @@ knockback = false
 metadata/_custom_type_script = "uid://ym7krquk6nsu"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pxspy"]
-size = Vector2(12, 4)
+size = Vector2(4, 4)
 
 [sub_resource type="Resource" id="Resource_pxspy"]
 script = ExtResource("5_pxspy")
