@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://csf56lkxqqb12"]
+[gd_scene load_steps=111 format=3 uid="uid://csf56lkxqqb12"]
 
 [ext_resource type="Script" uid="uid://brof7wb075ont" path="res://ui/ui.gd" id="1_75fsn"]
 [ext_resource type="AudioStream" uid="uid://b58aveo75onan" path="res://ui/sfx/pause.wav" id="2_1xskv"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://dgat047njqsvp" path="res://ui/debug/debug_label.gd" id="8_2m7jo"]
 [ext_resource type="PackedScene" uid="uid://cjavjeke51epr" path="res://ui/player_hud/fludd_tank.tscn" id="8_n7xk5"]
 [ext_resource type="Script" uid="uid://dg4a6r83hm158" path="res://ui/debug/commit_label.gd" id="9_bh67b"]
+[ext_resource type="Script" uid="uid://c40eo5tkjri5l" path="res://ui/player_hud/music_label.gd" id="9_gbf2f"]
 [ext_resource type="Texture2D" uid="uid://rqmk8y0h1450" path="res://ui/input_display/input_display_ico1.png" id="10_sk3no"]
 [ext_resource type="Texture2D" uid="uid://7p0auiyqcgk3" path="res://ui/input_display/input_display_ico6.png" id="11_4acw6"]
 [ext_resource type="Texture2D" uid="uid://dir44lhfrdcxu" path="res://ui/input_display/input_display_ico7.png" id="12_a0svk"]
@@ -137,6 +138,72 @@ colors = PackedColorArray(0.862745, 0.137255, 0.12549, 1, 0.676072, 0.0588219, 0
 gradient = SubResource("Gradient_6apma")
 fill_from = Vector2(0, 0.504274)
 fill_to = Vector2(0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vqsyl"]
+font = ExtResource("34_jyo83")
+outline_size = 8
+outline_color = Color(1.44392e-07, 0.125759, 0.379117, 1)
+
+[sub_resource type="Animation" id="Animation_gbf2f"]
+resource_name = "fade_past"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 3, 4),
+"transitions": PackedFloat32Array(2, 2, 2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset_left")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8, 4),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [-320.0, 0.0, 30.0]
+}
+
+[sub_resource type="Animation" id="Animation_vqsyl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_504o4"]
+_data = {
+&"RESET": SubResource("Animation_vqsyl"),
+&"fade_past": SubResource("Animation_gbf2f")
+}
 
 [sub_resource type="LabelSettings" id="LabelSettings_pm0uo"]
 font_size = 10
@@ -479,14 +546,31 @@ anchors_preset = -1
 offset_top = 45.0
 offset_bottom = 50.0
 script = ExtResource("7_aeygf")
-max_count = 0
+max_count = 8
 bounce_color = Color(1, 0, 0, 1)
 
 [node name="TextureRect" parent="RedCoinCounter/CoinIcon/Gradient" index="0"]
 texture = SubResource("GradientTexture2D_m3cpd")
 
 [node name="Count" parent="RedCoinCounter" index="1"]
-text = "0/0"
+text = "0/8"
+
+[node name="MusicLabel" type="Label" parent="." node_paths=PackedStringArray("anime")]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+offset_top = 80.0
+offset_right = 259.0
+offset_bottom = 143.0
+text = "♪ Synth Stratnum - goatsoup.mp3"
+label_settings = SubResource("LabelSettings_vqsyl")
+script = ExtResource("9_gbf2f")
+anime = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MusicLabel"]
+libraries = {
+&"": SubResource("AnimationLibrary_504o4")
+}
+speed_scale = 1.5
 
 [node name="LifeMeter" parent="." groups=["HUD"] instance=ExtResource("7_m3cpd")]
 

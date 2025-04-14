@@ -95,13 +95,13 @@ func _pause_logic():
 	# Intial pause action:
 	if not GameState.is_paused():
 		SFX.play_sfx(game_pause_sfx, &"UI", screen_manager)
-		level_environment.bgm.set_stream_paused(true)
+		MusicManager.set_stream_paused(true)
 		screen_manager.switch_screen(null, pause_screen)
 		GameState.emit_signal(&"paused")
 	# Unpausing action:
 	elif screen_manager.current_screen is PauseScreen:
 		SFX.play_sfx(game_unpause_sfx, &"UI", screen_manager)
-		level_environment.bgm.set_stream_paused(false)
+		MusicManager.set_stream_paused(false)
 		screen_manager.switch_screen(pause_screen, null)
 		GameState.emit_signal(&"paused")
 	# Pausing when in a submenu, putting you back in the PauseScreen:

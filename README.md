@@ -44,7 +44,12 @@ Charlotte "Charpurrr" Fox - Project lead and programmer <br /><br />
 "Unequipped" - Additional programming <br />
 "aloelucidity" - Additional programming <br /><br />
 
-"goatsoup.mp3" - Synth Stratnum soundtrack <br /><br >
+Brian "Linktober" - Additional programming <br /><br />
+
+"Frums" - Credits & Options songs <br />
+"LSPLASH" - Chillwave song <br />
+Gale Sosa - Synth Stratnum song <br /><br >
+"femtanyl" - ATTACKING VERTICAL song <br />
 
 Mack "masterminer176" - Miscellaneous sprites <br />
 "KrystalPhantasm" - Miscellaneous sprites <br /><br >

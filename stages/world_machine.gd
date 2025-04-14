@@ -67,6 +67,9 @@ func load_level(level: Level, store: bool = false) -> void:
 	if level_node.camera is PlayerCamera:
 		level_node.camera.player = level_node.player
 
+	# Set the appropriate background music.
+	MusicManager.music = level_node.level_music
+
 	# Set the camera as current.
 	level_node.camera.make_current()
 
