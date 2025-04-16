@@ -7,7 +7,9 @@ extends Resource
 @export var bus: StringName
 
 ## How many seconds pass before the sound effect(s) play.
-@export var delay_time: float = 0.0
+@export var start_delay: float = 0.0
+## How many seconds pass before another sound effect can play.
+@export var repeat_delay: float = 0.0
 ## Whether or not a sound effect can play more than once in a row.
 @export var force_new: bool = false
 ## Whether or not playing these sound effect(s) should end
@@ -19,14 +21,14 @@ extends Resource
 
 var last_pick: AudioStream
 var new_pick: AudioStream
-
+var repeat_timer: SceneTreeTimer
 
 ## Plays a sound effect from the list at a specific node.
 func play_sfx_at(node: Node):
-	var timer: SceneTreeTimer = node.get_tree().create_timer(delay_time)
+	var start_timer: SceneTreeTimer = node.get_tree().create_timer(start_delay)
 
-	if delay_time != 0:
-		await timer.timeout
+	if start_delay != 0:
+		await start_timer.timeout
 
 	if node == null:
 		return
@@ -40,6 +42,12 @@ func play_sfx_at(node: Node):
 	if overwrite_other:
 		node.get_tree().call_group(bus, &"queue_free")
 
-	SFX.play_sfx(new_pick, bus, node)
+	if !repeat_timer:
+		repeat_timer = node.get_tree().create_timer(0)
 
-	last_pick = new_pick
+	if repeat_timer.time_left <= 0:
+		SFX.play_sfx(new_pick, bus, node)
+		last_pick = new_pick
+		
+		if repeat_delay:
+			repeat_timer = node.get_tree().create_timer(repeat_delay)
