@@ -1,5 +1,7 @@
 class_name SFXLayer
 extends Resource
+## A collection of sound effects for a single action.
+## Useful if you want varying sound effects.
 
 ## List of possible sound effect(s) this layer can iterate through.
 @export var sfx_list: Array
@@ -8,7 +10,7 @@ extends Resource
 
 ## How many seconds pass before the sound effect(s) play.
 @export var start_delay: float = 0.0
-## How many seconds pass before another sound effect can play.
+## How many seconds should pass before the sound effect(s) can get repeated.
 @export var repeat_delay: float = 0.0
 ## Whether or not a sound effect can play more than once in a row.
 @export var force_new: bool = false
@@ -22,6 +24,7 @@ extends Resource
 var last_pick: AudioStream
 var new_pick: AudioStream
 var repeat_timer: SceneTreeTimer
+
 
 ## Plays a sound effect from the list at a specific node.
 func play_sfx_at(node: Node):
