@@ -1064,7 +1064,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ujdp5")])
 
 [node name="ButtSlide" type="Node" parent="StateManager/Dry"]
 script = ExtResource("140_lfmwr")
-max_speed = 15.0
+speed = 12.5
 turn_forgiveness = 1.5
 shallow_penalty = 0.25
 incline_friction = 90.0

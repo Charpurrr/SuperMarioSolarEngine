@@ -157,8 +157,10 @@ func _modify_speed(floor_normal: Vector2):
 		if input_dir == slope_dir:
 			target_speed = accel_ease * max_speed
 		# Holding the opposite direction of the slope (decel)
-		elif slope_dir == movement.facing_direction:
+		elif input_dir == -slope_dir:
 			target_speed = accel_ease * min_speed
+		
+	slide_decel = max(slide_decel, 0.1)
 
 	# Accelerate down the slope
 	_accelerate(slide_accel, target_speed)
