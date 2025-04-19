@@ -661,13 +661,11 @@ position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_u4b58")
 
 [node name="SmallHitbox" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_1emcl")
 debug_color = Color(0.371138, 0.615246, 1.54018e-06, 0.42)
 
 [node name="DiveHitbox" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_c86nk")
 debug_color = Color(0.79996, 0.0297055, 1, 0.42)
@@ -694,7 +692,6 @@ shape = SubResource("RectangleShape2D_2tafv")
 debug_color = Color(0.792157, 0.380392, 0.52549, 0.419608)
 
 [node name="SpinHitbox" type="Area2D" parent="Areas"]
-visible = false
 collision_layer = 0
 collision_mask = 4
 monitoring = false

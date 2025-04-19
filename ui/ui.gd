@@ -78,6 +78,9 @@ func _input(event: InputEvent):
 	if event.is_action_pressed(&"pause"):
 		_pause_logic()
 
+	if event.is_action_pressed(&"quick_restart"):
+		GameState.reload.emit()
+
 	_display_input(event)
 
 
@@ -163,8 +166,10 @@ func _toggle_debug():
 	debug_label.visible = toggle
 	_toggle_debug_hitboxes()
 
+
 func _toggle_debug_hitboxes():
 	var toggle: bool = GameState.debug_toggle_collision_shapes
+
 	get_tree().set_debug_collisions_hint(toggle)
 	# This fixes some buggy behavior which causes the changes to not be visible unless the window is resized.
 	get_tree().root.emit_signal(&"visibility_changed")

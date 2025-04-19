@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://dgat047njqsvp" path="res://ui/debug/debug_label.gd" id="8_2m7jo"]
 [ext_resource type="PackedScene" uid="uid://cjavjeke51epr" path="res://ui/player_hud/fludd_tank.tscn" id="8_n7xk5"]
 [ext_resource type="Script" uid="uid://dg4a6r83hm158" path="res://ui/debug/commit_label.gd" id="9_bh67b"]
-[ext_resource type="Script" uid="uid://c40eo5tkjri5l" path="res://ui/player_hud/music_label.gd" id="9_gbf2f"]
+[ext_resource type="Script" path="res://ui/player_hud/music_label.gd" id="9_gbf2f"]
 [ext_resource type="Texture2D" uid="uid://rqmk8y0h1450" path="res://ui/input_display/input_display_ico1.png" id="10_sk3no"]
 [ext_resource type="Texture2D" uid="uid://7p0auiyqcgk3" path="res://ui/input_display/input_display_ico6.png" id="11_4acw6"]
 [ext_resource type="Texture2D" uid="uid://dir44lhfrdcxu" path="res://ui/input_display/input_display_ico7.png" id="12_a0svk"]
@@ -546,7 +546,7 @@ anchors_preset = -1
 offset_top = 45.0
 offset_bottom = 50.0
 script = ExtResource("7_aeygf")
-max_count = 8
+max_count = 16
 bounce_color = Color(1, 0, 0, 1)
 
 [node name="TextureRect" parent="RedCoinCounter/CoinIcon/Gradient" index="0"]
@@ -597,6 +597,7 @@ label_settings = SubResource("LabelSettings_pm0uo")
 script = ExtResource("8_2m7jo")
 
 [node name="CommitLabel" type="Label" parent="."]
+visible = false
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
