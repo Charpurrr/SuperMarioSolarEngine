@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="IconDictionary" load_steps=196 format=3 uid="uid://ddaas1rclx8av"]
+[gd_resource type="Resource" load_steps=197 format=3 uid="uid://ddaas1rclx8av"]
 
 [ext_resource type="Script" uid="uid://68dumda2t8qx" path="res://ui/input_icons/icon_dictionary.gd" id="1_pmfbp"]
 [ext_resource type="Texture2D" uid="uid://c1g8vxiaur7e5" path="res://ui/input_icons/keyboard_mouse/keyboard_arrow_left.svg" id="1_s8n4u"]
@@ -97,6 +97,7 @@
 [ext_resource type="Texture2D" uid="uid://x8p6hsrjyer3" path="res://ui/input_icons/keyboard_mouse/mouse_scroll.svg" id="94_vyu2p"]
 [ext_resource type="Texture2D" uid="uid://f66l44ephxdj" path="res://ui/input_icons/keyboard_mouse/mouse_scroll_down.svg" id="95_knlm4"]
 [ext_resource type="Texture2D" uid="uid://d3lqprd0qtvqx" path="res://ui/input_icons/keyboard_mouse/mouse_scroll_up.svg" id="96_t545u"]
+[ext_resource type="Texture2D" uid="uid://cix1ewxynwctj" path="res://ui/input_icons/keyboard_mouse/keyboard_question_outline.svg" id="97_m8lbx"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_d2i7n"]
 device = -1
@@ -532,6 +533,7 @@ pressed = true
 [resource]
 script = ExtResource("1_pmfbp")
 dictionary = Dictionary[InputEvent, CompressedTexture2D]({
+SubResource("InputEventKey_bk1x0"): ExtResource("74_4buu7"),
 SubResource("InputEventKey_mv785"): ExtResource("73_4yfw4"),
 SubResource("InputEventKey_6gxyn"): ExtResource("72_urc8u"),
 SubResource("InputEventKey_3mguy"): ExtResource("71_tg4wq"),
@@ -555,7 +557,7 @@ SubResource("InputEventKey_irx23"): ExtResource("54_ifhxa"),
 SubResource("InputEventKey_im4pt"): ExtResource("53_pf7vw"),
 SubResource("InputEventKey_f868c"): ExtResource("52_gkb7c"),
 SubResource("InputEventKey_au3qo"): ExtResource("51_s852b"),
-SubResource("InputEventKey_d7v5q"): ExtResource("50_xbr7g"),
+null: ExtResource("97_m8lbx"),
 SubResource("InputEventMouseButton_bogqx"): ExtResource("96_t545u"),
 SubResource("InputEventMouseButton_0djy7"): ExtResource("95_knlm4"),
 SubResource("InputEventMouseButton_77lw6"): ExtResource("94_vyu2p"),
@@ -580,7 +582,7 @@ SubResource("InputEventKey_3fsrk"): ExtResource("78_c60lt"),
 SubResource("InputEventKey_titc1"): ExtResource("77_5ibsq"),
 SubResource("InputEventKey_ytn70"): ExtResource("76_enfd5"),
 SubResource("InputEventKey_o40h2"): ExtResource("75_hyxe7"),
-SubResource("InputEventKey_bk1x0"): ExtResource("74_4buu7"),
+SubResource("InputEventKey_mjifc"): ExtResource("25_piy6x"),
 SubResource("InputEventKey_lhqpt"): ExtResource("24_be276"),
 SubResource("InputEventKey_05bxw"): ExtResource("23_c6eke"),
 SubResource("InputEventKey_xque0"): ExtResource("22_vq8aq"),
@@ -605,6 +607,7 @@ SubResource("InputEventKey_gfa7l"): ExtResource("4_4blr5"),
 SubResource("InputEventKey_bnh67"): ExtResource("3_6sh6f"),
 SubResource("InputEventKey_xeydl"): ExtResource("2_m8lbx"),
 SubResource("InputEventKey_d2i7n"): ExtResource("1_s8n4u"),
+SubResource("InputEventKey_d7v5q"): ExtResource("50_xbr7g"),
 SubResource("InputEventKey_ewifp"): ExtResource("49_lgq4b"),
 SubResource("InputEventKey_tapoi"): ExtResource("48_oxfql"),
 SubResource("InputEventKey_x5n6h"): ExtResource("47_ufajh"),
@@ -628,7 +631,6 @@ SubResource("InputEventKey_7jpyj"): ExtResource("30_bio5s"),
 SubResource("InputEventKey_fugrh"): ExtResource("29_hjrte"),
 SubResource("InputEventKey_4o70k"): ExtResource("28_wcqoi"),
 SubResource("InputEventKey_4o6nx"): ExtResource("27_ofoqs"),
-SubResource("InputEventKey_e2a63"): ExtResource("26_5nrfq"),
-SubResource("InputEventKey_mjifc"): ExtResource("25_piy6x")
+SubResource("InputEventKey_e2a63"): ExtResource("26_5nrfq")
 })
 metadata/_custom_type_script = "uid://68dumda2t8qx"

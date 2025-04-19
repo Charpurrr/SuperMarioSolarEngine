@@ -23,17 +23,6 @@ var current_notifs: Array = []
 @export var commit_labl: Label
 @export var input_display: Control
 
-@onready var input_display_sprites: Dictionary[Key, TextureRect] = {
-	KEY_SHIFT: %Shift,
-	KEY_W: %W,
-	KEY_X: %X,
-	KEY_C: %C,
-	KEY_UP: %Up,
-	KEY_RIGHT: %Right,
-	KEY_DOWN: %Down,
-	KEY_LEFT: %Left,
-}
-
 ## These variables are set in [WorldMachine]
 var world_machine: WorldMachine
 var level_environment: LevelEnvironment
@@ -142,20 +131,10 @@ func _push_notif(type: StringName, input: String):
 
 
 func _display_input(event: InputEvent):
-	if not event is InputEventKey:
-		return
-
-	var event_str: Key = event.keycode
-
-	if not input_display_sprites.has(event_str):
-		return
-
-	var texture: TextureRect = input_display_sprites[event_str]
-
-	if event.is_pressed():
-		texture.set_modulate(Color(1, 1, 1, 1))
-	else:
-		texture.set_modulate(Color(1, 1, 1, 0.5))
+	var texture_rect := TextureRect.new()
+	var texture = IconMap.find(event)
+	texture_rect.texture = texture
+	input_display.add_child(texture_rect)
 
 
 func _toggle_debug():
