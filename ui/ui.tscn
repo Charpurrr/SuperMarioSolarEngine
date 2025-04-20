@@ -538,7 +538,7 @@ anchors_preset = -1
 offset_top = 45.0
 offset_bottom = 50.0
 script = ExtResource("7_aeygf")
-max_count = 16
+max_count = 8
 bounce_color = Color(1, 0, 0, 1)
 
 [node name="TextureRect" parent="RedCoinCounter/CoinIcon/Gradient" index="0"]
@@ -611,7 +611,7 @@ tab_stops = PackedFloat32Array(20)
 script = ExtResource("9_bh67b")
 
 [node name="InputDisplay" type="HBoxContainer" parent="."]
-anchors_preset = -1
+anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 15.0

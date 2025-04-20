@@ -22,6 +22,7 @@ var current_notifs: Array = []
 @export var debug_label: Label
 @export var commit_labl: Label
 @export var input_display: Control
+var displayed_inputs: Dictionary[String, TextureRect]
 
 ## These variables are set in [WorldMachine]
 var world_machine: WorldMachine
@@ -126,15 +127,34 @@ func _push_notif(type: StringName, input: String):
 				i.position.y -= 35
 
 	current_notifs.append(notif)
-
 	notif_list.add_child(notif)
 
 
 func _display_input(event: InputEvent):
+	var event_name: String = ""
+
+	if event is InputEventKey:
+		event_name = OS.get_keycode_string(event.physical_keycode)
+	elif event is InputEventJoypadButton or event is InputEventMouseButton:
+		event_name = event.as_text()
+	else:
+		return  # Unknown input type, ignore it
+
+	print(event_name)
+
 	var texture_rect := TextureRect.new()
-	var texture = IconMap.find(event)
-	texture_rect.texture = texture
-	input_display.add_child(texture_rect)
+	texture_rect.texture = IconMap.find(event)
+	texture_rect.size = Vector2(0.3, 0.3)
+
+	# how about i just kms instead how abot thtat huh. stupid machine
+
+	if event.is_released():
+		if displayed_inputs.has(event_name):
+			input_display.remove_child(displayed_inputs[event_name])
+			displayed_inputs.erase(event_name)
+	elif not displayed_inputs.has(event_name):
+		displayed_inputs[event_name] = texture_rect
+		input_display.add_child(texture_rect)
 
 
 func _toggle_debug():
@@ -143,7 +163,6 @@ func _toggle_debug():
 	input_display.visible = toggle
 	commit_labl.visible = toggle
 	debug_label.visible = toggle
-	_toggle_debug_hitboxes()
 
 
 func _toggle_debug_hitboxes():
