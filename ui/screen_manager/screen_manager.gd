@@ -21,6 +21,7 @@ var current_screen: Screen
 func _ready() -> void:
 	var pass_downs = {
 		&"manager": self,
+		&"ui": owner,
 	}
 
 	for child in get_children():

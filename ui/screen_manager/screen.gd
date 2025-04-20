@@ -20,6 +20,7 @@ var enabled: bool = false
 
 ## Set by the screen manager node.
 var manager: ScreenManager
+var ui: UserInterface
 
 
 ## Ran as soon as this screen starts being transitioned to.

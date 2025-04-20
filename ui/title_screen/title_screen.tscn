@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cthxoel5sus6v"]
+[gd_scene load_steps=16 format=3 uid="uid://cthxoel5sus6v"]
 
 [ext_resource type="Shader" uid="uid://byfa3t51pf655" path="res://ui/screen_manager/pause_screen/pause_panel.tres" id="1_gxk54"]
 [ext_resource type="Script" uid="uid://diilonnsbj7qw" path="res://ui/title_screen/title_screen.gd" id="1_kmorl"]
@@ -37,9 +37,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
-
-[sub_resource type="Animation" id="Animation_hpeuq"]
-resource_name = "fade_out"
 
 [sub_resource type="Animation" id="Animation_bgjk2"]
 resource_name = "logo_float"
@@ -91,7 +88,6 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nb7wo"]
 _data = {
 &"RESET": SubResource("Animation_685si"),
-&"fade_out": SubResource("Animation_hpeuq"),
 &"logo_float": SubResource("Animation_bgjk2"),
 &"start": SubResource("Animation_x8tv6")
 }

@@ -23,7 +23,10 @@ func restart() -> void:
 
 
 func quit() -> void:
-	get_tree().quit()
+	MusicManager.stop()
+	GameState.emit_signal(&"paused")
+	ui.world_machine.deload_level()
+	get_tree().change_scene_to_file("res://ui/title_screen/title_screen.tscn")
 
 
 func reset_settings() -> void:
