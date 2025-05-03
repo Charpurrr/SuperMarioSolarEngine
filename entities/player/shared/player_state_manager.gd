@@ -1,5 +1,4 @@
-class_name PlayerStateManager
-extends StateManager
+class_name PlayerStateManager extends pStateManager
 ## Root node of a player state machine.
 ## Adds player specialised variables and functions.
 

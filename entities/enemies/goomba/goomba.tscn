@@ -1,7 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvbbpn56rtjwd"]
+[gd_scene load_steps=17 format=3 uid="uid://cvbbpn56rtjwd"]
 
 [ext_resource type="Script" uid="uid://c8rvart030ldu" path="res://entities/enemies/goomba/goomba.gd" id="1_hhlu2"]
-[ext_resource type="Texture2D" uid="uid://x2edebevq3c7" path="res://entities/enemies/goomba/anime/idle.png" id="1_hp473"]
+[ext_resource type="Texture2D" uid="uid://x2edebevq3c7" path="res://entities/enemies/goomba/sprites/idle.png" id="1_hp473"]
+[ext_resource type="Script" uid="uid://b68kv8tvc8abf" path="res://util/classes/entity/hitbox.gd" id="3_vuybc"]
+[ext_resource type="Script" uid="uid://ym7krquk6nsu" path="res://util/components/entity/damage_component.gd" id="4_qtetb"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://w28xfxapdw55" path="res://entities/enemies/goomba/goomba_state_machine.tres" id="5_g0x7x"]
+[ext_resource type="Script" uid="uid://be2xsj74ekqmn" path="res://util/state_machine/state_machine.gd" id="5_qtetb"]
+[ext_resource type="AnimationLibrary" uid="uid://c5yfxl3g45xa" path="res://entities/enemies/goomba/goomba_animations.res" id="6_04ccq"]
+[ext_resource type="Script" uid="uid://dt718ijxogyfe" path="res://entities/enemies/goomba/states/chase.gd" id="8_fvrek"]
+[ext_resource type="Script" uid="uid://bh1r5msl7853g" path="res://entities/enemies/goomba/states/strike.gd" id="9_b0ahg"]
+[ext_resource type="Script" uid="uid://febeimd01j3h" path="res://entities/enemies/goomba/processes/damage_response.gd" id="10_b0ahg"]
+[ext_resource type="Script" uid="uid://bc5v4gn5blq83" path="res://entities/enemies/goomba/processes/player_range_listener.gd" id="11_jbmpu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_doiik"]
 animations = [{
@@ -17,82 +26,103 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4v7vj"]
 size = Vector2(13, 13)
 
-[sub_resource type="Animation" id="Animation_yvt7r"]
-resource_name = "die_squish"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Doll:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.1),
-"transitions": PackedFloat32Array(0.5, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.7, 0.3), Vector2(1.2, 0.8)]
-}
+[sub_resource type="Resource" id="Resource_04ccq"]
+script = ExtResource("4_qtetb")
+amount = 1
+type = 1
+knockback = true
+knockback_amount = Vector2(4, 3)
+additive_knockback = false
+metadata/_custom_type_script = "uid://ym7krquk6nsu"
 
-[sub_resource type="Animation" id="Animation_kc47k"]
-resource_name = "die_strike"
-length = 0.6
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Doll:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
-"transitions": PackedFloat32Array(2, 0.5, 2, 0.5),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.7, 1.3), Vector2(1, 1), Vector2(1.3, 0.7)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 6.28319]
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g0x7x"]
+size = Vector2(17, 18)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ju3gn"]
-_data = {
-&"die_squish": SubResource("Animation_yvt7r"),
-&"die_strike": SubResource("Animation_kc47k")
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbmpu"]
+size = Vector2(462, 72)
 
-[node name="Goomba" type="CharacterBody2D" node_paths=PackedStringArray("hitbox", "anime", "doll")]
+[node name="Goomba" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "animation_player", "hitbox", "doll")]
 collision_layer = 12
 collision_mask = 5
 script = ExtResource("1_hhlu2")
-gravity = 0.22
 hp = 1
+state_machine = NodePath("StateMachine")
+animation_player = NodePath("StateMachine/AnimationPlayer")
+damage_responses = Dictionary[int, StringName]({
+1: &"strike",
+2: &"squish"
+})
 hitbox = NodePath("Hitbox")
-anime = NodePath("AnimationPlayer")
-doll = NodePath("Node2D/Doll")
+doll = NodePath("Doll")
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(0, -7.5)
-
-[node name="Doll" type="AnimatedSprite2D" parent="Node2D"]
-position = Vector2(0, 7.5)
+[node name="Doll" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1, 0.878649)
 sprite_frames = SubResource("SpriteFrames_doiik")
 animation = &"idle"
 offset = Vector2(0, -24)
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -6.5)
 shape = SubResource("RectangleShape2D_4v7vj")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ju3gn")
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 12
+collision_mask = 2
+script = ExtResource("3_vuybc")
+damage_component = SubResource("Resource_04ccq")
+metadata/_custom_type_script = "uid://b68kv8tvc8abf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0.5, -9)
+shape = SubResource("RectangleShape2D_g0x7x")
+debug_color = Color(0.99, 0, 0.297, 0.117647)
+
+[node name="PlayerDetectArea" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectArea"]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_jbmpu")
+
+[node name="StateMachine" type="AnimationTree" parent="." node_paths=PackedStringArray("actor_body", "actor_sprite", "states", "processes")]
+tree_root = ExtResource("5_g0x7x")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("AnimationPlayer")
+script = ExtResource("5_qtetb")
+actor_body = NodePath("..")
+actor_sprite = NodePath("../Doll")
+states = {
+&"chase": NodePath("States/Chase"),
+&"strike": NodePath("States/Strike")
 }
+processes = [NodePath("Processes/DamageResponse"), NodePath("Processes/PlayerRangeListener")]
+metadata/_custom_type_script = "uid://be2xsj74ekqmn"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StateMachine"]
+root_node = NodePath("../..")
+libraries = {
+&"": ExtResource("6_04ccq")
+}
+
+[node name="States" type="Node" parent="StateMachine"]
+
+[node name="Chase" type="Node" parent="StateMachine/States"]
+script = ExtResource("8_fvrek")
+
+[node name="Strike" type="Node" parent="StateMachine/States"]
+script = ExtResource("9_b0ahg")
+
+[node name="Processes" type="Node" parent="StateMachine"]
+
+[node name="DamageResponse" type="Node" parent="StateMachine/Processes"]
+script = ExtResource("10_b0ahg")
+
+[node name="PlayerRangeListener" type="Node" parent="StateMachine/Processes"]
+script = ExtResource("11_jbmpu")
+
+[connection signal="damage_collision" from="Hitbox" to="StateMachine/Processes/DamageResponse" method="_on_damage"]
+[connection signal="area_entered" from="PlayerDetectArea" to="StateMachine/Processes/PlayerRangeListener" method="_on_player_detect_area_entered"]
+[connection signal="area_exited" from="PlayerDetectArea" to="StateMachine/Processes/PlayerRangeListener" method="_on_player_detect_area_exited"]

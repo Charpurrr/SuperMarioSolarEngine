@@ -4,19 +4,27 @@ extends CharacterBody2D
 
 @export var doll: AnimatedSprite2D
 
-@export var state_manager: StateManager
+@export_group("Managers")
+@export var state_manager: pStateManager
 @export var movement: PMovement
 @export var input: InputManager
+@export var fludd_manager: FluddManager
 
+@export_group("Collision")
+@export var collision: CollisionShape2D
+@export var small_collision: CollisionShape2D
+@export var dive_collision: CollisionShape2D
 @export var push_rays: Node2D
 
-@export var hitbox: CollisionShape2D
-@export var dive_hitbox: CollisionShape2D
-@export var small_hitbox: CollisionShape2D
+@export_group("Hitboxes")
+@export var hurtbox: Hitbox
+@export var foot_hitbox: Hitbox
+@export var spin_hitbox: Hitbox
 
+@export_group("Areas")
 @export var water_check: Area2D
 @export var crouchlock: CrouchlockDetection
-@export var spin_hitbox: Area2D
+
 
 ## Current velocity.
 var vel := Vector2.ZERO

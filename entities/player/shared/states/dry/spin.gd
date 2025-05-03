@@ -11,12 +11,13 @@ var is_airspin: bool
 var finished_init: bool
 
 var nearby_entities: Array = []
-
+var hitbox: Hitbox
 
 func _on_enter(_param):
 	is_airspin = movement.can_air_action()
-
-	actor.spin_hitbox.monitoring = true
+	hitbox = actor.spin_hitbox
+	
+	hitbox.disabled = false
 
 	if is_airspin:
 		movement.air_spun = true
@@ -55,7 +56,7 @@ func _physics_tick():
 
 
 func _on_exit():
-	actor.spin_hitbox.monitoring = false
+	hitbox.disabled = true
 
 	if not is_airspin:
 		movement.activate_grounded_spin_timer()
@@ -77,7 +78,10 @@ func _trans_rules():
 func _air_rules() -> Variant:
 	if actor.is_on_floor():
 		return &"Idle"
-
+		
+	if movement.actor.vel.y > 0:
+		hitbox.disabled = true
+		
 	if movement.can_air_action():
 		if finished_init and input.buffered_input(&"spin"):
 			return &"Twirl"
@@ -109,10 +113,3 @@ func _ground_rules() -> Variant:
 		return &"Spinjump"
 
 	return &""
-
-
-func _on_spin_hitbox_body_entered(body):
-	if body not in nearby_entities:
-		nearby_entities.append(body)
-
-		body.health_module.damage(actor, HealthModule.DamageType.STRIKE, 1)

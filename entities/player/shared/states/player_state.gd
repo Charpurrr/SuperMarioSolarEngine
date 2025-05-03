@@ -1,8 +1,8 @@
 class_name PlayerState
-extends State
+extends pState
 ## State specialised for player characters.
 
-@export_enum("Normal", "Small", "Dive", "None") var hitbox_type: String = "Normal"
+@export_enum("Normal", "Small", "Dive", "None") var collision_type: String = "Normal"
 
 @export_category(&"Animation")
 ## The name of the animation that this state should play.
@@ -31,36 +31,36 @@ func trigger_enter(handover):
 	_set_animation()
 	_play_sounds()
 	_emit_particles()
-	_set_hitbox()
+	_set_collision()
 
 	super(handover)
 
 
-func _set_hitbox():
-	if hitbox_type == "None":
+func _set_collision():
+	if collision_type == "None":
 		return
 
-	var was_diving = not actor.dive_hitbox.disabled
+	var was_diving = not actor.dive_collision.disabled
 
-	actor.hitbox.disabled = true
-	actor.small_hitbox.disabled = true
-	actor.dive_hitbox.disabled = true
+	actor.collision.disabled = true
+	actor.small_collision.disabled = true
+	actor.dive_collision.disabled = true
 
-	match hitbox_type:
+	match collision_type:
 		"Normal":
 			_snap_dive_to_ground(was_diving)
-			actor.hitbox.disabled = false
+			actor.collision.disabled = false
 		"Small":
 			_snap_dive_to_ground(was_diving)
-			actor.small_hitbox.disabled = false
+			actor.small_collision.disabled = false
 		"Dive":
-			actor.dive_hitbox.disabled = false
+			actor.dive_collision.disabled = false
 
 
-## Snap back to the ground if you exit from a dive hitbox to a non-dive hitbox.
+## Snap back to the ground if you exit from a dive collision box to a non-dive collision box.
 func _snap_dive_to_ground(was_diving: bool):
 	if was_diving:
-		actor.global_position.y -= actor.dive_hitbox.get_shape().get_rect().size.y / 2
+		actor.global_position.y -= actor.dive_collision.get_shape().get_rect().size.y / 2
 
 
 func _set_animation():

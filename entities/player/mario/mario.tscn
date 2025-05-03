@@ -1,7 +1,9 @@
-[gd_scene load_steps=185 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=194 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" uid="uid://bg4t154sge7br" path="res://entities/player/shared/player.gd" id="1_87j6i"]
 [ext_resource type="SpriteFrames" uid="uid://bqn6b0xmrvxjc" path="res://entities/player/mario/mario_sprite_frames.res" id="2_ttikd"]
+[ext_resource type="Script" uid="uid://b68kv8tvc8abf" path="res://util/classes/entity/hitbox.gd" id="4_totbj"]
+[ext_resource type="Script" uid="uid://ym7krquk6nsu" path="res://util/components/entity/damage_component.gd" id="5_pxspy"]
 [ext_resource type="Script" uid="uid://clh7ssy21bpqv" path="res://util/input_manager.gd" id="21_onm15"]
 [ext_resource type="Script" uid="uid://d0q4h02e1xlo6" path="res://entities/player/shared/push_rays.gd" id="35_g7d1t"]
 [ext_resource type="Script" uid="uid://ddr3ta4g2q457" path="res://entities/player/shared/player_movement.gd" id="37_quca3"]
@@ -111,7 +113,10 @@
 [ext_resource type="AudioStream" uid="uid://dm72woypee3vc" path="res://entities/player/mario/voice_sunshine/wah_ho.wav" id="126_onkkq"]
 [ext_resource type="AudioStream" uid="uid://dev6wksv27l0i" path="res://entities/player/mario/voice_sunshine/yah_kick.wav" id="127_skj22"]
 [ext_resource type="AudioStream" uid="uid://xpf0g652x833" path="res://entities/player/mario/voice_sunshine/ha.wav" id="128_r0wmf"]
+[ext_resource type="Script" uid="uid://bglqgh2r6mre7" path="res://entities/player/mario/damage_manager.gd" id="129_8mesl"]
 [ext_resource type="Script" uid="uid://blb4fskcwsmnw" path="res://entities/player/shared/states/dry/dive_states/rollout.gd" id="129_e0h20"]
+[ext_resource type="AudioStream" uid="uid://mq0b7i301bux" path="res://entities/player/mario/voice_64/doh.wav" id="130_mc84f"]
+[ext_resource type="AudioStream" uid="uid://bdy6kv703bhi2" path="res://entities/player/mario/voice_sunshine/doh_bonk.wav" id="131_2mqoj"]
 [ext_resource type="Script" uid="uid://b5yhwvdb0wrpl" path="res://entities/player/shared/states/dry/dive_states/bonk.gd" id="131_f03w0"]
 [ext_resource type="Script" uid="uid://ucctyrbj17dh" path="res://entities/player/shared/states/dry/dive_states/dive.gd" id="134_dsbpr"]
 [ext_resource type="Script" uid="uid://bvgd4nu3s20j8" path="res://entities/player/shared/states/submerged/submerged.gd" id="135_2utkk"]
@@ -128,7 +133,7 @@
 [ext_resource type="PackedScene" uid="uid://d1wf1b4d4xfvf" path="res://props/particles/sparkle.tscn" id="158_1s3ss"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u4b58"]
-size = Vector2(16, 32)
+size = Vector2(14, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1emcl"]
 size = Vector2(16, 16)
@@ -140,10 +145,29 @@ size = Vector2(16, 16)
 size = Vector2(6, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2tafv"]
-size = Vector2(16, 16)
+size = Vector2(12, 16)
+
+[sub_resource type="Resource" id="Resource_8mesl"]
+script = ExtResource("5_pxspy")
+amount = 1
+type = 2
+knockback = false
+metadata/_custom_type_script = "uid://ym7krquk6nsu"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pxspy"]
+size = Vector2(4, 4)
+
+[sub_resource type="Resource" id="Resource_pxspy"]
+script = ExtResource("5_pxspy")
+amount = 1
+type = 1
+knockback = true
+knockback_amount = Vector2(4, 3)
+additive_knockback = false
+metadata/_custom_type_script = "uid://ym7krquk6nsu"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gh08o"]
-size = Vector2(44, 26)
+size = Vector2(52, 17)
 
 [sub_resource type="Resource" id="Resource_r5xry"]
 script = ExtResource("49_apkmk")
@@ -209,7 +233,7 @@ force_new = false
 overwrite_other = true
 cutoff_sfx = false
 
-[sub_resource type="Resource" id="Resource_ttikd"]
+[sub_resource type="Resource" id="Resource_mc84f"]
 resource_local_to_scene = true
 script = ExtResource("55_bxnxc")
 particle_scene = ExtResource("149_qbnhj")
@@ -250,9 +274,9 @@ script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("61_4m4nv")]
 bus = &"Motion"
 start_delay = 0.0
-repeat_delay = 0.5
+repeat_delay = 0.0
 force_new = false
-overwrite_other = false
+overwrite_other = true
 cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_kvfvp"]
@@ -546,7 +570,7 @@ force_new = false
 overwrite_other = false
 cutoff_sfx = false
 
-[sub_resource type="Resource" id="Resource_totbj"]
+[sub_resource type="Resource" id="Resource_2mqoj"]
 resource_local_to_scene = true
 script = ExtResource("55_bxnxc")
 particle_scene = ExtResource("149_qbnhj")
@@ -633,39 +657,55 @@ particle_offset = Vector2(0, 0)
 particle_scale = Vector2(1, 1)
 loop_delay = 2
 
-[node name="Mario2" type="CharacterBody2D" node_paths=PackedStringArray("doll", "state_manager", "movement", "input", "push_rays", "hitbox", "dive_hitbox", "small_hitbox", "water_check", "crouchlock", "spin_hitbox")]
+[sub_resource type="Resource" id="Resource_sxalk"]
+script = ExtResource("49_apkmk")
+sfx_list = [ExtResource("110_eavfs"), ExtResource("130_mc84f"), ExtResource("131_2mqoj"), ExtResource("125_l4e5j")]
+bus = &"Voice"
+start_delay = 0.0
+repeat_delay = 0.0
+force_new = true
+overwrite_other = true
+cutoff_sfx = true
+metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
+
+[node name="Mario" type="CharacterBody2D" node_paths=PackedStringArray("doll", "state_manager", "movement", "input", "collision", "small_collision", "dive_collision", "push_rays", "hurtbox", "foot_hitbox", "spin_hitbox", "water_check", "crouchlock")]
 collision_layer = 2
 floor_constant_speed = true
 floor_max_angle = 1.48353
 floor_snap_length = 16.0
 script = ExtResource("1_87j6i")
 doll = NodePath("Doll")
-state_manager = NodePath("StateManager")
-movement = NodePath("Movement")
-input = NodePath("InputManager")
+state_manager = NodePath("Managers/StateManager")
+movement = NodePath("Managers/Movement")
+input = NodePath("Managers/InputManager")
+collision = NodePath("Collision")
+small_collision = NodePath("SmallCollision")
+dive_collision = NodePath("DiveCollision")
 push_rays = NodePath("PushRays")
-hitbox = NodePath("Hitbox")
-dive_hitbox = NodePath("DiveHitbox")
-small_hitbox = NodePath("SmallHitbox")
+hurtbox = NodePath("Hitboxes/Hurtbox")
+foot_hitbox = NodePath("Hitboxes/FootHitbox")
+spin_hitbox = NodePath("Hitboxes/SpinHitbox")
 water_check = NodePath("Areas/WaterCheck")
 crouchlock = NodePath("Areas/Crouchlock")
-spin_hitbox = NodePath("Areas/SpinHitbox")
 
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = ExtResource("2_ttikd")
-animation = &"spin_attack"
+animation = &"idle"
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_u4b58")
 
-[node name="SmallHitbox" type="CollisionShape2D" parent="."]
+[node name="SmallCollision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_1emcl")
 debug_color = Color(0.371138, 0.615246, 1.54018e-06, 0.42)
 
-[node name="DiveHitbox" type="CollisionShape2D" parent="."]
+[node name="DiveCollision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_c86nk")
 debug_color = Color(0.79996, 0.0297055, 1, 0.42)
@@ -691,19 +731,49 @@ position = Vector2(0, -24)
 shape = SubResource("RectangleShape2D_2tafv")
 debug_color = Color(0.792157, 0.380392, 0.52549, 0.419608)
 
-[node name="SpinHitbox" type="Area2D" parent="Areas"]
-collision_layer = 0
-collision_mask = 4
-monitoring = false
+[node name="Hitboxes" type="Node2D" parent="."]
 
-[node name="DamageBox" type="CollisionShape2D" parent="Areas/SpinHitbox"]
-position = Vector2(0, -13)
+[node name="Hurtbox" type="Area2D" parent="Hitboxes" groups=["player"]]
+collision_layer = 2
+collision_mask = 6
+script = ExtResource("4_totbj")
+metadata/_custom_type_script = "uid://b68kv8tvc8abf"
+
+[node name="DamageBox" type="CollisionShape2D" parent="Hitboxes/Hurtbox"]
+position = Vector2(0, -17)
+shape = SubResource("RectangleShape2D_u4b58")
+
+[node name="FootHitbox" type="Area2D" parent="Hitboxes"]
+collision_layer = 2
+collision_mask = 12
+monitoring = false
+script = ExtResource("4_totbj")
+damage_component = SubResource("Resource_8mesl")
+metadata/_custom_type_script = "uid://b68kv8tvc8abf"
+
+[node name="DamageBox" type="CollisionShape2D" parent="Hitboxes/FootHitbox"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_pxspy")
+debug_color = Color(1, 0, 0.145098, 0.141176)
+
+[node name="SpinHitbox" type="Area2D" parent="Hitboxes"]
+collision_layer = 2
+collision_mask = 12
+monitoring = false
+script = ExtResource("4_totbj")
+damage_component = SubResource("Resource_pxspy")
+disabled = true
+metadata/_custom_type_script = "uid://b68kv8tvc8abf"
+
+[node name="DamageBox" type="CollisionShape2D" parent="Hitboxes/SpinHitbox"]
+position = Vector2(0, -14.5)
 shape = SubResource("RectangleShape2D_gh08o")
+disabled = true
 debug_color = Color(1, 0, 0.145098, 0.141176)
 
 [node name="PushRays" type="Node2D" parent="." node_paths=PackedStringArray("movement")]
 script = ExtResource("35_g7d1t")
-movement = NodePath("../Movement")
+movement = NodePath("../Managers/Movement")
 
 [node name="PushRayR" type="RayCast2D" parent="PushRays"]
 modulate = Color(1, 1, 0.164706, 1)
@@ -715,16 +785,18 @@ modulate = Color(1, 1, 0.164706, 1)
 position = Vector2(0, -14)
 target_position = Vector2(-16, 0)
 
-[node name="InputManager" type="Node" parent="."]
+[node name="Managers" type="Node" parent="."]
+
+[node name="InputManager" type="Node" parent="Managers"]
 script = ExtResource("21_onm15")
 buffer_duration = 6
 
-[node name="FluddManager" type="Node" parent="."]
+[node name="FluddManager" type="Node" parent="Managers"]
 script = ExtResource("151_4womg")
 
-[node name="Movement" type="Node" parent="." node_paths=PackedStringArray("actor")]
+[node name="Movement" type="Node" parent="Managers" node_paths=PackedStringArray("actor")]
 script = ExtResource("37_quca3")
-actor = NodePath("..")
+actor = NodePath("../..")
 max_speed = 3.0
 term_vel = 8.0
 min_grav = 0.215
@@ -732,60 +804,60 @@ snap_length = 8.0
 swim_speed = 3.0
 min_slide_incline = 0.4
 
-[node name="StateManager" type="Node" parent="." node_paths=PackedStringArray("input", "movement", "target_actor", "initial_state")]
+[node name="StateManager" type="Node" parent="Managers" node_paths=PackedStringArray("input", "movement", "target_actor", "initial_state")]
 script = ExtResource("38_vxs65")
 input = NodePath("../InputManager")
 movement = NodePath("../Movement")
-target_actor = NodePath("..")
-initial_state = NodePath("Dry/Airborne")
+target_actor = NodePath("../..")
+initial_state = NodePath("Dry/Grounded/Idle")
 
-[node name="Submerged" type="Node" parent="StateManager"]
+[node name="Submerged" type="Node" parent="Managers/StateManager"]
 script = ExtResource("135_2utkk")
 
-[node name="SwimIdle" type="Node" parent="StateManager/Submerged"]
+[node name="SwimIdle" type="Node" parent="Managers/StateManager/Submerged"]
 script = ExtResource("40_aeui7")
 decel_time = 45
-hitbox_type = "Dive"
+collision_type = "Dive"
 animation = &"swim_idle"
 
-[node name="Swim" type="Node" parent="StateManager/Submerged"]
+[node name="Swim" type="Node" parent="Managers/StateManager/Submerged"]
 script = ExtResource("41_x14c0")
-hitbox_type = "Dive"
+collision_type = "Dive"
 animation = &"swim"
 
-[node name="SwimHard" type="Node" parent="StateManager/Submerged"]
+[node name="SwimHard" type="Node" parent="Managers/StateManager/Submerged"]
 script = ExtResource("42_7ru02")
 extra_boost_speed = 0.5
-hitbox_type = "Dive"
+collision_type = "Dive"
 animation = &"swim_hard"
 
-[node name="SwimFlutter" type="Node" parent="StateManager/Submerged"]
+[node name="SwimFlutter" type="Node" parent="Managers/StateManager/Submerged"]
 script = ExtResource("46_ukpqj")
-hitbox_type = "Dive"
+collision_type = "Dive"
 animation = &"swim_flutter"
 
-[node name="SwimSpin" type="Node" parent="StateManager/Submerged"]
+[node name="SwimSpin" type="Node" parent="Managers/StateManager/Submerged"]
 script = ExtResource("43_vu16w")
 extra_boost_speed = 2.0
-hitbox_type = "Dive"
+collision_type = "Dive"
 animation = &"swim_spin"
 
-[node name="Dry" type="Node" parent="StateManager"]
+[node name="Dry" type="Node" parent="Managers/StateManager"]
 script = ExtResource("40_q8vpo")
 
-[node name="Grounded" type="Node" parent="StateManager/Dry"]
+[node name="Grounded" type="Node" parent="Managers/StateManager/Dry"]
 script = ExtResource("40_s2gar")
-hitbox_type = "None"
+collision_type = "None"
 on_enter = false
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_r5xry")])
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_n4l32")])
 
-[node name="Idle" type="Node" parent="StateManager/Dry/Grounded"]
+[node name="Idle" type="Node" parent="Managers/StateManager/Dry/Grounded"]
 script = ExtResource("44_87kyt")
 animation_look_up = &"look_up"
 animation = &"idle"
 
-[node name="Walk" type="Node" parent="StateManager/Dry/Grounded"]
+[node name="Walk" type="Node" parent="Managers/StateManager/Dry/Grounded"]
 script = ExtResource("45_ka4vl")
 footstep_frames = Array[int]([0, 4])
 animation_run = &"run"
@@ -794,75 +866,75 @@ on_enter = false
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_8p2oq")])
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_cej6f")])
 
-[node name="Skid" type="Node" parent="StateManager/Dry/Grounded"]
+[node name="Skid" type="Node" parent="Managers/StateManager/Dry/Grounded"]
 script = ExtResource("48_w11sb")
 skid_accel_time = 8.0
 over_accel = 1.0
 animation = &"skid"
 
-[node name="Push" type="Node" parent="StateManager/Dry/Grounded"]
+[node name="Push" type="Node" parent="Managers/StateManager/Dry/Grounded"]
 script = ExtResource("49_6rakc")
 animation = &"push"
 
-[node name="DryPush" type="Node" parent="StateManager/Dry/Grounded/Push"]
+[node name="DryPush" type="Node" parent="Managers/StateManager/Dry/Grounded/Push"]
 script = ExtResource("50_xkq61")
 animation = &"idle"
 
-[node name="Cheer" type="Node" parent="StateManager/Dry/Grounded"]
+[node name="Cheer" type="Node" parent="Managers/StateManager/Dry/Grounded"]
 script = ExtResource("57_p7lxf")
 animation = &"stylish"
 anim_offset = Vector2i(0, 5)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_sitp4")])
 
-[node name="Crouch" type="Node" parent="StateManager/Dry/Grounded"]
+[node name="Crouch" type="Node" parent="Managers/StateManager/Dry/Grounded"]
 script = ExtResource("51_38is8")
-hitbox_type = "Small"
+collision_type = "Small"
 animation = &"crouch"
 on_enter = false
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ql55k")])
 
-[node name="CrouchSpin" type="Node" parent="StateManager/Dry/Grounded"]
+[node name="CrouchSpin" type="Node" parent="Managers/StateManager/Dry/Grounded"]
 script = ExtResource("54_rxsl3")
-hitbox_type = "Small"
+collision_type = "Small"
 animation = &"breakdance"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_upqlf")])
-particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_ttikd")])
+particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_mc84f")])
 
-[node name="Waddle" type="Node" parent="StateManager/Dry/Grounded"]
+[node name="Waddle" type="Node" parent="Managers/StateManager/Dry/Grounded"]
 script = ExtResource("53_blm5r")
 footstep_frames = Array[int]([1, 3])
-hitbox_type = "Small"
+collision_type = "Small"
 animation = &"crouch_walk"
 on_enter = false
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_lybx2")])
 
-[node name="DiveSlide" type="Node" parent="StateManager/Dry/Grounded"]
+[node name="DiveSlide" type="Node" parent="Managers/StateManager/Dry/Grounded"]
 script = ExtResource("60_d4aqs")
-hitbox_type = "Dive"
+collision_type = "Small"
 animation = &"dive_slide"
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_w3gxr")])
 
-[node name="GroundPoundLand" type="Node" parent="StateManager/Dry/Grounded"]
+[node name="GroundPoundLand" type="Node" parent="Managers/StateManager/Dry/Grounded"]
 script = ExtResource("58_qbwc7")
-hitbox_type = "Small"
+collision_type = "Small"
 animation = &"gp_land"
 anim_offset = Vector2i(0, 9)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_t5lrn")])
 
-[node name="Airborne" type="Node" parent="StateManager/Dry"]
+[node name="Airborne" type="Node" parent="Managers/StateManager/Dry"]
 script = ExtResource("61_1r6ji")
-hitbox_type = "None"
+collision_type = "None"
 on_enter = false
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_oau5y")])
 
-[node name="JumpStates" type="Node" parent="StateManager/Dry/Airborne"]
+[node name="JumpStates" type="Node" parent="Managers/StateManager/Dry/Airborne"]
 script = ExtResource("73_acu3g")
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_kvfvp")])
 
-[node name="DummyJump" type="Node" parent="StateManager/Dry/Airborne/JumpStates"]
+[node name="DummyJump" type="Node" parent="Managers/StateManager/Dry/Airborne/JumpStates"]
 script = ExtResource("65_6w5qc")
 
-[node name="Jump" type="Node" parent="StateManager/Dry/Airborne/JumpStates/DummyJump"]
+[node name="Jump" type="Node" parent="Managers/StateManager/Dry/Airborne/JumpStates/DummyJump"]
 script = ExtResource("66_2qkrt")
 jump_power = 5.3
 min_jump_percent = 20.0
@@ -871,7 +943,7 @@ animation = &"jump"
 anim_offset = Vector2i(0, 5)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_2esv2"), SubResource("Resource_qmxtc")])
 
-[node name="DoubleJump" type="Node" parent="StateManager/Dry/Airborne/JumpStates/DummyJump"]
+[node name="DoubleJump" type="Node" parent="Managers/StateManager/Dry/Airborne/JumpStates/DummyJump"]
 script = ExtResource("75_nf276")
 jump_power = 6.7
 min_jump_percent = 35.0
@@ -880,7 +952,7 @@ fall_state = &"DoubleFall"
 animation = &"double_jump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_js1ac"), SubResource("Resource_cjrlj")])
 
-[node name="TripleJump" type="Node" parent="StateManager/Dry/Airborne/JumpStates/DummyJump"]
+[node name="TripleJump" type="Node" parent="Managers/StateManager/Dry/Airborne/JumpStates/DummyJump"]
 script = ExtResource("82_h02h3")
 jump_power = 8.0
 min_jump_percent = 50.0
@@ -888,12 +960,12 @@ animation = &"triple_jump"
 anim_offset = Vector2i(0, 5)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_c6n5s"), SubResource("Resource_0beus"), SubResource("Resource_32052")])
 
-[node name="LazyJump" type="Node" parent="StateManager/Dry/Airborne/JumpStates"]
+[node name="LazyJump" type="Node" parent="Managers/StateManager/Dry/Airborne/JumpStates"]
 script = ExtResource("116_wolak")
 animation = &"jump"
 anim_offset = Vector2i(0, 5)
 
-[node name="Spinjump" type="Node" parent="StateManager/Dry/Airborne/JumpStates"]
+[node name="Spinjump" type="Node" parent="Managers/StateManager/Dry/Airborne/JumpStates"]
 script = ExtResource("92_pwmyp")
 jump_power = 6.7
 min_jump_percent = 100.0
@@ -902,7 +974,7 @@ fall_state = &""
 animation = &"spinjump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_h8xfq")])
 
-[node name="Longjump" type="Node" parent="StateManager/Dry/Airborne/JumpStates"]
+[node name="Longjump" type="Node" parent="Managers/StateManager/Dry/Airborne/JumpStates"]
 script = ExtResource("100_6d35n")
 jump_power = 3.6
 push_power = 6.0
@@ -911,20 +983,20 @@ backward_accel_time = 30
 animation = &"longjump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_5f3i0")])
 
-[node name="Sideflip" type="Node" parent="StateManager/Dry/Airborne/JumpStates"]
+[node name="Sideflip" type="Node" parent="Managers/StateManager/Dry/Airborne/JumpStates"]
 script = ExtResource("101_4gu6d")
 jump_power = 7.2
 animation = &"sideflip"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ts3h6"), SubResource("Resource_foa8p")])
 
-[node name="Backflip" type="Node" parent="StateManager/Dry/Airborne/JumpStates"]
+[node name="Backflip" type="Node" parent="Managers/StateManager/Dry/Airborne/JumpStates"]
 script = ExtResource("103_ky35g")
 jump_power = 7.5
 animation = &"backflip"
 anim_offset = Vector2i(0, 5)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_yrs16"), SubResource("Resource_l81lv")])
 
-[node name="ButtSlideJump" type="Node" parent="StateManager/Dry/Airborne/JumpStates"]
+[node name="ButtSlideJump" type="Node" parent="Managers/StateManager/Dry/Airborne/JumpStates"]
 script = ExtResource("104_py71u")
 jump_power = 5.3
 min_jump_percent = 20.0
@@ -934,7 +1006,7 @@ animation = &"butt_slide_jump"
 anim_offset = Vector2i(0, 3)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_jo8kb")])
 
-[node name="GroundPoundJump" type="Node" parent="StateManager/Dry/Airborne/JumpStates"]
+[node name="GroundPoundJump" type="Node" parent="Managers/StateManager/Dry/Airborne/JumpStates"]
 script = ExtResource("105_g4v7o")
 jump_power = 6.7
 min_jump_percent = 35.0
@@ -942,10 +1014,10 @@ jump_number = 2
 animation = &"gp_jump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_8711x"), SubResource("Resource_nl575")])
 
-[node name="WalljumpStates" type="Node" parent="StateManager/Dry/Airborne"]
+[node name="WalljumpStates" type="Node" parent="Managers/StateManager/Dry/Airborne"]
 script = ExtResource("73_acu3g")
 
-[node name="Wallslide" type="Node" parent="StateManager/Dry/Airborne/WalljumpStates"]
+[node name="Wallslide" type="Node" parent="Managers/StateManager/Dry/Airborne/WalljumpStates"]
 script = ExtResource("105_6ryk6")
 term_vel = 3.0
 gravity_friction = 4.0
@@ -953,81 +1025,81 @@ animation = &"wallslide"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_w3vn1")])
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_2nx7x"), SubResource("Resource_5idsp")])
 
-[node name="Walljump" type="Node" parent="StateManager/Dry/Airborne/WalljumpStates"]
+[node name="Walljump" type="Node" parent="Managers/StateManager/Dry/Airborne/WalljumpStates"]
 script = ExtResource("90_0xuyq")
 jump_power = 5.3
 push_power = 4.0
 animation = &"walljump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_pq6ep"), SubResource("Resource_a2hl0")])
 
-[node name="SpinWallbonk" type="Node" parent="StateManager/Dry/Airborne/WalljumpStates"]
+[node name="SpinWallbonk" type="Node" parent="Managers/StateManager/Dry/Airborne/WalljumpStates"]
 script = ExtResource("109_w8m04")
 wall_kickback_power_y = 1.5
 animation = &"spin_attack"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_bloag"), SubResource("Resource_2nfvq")])
 
-[node name="FallStates" type="Node" parent="StateManager/Dry/Airborne"]
+[node name="FallStates" type="Node" parent="Managers/StateManager/Dry/Airborne"]
 script = ExtResource("73_acu3g")
 
-[node name="Fall" type="Node" parent="StateManager/Dry/Airborne/FallStates"]
+[node name="Fall" type="Node" parent="Managers/StateManager/Dry/Airborne/FallStates"]
 script = ExtResource("113_j3k6p")
 animation = &"jump_fall"
 anim_offset = Vector2i(0, 5)
 
-[node name="Freefall" type="Node" parent="StateManager/Dry/Airborne/FallStates"]
+[node name="Freefall" type="Node" parent="Managers/StateManager/Dry/Airborne/FallStates"]
 script = ExtResource("114_mgnux")
 animation = &"freefall"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_5kqsg")])
 
-[node name="DoubleFall" type="Node" parent="StateManager/Dry/Airborne/FallStates"]
+[node name="DoubleFall" type="Node" parent="Managers/StateManager/Dry/Airborne/FallStates"]
 script = ExtResource("113_j3k6p")
 animation = &"double_fall"
 
-[node name="GroundPoundStates" type="Node" parent="StateManager/Dry/Airborne"]
+[node name="GroundPoundStates" type="Node" parent="Managers/StateManager/Dry/Airborne"]
 script = ExtResource("73_acu3g")
 
-[node name="GroundPound" type="Node" parent="StateManager/Dry/Airborne/GroundPoundStates"]
+[node name="GroundPound" type="Node" parent="Managers/StateManager/Dry/Airborne/GroundPoundStates"]
 script = ExtResource("107_us6gm")
 linger_time = 5.0
 animation = &"gp"
 anim_offset = Vector2i(0, 9)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_7r27p"), SubResource("Resource_rgxnc")])
 
-[node name="GroundPoundFall" type="Node" parent="StateManager/Dry/Airborne/GroundPoundStates"]
+[node name="GroundPoundFall" type="Node" parent="Managers/StateManager/Dry/Airborne/GroundPoundStates"]
 script = ExtResource("111_fyebu")
 animation = &"gp_fall"
 anim_offset = Vector2i(0, 9)
 
-[node name="GroundPoundCancel" type="Node" parent="StateManager/Dry/Airborne/GroundPoundStates"]
+[node name="GroundPoundCancel" type="Node" parent="Managers/StateManager/Dry/Airborne/GroundPoundStates"]
 script = ExtResource("112_02mke")
 animation = &"jump_fall"
 
-[node name="Twirl" type="Node" parent="StateManager/Dry/Airborne"]
+[node name="Twirl" type="Node" parent="Managers/StateManager/Dry/Airborne"]
 script = ExtResource("124_swcs3")
 spin_power = 0.0
 animation = &"spin_attack"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_2y8iw")])
 
-[node name="Spin" type="Node" parent="StateManager/Dry"]
+[node name="Spin" type="Node" parent="Managers/StateManager/Dry"]
 script = ExtResource("135_qf53u")
 spin_power = 3.0
 animation = &"spin_attack"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_vehmo"), SubResource("Resource_0hpnu")])
-particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_totbj")])
+particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_2mqoj")])
 
-[node name="DiveStates" type="Node" parent="StateManager/Dry"]
+[node name="DiveStates" type="Node" parent="Managers/StateManager/Dry"]
 script = ExtResource("73_acu3g")
 
-[node name="Dive" type="Node" parent="StateManager/Dry/DiveStates"]
+[node name="Dive" type="Node" parent="Managers/StateManager/Dry/DiveStates"]
 script = ExtResource("134_dsbpr")
 x_power = 3.2
 bellyflop_power = 2.8
 max_accel = 0.4
-hitbox_type = "Dive"
+collision_type = "Dive"
 animation = &"dive"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_lib4c"), SubResource("Resource_6roi5")])
 
-[node name="Rollout" type="Node" parent="StateManager/Dry/DiveStates"]
+[node name="Rollout" type="Node" parent="Managers/StateManager/Dry/DiveStates"]
 script = ExtResource("129_e0h20")
 x_multiplier = 1.2
 accel_cap = 8.0
@@ -1040,7 +1112,7 @@ anim_offset = Vector2i(0, 6)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_4xwjg")])
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_rb2f4")])
 
-[node name="SuperRollout" type="Node" parent="StateManager/Dry/DiveStates"]
+[node name="SuperRollout" type="Node" parent="Managers/StateManager/Dry/DiveStates"]
 script = ExtResource("150_4duxu")
 x_power = 3.2
 x_multiplier = 1.2
@@ -1053,23 +1125,28 @@ animation = &"super_rollout"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_m87ta")])
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_44n4o"), SubResource("Resource_c5q6a")])
 
-[node name="Bonk" type="Node" parent="StateManager/Dry/DiveStates"]
+[node name="Bonk" type="Node" parent="Managers/StateManager/Dry/DiveStates"]
 script = ExtResource("131_f03w0")
 rotation_time = 45.0
 animation = &"bonk"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ujdp5")])
 
-[node name="ButtSlide" type="Node" parent="StateManager/Dry"]
+[node name="ButtSlide" type="Node" parent="Managers/StateManager/Dry"]
 script = ExtResource("140_lfmwr")
-speed = 12.5
+max_speed = 15.0
 turn_forgiveness = 1.5
 shallow_penalty = 0.25
 incline_friction = 90.0
 animation_forward = &"butt_slide_forwards"
 animation_backward = &"butt_slide_backwards"
 animation_airborne = &"butt_slide_jump"
-hitbox_type = "Small"
+collision_type = "Small"
 animation = &"butt_slide"
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_d3rr6")])
 
-[connection signal="body_entered" from="Areas/SpinHitbox" to="StateManager/Dry/Spin" method="_on_spin_hitbox_body_entered"]
+[node name="DamageManager" type="Node" parent="Managers" node_paths=PackedStringArray("actor")]
+script = ExtResource("129_8mesl")
+actor = NodePath("../..")
+general_damage_sounds = SubResource("Resource_sxalk")
+
+[connection signal="damage_collision" from="Hitboxes/Hurtbox" to="Managers/DamageManager" method="_on_damage"]
