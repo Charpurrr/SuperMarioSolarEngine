@@ -140,8 +140,6 @@ func _display_input(event: InputEvent):
 	else:
 		return  # Unknown input type, ignore it
 
-	print(event_name)
-
 	var texture_rect := TextureRect.new()
 	texture_rect.texture = IconMap.find(event)
 	texture_rect.size = Vector2(0.3, 0.3)

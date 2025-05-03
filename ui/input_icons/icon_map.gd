@@ -15,4 +15,5 @@ static func _static_init() -> void:
 
 
 static func find(event: InputEvent) -> CompressedTexture2D:
-	return icon_map.dictionary.get(event_map.get(event.as_text().hash()), null)
+	var key: String = event.as_text().rsplit("+", true, 1)[-1]
+	return icon_map.dictionary.get(event_map.get(key.hash()), null)
