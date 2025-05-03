@@ -38,13 +38,18 @@ Most classes contain documentation that you can find using the Help menu in the 
 > Help - Search Help
 
 ## Credits
-Charlotte "Charpurrr" Fox - Project lead and programmer <br /><br />
+Charlotte "Charpurrr" Fox - Lead director and programmer <br /><br />
 
 "CardboardCarl" - Additional programming <br />
 "Unequipped" - Additional programming <br />
 "aloelucidity" - Additional programming <br /><br />
 
-"goatsoup.mp3" - Synth Stratnum soundtrack <br /><br >
+Brian "Linktober" - Level design <br /><br />
+
+"Frums" - Credits & Options songs <br />
+"LSPLASH" - Chillwave song <br />
+Gale Sosa - Synth Stratnum song <br />
+"femtanyl" - ATTACKING VERTICAL song <br /><br >
 
 Mack "masterminer176" - Miscellaneous sprites <br />
 "KrystalPhantasm" - Miscellaneous sprites <br /><br >

@@ -67,26 +67,31 @@ func load_level(level: Level, store: bool = false) -> void:
 	if level_node.camera is PlayerCamera:
 		level_node.camera.player = level_node.player
 
+	# Set the appropriate background music.
+	MusicManager.music = level_node.level_music
+
 	# Set the camera as current.
 	level_node.camera.make_current()
+
+
+func deload_level():
+	# Unpauses the game if it was paused during the deload.
+	if get_tree().paused == true:
+		GameState.emit_signal(&"paused")
+
+	# Delete the level and UI.
+	level_node.queue_free()
+	ui_node.queue_free()
+	
+	# Reset static variables.
+	Coin.total_reds = 0
 
 
 ## Called with [GameState]'s reload signal.
 func _reload_level():
 	var new_level: Node2D = level_scene.instantiate()
-	var tree: SceneTree = get_tree()
 
-	# For disabling the pause screen if it was open.
-	if tree.paused == true:
-		GameState.pause_toggle()
-
-	# Delete the level and UI, then re-add them.
-	level_node.queue_free()
-	ui_node.queue_free()
-	
-	# Reset static variables
-	Coin.total_reds = 0
+	deload_level()
 
 	load_level(new_level)
-
 	level_reloaded.emit()

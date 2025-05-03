@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bfb4xq874buf6"]
+[gd_scene load_steps=17 format=3 uid="uid://bfb4xq874buf6"]
 
 [ext_resource type="Script" uid="uid://d7edjnk21ad3" path="res://props/level_environments/synth/synth_floor.gd" id="1_dubgv"]
 [ext_resource type="Script" uid="uid://ccysh3ski6mvh" path="res://props/level_environments/environment.gd" id="1_xeoqd"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://wf1kmhrykhbo" path="res://props/level_environments/synth/synth_mountain.png" id="4_y5k2x"]
 [ext_resource type="Texture2D" uid="uid://h55he5ne87oo" path="res://props/level_environments/synth/sunshine_sun.png" id="5_mb8pf"]
 [ext_resource type="Shader" uid="uid://jy8sm10bwqcu" path="res://util/shaders/crt.gdshader" id="7_e2awe"]
-[ext_resource type="AudioStream" uid="uid://rohr6rj0lel5" path="res://props/music/synth_stratnum.ogg" id="7_qqdok"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_47xr2"]
 particles_animation = true
@@ -61,11 +60,10 @@ gradient = SubResource("Gradient_w7jo4")
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
 
-[node name="Environment" type="CanvasLayer" node_paths=PackedStringArray("bgm")]
+[node name="Environment" type="CanvasLayer"]
 layer = -1
 script = ExtResource("1_xeoqd")
 pause_gradient_map = ExtResource("2_vugs5")
-bgm = NodePath("BGM")
 metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -148,9 +146,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_qk2fq")
-
-[node name="BGM" type="AudioStreamPlayer" parent="."]
-process_mode = 3
-stream = ExtResource("7_qqdok")
-autoplay = true
-bus = &"Music"
