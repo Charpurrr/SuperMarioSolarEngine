@@ -136,7 +136,7 @@ func _display_input(event: InputEvent):
 	if event is InputEventKey:
 		event_name = OS.get_keycode_string(event.physical_keycode)
 	elif event is InputEventJoypadButton or event is InputEventMouseButton:
-		event_name = event.as_text()
+		event_name = event.as_text().rsplit("+", true, 1)[-1]
 	else:
 		return  # Unknown input type, ignore it
 
