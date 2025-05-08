@@ -9,7 +9,7 @@ func _on_resume_pressed() -> void:
 
 
 func _on_retry_pressed() -> void:
-	GameState.reload.emit()
+	ui.world_machine.reload_level()
 	manager.switch_screen(self)
 
 

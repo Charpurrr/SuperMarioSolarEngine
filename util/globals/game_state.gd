@@ -2,10 +2,6 @@ extends Node
 
 signal setting_initialised(key: String, value: Variant)
 
-@warning_ignore("unused_signal")
-# Is used primarily for WorldMachine communication,
-# but makes more sense to store here.
-signal reload
 signal paused
 
 var debug_toggle: bool = false

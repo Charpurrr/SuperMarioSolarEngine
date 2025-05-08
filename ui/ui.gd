@@ -68,9 +68,6 @@ func _input(event: InputEvent):
 	if event.is_action_pressed(&"pause"):
 		_pause_logic()
 
-	if event.is_action_pressed(&"quick_restart"):
-		GameState.reload.emit()
-
 	_display_input(event)
 
 
