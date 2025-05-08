@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=3 uid="uid://csf56lkxqqb12"]
+[gd_scene load_steps=104 format=3 uid="uid://csf56lkxqqb12"]
 
 [ext_resource type="Script" uid="uid://brof7wb075ont" path="res://ui/ui.gd" id="1_75fsn"]
 [ext_resource type="AudioStream" uid="uid://b58aveo75onan" path="res://ui/sfx/pause.wav" id="2_1xskv"]
@@ -46,6 +46,7 @@
 [ext_resource type="Script" uid="uid://djnqumhmtso2y" path="res://ui/buttons/option_bool.gd" id="47_t7euy"]
 [ext_resource type="Texture2D" uid="uid://dkjx263nlcra" path="res://ui/input_icons/nintendo_switch/controller_switch_motion.svg" id="48_1v6c2"]
 [ext_resource type="Texture2D" uid="uid://bhvukbqm4v5f3" path="res://ui/input_icons/nintendo_switch/controller_switch_rumble.svg" id="49_lol4u"]
+[ext_resource type="PackedScene" uid="uid://q67oo8p20ee4" path="res://ui/screen_manager/options_screen/bind_setting.tscn" id="49_svocp"]
 [ext_resource type="Theme" uid="uid://blj83dty2taxs" path="res://ui/buttons/scrollbar.tres" id="50_5i7o0"]
 [ext_resource type="Script" uid="uid://d18f84ruj5057" path="res://ui/screen_manager/settings_screen/audio/audio_device_selector.gd" id="51_oqi1b"]
 [ext_resource type="PackedScene" uid="uid://b08q042unmcxf" path="res://ui/buttons/ui_selector.tscn" id="52_sk6td"]
@@ -1380,65 +1381,6 @@ layout_mode = 2
 theme_override_constants/separation = 16
 metadata/_tab_index = 1
 
-[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.1
-
-[node name="CategorySelector" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls"]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/CategorySelector"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Header" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/CategorySelector/VBoxContainer"]
-layout_mode = 2
-text = "Category:"
-label_settings = SubResource("LabelSettings_xphw0")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/CategorySelector/VBoxContainer"]
-layout_mode = 2
-
-[node name="PresetSelector" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/CategorySelector/VBoxContainer" instance=ExtResource("52_sk6td")]
-custom_minimum_size = Vector2(0, 27)
-layout_mode = 2
-selected = 0
-item_count = 3
-popup/item_0/text = "PLAYER"
-popup/item_0/id = 0
-popup/item_1/text = "MENU"
-popup/item_1/id = 1
-popup/item_2/text = "HOTKEYS"
-popup/item_2/id = 2
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/CategorySelector"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Header" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/CategorySelector/VBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.2
-text = "Input:"
-label_settings = SubResource("LabelSettings_xphw0")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/CategorySelector/VBoxContainer2"]
-layout_mode = 2
-
-[node name="PresetSelector" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/CategorySelector/VBoxContainer2" instance=ExtResource("52_sk6td")]
-custom_minimum_size = Vector2(0, 27)
-layout_mode = 2
-selected = 0
-item_count = 1
-popup/item_0/text = "KEYBOARD"
-popup/item_0/id = 0
-
 [node name="Control" type="Panel" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls"]
 clip_children = 1
 clip_contents = true
@@ -1473,234 +1415,64 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 16
+theme_override_constants/separation = 17
 
 [node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions"]
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 
-[node name="TopButtons" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions"]
-layout_mode = 2
-theme_override_constants/separation = 32
-
-[node name="VSync" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons/VSync"]
+[node name="Input" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions"]
 layout_mode = 2
 
-[node name="Header" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons/VSync/HBoxContainer"]
+[node name="Header" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/Input"]
 layout_mode = 2
-text = "Move Left"
+text = "Input Mode: "
 label_settings = SubResource("LabelSettings_xphw0")
 vertical_alignment = 1
 
-[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons/VSync/HBoxContainer"]
+[node name="PresetSelector2" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/Input" instance=ExtResource("52_sk6td")]
+custom_minimum_size = Vector2(0, 27)
 layout_mode = 2
+selected = 0
+item_count = 1
+popup/item_0/text = "KEYBOARD + MOUSE"
+popup/item_0/id = 0
 
-[node name="ToggleButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons/VSync" instance=ExtResource("25_dlkvg")]
+[node name="Space3" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions"]
+custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
-text = "OFF"
-script = ExtResource("45_23m8v")
-default_value = null
-options = Array[StringName]([&"OFF", &"ON"])
-setting_section = "General"
-setting_key = "v_sync"
-
-[node name="FPS" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons"]
-layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
 
-[node name="Header" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons/FPS"]
-layout_mode = 2
-text = "Move Right"
-label_settings = SubResource("LabelSettings_xphw0")
-vertical_alignment = 1
-
-[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons/FPS"]
+[node name="BindSetting" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" instance=ExtResource("49_svocp")]
 layout_mode = 2
 
-[node name="SelectorButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons/FPS" instance=ExtResource("25_dlkvg")]
+[node name="BindSetting2" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" instance=ExtResource("49_svocp")]
 layout_mode = 2
-text = "60 FPS"
-script = ExtResource("45_23m8v")
-default_value = 2
-options = Array[StringName]([&"OFF", &"30 FPS", &"60 FPS", &"120 FPS"])
-setting_section = "General"
-setting_key = "fps_cap"
+p_action_name = &"left"
+vis_title = &"Move Left"
+vis_icon_flip_h = true
 
-[node name="Quality" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons"]
+[node name="BindSetting3" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" instance=ExtResource("49_svocp")]
 layout_mode = 2
-size_flags_horizontal = 3
+p_action_name = &"up"
+vis_title = &"Move Up"
+vis_icon_flip_v = true
+
+[node name="BindSetting4" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" instance=ExtResource("49_svocp")]
+layout_mode = 2
+p_action_name = &"down"
+vis_title = &"Move Down"
+vis_icon_flip_h = true
+vis_icon_flip_v = true
+
+[node name="Space2" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
 size_flags_vertical = 3
-
-[node name="Header" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons/Quality"]
-layout_mode = 2
-text = "Jump"
-label_settings = SubResource("LabelSettings_xphw0")
-vertical_alignment = 1
-
-[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons/Quality"]
-layout_mode = 2
-
-[node name="SelectorButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons/Quality" instance=ExtResource("25_dlkvg")]
-layout_mode = 2
-text = "HIGH"
-script = ExtResource("45_23m8v")
-default_value = null
-options = Array[StringName]([&"HIGH", &"LOW", &"MEDIUM"])
-setting_section = "General"
-setting_key = "quality"
-
-[node name="TopButtons2" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions"]
-layout_mode = 2
-theme_override_constants/separation = 32
-
-[node name="VSync" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons2"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Header" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons2/VSync"]
-layout_mode = 2
-text = "Move Up"
-label_settings = SubResource("LabelSettings_xphw0")
-vertical_alignment = 1
-
-[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons2/VSync"]
-layout_mode = 2
-
-[node name="ToggleButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons2/VSync" instance=ExtResource("25_dlkvg")]
-layout_mode = 2
-text = "OFF"
-script = ExtResource("45_23m8v")
-default_value = null
-options = Array[StringName]([&"OFF", &"ON"])
-setting_section = "General"
-setting_key = "v_sync"
-
-[node name="FPS" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons2"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Header" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons2/FPS"]
-layout_mode = 2
-text = "Move Down"
-label_settings = SubResource("LabelSettings_xphw0")
-vertical_alignment = 1
-
-[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons2/FPS"]
-layout_mode = 2
-
-[node name="SelectorButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons2/FPS" instance=ExtResource("25_dlkvg")]
-layout_mode = 2
-text = "60 FPS"
-script = ExtResource("45_23m8v")
-default_value = 2
-options = Array[StringName]([&"OFF", &"30 FPS", &"60 FPS", &"120 FPS"])
-setting_section = "General"
-setting_key = "fps_cap"
-
-[node name="Quality" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons2"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Header" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons2/Quality"]
-layout_mode = 2
-text = "Dive"
-label_settings = SubResource("LabelSettings_xphw0")
-vertical_alignment = 1
-
-[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons2/Quality"]
-layout_mode = 2
-
-[node name="SelectorButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons2/Quality" instance=ExtResource("25_dlkvg")]
-layout_mode = 2
-text = "HIGH"
-script = ExtResource("45_23m8v")
-default_value = null
-options = Array[StringName]([&"HIGH", &"LOW", &"MEDIUM"])
-setting_section = "General"
-setting_key = "quality"
-
-[node name="TopButtons3" type="HBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions"]
-layout_mode = 2
-theme_override_constants/separation = 32
-
-[node name="VSync" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons3"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Header" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons3/VSync"]
-layout_mode = 2
-text = "Move Up"
-label_settings = SubResource("LabelSettings_xphw0")
-vertical_alignment = 1
-
-[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons3/VSync"]
-layout_mode = 2
-
-[node name="ToggleButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons3/VSync" instance=ExtResource("25_dlkvg")]
-layout_mode = 2
-text = "OFF"
-script = ExtResource("45_23m8v")
-default_value = null
-options = Array[StringName]([&"OFF", &"ON"])
-setting_section = "General"
-setting_key = "v_sync"
-
-[node name="FPS" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons3"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Header" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons3/FPS"]
-layout_mode = 2
-text = "Move Down"
-label_settings = SubResource("LabelSettings_xphw0")
-vertical_alignment = 1
-
-[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons3/FPS"]
-layout_mode = 2
-
-[node name="SelectorButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons3/FPS" instance=ExtResource("25_dlkvg")]
-layout_mode = 2
-text = "60 FPS"
-script = ExtResource("45_23m8v")
-default_value = 2
-options = Array[StringName]([&"OFF", &"30 FPS", &"60 FPS", &"120 FPS"])
-setting_section = "General"
-setting_key = "fps_cap"
-
-[node name="Quality" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons3"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Header" type="Label" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons3/Quality"]
-layout_mode = 2
-text = "Dive"
-label_settings = SubResource("LabelSettings_xphw0")
-vertical_alignment = 1
-
-[node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons3/Quality"]
-layout_mode = 2
-
-[node name="SelectorButton" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions/TopButtons3/Quality" instance=ExtResource("25_dlkvg")]
-layout_mode = 2
-text = "HIGH"
-script = ExtResource("45_23m8v")
-default_value = null
-options = Array[StringName]([&"HIGH", &"LOW", &"MEDIUM"])
-setting_section = "General"
-setting_key = "quality"
+size_flags_stretch_ratio = 0.1
 
 [node name="Space" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer"]
 layout_mode = 2
@@ -1708,8 +1480,8 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.03
 
 [node name="Space2" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls"]
+custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
-size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 
 [node name="Sound" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs"]

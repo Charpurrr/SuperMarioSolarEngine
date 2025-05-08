@@ -654,7 +654,7 @@ spin_hitbox = NodePath("Areas/SpinHitbox")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = ExtResource("2_ttikd")
-animation = &"spin_attack"
+animation = &"walk"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
