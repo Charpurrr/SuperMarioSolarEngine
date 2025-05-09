@@ -71,7 +71,7 @@ func _setting_changed(key: String, value: Variant):
 		"v_sync":
 			DisplayServer.window_set_vsync_mode(value)
 		"fps_cap":
-			Engine.max_fps = 30 * value # 0:INF, 1:30, 2:60, 3: 120
+			Engine.max_fps = [0, 30, 60, 120][value] # 0:INF, 1:30, 2:60, 3: 120
 		"scale":
 			WindowSizer.set_win_size(value)
 		# AUDIO
