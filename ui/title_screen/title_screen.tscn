@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cthxoel5sus6v"]
+[gd_scene load_steps=18 format=3 uid="uid://cthxoel5sus6v"]
 
 [ext_resource type="Shader" uid="uid://byfa3t51pf655" path="res://ui/screen_manager/pause_screen/pause_panel.tres" id="1_gxk54"]
 [ext_resource type="Script" uid="uid://diilonnsbj7qw" path="res://ui/title_screen/title_screen.gd" id="1_kmorl"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bb6wf0meej6ox" path="res://ui/buttons/ui_button.tscn" id="7_rdlol"]
 [ext_resource type="Texture2D" uid="uid://c82mjoeosc2ka" path="res://ui/title_screen/play_icon.png" id="8_tdj5p"]
 [ext_resource type="Texture2D" uid="uid://b140m0l1g3u2v" path="res://ui/title_screen/edit_icon.png" id="9_csve6"]
+[ext_resource type="Texture2D" uid="uid://d342wayf41exh" path="res://ui/title_screen/rec_icon.png" id="12_c8lgs"]
 
 [sub_resource type="Animation" id="Animation_685si"]
 length = 0.001
@@ -196,7 +197,7 @@ size_flags_stretch_ratio = 0.1
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "REC"
-icon = ExtResource("8_tdj5p")
+icon = ExtResource("12_c8lgs")
 
 [node name="SpaceRight" type="Control" parent="Contents/Choices"]
 layout_mode = 2
