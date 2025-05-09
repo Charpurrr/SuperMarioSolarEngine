@@ -32,4 +32,5 @@ static func get_filtered_name(event: InputEvent) -> String:
 
 ## Returns the associated icon graphic for an [InputEvent].
 static func find(event: InputEvent) -> CompressedTexture2D:
-	return icon_map.dictionary.get(event_map.get(event.as_text().hash()), null)
+	var key: String = event.as_text().rsplit("+", true, 1)[-1]
+	return icon_map.dictionary.get(event_map.get(key.hash()), null)
