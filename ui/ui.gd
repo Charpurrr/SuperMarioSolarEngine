@@ -160,9 +160,9 @@ func _display_input(event: InputEvent):
 
 func _toggle_debug():
 	var toggle: bool = GameState.debug_toggle
-	
+
 	debug.visible = toggle
-	
+
 	if toggle:
 		debug.process_mode = Node.PROCESS_MODE_INHERIT
 	else:
