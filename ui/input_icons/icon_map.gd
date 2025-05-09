@@ -21,8 +21,10 @@ static func get_filtered_name(event: InputEvent) -> String:
 
 	if event is InputEventKey:
 		event_name = OS.get_keycode_string(event.keycode)
-	elif event is InputEventJoypadButton or event is InputEventMouseButton:
+	elif event is InputEventMouseButton:
 		event_name = event.as_text().rsplit("+", true, 1)[-1].replace(" (Double Click)", "")
+	elif event is InputEventJoypadButton:
+		event_name = event.as_text()
 	else:
 		event_name = ""  # Unknown or unsupported input type
 

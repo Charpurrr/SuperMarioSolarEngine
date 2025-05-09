@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://csf56lkxqqb12"]
+[gd_scene load_steps=107 format=3 uid="uid://csf56lkxqqb12"]
 
 [ext_resource type="Script" uid="uid://brof7wb075ont" path="res://ui/ui.gd" id="1_75fsn"]
 [ext_resource type="AudioStream" uid="uid://b58aveo75onan" path="res://ui/sfx/pause.wav" id="2_1xskv"]
@@ -46,7 +46,6 @@
 [ext_resource type="Script" uid="uid://djnqumhmtso2y" path="res://ui/buttons/option_bool.gd" id="47_t7euy"]
 [ext_resource type="Texture2D" uid="uid://dkjx263nlcra" path="res://ui/input_icons/nintendo_switch/controller_switch_motion.svg" id="48_1v6c2"]
 [ext_resource type="Texture2D" uid="uid://bhvukbqm4v5f3" path="res://ui/input_icons/nintendo_switch/controller_switch_rumble.svg" id="49_lol4u"]
-[ext_resource type="PackedScene" path="res://ui/screen_manager/options_screen/bind_setting.tscn" id="49_svocp"]
 [ext_resource type="PackedScene" uid="uid://q67oo8p20ee4" path="res://ui/screen_manager/options_screen/bind_setting.tscn" id="49_svocp"]
 [ext_resource type="Theme" uid="uid://blj83dty2taxs" path="res://ui/buttons/scrollbar.tres" id="50_5i7o0"]
 [ext_resource type="Script" uid="uid://d18f84ruj5057" path="res://ui/screen_manager/settings_screen/audio/audio_device_selector.gd" id="51_oqi1b"]
@@ -553,14 +552,14 @@ anchors_preset = -1
 offset_top = 45.0
 offset_bottom = 50.0
 script = ExtResource("7_aeygf")
-max_count = 16
+max_count = 0
 bounce_color = Color(1, 0, 0, 1)
 
 [node name="TextureRect" parent="RedCoinCounter/CoinIcon/Gradient" index="0"]
 texture = SubResource("GradientTexture2D_m3cpd")
 
 [node name="Count" parent="RedCoinCounter" index="1"]
-text = "0/16"
+text = "0/0"
 
 [node name="MusicLabel" type="Label" parent="." node_paths=PackedStringArray("anime")]
 modulate = Color(1, 1, 1, 0)
