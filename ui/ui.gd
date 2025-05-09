@@ -19,8 +19,9 @@ extends CanvasLayer
 var current_notifs: Array = []
 
 @export_category(&"Debug Variables")
+@export var debug: Control
 @export var debug_label: Label
-@export var commit_labl: Label
+@export var commit_label: Label
 @export var input_display: Control
 var displayed_inputs: Dictionary[String, TextureRect]
 
@@ -39,12 +40,16 @@ var hud_enabled: bool = true
 func _ready():
 	_toggle_debug()
 	_toggle_debug_hitboxes()
+
+	LocalSettings.setting_changed.connect(_setting_changed)
+	GameState.paused.connect(_toggle_color_blur)
+
+	if world_machine == null: return
+
 	_set_player()
 	_set_camera()
 
 	world_machine.level_reloaded.connect(_set_player)
-	LocalSettings.setting_changed.connect(_setting_changed)
-	GameState.paused.connect(_toggle_color_blur)
 
 
 func _process(_delta):
@@ -67,9 +72,6 @@ func _input(event: InputEvent):
 
 	if event.is_action_pressed(&"pause"):
 		_pause_logic()
-
-	if event.is_action_pressed(&"quick_restart"):
-		GameState.reload.emit()
 
 	_display_input(event)
 
@@ -131,20 +133,11 @@ func _push_notif(type: StringName, input: String):
 
 
 func _display_input(event: InputEvent):
-	var event_name: String = ""
-
-	if event is InputEventKey:
-		event_name = OS.get_keycode_string(event.physical_keycode)
-	elif event is InputEventJoypadButton or event is InputEventMouseButton:
-		event_name = event.as_text().rsplit("+", true, 1)[-1]
-	else:
-		return  # Unknown input type, ignore it
+	var event_name: String = IconMap.get_filtered_name(event)
 
 	var texture_rect := TextureRect.new()
 	texture_rect.texture = IconMap.find(event)
 	texture_rect.size = Vector2(0.3, 0.3)
-
-	# how about i just kms instead how abot thtat huh. stupid machine
 
 	if event.is_released():
 		if displayed_inputs.has(event_name):
@@ -158,9 +151,12 @@ func _display_input(event: InputEvent):
 func _toggle_debug():
 	var toggle: bool = GameState.debug_toggle
 
-	input_display.visible = toggle
-	commit_labl.visible = toggle
-	debug_label.visible = toggle
+	debug.visible = toggle
+
+	if toggle:
+		debug.process_mode = Node.PROCESS_MODE_INHERIT
+	else:
+		debug.process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func _toggle_debug_hitboxes():

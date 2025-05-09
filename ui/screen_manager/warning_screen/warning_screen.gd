@@ -18,7 +18,7 @@ func on_load() -> void:
 
 
 func restart() -> void:
-	GameState.reload.emit()
+	ui.world_machine.reload_level()
 	manager.switch_screen(self)
 
 

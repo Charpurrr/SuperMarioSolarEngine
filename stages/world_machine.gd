@@ -19,11 +19,14 @@ var ui_node: UserInterface
 
 
 func _ready():
-	GameState.reload.connect(_reload_level)
-
 	if autoload and level_scene != null:
 		var level = level_scene.instantiate()
 		load_level(level)
+
+
+func _unhandled_input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed(&"quick_restart"):
+		reload_level()
 
 
 ## Stores a level as a scene, so it can be reloaded.
@@ -87,8 +90,8 @@ func deload_level():
 	Coin.total_reds = 0
 
 
-## Called with [GameState]'s reload signal.
-func _reload_level():
+## Reloads the current level.
+func reload_level():
 	var new_level: Node2D = level_scene.instantiate()
 
 	deload_level()

@@ -1,0 +1,112 @@
+[gd_scene load_steps=10 format=3 uid="uid://dd4exd7vseqoc"]
+
+[ext_resource type="FontFile" uid="uid://e821cxxeybxh" path="res://ui/fonts/mario_sunshine.ttf" id="1_7gm1v"]
+[ext_resource type="StyleBox" uid="uid://5hmjrr5vg4hn" path="res://ui/buttons/button_pressed.tres" id="2_w5m5l"]
+[ext_resource type="StyleBox" uid="uid://doxigal4dp5iy" path="res://ui/buttons/button_normal.tres" id="3_if13h"]
+[ext_resource type="Script" uid="uid://cj2q7u5bau51a" path="res://ui/buttons/ui_bind_button.gd" id="4_k61t0"]
+[ext_resource type="AudioStream" uid="uid://c4ui7ftfypsg0" path="res://ui/sfx/decide_small.wav" id="5_bh05p"]
+[ext_resource type="AudioStream" uid="uid://cov7xf5obt7vi" path="res://ui/sfx/reject.wav" id="5_w5m5l"]
+[ext_resource type="AudioStream" uid="uid://dsokoktxblw41" path="res://ui/sfx/cursor.wav" id="6_s3vyc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2o8a4"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ao57"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 12
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 12
+corner_detail = 1
+anti_aliasing = false
+
+[node name="BindButton" type="Button" node_paths=PackedStringArray("timer", "icons")]
+offset_right = 128.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_7gm1v")
+theme_override_font_sizes/font_size = 21
+theme_override_styles/focus = ExtResource("2_w5m5l")
+theme_override_styles/disabled = ExtResource("3_if13h")
+theme_override_styles/hover = ExtResource("2_w5m5l")
+theme_override_styles/pressed = ExtResource("2_w5m5l")
+theme_override_styles/normal = ExtResource("3_if13h")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("4_k61t0")
+max_binds = 3
+deny_sfx = ExtResource("5_w5m5l")
+timer = NodePath("TimeoutTimer")
+icons = NodePath("IconContainer")
+press_sfx = ExtResource("5_bh05p")
+cursor_sfx = ExtResource("6_s3vyc")
+
+[node name="Dropshadow" type="Panel" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2o8a4")
+
+[node name="Outerline" type="Panel" parent="Dropshadow"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ao57")
+
+[node name="IconContainer" type="HBoxContainer" parent="."]
+modulate = Color(0, 0, 0, 1)
+clip_children = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TimeoutTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+ignore_time_scale = true
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
