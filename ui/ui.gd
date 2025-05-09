@@ -19,8 +19,9 @@ extends CanvasLayer
 var current_notifs: Array = []
 
 @export_category(&"Debug Variables")
+@export var debug: Control
 @export var debug_label: Label
-@export var commit_labl: Label
+@export var commit_label: Label
 @export var input_display: Control
 var displayed_inputs: Dictionary[String, TextureRect]
 
@@ -146,9 +147,12 @@ func _display_input(event: InputEvent):
 func _toggle_debug():
 	var toggle: bool = GameState.debug_toggle
 
-	input_display.visible = toggle
-	commit_labl.visible = toggle
-	debug_label.visible = toggle
+	debug.visible = toggle
+
+	if toggle:
+		debug.process_mode = Node.PROCESS_MODE_INHERIT
+	else:
+		debug.process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func _toggle_debug_hitboxes():

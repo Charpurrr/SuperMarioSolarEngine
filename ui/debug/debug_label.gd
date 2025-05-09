@@ -4,8 +4,8 @@ extends Label
 
 
 func _physics_process(_delta):
-	if is_instance_valid(get_parent().player):
-		player = get_parent().player
+	if is_instance_valid(owner.player):
+		player = owner.player
 
 	if player == null:
 		return
