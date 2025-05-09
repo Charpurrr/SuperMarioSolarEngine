@@ -40,12 +40,16 @@ var hud_enabled: bool = true
 func _ready():
 	_toggle_debug()
 	_toggle_debug_hitboxes()
+
+	LocalSettings.setting_changed.connect(_setting_changed)
+	GameState.paused.connect(_toggle_color_blur)
+
+	if world_machine == null: return
+
 	_set_player()
 	_set_camera()
 
 	world_machine.level_reloaded.connect(_set_player)
-	LocalSettings.setting_changed.connect(_setting_changed)
-	GameState.paused.connect(_toggle_color_blur)
 
 
 func _process(_delta):

@@ -2,6 +2,15 @@ class_name PauseScreen
 extends Screen
 ## Main pause screen functionality.
 
+@export var retry: UIButton
+@export var reset: UIButton
+
+
+func _ready() -> void:
+	if owner.world_machine == null:
+		retry.toggle_disable(true)
+		reset.toggle_disable(true)
+
 
 func _on_resume_pressed() -> void:
 	GameState.paused.emit()

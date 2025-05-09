@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b41sl5v4p501f" path="res://ui/notification/notification.tscn" id="4_oqxfb"]
 [ext_resource type="Shader" uid="uid://cgcjxa2rl4edn" path="res://util/shaders/smw_mozaic.gdshader" id="5_yrl65"]
 [ext_resource type="PackedScene" uid="uid://blb650dgb5q1i" path="res://ui/player_hud/coin_counter.tscn" id="6_6apma"]
-[ext_resource type="Script" path="res://ui/player_hud/red_coin_counter.gd" id="7_aeygf"]
+[ext_resource type="Script" uid="uid://blkgg52gdx748" path="res://ui/player_hud/red_coin_counter.gd" id="7_aeygf"]
 [ext_resource type="FontFile" uid="uid://e821cxxeybxh" path="res://ui/fonts/mario_sunshine.ttf" id="7_ctsqr"]
 [ext_resource type="PackedScene" uid="uid://bgl7f8thu2y4" path="res://ui/player_hud/life_meter.tscn" id="7_m3cpd"]
 [ext_resource type="Script" uid="uid://dgat047njqsvp" path="res://ui/debug/debug_label.gd" id="8_2m7jo"]
@@ -46,7 +46,7 @@
 [ext_resource type="Script" uid="uid://djnqumhmtso2y" path="res://ui/buttons/option_bool.gd" id="47_t7euy"]
 [ext_resource type="Texture2D" uid="uid://dkjx263nlcra" path="res://ui/input_icons/nintendo_switch/controller_switch_motion.svg" id="48_1v6c2"]
 [ext_resource type="Texture2D" uid="uid://bhvukbqm4v5f3" path="res://ui/input_icons/nintendo_switch/controller_switch_rumble.svg" id="49_lol4u"]
-[ext_resource type="PackedScene" uid="uid://q67oo8p20ee4" path="res://ui/screen_manager/options_screen/bind_setting.tscn" id="49_svocp"]
+[ext_resource type="PackedScene" uid="uid://bbw8q5ouq073y" path="res://ui/screen_manager/options_screen/bind_setting.tscn" id="49_svocp"]
 [ext_resource type="Theme" uid="uid://blj83dty2taxs" path="res://ui/buttons/scrollbar.tres" id="50_5i7o0"]
 [ext_resource type="Script" uid="uid://d18f84ruj5057" path="res://ui/screen_manager/settings_screen/audio/audio_device_selector.gd" id="51_oqi1b"]
 [ext_resource type="PackedScene" uid="uid://b08q042unmcxf" path="res://ui/buttons/ui_selector.tscn" id="52_sk6td"]
@@ -540,14 +540,14 @@ anchors_preset = -1
 offset_top = 45.0
 offset_bottom = 50.0
 script = ExtResource("7_aeygf")
-max_count = 0
+max_count = 8
 bounce_color = Color(1, 0, 0, 1)
 
 [node name="TextureRect" parent="RedCoinCounter/CoinIcon/Gradient" index="0"]
 texture = SubResource("GradientTexture2D_m3cpd")
 
 [node name="Count" parent="RedCoinCounter" index="1"]
-text = "0/0"
+text = "0/8"
 
 [node name="MusicLabel" type="Label" parent="." node_paths=PackedStringArray("anime")]
 modulate = Color(1, 1, 1, 0)
@@ -609,7 +609,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="PauseScreen" type="HBoxContainer" parent="ScreenManager" node_paths=PackedStringArray("focus_grabber")]
+[node name="PauseScreen" type="HBoxContainer" parent="ScreenManager" node_paths=PackedStringArray("retry", "reset", "focus_grabber")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -619,6 +619,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 832
 script = ExtResource("21_fwnms")
+retry = NodePath("LeftPanel/Content/MainButtons/Buttons/LevelStateChoices/Retry")
+reset = NodePath("LeftPanel/Content/MainButtons/Buttons/LevelStateChoices/Reset")
 open_anim = &"pause_peek"
 close_anim = &"BACKWARDS"
 focus_grabber = NodePath("LeftPanel/Content/MainButtons/Buttons/Resume")
@@ -810,10 +812,9 @@ offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LevelInfo" type="VBoxContainer" parent="ScreenManager/PauseScreen/Info/Contents/ShineInfo/VBoxContainer/InfoPanel/TextContainer" node_paths=PackedStringArray("user_interface", "level_name", "mission_name", "mission_info")]
+[node name="LevelInfo" type="VBoxContainer" parent="ScreenManager/PauseScreen/Info/Contents/ShineInfo/VBoxContainer/InfoPanel/TextContainer" node_paths=PackedStringArray("level_name", "mission_name", "mission_info")]
 layout_mode = 2
 script = ExtResource("35_knc46")
-user_interface = NodePath("../../../../../../../../..")
 level_name = NodePath("LevelName")
 mission_name = NodePath("MissionSelector/MissionName")
 mission_info = NodePath("../MissionInfo")
@@ -1939,6 +1940,7 @@ tab_stops = PackedFloat32Array(20)
 script = ExtResource("9_bh67b")
 
 [node name="DebugLabel" type="Label" parent="Debug"]
+layout_mode = 0
 offset_right = 134.0
 offset_bottom = 218.0
 theme_override_font_sizes/font_size = 10
