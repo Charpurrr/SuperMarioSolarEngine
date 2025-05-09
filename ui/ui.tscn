@@ -47,6 +47,7 @@
 [ext_resource type="Texture2D" uid="uid://dkjx263nlcra" path="res://ui/input_icons/nintendo_switch/controller_switch_motion.svg" id="48_1v6c2"]
 [ext_resource type="Texture2D" uid="uid://bhvukbqm4v5f3" path="res://ui/input_icons/nintendo_switch/controller_switch_rumble.svg" id="49_lol4u"]
 [ext_resource type="PackedScene" path="res://ui/screen_manager/options_screen/bind_setting.tscn" id="49_svocp"]
+[ext_resource type="PackedScene" uid="uid://q67oo8p20ee4" path="res://ui/screen_manager/options_screen/bind_setting.tscn" id="49_svocp"]
 [ext_resource type="Theme" uid="uid://blj83dty2taxs" path="res://ui/buttons/scrollbar.tres" id="50_5i7o0"]
 [ext_resource type="Script" uid="uid://d18f84ruj5057" path="res://ui/screen_manager/settings_screen/audio/audio_device_selector.gd" id="51_oqi1b"]
 [ext_resource type="PackedScene" uid="uid://b08q042unmcxf" path="res://ui/buttons/ui_selector.tscn" id="52_sk6td"]
@@ -464,6 +465,18 @@ border_blend = true
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n7xk5"]
 content_margin_left = 3.0
+
+[sub_resource type="InputEventKey" id="InputEventKey_svocp"]
+device = -1
+keycode = 4194321
+
+[sub_resource type="InputEventKey" id="InputEventKey_6apma"]
+device = -1
+keycode = 4194320
+
+[sub_resource type="InputEventKey" id="InputEventKey_m3cpd"]
+device = -1
+keycode = 4194322
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7xk5"]
 bg_color = Color(0.0528422, 0.0528421, 0.0528421, 0.8)
@@ -1459,6 +1472,7 @@ size_flags_stretch_ratio = 0.1
 
 [node name="BindSetting" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" instance=ExtResource("49_svocp")]
 layout_mode = 2
+p_parsable_events = Array[InputEvent]([SubResource("InputEventKey_svocp")])
 
 [node name="BindSetting2" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" instance=ExtResource("49_svocp")]
 layout_mode = 2
@@ -1469,12 +1483,14 @@ vis_icon_flip_h = true
 [node name="BindSetting3" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" instance=ExtResource("49_svocp")]
 layout_mode = 2
 p_action_name = &"up"
+p_parsable_events = Array[InputEvent]([SubResource("InputEventKey_6apma")])
 vis_title = &"Move Up"
 vis_icon_flip_v = true
 
 [node name="BindSetting4" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" instance=ExtResource("49_svocp")]
 layout_mode = 2
 p_action_name = &"down"
+p_parsable_events = Array[InputEvent]([SubResource("InputEventKey_m3cpd")])
 vis_title = &"Move Down"
 vis_icon_flip_h = true
 vis_icon_flip_v = true
