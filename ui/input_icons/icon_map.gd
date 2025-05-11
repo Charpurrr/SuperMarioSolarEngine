@@ -2,8 +2,10 @@ class_name IconMap
 extends Node
 ## Utility class for finding the associated icon with an InputEvent.
 
-
+## The dictionary that defines which actions correspond to which icons.
 static var icon_map: Resource = preload("res://ui/input_icons/icon_dictionary.tres")
+## Dictionary that defines the events in [member icon_map] as strings.
+## (These strings are hashed, which is why the key is typed as an integer.)
 static var event_map: Dictionary[int, InputEvent] = {}
 
 
