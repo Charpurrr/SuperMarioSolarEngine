@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://csf56lkxqqb12"]
+[gd_scene load_steps=101 format=3 uid="uid://csf56lkxqqb12"]
 
 [ext_resource type="Script" uid="uid://brof7wb075ont" path="res://ui/ui.gd" id="1_75fsn"]
 [ext_resource type="AudioStream" uid="uid://b58aveo75onan" path="res://ui/sfx/pause.wav" id="2_1xskv"]
@@ -56,7 +56,6 @@
 [ext_resource type="Texture2D" uid="uid://c5dbwjmvnh6p1" path="res://ui/input_icons/nintendo_switch/switch_stick_l.svg" id="56_7h42w"]
 [ext_resource type="Texture2D" uid="uid://c8t2udtmy6oac" path="res://ui/input_icons/nintendo_switch/switch_button_x.svg" id="57_h5v5y"]
 [ext_resource type="Script" uid="uid://bwn84qudsrcg4" path="res://ui/screen_manager/options_screen/data_tab.gd" id="57_y28h8"]
-[ext_resource type="PackedScene" uid="uid://cxqj15hquutxq" path="res://ui/screen_manager/settings_screen/controls/tab.tscn" id="58_fvhia"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j6vdi"]
 shader = ExtResource("5_yrl65")
@@ -490,26 +489,6 @@ anti_aliasing = false
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r0xoq"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_bsikt"]
-font = ExtResource("36_i8qiy")
-font_size = 50
-outline_size = 20
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_2gqs2"]
-font = ExtResource("34_jyo83")
-font_size = 20
-
-[sub_resource type="InputEventKey" id="InputEventKey_hwwni"]
-device = -1
-keycode = 88
-unicode = 120
-
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_bmfaf"]
-
-[sub_resource type="Shortcut" id="Shortcut_bglev"]
-events = [SubResource("InputEventKey_hwwni"), SubResource("InputEventJoypadButton_bmfaf")]
 
 [node name="UI" type="CanvasLayer" node_paths=PackedStringArray("screen_manager", "color_blur", "zoom_blur_player", "notif_list", "debug", "debug_label", "commit_label", "input_display")]
 process_mode = 3
@@ -1484,13 +1463,14 @@ layout_mode = 2
 p_action_name = &"up"
 p_parsable_events = Array[InputEvent]([SubResource("InputEventKey_6apma")])
 vis_title = &"Move Up"
-vis_icon_flip_v = true
+vis_animation = &"swim"
 
 [node name="BindSetting4" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" instance=ExtResource("49_svocp")]
 layout_mode = 2
 p_action_name = &"down"
 p_parsable_events = Array[InputEvent]([SubResource("InputEventKey_m3cpd")])
 vis_title = &"Move Down"
+vis_animation = &"swim"
 vis_icon_flip_h = true
 vis_icon_flip_v = true
 
@@ -1767,223 +1747,6 @@ text = "Reset to Default"
 icon = ExtResource("57_h5v5y")
 expand_icon = true
 
-[node name="SettingsScreen" type="Control" parent="ScreenManager"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 736.0
-offset_top = -235.0
-offset_right = 736.0
-offset_bottom = -235.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SettingsMenu" type="VBoxContainer" parent="ScreenManager/SettingsScreen"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Header" type="Panel" parent="ScreenManager/SettingsScreen/SettingsMenu"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.22
-
-[node name="Settings" type="Label" parent="ScreenManager/SettingsScreen/SettingsMenu/Header"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "settings"
-label_settings = SubResource("LabelSettings_bsikt")
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
-[node name="Tabs" type="TabContainer" parent="ScreenManager/SettingsScreen/SettingsMenu"]
-self_modulate = Color(1, 1, 1, 0.588235)
-layout_mode = 2
-size_flags_vertical = 3
-current_tab = 1
-tab_focus_mode = 1
-
-[node name="Controls" type="HBoxContainer" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 0
-
-[node name="SpaceLeft" type="Control" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Controls"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.1
-
-[node name="PlayerTabs" type="TabContainer" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Controls"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-current_tab = 0
-
-[node name="P1" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Controls/PlayerTabs" instance=ExtResource("58_fvhia")]
-layout_mode = 2
-metadata/_tab_index = 0
-
-[node name="P2" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Controls/PlayerTabs" instance=ExtResource("58_fvhia")]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 1
-
-[node name="SpaceRight" type="Control" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Controls"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.1
-
-[node name="Audio" type="HBoxContainer" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-metadata/_tab_index = 1
-
-[node name="SpaceLeft" type="Control" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.1
-
-[node name="AudioPanel" type="Panel" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="ScrollContainer" type="ScrollContainer" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-follow_focus = true
-
-[node name="Spacings" type="HBoxContainer" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="SpaceLeft" type="Control" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.05
-
-[node name="Options" type="VBoxContainer" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings"]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="SpaceAbove" type="Control" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options"]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-
-[node name="DeviceOptions" type="HBoxContainer" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options"]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-alignment = 1
-
-[node name="SpaceLeft" type="Control" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.3
-
-[node name="Label" type="Label" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions"]
-layout_mode = 2
-text = "Audio Device: "
-label_settings = SubResource("LabelSettings_2gqs2")
-
-[node name="OptionButton" type="OptionButton" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("34_jyo83")
-theme_override_font_sizes/font_size = 16
-alignment = 1
-text_overrun_behavior = 1
-
-[node name="Refresh" type="Button" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions"]
-custom_minimum_size = Vector2(48, 0)
-layout_mode = 2
-text = " REFRESH "
-
-[node name="SpaceRight" type="Control" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.3
-
-[node name="SpeakerMode" type="Label" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("34_jyo83")
-theme_override_font_sizes/font_size = 15
-text = "Speaker Mode:"
-horizontal_alignment = 1
-
-[node name="SpaceUnder" type="Control" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options"]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-
-[node name="MasterText" type="Label" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("34_jyo83")
-theme_override_font_sizes/font_size = 20
-text = "Master Volume"
-
-[node name="BGMText" type="Label" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("34_jyo83")
-theme_override_font_sizes/font_size = 20
-text = "BGM Volume"
-
-[node name="SFXText" type="Label" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("34_jyo83")
-theme_override_font_sizes/font_size = 20
-text = "SFX Volume"
-
-[node name="SpaceBottom" type="Control" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options"]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-
-[node name="SpaceRight" type="Control" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.05
-
-[node name="SpaceRight" type="Control" parent="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.1
-
-[node name="ReturnSettings" type="Button" parent="ScreenManager/SettingsScreen"]
-self_modulate = Color(1, 0, 0, 1)
-custom_minimum_size = Vector2(43, 43)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -53.0
-offset_right = 53.0
-offset_bottom = -10.0
-grow_vertical = 0
-size_flags_horizontal = 0
-size_flags_vertical = 8
-theme_override_font_sizes/font_size = 25
-shortcut = SubResource("Shortcut_bglev")
-shortcut_in_tooltip = false
-text = "↵"
-clip_text = true
-
 [node name="Notifications" type="Node" parent="."]
 
 [connection signal="pressed" from="ScreenManager/PauseScreen/LeftPanel/Content/MainButtons/Buttons/Resume" to="ScreenManager/PauseScreen" method="_on_resume_pressed"]
@@ -1996,7 +1759,5 @@ clip_text = true
 [connection signal="pressed" from="ScreenManager/WarningScreen/Spacing/Main/Buttons/Confirm" to="ScreenManager/WarningScreen" method="_on_confirm_pressed"]
 [connection signal="pressed" from="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data/TopButtons/OpenData" to="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data" method="_on_open_data_pressed"]
 [connection signal="pressed" from="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Data/TopButtons/ResetData" to="ScreenManager/OptionsScreen" method="_on_reset_data_pressed"]
-[connection signal="item_selected" from="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions/OptionButton" to="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions/OptionButton" method="_on_item_selected"]
-[connection signal="pressed" from="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions/Refresh" to="ScreenManager/SettingsScreen/SettingsMenu/Tabs/Audio/AudioPanel/ScrollContainer/Spacings/Options/DeviceOptions/OptionButton" method="_on_refresh_pressed"]
 
 [editable path="RedCoinCounter"]

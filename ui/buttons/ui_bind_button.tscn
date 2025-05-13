@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dd4exd7vseqoc"]
+[gd_scene load_steps=12 format=3 uid="uid://dd4exd7vseqoc"]
 
 [ext_resource type="FontFile" uid="uid://e821cxxeybxh" path="res://ui/fonts/mario_sunshine.ttf" id="1_7gm1v"]
 [ext_resource type="StyleBox" uid="uid://5hmjrr5vg4hn" path="res://ui/buttons/button_pressed.tres" id="2_w5m5l"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://c4ui7ftfypsg0" path="res://ui/sfx/decide_small.wav" id="5_bh05p"]
 [ext_resource type="AudioStream" uid="uid://cov7xf5obt7vi" path="res://ui/sfx/reject.wav" id="5_w5m5l"]
 [ext_resource type="AudioStream" uid="uid://dsokoktxblw41" path="res://ui/sfx/cursor.wav" id="6_s3vyc"]
+[ext_resource type="Shader" uid="uid://cu7nvsf6p2hsh" path="res://util/shaders/invert_color.gdshader" id="8_if13h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2o8a4"]
 bg_color = Color(0, 0, 0, 1)
@@ -25,6 +26,12 @@ corner_radius_bottom_right = 9
 corner_radius_bottom_left = 12
 corner_detail = 1
 anti_aliasing = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s3vyc"]
+resource_local_to_scene = true
+shader = ExtResource("8_if13h")
+shader_parameter/enabled = true
+shader_parameter/invert_absolute_colors = true
 
 [node name="BindButton" type="Button" node_paths=PackedStringArray("timer", "icons")]
 offset_right = 128.0
@@ -92,8 +99,8 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2ao57")
 
 [node name="IconContainer" type="HBoxContainer" parent="."]
-modulate = Color(0, 0, 0, 1)
 clip_children = 2
+material = SubResource("ShaderMaterial_s3vyc")
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0

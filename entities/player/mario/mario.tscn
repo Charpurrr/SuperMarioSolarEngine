@@ -1,7 +1,7 @@
 [gd_scene load_steps=185 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" uid="uid://bg4t154sge7br" path="res://entities/player/shared/player.gd" id="1_87j6i"]
-[ext_resource type="SpriteFrames" uid="uid://bqn6b0xmrvxjc" path="res://entities/player/mario/mario_sprite_frames.res" id="2_ttikd"]
+[ext_resource type="SpriteFrames" uid="uid://bqn6b0xmrvxjc" path="res://entities/player/mario/anime/mario_anime.res" id="2_ttikd"]
 [ext_resource type="Script" uid="uid://clh7ssy21bpqv" path="res://util/input_manager.gd" id="21_onm15"]
 [ext_resource type="Script" uid="uid://d0q4h02e1xlo6" path="res://entities/player/shared/push_rays.gd" id="35_g7d1t"]
 [ext_resource type="Script" uid="uid://ddr3ta4g2q457" path="res://entities/player/shared/player_movement.gd" id="37_quca3"]
@@ -654,7 +654,7 @@ spin_hitbox = NodePath("Areas/SpinHitbox")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = ExtResource("2_ttikd")
-animation = &"walk"
+animation = &"swim_hard"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)

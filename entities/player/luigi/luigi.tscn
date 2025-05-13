@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bvllkfc7oj1mi"]
 
 [ext_resource type="PackedScene" uid="uid://dgqp3sqvmcvpu" path="res://entities/player/mario/mario.tscn" id="1_jyeyx"]
-[ext_resource type="SpriteFrames" uid="uid://cf4w7ogyh0ncn" path="res://entities/player/luigi/luigi_sprite_frames.res" id="2_rpjv5"]
+[ext_resource type="SpriteFrames" uid="uid://cf4w7ogyh0ncn" path="res://entities/player/luigi/anime/luigi_anime.res" id="2_rpjv5"]
 [ext_resource type="Script" uid="uid://dd8oyhd4nllix" path="res://util/particle_effect.gd" id="2_yf61k"]
 [ext_resource type="PackedScene" uid="uid://yxcrkjecabc2" path="res://props/particles/spin_ring.tscn" id="3_d8e4a"]
 

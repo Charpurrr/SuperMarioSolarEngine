@@ -1,16 +1,43 @@
-[gd_scene load_steps=17 format=3 uid="uid://q67oo8p20ee4"]
+[gd_scene load_steps=25 format=3 uid="uid://q67oo8p20ee4"]
 
-[ext_resource type="Script" uid="uid://4w1vix0dxdyw" path="res://ui/screen_manager/options_screen/bind_setting.gd" id="1_uljy6"]
+[ext_resource type="Script" path="res://ui/screen_manager/options_screen/bind_setting.gd" id="1_uljy6"]
 [ext_resource type="Texture2D" uid="uid://b43ncxxo157ey" path="res://ui/screen_manager/options_screen/bind_textures/walk.png" id="2_kcias"]
-[ext_resource type="Script" uid="uid://bya6u8daue8n2" path="res://util/animated_texturerect.gd" id="3_2oskj"]
+[ext_resource type="Script" path="res://util/animated_texturerect.gd" id="3_2oskj"]
 [ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="4_frq67"]
+[ext_resource type="Texture2D" uid="uid://sf0yh5h3cau1" path="res://ui/screen_manager/options_screen/bind_textures/swim.png" id="4_kcias"]
 [ext_resource type="PackedScene" uid="uid://dd4exd7vseqoc" path="res://ui/buttons/ui_bind_button.tscn" id="5_riwgi"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_uljy6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gfk4v"]
+[sub_resource type="InputEventMouseButton" id="InputEventMouseButton_uljy6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpnhd"]
 atlas = ExtResource("2_kcias")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2oskj"]
+atlas = ExtResource("4_kcias")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frq67"]
+atlas = ExtResource("4_kcias")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_riwgi"]
+atlas = ExtResource("4_kcias")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrwju"]
+atlas = ExtResource("4_kcias")
 region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jr8fm"]
+atlas = ExtResource("4_kcias")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_msyx8"]
+atlas = ExtResource("4_kcias")
+region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rpnni"]
 atlas = ExtResource("2_kcias")
@@ -24,6 +51,10 @@ region = Rect2(48, 0, 48, 48)
 atlas = ExtResource("2_kcias")
 region = Rect2(96, 0, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfk4v"]
+atlas = ExtResource("2_kcias")
+region = Rect2(144, 0, 48, 48)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_pvnyr"]
 atlas = ExtResource("2_kcias")
 region = Rect2(192, 0, 48, 48)
@@ -36,12 +67,31 @@ region = Rect2(240, 0, 48, 48)
 atlas = ExtResource("2_kcias")
 region = Rect2(288, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jpnhd"]
-atlas = ExtResource("2_kcias")
-region = Rect2(336, 0, 48, 48)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_gtldd"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2oskj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frq67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_riwgi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrwju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jr8fm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_msyx8")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rpnni")
@@ -81,7 +131,7 @@ offset_right = 339.0
 offset_bottom = 27.0
 script = ExtResource("1_uljy6")
 p_action_name = &"right"
-p_parsable_events = Array[InputEvent]([SubResource("InputEventKey_uljy6")])
+p_parsable_events = Array[InputEvent]([SubResource("InputEventKey_uljy6"), SubResource("InputEventMouseButton_uljy6")])
 vis_title = &"Move Right"
 vis_animation = &"walk"
 texture = NodePath("Icon")
@@ -90,13 +140,13 @@ bind_button = NodePath("BindButton")
 
 [node name="Icon" type="TextureRect" parent="."]
 layout_mode = 2
-texture = SubResource("AtlasTexture_gfk4v")
+texture = SubResource("AtlasTexture_jpnhd")
 expand_mode = 3
 stretch_mode = 5
 script = ExtResource("3_2oskj")
 sprites = SubResource("SpriteFrames_gtldd")
 animation = &"walk"
-frame = 3
+frame = 7
 autoplay = true
 playing = true
 
@@ -110,5 +160,5 @@ vertical_alignment = 1
 [node name="BindButton" parent="." instance=ExtResource("5_riwgi")]
 layout_mode = 2
 action_name = &"right"
-parsable_events = Array[InputEvent]([SubResource("InputEventKey_uljy6")])
+parsable_events = Array[InputEvent]([SubResource("InputEventKey_uljy6"), SubResource("InputEventMouseButton_uljy6")])
 max_binds = 7

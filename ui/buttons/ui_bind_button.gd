@@ -32,13 +32,15 @@ var filtered_events: Array[InputEvent]
 
 
 func _ready() -> void:
+	super()
+
 	var action_path: String = "input/" + action_name
 	var action_data: Dictionary = ProjectSettings.get(action_path)
 	default_events = action_data["events"]
 
 	for event in default_events:
 		if _is_valid_event(event):
-			bound_inputs.append(IconMap.get_filtered_name(event))
+			_add_input(event, IconMap.get_filtered_name(event))
 			_add_icon(event)
 
 	#var queue: Array
@@ -72,6 +74,8 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion or not awaiting_input:
 		return
 
+	focus_mode = Control.FOCUS_ALL
+
 	icons.visible = true
 	text = ""
 
@@ -91,6 +95,10 @@ func _input(event: InputEvent) -> void:
 
 
 func _process(_delta: float) -> void:
+	# Makes the icons appear as white (the default color) when focused,
+	# similar to other instances of icons in UIButtons.
+	icons.material.set_shader_parameter(&"enabled", !has_focus())
+
 	if not awaiting_input:
 		return
 
@@ -108,7 +116,9 @@ func _process(_delta: float) -> void:
 func _add_input(event: InputEvent, event_name: String):
 	bound_inputs.append(event_name)
 	filtered_events.append(event)
-	InputMap.action_add_event(action_name, event)
+
+	if not InputMap.action_has_event(action_name, event):
+		InputMap.action_add_event(action_name, event)
 
 	#LocalSettings.change_setting(
 		#"Keyboard Bindings (Player: %d)" % 0,
@@ -120,8 +130,10 @@ func _add_input(event: InputEvent, event_name: String):
 ## Adds the icon of the binding to the button.
 func _add_icon(event: InputEvent):
 	var texture_rect := TextureRect.new()
+
 	texture_rect.texture = IconMap.find(event)
 	texture_rect.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+	texture_rect.use_parent_material = true
 
 	icons.add_child(texture_rect)
 
@@ -197,5 +209,7 @@ func _reject() -> void:
 func _on_pressed() -> void:
 	awaiting_input = true
 	icons.visible = false
+
+	focus_mode = Control.FOCUS_NONE
 
 	timer.start()
