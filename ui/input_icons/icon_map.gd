@@ -22,9 +22,10 @@ static func get_filtered_name(event: InputEvent) -> String:
 	var event_name: String = ""
 
 	if event is InputEventKey:
-		var keycode: int = DisplayServer.keyboard_get_keycode_from_physical(event.physical_keycode)
-		event_name = OS.get_keycode_string(keycode)
-	elif event is InputEventJoypadButton or event is InputEventMouseButton:
+		event_name = OS.get_keycode_string(event.keycode)
+	elif event is InputEventMouseButton:
+		event_name = event.as_text().rsplit("+", true, 1)[-1].replace(" (Double Click)", "")
+	elif event is InputEventJoypadButton:
 		event_name = event.as_text()
 	else:
 		event_name = ""  # Unknown or unsupported input type
@@ -34,5 +35,5 @@ static func get_filtered_name(event: InputEvent) -> String:
 
 ## Returns the associated icon graphic for an [InputEvent].
 static func find(event: InputEvent) -> CompressedTexture2D:
-	var key: String = event.as_text().rsplit("+", true, 1)[-1]
+	var key: String = get_filtered_name(event)
 	return icon_map.dictionary.get(event_map.get(key.hash()), null)
