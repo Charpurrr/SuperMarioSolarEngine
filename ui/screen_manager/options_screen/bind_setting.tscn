@@ -7,13 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://sf0yh5h3cau1" path="res://ui/screen_manager/options_screen/bind_textures/swim.png" id="4_kcias"]
 [ext_resource type="PackedScene" uid="uid://dd4exd7vseqoc" path="res://ui/buttons/ui_bind_button.tscn" id="5_riwgi"]
 
-[sub_resource type="InputEventKey" id="InputEventKey_uljy6"]
+[sub_resource type="InputEventKey" id="InputEventKey_kcias"]
 
-[sub_resource type="InputEventMouseButton" id="InputEventMouseButton_uljy6"]
+[sub_resource type="InputEventMouseButton" id="InputEventMouseButton_kcias"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mbx8n"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpnni"]
 atlas = ExtResource("2_kcias")
-region = Rect2(48, 0, 48, 48)
+region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2oskj"]
 atlas = ExtResource("4_kcias")
@@ -39,9 +39,9 @@ region = Rect2(192, 0, 48, 48)
 atlas = ExtResource("4_kcias")
 region = Rect2(240, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rpnni"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbx8n"]
 atlas = ExtResource("2_kcias")
-region = Rect2(0, 0, 48, 48)
+region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_54cbc"]
 atlas = ExtResource("2_kcias")
@@ -131,7 +131,7 @@ offset_right = 339.0
 offset_bottom = 27.0
 script = ExtResource("1_uljy6")
 p_action_name = &"right"
-p_parsable_events = Array[InputEvent]([SubResource("InputEventKey_uljy6"), SubResource("InputEventMouseButton_uljy6")])
+p_parsable_events = Array[InputEvent]([SubResource("InputEventKey_kcias"), SubResource("InputEventMouseButton_kcias")])
 vis_title = &"Move Right"
 vis_animation = &"walk"
 texture = NodePath("Icon")
@@ -140,13 +140,12 @@ bind_button = NodePath("BindButton")
 
 [node name="Icon" type="TextureRect" parent="."]
 layout_mode = 2
-texture = SubResource("AtlasTexture_mbx8n")
+texture = SubResource("AtlasTexture_rpnni")
 expand_mode = 3
 stretch_mode = 5
 script = ExtResource("3_2oskj")
 sprites = SubResource("SpriteFrames_gtldd")
 animation = &"walk"
-frame = 1
 autoplay = true
 playing = true
 
@@ -160,5 +159,5 @@ vertical_alignment = 1
 [node name="BindButton" parent="." instance=ExtResource("5_riwgi")]
 layout_mode = 2
 action_name = &"right"
-parsable_events = Array[InputEvent]([SubResource("InputEventKey_uljy6"), SubResource("InputEventMouseButton_uljy6"), null])
+parsable_events = Array[InputEvent]([SubResource("InputEventKey_kcias"), SubResource("InputEventMouseButton_kcias")])
 max_binds = 7

@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://csf56lkxqqb12"]
+[gd_scene load_steps=98 format=3 uid="uid://csf56lkxqqb12"]
 
 [ext_resource type="Script" uid="uid://brof7wb075ont" path="res://ui/ui.gd" id="1_75fsn"]
 [ext_resource type="AudioStream" uid="uid://b58aveo75onan" path="res://ui/sfx/pause.wav" id="2_1xskv"]
@@ -463,18 +463,6 @@ border_blend = true
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n7xk5"]
 content_margin_left = 3.0
-
-[sub_resource type="InputEventKey" id="InputEventKey_svocp"]
-device = -1
-keycode = 4194321
-
-[sub_resource type="InputEventKey" id="InputEventKey_6apma"]
-device = -1
-keycode = 4194320
-
-[sub_resource type="InputEventKey" id="InputEventKey_m3cpd"]
-device = -1
-keycode = 4194322
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7xk5"]
 bg_color = Color(0.0528422, 0.0528421, 0.0528421, 0.8)
@@ -1451,7 +1439,6 @@ size_flags_stretch_ratio = 0.1
 
 [node name="BindSetting" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" instance=ExtResource("49_svocp")]
 layout_mode = 2
-p_parsable_events = Array[InputEvent]([SubResource("InputEventKey_svocp")])
 
 [node name="BindSetting2" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" instance=ExtResource("49_svocp")]
 layout_mode = 2
@@ -1462,14 +1449,12 @@ vis_icon_flip_h = true
 [node name="BindSetting3" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" instance=ExtResource("49_svocp")]
 layout_mode = 2
 p_action_name = &"up"
-p_parsable_events = Array[InputEvent]([SubResource("InputEventKey_6apma")])
 vis_title = &"Move Up"
 vis_animation = &"swim"
 
 [node name="BindSetting4" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" instance=ExtResource("49_svocp")]
 layout_mode = 2
 p_action_name = &"down"
-p_parsable_events = Array[InputEvent]([SubResource("InputEventKey_m3cpd")])
 vis_title = &"Move Down"
 vis_animation = &"swim"
 vis_icon_flip_h = true
