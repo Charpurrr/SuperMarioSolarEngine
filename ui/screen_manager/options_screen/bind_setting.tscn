@@ -160,5 +160,5 @@ vertical_alignment = 1
 [node name="BindButton" parent="." instance=ExtResource("5_riwgi")]
 layout_mode = 2
 action_name = &"right"
-parsable_events = Array[InputEvent]([SubResource("InputEventKey_uljy6"), SubResource("InputEventMouseButton_uljy6")])
+parsable_events = Array[InputEvent]([SubResource("InputEventKey_uljy6"), SubResource("InputEventMouseButton_uljy6"), null])
 max_binds = 7

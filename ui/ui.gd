@@ -136,8 +136,9 @@ func _display_input(event: InputEvent):
 	var event_name: String = IconMap.get_filtered_name(event)
 
 	var texture_rect := TextureRect.new()
+
 	texture_rect.texture = IconMap.find(event)
-	texture_rect.size = Vector2(0.3, 0.3)
+	texture_rect.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
 
 	if event.is_released():
 		if displayed_inputs.has(event_name):

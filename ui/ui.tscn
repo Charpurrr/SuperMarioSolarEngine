@@ -612,6 +612,7 @@ label_settings = SubResource("LabelSettings_pm0uo")
 script = ExtResource("8_2m7jo")
 
 [node name="InputDisplay" type="HBoxContainer" parent="Debug"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
