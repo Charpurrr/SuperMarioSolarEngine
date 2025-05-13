@@ -9,13 +9,23 @@ extends Button
 
 
 func _ready() -> void:
-	mouse_entered.connect(grab_focus)
-	mouse_exited.connect(release_focus)
+	mouse_entered.connect(_try_grab_focus)
+	mouse_exited.connect(_try_release_focus)
 	pressed.connect(avfx)
 
 	# Plays the cursor sound effect when focus is entered.
 	var cursor_sfx_args: Array = [cursor_sfx, &"UI", self]
 	focus_entered.connect(SFX.play_sfx.bindv(cursor_sfx_args))
+
+
+func _try_grab_focus():
+	if not focus_mode == FOCUS_NONE:
+		grab_focus()
+
+
+func _try_release_focus():
+	if has_focus():
+		release_focus()
 
 
 ## The audio visual effects of a pause button.

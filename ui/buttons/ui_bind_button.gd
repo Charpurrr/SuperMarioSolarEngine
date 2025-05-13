@@ -19,7 +19,7 @@ extends UIButton
 @export var timer: Timer
 
 @export var icons: HBoxContainer
-var bound_inputs: Array[String]
+var bound_inputs: PackedStringArray
 
 var awaiting_input: bool = false
 var timeout_timer: SceneTreeTimer
@@ -34,34 +34,32 @@ var filtered_events: Array[InputEvent]
 func _ready() -> void:
 	super()
 
+	focus_entered.connect(_focus_changed)
+	focus_exited.connect(_focus_changed)
+
 	var action_path: String = "input/" + action_name
 	var action_data: Dictionary = ProjectSettings.get(action_path)
 	default_events = action_data["events"]
 
-	for event in default_events:
-		if _is_valid_event(event):
-			_add_input(event, IconMap.get_filtered_name(event))
-			_add_icon(event)
+	# If saved data is found, set the binding to that.
+	if LocalSettings.has_setting("Keyboard Bindings (Player: %d)" % 0, action_name):
+		var saved_data: PackedStringArray = LocalSettings.load_setting(
+			"Keyboard Bindings (Player: %d)" % 0,
+			action_name,
+			PackedStringArray()
+		)
 
-	#var queue: Array
-#
-	#for event in default_events:
-		#if _is_valid_event(event):
-			#queue.append(event)
-#
-	#filtered_events = _encode_events(queue)
-#
-	#var saved_events: Array = LocalSettings.load_setting(
-		#"Keyboard Bindings (Player: %d)" % 0,
-		#action_name,
-		#filtered_events
-	#)
-#
-	#for event in _decode_events(saved_events):
-		#var event_name: String = IconMap.get_filtered_name(event)
-#
-		#_add_input(event, event_name)
-		#_add_icon(event)
+		for event_name: String in saved_data:
+			var event: InputEvent = IconMap.get_associated_event(event_name)
+
+			_add_input(event, event_name)
+			_add_icon(event)
+	# Otherwise, set it to the events defined in the project's [InputMap].
+	else:
+		for event: InputEvent in default_events:
+			if _is_valid_event(event):
+				_add_input(event, IconMap.get_filtered_name(event))
+				_add_icon(event)
 
 
 func _input(event: InputEvent) -> void:
@@ -74,10 +72,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion or not awaiting_input:
 		return
 
-	focus_mode = Control.FOCUS_ALL
-
-	icons.visible = true
-	text = ""
+	_return_to_idle()
 
 	if not _is_valid_event(event):
 		_reject()
@@ -91,44 +86,34 @@ func _input(event: InputEvent) -> void:
 	else:
 		_reject()
 
-	awaiting_input = false
 
-
-func _process(_delta: float) -> void:
-	# Makes the icons appear as white (the default color) when focused,
-	# similar to other instances of icons in UIButtons.
+func _focus_changed() -> void:
+	## Makes the icons appear as white (the default color) when focused,
+	## similar to other instances of icons in UIButtons.
 	icons.material.set_shader_parameter(&"enabled", !has_focus())
-
-	if not awaiting_input:
-		return
-
-	text = "Awaiting input (%d)" % ceil(timer.time_left)
-
-	await timer.timeout
-
-	icons.visible = true
-	text = ""
-
-	awaiting_input = false
 
 
 ## Adds the actual event to the project's [InputMap].
-func _add_input(event: InputEvent, event_name: String):
+func _add_input(event: InputEvent, event_name: String) -> void:
 	bound_inputs.append(event_name)
 	filtered_events.append(event)
 
 	if not InputMap.action_has_event(action_name, event):
 		InputMap.action_add_event(action_name, event)
 
-	#LocalSettings.change_setting(
-		#"Keyboard Bindings (Player: %d)" % 0,
-		#action_name,
-		#_encode_events(filtered_events)
-	#)
+	var event_to_string: PackedStringArray
+	for filtered_event in filtered_events:
+		event_to_string.append(IconMap.get_filtered_name(filtered_event))
+
+	LocalSettings.change_setting(
+		"Keyboard Bindings (Player: %d)" % 0,
+		action_name,
+		event_to_string
+	)
 
 
 ## Adds the icon of the binding to the button.
-func _add_icon(event: InputEvent):
+func _add_icon(event: InputEvent) -> void:
 	var texture_rect := TextureRect.new()
 
 	texture_rect.texture = IconMap.find(event)
@@ -138,8 +123,9 @@ func _add_icon(event: InputEvent):
 	icons.add_child(texture_rect)
 
 
-func _clear():
+func _clear() -> void:
 	bound_inputs.clear()
+	filtered_events.clear()
 
 	for event_icon in icons.get_children():
 		event_icon.queue_free()
@@ -147,20 +133,38 @@ func _clear():
 	for bound_event in InputMap.action_get_events(action_name):
 		InputMap.action_erase_event(action_name, bound_event)
 
-	#LocalSettings.change_setting(
-		#"Keyboard Bindings (Player: %d)" % 0,
-		#action_name,
-		#[]
-	#)
+	LocalSettings.change_setting(
+		"Keyboard Bindings (Player: %d)" % 0,
+		action_name,
+		PackedStringArray()
+	)
 
 
-func _reset_to_default():
+func _reset_to_default() -> void:
 	_clear()
 
 	for event in default_events:
 		if _is_valid_event(event):
 			_add_input(event, IconMap.get_filtered_name(event))
 			_add_icon(event)
+
+
+func _reject() -> void:
+	SFX.play_sfx(deny_sfx, &"UI", self)
+	modulate = Color.RED
+
+	var tween := self.create_tween()
+	tween.tween_property(self, "modulate", Color.WHITE, 0.3)
+
+
+func _return_to_idle():
+	focus_mode = Control.FOCUS_ALL
+	grab_focus()
+
+	icons.visible = true
+	text = ""
+
+	awaiting_input = false
 
 
 ## Checks if an event is parsable by using the defined classes in [member parsable_events].
@@ -172,40 +176,6 @@ func _is_valid_event(event: InputEvent) -> bool:
 	return false
 
 
-func _encode_events(events: Array[InputEvent]) -> Array[Key]:
-	var keycodes: Array[Key] = []
-
-	for key in events:
-		keycodes.append(key.physical_keycode)
-
-	return keycodes
-
-
-func _decode_events(encoded_events: Array) -> Array[InputEvent]:
-	var gen_keys: Array[InputEvent] = []
-
-	for keycode in encoded_events:
-		if not keycode is int:
-			continue
-
-		var input := InputEventKey.new()
-
-		input.physical_keycode = keycode
-		gen_keys.append(input)
-
-	return gen_keys
-
-
-func _reject() -> void:
-	awaiting_input = false
-
-	SFX.play_sfx(deny_sfx, &"UI", self)
-	modulate = Color.RED
-
-	var tween := self.create_tween()
-	tween.tween_property(self, "modulate", Color.WHITE, 0.3)
-
-
 func _on_pressed() -> void:
 	awaiting_input = true
 	icons.visible = false
@@ -213,3 +183,11 @@ func _on_pressed() -> void:
 	focus_mode = Control.FOCUS_NONE
 
 	timer.start()
+
+	while(awaiting_input):
+		text = "Awaiting input (%d)" % ceil(timer.time_left)
+		awaiting_input = timer.time_left != 0
+
+		await get_tree().process_frame
+
+	_return_to_idle()

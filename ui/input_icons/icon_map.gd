@@ -33,6 +33,11 @@ static func get_filtered_name(event: InputEvent) -> String:
 	return event_name
 
 
+## Returns the InputEvent associated with [param filtered_name].
+static func get_associated_event(filtered_name: String) -> InputEvent:
+	return event_map.get(filtered_name.hash())
+
+
 ## Returns the associated icon graphic for an [InputEvent].
 static func find(event: InputEvent) -> CompressedTexture2D:
 	var key: String = get_filtered_name(event)

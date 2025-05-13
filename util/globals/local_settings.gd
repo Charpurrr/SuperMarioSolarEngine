@@ -20,6 +20,8 @@ func _init():
 		push_error("Error loading config file!")
 
 
+## Load a setting [param key] at a category [param section] in the config file.
+## Returns [param default] if nothing is found.
 func load_setting(section: String, key: String, default: Variant) -> Variant:
 	if not defaults.has(key):
 		defaults[key] = default
@@ -27,6 +29,8 @@ func load_setting(section: String, key: String, default: Variant) -> Variant:
 	return config.get_value(section, key, default)
 
 
+## Update a setting [param key] at a category [param section],
+## with a new [param value] in the config file.
 func change_setting(section: String, key: String, value: Variant):
 	config.set_value(section, key, value)
 	config.save(FILE_PATH)
@@ -34,6 +38,12 @@ func change_setting(section: String, key: String, value: Variant):
 	emit_signal(&"setting_changed", key, value)
 
 
+## Returns whether or not a key exists and has a value.
+func has_setting(section: String, key: String):
+	return config.has_section_key(section, key)
+
+
+## Sets all settings back to their default values.
 func reset_settings() -> void:
 	# This logic only works if reset_settings() is never ran
 	# before every possible option has ran a load_setting() at least once.

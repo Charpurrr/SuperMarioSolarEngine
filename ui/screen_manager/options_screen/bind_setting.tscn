@@ -11,9 +11,9 @@
 
 [sub_resource type="InputEventMouseButton" id="InputEventMouseButton_uljy6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jpnhd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbx8n"]
 atlas = ExtResource("2_kcias")
-region = Rect2(336, 0, 48, 48)
+region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2oskj"]
 atlas = ExtResource("4_kcias")
@@ -43,10 +43,6 @@ region = Rect2(240, 0, 48, 48)
 atlas = ExtResource("2_kcias")
 region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mbx8n"]
-atlas = ExtResource("2_kcias")
-region = Rect2(48, 0, 48, 48)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_54cbc"]
 atlas = ExtResource("2_kcias")
 region = Rect2(96, 0, 48, 48)
@@ -66,6 +62,10 @@ region = Rect2(240, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_x06mv"]
 atlas = ExtResource("2_kcias")
 region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpnhd"]
+atlas = ExtResource("2_kcias")
+region = Rect2(336, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gtldd"]
 animations = [{
@@ -140,13 +140,13 @@ bind_button = NodePath("BindButton")
 
 [node name="Icon" type="TextureRect" parent="."]
 layout_mode = 2
-texture = SubResource("AtlasTexture_jpnhd")
+texture = SubResource("AtlasTexture_mbx8n")
 expand_mode = 3
 stretch_mode = 5
 script = ExtResource("3_2oskj")
 sprites = SubResource("SpriteFrames_gtldd")
 animation = &"walk"
-frame = 7
+frame = 1
 autoplay = true
 playing = true
 
