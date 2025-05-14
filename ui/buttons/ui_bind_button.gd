@@ -170,7 +170,7 @@ func _return_to_idle():
 ## Checks if an event is parsable by using the defined classes in [member parsable_events].
 func _is_valid_event(event: InputEvent) -> bool:
 	for event_type: InputEvent in parsable_events:
-		if event.is_class(event_type.get_class()):
+		if event_type and event.is_class(event_type.get_class()):
 			return true
 
 	return false
