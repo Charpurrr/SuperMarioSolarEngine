@@ -41,6 +41,9 @@ func _ready() -> void:
 	var action_data: Dictionary = ProjectSettings.get(action_path)
 	default_events = action_data["events"]
 
+	# Delete all events attached to the [InputMap] by default so we have our own control.
+	InputMap.action_erase_events(action_name)
+
 	# If saved data is found, set the binding to that.
 	if LocalSettings.has_setting("Keyboard Bindings (Player: %d)" % 0, action_name):
 		var saved_data: PackedStringArray = LocalSettings.load_setting(
@@ -51,7 +54,6 @@ func _ready() -> void:
 
 		for event_name: String in saved_data:
 			var event: InputEvent = IconMap.get_associated_event(event_name)
-
 			_add_input(event, event_name)
 			_add_icon(event)
 	# Otherwise, set it to the events defined in the project's [InputMap].
