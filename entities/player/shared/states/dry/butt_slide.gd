@@ -71,6 +71,11 @@ func _subsequent_ticks():
 	if actor.is_on_floor():
 		particles[0].emit_at(actor)
 
+		if not get_tree().has_group(name + "/sfx"):
+			play_sounds()
+	else:
+		get_tree().call_group(name + "/sfx", &"queue_free")
+
 
 ## Buttsliding on the ground / slope.
 func _grounded():

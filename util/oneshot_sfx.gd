@@ -1,7 +1,12 @@
 class_name SFX
 extends Resource
 ## Utility class for creating and destroying a singular sound effect
-## using a temporary [AudioStreamPlayer].
+## using a temporary [AudioStreamPlayer]. [br]
+##
+## A sound effect gets assigned to 2 groups, one representing all SFX played by 
+## the same audio bus, and one for all SFX played by the caller node.
+## The names of these groups are [code]<bus name>[/code] and
+## [code]<node name>/sfx[/code] respectively.
 
 
 ## Creates an [AudioStreamPlayer], assigns the corresponding data,
@@ -24,11 +29,14 @@ static func play_sfx(
 
 	player.set_stream(stream)
 	player.set_bus(bus)
+	# For referencing all sfx in the bus.
 	player.add_to_group(bus)
+	# For referencing all sfx in the caller. (For example, all sfx from a [State].)
+	player.add_to_group(node.name + "/sfx")
 	player.set_volume_db(volume)
 	player.set_pitch_scale(pitch)
 
 	node.add_child(player)
 
-	player.play()
 	player.connect(&"finished", player.queue_free)
+	player.play()

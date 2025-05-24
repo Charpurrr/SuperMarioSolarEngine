@@ -29,9 +29,9 @@ var movement: PMovement = null
 
 func trigger_enter(handover):
 	_set_animation()
-	_play_sounds()
-	_emit_particles()
 	_set_hitbox()
+	play_sounds()
+	emit_particles()
 
 	super(handover)
 
@@ -70,13 +70,13 @@ func _set_animation():
 	actor.doll.offset = anim_offset
 
 
-func _play_sounds():
+func play_sounds():
 	if on_enter and not sfx_layers.is_empty():
 		for sfx_list in sfx_layers:
 			sfx_list.play_sfx_at(self)
 
 
-func _emit_particles():
+func emit_particles():
 	for effect in particles:
 		effect.emit_at(actor)
 
