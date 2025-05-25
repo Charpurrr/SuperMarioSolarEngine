@@ -27,7 +27,7 @@ func emit_at(node: Node, offset_overwrite := Vector2.ZERO, scale_overwrite := Ve
 	else:
 		timer = loop_delay
 
-		var particle: CPUParticles2D = particle_scene.instantiate()
+		var particle: Node = particle_scene.instantiate()
 
 		if offset_overwrite != Vector2.ZERO:
 			particle.position = offset_overwrite
@@ -39,11 +39,38 @@ func emit_at(node: Node, offset_overwrite := Vector2.ZERO, scale_overwrite := Ve
 		else:
 			particle.scale = particle_scale
 
-		particle.emitting = true
+		if particle is CPUParticles2D or particle is GPUParticles2D:
+			particle.emitting = true
+			particle.connect(&"finished", particle.queue_free)
+		elif particle is Node2D:
+			var child_count: int = particle.get_child_count()
+
+			particle.set_meta(&"counter", 0)
+
+			for child in particle.get_children():
+				child.emitting = true
+
+				child.connect(
+					&"finished",
+					_free_particle_group.bind(
+						particle,
+						child_count,
+						&"counter"
+					)
+				)
+		else:
+			assert(false, "Unsupported type of particle: " + particle.get_class())
 
 		node.add_child(particle)
 
-		particle.connect(&"finished", particle.queue_free)
+
+## Deletes a particle group ([Node2D]) when all its children 
+## ([CPUParticles2D] or [GPUParticles2D]) are finished playing.
+func _free_particle_group(group_node: Node, particle_amt: int, counter_meta: StringName):
+	group_node.set_meta(counter_meta, group_node.get_meta(counter_meta) + 1)
+
+	if particle_amt == group_node.get_meta(counter_meta):
+		group_node.queue_free()
 
 
 func _preview_pressed():

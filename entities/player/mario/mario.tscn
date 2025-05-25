@@ -1,4 +1,4 @@
-[gd_scene load_steps=195 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=197 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" uid="uid://bg4t154sge7br" path="res://entities/player/shared/player.gd" id="1_87j6i"]
 [ext_resource type="SpriteFrames" uid="uid://bqn6b0xmrvxjc" path="res://entities/player/mario/anime/mario_anime.res" id="2_ttikd"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://2m6mgoe1pt77" path="res://entities/player/shared/states/submerged/swim.gd" id="41_x14c0"]
 [ext_resource type="Script" uid="uid://ca0j5fuwiycxp" path="res://entities/player/shared/states/submerged/swim_hard.gd" id="42_7ru02"]
 [ext_resource type="AudioStream" uid="uid://dttsovlcc1lhh" path="res://entities/player/shared/motion_nsmbw/land2_hard.wav" id="42_k4dq2"]
+[ext_resource type="PackedScene" uid="uid://dvb3bw7ktqasr" path="res://props/particles/impact.tscn" id="43_2mqoj"]
 [ext_resource type="Script" uid="uid://clp7sr57dl1tr" path="res://entities/player/shared/states/submerged/swim_spin.gd" id="43_vu16w"]
 [ext_resource type="Script" uid="uid://cxsn8vpa1auvp" path="res://entities/player/shared/states/dry/grounded/idle.gd" id="44_87kyt"]
 [ext_resource type="Script" uid="uid://bw2xu5cba80tw" path="res://entities/player/shared/states/dry/grounded/walk.gd" id="45_ka4vl"]
@@ -260,6 +261,14 @@ repeat_delay = 0.0
 force_new = false
 overwrite_other = false
 cutoff_sfx = false
+
+[sub_resource type="Resource" id="Resource_bbld7"]
+script = ExtResource("55_bxnxc")
+particle_scene = ExtResource("43_2mqoj")
+particle_offset = Vector2(0, 0)
+particle_scale = Vector2(1, 1)
+loop_delay = 0
+metadata/_custom_type_script = "uid://dd8oyhd4nllix"
 
 [sub_resource type="Resource" id="Resource_oau5y"]
 script = ExtResource("49_apkmk")
@@ -909,6 +918,7 @@ hitbox_type = "Small"
 animation = &"gp_land"
 anim_offset = Vector2i(0, 9)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_t5lrn")])
+particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_bbld7")])
 
 [node name="Airborne" type="Node" parent="StateManager/Dry"]
 script = ExtResource("61_1r6ji")
@@ -948,11 +958,6 @@ min_jump_percent = 50.0
 animation = &"triple_jump"
 anim_offset = Vector2i(0, 5)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_c6n5s"), SubResource("Resource_0beus"), SubResource("Resource_32052")])
-
-[node name="LazyJump" type="Node" parent="StateManager/Dry/Airborne/JumpStates"]
-script = ExtResource("116_wolak")
-animation = &"jump"
-anim_offset = Vector2i(0, 5)
 
 [node name="Spinjump" type="Node" parent="StateManager/Dry/Airborne/JumpStates"]
 script = ExtResource("92_pwmyp")
@@ -1002,6 +1007,11 @@ min_jump_percent = 35.0
 jump_number = 2
 animation = &"gp_jump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_8711x"), SubResource("Resource_nl575")])
+
+[node name="LazyJump" type="Node" parent="StateManager/Dry/Airborne"]
+script = ExtResource("116_wolak")
+animation = &"jump"
+anim_offset = Vector2i(0, 5)
 
 [node name="WalljumpStates" type="Node" parent="StateManager/Dry/Airborne"]
 script = ExtResource("73_acu3g")
