@@ -1,4 +1,4 @@
-[gd_scene load_steps=197 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=198 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" uid="uid://bg4t154sge7br" path="res://entities/player/shared/player.gd" id="1_87j6i"]
 [ext_resource type="SpriteFrames" uid="uid://bqn6b0xmrvxjc" path="res://entities/player/mario/anime/mario_anime.res" id="2_ttikd"]
@@ -88,7 +88,7 @@
 [ext_resource type="Script" uid="uid://xufvf1mgafv4" path="res://entities/player/shared/states/dry/airborne/jump_states/backflip.gd" id="103_ky35g"]
 [ext_resource type="Script" uid="uid://byy30uqeof7bd" path="res://entities/player/shared/states/dry/airborne/jump_states/butt_slide_jump.gd" id="104_py71u"]
 [ext_resource type="Script" uid="uid://wo0g253cgvx7" path="res://entities/player/shared/states/dry/airborne/walljump_states/wallslide.gd" id="105_6ryk6"]
-[ext_resource type="Script" uid="uid://dl4vmutq4e375" path="res://entities/player/shared/states/dry/airborne/jump_states/groundpound_jump.gd" id="105_g4v7o"]
+[ext_resource type="Script" uid="uid://dl4vmutq4e375" path="res://entities/player/shared/states/dry/airborne/groundpound_states/groundpound_jump.gd" id="105_g4v7o"]
 [ext_resource type="Script" uid="uid://y6p11ug7ayuh" path="res://entities/player/shared/states/dry/airborne/groundpound_states/groundpound.gd" id="107_us6gm"]
 [ext_resource type="AudioStream" uid="uid://bhklahfo0oipn" path="res://entities/player/mario/voice_sunshine/ya_hoo.wav" id="108_e31o1"]
 [ext_resource type="AudioStream" uid="uid://b17lwsuovnc5t" path="res://entities/player/mario/voice_sunshine/wahahoo.wav" id="109_s2cvh"]
@@ -99,6 +99,7 @@
 [ext_resource type="Script" uid="uid://btraujh4troib" path="res://entities/player/shared/states/dry/airborne/groundpound_states/groundpound_cancel.gd" id="112_02mke"]
 [ext_resource type="AudioStream" uid="uid://dg3rs2qtqhhqe" path="res://entities/player/shared/motion/back_sideflip.wav" id="113_7rxe5"]
 [ext_resource type="Script" uid="uid://kwdn3vdx107p" path="res://entities/player/shared/states/dry/airborne/fall_states/fall.gd" id="113_j3k6p"]
+[ext_resource type="Script" uid="uid://b78hihn86ed6o" path="res://entities/player/shared/states/dry/airborne/groundpound_states/groundpound_wallboost.gd" id="113_s1bjj"]
 [ext_resource type="Script" uid="uid://drv37bdndpx0i" path="res://entities/player/shared/states/dry/airborne/fall_states/freefall.gd" id="114_mgnux"]
 [ext_resource type="AudioStream" uid="uid://1fibybjdw7pc" path="res://entities/player/shared/motion_nsmbw/groundpound.wav" id="116_078t4"]
 [ext_resource type="Script" uid="uid://c6xirxw78xyxn" path="res://entities/player/shared/states/dry/airborne/lazy_jump.gd" id="116_wolak"]
@@ -449,26 +450,6 @@ force_new = false
 overwrite_other = true
 cutoff_sfx = false
 
-[sub_resource type="Resource" id="Resource_8711x"]
-script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("81_27gn5"), ExtResource("108_e31o1"), ExtResource("109_s2cvh")]
-bus = &"Voice"
-start_delay = 0.0
-repeat_delay = 0.0
-force_new = false
-overwrite_other = true
-cutoff_sfx = false
-
-[sub_resource type="Resource" id="Resource_nl575"]
-script = ExtResource("49_apkmk")
-sfx_list = [ExtResource("85_a2b2e")]
-bus = &"Motion"
-start_delay = 0.0
-repeat_delay = 0.0
-force_new = false
-overwrite_other = false
-cutoff_sfx = false
-
 [sub_resource type="Resource" id="Resource_w3vn1"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("91_k5qq6")]
@@ -561,6 +542,26 @@ start_delay = 0.0
 repeat_delay = 0.0
 force_new = false
 overwrite_other = true
+cutoff_sfx = false
+
+[sub_resource type="Resource" id="Resource_8711x"]
+script = ExtResource("49_apkmk")
+sfx_list = [ExtResource("81_27gn5"), ExtResource("108_e31o1"), ExtResource("109_s2cvh")]
+bus = &"Voice"
+start_delay = 0.0
+repeat_delay = 0.0
+force_new = false
+overwrite_other = true
+cutoff_sfx = false
+
+[sub_resource type="Resource" id="Resource_nl575"]
+script = ExtResource("49_apkmk")
+sfx_list = [ExtResource("85_a2b2e")]
+bus = &"Motion"
+start_delay = 0.0
+repeat_delay = 0.0
+force_new = false
+overwrite_other = false
 cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_2y8iw"]
@@ -723,7 +724,7 @@ spin_hitbox = NodePath("Areas/SpinHitbox")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = ExtResource("2_ttikd")
-animation = &"swim_hard"
+animation = &"jump"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
@@ -1000,14 +1001,6 @@ animation = &"butt_slide_jump"
 anim_offset = Vector2i(0, 3)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_jo8kb")])
 
-[node name="GroundPoundJump" type="Node" parent="StateManager/Dry/Airborne/JumpStates"]
-script = ExtResource("105_g4v7o")
-jump_power = 6.7
-min_jump_percent = 35.0
-jump_number = 2
-animation = &"gp_jump"
-sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_8711x"), SubResource("Resource_nl575")])
-
 [node name="LazyJump" type="Node" parent="StateManager/Dry/Airborne"]
 script = ExtResource("116_wolak")
 animation = &"jump"
@@ -1072,6 +1065,21 @@ anim_offset = Vector2i(0, 9)
 [node name="GroundPoundCancel" type="Node" parent="StateManager/Dry/Airborne/GroundPoundStates"]
 script = ExtResource("112_02mke")
 animation = &"jump_fall"
+
+[node name="GroundPoundJump" type="Node" parent="StateManager/Dry/Airborne/GroundPoundStates"]
+script = ExtResource("105_g4v7o")
+jump_power = 6.7
+min_jump_percent = 35.0
+jump_number = 2
+animation = &"gp_jump"
+sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_8711x"), SubResource("Resource_nl575")])
+particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_kvfvp")])
+
+[node name="WallBoost" type="Node" parent="StateManager/Dry/Airborne/GroundPoundStates"]
+script = ExtResource("113_s1bjj")
+jump_power = 6.9
+animation = &"jump"
+sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_nl575"), SubResource("Resource_a2hl0")])
 
 [node name="Twirl" type="Node" parent="StateManager/Dry/Airborne"]
 script = ExtResource("124_swcs3")
