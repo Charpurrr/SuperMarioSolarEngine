@@ -190,20 +190,6 @@ device = -1
 keycode = 48
 unicode = 224
 
-[sub_resource type="InputEventMouseButton" id="InputEventMouseButton_2bmpv"]
-button_mask = 2
-position = Vector2(221, 26)
-global_position = Vector2(233, 86)
-button_index = 2
-pressed = true
-
-[sub_resource type="InputEventMouseButton" id="InputEventMouseButton_1adbg"]
-button_mask = 1
-position = Vector2(319, 19)
-global_position = Vector2(331, 79)
-button_index = 1
-pressed = true
-
 [sub_resource type="InputEventKey" id="InputEventKey_i21hp"]
 keycode = 4194314
 
@@ -303,6 +289,14 @@ unicode = 98
 device = -1
 keycode = 78
 unicode = 110
+
+[sub_resource type="InputEventKey" id="InputEventKey_h8ifs"]
+device = -1
+keycode = 4194332
+
+[sub_resource type="InputEventKey" id="InputEventKey_scf03"]
+device = -1
+keycode = 4194333
 
 [sub_resource type="InputEventKey" id="InputEventKey_lhqpt"]
 device = -1
@@ -420,6 +414,20 @@ keycode = 4194321
 device = -1
 keycode = 4194319
 
+[sub_resource type="InputEventMouseButton" id="InputEventMouseButton_1adbg"]
+button_mask = 1
+position = Vector2(319, 19)
+global_position = Vector2(331, 79)
+button_index = 1
+pressed = true
+
+[sub_resource type="InputEventMouseButton" id="InputEventMouseButton_2bmpv"]
+button_mask = 2
+position = Vector2(221, 26)
+global_position = Vector2(233, 86)
+button_index = 2
+pressed = true
+
 [sub_resource type="InputEventMouseButton" id="InputEventMouseButton_77lw6"]
 button_index = 3
 
@@ -524,14 +532,6 @@ keycode = 4194335
 device = -1
 keycode = 4194334
 
-[sub_resource type="InputEventKey" id="InputEventKey_scf03"]
-device = -1
-keycode = 4194333
-
-[sub_resource type="InputEventKey" id="InputEventKey_h8ifs"]
-device = -1
-keycode = 4194332
-
 [resource]
 script = ExtResource("1_pmfbp")
 dictionary = Dictionary[InputEvent, CompressedTexture2D]({
@@ -560,8 +560,6 @@ SubResource("InputEventKey_rk4pt"): ExtResource("21_wnx2q"),
 SubResource("InputEventKey_xque0"): ExtResource("22_vq8aq"),
 SubResource("InputEventKey_05bxw"): ExtResource("23_c6eke"),
 SubResource("InputEventKey_lhqpt"): ExtResource("24_be276"),
-SubResource("InputEventKey_h8ifs"): ExtResource("31_1lhbi"),
-SubResource("InputEventKey_scf03"): ExtResource("32_54c7r"),
 SubResource("InputEventKey_i2w2d"): ExtResource("33_q5dyt"),
 SubResource("InputEventKey_ei33w"): ExtResource("34_2c5i0"),
 SubResource("InputEventKey_ba70w"): ExtResource("35_omgng"),
@@ -586,6 +584,8 @@ SubResource("InputEventMouseButton_bogqx"): ExtResource("96_t545u"),
 SubResource("InputEventMouseButton_0djy7"): ExtResource("95_knlm4"),
 SubResource("InputEventMouseButton_77lw6"): ExtResource("94_vyu2p"),
 SubResource("InputEventMouseButton_2bmpv"): ExtResource("93_esxy5"),
+SubResource("InputEventMouseButton_1adbg"): ExtResource("92_q4ura"),
+SubResource("InputEventKey_i21hp"): ExtResource("91_621rr"),
 SubResource("InputEventKey_f868c"): ExtResource("52_gkb7c"),
 SubResource("InputEventKey_im4pt"): ExtResource("53_pf7vw"),
 SubResource("InputEventKey_irx23"): ExtResource("54_ifhxa"),
@@ -610,6 +610,8 @@ SubResource("InputEventKey_6gxyn"): ExtResource("72_urc8u"),
 SubResource("InputEventKey_mv785"): ExtResource("73_4yfw4"),
 SubResource("InputEventKey_bk1x0"): ExtResource("74_4buu7"),
 SubResource("InputEventKey_o40h2"): ExtResource("75_hyxe7"),
+SubResource("InputEventKey_scf03"): ExtResource("32_54c7r"),
+SubResource("InputEventKey_h8ifs"): ExtResource("31_1lhbi"),
 SubResource("InputEventKey_7jpyj"): ExtResource("30_bio5s"),
 SubResource("InputEventKey_fugrh"): ExtResource("29_hjrte"),
 SubResource("InputEventKey_4o70k"): ExtResource("28_wcqoi"),
@@ -632,8 +634,6 @@ SubResource("InputEventKey_sq8nr"): ExtResource("57_7g63p"),
 SubResource("InputEventKey_dvqok"): ExtResource("88_c6h0t"),
 SubResource("InputEventKey_pqdl6"): ExtResource("58_hrnhy"),
 SubResource("InputEventKey_8k0s3"): ExtResource("89_mspdl"),
-SubResource("InputEventKey_t7v1v"): ExtResource("90_1bmjh"),
-SubResource("InputEventKey_i21hp"): ExtResource("91_621rr"),
-SubResource("InputEventMouseButton_1adbg"): ExtResource("92_q4ura")
+SubResource("InputEventKey_t7v1v"): ExtResource("90_1bmjh")
 })
 metadata/_custom_type_script = "uid://68dumda2t8qx"

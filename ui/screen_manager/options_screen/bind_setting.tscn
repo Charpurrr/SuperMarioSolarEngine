@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://ui/screen_manager/options_screen/bind_setting.gd" id="1_uljy6"]
 [ext_resource type="Texture2D" uid="uid://b43ncxxo157ey" path="res://ui/screen_manager/options_screen/bind_textures/walk.png" id="2_kcias"]
-[ext_resource type="Script" path="res://util/animated_texturerect.gd" id="3_2oskj"]
+[ext_resource type="Script" uid="uid://bya6u8daue8n2" path="res://util/custom_nodes/animated_texturerect.gd" id="3_2oskj"]
 [ext_resource type="FontFile" uid="uid://b74xlyn5xhoas" path="res://ui/fonts/paper_mario.ttf" id="4_frq67"]
 [ext_resource type="Texture2D" uid="uid://sf0yh5h3cau1" path="res://ui/screen_manager/options_screen/bind_textures/swim.png" id="4_kcias"]
 [ext_resource type="PackedScene" uid="uid://dd4exd7vseqoc" path="res://ui/buttons/ui_bind_button.tscn" id="5_riwgi"]
