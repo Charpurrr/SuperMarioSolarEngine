@@ -17,7 +17,7 @@ func _trans_rules():
 	if input.buffered_input(&"jump"):
 		return &"GroundPoundJump"
 
-	if Input.is_action_pressed(&"down"):
+	if Input.is_action_pressed(&"crouch"):
 		return [&"Crouch", [true, true]]
 
 	if can_ignore and InputManager.is_moving_x():

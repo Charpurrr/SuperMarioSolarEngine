@@ -23,7 +23,7 @@ func _trans_rules():
 	if actor.vel.x != 0 and input.buffered_input(&"dive"):
 		return &"Dive"
 
-	if Input.is_action_pressed(&"down"):
+	if Input.is_action_pressed(&"crouch"):
 		return [&"Crouch", [false, true]]
 
 	if movement.can_spin() and input.buffered_input(&"spin"):

@@ -76,7 +76,7 @@ func _trans_rules():
 	if not InputManager.is_moving_x():
 		return &"Idle"
 
-	if Input.is_action_pressed(&"down"):
+	if Input.is_action_pressed(&"crouch"):
 		if movement.is_slide_slope():
 			return &"ButtSlide"
 

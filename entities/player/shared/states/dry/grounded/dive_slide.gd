@@ -42,7 +42,7 @@ func _trans_rules():
 		elif rollout_check == true:
 			return &"Rollout"
 
-	if Input.is_action_pressed(&"down"):
+	if Input.is_action_pressed(&"crouch"):
 		if movement.is_slide_slope():
 			return &"ButtSlide"
 

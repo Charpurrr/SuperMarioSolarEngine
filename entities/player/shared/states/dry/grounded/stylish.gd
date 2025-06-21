@@ -17,7 +17,7 @@ func _trans_rules():
 	if movement.can_spin() and input.buffered_input(&"spin"):
 		return &"Spin"
 
-	if Input.is_action_pressed(&"down"):
+	if Input.is_action_pressed(&"crouch"):
 		return [&"Crouch", [false, true]]
 
 	if input.buffered_input(&"jump"):

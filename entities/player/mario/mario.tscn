@@ -703,7 +703,7 @@ particle_offset = Vector2(0, 0)
 particle_scale = Vector2(1, 1)
 loop_delay = 2
 
-[node name="Mario2" type="CharacterBody2D" node_paths=PackedStringArray("doll", "state_manager", "movement", "input", "push_rays", "hitbox", "dive_hitbox", "small_hitbox", "water_check", "crouchlock", "spin_hitbox")]
+[node name="Mario" type="CharacterBody2D" node_paths=PackedStringArray("doll", "state_manager", "movement", "input", "push_rays", "hitbox", "dive_hitbox", "small_hitbox", "water_check", "crouchlock", "spin_hitbox")]
 collision_layer = 2
 floor_constant_speed = true
 floor_max_angle = 1.48353

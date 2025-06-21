@@ -519,14 +519,14 @@ anchors_preset = -1
 offset_top = 45.0
 offset_bottom = 50.0
 script = ExtResource("7_aeygf")
-max_count = 0
+max_count = 16
 bounce_color = Color(1, 0, 0, 1)
 
 [node name="TextureRect" parent="RedCoinCounter/CoinIcon/Gradient" index="0"]
 texture = SubResource("GradientTexture2D_m3cpd")
 
 [node name="Count" parent="RedCoinCounter" index="1"]
-text = "0/0"
+text = "0/16"
 
 [node name="MusicLabel" type="Label" parent="." node_paths=PackedStringArray("anime")]
 modulate = Color(1, 1, 1, 0)

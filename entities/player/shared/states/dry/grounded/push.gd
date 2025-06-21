@@ -19,7 +19,7 @@ func _trans_rules():
 	if input.buffered_input(&"jump"):
 		return &"DummyJump"
 
-	if Input.is_action_pressed(&"down"):
+	if Input.is_action_pressed(&"crouch"):
 		return [&"Crouch", [false, true]]
 
 	return &""

@@ -44,7 +44,7 @@ func _trans_rules():
 	if input.buffered_input(&"jump"):
 		return &"Sideflip"
 
-	if Input.is_action_pressed(&"down"):
+	if Input.is_action_pressed(&"crouch"):
 		return [&"Crouch", [false, true]]
 
 	if input.buffered_input(&"dive"):
