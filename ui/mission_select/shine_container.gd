@@ -8,11 +8,13 @@ func _ready() -> void:
 	wraparound = get_child_count() > 2
 
 
-func _on_selected(shine: Node):
+func _while_selected(shine: Node):
 	shine = shine as AnimatedTextureRect
-	shine.play()
+
+	if not shine.playing:
+		shine.play()
 
 
-func _on_deselected(shine: Node):
+func _while_deselected(shine: Node):
 	shine = shine as AnimatedTextureRect
 	shine.stop()

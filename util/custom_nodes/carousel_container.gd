@@ -48,9 +48,9 @@ func _process(delta: float) -> void:
 		var child: Control = children[i]
 
 		if child.name == get_selected().name:
-			_on_selected(child)
+			_while_selected(child)
 		else:
-			_on_deselected(child)
+			_while_deselected(child)
 
 		# SET POSITION
 		if wraparound:
@@ -90,10 +90,10 @@ func get_selected() -> Node:
 
 
 ## Extra definable logic for the selected element. Can be overridden by a child class.
-func _on_selected(_selected_node: Node):
+func _while_selected(_selected_node: Node):
 	pass
 
 
 ## Extra definable logic for the unselected elements. Can be overridden by a child class.
-func _on_deselected(_deselected_node: Node):
+func _while_deselected(_deselected_node: Node):
 	pass
