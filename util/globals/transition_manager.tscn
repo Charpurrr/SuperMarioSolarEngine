@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://btndovfs6poo2"]
+
+[node name="TransitionManager" type="Node2D"]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]

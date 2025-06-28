@@ -1,4 +1,4 @@
-extends Control
+extends KeyScreen
 
 @export var anime: AnimationPlayer
 @export var focus_grabber: UIButton
