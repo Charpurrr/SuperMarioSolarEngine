@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://dgat047njqsvp" path="res://ui/debug/debug_label.gd" id="8_2m7jo"]
 [ext_resource type="PackedScene" uid="uid://cjavjeke51epr" path="res://ui/player_hud/fludd_tank.tscn" id="8_n7xk5"]
 [ext_resource type="Script" uid="uid://dg4a6r83hm158" path="res://ui/debug/commit_label.gd" id="9_bh67b"]
-[ext_resource type="Script" path="res://ui/player_hud/music_label.gd" id="9_gbf2f"]
+[ext_resource type="Script" uid="uid://c40eo5tkjri5l" path="res://ui/player_hud/music_label.gd" id="9_gbf2f"]
 [ext_resource type="Script" uid="uid://cnhr5du0ap6ki" path="res://ui/screen_manager/screen_manager.gd" id="18_ro5vq"]
 [ext_resource type="Shader" uid="uid://c8kax0imw2g1t" path="res://util/shaders/map_gradient.gdshader" id="19_uav4i"]
 [ext_resource type="Texture2D" uid="uid://bbu4m0gd3b85w" path="res://props/level_environments/synth/pause_gradient_map.tres" id="20_jdeth"]

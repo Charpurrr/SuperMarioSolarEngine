@@ -6,17 +6,12 @@ extends Control
 ## Emitted when a transition overlay has finished animating.
 signal transition_finished
 
-enum Overlay {PLAIN, CIRCULAR}
+@export_tool_button("Preview") var preview_action = _preview
+@export var preview_to: TransitionOverlay
+@export var preview_from: TransitionOverlay
 
-@export var preview_overlay: Overlay
-@export_tool_button("Preview", "Play") var preview_action = _preview
 
-@export_category("References")
-@export var plain_overlay: ColorRect
-@export var circ_overlay: ColorRect
 
-var from: Overlay
-var to: Overlay
 
 
 ### to: What scene to transition into.
@@ -36,41 +31,28 @@ var to: Overlay
 	#from = from_overlay
 	#to = to_overlay
 
-
-func _plain_transition(speed: float) -> void:
-	plain_overlay.visible = true
-
-	var tween := create_tween()
-	
-	if plain_overlay.color.a == 1:
-		tween.tween_property(plain_overlay, "color:a", 0, speed)
-	else:
-		tween.tween_property(plain_overlay, "color:a", 1, speed)
-
-	await tween.finished
-	transition_finished.emit()
+func _ready():
+	pass
 
 
-func _circ_transition(speed: float) -> void:
-	circ_overlay.visible = true
-
-	var tween := create_tween()
-	
-	if circ_overlay.material.get_shader_parameter("circle_size") == 0.0:
-		tween.tween_property(circ_overlay.material, "shader_parameter/circle_size", 1.05, speed)
-	else:
-		tween.tween_property(circ_overlay.material, "shader_parameter/circle_size", 0.0, speed)
-
-	await tween.finished
+func _start_transition(to: TransitionOverlay, from: TransitionOverlay) -> void:
+	to.show()
+	from.hide()
+	to.play_transition(Color.WHITE, 1.0, false)
+	await to.animation.animation_finished
+	to.hide()
+	from.show()
+	from.play_transition(Color.WHITE, 1.0, true)
+	await to.animation.animation_finished
 	transition_finished.emit()
 
 
 func _preview() -> void:
 	for child in get_children():
 		child.visible = false
-
-	match preview_overlay:
-		Overlay.PLAIN:
-			_plain_transition(0.3)
-		Overlay.CIRCULAR:
-			_circ_transition(0.3)
+	var children = get_children()
+	if preview_to == null:
+		preview_to = children[randi() % children.size()]
+	if preview_from == null:
+		preview_from = children[randi() % children.size()]
+	_start_transition(preview_to, preview_from)
