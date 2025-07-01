@@ -76,4 +76,5 @@ func resume() -> void:
 
 func stop() -> void:
 	frame = 0
+	texture = sprites.get_frame_texture(animation, frame)
 	pause()
