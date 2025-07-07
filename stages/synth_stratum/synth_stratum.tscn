@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://whyqyw8guuki" path="res://stages/level.gd" id="1_v54hh"]
 [ext_resource type="PackedScene" uid="uid://bfb4xq874buf6" path="res://props/level_environments/synth/synth.tscn" id="2_nma4k"]
-[ext_resource type="Script" path="res://util/song_playlist.gd" id="3_rtnqg"]
-[ext_resource type="Script" path="res://util/song.gd" id="4_kuv8v"]
+[ext_resource type="Script" uid="uid://dspslemtuknxr" path="res://util/song_playlist.gd" id="3_rtnqg"]
+[ext_resource type="Script" uid="uid://c56bjnj2qtrvg" path="res://util/song.gd" id="4_kuv8v"]
 [ext_resource type="Resource" uid="uid://tuivwbplcoxe" path="res://props/music/credits.tres" id="5_l20wn"]
 [ext_resource type="Resource" uid="uid://cgo34xd74j0bw" path="res://props/music/options.tres" id="6_1nvlm"]
 [ext_resource type="Resource" uid="uid://cshidjxiqds87" path="res://props/music/synth_stratum.tres" id="7_fwr2a"]

@@ -1,23 +1,23 @@
 @tool
 class_name SceneTransition
 extends Control
-## Class used to instance nice-looking scene transitions.
+# Class used to instance nice-looking scene transitions.
+
+## Emitted when the first transition overlay has finished animating.
+signal transition_to_finished
 
 ## Emitted when a transition overlay has finished animating.
-signal transition_finished
+signal prep_finished
 
-enum Overlay {PLAIN, CIRCULAR}
+## Emitted when the second transition overlay has finished animating.
+signal transition_from_finished
 
-@export var preview_overlay: Overlay
-@export_tool_button("Preview", "Play") var preview_action = _preview
+@export_tool_button("Preview") var preview_action = _preview
+@export var preview_to: TransitionOverlay
+@export var preview_from: TransitionOverlay
+@export_range(0.1, 999) var wait_time: float #Range prevents an editor crash by setting the timer to 0
 
-@export_category("References")
-@export var plain_overlay: ColorRect
-@export var circ_overlay: ColorRect
-
-var from: Overlay
-var to: Overlay
-
+var in_transition: bool = false
 
 ### to: What scene to transition into.
 ### from_overlay: Which visual overlay gets used for the transition from the previous scene.
@@ -33,44 +33,45 @@ var to: Overlay
 	#overlay_speed: float = 0.2,
 #) -> void:
 #
-	#from = from_overlay
-	#to = to_overlay
+var current_from: TransitionOverlay
+var current_to: TransitionOverlay
 
+func _ready():
+	pass
 
-func _plain_transition(speed: float) -> void:
-	plain_overlay.visible = true
+func finish_transition():
+	call_deferred("emit_signal", "prep_finished") #Calling deferred to allow a frame to sync all of the `await` calls happening during the middle of the transition 
 
-	var tween := create_tween()
-	
-	if plain_overlay.color.a == 1:
-		tween.tween_property(plain_overlay, "color:a", 0, speed)
-	else:
-		tween.tween_property(plain_overlay, "color:a", 1, speed)
-
-	await tween.finished
-	transition_finished.emit()
-
-
-func _circ_transition(speed: float) -> void:
-	circ_overlay.visible = true
-
-	var tween := create_tween()
-	
-	if circ_overlay.material.get_shader_parameter("circle_size") == 0.0:
-		tween.tween_property(circ_overlay.material, "shader_parameter/circle_size", 1.05, speed)
-	else:
-		tween.tween_property(circ_overlay.material, "shader_parameter/circle_size", 0.0, speed)
-
-	await tween.finished
-	transition_finished.emit()
+func start_transition(to: TransitionOverlay, from: TransitionOverlay, color: Color) -> void:
+	current_to = to
+	current_from = from
+	in_transition = true
+	to.show()
+	if to != from:
+		from.hide()
+	mouse_filter = Control.MOUSE_FILTER_STOP
+	to.play_transition(color, 1.0, false)
+	await to.animation.animation_finished
+	transition_to_finished.emit()
+	await prep_finished
+	to.hide()
+	from.show()
+	from.play_transition(color, 1.0, true)
+	await from.animation.animation_finished
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	in_transition = false
+	transition_from_finished.emit()
 
 
 func _preview() -> void:
 	for child in get_children():
 		child.visible = false
-
-	match preview_overlay:
-		Overlay.PLAIN:
-			_plain_transition(0.3)
-		Overlay.CIRCULAR:
-			_circ_transition(0.3)
+	var children = get_children()
+	if preview_to == null:
+		preview_to = children[randi() % children.size()]
+	if preview_from == null:
+		preview_from = children[randi() % children.size()]
+	start_transition(preview_to, preview_from, Color.WHITE)
+	await preview_to.animation.animation_finished
+	await get_tree().create_timer(wait_time).timeout
+	finish_transition()
