@@ -8,7 +8,6 @@ var current_level: Level
 func _ready():
 	if TransitionManager.scene_transition.in_transition:
 		TransitionManager.current_key_screen = self
-		TransitionManager.emit_signal("ready_to_progress")
 
 func _on_transition_to(): #Called when this scene has just been transitioned to.
 	pass

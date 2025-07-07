@@ -11,8 +11,6 @@ enum TransitionType {TO_SCREEN, TO_LEVEL, WARP_IN_LEVEL}
 
 var current_key_screen: KeyScreen
 
-var level_key_screen := preload("uid://bf8yafuc4b6x7") # Being Level nodes are Node2Ds, This KeyScreen scene is inserted as a parent to the level node when transitioning to one.
-
 @onready var scene_transition = %SceneTransition #Used for accessing outside of this object
 
 
@@ -23,7 +21,7 @@ func start_transition(uid: String, type: TransitionType, data: Dictionary):
 
 	match type:
 
-		TransitionType.TO_SCREEN:
+		TransitionType.TO_SCREEN, TransitionType.TO_LEVEL:
 			if ResourceLoader.exists(uid):
 				await current_key_screen._on_transition_from()
 				%SceneTransition.start_transition(%SceneTransition/CircleOverlay, %SceneTransition/CircleOverlay, Color.BLACK)
@@ -32,13 +30,7 @@ func start_transition(uid: String, type: TransitionType, data: Dictionary):
 				await ready_to_progress
 				%SceneTransition.finish_transition()
 		
-		TransitionType.TO_LEVEL:
-			if ResourceLoader.exists(uid):
-				await current_key_screen._on_transition_from()
-				%SceneTransition.start_transition(%SceneTransition/CircleOverlay, %SceneTransition/CircleOverlay, Color.BLACK)
-				await %SceneTransition.transition_to_finished
-				get_tree().change_scene_to_packed(level_key_screen) #Key Screen PackedScene
-				await ready_to_progress
-				var level: WorldMachine = load(uid).instantiate()
-				current_key_screen.add_child(level)
-				%SceneTransition.finish_transition()
+		TransitionType.WARP_IN_LEVEL: #Does a "fake" transition that doesn't load in any scenes
+			%SceneTransition.start_transition(%SceneTransition/CircleOverlay, %SceneTransition/CircleOverlay, Color.BLACK)
+			await ready_to_progress
+			%SceneTransition.finish_transition()

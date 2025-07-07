@@ -33,16 +33,18 @@ var in_transition: bool = false
 	#overlay_speed: float = 0.2,
 #) -> void:
 #
-	#from = from_overlay
-	#to = to_overlay
+var current_from: TransitionOverlay
+var current_to: TransitionOverlay
 
 func _ready():
 	pass
 
 func finish_transition():
-	prep_finished.emit()
+	call_deferred("emit_signal", "prep_finished") #Calling deferred to allow a frame to sync all of the `await` calls happening during the middle of the transition 
 
 func start_transition(to: TransitionOverlay, from: TransitionOverlay, color: Color) -> void:
+	current_to = to
+	current_from = from
 	in_transition = true
 	to.show()
 	if to != from:
@@ -55,7 +57,7 @@ func start_transition(to: TransitionOverlay, from: TransitionOverlay, color: Col
 	to.hide()
 	from.show()
 	from.play_transition(color, 1.0, true)
-	await to.animation.animation_finished
+	await from.animation.animation_finished
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	in_transition = false
 	transition_from_finished.emit()

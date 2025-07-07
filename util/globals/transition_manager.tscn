@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://btndovfs6poo2"]
+[gd_scene load_steps=3 format=3 uid="uid://dlk4soiet4dgq"]
 
 [ext_resource type="Script" uid="uid://v0hjytrph83k" path="res://util/globals/transition_manager.gd" id="1_uyoy3"]
 [ext_resource type="PackedScene" uid="uid://cuw0j18qec0mv" path="res://ui/scene_transition.tscn" id="2_v0gsh"]
 
 [node name="TransitionManager" type="CanvasLayer"]
+process_mode = 3
 layer = 2
 script = ExtResource("1_uyoy3")
 

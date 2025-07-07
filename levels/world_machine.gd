@@ -1,5 +1,5 @@
 class_name WorldMachine
-extends Node2D
+extends KeyScreenLevel
 ## The [WorldMachine] handles area loading and behaviour during gameplay.
 ## It's a container for the level, the user interface, and the player.
 ## It's always loaded when a level is being played.
@@ -19,9 +19,11 @@ var ui_node: UserInterface
 
 
 func _ready():
+	super()
 	if autoload and level_scene != null:
 		var level = level_scene.instantiate()
 		load_level(level)
+		TransitionManager.emit_signal("ready_to_progress")
 
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -93,8 +95,9 @@ func deload_level():
 ## Reloads the current level.
 func reload_level():
 	var new_level: Node2D = level_scene.instantiate()
-
+	TransitionManager.start_transition("", TransitionManager.TransitionType.WARP_IN_LEVEL, {})
+	await TransitionManager.scene_transition.transition_to_finished
 	deload_level()
-
 	load_level(new_level)
 	level_reloaded.emit()
+	TransitionManager.emit_signal("ready_to_progress")
