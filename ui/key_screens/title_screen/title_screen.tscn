@@ -109,7 +109,7 @@ grow_vertical = 2
 script = ExtResource("1_kmorl")
 anime = NodePath("AnimationPlayer")
 focus_grabber = NodePath("Contents/Choices/Play")
-play_scene = "uid://co7kk1h1rwbn6"
+play_scene = "uid://bite6o37o0mpt"
 edit_scene = "uid://bfrw3lh0b17ri"
 rec_scene = "uid://dhwd6b68nr2lu"
 

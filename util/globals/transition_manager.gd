@@ -39,6 +39,6 @@ func start_transition(uid: String, type: TransitionType, data: Dictionary):
 				await %SceneTransition.transition_to_finished
 				get_tree().change_scene_to_packed(level_key_screen) #Key Screen PackedScene
 				await ready_for_level
-				var level: Level = load(uid).instantiate()
+				var level: WorldMachine = load(uid).instantiate()
 				current_key_screen.add_child(level)
 				%SceneTransition.finish_transition()
