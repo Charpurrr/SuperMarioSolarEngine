@@ -1,5 +1,5 @@
 class_name WorldMachine
-extends KeyScreenLevel
+extends KeyScene
 ## The [WorldMachine] handles area loading and behaviour during gameplay.
 ## It's a container for the level, the user interface, and the player.
 ## It's always loaded when a level is being played.

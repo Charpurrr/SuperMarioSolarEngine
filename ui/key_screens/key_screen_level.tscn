@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bf8yafuc4b6x7"]
-
-[ext_resource type="Script" uid="uid://dcaeppdfqy1kv" path="res://ui/key_screens/key_screen_level.gd" id="1_6jltp"]
-
-[node name="KeyScreenLevel" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("1_6jltp")
-metadata/_custom_type_script = "uid://dcaeppdfqy1kv"

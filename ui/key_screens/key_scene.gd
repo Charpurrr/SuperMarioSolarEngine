@@ -2,7 +2,7 @@ extends Control
 
 #Class for key screens, such as the Title Screen, Level Select screen,  Game World, or others that the TransitionManager can warp to if needed
 
-class_name KeyScreen
+class_name KeyScene
 
 enum return_code {ERROR, OK, WAIT}
 const message: Dictionary = {
@@ -12,6 +12,7 @@ const message: Dictionary = {
 	}
 
 func _ready() -> void:
+	TransitionManager.current_key_screen = self
 	TransitionManager.emit_signal("ready_to_progress")
 
 func _on_transition_to():

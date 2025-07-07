@@ -1,5 +1,5 @@
 class_name LevelEditor
-extends KeyScreen
+extends KeyScene
 ## Base class for the level editor.
 
 @export var user_interface: LevelEditorUI

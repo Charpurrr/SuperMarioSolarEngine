@@ -1,4 +1,4 @@
-extends KeyScreen
+extends KeyScene
 
 @export var anime: AnimationPlayer
 @export var focus_grabber: UIButton
@@ -8,7 +8,7 @@ extends KeyScreen
 @export_file("*.tscn") var rec_scene: String
 
 func _ready():
-	TransitionManager.current_key_screen = self
+	super()
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == &"start":

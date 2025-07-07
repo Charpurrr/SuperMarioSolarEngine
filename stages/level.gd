@@ -11,7 +11,3 @@ extends Node2D
 @export_category("References")
 @export var player: CharacterBody2D
 @export var camera: Camera2D
-
-func _ready():
-	if get_parent() is KeyScreenLevel:
-		get_parent().current_level = self
