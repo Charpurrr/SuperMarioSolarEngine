@@ -1,5 +1,5 @@
 class_name LevelEditor
-extends Node
+extends KeyScreen
 ## Base class for the level editor.
 
 @export var user_interface: LevelEditorUI
@@ -13,6 +13,7 @@ extends Node
 
 
 func _ready():
+	super()
 	get_tree().set_auto_accept_quit(false)
 
 

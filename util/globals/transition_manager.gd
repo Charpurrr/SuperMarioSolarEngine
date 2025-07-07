@@ -5,7 +5,7 @@ extends CanvasLayer
 
 #Handles transitions between the UI and levels, going between levels, and area warps!r
 
-signal ready_for_level
+signal ready_to_progress
 
 enum TransitionType {TO_SCREEN, TO_LEVEL, WARP_IN_LEVEL}
 
@@ -29,8 +29,8 @@ func start_transition(uid: String, type: TransitionType, data: Dictionary):
 				%SceneTransition.start_transition(%SceneTransition/CircleOverlay, %SceneTransition/CircleOverlay, Color.BLACK)
 				await %SceneTransition.transition_to_finished
 				var result = get_tree().change_scene_to_file(uid)
-				if result:
-					%SceneTransition.finish_transition()
+				await ready_to_progress
+				%SceneTransition.finish_transition()
 		
 		TransitionType.TO_LEVEL:
 			if ResourceLoader.exists(uid):
@@ -38,7 +38,7 @@ func start_transition(uid: String, type: TransitionType, data: Dictionary):
 				%SceneTransition.start_transition(%SceneTransition/CircleOverlay, %SceneTransition/CircleOverlay, Color.BLACK)
 				await %SceneTransition.transition_to_finished
 				get_tree().change_scene_to_packed(level_key_screen) #Key Screen PackedScene
-				await ready_for_level
+				await ready_to_progress
 				var level: WorldMachine = load(uid).instantiate()
 				current_key_screen.add_child(level)
 				%SceneTransition.finish_transition()
