@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dr18ye8epeqdh" path="res://ui/transitions/transition_overlay.gd" id="1_uwp1c"]
 
+[sub_resource type="Animation" id="Animation_ypvl1"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_id3tq"]
 resource_name = "transition"
 length = 0.5
@@ -18,9 +21,6 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_ypvl1"]
-length = 0.001
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ypvl1"]
 _data = {
 &"RESET": SubResource("Animation_ypvl1"),
@@ -28,7 +28,6 @@ _data = {
 }
 
 [node name="PlainOverlay" type="ColorRect"]
-self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -1,5 +1,23 @@
-[gd_scene format=3 uid="uid://btndovfs6poo2"]
+[gd_scene load_steps=3 format=3 uid="uid://btndovfs6poo2"]
 
-[node name="TransitionManager" type="Node2D"]
+[ext_resource type="Script" uid="uid://v0hjytrph83k" path="res://util/globals/transition_manager.gd" id="1_uyoy3"]
+[ext_resource type="PackedScene" uid="uid://cuw0j18qec0mv" path="res://ui/scene_transition.tscn" id="2_v0gsh"]
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="TransitionManager" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_uyoy3")
+
+[node name="SceneTransition" parent="." instance=ExtResource("2_v0gsh")]
+unique_name_in_owner = true
+mouse_filter = 2
+
+[node name="PlainOverlay" parent="SceneTransition" index="0"]
+mouse_filter = 2
+
+[node name="CircleOverlay" parent="SceneTransition" index="1"]
+mouse_filter = 2
+
+[node name="InvertedCircleOverlay" parent="SceneTransition" index="2"]
+mouse_filter = 2
+
+[editable path="SceneTransition"]

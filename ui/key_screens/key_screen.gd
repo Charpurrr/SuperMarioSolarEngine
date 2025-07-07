@@ -11,10 +11,11 @@ const message: Dictionary = {
 	return_code.WAIT: "Woah, buddy! Cool your jets! I'll let you go in a second."
 	}
 
-func _on_transition():
+func _on_transition_to():
+#	TransitionManager.current_key_screen = self
 	pass
 
-func _before_transition():
+func _on_transition_from():
 	pass
 
 #To be called when attempting a transition to another scene. 

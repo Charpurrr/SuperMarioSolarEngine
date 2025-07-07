@@ -13,7 +13,7 @@ config_version=5
 config/name="Solar Engine"
 config/version="0.1.x"
 config/tags=PackedStringArray("mario_fangames")
-run/main_scene="res://ui/title_screen/title_screen.tscn"
+run/main_scene="res://ui/key_screens/title_screen/title_screen.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 run/max_fps=60
 boot_splash/bg_color=Color(0.0862745, 0.0862745, 0.0862745, 1)
@@ -26,6 +26,7 @@ config/icon="res://icon.png"
 LocalSettings="*res://util/globals/local_settings.gd"
 GameState="*res://util/globals/game_state.gd"
 MusicManager="*res://util/globals/music_manager.tscn"
+TransitionManager="*res://util/globals/transition_manager.tscn"
 
 [display]
 
@@ -47,8 +48,8 @@ folder_colors={
 "res://entities/player/luigi/": "green",
 "res://entities/player/mario/": "red",
 "res://level_designer/": "teal",
+"res://levels/": "green",
 "res://props/": "pink",
-"res://stages/": "green",
 "res://ui/": "orange",
 "res://util/": "purple"
 }

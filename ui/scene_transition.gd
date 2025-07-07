@@ -1,18 +1,23 @@
 @tool
 class_name SceneTransition
 extends Control
-## Class used to instance nice-looking scene transitions.
+# Class used to instance nice-looking scene transitions.
+
+## Emitted when the first transition overlay has finished animating.
+signal transition_to_finished
 
 ## Emitted when a transition overlay has finished animating.
-signal transition_finished
+signal prep_finished
+
+## Emitted when the second transition overlay has finished animating.
+signal transition_from_finished
 
 @export_tool_button("Preview") var preview_action = _preview
 @export var preview_to: TransitionOverlay
 @export var preview_from: TransitionOverlay
+@export_range(0.1, 999) var wait_time: float #Range prevents an editor crash by setting the timer to 0
 
-
-
-
+var in_transition: bool = false
 
 ### to: What scene to transition into.
 ### from_overlay: Which visual overlay gets used for the transition from the previous scene.
@@ -34,17 +39,26 @@ signal transition_finished
 func _ready():
 	pass
 
+func finish_transition():
+	prep_finished.emit()
 
-func _start_transition(to: TransitionOverlay, from: TransitionOverlay) -> void:
+func start_transition(to: TransitionOverlay, from: TransitionOverlay, color: Color) -> void:
+	in_transition = true
 	to.show()
-	from.hide()
-	to.play_transition(Color.WHITE, 1.0, false)
+	if to != from:
+		from.hide()
+	mouse_filter = Control.MOUSE_FILTER_STOP
+	to.play_transition(color, 1.0, false)
 	await to.animation.animation_finished
+	transition_to_finished.emit()
+	await prep_finished
 	to.hide()
 	from.show()
-	from.play_transition(Color.WHITE, 1.0, true)
+	from.play_transition(color, 1.0, true)
 	await to.animation.animation_finished
-	transition_finished.emit()
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	in_transition = false
+	transition_from_finished.emit()
 
 
 func _preview() -> void:
@@ -55,4 +69,7 @@ func _preview() -> void:
 		preview_to = children[randi() % children.size()]
 	if preview_from == null:
 		preview_from = children[randi() % children.size()]
-	_start_transition(preview_to, preview_from)
+	start_transition(preview_to, preview_from, Color.WHITE)
+	await preview_to.animation.animation_finished
+	await get_tree().create_timer(wait_time).timeout
+	finish_transition()

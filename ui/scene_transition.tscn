@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cuw0j18qec0mv"]
+[gd_scene load_steps=5 format=3 uid="uid://cuw0j18qec0mv"]
 
 [ext_resource type="Script" uid="uid://ce73oybox6fuf" path="res://ui/scene_transition.gd" id="1_1un8b"]
 [ext_resource type="PackedScene" uid="uid://1s44kbytdqux" path="res://ui/transitions/plain_overlay.tscn" id="2_lcbxi"]
 [ext_resource type="PackedScene" uid="uid://dy3n52xoj3cu8" path="res://ui/transitions/circle_overlay.tscn" id="3_26j7i"]
+[ext_resource type="PackedScene" uid="uid://ta0eilpcncdp" path="res://ui/transitions/inverted_circle_overlay.tscn" id="4_26j7i"]
 
 [node name="SceneTransition" type="Control" node_paths=PackedStringArray("preview_to", "preview_from")]
 layout_mode = 3
@@ -12,14 +13,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1un8b")
-preview_to = NodePath("PlainOverlay")
+preview_to = NodePath("InvertedCircleOverlay")
 preview_from = NodePath("CircleOverlay")
+wait_time = 10.0
 
 [node name="PlainOverlay" parent="." instance=ExtResource("2_lcbxi")]
 visible = false
-self_modulate = Color(1, 1, 1, 1)
 layout_mode = 1
 color = Color(1, 1, 1, 1)
 
 [node name="CircleOverlay" parent="." instance=ExtResource("3_26j7i")]
+layout_mode = 1
+
+[node name="InvertedCircleOverlay" parent="." instance=ExtResource("4_26j7i")]
+visible = false
 layout_mode = 1
