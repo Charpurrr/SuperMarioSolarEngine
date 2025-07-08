@@ -1,8 +1,9 @@
-[gd_scene load_steps=198 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=200 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" uid="uid://bg4t154sge7br" path="res://entities/player/shared/player.gd" id="1_87j6i"]
 [ext_resource type="SpriteFrames" uid="uid://bqn6b0xmrvxjc" path="res://entities/player/mario/anime/mario_anime.res" id="2_ttikd"]
 [ext_resource type="Script" uid="uid://clh7ssy21bpqv" path="res://util/input_manager.gd" id="21_onm15"]
+[ext_resource type="Script" uid="uid://cb4g1yl24gj7m" path="res://entities/player/shared/player_animation_data.gd" id="23_bbld7"]
 [ext_resource type="Script" uid="uid://d0q4h02e1xlo6" path="res://entities/player/shared/push_rays.gd" id="35_g7d1t"]
 [ext_resource type="Script" uid="uid://ddr3ta4g2q457" path="res://entities/player/shared/player_movement.gd" id="37_quca3"]
 [ext_resource type="AudioStream" uid="uid://b0wlrkn5oy6gr" path="res://entities/player/shared/motion/SE_PM_SQUAT_WALK.wav" id="38_pxspy"]
@@ -168,6 +169,15 @@ particle_scene = ExtResource("55_seugk")
 particle_offset = Vector2(0, 0)
 particle_scale = Vector2(1, 1)
 loop_delay = 0
+
+[sub_resource type="Resource" id="Resource_e1ut2"]
+script = ExtResource("23_bbld7")
+animation = "idle"
+animation_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+preview = false
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_8p2oq"]
 script = ExtResource("49_apkmk")
@@ -724,7 +734,7 @@ spin_hitbox = NodePath("Areas/SpinHitbox")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = ExtResource("2_ttikd")
-animation = &"jump"
+animation = &"idle"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
@@ -853,6 +863,7 @@ particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_n4l32")])
 [node name="Idle" type="Node" parent="StateManager/Dry/Grounded"]
 script = ExtResource("44_87kyt")
 animation_look_up = &"look_up"
+animation_data = SubResource("Resource_e1ut2")
 animation = &"idle"
 
 [node name="Walk" type="Node" parent="StateManager/Dry/Grounded"]
@@ -988,7 +999,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ts3h6"), SubR
 script = ExtResource("103_ky35g")
 jump_power = 7.5
 animation = &"backflip"
-anim_offset = Vector2i(0, 5)
+anim_offset = Vector2i(0, 21)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_yrs16"), SubResource("Resource_l81lv")])
 
 [node name="ButtSlideJump" type="Node" parent="StateManager/Dry/Airborne/JumpStates"]

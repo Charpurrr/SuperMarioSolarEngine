@@ -5,6 +5,7 @@ extends State
 @export_enum("Normal", "Small", "Dive", "None") var hitbox_type: String = "Normal"
 
 @export_category(&"Animation")
+@export var animation_data: PStateAnimData
 ## The name of the animation that this state should play.
 @export var animation := &""
 ## How many pixels the animation needs to be offset.

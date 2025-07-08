@@ -4,7 +4,7 @@ extends PlayerState
 
 @export_category(&"Animation (Unique to State)")
 @export var animation_look_up: StringName
-@export var anim_offset_look_up: Vector2
+@export var anim_offset_look_up: Vector2i
 
 
 func _physics_tick():
