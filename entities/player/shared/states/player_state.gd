@@ -4,8 +4,10 @@ extends State
 
 @export_enum("Normal", "Small", "Dive", "None") var hitbox_type: String = "Normal"
 
-@export_category(&"Animation")
+@export_category(&"Visual")
 @export var animation_data: PStateAnimData
+## The associated particles that should emit when the state is activated.
+@export var particles: Array[ParticleEffect]
 ## The name of the animation that this state should play.
 @export var animation := &""
 ## How many pixels the animation needs to be offset.
@@ -19,9 +21,6 @@ extends State
 ## [br][br]Every array inside of the sfx_layers array is said list of possible
 ## sound effects it can cycle through.
 @export var sfx_layers: Array[SFXLayer]
-
-## The associated particles that should emit when the state is activated.
-@export var particles: Array[ParticleEffect]
 
 var input: InputManager = null
 var fludd: FluddManager = null
