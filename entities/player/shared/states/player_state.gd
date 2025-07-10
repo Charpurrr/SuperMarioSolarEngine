@@ -28,6 +28,11 @@ func trigger_enter(handover):
 		_set_animation()
 		actor.doll.frame_changed.connect(_set_offset)
 
+		# We have to call this manually at the start of a state because
+		# the animation might change. Otherwise we'll have the wrong offsets
+		# for for the first frame of the new animation.
+		_set_offset()
+
 	_set_hitbox()
 
 	emit_particles()

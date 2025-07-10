@@ -21,6 +21,7 @@ func _physics_process(_delta):
 		velocity.x = %.3f
 		velocity.y = %.3f \n
 		body_rotation = %.3f
+		doll.frame = %d
 		doll.offset = %s
 		doll.rotation = %.3f
 		facing = %d
@@ -36,6 +37,7 @@ func _physics_process(_delta):
 			player.vel.x,
 			player.vel.y,
 			player.movement.body_rotation,
+			player.doll.frame,
 			player.doll.offset,
 			player.doll.rotation,
 			player.movement.facing_direction,

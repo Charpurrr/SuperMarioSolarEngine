@@ -135,29 +135,30 @@
 [ext_resource type="AudioStream" uid="uid://cutedbxm5o46d" path="res://entities/player/mario/voice_sunshine/woah3_ledge.wav" id="153_5c2b3"]
 [ext_resource type="PackedScene" uid="uid://d1wf1b4d4xfvf" path="res://props/particles/sparkle.tscn" id="158_1s3ss"]
 
-[sub_resource type="Resource" id="Resource_2siud"]
+[sub_resource type="Resource" id="Resource_m576x"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
-0: Vector2i(0, 5),
-1: Vector2i(0, 5),
-2: Vector2i(0, 5),
-3: Vector2i(0, 5),
-4: Vector2i(0, 5),
-5: Vector2i(0, 5),
-6: Vector2i(0, 5),
-7: Vector2i(0, 5),
-8: Vector2i(0, 5),
-9: Vector2i(0, 5),
-10: Vector2i(0, 5),
-11: Vector2i(0, 5),
-12: Vector2i(0, 5)
+0: Vector2i(0, 8),
+1: Vector2i(0, 8),
+2: Vector2i(0, 8),
+3: Vector2i(0, 8),
+4: Vector2i(0, 8),
+5: Vector2i(0, 8),
+6: Vector2i(0, 8),
+7: Vector2i(0, 8),
+8: Vector2i(0, 8),
+9: Vector2i(0, 8),
+10: Vector2i(0, 8)
 })
 frame_fludd = Dictionary[int, String]({})
 frame_fludd_offset = Dictionary[int, Vector2i]({})
-animation = "triple_jump"
+animation = "sideflip"
 frame = 0
-preview = false
-frame_offset = Vector2i(0, 5)
+preview = true
+preview_fludd = false
+frame_offset = Vector2i(0, 8)
 fludd_animation = "default"
 fludd_offset = Vector2i(0, 0)
 metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
@@ -182,6 +183,8 @@ size = Vector2(44, 26)
 
 [sub_resource type="Resource" id="Resource_u4fjx"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -197,6 +200,8 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_mqps4"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -212,6 +217,8 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_q75g6"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -227,6 +234,8 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_hnhty"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -242,6 +251,8 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_ata35"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -274,6 +285,8 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_e1ut2"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0),
 1: Vector2i(0, 0),
@@ -295,6 +308,8 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_1i10v"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -327,6 +342,8 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_1vsdu"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -342,6 +359,8 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_4t2h7"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -357,6 +376,8 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_u3pyw"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -372,17 +393,19 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_ijnwc"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
-0: Vector2i(0, 5),
-1: Vector2i(0, 5),
-2: Vector2i(0, 5)
+0: Vector2i(0, 21),
+1: Vector2i(0, 21),
+2: Vector2i(0, 21)
 })
 frame_fludd = Dictionary[int, String]({})
 frame_fludd_offset = Dictionary[int, Vector2i]({})
 animation = "stylish"
 frame = 0
 preview = false
-frame_offset = Vector2i(0, 5)
+frame_offset = Vector2i(0, 21)
 fludd_animation = "default"
 fludd_offset = Vector2i(0, 0)
 metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
@@ -399,6 +422,8 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_8wyc1"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -424,6 +449,8 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_hx7ue"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -458,6 +485,8 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_f3xbj"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -483,6 +512,8 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_xenv0"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -516,6 +547,8 @@ metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
 
 [sub_resource type="Resource" id="Resource_wdv80"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 9),
 1: Vector2i(0, 9),
@@ -568,6 +601,8 @@ loop_delay = 0
 
 [sub_resource type="Resource" id="Resource_gacnc"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 5)
 })
@@ -603,6 +638,8 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_txrxb"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -636,6 +673,35 @@ force_new = false
 overwrite_other = false
 cutoff_sfx = false
 
+[sub_resource type="Resource" id="Resource_2siud"]
+script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 5),
+1: Vector2i(0, 5),
+2: Vector2i(0, 5),
+3: Vector2i(0, 5),
+4: Vector2i(0, 5),
+5: Vector2i(0, 5),
+6: Vector2i(0, 5),
+7: Vector2i(0, 5),
+8: Vector2i(0, 5),
+9: Vector2i(0, 5),
+10: Vector2i(0, 5),
+11: Vector2i(0, 5),
+12: Vector2i(0, 5)
+})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "triple_jump"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 5)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
 [sub_resource type="Resource" id="Resource_c6n5s"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("78_wqfjo"), ExtResource("79_ofamm"), ExtResource("80_rcac4"), ExtResource("81_27gn5"), ExtResource("82_6e7m6")]
@@ -668,6 +734,8 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_pakf6"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -704,6 +772,8 @@ metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
 
 [sub_resource type="Resource" id="Resource_ufl2i"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -738,21 +808,6 @@ overwrite_other = false
 cutoff_sfx = false
 metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
 
-[sub_resource type="Resource" id="Resource_m576x"]
-script = ExtResource("23_bbld7")
-frame_offsets = Dictionary[int, Vector2i]({
-0: Vector2i(0, 0)
-})
-frame_fludd = Dictionary[int, String]({})
-frame_fludd_offset = Dictionary[int, Vector2i]({})
-animation = "sideflip"
-frame = 0
-preview = false
-frame_offset = Vector2i(0, 0)
-fludd_animation = "default"
-fludd_offset = Vector2i(0, 0)
-metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
-
 [sub_resource type="Resource" id="Resource_ts3h6"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("78_wqfjo"), ExtResource("79_ofamm"), ExtResource("80_rcac4"), ExtResource("81_27gn5"), ExtResource("82_6e7m6")]
@@ -775,6 +830,8 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_2h0ab"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 21),
 1: Vector2i(0, 21),
@@ -793,7 +850,7 @@ frame_offsets = Dictionary[int, Vector2i]({
 frame_fludd = Dictionary[int, String]({})
 frame_fludd_offset = Dictionary[int, Vector2i]({})
 animation = "backflip"
-frame = 0
+frame = 12
 preview = false
 frame_offset = Vector2i(0, 21)
 fludd_animation = "default"
@@ -822,6 +879,8 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_o485y"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 3),
 1: Vector2i(0, 3)
@@ -848,6 +907,8 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_86kn8"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -887,6 +948,8 @@ cutoff_sfx = true
 
 [sub_resource type="Resource" id="Resource_mk8bu"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -922,6 +985,8 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_wc0bq"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -957,6 +1022,8 @@ cutoff_sfx = true
 
 [sub_resource type="Resource" id="Resource_ngcav"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 5)
 })
@@ -972,6 +1039,8 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_wihps"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -997,6 +1066,8 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_saqqr"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -1012,6 +1083,8 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_bsr1j"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 9),
 1: Vector2i(0, 9),
@@ -1055,6 +1128,8 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_qbnhj"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 9),
 1: Vector2i(0, 9)
@@ -1071,6 +1146,8 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_efjxb"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -1086,6 +1163,8 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_np2tc"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -1121,6 +1200,8 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_xh3w7"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -1136,6 +1217,8 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_cpqj3"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -1161,6 +1244,8 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_5iloq"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -1205,6 +1290,8 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_spsxp"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -1240,6 +1327,8 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_cootw"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -1272,6 +1361,8 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_ae2dx"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -1311,6 +1402,8 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_qko5d"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -1347,6 +1440,8 @@ metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
 
 [sub_resource type="Resource" id="Resource_ifrah"]
 script = ExtResource("23_bbld7")
+doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"sideflip","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 8),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_m576x"))
+
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -1399,8 +1494,9 @@ spin_hitbox = NodePath("Areas/SpinHitbox")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = ExtResource("2_ttikd")
-animation = &"gp"
-metadata/last_previewed = SubResource("Resource_2siud")
+animation = &"sideflip"
+offset = Vector2(0, 8)
+metadata/last_previewed = SubResource("Resource_m576x")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)

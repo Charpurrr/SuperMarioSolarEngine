@@ -77,7 +77,7 @@ var preview_private: bool = false
 ## Toggle previewing your frame's FLUDD variant and it's offsets.
 var preview_fludd: bool = false
 
-var doll: AnimatedSprite2D
+@export_storage var doll: AnimatedSprite2D
 ## Populated in the initialiser only for editor purposes. Not used in-game.
 var animation_list: PackedStringArray
 
@@ -93,6 +93,10 @@ var animation_list: PackedStringArray
 
 
 func _init() -> void:
+	call_deferred(&"setup")
+
+
+func setup() -> void:
 	# We only need to populate the animation list while editing the data resource
 	# in the editor. It's no longer relevant when we're running the game.
 	if not Engine.is_editor_hint():
