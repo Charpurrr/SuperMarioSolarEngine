@@ -8,10 +8,6 @@ extends State
 @export var animation_data: PStateAnimData
 ## The associated particles that should emit when the state is activated.
 @export var particles: Array[ParticleEffect]
-## The name of the animation that this state should play.
-@export var animation := &""
-## How many pixels the animation needs to be offset.
-@export var anim_offset: Vector2i
 
 @export_category(&"Sound")
 ## Whether or not the sound effect(s) should play as soon as the state starts.

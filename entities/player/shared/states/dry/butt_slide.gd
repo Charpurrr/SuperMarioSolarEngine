@@ -222,7 +222,7 @@ func _set_appropriate_anim():
 			animation_forward if input_dir == movement.facing_direction else animation_backward
 		)
 		return
-	actor.doll.play(animation)
+	actor.doll.play(animation_data.animation)
 
 
 func _trans_rules():
