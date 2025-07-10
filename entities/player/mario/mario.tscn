@@ -1,4 +1,4 @@
-[gd_scene load_steps=201 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=241 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" uid="uid://bg4t154sge7br" path="res://entities/player/shared/player.gd" id="1_87j6i"]
 [ext_resource type="SpriteFrames" uid="uid://bqn6b0xmrvxjc" path="res://entities/player/mario/anime/mario_anime.res" id="2_ttikd"]
@@ -135,15 +135,29 @@
 [ext_resource type="AudioStream" uid="uid://cutedbxm5o46d" path="res://entities/player/mario/voice_sunshine/woah3_ledge.wav" id="153_5c2b3"]
 [ext_resource type="PackedScene" uid="uid://d1wf1b4d4xfvf" path="res://props/particles/sparkle.tscn" id="158_1s3ss"]
 
-[sub_resource type="Resource" id="Resource_1i10v"]
+[sub_resource type="Resource" id="Resource_2siud"]
 script = ExtResource("23_bbld7")
-frame_offsets = Dictionary[int, Vector2i]({})
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 5),
+1: Vector2i(0, 5),
+2: Vector2i(0, 5),
+3: Vector2i(0, 5),
+4: Vector2i(0, 5),
+5: Vector2i(0, 5),
+6: Vector2i(0, 5),
+7: Vector2i(0, 5),
+8: Vector2i(0, 5),
+9: Vector2i(0, 5),
+10: Vector2i(0, 5),
+11: Vector2i(0, 5),
+12: Vector2i(0, 5)
+})
 frame_fludd = Dictionary[int, String]({})
 frame_fludd_offset = Dictionary[int, Vector2i]({})
-animation = "walk"
+animation = "triple_jump"
 frame = 0
-preview = null
-frame_offset = Vector2i(0, 0)
+preview = false
+frame_offset = Vector2i(0, 5)
 fludd_animation = "default"
 fludd_offset = Vector2i(0, 0)
 metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
@@ -165,6 +179,71 @@ size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gh08o"]
 size = Vector2(44, 26)
+
+[sub_resource type="Resource" id="Resource_u4fjx"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "swim_idle"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
+[sub_resource type="Resource" id="Resource_mqps4"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "swim"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
+[sub_resource type="Resource" id="Resource_q75g6"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "swim_hard"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
+[sub_resource type="Resource" id="Resource_hnhty"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "swim_flutter"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
+[sub_resource type="Resource" id="Resource_ata35"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "swim_spin"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_n4l32"]
 script = ExtResource("55_bxnxc")
@@ -198,7 +277,22 @@ frame_fludd = Dictionary[int, String]({})
 frame_fludd_offset = Dictionary[int, Vector2i]({})
 animation = "idle"
 frame = 0
-preview = null
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
+[sub_resource type="Resource" id="Resource_1i10v"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "walk"
+frame = 0
+preview = false
 frame_offset = Vector2i(0, 0)
 fludd_animation = "default"
 fludd_offset = Vector2i(0, 0)
@@ -221,6 +315,68 @@ force_new = false
 overwrite_other = false
 cutoff_sfx = false
 
+[sub_resource type="Resource" id="Resource_1vsdu"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "skid"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
+[sub_resource type="Resource" id="Resource_4t2h7"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "push"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
+[sub_resource type="Resource" id="Resource_u3pyw"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "idle"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
+[sub_resource type="Resource" id="Resource_ijnwc"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 5),
+1: Vector2i(0, 5),
+2: Vector2i(0, 5)
+})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "stylish"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 5)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
 [sub_resource type="Resource" id="Resource_sitp4"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("56_o7gy0")]
@@ -231,6 +387,21 @@ force_new = false
 overwrite_other = true
 cutoff_sfx = false
 
+[sub_resource type="Resource" id="Resource_8wyc1"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "crouch"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
 [sub_resource type="Resource" id="Resource_ql55k"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("51_ge5km")]
@@ -240,6 +411,21 @@ repeat_delay = 0.0
 force_new = false
 overwrite_other = false
 cutoff_sfx = false
+
+[sub_resource type="Resource" id="Resource_hx7ue"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "breakdance"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_ttikd"]
 resource_local_to_scene = true
@@ -260,6 +446,21 @@ force_new = false
 overwrite_other = true
 cutoff_sfx = false
 
+[sub_resource type="Resource" id="Resource_f3xbj"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "crouch_walk"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
 [sub_resource type="Resource" id="Resource_lybx2"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("38_pxspy")]
@@ -269,6 +470,21 @@ repeat_delay = 0.0
 force_new = false
 overwrite_other = false
 cutoff_sfx = false
+
+[sub_resource type="Resource" id="Resource_xenv0"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "dive_slide"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_w3gxr"]
 script = ExtResource("55_bxnxc")
@@ -287,6 +503,23 @@ force_new = false
 overwrite_other = false
 cutoff_sfx = true
 metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
+
+[sub_resource type="Resource" id="Resource_wdv80"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 9),
+1: Vector2i(0, 9),
+2: Vector2i(0, 9)
+})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "gp_land"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 9)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_bbld7"]
 script = ExtResource("55_bxnxc")
@@ -323,6 +556,21 @@ particle_offset = Vector2(0, 0)
 particle_scale = Vector2(1, 1)
 loop_delay = 0
 
+[sub_resource type="Resource" id="Resource_gacnc"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 5)
+})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "jump"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 5)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
 [sub_resource type="Resource" id="Resource_2esv2"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("64_nkubm"), ExtResource("65_2xkjx")]
@@ -342,6 +590,21 @@ repeat_delay = 0.0
 force_new = false
 overwrite_other = true
 cutoff_sfx = false
+
+[sub_resource type="Resource" id="Resource_txrxb"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "double_jump"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_js1ac"]
 script = ExtResource("49_apkmk")
@@ -393,6 +656,21 @@ force_new = false
 overwrite_other = false
 cutoff_sfx = false
 
+[sub_resource type="Resource" id="Resource_pakf6"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "spinjump"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
 [sub_resource type="Resource" id="Resource_h8xfq"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("95_hftyd"), ExtResource("96_bh3id"), ExtResource("97_3dng3"), ExtResource("98_teiu1"), ExtResource("99_2gl2i"), ExtResource("100_qovm2"), ExtResource("109_s2cvh")]
@@ -413,6 +691,21 @@ force_new = false
 overwrite_other = false
 cutoff_sfx = false
 metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
+
+[sub_resource type="Resource" id="Resource_ufl2i"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "longjump"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_5f3i0"]
 script = ExtResource("49_apkmk")
@@ -435,6 +728,21 @@ overwrite_other = false
 cutoff_sfx = false
 metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
 
+[sub_resource type="Resource" id="Resource_m576x"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "sideflip"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
 [sub_resource type="Resource" id="Resource_ts3h6"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("78_wqfjo"), ExtResource("79_ofamm"), ExtResource("80_rcac4"), ExtResource("81_27gn5"), ExtResource("82_6e7m6")]
@@ -454,6 +762,33 @@ repeat_delay = 0.0
 force_new = false
 overwrite_other = false
 cutoff_sfx = false
+
+[sub_resource type="Resource" id="Resource_2h0ab"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 21),
+1: Vector2i(0, 21),
+2: Vector2i(0, 21),
+3: Vector2i(0, 21),
+4: Vector2i(0, 21),
+5: Vector2i(0, 21),
+6: Vector2i(0, 21),
+7: Vector2i(0, 21),
+8: Vector2i(0, 21),
+9: Vector2i(0, 21),
+10: Vector2i(0, 21),
+11: Vector2i(0, 21),
+12: Vector2i(0, 21)
+})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "backflip"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 21)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_yrs16"]
 script = ExtResource("49_apkmk")
@@ -475,6 +810,22 @@ force_new = false
 overwrite_other = false
 cutoff_sfx = false
 
+[sub_resource type="Resource" id="Resource_o485y"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 3),
+1: Vector2i(0, 3)
+})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "butt_slide_jump"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 3)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
 [sub_resource type="Resource" id="Resource_jo8kb"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("64_rch8v"), ExtResource("65_f1kp6"), ExtResource("66_8j4lt"), ExtResource("67_ny3my"), ExtResource("68_idf2v"), ExtResource("69_7jcwv")]
@@ -484,6 +835,19 @@ repeat_delay = 0.0
 force_new = false
 overwrite_other = true
 cutoff_sfx = false
+
+[sub_resource type="Resource" id="Resource_86kn8"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "wallslide"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_2nx7x"]
 script = ExtResource("55_bxnxc")
@@ -509,6 +873,19 @@ force_new = false
 overwrite_other = false
 cutoff_sfx = true
 
+[sub_resource type="Resource" id="Resource_mk8bu"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "walljump"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
 [sub_resource type="Resource" id="Resource_pq6ep"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("71_ohc7q"), ExtResource("72_r33o8"), ExtResource("73_cg0sx"), ExtResource("74_nvtw8"), ExtResource("75_2xld2")]
@@ -528,6 +905,19 @@ repeat_delay = 0.0
 force_new = false
 overwrite_other = false
 cutoff_sfx = false
+
+[sub_resource type="Resource" id="Resource_wc0bq"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "spin_attack"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_bloag"]
 script = ExtResource("49_apkmk")
@@ -549,6 +939,34 @@ force_new = false
 overwrite_other = false
 cutoff_sfx = true
 
+[sub_resource type="Resource" id="Resource_ngcav"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 5)
+})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "jump_fall"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 5)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
+[sub_resource type="Resource" id="Resource_wihps"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "freefall"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
 [sub_resource type="Resource" id="Resource_5kqsg"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("87_4kpcy")]
@@ -558,6 +976,42 @@ repeat_delay = 0.0
 force_new = false
 overwrite_other = true
 cutoff_sfx = false
+
+[sub_resource type="Resource" id="Resource_saqqr"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "double_fall"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
+[sub_resource type="Resource" id="Resource_bsr1j"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 9),
+1: Vector2i(0, 9),
+2: Vector2i(0, 9),
+3: Vector2i(0, 9),
+4: Vector2i(0, 9),
+5: Vector2i(0, 9),
+6: Vector2i(0, 9),
+7: Vector2i(0, 9),
+8: Vector2i(0, 9)
+})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "gp"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 9)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_7r27p"]
 script = ExtResource("49_apkmk")
@@ -579,6 +1033,48 @@ force_new = false
 overwrite_other = true
 cutoff_sfx = false
 
+[sub_resource type="Resource" id="Resource_qbnhj"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 9),
+1: Vector2i(0, 9)
+})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "gp_fall"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 9)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
+[sub_resource type="Resource" id="Resource_efjxb"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "jump_fall"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
+[sub_resource type="Resource" id="Resource_np2tc"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "gp_jump"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
 [sub_resource type="Resource" id="Resource_8711x"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("81_27gn5"), ExtResource("108_e31o1"), ExtResource("109_s2cvh")]
@@ -599,6 +1095,32 @@ force_new = false
 overwrite_other = false
 cutoff_sfx = false
 
+[sub_resource type="Resource" id="Resource_xh3w7"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "jump"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
+[sub_resource type="Resource" id="Resource_cpqj3"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "spin_attack"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
 [sub_resource type="Resource" id="Resource_2y8iw"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("126_6gu1v")]
@@ -608,6 +1130,19 @@ repeat_delay = 0.0
 force_new = false
 overwrite_other = false
 cutoff_sfx = false
+
+[sub_resource type="Resource" id="Resource_5iloq"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "spin_attack"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_totbj"]
 resource_local_to_scene = true
@@ -638,6 +1173,19 @@ force_new = false
 overwrite_other = false
 cutoff_sfx = false
 
+[sub_resource type="Resource" id="Resource_spsxp"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "dive"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
 [sub_resource type="Resource" id="Resource_lib4c"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("110_eavfs"), ExtResource("111_vejrh")]
@@ -658,6 +1206,19 @@ force_new = false
 overwrite_other = false
 cutoff_sfx = false
 
+[sub_resource type="Resource" id="Resource_cootw"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "rollout"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
 [sub_resource type="Resource" id="Resource_rb2f4"]
 script = ExtResource("55_bxnxc")
 particle_scene = ExtResource("55_seugk")
@@ -674,6 +1235,19 @@ repeat_delay = 0.0
 force_new = false
 overwrite_other = true
 cutoff_sfx = false
+
+[sub_resource type="Resource" id="Resource_ae2dx"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "super_rollout"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_44n4o"]
 script = ExtResource("55_bxnxc")
@@ -699,6 +1273,19 @@ force_new = true
 overwrite_other = true
 cutoff_sfx = false
 
+[sub_resource type="Resource" id="Resource_qko5d"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "bonk"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
 [sub_resource type="Resource" id="Resource_ujdp5"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("120_qvxml"), ExtResource("121_se657"), ExtResource("122_r00kr"), ExtResource("123_v30he"), ExtResource("124_02vep"), ExtResource("125_l4e5j"), ExtResource("126_3xy3c")]
@@ -719,6 +1306,19 @@ force_new = false
 overwrite_other = false
 cutoff_sfx = false
 metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
+
+[sub_resource type="Resource" id="Resource_ifrah"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "butt_slide"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_d3rr6"]
 script = ExtResource("55_bxnxc")
@@ -759,9 +1359,8 @@ spin_hitbox = NodePath("Areas/SpinHitbox")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = ExtResource("2_ttikd")
-animation = &"walk"
-frame = 2
-metadata/last_previewed = SubResource("Resource_1i10v")
+animation = &"gp"
+metadata/last_previewed = SubResource("Resource_2siud")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
@@ -853,28 +1452,33 @@ script = ExtResource("135_2utkk")
 script = ExtResource("40_aeui7")
 decel_time = 45
 hitbox_type = "Dive"
+animation_data = SubResource("Resource_u4fjx")
 animation = &"swim_idle"
 
 [node name="Swim" type="Node" parent="StateManager/Submerged"]
 script = ExtResource("41_x14c0")
 hitbox_type = "Dive"
+animation_data = SubResource("Resource_mqps4")
 animation = &"swim"
 
 [node name="SwimHard" type="Node" parent="StateManager/Submerged"]
 script = ExtResource("42_7ru02")
 extra_boost_speed = 0.5
 hitbox_type = "Dive"
+animation_data = SubResource("Resource_q75g6")
 animation = &"swim_hard"
 
 [node name="SwimFlutter" type="Node" parent="StateManager/Submerged"]
 script = ExtResource("46_ukpqj")
 hitbox_type = "Dive"
+animation_data = SubResource("Resource_hnhty")
 animation = &"swim_flutter"
 
 [node name="SwimSpin" type="Node" parent="StateManager/Submerged"]
 script = ExtResource("43_vu16w")
 extra_boost_speed = 2.0
 hitbox_type = "Dive"
+animation_data = SubResource("Resource_ata35")
 animation = &"swim_spin"
 
 [node name="Dry" type="Node" parent="StateManager"]
@@ -905,18 +1509,22 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_8p2oq")])
 script = ExtResource("48_w11sb")
 skid_accel_time = 8.0
 over_accel = 1.0
+animation_data = SubResource("Resource_1vsdu")
 animation = &"skid"
 
 [node name="Push" type="Node" parent="StateManager/Dry/Grounded"]
 script = ExtResource("49_6rakc")
+animation_data = SubResource("Resource_4t2h7")
 animation = &"push"
 
 [node name="DryPush" type="Node" parent="StateManager/Dry/Grounded/Push"]
 script = ExtResource("50_xkq61")
+animation_data = SubResource("Resource_u3pyw")
 animation = &"idle"
 
 [node name="Cheer" type="Node" parent="StateManager/Dry/Grounded"]
 script = ExtResource("57_p7lxf")
+animation_data = SubResource("Resource_ijnwc")
 animation = &"stylish"
 anim_offset = Vector2i(0, 5)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_sitp4")])
@@ -924,6 +1532,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_sitp4")])
 [node name="Crouch" type="Node" parent="StateManager/Dry/Grounded"]
 script = ExtResource("51_38is8")
 hitbox_type = "Small"
+animation_data = SubResource("Resource_8wyc1")
 animation = &"crouch"
 on_enter = false
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ql55k")])
@@ -931,6 +1540,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ql55k")])
 [node name="CrouchSpin" type="Node" parent="StateManager/Dry/Grounded"]
 script = ExtResource("54_rxsl3")
 hitbox_type = "Small"
+animation_data = SubResource("Resource_hx7ue")
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_ttikd")])
 animation = &"breakdance"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_upqlf")])
@@ -939,6 +1549,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_upqlf")])
 script = ExtResource("53_blm5r")
 footstep_frames = Array[int]([1, 3])
 hitbox_type = "Small"
+animation_data = SubResource("Resource_f3xbj")
 animation = &"crouch_walk"
 on_enter = false
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_lybx2")])
@@ -946,6 +1557,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_lybx2")])
 [node name="DiveSlide" type="Node" parent="StateManager/Dry/Grounded"]
 script = ExtResource("60_d4aqs")
 hitbox_type = "Dive"
+animation_data = SubResource("Resource_xenv0")
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_w3gxr")])
 animation = &"dive_slide"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_2mqoj")])
@@ -953,6 +1565,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_2mqoj")])
 [node name="GroundPoundLand" type="Node" parent="StateManager/Dry/Grounded"]
 script = ExtResource("58_qbwc7")
 hitbox_type = "Small"
+animation_data = SubResource("Resource_wdv80")
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_bbld7")])
 animation = &"gp_land"
 anim_offset = Vector2i(0, 9)
@@ -976,6 +1589,7 @@ script = ExtResource("66_2qkrt")
 jump_power = 5.3
 min_jump_percent = 20.0
 jump_number = 1
+animation_data = SubResource("Resource_gacnc")
 animation = &"jump"
 anim_offset = Vector2i(0, 5)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_2esv2"), SubResource("Resource_qmxtc")])
@@ -986,6 +1600,7 @@ jump_power = 6.7
 min_jump_percent = 35.0
 jump_number = 2
 fall_state = &"DoubleFall"
+animation_data = SubResource("Resource_txrxb")
 animation = &"double_jump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_js1ac"), SubResource("Resource_cjrlj")])
 
@@ -993,6 +1608,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_js1ac"), SubR
 script = ExtResource("82_h02h3")
 jump_power = 8.0
 min_jump_percent = 50.0
+animation_data = SubResource("Resource_2siud")
 animation = &"triple_jump"
 anim_offset = Vector2i(0, 5)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_c6n5s"), SubResource("Resource_0beus"), SubResource("Resource_32052")])
@@ -1003,6 +1619,7 @@ jump_power = 6.7
 min_jump_percent = 100.0
 jump_number = 2
 fall_state = &""
+animation_data = SubResource("Resource_pakf6")
 animation = &"spinjump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_h8xfq"), SubResource("Resource_sxalk")])
 
@@ -1012,18 +1629,21 @@ jump_power = 3.6
 push_power = 6.0
 forward_accel_time = 15
 backward_accel_time = 30
+animation_data = SubResource("Resource_ufl2i")
 animation = &"longjump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_5f3i0"), SubResource("Resource_s1bjj")])
 
 [node name="Sideflip" type="Node" parent="StateManager/Dry/Airborne/JumpStates"]
 script = ExtResource("101_4gu6d")
 jump_power = 7.2
+animation_data = SubResource("Resource_m576x")
 animation = &"sideflip"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ts3h6"), SubResource("Resource_foa8p")])
 
 [node name="Backflip" type="Node" parent="StateManager/Dry/Airborne/JumpStates"]
 script = ExtResource("103_ky35g")
 jump_power = 7.5
+animation_data = SubResource("Resource_2h0ab")
 animation = &"backflip"
 anim_offset = Vector2i(0, 21)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_yrs16"), SubResource("Resource_l81lv")])
@@ -1034,6 +1654,7 @@ jump_power = 5.3
 min_jump_percent = 20.0
 jump_number = 1
 fall_state = &""
+animation_data = SubResource("Resource_o485y")
 animation = &"butt_slide_jump"
 anim_offset = Vector2i(0, 3)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_jo8kb")])
@@ -1050,6 +1671,7 @@ script = ExtResource("73_acu3g")
 script = ExtResource("105_6ryk6")
 term_vel = 3.0
 gravity_friction = 4.0
+animation_data = SubResource("Resource_86kn8")
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_2nx7x"), SubResource("Resource_5idsp")])
 animation = &"wallslide"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_w3vn1")])
@@ -1058,12 +1680,14 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_w3vn1")])
 script = ExtResource("90_0xuyq")
 jump_power = 5.3
 push_power = 4.0
+animation_data = SubResource("Resource_mk8bu")
 animation = &"walljump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_pq6ep"), SubResource("Resource_a2hl0")])
 
 [node name="SpinWallbonk" type="Node" parent="StateManager/Dry/Airborne/WalljumpStates"]
 script = ExtResource("109_w8m04")
 wall_kickback_power_y = 1.5
+animation_data = SubResource("Resource_wc0bq")
 animation = &"spin_attack"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_bloag"), SubResource("Resource_2nfvq")])
 
@@ -1072,16 +1696,19 @@ script = ExtResource("73_acu3g")
 
 [node name="Fall" type="Node" parent="StateManager/Dry/Airborne/FallStates"]
 script = ExtResource("113_j3k6p")
+animation_data = SubResource("Resource_ngcav")
 animation = &"jump_fall"
 anim_offset = Vector2i(0, 5)
 
 [node name="Freefall" type="Node" parent="StateManager/Dry/Airborne/FallStates"]
 script = ExtResource("114_mgnux")
+animation_data = SubResource("Resource_wihps")
 animation = &"freefall"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_5kqsg")])
 
 [node name="DoubleFall" type="Node" parent="StateManager/Dry/Airborne/FallStates"]
 script = ExtResource("113_j3k6p")
+animation_data = SubResource("Resource_saqqr")
 animation = &"double_fall"
 
 [node name="GroundPoundStates" type="Node" parent="StateManager/Dry/Airborne"]
@@ -1090,17 +1717,20 @@ script = ExtResource("73_acu3g")
 [node name="GroundPound" type="Node" parent="StateManager/Dry/Airborne/GroundPoundStates"]
 script = ExtResource("107_us6gm")
 linger_time = 5.0
+animation_data = SubResource("Resource_bsr1j")
 animation = &"gp"
 anim_offset = Vector2i(0, 9)
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_7r27p"), SubResource("Resource_rgxnc")])
 
 [node name="GroundPoundFall" type="Node" parent="StateManager/Dry/Airborne/GroundPoundStates"]
 script = ExtResource("111_fyebu")
+animation_data = SubResource("Resource_qbnhj")
 animation = &"gp_fall"
 anim_offset = Vector2i(0, 9)
 
 [node name="GroundPoundCancel" type="Node" parent="StateManager/Dry/Airborne/GroundPoundStates"]
 script = ExtResource("112_02mke")
+animation_data = SubResource("Resource_efjxb")
 animation = &"jump_fall"
 
 [node name="GroundPoundJump" type="Node" parent="StateManager/Dry/Airborne/GroundPoundStates"]
@@ -1108,6 +1738,7 @@ script = ExtResource("105_g4v7o")
 jump_power = 6.7
 min_jump_percent = 35.0
 jump_number = 2
+animation_data = SubResource("Resource_np2tc")
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_kvfvp")])
 animation = &"gp_jump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_8711x"), SubResource("Resource_nl575")])
@@ -1115,18 +1746,21 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_8711x"), SubR
 [node name="WallBoost" type="Node" parent="StateManager/Dry/Airborne/GroundPoundStates"]
 script = ExtResource("113_s1bjj")
 jump_power = 6.9
+animation_data = SubResource("Resource_xh3w7")
 animation = &"jump"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_nl575"), SubResource("Resource_a2hl0")])
 
 [node name="Twirl" type="Node" parent="StateManager/Dry/Airborne"]
 script = ExtResource("124_swcs3")
 spin_power = 0.0
+animation_data = SubResource("Resource_cpqj3")
 animation = &"spin_attack"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_2y8iw")])
 
 [node name="Spin" type="Node" parent="StateManager/Dry"]
 script = ExtResource("135_qf53u")
 spin_power = 3.0
+animation_data = SubResource("Resource_5iloq")
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_totbj")])
 animation = &"spin_attack"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_vehmo"), SubResource("Resource_0hpnu")])
@@ -1140,6 +1774,7 @@ x_power = 3.2
 bellyflop_power = 2.8
 max_accel = 0.4
 hitbox_type = "Dive"
+animation_data = SubResource("Resource_spsxp")
 animation = &"dive"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_lib4c"), SubResource("Resource_6roi5")])
 
@@ -1151,6 +1786,7 @@ jump_power = 3.0
 min_jump_percent = 100.0
 jump_number = 1
 fall_state = &""
+animation_data = SubResource("Resource_cootw")
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_rb2f4")])
 animation = &"rollout"
 anim_offset = Vector2i(0, 6)
@@ -1165,6 +1801,7 @@ jump_power = 3.2
 min_jump_percent = 100.0
 jump_number = 1
 fall_state = &""
+animation_data = SubResource("Resource_ae2dx")
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_44n4o"), SubResource("Resource_c5q6a")])
 animation = &"super_rollout"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_m87ta")])
@@ -1172,6 +1809,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_m87ta")])
 [node name="Bonk" type="Node" parent="StateManager/Dry/DiveStates"]
 script = ExtResource("131_f03w0")
 rotation_time = 45.0
+animation_data = SubResource("Resource_qko5d")
 animation = &"bonk"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_ujdp5"), SubResource("Resource_pxspy")])
 
@@ -1185,6 +1823,7 @@ animation_forward = &"butt_slide_forwards"
 animation_backward = &"butt_slide_backwards"
 animation_airborne = &"butt_slide_jump"
 hitbox_type = "Small"
+animation_data = SubResource("Resource_ifrah")
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_d3rr6")])
 animation = &"butt_slide"
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_mc84f")])
