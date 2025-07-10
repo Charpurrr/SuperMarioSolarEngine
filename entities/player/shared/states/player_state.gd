@@ -26,12 +26,12 @@ var movement: PMovement = null
 func trigger_enter(handover):
 	if is_instance_valid(animation_data):
 		_set_animation()
-		actor.doll.frame_changed.connect(_set_offset)
+		actor.doll.frame_changed.connect(_set_frame_specs)
 
 		# We have to call this manually at the start of a state because
 		# the animation might change. Otherwise we'll have the wrong offsets
 		# for for the first frame of the new animation.
-		_set_offset()
+		_set_frame_specs()
 
 	_set_hitbox()
 
@@ -44,8 +44,8 @@ func trigger_enter(handover):
 func trigger_exit():
 	super()
 
-	if is_instance_valid(animation_data) and actor.doll.frame_changed.is_connected(_set_offset):
-		actor.doll.frame_changed.disconnect(_set_offset)
+	if is_instance_valid(animation_data) and actor.doll.frame_changed.is_connected(_set_frame_specs):
+		actor.doll.frame_changed.disconnect(_set_frame_specs)
 
 	for layer in sfx_layers:
 		if not layer.cutoff_sfx:
@@ -99,5 +99,8 @@ func _set_animation():
 		actor.doll.play(animation_data.animation)
 
 
-func _set_offset():
+## Sets the appropriate frame specifications. (Offsets, FLUDD animation, FLUDD offset)
+func _set_frame_specs():
 	actor.doll.offset = animation_data.frame_offsets.get(actor.doll.frame, Vector2i.ZERO)
+	actor.fludd_b.offset = animation_data.frame_fludd_offsets.get(actor.doll.frame, Vector2i.ZERO)
+	actor.fludd_f.offset = animation_data.frame_fludd_offsets.get(actor.doll.frame, Vector2i.ZERO)

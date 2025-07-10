@@ -35,8 +35,23 @@ var frame_offset := Vector2i.ZERO:
 	get():
 		return frame_offsets.get(frame, Vector2i.ZERO)
 ## Which FLUDD frame this state frame will use.
-var fludd_animation: String = "default"
-var fludd_offset := Vector2i.ZERO
+var fludd_animation: String = "rot_y000":
+	set(val):
+		fludd_animation = val
+
+		if preview_fludd and is_instance_valid(fludd_f) and is_instance_valid(fludd_b):
+			fludd_f.animation = val
+			fludd_b.animation = val
+var fludd_offset := Vector2i.ZERO:
+	set(val):
+		fludd_offset = val
+		frame_fludd_offsets.set(frame, val)
+
+		if preview_fludd and is_instance_valid(fludd_b) and is_instance_valid(fludd_f):
+			fludd_b.offset = val
+			fludd_f.offset = val
+	get():
+		return frame_fludd_offsets.get(frame, Vector2i.ZERO)
 ## Toggle previewing your frame and it's offsets.
 var preview: bool = false:
 	set(val):
@@ -50,11 +65,12 @@ var preview: bool = false:
 			return
 
 		if not is_instance_valid(doll):
-			printerr("Couldn't find the AnimatedSprite2D.")
+			printerr("Couldn't find the doll AnimatedSprite2D.")
 			return
 
 		if val == false:
 			doll.offset = Vector2i.ZERO
+			preview_fludd = false
 		else:
 			doll.offset = frame_offset
 
@@ -75,11 +91,39 @@ var preview: bool = false:
 ## Used to avoid infinite recursion when disabling other preview toggles.
 var preview_private: bool = false
 ## Toggle previewing your frame's FLUDD variant and it's offsets.
-var preview_fludd: bool = false
+var preview_fludd: bool = false:
+	set(val):
+		preview_fludd = val
+
+		if not is_instance_valid(fludd_f) and not is_instance_valid(fludd_b):
+			printerr(
+			"Missing FLUDD sprite! Make sure you have 2 seperate sprites for a front and back layer of FLUDD."
+			)
+			return
+
+		fludd_b.visible = val
+		fludd_f.visible = val
+
+		if val == false:
+			fludd_b.offset = Vector2i.ZERO
+			fludd_f.offset = Vector2i.ZERO
+		else:
+			fludd_b.offset = fludd_offset
+			fludd_f.offset = fludd_offset
+
+		fludd_b.animation = animation
+		fludd_f.animation = animation
+
+		notify_property_list_changed()
 
 @export_storage var doll: AnimatedSprite2D
 ## Populated in the initialiser only for editor purposes. Not used in-game.
 var animation_list: PackedStringArray
+
+@export_storage var fludd_f: AnimatedSprite2D
+@export_storage var fludd_b: AnimatedSprite2D
+## Populated in the initialiser only for editor purposes. Not used in-game.
+var fludd_animation_list: PackedStringArray
 
 ## List of offsets connected to frames.
 ## Used for referencing these values when you need them in regular code.
@@ -89,7 +133,7 @@ var animation_list: PackedStringArray
 @export_storage var frame_fludd: Dictionary[int, String]
 ## List of FLUDD offsets connected to frames.
 ## Used for referencing these values when you need them in regular code.
-@export_storage var frame_fludd_offset: Dictionary[int, Vector2i]
+@export_storage var frame_fludd_offsets: Dictionary[int, Vector2i]
 
 
 func _init() -> void:
@@ -102,8 +146,20 @@ func setup() -> void:
 	if not Engine.is_editor_hint():
 		return
 
-	doll = get_local_scene().doll
+	var actor: Player = get_local_scene()
+
+	doll = actor.doll
+	fludd_f = actor.fludd_f
+	fludd_b = actor.fludd_b
+
 	animation_list = doll.sprite_frames.get_animation_names()
+
+	if fludd_f.sprite_frames.get_animation_names() != fludd_b.sprite_frames.get_animation_names():
+		printerr(
+		"FLUDD animations don't match! Check the sprite frame resource in both AnimatedSprite2Ds."
+		)
+	else:
+		fludd_animation_list = fludd_f.sprite_frames.get_animation_names()
 
 
 func _get_property_list() -> Array[Dictionary]:
@@ -154,7 +210,7 @@ func _get_property_list() -> Array[Dictionary]:
 				"name": "fludd_animation",
 				"type": TYPE_STRING,
 				"hint": PROPERTY_HINT_ENUM,
-				"hint_string": "default",
+				"hint_string": "rot_y000",
 				"usage": PROPERTY_USAGE_DEFAULT,
 			},
 			{

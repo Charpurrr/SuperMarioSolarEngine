@@ -3,6 +3,8 @@ extends CharacterBody2D
 ## Playable 2D character.
 
 @export var doll: AnimatedSprite2D
+@export var fludd_f: AnimatedSprite2D
+@export var fludd_b: AnimatedSprite2D
 
 @export var state_manager: StateManager
 @export var movement: PMovement
