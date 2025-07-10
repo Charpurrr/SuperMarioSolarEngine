@@ -1,4 +1,4 @@
-[gd_scene load_steps=200 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=201 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" uid="uid://bg4t154sge7br" path="res://entities/player/shared/player.gd" id="1_87j6i"]
 [ext_resource type="SpriteFrames" uid="uid://bqn6b0xmrvxjc" path="res://entities/player/mario/anime/mario_anime.res" id="2_ttikd"]
@@ -135,6 +135,19 @@
 [ext_resource type="AudioStream" uid="uid://cutedbxm5o46d" path="res://entities/player/mario/voice_sunshine/woah3_ledge.wav" id="153_5c2b3"]
 [ext_resource type="PackedScene" uid="uid://d1wf1b4d4xfvf" path="res://props/particles/sparkle.tscn" id="158_1s3ss"]
 
+[sub_resource type="Resource" id="Resource_1i10v"]
+script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
+animation = "walk"
+frame = 0
+preview = null
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u4b58"]
 size = Vector2(16, 32)
 
@@ -172,9 +185,20 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_e1ut2"]
 script = ExtResource("23_bbld7")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0),
+1: Vector2i(0, 0),
+2: Vector2i(0, 0),
+3: Vector2i(0, 0),
+4: Vector2i(0, 0),
+5: Vector2i(0, 0),
+6: Vector2i(0, 0)
+})
+frame_fludd = Dictionary[int, String]({})
+frame_fludd_offset = Dictionary[int, Vector2i]({})
 animation = "idle"
 frame = 0
-preview = false
+preview = null
 frame_offset = Vector2i(0, 0)
 fludd_animation = "default"
 fludd_offset = Vector2i(0, 0)
@@ -735,7 +759,9 @@ spin_hitbox = NodePath("Areas/SpinHitbox")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = ExtResource("2_ttikd")
-animation = &"idle"
+animation = &"walk"
+frame = 2
+metadata/last_previewed = SubResource("Resource_1i10v")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
@@ -865,14 +891,13 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_r5xry")])
 script = ExtResource("44_87kyt")
 animation_look_up = &"look_up"
 animation_data = SubResource("Resource_e1ut2")
-animation = &"idle"
 
 [node name="Walk" type="Node" parent="StateManager/Dry/Grounded"]
 script = ExtResource("45_ka4vl")
 footstep_frames = Array[int]([0, 4])
 animation_run = &"run"
+animation_data = SubResource("Resource_1i10v")
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_cej6f")])
-animation = &"walk"
 on_enter = false
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_8p2oq")])
 

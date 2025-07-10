@@ -45,7 +45,7 @@ func _set_appropriate_anim():
 
 		actor.vel.x = move_toward(actor.vel.x, movement.max_speed * movement.facing_direction, 0.1)
 	else:
-		actor.doll.play(animation)
+		actor.doll.play(animation_data.animation)
 		actor.doll.set_frame_and_progress(current_frame, current_progress)
 
 

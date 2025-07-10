@@ -28,12 +28,42 @@ var movement: PMovement = null
 
 
 func trigger_enter(handover):
-	_set_animation()
+	if is_instance_valid(animation_data):
+		_set_animation()
+		actor.doll.frame_changed.connect(_set_offset)
+
 	_set_hitbox()
-	play_sounds()
+
 	emit_particles()
+	play_sounds()
 
 	super(handover)
+
+
+func trigger_exit():
+	super()
+
+	if is_instance_valid(animation_data) and actor.doll.frame_changed.is_connected(_set_offset):
+		actor.doll.frame_changed.disconnect(_set_offset)
+
+	for layer in sfx_layers:
+		if not layer.cutoff_sfx:
+			continue
+
+		for child in get_children():
+			if child is AudioStreamPlayer and child.stream in layer.sfx_list:
+				child.queue_free()
+
+
+func play_sounds():
+	if on_enter and not sfx_layers.is_empty():
+		for sfx_list in sfx_layers:
+			sfx_list.play_sfx_at(self)
+
+
+func emit_particles():
+	for effect in particles:
+		effect.emit_at(actor)
 
 
 func _set_hitbox():
@@ -64,30 +94,9 @@ func _snap_dive_to_ground(was_diving: bool):
 
 
 func _set_animation():
-	if not animation.is_empty():
-		actor.doll.play(animation)
-
-	actor.doll.offset = anim_offset
+	if not animation_data.animation.is_empty():
+		actor.doll.play(animation_data.animation)
 
 
-func play_sounds():
-	if on_enter and not sfx_layers.is_empty():
-		for sfx_list in sfx_layers:
-			sfx_list.play_sfx_at(self)
-
-
-func emit_particles():
-	for effect in particles:
-		effect.emit_at(actor)
-
-
-func trigger_exit():
-	super()
-
-	for layer in sfx_layers:
-		if not layer.cutoff_sfx:
-			continue
-
-		for child in get_children():
-			if child is AudioStreamPlayer and child.stream in layer.sfx_list:
-				child.queue_free()
+func _set_offset():
+	actor.doll.offset = animation_data.frame_offsets.get(actor.doll.frame, Vector2i.ZERO)
