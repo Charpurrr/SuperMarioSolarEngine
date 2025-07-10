@@ -101,11 +101,9 @@ func setup() -> void:
 	# in the editor. It's no longer relevant when we're running the game.
 	if not Engine.is_editor_hint():
 		return
-	
+
 	doll = get_local_scene().doll
-	
 	animation_list = doll.sprite_frames.get_animation_names()
-	
 
 
 func _get_property_list() -> Array[Dictionary]:
