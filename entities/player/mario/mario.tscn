@@ -182,7 +182,9 @@ size = Vector2(44, 26)
 
 [sub_resource type="Resource" id="Resource_u4fjx"]
 script = ExtResource("23_bbld7")
-frame_offsets = Dictionary[int, Vector2i]({})
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
 frame_fludd = Dictionary[int, String]({})
 frame_fludd_offset = Dictionary[int, Vector2i]({})
 animation = "swim_idle"
@@ -195,7 +197,9 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_mqps4"]
 script = ExtResource("23_bbld7")
-frame_offsets = Dictionary[int, Vector2i]({})
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
 frame_fludd = Dictionary[int, String]({})
 frame_fludd_offset = Dictionary[int, Vector2i]({})
 animation = "swim"
@@ -208,7 +212,9 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_q75g6"]
 script = ExtResource("23_bbld7")
-frame_offsets = Dictionary[int, Vector2i]({})
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
 frame_fludd = Dictionary[int, String]({})
 frame_fludd_offset = Dictionary[int, Vector2i]({})
 animation = "swim_hard"
@@ -221,7 +227,9 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_hnhty"]
 script = ExtResource("23_bbld7")
-frame_offsets = Dictionary[int, Vector2i]({})
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
 frame_fludd = Dictionary[int, String]({})
 frame_fludd_offset = Dictionary[int, Vector2i]({})
 animation = "swim_flutter"
@@ -234,7 +242,9 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_ata35"]
 script = ExtResource("23_bbld7")
-frame_offsets = Dictionary[int, Vector2i]({})
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
 frame_fludd = Dictionary[int, String]({})
 frame_fludd_offset = Dictionary[int, Vector2i]({})
 animation = "swim_spin"
@@ -838,7 +848,9 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_86kn8"]
 script = ExtResource("23_bbld7")
-frame_offsets = Dictionary[int, Vector2i]({})
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
 frame_fludd = Dictionary[int, String]({})
 frame_fludd_offset = Dictionary[int, Vector2i]({})
 animation = "wallslide"
@@ -875,7 +887,9 @@ cutoff_sfx = true
 
 [sub_resource type="Resource" id="Resource_mk8bu"]
 script = ExtResource("23_bbld7")
-frame_offsets = Dictionary[int, Vector2i]({})
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
 frame_fludd = Dictionary[int, String]({})
 frame_fludd_offset = Dictionary[int, Vector2i]({})
 animation = "walljump"
@@ -908,7 +922,9 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_wc0bq"]
 script = ExtResource("23_bbld7")
-frame_offsets = Dictionary[int, Vector2i]({})
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
 frame_fludd = Dictionary[int, String]({})
 frame_fludd_offset = Dictionary[int, Vector2i]({})
 animation = "spin_attack"
@@ -956,7 +972,9 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_wihps"]
 script = ExtResource("23_bbld7")
-frame_offsets = Dictionary[int, Vector2i]({})
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
 frame_fludd = Dictionary[int, String]({})
 frame_fludd_offset = Dictionary[int, Vector2i]({})
 animation = "freefall"
@@ -979,7 +997,9 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_saqqr"]
 script = ExtResource("23_bbld7")
-frame_offsets = Dictionary[int, Vector2i]({})
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
 frame_fludd = Dictionary[int, String]({})
 frame_fludd_offset = Dictionary[int, Vector2i]({})
 animation = "double_fall"
@@ -1051,7 +1071,9 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_efjxb"]
 script = ExtResource("23_bbld7")
-frame_offsets = Dictionary[int, Vector2i]({})
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
 frame_fludd = Dictionary[int, String]({})
 frame_fludd_offset = Dictionary[int, Vector2i]({})
 animation = "jump_fall"
@@ -1064,7 +1086,9 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_np2tc"]
 script = ExtResource("23_bbld7")
-frame_offsets = Dictionary[int, Vector2i]({})
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
 frame_fludd = Dictionary[int, String]({})
 frame_fludd_offset = Dictionary[int, Vector2i]({})
 animation = "gp_jump"
@@ -1097,7 +1121,9 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_xh3w7"]
 script = ExtResource("23_bbld7")
-frame_offsets = Dictionary[int, Vector2i]({})
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
 frame_fludd = Dictionary[int, String]({})
 frame_fludd_offset = Dictionary[int, Vector2i]({})
 animation = "jump"
@@ -1110,7 +1136,9 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_cpqj3"]
 script = ExtResource("23_bbld7")
-frame_offsets = Dictionary[int, Vector2i]({})
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
 frame_fludd = Dictionary[int, String]({})
 frame_fludd_offset = Dictionary[int, Vector2i]({})
 animation = "spin_attack"
@@ -1133,7 +1161,9 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_5iloq"]
 script = ExtResource("23_bbld7")
-frame_offsets = Dictionary[int, Vector2i]({})
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
 frame_fludd = Dictionary[int, String]({})
 frame_fludd_offset = Dictionary[int, Vector2i]({})
 animation = "spin_attack"
@@ -1175,7 +1205,9 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_spsxp"]
 script = ExtResource("23_bbld7")
-frame_offsets = Dictionary[int, Vector2i]({})
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
 frame_fludd = Dictionary[int, String]({})
 frame_fludd_offset = Dictionary[int, Vector2i]({})
 animation = "dive"
@@ -1208,7 +1240,9 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_cootw"]
 script = ExtResource("23_bbld7")
-frame_offsets = Dictionary[int, Vector2i]({})
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
 frame_fludd = Dictionary[int, String]({})
 frame_fludd_offset = Dictionary[int, Vector2i]({})
 animation = "rollout"
@@ -1238,7 +1272,9 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_ae2dx"]
 script = ExtResource("23_bbld7")
-frame_offsets = Dictionary[int, Vector2i]({})
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
 frame_fludd = Dictionary[int, String]({})
 frame_fludd_offset = Dictionary[int, Vector2i]({})
 animation = "super_rollout"
@@ -1275,7 +1311,9 @@ cutoff_sfx = false
 
 [sub_resource type="Resource" id="Resource_qko5d"]
 script = ExtResource("23_bbld7")
-frame_offsets = Dictionary[int, Vector2i]({})
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
 frame_fludd = Dictionary[int, String]({})
 frame_fludd_offset = Dictionary[int, Vector2i]({})
 animation = "bonk"
@@ -1309,7 +1347,9 @@ metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
 
 [sub_resource type="Resource" id="Resource_ifrah"]
 script = ExtResource("23_bbld7")
-frame_offsets = Dictionary[int, Vector2i]({})
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
 frame_fludd = Dictionary[int, String]({})
 frame_fludd_offset = Dictionary[int, Vector2i]({})
 animation = "butt_slide"
