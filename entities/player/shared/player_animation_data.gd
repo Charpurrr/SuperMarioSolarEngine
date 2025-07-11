@@ -13,11 +13,22 @@ var animation: String = "":
 ## Which frame of the animation is being edited.
 var frame: int = 0:
 	set(val):
-		if not animation.is_empty() and is_instance_valid(doll):
-			frame = val
-			frame = wrapi(val, 0, doll.sprite_frames.get_frame_count(animation))
+		if animation.is_empty():
+			printerr("No animation selected.")
+			return
+		if not is_instance_valid(doll):
+			printerr("Couldn't find the doll AnimatedSprite2D.")
+			return
+		if not is_instance_valid(doll.sprite_frames):
+			printerr("Couldn't find the doll's sprite frames resource.")
+			return
+		if not doll.sprite_frames.has_animation(animation):
+			printerr("Couldn't find animation '%s' in the doll's sprite frames resource." % animation)
+			return
 
-			notify_property_list_changed()
+		frame = val
+		frame = wrapi(val, 0, doll.sprite_frames.get_frame_count(animation))
+		notify_property_list_changed()
 
 		if preview:
 			doll.animation = animation
@@ -141,7 +152,7 @@ func _init() -> void:
 
 
 func setup() -> void:
-	# We only need to populate the animation list while editing the data resource
+	# We only need to have these references while editing the data resource
 	# in the editor. It's no longer relevant when we're running the game.
 	if not Engine.is_editor_hint():
 		return
