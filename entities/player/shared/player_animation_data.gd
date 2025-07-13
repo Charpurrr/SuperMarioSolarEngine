@@ -159,6 +159,9 @@ func setup() -> void:
 
 	var actor: Player = get_local_scene()
 
+	#if not actor is Player:
+		#return
+
 	doll = actor.doll
 	fludd_f = actor.fludd_f
 	fludd_b = actor.fludd_b

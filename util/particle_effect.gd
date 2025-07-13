@@ -74,8 +74,8 @@ func _free_particle_group(group_node: Node, particle_amt: int, counter_meta: Str
 
 
 func _preview_pressed():
-	if not resource_local_to_scene:
-		printerr("Cannot preview a particle if local to scene is disabled. Check the variable under Resource -> resource_local_to_scene")
-		return
+	#if not resource_local_to_scene:
+		#printerr("Cannot preview a particle if local to scene is disabled. Check the variable under Resource -> resource_local_to_scene")
+		#return
 
 	emit_at(get_local_scene(), particle_offset)

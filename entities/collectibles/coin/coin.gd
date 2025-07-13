@@ -1,8 +1,7 @@
 @tool
 class_name Coin
-extends AnimatedSprite2D
+extends Collectible
 ## Base class for collectible coins.
-## Specific coin types inherit from this script.
 
 
 enum COIN_TYPE{
@@ -34,7 +33,7 @@ func _ready() -> void:
 	#GameState.sync_animation(self)
 
 
-func _on_area_2d_body_entered(_body: Node2D) -> void:
+func _on_collect():
 	get_tree().emit_signal(&"coin_collected", type)
 
 	var parent: Node = get_parent()

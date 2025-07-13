@@ -1,6 +1,7 @@
 [gd_scene load_steps=28 format=3 uid="uid://b14pbye1baqly"]
 
 [ext_resource type="Texture2D" uid="uid://srsui7wb1t4c" path="res://entities/collectibles/coin/coins.png" id="1_1g0cc"]
+[ext_resource type="PackedScene" uid="uid://bkmrh1luv0sl0" path="res://entities/collectibles/collectible.tscn" id="1_usl5l"]
 [ext_resource type="Script" uid="uid://cxrtp0ruljk38" path="res://entities/collectibles/coin/coin.gd" id="2_fs6bx"]
 [ext_resource type="AudioStream" uid="uid://che7x7rlhvhxb" path="res://entities/collectibles/coin/sfx/yellow.wav" id="3_we2q1"]
 [ext_resource type="AudioStream" uid="uid://drp8qcjuqkuof" path="res://entities/collectibles/coin/sfx/blue.wav" id="4_5q0l6"]
@@ -59,7 +60,7 @@ region = Rect2(32, 16, 16, 16)
 atlas = ExtResource("1_1g0cc")
 region = Rect2(48, 16, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_2erfp"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_b3an0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -113,7 +114,7 @@ animations = [{
 "speed": 9.0
 }]
 
-[sub_resource type="Resource" id="Resource_81aly"]
+[sub_resource type="Resource" id="Resource_oxqq6"]
 script = ExtResource("6_scjr3")
 particle_scene = ExtResource("7_pdd5q")
 particle_offset = Vector2(0, 0)
@@ -137,14 +138,12 @@ particle_scale = Vector2(1, 1)
 loop_delay = 0
 metadata/_custom_type_script = "uid://dd8oyhd4nllix"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5j7tb"]
-size = Vector2(16, 16)
-
-[node name="Coin" type="AnimatedSprite2D"]
-sprite_frames = SubResource("SpriteFrames_2erfp")
+[node name="Coin" instance=ExtResource("1_usl5l")]
+sprite_frames = SubResource("SpriteFrames_b3an0")
 animation = &"0"
-frame_progress = 0.12321
+frame_progress = 0.0599371
 script = ExtResource("2_fs6bx")
+type = 0
 respective_sounds = Dictionary[int, AudioStream]({
 0: ExtResource("3_we2q1"),
 1: ExtResource("4_5q0l6"),
@@ -152,16 +151,7 @@ respective_sounds = Dictionary[int, AudioStream]({
 })
 last_red_sound = ExtResource("6_oxqq6")
 respective_particles = Dictionary[int, ExtResource("6_scjr3")]({
-0: SubResource("Resource_81aly"),
+0: SubResource("Resource_oxqq6"),
 1: SubResource("Resource_fvje4"),
 2: SubResource("Resource_lj6mr")
 })
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 32
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_5j7tb")
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
