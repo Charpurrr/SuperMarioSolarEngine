@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=4 uid="uid://dhwd6b68nr2lu"]
+[gd_scene load_steps=13 format=4 uid="uid://dhwd6b68nr2lu"]
 
 [ext_resource type="Script" uid="uid://whyqyw8guuki" path="res://stages/level.gd" id="1_ybrfr"]
 [ext_resource type="PackedScene" uid="uid://bkgan6eta4xol" path="res://props/level_environments/graph/graph.tscn" id="2_hivsu"]
-[ext_resource type="Script" uid="uid://bs0s3s8rpqvsw" path="res://stages/rec_room/rec_control.gd" id="3_wnvir"]
 [ext_resource type="Texture2D" uid="uid://dy03xdavrr72n" path="res://props/terrain/graph/background.png" id="4_qhxrs"]
 [ext_resource type="Texture2D" uid="uid://csfiw5bvn21ve" path="res://props/terrain/graph/ground_edge.png" id="5_cu5uw"]
 [ext_resource type="Texture2D" uid="uid://coyme4cebdclp" path="res://props/terrain/graph/ground_fill.png" id="6_mqqpi"]
@@ -69,16 +68,13 @@ editor_draw_limits = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("actor", "camera")]
+[node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("3_wnvir")
-actor = NodePath("../../Mario")
-camera = NodePath("../../Camera2D")
 
 [node name="Label" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 0

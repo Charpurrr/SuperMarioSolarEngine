@@ -26,7 +26,7 @@ func quit() -> void:
 	MusicManager.stop()
 	GameState.emit_signal(&"paused")
 	ui.world_machine.deload_level()
-	get_tree().change_scene_to_file("res://ui/title_screen/title_screen.tscn")
+	get_tree().change_scene_to_file("uid://cthxoel5sus6v")
 
 
 func reset_settings() -> void:

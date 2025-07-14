@@ -10,7 +10,6 @@ var value: Variant = false
 
 func _ready():
 	super()
-
 	value = _get_default_value()
 
 	LocalSettings.connect(&"setting_changed", update_value)
