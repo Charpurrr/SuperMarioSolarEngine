@@ -2228,154 +2228,154 @@ position = Vector2(-129, -625)
 
 [node name="Coin" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(816, -56)
-frame_progress = 0.228679
+frame_progress = 0.0813834
 
 [node name="Coin4" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(840, -56)
-frame_progress = 0.228679
+frame_progress = 0.0813834
 
 [node name="Coin5" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(864, -56)
-frame_progress = 0.228679
+frame_progress = 0.0813834
 
 [node name="Coin6" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(888, -56)
-frame_progress = 0.228679
+frame_progress = 0.0813834
 
 [node name="Coin7" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(912, -56)
-frame_progress = 0.228679
+frame_progress = 0.0813834
 
 [node name="Coin8" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(816, -80)
-frame_progress = 0.228679
+frame_progress = 0.0813834
 
 [node name="Coin9" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(840, -80)
-frame_progress = 0.228679
+frame_progress = 0.0813834
 
 [node name="Coin10" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(864, -80)
-frame_progress = 0.228679
+frame_progress = 0.0813834
 
 [node name="Coin11" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(888, -80)
-frame_progress = 0.228679
+frame_progress = 0.0813834
 
 [node name="Coin12" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(912, -80)
-frame_progress = 0.228679
+frame_progress = 0.0813834
 
 [node name="Coin13" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(1352, -368)
 animation = &"1"
-frame_progress = 0.242914
+frame_progress = 0.0956182
 type = 1
 
 [node name="Coin14" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(1376, -368)
 animation = &"1"
-frame_progress = 0.242914
+frame_progress = 0.0956182
 type = 1
 
 [node name="Coin15" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(1400, -368)
 animation = &"1"
-frame_progress = 0.242914
+frame_progress = 0.0956182
 type = 1
 
 [node name="Coin16" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(1424, -368)
 animation = &"1"
-frame_progress = 0.242914
+frame_progress = 0.0956182
 type = 1
 
 [node name="Coin17" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(1448, -368)
 animation = &"1"
-frame_progress = 0.242914
+frame_progress = 0.0956182
 type = 1
 
 [node name="Coin18" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(1352, -392)
 animation = &"1"
-frame_progress = 0.242914
+frame_progress = 0.0956182
 type = 1
 
 [node name="Coin19" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(1376, -392)
 animation = &"1"
-frame_progress = 0.242914
+frame_progress = 0.0956182
 type = 1
 
 [node name="Coin20" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(1400, -392)
 animation = &"1"
-frame_progress = 0.242914
+frame_progress = 0.0956182
 type = 1
 
 [node name="Coin21" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(1424, -392)
 animation = &"1"
-frame_progress = 0.242914
+frame_progress = 0.0956182
 type = 1
 
 [node name="Coin22" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(1448, -392)
 animation = &"1"
-frame_progress = 0.242914
+frame_progress = 0.0956182
 type = 1
 
 [node name="Coin103" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(80, -48)
-frame_progress = 0.228679
+frame_progress = 0.0813834
 
 [node name="Coin3" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(1416, -600)
 animation = &"2"
-frame_progress = 0.4887
+frame_progress = 0.341406
 type = 2
 
 [node name="Coin23" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(1440, -600)
 animation = &"2"
-frame_progress = 0.4887
+frame_progress = 0.341406
 type = 2
 
 [node name="Coin24" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(1464, -600)
 animation = &"2"
-frame_progress = 0.4887
+frame_progress = 0.341406
 type = 2
 
 [node name="Coin25" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(1488, -600)
 animation = &"2"
-frame_progress = 0.4887
+frame_progress = 0.341406
 type = 2
 
 [node name="Coin26" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(1512, -600)
 animation = &"2"
-frame_progress = 0.4887
+frame_progress = 0.341406
 type = 2
 
 [node name="Coin27" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(1536, -600)
 animation = &"2"
-frame_progress = 0.4887
+frame_progress = 0.341406
 type = 2
 
 [node name="Coin28" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(1560, -600)
 animation = &"2"
-frame_progress = 0.4887
+frame_progress = 0.341406
 type = 2
 
 [node name="Coin29" parent="." instance=ExtResource("30_ihghk")]
 position = Vector2(1584, -600)
 animation = &"2"
-frame_progress = 0.4887
+frame_progress = 0.341406
 type = 2
 
 [node name="Shine" parent="." instance=ExtResource("31_nma4k")]

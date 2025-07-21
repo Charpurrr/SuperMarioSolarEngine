@@ -9,7 +9,7 @@ extends NinePatchRect
 @export var shape: CollisionShape2D
 
 ## Delay between animation steps in frames.
-@export var animation_delay: float
+@export var animation_delay: int
 @export var frame_count: int
 
 var timer: float = 0

@@ -356,7 +356,7 @@ axis_stretch_vertical = 1
 script = ExtResource("9_qeiqb")
 selection_area = NodePath("Area2D")
 shape = NodePath("Area2D/CollisionShape2D")
-animation_delay = 2.0
+animation_delay = 2
 frame_count = 5
 
 [node name="Area2D" type="Area2D" parent="SelectionBox"]

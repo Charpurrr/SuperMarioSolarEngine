@@ -15,3 +15,4 @@ func _process(_delta: float) -> void:
 
 func _on_collect():
 	super()
+	#player.state_manager.switch_substate(&"Fall")

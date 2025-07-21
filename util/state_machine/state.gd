@@ -91,7 +91,7 @@ func reset_state(handover: Variant = null):
 
 
 ## Activate the given state, ditching the current state.
-func switch_substate(new_state: State, handover: Variant):
+func switch_substate(new_state: State, handover: Variant = null):
 	if new_state == live_substate:
 		return
 	if new_state == null:
