@@ -4,7 +4,7 @@ extends Resource
 ## A class that contains animation data for a [PlayerState].
 
 ## Which animation this state will use from the doll's animations.
-var animation: String = "":
+var animation: String:
 	set(val):
 		animation = val
 
@@ -106,7 +106,7 @@ var preview_fludd: bool = false:
 	set(val):
 		preview_fludd = val
 
-		if not is_instance_valid(fludd_f) and not is_instance_valid(fludd_b):
+		if not is_instance_valid(fludd_f) or not is_instance_valid(fludd_b):
 			printerr(
 			"Missing FLUDD sprite! Make sure you have 2 seperate sprites for a front and back layer of FLUDD."
 			)
@@ -122,8 +122,8 @@ var preview_fludd: bool = false:
 			fludd_b.offset = fludd_offset
 			fludd_f.offset = fludd_offset
 
-		fludd_b.animation = animation
-		fludd_f.animation = animation
+		fludd_b.animation = fludd_animation
+		fludd_f.animation = fludd_animation
 
 		notify_property_list_changed()
 
@@ -224,7 +224,7 @@ func _get_property_list() -> Array[Dictionary]:
 				"name": "fludd_animation",
 				"type": TYPE_STRING,
 				"hint": PROPERTY_HINT_ENUM,
-				"hint_string": "rot_y000",
+				"hint_string": ",".join(fludd_animation_list),
 				"usage": PROPERTY_USAGE_DEFAULT,
 			},
 			{
