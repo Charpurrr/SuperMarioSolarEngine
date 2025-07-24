@@ -6,10 +6,11 @@ extends Resource
 ## Which animation this state will use from the doll's animations.
 var animation: String:
 	set(val):
-		animation = val
+		if is_instance_valid(doll) and doll.sprite_frames.has_animation(val):
+			animation = val
 
-		if preview and is_instance_valid(doll):
-			doll.animation = val
+			if preview:
+				doll.animation = val
 ## Which frame of the animation is being edited.
 var frame: int = 0:
 	set(val):
@@ -46,13 +47,20 @@ var frame_offset := Vector2i.ZERO:
 	get():
 		return frame_offsets.get(frame, Vector2i.ZERO)
 ## Which FLUDD frame this state frame will use.
-var fludd_animation: String = "rot_y000":
+var fludd_animation: String = "fgryudfvhj":
 	set(val):
-		fludd_animation = val
+		if (
+			is_instance_valid(fludd_f) and
+			is_instance_valid(fludd_b) and
+			fludd_f.sprite_frames.has_animation(val) and
+			fludd_b.sprite_frames.has_animation(val)
+		):
+			fludd_animation = val
 
-		if preview_fludd and is_instance_valid(fludd_f) and is_instance_valid(fludd_b):
-			fludd_f.animation = val
-			fludd_b.animation = val
+			if preview_fludd:
+				print("previewnigngghh everywhereee")
+				fludd_f.animation = val
+				fludd_b.animation = val
 var fludd_offset := Vector2i.ZERO:
 	set(val):
 		fludd_offset = val
@@ -128,12 +136,12 @@ var preview_fludd: bool = false:
 		notify_property_list_changed()
 
 @export_storage var doll: AnimatedSprite2D
-## Populated in the initialiser only for editor purposes. Not used in-game.
+## Populated in the setup only for editor purposes. Not used in-game.
 var animation_list: PackedStringArray
 
 @export_storage var fludd_f: AnimatedSprite2D
 @export_storage var fludd_b: AnimatedSprite2D
-## Populated in the initialiser only for editor purposes. Not used in-game.
+## Populated in the setup only for editor purposes. Not used in-game.
 var fludd_animation_list: PackedStringArray
 
 ## List of offsets connected to frames.
@@ -148,19 +156,20 @@ var fludd_animation_list: PackedStringArray
 
 
 func _init() -> void:
-	call_deferred(&"setup")
+	resource_local_to_scene = true
+	call_deferred(&"_setup")
 
 
-func setup() -> void:
+func _setup() -> void:
 	# We only need to have these references while editing the data resource
 	# in the editor. It's no longer relevant when we're running the game.
 	if not Engine.is_editor_hint():
 		return
 
-	var actor: Player = get_local_scene()
+	var actor: Node = get_local_scene()
 
-	#if not actor is Player:
-		#return
+	if not actor is Player:
+		return
 
 	doll = actor.doll
 	fludd_f = actor.fludd_f
@@ -174,6 +183,8 @@ func setup() -> void:
 		)
 	else:
 		fludd_animation_list = fludd_f.sprite_frames.get_animation_names()
+
+	notify_property_list_changed()
 
 
 func _get_property_list() -> Array[Dictionary]:
