@@ -243,7 +243,11 @@ func update_direction(direction: int):
 		actor.doll.offset.x = -actor.doll.offset.x
 
 	facing_direction = new_direction
-	actor.doll.flip_h = (facing_direction == -1)
+
+	var flip_sprites: bool = (facing_direction == -1)
+	actor.doll.flip_h = flip_sprites
+	actor.fludd_b.flip_h = flip_sprites
+	actor.fludd_f.flip_h = flip_sprites
 
 
 func update_prev_direction():

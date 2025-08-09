@@ -14,6 +14,10 @@ var animation: String:
 ## Which frame of the animation is being edited.
 var frame: int = 0:
 	set(val):
+		# This prevents errors during initialisation where the setters run
+		# before the properties are loaded in the scene tree.
+		if not setup_finished:
+			return
 		if animation.is_empty():
 			printerr("No animation selected.")
 			return
@@ -26,6 +30,15 @@ var frame: int = 0:
 		if not doll.sprite_frames.has_animation(animation):
 			printerr("Couldn't find animation '%s' in the doll's sprite frames resource." % animation)
 			return
+		if not is_instance_valid(fludd_b) or not is_instance_valid(fludd_f):
+			printerr("Missing FLUDD sprite! Make sure you have 2 seperate sprites for a front and back layer of FLUDD.")
+			return
+		if not is_instance_valid(fludd_b.sprite_frames) or not is_instance_valid(fludd_f.sprite_frames):
+			printerr("Couldn't find the FLUDD's sprite frames resource.")
+			return
+		if not fludd_b.sprite_frames.has_animation(fludd_animation) or not fludd_f.sprite_frames.has_animation(fludd_animation):
+			printerr("Couldn't find animation '%s' in the FLUDD's sprite frames resource." % animation)
+			return
 
 		frame = val
 		frame = wrapi(val, 0, doll.sprite_frames.get_frame_count(animation))
@@ -36,6 +49,11 @@ var frame: int = 0:
 
 			doll.frame = frame
 			doll.offset = frame_offset
+		if preview_fludd:
+			fludd_b.animation = fludd_animation
+			fludd_b.offset = fludd_offset
+			fludd_f.animation = fludd_animation
+			fludd_f.offset = fludd_offset
 ## Specific offset for this frame.
 var frame_offset := Vector2i.ZERO:
 	set(val):
@@ -47,20 +65,30 @@ var frame_offset := Vector2i.ZERO:
 	get():
 		return frame_offsets.get(frame, Vector2i.ZERO)
 ## Which FLUDD frame this state frame will use.
-var fludd_animation: String = "fgryudfvhj":
+var fludd_animation: String:
 	set(val):
-		if (
-			is_instance_valid(fludd_f) and
-			is_instance_valid(fludd_b) and
-			fludd_f.sprite_frames.has_animation(val) and
-			fludd_b.sprite_frames.has_animation(val)
-		):
-			fludd_animation = val
+		# This prevents errors during initialisation where the setters run
+		# before the properties are loaded in the scene tree.
+		if not setup_finished:
+			return
+		if not is_instance_valid(fludd_b) or not is_instance_valid(fludd_f):
+			printerr("Missing FLUDD sprite! Make sure you have 2 seperate sprites for a front and back layer of FLUDD.")
+			return
+		if not is_instance_valid(fludd_b.sprite_frames) or not is_instance_valid(fludd_f.sprite_frames):
+			printerr("Couldn't find the FLUDD's sprite frames resource.")
+			return
+		if not fludd_b.sprite_frames.has_animation(fludd_animation) or not fludd_f.sprite_frames.has_animation(fludd_animation):
+			printerr("Couldn't find animation '%s' in the FLUDD's sprite frames resource." % animation)
+			return
 
-			if preview_fludd:
-				print("previewnigngghh everywhereee")
-				fludd_f.animation = val
-				fludd_b.animation = val
+		fludd_animation = val
+		frame_fludd.set(frame, val)
+
+		if preview_fludd:
+			fludd_f.animation = val
+			fludd_b.animation = val
+	get():
+		return frame_fludd.get(frame, "default")
 var fludd_offset := Vector2i.ZERO:
 	set(val):
 		fludd_offset = val
@@ -74,6 +102,11 @@ var fludd_offset := Vector2i.ZERO:
 ## Toggle previewing your frame and it's offsets.
 var preview: bool = false:
 	set(val):
+		# This prevents errors during initialisation where the setters run
+		# before the properties are loaded in the scene tree.
+		if not setup_finished:
+			return
+
 		if animation.is_empty():
 			printerr("Cant preview an animation if none is selected.")
 			return
@@ -100,6 +133,7 @@ var preview: bool = false:
 			var last = doll.get_meta(&"last_previewed")
 			if is_instance_valid(last):
 				last.preview_private = false
+				last.preview_fludd = false
 
 		preview_private = val
 		doll.set_meta(&"last_previewed", self)
@@ -114,10 +148,18 @@ var preview_fludd: bool = false:
 	set(val):
 		preview_fludd = val
 
-		if not is_instance_valid(fludd_f) or not is_instance_valid(fludd_b):
-			printerr(
-			"Missing FLUDD sprite! Make sure you have 2 seperate sprites for a front and back layer of FLUDD."
-			)
+		# This prevents errors during initialisation where the setters run
+		# before the properties are loaded in the scene tree.
+		if not setup_finished:
+			return
+		if not is_instance_valid(fludd_b) or not is_instance_valid(fludd_f):
+			printerr("Missing FLUDD sprite! Make sure you have 2 seperate sprites for a front and back layer of FLUDD.")
+			return
+		if not is_instance_valid(fludd_b.sprite_frames) or not is_instance_valid(fludd_f.sprite_frames):
+			printerr("Couldn't find the FLUDD's sprite frames resource.")
+			return
+		if not fludd_b.sprite_frames.has_animation(fludd_animation) or not fludd_f.sprite_frames.has_animation(fludd_animation):
+			printerr("Couldn't find animation '%s' in the FLUDD's sprite frames resource." % animation)
 			return
 
 		fludd_b.visible = val
@@ -154,6 +196,9 @@ var fludd_animation_list: PackedStringArray
 ## Used for referencing these values when you need them in regular code.
 @export_storage var frame_fludd_offsets: Dictionary[int, Vector2i]
 
+## Flag that defines if the setup function has finished running.
+var setup_finished: bool = false
+
 
 func _init() -> void:
 	resource_local_to_scene = true
@@ -185,6 +230,8 @@ func _setup() -> void:
 		fludd_animation_list = fludd_f.sprite_frames.get_animation_names()
 
 	notify_property_list_changed()
+
+	setup_finished = true
 
 
 func _get_property_list() -> Array[Dictionary]:
