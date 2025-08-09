@@ -104,7 +104,9 @@ func _set_frame_specs():
 	actor.doll.offset = animation_data.frame_offsets.get(actor.doll.frame, Vector2i.ZERO)
 
 	actor.fludd_b.offset = animation_data.frame_fludd_offsets.get(actor.doll.frame, Vector2i.ZERO)
+	actor.fludd_b.offset.x *= actor.movement.facing_direction
 	actor.fludd_f.offset = animation_data.frame_fludd_offsets.get(actor.doll.frame, Vector2i.ZERO)
+	actor.fludd_f.offset.x *= actor.movement.facing_direction
 
 	actor.fludd_b.animation = animation_data.frame_fludd.get(actor.doll.frame, "default")
 	actor.fludd_f.animation = animation_data.frame_fludd.get(actor.doll.frame, "default")
