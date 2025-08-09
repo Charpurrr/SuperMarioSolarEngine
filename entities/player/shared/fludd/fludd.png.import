@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cargcb2py1wcg"
-path="res://.godot/imported/fludd.png-485b4855cb9878997d9d0cef11bc6cbf.ctex"
+path="res://.godot/imported/fludd.png-29da09abe0bbf4b49279beca6e5ff94c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/player/shared/fludd.png"
-dest_files=["res://.godot/imported/fludd.png-485b4855cb9878997d9d0cef11bc6cbf.ctex"]
+source_file="res://entities/player/shared/fludd/fludd.png"
+dest_files=["res://.godot/imported/fludd.png-29da09abe0bbf4b49279beca6e5ff94c.ctex"]
 
 [params]
 

@@ -51,8 +51,11 @@ func _set_appropriate_anim():
 
 ## Play the footstep sound effect.
 func _play_footstep_sfx():
-	for sfx_list in sfx_layers:
-		sfx_list.play_sfx_at(self)
+	# Normal footsteps
+	sfx_layers[0].play_sfx_at(self)
+	# FLUDD footsteps
+	if FluddManager.active_nozzle != FluddManager.Nozzle.NONE:
+		sfx_layers[1].play_sfx_at(self)
 
 
 func _on_exit():

@@ -9,6 +9,10 @@ extends Node
 ## FLUDD sprites that show infront of the player.
 @export var fludd_f: AnimatedSprite2D
 
+@export_category("Audio")
+@export var toggle_sfx: AudioStream
+@export var switch_sfx: AudioStream
+
 enum Nozzle{
 	NONE,
 	HOVER,
@@ -31,8 +35,16 @@ func switch_nozzle() -> void:
 
 	active_nozzle = available_nozzles[wrapi(current_id + 1, 0, available_nozzles.size())]
 
-	fludd_b.visible = active_nozzle != Nozzle.NONE
-	fludd_f.visible = active_nozzle != Nozzle.NONE
+	get_tree().call_group("%s/sfx" % name, &"queue_free")
+
+	if active_nozzle != Nozzle.NONE:
+		SFX.play_sfx(switch_sfx, &"SFX", self)
+		fludd_b.visible = true
+		fludd_f.visible = true
+	else:
+		SFX.play_sfx(toggle_sfx, &"SFX", self)
+		fludd_b.visible = false
+		fludd_f.visible = false
 
 	print(Nozzle.find_key(active_nozzle))
 
@@ -40,6 +52,10 @@ func switch_nozzle() -> void:
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed(&"switch_nozzle"):
 		switch_nozzle()
+
+
+func _ready() -> void:
+	active_nozzle = Nozzle.NONE
 
 
 # Syncs up FLUDD's rotation with the player's sprite rotation.

@@ -12,8 +12,11 @@ func _on_enter(play_land_sfx):
 	actor.set_floor_snap_length(movement.snap_length)
 
 	if play_land_sfx:
-		for sfx_list in sfx_layers:
-			sfx_list.play_sfx_at(self)
+		# Normal footsteps
+		sfx_layers[0].play_sfx_at(self)
+		# FLUDD footsteps
+		if FluddManager.active_nozzle != FluddManager.Nozzle.NONE:
+			sfx_layers[1].play_sfx_at(self)
 
 
 func _physics_tick():
