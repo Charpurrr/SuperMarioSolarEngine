@@ -2512,8 +2512,9 @@ target_position = Vector2(-16, 0)
 script = ExtResource("21_onm15")
 buffer_duration = 6
 
-[node name="FluddManager" type="Node" parent="." node_paths=PackedStringArray("fludd_b", "fludd_f")]
+[node name="FluddManager" type="Node" parent="." node_paths=PackedStringArray("actor", "fludd_b", "fludd_f")]
 script = ExtResource("151_4womg")
+actor = NodePath("..")
 fludd_b = NodePath("../FluddBehind")
 fludd_f = NodePath("../FluddInfront")
 

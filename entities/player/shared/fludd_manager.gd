@@ -2,6 +2,8 @@ class_name FluddManager
 extends Node
 ## Handles communication between PlayerStates in regards to FLUDD.
 
+@export var actor: Player
+
 ## FLUDD sprites that show behind the player.
 @export var fludd_b: AnimatedSprite2D
 ## FLUDD sprites that show infront of the player.
@@ -35,7 +37,12 @@ func switch_nozzle() -> void:
 	print(Nozzle.find_key(active_nozzle))
 
 
-func _physics_process(_delta: float) -> void:
-	# Done within physics process to guarantee being properly synced with the player.
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed(&"switch_nozzle"):
 		switch_nozzle()
+
+
+# Syncs up FLUDD's rotation with the player's sprite rotation.
+func _process(_delta: float) -> void:
+	fludd_b.rotation = actor.doll.rotation
+	fludd_f.rotation = actor.doll.rotation
