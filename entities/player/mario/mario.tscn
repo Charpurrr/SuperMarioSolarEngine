@@ -2528,7 +2528,7 @@ buffer_duration = 6
 
 [node name="FluddManager" type="Node" parent="." node_paths=PackedStringArray("actor", "fludd_b", "fludd_f")]
 script = ExtResource("151_4womg")
-hover_power = 3.0
+hover_power = 1.0
 hover_accel = 0.5
 actor = NodePath("..")
 fludd_b = NodePath("../FluddBehind")
