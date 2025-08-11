@@ -6,7 +6,7 @@
 [ext_resource type="Shader" uid="uid://beoro7ravdwag" path="res://entities/collectibles/shine/rays.gdshader" id="2_byb03"]
 [ext_resource type="PackedScene" uid="uid://d1wf1b4d4xfvf" path="res://props/particles/sparkle.tscn" id="4_r3wgn"]
 [ext_resource type="Script" uid="uid://dd8oyhd4nllix" path="res://util/particle_effect.gd" id="5_smdji"]
-[ext_resource type="AudioStream" uid="uid://to3yx6us6s50" path="res://entities/collectibles/shine/ambient.wav" id="6_smdji"]
+[ext_resource type="AudioStream" uid="uid://cy6vff4p73bo1" path="res://entities/collectibles/shine/ambient.wav" id="6_smdji"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jbsq7"]
 

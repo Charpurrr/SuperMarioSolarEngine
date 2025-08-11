@@ -108,7 +108,7 @@ var dived: bool = false
 ## Amount of consecutive jumps performed for a triple jump.
 var consec_jumps: int = 0
 
-## The player body rotation.
+## The player body rotation (in radians.)
 var body_rotation: float = 0
 #endregion
 

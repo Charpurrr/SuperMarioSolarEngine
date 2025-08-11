@@ -60,6 +60,7 @@ func _subsequent_ticks():
 
 
 func _on_exit():
+	movement.body_rotation = 0
 	actor.doll.rotation = 0
 
 

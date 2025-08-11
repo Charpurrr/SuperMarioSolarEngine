@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://vukdixescka4"]
+
+[ext_resource type="Texture2D" uid="uid://b2xk6x1xmb5ng" path="res://entities/player/shared/fludd/stamina_under.svg" id="1_4nw2p"]
+[ext_resource type="Texture2D" uid="uid://mygag53xvbjq" path="res://entities/player/shared/fludd/stamina_progress.svg" id="3_u5tvk"]
+
+[node name="FluddStamina" type="TextureProgressBar"]
+offset_right = 17.0
+offset_bottom = 17.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 50.0
+fill_mode = 4
+texture_under = ExtResource("1_4nw2p")
+texture_progress = ExtResource("3_u5tvk")
+texture_progress_offset = Vector2(2, 2)
