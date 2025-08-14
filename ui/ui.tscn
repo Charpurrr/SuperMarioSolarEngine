@@ -545,8 +545,6 @@ speed_scale = 1.5
 [node name="LifeMeter" parent="." groups=["HUD"] instance=ExtResource("7_m3cpd")]
 
 [node name="FluddTank" parent="." groups=["HUD"] instance=ExtResource("8_n7xk5")]
-max_fuel = 100.0
-fuel = 0.0
 
 [node name="Debug" type="Control" parent="."]
 layout_mode = 3

@@ -14,6 +14,10 @@ static func interp_weight_idp(weight : float, delta : float) -> float:
 	return 1 - exp(-weight * delta)
 
 
+static func random_coord(offset: int) -> Vector2:
+	return Vector2(randi_range(-offset, offset), randi_range(-offset, offset))
+
+
 ## Maps a value between [param value_min] and [param value_max] to a
 ## proportional value between [param new_min] and [param new_max].
 static func map(value: float, value_min: float, value_max: float, new_min: float, new_max: float) -> float:

@@ -3,6 +3,18 @@ extends Fall
 ## A jump that doesn't give you any height.
 ## Used for actions that look like jumps but don't act like them.
 
+@export var jump_data: PStateAnimData
+@export var fall_data: PStateAnimData
+
+
+func _physics_tick():
+	super()
+
+	if actor.vel.y < 0:
+		overwrite_animation(jump_data)
+	else:
+		overwrite_animation(fall_data)
+
 
 func _trans_rules() -> Variant:
 	if not movement.dived and movement.can_air_action() and input.buffered_input(&"dive"):

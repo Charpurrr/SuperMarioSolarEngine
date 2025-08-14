@@ -22,8 +22,10 @@ var input: InputManager = null
 var fludd: FluddManager = null
 var movement: PMovement = null
 
+var overwrite_setup_finished: bool
 
-func trigger_enter(handover):
+
+func trigger_enter(handover) -> void:
 	if is_instance_valid(animation_data):
 		_set_animation()
 		actor.doll.frame_changed.connect(_set_frame_specs)
@@ -33,6 +35,8 @@ func trigger_enter(handover):
 		# for for the first frame of the new animation.
 		_set_frame_specs()
 
+	overwrite_setup_finished = false
+
 	_set_hitbox()
 
 	emit_particles()
@@ -41,10 +45,10 @@ func trigger_enter(handover):
 	super(handover)
 
 
-func trigger_exit():
+func trigger_exit() -> void:
 	super()
 
-	if is_instance_valid(animation_data) and actor.doll.frame_changed.is_connected(_set_frame_specs):
+	if actor.doll.frame_changed.is_connected(_set_frame_specs):
 		actor.doll.frame_changed.disconnect(_set_frame_specs)
 
 	for layer in sfx_layers:
@@ -56,18 +60,30 @@ func trigger_exit():
 				child.queue_free()
 
 
-func play_sounds():
+## Uses [parameter new_data] as the state's animation data.[br]
+## This function is best called in a state's [method _physics_tick].
+## [i]Note: the default [member animation_data] variable should be left empty to avoid issues while using this.
+func overwrite_animation(new_data: PStateAnimData) -> void:
+	if not overwrite_setup_finished:
+		actor.doll.frame_changed.connect(_set_frame_specs.bind(new_data))
+		_set_frame_specs(new_data)
+		overwrite_setup_finished = true
+
+	actor.doll.play(new_data.animation)
+
+
+func play_sounds() -> void:
 	if on_enter and not sfx_layers.is_empty():
 		for sfx_list in sfx_layers:
 			sfx_list.play_sfx_at(self)
 
 
-func emit_particles():
+func emit_particles() -> void:
 	for effect in particles:
 		effect.emit_at(actor)
 
 
-func _set_hitbox():
+func _set_hitbox() -> void:
 	if hitbox_type == "None":
 		return
 
@@ -89,24 +105,29 @@ func _set_hitbox():
 
 
 ## Snap back to the ground if you exit from a dive hitbox to a non-dive hitbox.
-func _snap_dive_to_ground(was_diving: bool):
+func _snap_dive_to_ground(was_diving: bool) -> void:
 	if was_diving:
 		actor.global_position.y -= actor.dive_hitbox.get_shape().get_rect().size.y / 2
 
 
-func _set_animation():
+func _set_animation() -> void:
 	if not animation_data.animation.is_empty():
 		actor.doll.play(animation_data.animation)
 
 
 ## Sets the appropriate frame specifications. (Offsets, FLUDD animation, FLUDD offset)
-func _set_frame_specs():
-	actor.doll.offset = animation_data.frame_offsets.get(actor.doll.frame, Vector2i.ZERO)
+func _set_frame_specs(overwrite_data: PStateAnimData = null) -> void:
+	var data: PStateAnimData = overwrite_data
 
-	actor.fludd_b.offset = animation_data.frame_fludd_offsets.get(actor.doll.frame, Vector2i.ZERO)
+	if data == null:
+		data = animation_data
+
+	actor.doll.offset = data.frame_offsets.get(actor.doll.frame, Vector2i.ZERO)
+
+	actor.fludd_b.offset = data.frame_fludd_offsets.get(actor.doll.frame, Vector2i.ZERO)
 	actor.fludd_b.offset.x *= actor.movement.facing_direction
-	actor.fludd_f.offset = animation_data.frame_fludd_offsets.get(actor.doll.frame, Vector2i.ZERO)
+	actor.fludd_f.offset = data.frame_fludd_offsets.get(actor.doll.frame, Vector2i.ZERO)
 	actor.fludd_f.offset.x *= actor.movement.facing_direction
 
-	actor.fludd_b.animation = animation_data.frame_fludd.get(actor.doll.frame, "default")
-	actor.fludd_f.animation = animation_data.frame_fludd.get(actor.doll.frame, "default")
+	actor.fludd_b.animation = data.frame_fludd.get(actor.doll.frame, "default")
+	actor.fludd_f.animation = data.frame_fludd.get(actor.doll.frame, "default")

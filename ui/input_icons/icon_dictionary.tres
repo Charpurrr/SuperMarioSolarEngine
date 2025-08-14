@@ -126,6 +126,10 @@
 [ext_resource type="Texture2D" uid="uid://nvrc324nqn1f" path="res://ui/input_icons/nintendo_switch/switch_button_home.svg" id="123_pf7vw"]
 [ext_resource type="Texture2D" uid="uid://5ytefn62tn6r" path="res://ui/input_icons/nintendo_switch/switch_button_sync.svg" id="124_ifhxa"]
 
+[sub_resource type="InputEventKey" id="InputEventKey_fc83n"]
+device = -1
+keycode = 4194311
+
 [sub_resource type="InputEventKey" id="InputEventKey_dspvn"]
 device = -1
 keycode = 4194340
@@ -269,11 +273,6 @@ device = -1
 keycode = 89
 unicode = 121
 
-[sub_resource type="InputEventKey" id="InputEventKey_km30p"]
-device = -1
-keycode = 85
-unicode = 117
-
 [sub_resource type="InputEventKey" id="InputEventKey_bbvy1"]
 device = -1
 keycode = 4194317
@@ -413,10 +412,6 @@ device = -1
 keycode = 79
 unicode = 111
 
-[sub_resource type="InputEventKey" id="InputEventKey_fc83n"]
-device = -1
-keycode = 4194311
-
 [sub_resource type="InputEventKey" id="InputEventKey_5ot6i"]
 device = -1
 keycode = 4194330
@@ -537,6 +532,11 @@ keycode = 4194308
 device = -1
 keycode = 73
 unicode = 105
+
+[sub_resource type="InputEventKey" id="InputEventKey_km30p"]
+device = -1
+keycode = 85
+unicode = 117
 
 [sub_resource type="InputEventKey" id="InputEventKey_d685w"]
 device = -1
@@ -663,6 +663,7 @@ pressed = true
 script = ExtResource("1_pmfbp")
 dictionary = Dictionary[InputEvent, CompressedTexture2D]({
 null: ExtResource("97_m8lbx"),
+SubResource("InputEventKey_km30p"): ExtResource("11_htqwc"),
 SubResource("InputEventKey_p5i32"): ExtResource("12_u1w8g"),
 SubResource("InputEventKey_o40h2"): ExtResource("75_hyxe7"),
 SubResource("InputEventKey_bk1x0"): ExtResource("74_4buu7"),
@@ -693,7 +694,6 @@ SubResource("InputEventKey_8k0s3"): ExtResource("89_mspdl"),
 SubResource("InputEventKey_pqdl6"): ExtResource("58_hrnhy"),
 SubResource("InputEventKey_dvqok"): ExtResource("88_c6h0t"),
 SubResource("InputEventKey_sq8nr"): ExtResource("57_7g63p"),
-SubResource("InputEventKey_5ot6i"): ExtResource("87_vlnui"),
 SubResource("InputEventJoypadButton_mlb1w"): ExtResource("124_ifhxa"),
 SubResource("InputEventJoypadButton_kf68s"): ExtResource("123_pf7vw"),
 SubResource("InputEventJoypadButton_c60lt"): ExtResource("122_gkb7c"),
@@ -725,7 +725,6 @@ SubResource("InputEventKey_ba70w"): ExtResource("35_omgng"),
 SubResource("InputEventKey_dc0te"): ExtResource("36_rdoke"),
 SubResource("InputEventKey_cvtpp"): ExtResource("37_n5ee7"),
 SubResource("InputEventKey_d685w"): ExtResource("38_ytwqe"),
-SubResource("InputEventKey_km30p"): ExtResource("11_htqwc"),
 SubResource("InputEventKey_l0at2"): ExtResource("10_xli6j"),
 SubResource("InputEventKey_har3c"): ExtResource("9_apcea"),
 SubResource("InputEventKey_nlrwr"): ExtResource("8_ggw11"),
@@ -757,6 +756,7 @@ SubResource("InputEventKey_21ost"): ExtResource("41_ueo62"),
 SubResource("InputEventKey_hdo1e"): ExtResource("40_e76ru"),
 SubResource("InputEventKey_dspvn"): ExtResource("39_ou5kj"),
 SubResource("InputEventKey_fc83n"): ExtResource("86_p3g8y"),
+SubResource("InputEventKey_5ot6i"): ExtResource("87_vlnui"),
 SubResource("InputEventKey_dohvw"): ExtResource("13_d8fmh"),
 SubResource("InputEventKey_xgelv"): ExtResource("14_ioysv"),
 SubResource("InputEventKey_hrnvb"): ExtResource("15_l41m4"),
