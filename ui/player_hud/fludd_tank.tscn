@@ -66,7 +66,7 @@ offset_bottom = -10.0
 grow_horizontal = 0
 grow_vertical = 0
 script = ExtResource("1_qcg3d")
-fuel = 50
+fuel = 0.0
 label = NodePath("Label")
 container_l = NodePath("Container/ContainerLeft")
 container_r = NodePath("Container/ContainerRight")
@@ -121,15 +121,16 @@ grow_vertical = 2
 [node name="FuelLeft" type="Polygon2D" parent="Fuel"]
 position = Vector2(0, 6)
 color = Color(0.545098, 0.807843, 1, 1)
-polygon = PackedVector2Array(14, 27, 0, 19, 0, 38, 14, 46)
+polygon = PackedVector2Array(14, 46, 0, 38, 0, 38, 14, 46)
 
 [node name="FuelRight" type="Polygon2D" parent="Fuel"]
 position = Vector2(14, 14)
 color = Color(0.403922, 0.607843, 1, 1)
-polygon = PackedVector2Array(17, 13, 0, 19, 0, 38, 17, 32)
+polygon = PackedVector2Array(17, 32, 0, 38, 0, 38, 17, 32)
 
 [node name="FuelTop" type="Polygon2D" parent="Fuel"]
-position = Vector2(0, 19)
+visible = false
+position = Vector2(0, 38)
 color = Color(0.729412, 0.894118, 1, 1)
 offset = Vector2(4, 9)
 polygon = PackedVector2Array(27, -1, 11, -9, -4, -3, 10, 5)
@@ -146,7 +147,7 @@ offset_top = -23.0
 offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "50%"
+text = "0%"
 label_settings = SubResource("LabelSettings_aqpuv")
 horizontal_alignment = 1
 vertical_alignment = 1

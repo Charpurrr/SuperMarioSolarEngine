@@ -6,11 +6,11 @@ extends Control
 
 ## Temporary max HP export variable for testing,
 ## realistically this is set within the Player scene.
-@export var max_fuel: int = 100:
+@export var max_fuel: float = 100:
 	set(val):
 		max_fuel = clamp(val, 0, INF)
 		fuel = clamp(fuel, 0, max_fuel)
-@export var fuel: int = max_fuel:
+@export var fuel: float = max_fuel:
 	set(val):
 		fuel = clamp(val, 0, max_fuel)
 
@@ -21,6 +21,7 @@ extends Control
 		# so checking for it is most reliable.
 		if is_instance_valid(fuel_t):
 			_update_fuel(fuel)
+
 
 @export_category("References")
 @export var label: Label
@@ -52,6 +53,8 @@ func _ready() -> void:
 	l_p2p_difference = poly_l_default[1].y - poly_l_default[0].y
 	r_p2p_difference = poly_r_default[1].y - poly_r_default[0].y
 
+	fuel = FluddManager.fuel
+
 
 func _update_fuel(new_fuel: float) -> void:
 	var y_offset: float = container_height * (1 - (new_fuel / max_fuel))
@@ -66,3 +69,11 @@ func _update_fuel(new_fuel: float) -> void:
 
 	fuel_r.polygon[0].y = y_offset - r_p2p_difference
 	fuel_r.polygon[1].y = y_offset
+
+
+func _process(_delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
+
+	if Input.is_action_pressed(&"use_fludd"):
+		fuel = FluddManager.fuel

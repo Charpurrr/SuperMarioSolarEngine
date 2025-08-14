@@ -34,7 +34,7 @@ var frame: int = 0:
 			printerr("Missing FLUDD sprite! Make sure you have 2 seperate sprites for a front and back layer of FLUDD.")
 			return
 		if not is_instance_valid(fludd_b.sprite_frames) or not is_instance_valid(fludd_f.sprite_frames):
-			printerr("Couldn't find the FLUDD's sprite frames resource.")
+			printerr("Couldn't find the FLUDD's sprite frames resource while setting frame.")
 			return
 		if not fludd_b.sprite_frames.has_animation(fludd_animation) or not fludd_f.sprite_frames.has_animation(fludd_animation):
 			printerr("Couldn't find animation '%s' in the FLUDD's sprite frames resource." % animation)
@@ -75,7 +75,7 @@ var fludd_animation: String:
 			printerr("Missing FLUDD sprite! Make sure you have 2 seperate sprites for a front and back layer of FLUDD.")
 			return
 		if not is_instance_valid(fludd_b.sprite_frames) or not is_instance_valid(fludd_f.sprite_frames):
-			printerr("Couldn't find the FLUDD's sprite frames resource.")
+			printerr("Couldn't find the FLUDD's sprite frames resource while setting animation.")
 			return
 		if not fludd_b.sprite_frames.has_animation(fludd_animation) or not fludd_f.sprite_frames.has_animation(fludd_animation):
 			printerr("Couldn't find animation '%s' in the FLUDD's sprite frames resource." % animation)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://csf56lkxqqb12"]
+[gd_scene load_steps=97 format=3 uid="uid://csf56lkxqqb12"]
 
 [ext_resource type="Script" uid="uid://brof7wb075ont" path="res://ui/ui.gd" id="1_75fsn"]
 [ext_resource type="AudioStream" uid="uid://b58aveo75onan" path="res://ui/sfx/pause.wav" id="2_1xskv"]
@@ -15,7 +15,6 @@
 [ext_resource type="Script" path="res://ui/player_hud/music_label.gd" id="9_gbf2f"]
 [ext_resource type="Script" uid="uid://cnhr5du0ap6ki" path="res://ui/screen_manager/screen_manager.gd" id="18_ro5vq"]
 [ext_resource type="Shader" uid="uid://c8kax0imw2g1t" path="res://util/shaders/map_gradient.gdshader" id="19_uav4i"]
-[ext_resource type="Texture2D" uid="uid://bbu4m0gd3b85w" path="res://props/level_environments/synth/pause_gradient_map.tres" id="20_jdeth"]
 [ext_resource type="Script" uid="uid://trfav0yjiqxm" path="res://ui/screen_manager/pause_screen/pause_screen.gd" id="21_fwnms"]
 [ext_resource type="Shader" uid="uid://byfa3t51pf655" path="res://ui/screen_manager/pause_screen/pause_panel.tres" id="22_4tc6v"]
 [ext_resource type="Texture2D" uid="uid://knkg28xlj4h8" path="res://ui/screen_manager/pause_screen/textures/spike.png" id="23_3jqvb"]
@@ -340,9 +339,8 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8xxao"]
 shader = ExtResource("19_uav4i")
-shader_parameter/blur_lod = 1.5
+shader_parameter/blur_lod = 0.0
 shader_parameter/mix_amount = 1.0
-shader_parameter/gradient = ExtResource("20_jdeth")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_awrho"]
 shader = ExtResource("22_4tc6v")
@@ -547,6 +545,8 @@ speed_scale = 1.5
 [node name="LifeMeter" parent="." groups=["HUD"] instance=ExtResource("7_m3cpd")]
 
 [node name="FluddTank" parent="." groups=["HUD"] instance=ExtResource("8_n7xk5")]
+max_fuel = 100.0
+fuel = 0.0
 
 [node name="Debug" type="Control" parent="."]
 layout_mode = 3
