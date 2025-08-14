@@ -1,9 +1,14 @@
 class_name Hover
-extends PlayerState
+extends LazyJump
 ## Using the Hover nozzle.
+
+@export_range(0, 360) var rotate: float = 3.0
+@export var rotate_speed: float
 
 
 func _physics_tick():
+	super()
+
 	if not actor.movement.is_submerged():
 		_dry_logic()
 	else:
@@ -17,4 +22,4 @@ func _submerged_logic():
 
 ## While outside of water.
 func _dry_logic():
-	pass
+	actor.doll.rotation = rotate_toward(actor.doll.rotation, rotate * actor.movement.get_input_x(), rotate_speed)

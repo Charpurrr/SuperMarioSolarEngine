@@ -139,7 +139,7 @@ func _process(_delta: float) -> void:
 
 	# Called here instead of _input() to avoid ignorance when holding the action key.
 	if Input.is_action_pressed(&"use_fludd"):
-		if stamina == 0:
+		if stamina == 0 or fuel == 0:
 			return
 
 		stamina_bar.modulate = Math.lerp_colr(stamina_bar.modulate, Color.WHITE, stamina_fade_in, 0.01)
