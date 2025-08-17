@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq6hfndw3jm4e"]
+
+[ext_resource type="Script" uid="uid://deqv2hqorfmje" path="res://util/custom_nodes/quality_toggle.gd" id="1_yxhiy"]
+
+[node name="QualityToggle" type="Node"]
+script = ExtResource("1_yxhiy")

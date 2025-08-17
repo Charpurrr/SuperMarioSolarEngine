@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bfb4xq874buf6"]
+[gd_scene load_steps=18 format=3 uid="uid://bfb4xq874buf6"]
 
 [ext_resource type="Script" uid="uid://d7edjnk21ad3" path="res://props/level_environments/synth/synth_floor.gd" id="1_dubgv"]
 [ext_resource type="Script" uid="uid://ccysh3ski6mvh" path="res://props/level_environments/environment.gd" id="1_xeoqd"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://wf1kmhrykhbo" path="res://props/level_environments/synth/synth_mountain.png" id="4_y5k2x"]
 [ext_resource type="Texture2D" uid="uid://h55he5ne87oo" path="res://props/level_environments/synth/sunshine_sun.png" id="5_mb8pf"]
 [ext_resource type="Shader" uid="uid://jy8sm10bwqcu" path="res://util/shaders/crt.gdshader" id="7_e2awe"]
+[ext_resource type="PackedScene" uid="uid://bq6hfndw3jm4e" path="res://util/custom_nodes/quality_toggle.tscn" id="7_vugs5"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_47xr2"]
 particles_animation = true
@@ -110,6 +111,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="QualityToggle" parent="ParallaxBackground/CRT" instance=ExtResource("7_vugs5")]
 
 [node name="Mountains" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_repeat = 2

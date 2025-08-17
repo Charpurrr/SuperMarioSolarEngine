@@ -4,6 +4,13 @@ signal setting_initialised(key: String, value: Variant)
 
 signal paused
 
+enum Qualities {
+		LOW = 0, ## Optimised for performance. Enables viewport stretching and disables most shaders.
+		MEDIUM = 1, ## Balanced performance. Enables viewport stretching but keeps most shaders enabled.
+		HIGH = 2, ## Best visuals experience. Enables canvas item stretching and keeps most shaders enabled.
+	}
+var quality: Qualities
+
 var debug_toggle: bool = false
 var debug_toggle_collision_shapes: bool = false
 
@@ -34,10 +41,6 @@ func _ready():
 	buses[&"Music"].update_mute(LocalSettings.load_setting("Audio", "music_muted", false))
 	debug_toggle = LocalSettings.load_setting("Developer", "debug_toggle", false)
 	debug_toggle_collision_shapes = LocalSettings.load_setting("Developer", "debug_toggle_collision_shapes", false)
-
-
-#func _process(_delta: float) -> void:
-	#print(get_viewport().gui_get_focus_owner())
 
 
 func _unhandled_input(event):
@@ -74,6 +77,17 @@ func _setting_changed(key: String, value: Variant):
 			Engine.max_fps = [0, 30, 60, 120][value] # 0:INF, 1:30, 2:60, 3: 120
 		"scale":
 			WindowSizer.set_win_size(value)
+		"quality":
+			match value:
+				0: # HIGH
+					quality = Qualities.HIGH
+					get_tree().root.content_scale_mode = Window.CONTENT_SCALE_MODE_CANVAS_ITEMS
+				1: # LOW
+					quality = Qualities.LOW
+					get_tree().root.content_scale_mode = Window.CONTENT_SCALE_MODE_VIEWPORT
+				2: # MEDIUM
+					quality = Qualities.MEDIUM
+					get_tree().root.content_scale_mode = Window.CONTENT_SCALE_MODE_VIEWPORT
 		# AUDIO
 		"music_muted":
 			buses[&"Music"].update_mute(value)
