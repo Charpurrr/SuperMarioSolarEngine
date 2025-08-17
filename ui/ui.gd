@@ -108,6 +108,9 @@ func _pause_logic():
 
 
 func _toggle_color_blur():
+	if not is_instance_valid(color_blur.material):
+		return
+
 	color_blur.visible = !color_blur.visible
 
 	if color_blur.visible and level_environment:

@@ -123,13 +123,15 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if active_nozzle == Nozzle.NONE:
-		stamina_bar.modulate = Math.lerp_colr(stamina_bar.modulate, Color.TRANSPARENT, stamina_fade_out, 0.01)
-		return
-
 	# Syncs up FLUDD's rotation with the player's sprite rotation.
 	fludd_b.rotation = actor.doll.rotation
 	fludd_f.rotation = actor.doll.rotation
+
+
+func _physics_process(delta: float) -> void:
+	if active_nozzle == Nozzle.NONE:
+		stamina_bar.modulate = Math.lerp_colr(stamina_bar.modulate, Color.TRANSPARENT, stamina_fade_out, 0.01)
+		return
 
 	if stamina == 100:
 		stamina_bar.modulate = Math.lerp_colr(stamina_bar.modulate, Color.TRANSPARENT, stamina_fade_out, 0.01)
