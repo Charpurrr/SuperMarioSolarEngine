@@ -128,7 +128,7 @@ func _process(_delta: float) -> void:
 	fludd_f.rotation = actor.doll.rotation
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if active_nozzle == Nozzle.NONE:
 		stamina_bar.modulate = Math.lerp_colr(stamina_bar.modulate, Color.TRANSPARENT, stamina_fade_out, 0.01)
 		return
