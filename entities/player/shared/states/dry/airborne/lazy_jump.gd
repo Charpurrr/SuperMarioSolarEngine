@@ -16,7 +16,7 @@ func _physics_tick():
 		overwrite_animation(fall_data)
 
 
-func _trans_rules() -> Variant:
+func _trans_rules():
 	if not movement.dived and movement.can_air_action() and input.buffered_input(&"dive"):
 		return &"Dive"
 

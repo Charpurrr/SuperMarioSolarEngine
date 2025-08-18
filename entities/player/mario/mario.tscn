@@ -2775,10 +2775,6 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_nl575"), SubR
 script = ExtResource("116_wolak")
 jump_data = SubResource("Resource_gacnc")
 fall_data = SubResource("Resource_ngcav")
-hitbox_type = null
-particles = null
-on_enter = null
-sfx_layers = null
 
 [node name="WalljumpStates" type="Node" parent="StateManager/Dry/Airborne"]
 script = ExtResource("73_acu3g")
