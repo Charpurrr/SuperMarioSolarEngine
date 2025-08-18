@@ -1130,11 +1130,10 @@ theme_override_font_sizes/font_size = 16
 theme_override_styles/panel = SubResource("StyleBoxEmpty_q1vx3")
 theme_override_styles/tab_selected = SubResource("StyleBoxFlat_m3cpd")
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 tab_focus_mode = 0
 
 [node name="General" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs" node_paths=PackedStringArray("fps_cap_button")]
-visible = false
 layout_mode = 2
 script = ExtResource("47_mvot7")
 fps_cap_button = NodePath("ScrollContainer/Content/TopButtons/FPS/SelectorButton")
@@ -1363,12 +1362,13 @@ layout_mode = 2
 layout_mode = 2
 text = "HIGH"
 script = ExtResource("45_23m8v")
-default_value = null
-options = Array[StringName]([&"HIGH", &"LOW", &"MEDIUM"])
+default_value = 2
+options = Array[StringName]([&"OFF", &"LOW", &"MEDIUM", &"HIGH"])
 setting_section = "General"
 setting_key = "rumble_strength"
 
 [node name="Controls" type="VBoxContainer" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 16
 metadata/_tab_index = 1
@@ -1395,6 +1395,7 @@ size_flags_vertical = 3
 theme = ExtResource("50_5i7o0")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_n7xk5")
 follow_focus = true
+scroll_vertical = 100
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
@@ -1460,6 +1461,30 @@ vis_title = &"Move Down"
 vis_animation = &"swim"
 vis_icon_flip_h = true
 vis_icon_flip_v = true
+
+[node name="BindSetting5" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" instance=ExtResource("49_svocp")]
+layout_mode = 2
+p_action_name = &"jump"
+vis_title = &"Jump"
+vis_animation = &"jump"
+
+[node name="BindSetting6" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" instance=ExtResource("49_svocp")]
+layout_mode = 2
+p_action_name = &"spin"
+vis_title = &"Spin"
+vis_animation = &"spin_attack"
+
+[node name="BindSetting7" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" instance=ExtResource("49_svocp")]
+layout_mode = 2
+p_action_name = &"dive"
+vis_title = &"Dive"
+vis_animation = &"dive"
+
+[node name="BindSetting8" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions" instance=ExtResource("49_svocp")]
+layout_mode = 2
+p_action_name = &"groundpound"
+vis_title = &"Ground-Pound"
+vis_animation = &"gp"
 
 [node name="Space2" type="Control" parent="ScreenManager/OptionsScreen/TextureRect/Content/TabControls/Tabs/Controls/Control/ScrollContainer/HBoxContainer/Actions"]
 custom_minimum_size = Vector2(0, 3)
