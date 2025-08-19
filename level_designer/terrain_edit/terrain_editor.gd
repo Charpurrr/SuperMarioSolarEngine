@@ -51,7 +51,9 @@ func _line_edit_mode():
 	points = button_positions
 
 	# Creating the polyline. TODO: AAAAAAAAAAAAAAAAAHHH BADD BADDD!!!
-	polyline = Geometry2D.offset_polyline(points, width / 2)
+	if points.size() >= 2:
+		polyline = Geometry2D.offset_polyline(points, width / 2)
+
 
 	for child in get_children():
 		if child is CollisionPolygon2D:
@@ -123,7 +125,7 @@ func _check_not_intersect(poly: PackedVector2Array, new_pos: Vector2) -> bool:
 
 	var edge_start: Vector2 = poly[size - 1]
 
-	for i in size - 2:
+	for i in range(size - 2):
 		if Geometry2D.segment_intersects_segment(poly[i], poly[i + 1], edge_start, new_pos):
 			push_warning("Cannot create a polygon that intersects with itself.")
 			return false
@@ -135,8 +137,8 @@ func _create_button(at: Vector2, is_first: bool):
 	var button_node: Node2D = button_widget.instantiate()
 	var button_real: TextureButton = button_node.get_child(0)
 
-	add_child(button_node)
 	button_node.position = at
+	add_child(button_node)
 
 	button_node.delete_attempted.connect(_remove_point_on_poly.bind(button_node))
 

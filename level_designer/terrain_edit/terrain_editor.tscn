@@ -1,33 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6d0a158by2pt"]
+[gd_scene load_steps=4 format=3 uid="uid://b6d0a158by2pt"]
 
-[ext_resource type="Texture2D" uid="uid://bvlq5mbmdnk2b" path="res://level_designer/terrain_edit/polyline_segment1.png" id="1_xnw7c"]
-[ext_resource type="Texture2D" uid="uid://dlk1ab78py0wb" path="res://level_designer/terrain_edit/polyline_segment2.png" id="2_wtnye"]
-[ext_resource type="Texture2D" uid="uid://wf3l8upofoip" path="res://level_designer/terrain_edit/polyline_segment3.png" id="3_ee4k3"]
-[ext_resource type="Texture2D" uid="uid://deaf7c51bxjrn" path="res://level_designer/terrain_edit/polyline_segment4.png" id="4_o4ur7"]
-[ext_resource type="Texture2D" uid="uid://fgjreysoh48j" path="res://level_designer/terrain_edit/polyline_segment5.png" id="5_jrtrr"]
-[ext_resource type="Script" uid="uid://cn7lcacvnydhk" path="res://props/terrain/terrain_editor.gd" id="6_gc08b"]
+[ext_resource type="Script" uid="uid://cn7lcacvnydhk" path="res://level_designer/terrain_edit/terrain_editor.gd" id="6_gc08b"]
 [ext_resource type="PackedScene" uid="uid://cn7kvuvr72qyy" path="res://level_designer/widgets/draggable_button/widget_button.tscn" id="7_6wh0j"]
 [ext_resource type="Texture2D" uid="uid://c14va1w44se27" path="res://level_designer/widgets/draggable_button/hologram.png" id="8_24dmv"]
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_akk4i"]
-frames = 5
-speed_scale = 20.0
-frame_0/texture = ExtResource("1_xnw7c")
-frame_1/texture = ExtResource("2_wtnye")
-frame_1/duration = 1.0
-frame_2/texture = ExtResource("3_ee4k3")
-frame_2/duration = 1.0
-frame_3/texture = ExtResource("4_o4ur7")
-frame_3/duration = 1.0
-frame_4/texture = ExtResource("5_jrtrr")
-frame_4/duration = 1.0
-
 [node name="TerrainEditor" type="Line2D" node_paths=PackedStringArray("snapper_path", "snapper_follow", "add_point_gfx")]
-texture_repeat = 2
-points = PackedVector2Array(0, 16, 48, 16)
 width = 3.0
-texture = SubResource("AnimatedTexture_akk4i")
-texture_mode = 1
 script = ExtResource("6_gc08b")
 button_widget = ExtResource("7_6wh0j")
 snapper_path = NodePath("SnapperPath")
@@ -37,6 +15,7 @@ add_point_gfx = NodePath("SnapperPath/PathFollow2D/AddPointHologram")
 [node name="SnapperPath" type="Path2D" parent="."]
 
 [node name="PathFollow2D" type="PathFollow2D" parent="SnapperPath"]
+visible = false
 rotates = false
 
 [node name="AddPointHologram" type="Sprite2D" parent="SnapperPath/PathFollow2D"]
