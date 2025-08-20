@@ -43,4 +43,3 @@ func _parse_property(
 		add_property_editor(" ", control)
 		return true
 	return false
-
