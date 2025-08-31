@@ -1,12 +1,10 @@
+class_name LineEditor
 extends Line2D
+## Base class used for simple user generated line creation and editing.
+## Inherited by classes such as [TrackEditor] and [PolygonEditor] for intuitive UIX.
 
 @export var button_widget: PackedScene
-@export var snapper_path: Path2D
-@export var snapper_follow: PathFollow2D
-@export var add_point_gfx: Sprite2D
 
-## Current cursor position.
-var cursor_pos: Vector2
 ## Where the cursor was located on its last left click.
 var last_click_pos := -Vector2.INF
 
@@ -15,55 +13,45 @@ var hovering_over_button: bool = false
 
 var drawn_once: bool = false
 
-## This Line2D converted to different polygons.
-var polyline: Array[PackedVector2Array]
-var poly_buttons: Array[DraggableButton]
+### This Line2D converted to different polygons.
+#var polyline: Array[PackedVector2Array]
 
+var poly_buttons: Array[DraggableButton]
+var button_positions: PackedVector2Array
 var currently_dragging: DraggableButton
 
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed(&"quick_restart"):
 		get_tree().reload_current_scene()
+		return
 
-	cursor_pos = get_local_mouse_position()
-
-	if is_instance_valid(currently_dragging) or Input.is_action_just_pressed(&"e_select"):
-		_line_edit_mode()
-
-	if closed and Input.is_action_just_pressed(&"e_end_polygon_creation"):
-		_create_polygon()
+	# Line edit when making or moving points around.
+	if is_instance_valid(currently_dragging) or Input.is_action_just_pressed(&"e_select") or Input.is_action_just_released(&"e_select"):
+		_line_editing()
 
 
-## Logic for creating the outline of a platform or terrain.
-func _line_edit_mode():
+## The process of designing the line and its draggable points.
+func _line_editing():
 	# Creating the buttons.
-	if _can_create_button():
-		last_click_pos = cursor_pos
+	if Input.is_action_just_pressed(&"e_select") and not hovering_over_button:
+		last_click_pos = get_local_mouse_position()
 
-		if not drawn_once:
-			position = last_click_pos
-			_create_button(Vector2.ZERO, true)
-			drawn_once = true
-		else:
-			_create_button(last_click_pos, false)
+		#Geometry2D.get_closest_point_to_segment()
 
-	var button_positions: PackedVector2Array
-
-	for button in poly_buttons:
-		button_positions.append(button.position)
+		_create_button(last_click_pos, !drawn_once)
 
 	# Updating points of the Line2D.
-	points = button_positions
+	_sync_p2b()
 
-	# Creating the polyline.
-	if points.size() >= 2:
-		polyline = Geometry2D.offset_polyline(points, width / 2)
+	## Creating the polyline.
+	#if points.size() >= 2:
+		#polyline = Geometry2D.offset_polyline(points, width / 2)
 
 	# Dragging around a button.
-	if is_instance_valid(currently_dragging):
-		if _check_not_intersecting(points, cursor_pos):
-			pass
+	#if is_instance_valid(currently_dragging):
+		#if _check_not_intersecting(button_positions, currently_dragging.position):
+			#print("dont do thaat :( :( :( :( :( :( :( :(")
 			#currently_dragging.position = Geometry2D.get_closest_points_between_segments()
 
 
@@ -78,27 +66,27 @@ func _line_edit_mode():
 	#return segments
 
 
+## Updates the [member points] to correspond with the positions of the [DraggableButton]s
+func _sync_p2b():
+	button_positions = poly_buttons.map(func(button: DraggableButton) -> Vector2: return button.position)
+	points = button_positions
+
 ## Force rewrites the polygon when a point is removed.[br][br]
 ## [param to_be_removed] is a reference to the point that's being removed.
 func _remove_point_on_poly(to_be_removed: DraggableButton):
-	if not points.size() >= 3:
-		return
+	if to_be_removed.has_meta(&"first"):
+		# Reset drawn_once if the only existing point was deleted,
+		# otherwise make the next point the first point.
+		if points.size() == 1:
+			drawn_once = false
+		else:
+			poly_buttons[1].costume = "Red"
+			poly_buttons[1].set_meta(&"first", true)
 
 	poly_buttons.erase(to_be_removed)
 	to_be_removed.queue_free()
 
-	points = poly_buttons.map(func(button: DraggableButton) -> Vector2: return button.position)
-
-
-## Return if a point creation input is possible or not.
-func _can_create_button() -> bool:
-	return (
-		not closed and
-		not hovering_over_button and 
-		Input.is_action_just_pressed(&"e_select") and 
-		last_click_pos != cursor_pos and
-		_check_not_intersecting(points, cursor_pos)
-	)
+	_sync_p2b()
 
 
 ## Check if the polygon you're trying to create doesn't intersect with itself.
@@ -108,10 +96,11 @@ func _check_not_intersecting(poly: PackedVector2Array, new_pos: Vector2) -> bool
 	if size <= 2:
 		return true
 
+	# Last point of the polygon
 	var edge_start: Vector2 = poly[size - 1]
 
 	for i in range(size - 2):
-		if Geometry2D.segment_intersects_segment(poly[i], poly[i + 1], edge_start, new_pos):
+		if Geometry2D.segment_intersects_segment(poly[i], poly[i + 1], edge_start, new_pos) != null:
 			push_warning("Cannot create a polygon that intersects with itself.")
 			return false
 
@@ -134,7 +123,9 @@ func _create_button(at: Vector2, is_first: bool):
 
 	if is_first:
 		button_node.costume = "Red"
-		button_real.pressed.connect(_close_outline)
+		button_node.set_meta(&"first", true)
+		drawn_once = true
+		#button_real.pressed.connect(_close_outline)
 
 	poly_buttons.append(button_node)
 	add_child(button_node)
@@ -152,18 +143,18 @@ func _close_outline():
 	closed = true
 
 
-func _create_polygon():
-	var body := StaticBody2D.new()
-	get_parent().call_deferred("add_child", body)
-
-	var poly := CollisionPolygon2D.new()
-	var visual := Polygon2D.new()
-
-	poly.polygon = points
-	visual.polygon = points
-
-	poly.position = position
-	visual.position = position
-
-	body.add_child(poly)
-	body.add_child(visual)
+#func _create_polygon():
+	#var body := StaticBody2D.new()
+	#get_parent().call_deferred("add_child", body)
+#
+	#var collision := CollisionPolygon2D.new()
+	#var visual := Polygon2D.new()
+#
+	#collision.polygon = points
+	#visual.polygon = points
+#
+	#collision.position = position
+	#visual.position = position
+#
+	#body.add_child(collision)
+	#body.add_child(visual)

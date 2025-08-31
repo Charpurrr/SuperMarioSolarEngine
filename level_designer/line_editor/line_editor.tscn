@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6d0a158by2pt"]
+
+[ext_resource type="Script" uid="uid://cn7lcacvnydhk" path="res://level_designer/line_editor/line_editor.gd" id="1_v6ycl"]
+[ext_resource type="PackedScene" uid="uid://cn7kvuvr72qyy" path="res://level_designer/widgets/draggable_button/widget_button.tscn" id="2_gasgg"]
+
+[node name="LineEditor" type="Line2D"]
+width = 3.0
+default_color = Color(0.27451, 0.160784, 0.168627, 1)
+script = ExtResource("1_v6ycl")
+button_widget = ExtResource("2_gasgg")
