@@ -1,6 +1,7 @@
 @tool
 class_name DraggableButton
 extends Control
+## An editor widget button that can be used for numerous actions.
 
 signal selected(button: DraggableButton)
 signal deselected(button: DraggableButton)
