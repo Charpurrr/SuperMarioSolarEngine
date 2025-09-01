@@ -15,7 +15,4 @@ button_widget = ExtResource("2_gasgg")
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
-text = "a
-b
-d"
 label_settings = SubResource("LabelSettings_v6ycl")

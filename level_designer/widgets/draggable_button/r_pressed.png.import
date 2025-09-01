@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btke6yfqyplyg"
-path="res://.godot/imported/normal_red.png-c9a7d2acaefb82e80d3a276d14bddaf5.ctex"
+uid="uid://b24nholvp11ak"
+path="res://.godot/imported/r_pressed.png-8ebf23aa79f67aa385df348a3c1d649e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://level_designer/widgets/draggable_button/normal_red.png"
-dest_files=["res://.godot/imported/normal_red.png-c9a7d2acaefb82e80d3a276d14bddaf5.ctex"]
+source_file="res://level_designer/widgets/draggable_button/r_pressed.png"
+dest_files=["res://.godot/imported/r_pressed.png-8ebf23aa79f67aa385df348a3c1d649e.ctex"]
 
 [params]
 
