@@ -12,13 +12,15 @@ signal delete_attempted
 @export var y_lock: TextureRect
 
 @export_category(&"Visuals")
-@export_enum("Common", "Red") var costume: String = "Common":
+@export_enum("Yellow", "Red", "Blue") var costume: String = "Yellow":
 	set(value):
 		costume = value
+		await ready
 		_set_appropriate_textures()
 
-@export var common_costume_data: ButtonCostume
+@export var yellow_costume_data: ButtonCostume
 @export var red_costume_data: ButtonCostume
+@export var blue_costume_data: ButtonCostume
 
 @export_category(&"Behaviour")
 ## Locks the axis of this draggable button so it can only move on the x-axis.[br][br]
@@ -65,14 +67,18 @@ func _process(_delta: float) -> void:
 
 func _set_appropriate_textures() -> void:
 	match costume:
-		"Common":
-			button.texture_normal = common_costume_data.normal_graphic
-			button.texture_hover = common_costume_data.hover_graphic
-			button.texture_pressed = common_costume_data.pressed_graphic
+		"Yellow":
+			button.texture_normal = yellow_costume_data.normal_graphic
+			button.texture_hover = yellow_costume_data.hover_graphic
+			button.texture_pressed = yellow_costume_data.pressed_graphic
 		"Red":
 			button.texture_normal = red_costume_data.normal_graphic
 			button.texture_hover = red_costume_data.hover_graphic
 			button.texture_pressed = red_costume_data.pressed_graphic
+		"Blue":
+			button.texture_normal = blue_costume_data.normal_graphic
+			button.texture_hover = blue_costume_data.hover_graphic
+			button.texture_pressed = blue_costume_data.pressed_graphic
 
 
 func _on_button_button_down() -> void:
