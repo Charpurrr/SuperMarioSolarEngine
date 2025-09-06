@@ -47,17 +47,12 @@ func _ready() -> void:
 	add_holo_button.button_up.connect(_add_holo_just_released)
 
 
-func _process(_delta: float) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed(&"quick_restart"):
 		get_tree().reload_current_scene()
 		return
 
 	cursor_pos = get_local_mouse_position()
-
-	var label: Label = get_child(0)
-	label.text = ""
-	for segment in segments:
-		label.text += "seg%d: " % segments.find(segment) + str(segment) + "\n"
 
 	_line_editing()
 

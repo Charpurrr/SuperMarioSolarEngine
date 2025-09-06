@@ -59,7 +59,7 @@ func _ready() -> void:
 	y_lock.visible = axis_lock_y
 
 
-func _process(_delta: float) -> void:
+func _input(_event: InputEvent) -> void:
 	if draggable and held_down:
 		if axis_lock_x:
 			global_position.x = get_global_mouse_position().x
