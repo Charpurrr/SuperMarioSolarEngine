@@ -3,15 +3,26 @@ extends Line2D
 ## Base class used for simple user generated line creation and editing.
 ## Inherited by classes such as [TrackEditor] and [PolygonEditor] for intuitive UIX.
 
+## How close the cursor needs to be toward the center of the line to
+## add a point on it.
+@export var add_point_margin: int = 5
+@export_category("References")
 @export var button_widget: PackedScene
+@export var add_hologram: DraggableButton
 
+## Whether or not the first point has been created.
+var drawn_once: bool = false
+
+## The local position of the cursor.
+var cursor_pos: Vector2
 ## Where the cursor was located on its last left click.
 var last_click_pos: Vector2
-
+## How close the cursor is to the nearest point on the line.
+var min_cursor_dist: float = INF
 ## Whether or not the cursor is currently hovering over a button widget.
 var hovering_over_button: bool = false
-
-var drawn_once: bool = false
+## Which segment of the line the cursor is currently closest to.
+var closest_segment: PackedVector2Array
 
 ### This Line2D converted to different polygons.
 #var polyline: Array[PackedVector2Array]
@@ -29,25 +40,33 @@ var button_positions: PackedVector2Array
 var currently_dragging: DraggableButton
 
 
+func _ready() -> void:
+	var add_holo_button: TextureButton = add_hologram.get_child(0)
+
+	add_holo_button.button_down.connect(_add_holo_just_pressed)
+	add_holo_button.button_up.connect(_add_holo_just_released)
+
+
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed(&"quick_restart"):
 		get_tree().reload_current_scene()
 		return
+
+	cursor_pos = get_local_mouse_position()
 
 	var label: Label = get_child(0)
 	label.text = ""
 	for segment in segments:
 		label.text += "seg%d: " % segments.find(segment) + str(segment) + "\n"
 
-	# Line edit when making or moving points around.
 	_line_editing()
 
 
 ## The process of designing the line and its draggable points.
 func _line_editing():
 	# Creating the buttons.
-	if Input.is_action_just_pressed(&"e_select") and not hovering_over_button:
-		last_click_pos = get_local_mouse_position()
+	if Input.is_action_just_pressed(&"e_select") and not hovering_over_button and not add_hologram.visible:
+		last_click_pos = cursor_pos
 
 		_create_button(
 			last_click_pos,
@@ -57,19 +76,44 @@ func _line_editing():
 			!drawn_once
 		)
 
+	# When the "add point" hologram is being pressed,
+	# it temporarily turns into a make-shift DraggableButton.
+	# This is done so the button can stay selected
+	add_hologram.draggable = add_hologram.held_down
+
+	# Show the "add point" hologram at the appropriate location
+	if not add_hologram.held_down:
+		if not hovering_over_button:
+			add_hologram.position = _get_closest_point(cursor_pos)
+			add_hologram.visible = min_cursor_dist <= add_point_margin
+		else:
+			add_hologram.visible = false
+
 	# Updating points of the Line2D.
 	if (
 		Input.is_action_just_pressed(&"e_select") or
 		Input.is_action_just_released(&"e_select") or
-		is_instance_valid(currently_dragging)
+		is_instance_valid(currently_dragging) or
+		add_hologram.held_down
 	):
 		_sync_p2b()
+
+
+func _add_holo_just_pressed():
+	poly_buttons.insert(segments.find(closest_segment) + 1, add_hologram)
+
+
+func _add_holo_just_released():
+	var holo_idx: int = poly_buttons.find(add_hologram)
+	poly_buttons.remove_at(holo_idx)
+	_create_button(add_hologram.position, holo_idx)
+	_sync_p2b(poly_buttons[holo_idx])
 
 
 ## Creates a new widget button at position [param at],
 ## with index [param idx] (which can be -1 if last available index is desired),
 ## and uses the flag [param is_first] to handle the button appropriately.
-func _create_button(at: Vector2, idx: int, is_first: bool):
+func _create_button(at: Vector2, idx: int, is_first: bool = false):
 	var button_node: DraggableButton = button_widget.instantiate()
 	# Node's child is the TextureButton.
 	var button_real: TextureButton = button_node.get_child(0)
@@ -84,8 +128,6 @@ func _create_button(at: Vector2, idx: int, is_first: bool):
 	button_real.mouse_entered.connect(func(): hovering_over_button = true)
 	button_real.mouse_exited.connect(func(): hovering_over_button = false)
 
-	# adding button to previously existing segment logic goes here
-
 	# If an index is defined, set the array element to that index.
 	if idx != -1:
 		poly_buttons.insert(idx, button_node)
@@ -97,7 +139,6 @@ func _create_button(at: Vector2, idx: int, is_first: bool):
 		button_node.costume = "Red"
 		button_node.set_meta(&"first", true)
 		drawn_once = true
-		#button_real.pressed.connect(_close_outline)
 	else:
 		segments.insert(
 			poly_buttons.find(button_node) - 1,
@@ -107,7 +148,6 @@ func _create_button(at: Vector2, idx: int, is_first: bool):
 	add_child(button_node)
 
 
-## TODO description for this.[br][br]
 ## [param to_be_removed] is a reference to the point that's being removed.
 func _remove_button(to_be_removed: DraggableButton):
 	if to_be_removed.has_meta(&"first"):
@@ -141,29 +181,56 @@ func _remove_button(to_be_removed: DraggableButton):
 	_sync_p2b()
 
 
-## Updates the [member points] to correspond with the positions of the [DraggableButton]s
-func _sync_p2b():
+## Updates the [member points] to correspond with the positions of the [DraggableButton]s.[br]
+## If a button was just dragged around, this function updates the segments surrounding it.
+## If instead you want to update the segments around a different reference point,
+## set [param overwrite_reference] to it.
+func _sync_p2b(overwrite_reference: DraggableButton = null):
 	button_positions = poly_buttons.map(
 		func(button: DraggableButton) -> Vector2: return button.position
 	)
 
 	points = button_positions
 
-	# If dragging something, update the segments array as well.
-	if is_instance_valid(currently_dragging) and points.size() > 1:
-		var dragging_idx: int = poly_buttons.find(currently_dragging)
+	var reference: DraggableButton = null
+
+	if is_instance_valid(overwrite_reference):
+		reference = overwrite_reference
+	else:
+		reference = currently_dragging
+
+	# If reference exists, update the segments array as well.
+	if is_instance_valid(reference) and points.size() > 1:
+		var dragging_idx: int = poly_buttons.find(reference)
 
 		# Update the left segment [x1,y1;X2,Y2]
 		segments[dragging_idx - 1] = PackedVector2Array([
 				poly_buttons[dragging_idx - 1].position,
-				currently_dragging.position
+				reference.position
 			])
 		# Update the right segment [X1,Y1;x2,y2] (if there is one)
 		if dragging_idx != points.size() - 1:
 			segments[dragging_idx] = PackedVector2Array([
-				currently_dragging.position,
+				reference.position,
 				poly_buttons[dragging_idx + 1].position
 			])
+
+
+func _get_closest_point(reference: Vector2) -> Vector2:
+	var closest_point: Vector2
+	var min_dist: float = INF
+	
+	for segment in segments:
+		var candidate: Vector2 = Geometry2D.get_closest_point_to_segment(reference, segment[0], segment[1])
+		var dist: float = reference.distance_to(candidate)
+
+		if dist < min_dist:
+			min_dist = dist
+			min_cursor_dist = dist
+			closest_segment = segment
+			closest_point = candidate
+
+	return closest_point
 
 
 ### Check if the polygon you're trying to create doesn't intersect with itself.

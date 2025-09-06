@@ -3,8 +3,12 @@ class_name DraggableButton
 extends Control
 ## An editor widget button that can be used for numerous actions.
 
+## Emitted when the cursor hovers over this button.
 signal selected(button: DraggableButton)
+## Emitted when the cursor stops hovering over this button.
 signal deselected(button: DraggableButton)
+## Emitted when the user tries to delete this button.
+## Use this to create custom deletion logic depending on the widget's purpose.
 signal delete_attempted
 
 @export var button: TextureButton
@@ -12,12 +16,16 @@ signal delete_attempted
 @export var y_lock: TextureRect
 
 @export_category(&"Visuals")
-@export_enum("Yellow", "Red", "Blue") var costume: String = "Yellow":
+@export_enum("Yellow", "Red", "Blue", "Hologram") var costume: String = "Yellow":
 	set(value):
 		costume = value
-		await ready
+
+		if not Engine.is_editor_hint():
+			await ready
+
 		_set_appropriate_textures()
 
+@export var hologram_costume_data: ButtonCostume
 @export var yellow_costume_data: ButtonCostume
 @export var red_costume_data: ButtonCostume
 @export var blue_costume_data: ButtonCostume
@@ -79,6 +87,10 @@ func _set_appropriate_textures() -> void:
 			button.texture_normal = blue_costume_data.normal_graphic
 			button.texture_hover = blue_costume_data.hover_graphic
 			button.texture_pressed = blue_costume_data.pressed_graphic
+		"Hologram":
+			button.texture_normal = hologram_costume_data.normal_graphic
+			button.texture_hover = hologram_costume_data.hover_graphic
+			button.texture_pressed = hologram_costume_data.pressed_graphic
 
 
 func _on_button_button_down() -> void:
