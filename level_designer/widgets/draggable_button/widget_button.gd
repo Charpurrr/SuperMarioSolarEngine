@@ -3,9 +3,9 @@ class_name DraggableButton
 extends Control
 ## An editor widget button that can be used for numerous actions.
 
-## Emitted when the cursor hovers over this button.
+## Emitted when the cursor clicks on this button.
 signal selected(button: DraggableButton)
-## Emitted when the cursor stops hovering over this button.
+## Emitted when the cursor releases their click on this button.
 signal deselected(button: DraggableButton)
 ## Emitted when the user tries to delete this button.
 ## Use this to create custom deletion logic depending on the widget's purpose.
@@ -20,10 +20,9 @@ signal delete_attempted
 	set(value):
 		costume = value
 
-		if not Engine.is_editor_hint():
-			await ready
-
-		_set_appropriate_textures()
+		# Check for the blue costume data because it is loaded last.
+		if is_instance_valid(blue_costume_data):
+			_set_appropriate_textures()
 
 @export var hologram_costume_data: ButtonCostume
 @export var yellow_costume_data: ButtonCostume
@@ -105,7 +104,9 @@ func _on_button_button_up() -> void:
 
 func _on_button_mouse_entered() -> void:
 	hovered_over = true
+	grab_focus()
 
 
 func _on_button_mouse_exited() -> void:
 	hovered_over = false
+	release_focus()

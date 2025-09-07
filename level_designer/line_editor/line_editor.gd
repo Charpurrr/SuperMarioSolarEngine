@@ -8,6 +8,7 @@ extends Line2D
 @export var add_point_margin: int = 5
 @export_category("References")
 @export var button_widget: PackedScene
+@export var curve_button_widget: PackedScene
 @export var add_hologram: DraggableButton
 
 ## Whether or not the first point has been created.
@@ -39,6 +40,15 @@ var button_positions: PackedVector2Array
 ## to easily check if a widget is being dragged around.
 var currently_dragging: DraggableButton
 
+var currently_hovered: DraggableButton:
+	set(val):
+		currently_hovered = val
+
+		if is_instance_valid(val):
+			hovering_over_button = true
+		else:
+			hovering_over_button = false
+
 
 func _ready() -> void:
 	var add_holo_button: TextureButton = add_hologram.get_child(0)
@@ -53,6 +63,13 @@ func _input(_event: InputEvent) -> void:
 		return
 
 	cursor_pos = get_local_mouse_position()
+
+	var focus_owner: Control = get_viewport().gui_get_focus_owner()
+
+	if focus_owner is DraggableButton and focus_owner != add_hologram:
+		currently_hovered = focus_owner
+	else:
+		currently_hovered = null
 
 	_line_editing()
 
@@ -78,11 +95,18 @@ func _line_editing():
 
 	# Show the "add point" hologram at the appropriate location
 	if not add_hologram.held_down:
-		if not hovering_over_button:
+		if not is_instance_valid(currently_hovered) and points.size() > 1:
 			add_hologram.position = _get_closest_point(cursor_pos)
 			add_hologram.visible = min_cursor_dist <= add_point_margin
 		else:
 			add_hologram.visible = false
+
+	if Input.is_action_just_pressed(&"e_curve_toggle") and hovering_over_button:
+		# Toggle Default -> Curve, Curve -> Default
+		if currently_hovered is CurveButton:
+			_replace_button(currently_hovered, true, false)
+		else:
+			_replace_button(currently_hovered, true, true)
 
 	# Updating points of the Line2D.
 	if (
@@ -99,19 +123,19 @@ func _add_holo_just_pressed():
 
 
 func _add_holo_just_released():
-	var holo_idx: int = poly_buttons.find(add_hologram)
-	poly_buttons.remove_at(holo_idx)
-	_create_button(add_hologram.position, holo_idx)
-	_sync_p2b(poly_buttons[holo_idx])
+	_replace_button(add_hologram)
 
 
 ## Creates a new widget button at position [param at],
 ## with index [param idx] (which can be -1 if last available index is desired),
 ## and uses the flag [param is_first] to handle the button appropriately.
-func _create_button(at: Vector2, idx: int, is_first: bool = false):
-	var button_node: DraggableButton = button_widget.instantiate()
-	# Node's child is the TextureButton.
-	var button_real: TextureButton = button_node.get_child(0)
+func _create_button(at: Vector2, idx: int, is_first: bool = false, is_curve: bool = false):
+	var button_node: DraggableButton
+
+	if is_curve:
+		button_node = curve_button_widget.instantiate()
+	else:
+		button_node = button_widget.instantiate()
 
 	button_node.position = at
 
@@ -119,9 +143,6 @@ func _create_button(at: Vector2, idx: int, is_first: bool = false):
 
 	button_node.selected.connect(func(button: DraggableButton): currently_dragging = button)
 	button_node.deselected.connect(func(_button: DraggableButton): currently_dragging = null)
-
-	button_real.mouse_entered.connect(func(): hovering_over_button = true)
-	button_real.mouse_exited.connect(func(): hovering_over_button = false)
 
 	# If an index is defined, set the array element to that index.
 	if idx != -1:
@@ -137,10 +158,25 @@ func _create_button(at: Vector2, idx: int, is_first: bool = false):
 	else:
 		segments.insert(
 			poly_buttons.find(button_node) - 1,
-			PackedVector2Array([poly_buttons[idx - 1].position, poly_buttons[idx].position])
+			PackedVector2Array([
+				poly_buttons[idx - 1].position,
+				poly_buttons[idx].position
+			])
 		)
 
 	add_child(button_node)
+
+
+## Replaces [param target] with a new [DraggableButton].
+func _replace_button(target: DraggableButton, delete_after: bool = false, is_curve: bool = false):
+	var target_idx: int = poly_buttons.find(target)
+
+	poly_buttons.remove_at(target_idx)
+	_create_button(target.position, target_idx, false, is_curve)
+	_sync_p2b(poly_buttons[target_idx])
+
+	if delete_after:
+		target.queue_free()
 
 
 ## [param to_be_removed] is a reference to the point that's being removed.
@@ -164,10 +200,15 @@ func _remove_button(to_be_removed: DraggableButton):
 		elif idx == points.size() - 1:
 			segments.remove_at(idx - 1)
 		# Any point in-between:
-		else:
+		elif idx > 0:
 			segments.remove_at(idx)
 			segments.remove_at(idx - 1)
-			var merged_segment := PackedVector2Array([poly_buttons[idx - 1].position, poly_buttons[idx + 1].position])
+
+			var merged_segment := PackedVector2Array([
+				poly_buttons[idx - 1].position,
+				poly_buttons[idx + 1].position
+			])
+
 			segments.insert(idx - 1, merged_segment)
 
 	poly_buttons.erase(to_be_removed)

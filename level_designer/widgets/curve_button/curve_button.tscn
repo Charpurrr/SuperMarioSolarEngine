@@ -12,15 +12,17 @@ handle_line = NodePath("Line2D")
 [node name="Line2D" type="Line2D" parent="." index="0"]
 points = PackedVector2Array(-48, 0, 0, 0, 48, 0)
 width = 2.0
-default_color = Color(0.27451, 0.160784, 0.168627, 1)
+default_color = Color(0.180392, 0.152941, 0.184314, 1)
 
 [node name="WidgetButtonL" parent="." index="4" instance=ExtResource("1_w6l4p")]
+z_index = 1
 offset_left = -48.0
 offset_right = -48.0
 scale = Vector2(0.8, 0.8)
 costume = "Blue"
 
 [node name="WidgetButtonR" parent="." index="5" instance=ExtResource("1_w6l4p")]
+z_index = 1
 offset_left = 48.0
 offset_right = 48.0
 scale = Vector2(0.8, 0.8)

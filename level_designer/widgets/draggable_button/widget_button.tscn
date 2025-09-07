@@ -46,6 +46,7 @@ metadata/_custom_type_script = "uid://c0gisqkikjjsm"
 [node name="WidgetButton" type="Control" node_paths=PackedStringArray("button", "x_lock", "y_lock")]
 layout_mode = 3
 anchors_preset = 0
+focus_mode = 1
 script = ExtResource("1_wk6ee")
 button = NodePath("Button")
 x_lock = NodePath("LockX")
