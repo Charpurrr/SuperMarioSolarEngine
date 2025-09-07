@@ -31,7 +31,7 @@ var closest_segment: PackedVector2Array
 ## A list of every segment (point to point) of the line.
 var segments: Array[PackedVector2Array]
 ## A list of every [DraggableButton] widget on the line.
-var poly_buttons: Array[DraggableButton]
+var widget_buttons: Array[DraggableButton]
 ## A list of every [DraggableButton] widget's position.
 var button_positions: PackedVector2Array
 ## Which [DraggableButton] is currently being dragged around.
@@ -55,6 +55,13 @@ func _ready() -> void:
 
 	add_holo_button.button_down.connect(_add_holo_just_pressed)
 	add_holo_button.button_up.connect(_add_holo_just_released)
+
+
+func _process(_delta: float) -> void:
+	var label: Label = get_child(0)
+	label.text = ""
+	for segment in segments:
+		label.text += "seg%d: " % segments.find(segment) + str(segment) + "\n"
 
 
 func _input(_event: InputEvent) -> void:
@@ -102,9 +109,10 @@ func _line_editing():
 			add_hologram.visible = false
 
 	if Input.is_action_just_pressed(&"e_curve_toggle") and hovering_over_button:
-		# Toggle Default -> Curve, Curve -> Default
+		# Toggle Curve -> Default
 		if currently_hovered is CurveButton:
 			_replace_button(currently_hovered, true, false)
+		# Toggle Default -> Curve
 		else:
 			_replace_button(currently_hovered, true, true)
 
@@ -112,14 +120,14 @@ func _line_editing():
 	if (
 		Input.is_action_just_pressed(&"e_select") or
 		Input.is_action_just_released(&"e_select") or
-		is_instance_valid(currently_dragging) or
+		get_viewport().gui_get_focus_owner() is DraggableButton or
 		add_hologram.held_down
 	):
 		_sync_p2b()
 
 
 func _add_holo_just_pressed():
-	poly_buttons.insert(segments.find(closest_segment) + 1, add_hologram)
+	widget_buttons.insert(segments.find(closest_segment) + 1, add_hologram)
 
 
 func _add_holo_just_released():
@@ -133,7 +141,7 @@ func _create_button(at: Vector2, idx: int, is_first: bool = false, is_curve: boo
 	var button_node: DraggableButton
 
 	if is_curve:
-		button_node = curve_button_widget.instantiate()
+		button_node = curve_button_widget.instantiate() as CurveButton
 	else:
 		button_node = button_widget.instantiate()
 
@@ -146,10 +154,10 @@ func _create_button(at: Vector2, idx: int, is_first: bool = false, is_curve: boo
 
 	# If an index is defined, set the array element to that index.
 	if idx != -1:
-		poly_buttons.insert(idx, button_node)
+		widget_buttons.insert(idx, button_node)
 	# Otherwise simply add it to the end.
 	else:
-		poly_buttons.append(button_node)
+		widget_buttons.append(button_node)
 
 	if is_first:
 		button_node.costume = "Red"
@@ -157,10 +165,10 @@ func _create_button(at: Vector2, idx: int, is_first: bool = false, is_curve: boo
 		drawn_once = true
 	else:
 		segments.insert(
-			poly_buttons.find(button_node) - 1,
+			widget_buttons.find(button_node) - 1,
 			PackedVector2Array([
-				poly_buttons[idx - 1].position,
-				poly_buttons[idx].position
+				widget_buttons[idx - 1].position,
+				widget_buttons[idx].position
 			])
 		)
 
@@ -169,11 +177,11 @@ func _create_button(at: Vector2, idx: int, is_first: bool = false, is_curve: boo
 
 ## Replaces [param target] with a new [DraggableButton].
 func _replace_button(target: DraggableButton, delete_after: bool = false, is_curve: bool = false):
-	var target_idx: int = poly_buttons.find(target)
+	var target_idx: int = widget_buttons.find(target)
 
-	poly_buttons.remove_at(target_idx)
+	widget_buttons.remove_at(target_idx)
 	_create_button(target.position, target_idx, false, is_curve)
-	_sync_p2b(poly_buttons[target_idx])
+	_sync_p2b()
 
 	if delete_after:
 		target.queue_free()
@@ -187,17 +195,17 @@ func _remove_button(to_be_removed: DraggableButton):
 		if points.size() == 1:
 			drawn_once = false
 		else:
-			poly_buttons[1].costume = "Red"
-			poly_buttons[1].set_meta(&"first", true)
+			widget_buttons[1].costume = "Red"
+			widget_buttons[1].set_meta(&"first", true)
 
 	if points.size() > 1:
-		var idx: int = poly_buttons.find(to_be_removed)
+		var idx: int = widget_buttons.find(to_be_removed)
 
 		# First point:
 		if idx == 0:
 			segments.remove_at(0)
 		# Last point:
-		elif idx == points.size() - 1:
+		elif idx == widget_buttons.size() - 1:
 			segments.remove_at(idx - 1)
 		# Any point in-between:
 		elif idx > 0:
@@ -205,13 +213,13 @@ func _remove_button(to_be_removed: DraggableButton):
 			segments.remove_at(idx - 1)
 
 			var merged_segment := PackedVector2Array([
-				poly_buttons[idx - 1].position,
-				poly_buttons[idx + 1].position
+				widget_buttons[idx - 1].position,
+				widget_buttons[idx + 1].position
 			])
 
 			segments.insert(idx - 1, merged_segment)
 
-	poly_buttons.erase(to_be_removed)
+	widget_buttons.erase(to_be_removed)
 	to_be_removed.queue_free()
 
 	_sync_p2b()
@@ -221,35 +229,87 @@ func _remove_button(to_be_removed: DraggableButton):
 ## If a button was just dragged around, this function updates the segments surrounding it.
 ## If instead you want to update the segments around a different reference point,
 ## set [param overwrite_reference] to it.
-func _sync_p2b(overwrite_reference: DraggableButton = null):
-	button_positions = poly_buttons.map(
+#func _sync_p2b(overwrite_reference: DraggableButton = null):
+	#button_positions = poly_buttons.map(
+		#func(button: DraggableButton) -> Vector2: return button.position
+	#)
+#
+	#points = button_positions
+#
+	#var reference: DraggableButton = null
+#
+	#if is_instance_valid(overwrite_reference):
+		#reference = overwrite_reference
+	#else:
+		#reference = currently_dragging
+#
+	## If reference exists, update the segments array as well.
+	#if is_instance_valid(reference) and points.size() > 1:
+		#var dragging_idx: int = poly_buttons.find(reference)
+#
+		## Update the left segment [x1,y1;X2,Y2]
+		#segments[dragging_idx - 1] = PackedVector2Array([
+				#poly_buttons[dragging_idx - 1].position,
+				#reference.position
+			#])
+		## Update the right segment [X1,Y1;x2,y2] (if there is one)
+		#if dragging_idx != points.size() - 1:
+			#segments[dragging_idx] = PackedVector2Array([
+				#reference.position,
+				#poly_buttons[dragging_idx + 1].position
+			#])
+
+
+func _sync_p2b():
+	# Update button_positions
+	button_positions = widget_buttons.map(
 		func(button: DraggableButton) -> Vector2: return button.position
 	)
 
-	points = button_positions
+	# Update segments
+	#var new_segments: Array[PackedVector2Array]
+#
+	#for i in range(widget_buttons.size() - 1):
+		#new_segments.append_array(PackedVector2Array([widget_buttons[i].position, widget_buttons[i + 1].position]))
+#
+	#segments = new_segments
 
-	var reference: DraggableButton = null
+	# Update points
+	var new_points = PackedVector2Array()
 
-	if is_instance_valid(overwrite_reference):
-		reference = overwrite_reference
+	new_points.append(widget_buttons[0].position)
+
+	for i in range(widget_buttons.size() - 1):
+		if widget_buttons[i] is CurveButton or widget_buttons[i + 1] is CurveButton:
+			new_points.append_array(_get_curve(i, i + 1))
+		else:
+			new_points.append(widget_buttons[i + 1].position)
+
+	points = new_points
+
+
+func _get_curve(from: int, to: int) -> PackedVector2Array:
+	var curve := Curve2D.new()
+
+	var from_btn: DraggableButton = widget_buttons[from]
+	var to_btn: DraggableButton = widget_buttons[to]
+
+	if from_btn is CurveButton:
+		curve.add_point(from_btn.position, from_btn.in_offset, from_btn.out_offset)
 	else:
-		reference = currently_dragging
+		curve.add_point(from_btn.position)
 
-	# If reference exists, update the segments array as well.
-	if is_instance_valid(reference) and points.size() > 1:
-		var dragging_idx: int = poly_buttons.find(reference)
+	if to_btn is CurveButton:
+		curve.add_point(to_btn.position, to_btn.in_offset, to_btn.out_offset)
+	else:
+		curve.add_point(to_btn.position)
 
-		# Update the left segment [x1,y1;X2,Y2]
-		segments[dragging_idx - 1] = PackedVector2Array([
-				poly_buttons[dragging_idx - 1].position,
-				reference.position
-			])
-		# Update the right segment [X1,Y1;x2,y2] (if there is one)
-		if dragging_idx != points.size() - 1:
-			segments[dragging_idx] = PackedVector2Array([
-				reference.position,
-				poly_buttons[dragging_idx + 1].position
-			])
+	var baked: PackedVector2Array = curve.get_baked_points()
+	# Avoid duplicate point
+	if baked.size() > 1:
+		baked.remove_at(0)
+
+	return baked
 
 
 func _get_closest_point(reference: Vector2) -> Vector2:
