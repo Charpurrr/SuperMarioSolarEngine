@@ -1,4 +1,5 @@
 @tool
+@abstract
 class_name PreviewDisplayData
 extends Resource
 ## Abstract class - do NOT instance! Stores data about a preview item display node.
@@ -10,9 +11,8 @@ extends Resource
 
 
 ## Creates an instance of the preview display.
-func create() -> Node2D:
-	assert(false, "PreviewDisplayData is an abstract class, and must be inherited by a child class.")
-	return null
+@abstract
+func create() -> Node2D
 
 
 ## Returns the selection shape of the preview display.

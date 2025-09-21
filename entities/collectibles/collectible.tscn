@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bkmrh1luv0sl0"]
+[gd_scene load_steps=4 format=3 uid="uid://bkmrh1luv0sl0"]
 
 [ext_resource type="Script" uid="uid://bwimip54yd0se" path="res://entities/collectibles/collectible.gd" id="1_uacbk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uacbk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ywnjo"]
 size = Vector2(16, 16)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_uacbk")
 script = ExtResource("1_uacbk")
 
 [node name="Area2D" type="Area2D" parent="."]

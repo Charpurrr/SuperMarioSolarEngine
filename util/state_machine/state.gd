@@ -1,3 +1,4 @@
+@abstract
 class_name State
 extends Node
 ## Abstract state class with behavior that affects a target node.
@@ -195,7 +196,8 @@ func _trans_rules() -> Variant:
 
 ## Return the name of a passthrough state.
 ## When this state is switched to, immediately switch to that state.
-## This means that other states don't have to guess the behavior of this state when switching to a child of it.
+## This means that other states don't have to guess the behavior of this state
+## when switching to a child of it..
 func _defer_rules() -> StringName:
 	return &""
 

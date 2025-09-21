@@ -1,3 +1,4 @@
+@abstract
 class_name StateManager
 extends State
 ## Root node of a state machine.

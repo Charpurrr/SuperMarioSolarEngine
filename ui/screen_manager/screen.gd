@@ -1,3 +1,4 @@
+@abstract
 class_name Screen
 extends Control
 ## Abstract class for a screen that gets handled by a screen manager.

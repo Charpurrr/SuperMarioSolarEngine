@@ -13,7 +13,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		_on_collect()
 
 
-## Overwritten by the parent class.
+## Can be overwritten by the parent class.
 func _on_collect():
 	# Default behaviour simply removes the collectible from the stage when collected.
 	queue_free()

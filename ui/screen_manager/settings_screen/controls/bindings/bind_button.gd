@@ -1,3 +1,4 @@
+@abstract
 class_name BindButton
 extends Button
 ## Abstract class for control binding buttons.
@@ -68,7 +69,7 @@ func setup(setup_port: int, setup_player: int):
 	_update_input(_decode_events(saved_events))
 
 
-#region Overriden Functions
+#region Abstract Functions
 ## Should be overridden by the child class.
 ## Returns [code]true[/code] if the event is of the right type.[br]
 ## For example:
@@ -78,39 +79,34 @@ func setup(setup_port: int, setup_player: int):
 ## [/codeblock]
 ## This will filter all InputEvents for Keys. (keyboard inputs).
 ## It will ignore every other kind of input. (Controller, mouse, ...)
-func _is_valid_event(_event: InputEvent) -> bool:
-	push_warning("This function should be overridden in a child class.")
-	return false
+@abstract
+func _is_valid_event(_event: InputEvent) -> bool
 
 
 ## Should be overridden by the child class.[br][br]
 ## Defines how inputs get encoded in the [LocalSettings] file.[br]
 ## E.g. [InputEventKey] as keycode, [InputEventJoyButton] as button_index, etc.
-func _encode_events(_events: Array) -> Array:
-	push_warning("This function should be overridden in a child class.")
-	return []
+@abstract
+func _encode_events(_events: Array) -> Array
 
 
 ## Should be overridden by the child class.[br][br]
 ## Defines how inputs get decoded from the [LocalSettings] file.[br]
 ## E.g. keycode as [InputEventKey], button_index as [InputEventJoyButton], etc.
-func _decode_events(_encoded_events: Array) -> Array:
-	push_warning("This function should be overridden in a child class.")
-	return []
+@abstract
+func _decode_events(_encoded_events: Array) -> Array
 
 
 ## Should be overridden by the child class.[br][br]
 ## Defines how inputs are compared.
-func _check_equivalent_inputs(_input_a: InputEvent, _input_b: InputEvent) -> bool:
-	push_warning("This function should be overridden in a child class.")
-	return false
+@abstract
+func _check_equivalent_inputs(_input_a: InputEvent, _input_b: InputEvent) -> bool
 
 
 ## Should be overridden by the child class.[br][br]
 ## Defines what shows up in the [BindButton] label.
-func _get_human_name(_event: InputEvent) -> StringName:
-	push_warning("This function should be overridden in a child class.")
-	return &""
+@abstract
+func _get_human_name(_event: InputEvent) -> StringName
 
 
 ## Can be overridden by the child class, but not required.[br][br]

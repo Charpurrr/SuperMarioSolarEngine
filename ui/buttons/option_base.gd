@@ -1,3 +1,4 @@
+@abstract
 class_name OptionBase
 extends UIButton
 
@@ -39,11 +40,14 @@ func change_setting(new_value):
 	LocalSettings.change_setting(setting_section, setting_key, new_value)
 
 
-## Overwritten by the parent class.
-func _update_button():
-	pass
+## Overwritten by the parent class.[br]
+## What the button should do when its setting has changed.
+@abstract
+func _update_button()
 
 
-## Overwritten by the parent class.
-func _get_default_value():
-	return null
+## Overwritten by the parent class.[br]
+## Which option is selected as the default one on [method _ready].
+## You can use this to make the button select the last saved value for example..
+@abstract
+func _get_default_value()
