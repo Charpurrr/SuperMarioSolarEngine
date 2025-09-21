@@ -7,11 +7,19 @@ extends Node
 ## will also stop processing on [code]Low[/code] quality.
 @export var stop_parent_on: GameState.Qualities = GameState.Qualities.LOW
 
-var stored_mode: Node.ProcessMode
-var stored_mat: Material
+@onready var parent: Node = get_parent()
+
+@onready var stored_mode: Node.ProcessMode = parent.process_mode
+@onready var stored_mat: Material = parent.material
 
 
 func _ready() -> void:
+	# Wait one process frame to ensure the QUALITY option has been loaded in..
+	# This is done in the UserInterface's OptionsScreen which might be loaded
+	# after this node, and thus not have quality initialised before
+	# this _ready() runs.
+	await get_tree().process_frame
+
 	LocalSettings.setting_changed.connect(_setting_changed)
 	_toggle_parent()
 
@@ -23,7 +31,6 @@ func _setting_changed(key: String, _value: Variant) -> void:
 
 func _toggle_parent() -> void:
 	var current_quality: GameState.Qualities = GameState.quality
-	var parent: Node = get_parent()
 
 	if current_quality <= stop_parent_on:
 		stored_mode = parent.process_mode
