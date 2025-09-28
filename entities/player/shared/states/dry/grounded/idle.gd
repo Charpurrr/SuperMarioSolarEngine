@@ -2,21 +2,18 @@ class_name Idle
 extends PlayerState
 ## Default grounded state when there is no input.
 
-@export_category(&"Animation (Unique to State)")
-@export var animation_look_up: StringName
-@export var anim_offset_look_up: Vector2i
+@export var idle_animation_data: PStateAnimData
+@export var lookup_animation_data: PStateAnimData
 
 
 func _physics_tick():
 	movement.update_prev_direction()
 	movement.decelerate(movement.ground_decel_step * Vector2.RIGHT)
 
-	#if Input.is_action_pressed(&"up"):
-		#actor.doll.play(animation_look_up)
-		#actor.doll.offset = anim_offset_look_up
-	#else:
-		#actor.doll.play(animation)
-		#actor.doll.offset = animation_data.frame_offset
+	if Input.is_action_pressed(&"up"):
+		overwrite_animation(lookup_animation_data)
+	else:
+		overwrite_animation(idle_animation_data)
 
 
 func _trans_rules():

@@ -1,6 +1,5 @@
 [gd_scene load_steps=32 format=3 uid="uid://ui2jk0qwltpw"]
 
-[ext_resource type="PackedScene" uid="uid://bkmrh1luv0sl0" path="res://entities/collectibles/collectible.tscn" id="1_e6lbq"]
 [ext_resource type="Script" uid="uid://7516t88qfy5" path="res://entities/collectibles/shine/shine.gd" id="1_hamnh"]
 [ext_resource type="Texture2D" uid="uid://cjotx4r01vraa" path="res://entities/collectibles/shine/shine.png" id="1_vsls0"]
 [ext_resource type="Shader" uid="uid://beoro7ravdwag" path="res://entities/collectibles/shine/rays.gdshader" id="2_byb03"]
@@ -133,10 +132,10 @@ animations = [{
 [sub_resource type="Resource" id="Resource_byb03"]
 script = ExtResource("5_smdji")
 particle_scene = ExtResource("4_r3wgn")
-particle_offset = Vector2(0, 0)
-particle_scale = Vector2(1, 1)
-loop_delay = 0
 metadata/_custom_type_script = "uid://dd8oyhd4nllix"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywnjo"]
+size = Vector2(16, 16)
 
 [sub_resource type="Gradient" id="Gradient_byb03"]
 colors = PackedColorArray(1, 1, 0, 1, 1, 1, 1, 1)
@@ -165,25 +164,33 @@ gradient = SubResource("Gradient_jbsq7")
 width = 100
 height = 100
 
-[node name="Shine" instance=ExtResource("1_e6lbq")]
+[node name="Shine" type="AnimatedSprite2D" node_paths=PackedStringArray("area")]
 material = SubResource("ShaderMaterial_jbsq7")
 sprite_frames = SubResource("SpriteFrames_l1sdq")
 animation = &"normal"
 autoplay = "normal"
 offset = Vector2(0, -2)
 script = ExtResource("1_hamnh")
-shine_name = &""
-description = ""
+shine_name = null
+description = null
 particle = SubResource("Resource_byb03")
+area = NodePath("Area2D")
 
-[node name="AmbientSound" type="AudioStreamPlayer2D" parent="." index="1"]
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ywnjo")
+
+[node name="AmbientSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_smdji")
 autoplay = true
 max_distance = 100.0
 attenuation = 1.90273
 bus = &"SFX"
 
-[node name="Rays" type="Sprite2D" parent="." index="2"]
+[node name="Rays" type="Sprite2D" parent="."]
 show_behind_parent = true
 material = SubResource("ShaderMaterial_byb03")
 texture = SubResource("GradientTexture2D_tggpl")

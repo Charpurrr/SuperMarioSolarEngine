@@ -13,6 +13,6 @@ func _process(_delta: float) -> void:
 	#particle.emit_at(self)
 
 
-func _on_collect():
+func _on_collect() -> void:
 	super()
 	#player.state_manager.switch_substate(&"Fall")
