@@ -1,3 +1,4 @@
+@abstract
 class_name Enemy
 extends CharacterBody2D
 ## Abstract class for all enemies.
@@ -28,10 +29,10 @@ func _physics_process(delta):
 
 
 ## Behaviour for getting hit. (Gets overridden by child class.)
-func take_hit(_source: Node, _damage_type: HealthModule.DamageType):
-	pass
+@abstract
+func take_hit(_source: Node, _damage_type: HealthModule.DamageType)
 
 
 ## Behaviour for dying. (Gets overridden by child class.)
-func die(_source: Node, _damage_type: HealthModule.DamageType):
-	pass
+@abstract
+func die(_source: Node, _damage_type: HealthModule.DamageType)

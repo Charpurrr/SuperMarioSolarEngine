@@ -14,9 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://cjavjeke51epr" path="res://ui/player_hud/fludd_tank.tscn" id="8_n7xk5"]
 [ext_resource type="Script" uid="uid://dg4a6r83hm158" path="res://ui/debug/commit_label.gd" id="9_bh67b"]
 [ext_resource type="Script" path="res://ui/player_hud/music_label.gd" id="9_gbf2f"]
+[ext_resource type="Script" uid="uid://trfav0yjiqxm" path="res://ui/screen_manager/pause_screen/pause_screen.gd" id="17_q1vx3"]
 [ext_resource type="Script" uid="uid://cnhr5du0ap6ki" path="res://ui/screen_manager/screen_manager.gd" id="18_ro5vq"]
 [ext_resource type="Shader" uid="uid://c8kax0imw2g1t" path="res://util/shaders/map_gradient.gdshader" id="19_uav4i"]
-[ext_resource type="Script" uid="uid://trfav0yjiqxm" path="res://ui/screen_manager/pause_screen/pause_screen.gd" id="21_fwnms"]
 [ext_resource type="Shader" uid="uid://byfa3t51pf655" path="res://ui/screen_manager/pause_screen/pause_panel.tres" id="22_4tc6v"]
 [ext_resource type="Texture2D" uid="uid://knkg28xlj4h8" path="res://ui/screen_manager/pause_screen/textures/spike.png" id="23_3jqvb"]
 [ext_resource type="Texture2D" uid="uid://qslbjwvvnw28" path="res://ui/pattern_solar.png" id="24_3rbo7"]
@@ -520,14 +520,17 @@ anchors_preset = -1
 offset_top = 45.0
 offset_bottom = 50.0
 script = ExtResource("7_aeygf")
-max_count = 0
+max_count = 24
 bounce_color = Color(1, 0, 0, 1)
+
+[node name="CoinIcon" parent="RedCoinCounter" index="0"]
+layout_mode = 0
 
 [node name="TextureRect" parent="RedCoinCounter/CoinIcon/Gradient" index="0"]
 texture = SubResource("GradientTexture2D_m3cpd")
 
 [node name="Count" parent="RedCoinCounter" index="1"]
-text = "0/0"
+text = "0/24"
 
 [node name="MusicLabel" type="Label" parent="." node_paths=PackedStringArray("anime")]
 modulate = Color(1, 1, 1, 0)
@@ -662,7 +665,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 832
-script = ExtResource("21_fwnms")
+script = ExtResource("17_q1vx3")
 retry = NodePath("LeftPanel/Content/MainButtons/Buttons/LevelStateChoices/Retry")
 reset = NodePath("LeftPanel/Content/MainButtons/Buttons/LevelStateChoices/Reset")
 open_anim = &"pause_peek"
@@ -1179,8 +1182,8 @@ layout_mode = 2
 layout_mode = 2
 text = "OFF"
 script = ExtResource("45_23m8v")
-default_value = null
 options = Array[StringName]([&"OFF", &"ON"])
+default_value = false
 setting_section = "General"
 setting_key = "v_sync"
 
@@ -1203,8 +1206,8 @@ layout_mode = 2
 layout_mode = 2
 text = "60 FPS"
 script = ExtResource("45_23m8v")
-default_value = 2
 options = Array[StringName]([&"OFF", &"30 FPS", &"60 FPS", &"120 FPS"])
+default_value = 2
 setting_section = "General"
 setting_key = "fps_cap"
 
@@ -1227,8 +1230,8 @@ layout_mode = 2
 layout_mode = 2
 text = "HIGH"
 script = ExtResource("45_23m8v")
-default_value = null
 options = Array[StringName]([&"HIGH", &"LOW", &"MEDIUM"])
+default_value = 0
 setting_section = "General"
 setting_key = "quality"
 
@@ -1289,8 +1292,8 @@ layout_mode = 2
 layout_mode = 2
 text = "x1 SCALE"
 script = ExtResource("45_23m8v")
-default_value = null
 options = Array[StringName]([&"x1 SCALE", &"x2 SCALE", &"x3 SCALE", &"FULLSCREEN"])
+default_value = 3
 setting_section = "General"
 setting_key = "scale"
 
@@ -1328,7 +1331,7 @@ layout_mode = 2
 layout_mode = 2
 text = "OFF"
 script = ExtResource("47_t7euy")
-default_value = null
+default_value = true
 setting_section = "General"
 setting_key = "motion_controls"
 
@@ -1362,8 +1365,8 @@ layout_mode = 2
 layout_mode = 2
 text = "HIGH"
 script = ExtResource("45_23m8v")
-default_value = 2
 options = Array[StringName]([&"OFF", &"LOW", &"MEDIUM", &"HIGH"])
+default_value = 2
 setting_section = "General"
 setting_key = "rumble_strength"
 

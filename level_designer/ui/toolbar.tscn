@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://bnnvt0uvynwtf" path="res://level_designer/tools/erase_tool.gd" id="4_y2rc6"]
 [ext_resource type="Texture2D" uid="uid://6cnxs886fivr" path="res://level_designer/tools/cursors/pen.png" id="5_03ff0"]
 [ext_resource type="Script" uid="uid://b5uwgnqu1t287" path="res://level_designer/tools/eyedrop_tool.gd" id="5_s38ce"]
-[ext_resource type="PackedScene" uid="uid://b6d0a158by2pt" path="res://level_designer/terrain_edit/terrain_editor.tscn" id="6_h633y"]
+[ext_resource type="PackedScene" uid="uid://b6d0a158by2pt" path="res://level_designer/line_editor/line_editor.tscn" id="6_h633y"]
 [ext_resource type="Script" uid="uid://ce8x5en6byx5u" path="res://level_designer/tools/shape_tool.gd" id="6_xogfa"]
 [ext_resource type="Script" uid="uid://dnhu4gd2yv85t" path="res://level_designer/tools/gravity_tool.gd" id="7_oq4tl"]
 

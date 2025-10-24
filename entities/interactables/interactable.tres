@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dw8mtht2jmmnb"]
+
+[ext_resource type="Shader" uid="uid://bp7dgqmsvhdp" path="res://entities/interactables/interactable.gdshader" id="1_emhgw"]
+
+[resource]
+shader = ExtResource("1_emhgw")
+shader_parameter/outline_color = Color(18.892157, 18.892157, 18.892157, 1)
+shader_parameter/blink_color = Color(1, 0.79607844, 0.42745098, 1)
+shader_parameter/blink_time_scale = 5.000000074506

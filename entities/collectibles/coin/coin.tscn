@@ -1,7 +1,6 @@
 [gd_scene load_steps=28 format=3 uid="uid://b14pbye1baqly"]
 
 [ext_resource type="Texture2D" uid="uid://srsui7wb1t4c" path="res://entities/collectibles/coin/coins.png" id="1_1g0cc"]
-[ext_resource type="PackedScene" uid="uid://bkmrh1luv0sl0" path="res://entities/collectibles/collectible.tscn" id="1_usl5l"]
 [ext_resource type="Script" uid="uid://cxrtp0ruljk38" path="res://entities/collectibles/coin/coin.gd" id="2_fs6bx"]
 [ext_resource type="AudioStream" uid="uid://che7x7rlhvhxb" path="res://entities/collectibles/coin/sfx/yellow.wav" id="3_we2q1"]
 [ext_resource type="AudioStream" uid="uid://drp8qcjuqkuof" path="res://entities/collectibles/coin/sfx/blue.wav" id="4_5q0l6"]
@@ -117,33 +116,26 @@ animations = [{
 [sub_resource type="Resource" id="Resource_oxqq6"]
 script = ExtResource("6_scjr3")
 particle_scene = ExtResource("7_pdd5q")
-particle_offset = Vector2(0, 0)
-particle_scale = Vector2(1, 1)
-loop_delay = 0
 metadata/_custom_type_script = "uid://dd8oyhd4nllix"
 
 [sub_resource type="Resource" id="Resource_fvje4"]
 script = ExtResource("6_scjr3")
 particle_scene = ExtResource("8_81aly")
-particle_offset = Vector2(0, 0)
-particle_scale = Vector2(1, 1)
-loop_delay = 0
 metadata/_custom_type_script = "uid://dd8oyhd4nllix"
 
 [sub_resource type="Resource" id="Resource_lj6mr"]
 script = ExtResource("6_scjr3")
 particle_scene = ExtResource("9_oxqq6")
-particle_offset = Vector2(0, 0)
-particle_scale = Vector2(1, 1)
-loop_delay = 0
 metadata/_custom_type_script = "uid://dd8oyhd4nllix"
 
-[node name="Coin" instance=ExtResource("1_usl5l")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywnjo"]
+size = Vector2(16, 16)
+
+[node name="Coin" type="AnimatedSprite2D" node_paths=PackedStringArray("area")]
 sprite_frames = SubResource("SpriteFrames_b3an0")
 animation = &"0"
-frame_progress = 0.0599371
+frame_progress = 0.3743397
 script = ExtResource("2_fs6bx")
-type = 0
 respective_sounds = Dictionary[int, AudioStream]({
 0: ExtResource("3_we2q1"),
 1: ExtResource("4_5q0l6"),
@@ -155,3 +147,11 @@ respective_particles = Dictionary[int, ExtResource("6_scjr3")]({
 1: SubResource("Resource_fvje4"),
 2: SubResource("Resource_lj6mr")
 })
+area = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ywnjo")

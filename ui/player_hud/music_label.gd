@@ -8,5 +8,8 @@ func _ready() -> void:
 
 
 func animate_label():
+	if GameState.buses[&"Music"].muted:
+		return
+
 	text = "♪ %s - %s" % [MusicManager.current_song.song_name, MusicManager.current_song.artist]
 	anime.play(&"fade_past")

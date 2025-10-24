@@ -62,7 +62,8 @@ func trigger_exit() -> void:
 
 ## Uses [parameter new_data] as the state's animation data.[br]
 ## This function is best called in a state's [method _physics_tick].
-## [i]Note: the default [member animation_data] variable should be left empty to avoid issues while using this.
+## [i]Note: the default [member animation_data] variable should be left empty
+## to avoid issues while using this.
 func overwrite_animation(new_data: PStateAnimData) -> void:
 	if not overwrite_setup_finished:
 		actor.doll.frame_changed.connect(_set_frame_specs.bind(new_data))

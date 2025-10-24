@@ -9,22 +9,15 @@
 script = ExtResource("2_hvhmj")
 sfx_list = [ExtResource("3_tywbp")]
 bus = &"UI"
-delay_time = 0.0
-force_new = false
-overwrite_other = true
-cutoff_sfx = true
 
 [sub_resource type="Resource" id="Resource_rtieh"]
 script = ExtResource("2_hvhmj")
 sfx_list = [ExtResource("4_bl75n")]
 bus = &"UI"
-delay_time = 0.0
-force_new = false
-overwrite_other = true
-cutoff_sfx = true
 
 [node name="PlayerCamera" type="Camera2D"]
 offset = Vector2(0, -50)
+process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 25.0
 drag_vertical_enabled = true

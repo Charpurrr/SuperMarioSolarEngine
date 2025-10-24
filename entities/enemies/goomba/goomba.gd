@@ -22,6 +22,10 @@ func _physics_process(delta):
 	super(delta)
 
 
+func take_hit(_source: Node, _damage_type: HealthModule.DamageType):
+	pass
+
+
 func die(source: Node, damage_type: HealthModule.DamageType):
 	match damage_type:
 		HealthModule.DamageType.STRIKE:

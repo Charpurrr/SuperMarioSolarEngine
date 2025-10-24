@@ -1,9 +1,14 @@
 @tool
 class_name DraggableButton
 extends Control
+## An editor widget button that can be used for numerous actions.
 
+## Emitted when the cursor clicks on this button.
 signal selected(button: DraggableButton)
+## Emitted when the cursor releases their click on this button.
 signal deselected(button: DraggableButton)
+## Emitted when the user tries to delete this button.
+## Use this to create custom deletion logic depending on the widget's purpose.
 signal delete_attempted
 
 @export var button: TextureButton
@@ -11,13 +16,18 @@ signal delete_attempted
 @export var y_lock: TextureRect
 
 @export_category(&"Visuals")
-@export_enum("Common", "Red") var costume: String = "Common":
+@export_enum("Yellow", "Red", "Blue", "Hologram") var costume: String = "Yellow":
 	set(value):
 		costume = value
-		_set_appropriate_textures()
 
-@export var common_costume_data: ButtonCostume
+		# Check for the blue costume data because it is loaded last.
+		if is_instance_valid(blue_costume_data):
+			_set_appropriate_textures()
+
+@export var hologram_costume_data: ButtonCostume
+@export var yellow_costume_data: ButtonCostume
 @export var red_costume_data: ButtonCostume
+@export var blue_costume_data: ButtonCostume
 
 @export_category(&"Behaviour")
 ## Locks the axis of this draggable button so it can only move on the x-axis.[br][br]
@@ -48,7 +58,7 @@ func _ready() -> void:
 	y_lock.visible = axis_lock_y
 
 
-func _process(_delta: float) -> void:
+func _input(_event: InputEvent) -> void:
 	if draggable and held_down:
 		if axis_lock_x:
 			global_position.x = get_global_mouse_position().x
@@ -64,14 +74,22 @@ func _process(_delta: float) -> void:
 
 func _set_appropriate_textures() -> void:
 	match costume:
-		"Common":
-			button.texture_normal = common_costume_data.normal_graphic
-			button.texture_hover = common_costume_data.hover_graphic
-			button.texture_pressed = common_costume_data.pressed_graphic
+		"Yellow":
+			button.texture_normal = yellow_costume_data.normal_graphic
+			button.texture_hover = yellow_costume_data.hover_graphic
+			button.texture_pressed = yellow_costume_data.pressed_graphic
 		"Red":
 			button.texture_normal = red_costume_data.normal_graphic
 			button.texture_hover = red_costume_data.hover_graphic
 			button.texture_pressed = red_costume_data.pressed_graphic
+		"Blue":
+			button.texture_normal = blue_costume_data.normal_graphic
+			button.texture_hover = blue_costume_data.hover_graphic
+			button.texture_pressed = blue_costume_data.pressed_graphic
+		"Hologram":
+			button.texture_normal = hologram_costume_data.normal_graphic
+			button.texture_hover = hologram_costume_data.hover_graphic
+			button.texture_pressed = hologram_costume_data.pressed_graphic
 
 
 func _on_button_button_down() -> void:
@@ -86,7 +104,9 @@ func _on_button_button_up() -> void:
 
 func _on_button_mouse_entered() -> void:
 	hovered_over = true
+	grab_focus()
 
 
 func _on_button_mouse_exited() -> void:
 	hovered_over = false
+	release_focus()
