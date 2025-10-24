@@ -15,6 +15,4 @@ preview_scene = ExtResource("3_ko8m6")
 script = ExtResource("1_wopmr")
 item_resource = ExtResource("2_mdg3u")
 icon_texture = ExtResource("1_4xw2n")
-category = 0
-properties = Array[ExtResource("4_15fd5")]([])
 preview_display_data = SubResource("Resource_uu1w6")
