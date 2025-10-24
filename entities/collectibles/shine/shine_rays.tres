@@ -1,0 +1,48 @@
+[gd_resource type="ShaderMaterial" load_steps=10 format=4 uid="uid://c07ohb32c5vfa"]
+
+[ext_resource type="Shader" uid="uid://beoro7ravdwag" path="res://entities/collectibles/shine/shine_rays.gdshader" id="1_kit30"]
+
+[sub_resource type="Gradient" id="Gradient_vyj3g"]
+offsets = PackedFloat32Array(0, 0.125, 0.375, 0.5, 0.5625, 0.6875, 0.875, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 16
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kaeiu"]
+gradient = SubResource("Gradient_vyj3g")
+
+[sub_resource type="Gradient" id="Gradient_meask"]
+offsets = PackedFloat32Array(0, 0.1875, 0.3125, 0.5, 0.625, 0.75, 0.8125, 0.9375)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 16
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_81bj3"]
+gradient = SubResource("Gradient_meask")
+
+[sub_resource type="Gradient" id="Gradient_s6y8g"]
+offsets = PackedFloat32Array(0, 0.125, 0.3125, 0.375, 0.5625, 0.875, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 16
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vyj3g"]
+gradient = SubResource("Gradient_s6y8g")
+
+[sub_resource type="Gradient" id="Gradient_s0nn1"]
+offsets = PackedFloat32Array(0.5, 0.625, 0.75, 0.875)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 16
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_s2m35"]
+gradient = SubResource("Gradient_s0nn1")
+
+[resource]
+shader = ExtResource("1_kit30")
+shader_parameter/ray_map = PackedVector4Array(-5.39, 0.215, 0.45, -0.3, 3.01, 0.215, 0.525, 0.3, 1.925, 0.26, 0.5, 0.3, 0.37, 0.235, 0.6, -0.3, 1.655, 0.29, 0.7, -0.4, 1.76, 0.26, 0.8, 0.4, -0.81, 0.45, 0.45, 0.4, -0.945, 0.37, 0.35, -0.4, -0.225, 0.33, 0.75, -0.3, 3.96, 0.11, 0.65, 0.3, 4.925, 0.19, 0.68, 0.5, -1.505, 0.145, 0.645, -0.5, -3.6, 0.24, 0.63, -0.5, 0.42, 0.31, 0.55, 0.5, -2.58, 0.235, 0.87, -0.035, -2.915, 0.305, 0.685, 0.54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/ray_masks = Array[Texture2D]([SubResource("GradientTexture1D_kaeiu"), SubResource("GradientTexture1D_81bj3"), SubResource("GradientTexture1D_vyj3g"), SubResource("GradientTexture1D_s2m35")])
+shader_parameter/rays_offset = 0.0
+shader_parameter/rays_speed_scale = 2.0
+shader_parameter/disable_masks = false
+shader_parameter/pixelate = false
