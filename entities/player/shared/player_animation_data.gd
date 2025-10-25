@@ -10,12 +10,8 @@ var animation: String:
 		
 		var actor: Node = get_local_scene()
 		var doll: AnimatedSprite2D
-		var fludd_f: AnimatedSprite2D
-		var fludd_b: AnimatedSprite2D
 		if is_instance_valid(actor) and actor is Player:
 			doll = actor.get_node(doll_path)
-			fludd_f = actor.get_node(fludd_f_path)
-			fludd_b = actor.get_node(fludd_b_path)
 
 		if is_instance_valid(doll) and doll.sprite_frames.has_animation(val):
 			if preview:
@@ -83,12 +79,8 @@ var frame_offset := Vector2i.ZERO:
 
 		var actor: Node = get_local_scene()
 		var doll: AnimatedSprite2D
-		var fludd_f: AnimatedSprite2D
-		var fludd_b: AnimatedSprite2D
 		if is_instance_valid(actor) and actor is Player:
 			doll = actor.get_node(doll_path)
-			fludd_f = actor.get_node(fludd_f_path)
-			fludd_b = actor.get_node(fludd_b_path)
 		else:
 			return
 
@@ -105,11 +97,9 @@ var fludd_animation: String:
 			return
 
 		var actor: Node = get_local_scene()
-		var doll: AnimatedSprite2D
 		var fludd_f: AnimatedSprite2D
 		var fludd_b: AnimatedSprite2D
 		if is_instance_valid(actor) and actor is Player:
-			doll = actor.get_node(doll_path)
 			fludd_f = actor.get_node(fludd_f_path)
 			fludd_b = actor.get_node(fludd_b_path)
 		else:
@@ -139,11 +129,9 @@ var fludd_offset := Vector2i.ZERO:
 		frame_fludd_offsets.set(frame, val)
 
 		var actor: Node = get_local_scene()
-		var doll: AnimatedSprite2D
 		var fludd_f: AnimatedSprite2D
 		var fludd_b: AnimatedSprite2D
 		if is_instance_valid(actor) and actor is Player:
-			doll = actor.get_node(doll_path)
 			fludd_f = actor.get_node(fludd_f_path)
 			fludd_b = actor.get_node(fludd_b_path)
 		else:
@@ -164,12 +152,8 @@ var preview: bool = false:
 
 		var actor: Node = get_local_scene()
 		var doll: AnimatedSprite2D
-		var fludd_f: AnimatedSprite2D
-		var fludd_b: AnimatedSprite2D
 		if is_instance_valid(actor) and actor is Player:
 			doll = actor.get_node(doll_path)
-			fludd_f = actor.get_node(fludd_f_path)
-			fludd_b = actor.get_node(fludd_b_path)
 		else:
 			return
 
@@ -219,11 +203,9 @@ var preview_fludd: bool = false:
 			return
 
 		var actor: Node = get_local_scene()
-		var doll: AnimatedSprite2D
 		var fludd_f: AnimatedSprite2D
 		var fludd_b: AnimatedSprite2D
 		if is_instance_valid(actor) and actor is Player:
-			doll = actor.get_node(doll_path)
 			fludd_f = actor.get_node(fludd_f_path)
 			fludd_b = actor.get_node(fludd_b_path)
 		else:
