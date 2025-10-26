@@ -11,7 +11,7 @@ var animation: String:
 		var actor: Node = get_local_scene()
 		var doll: AnimatedSprite2D
 		if is_instance_valid(actor) and actor is Player:
-			doll = actor.get_node(doll_path)
+			doll = actor.get_node_or_null(doll_path)
 
 		if is_instance_valid(doll) and doll.sprite_frames.has_animation(val):
 			if preview:
@@ -80,7 +80,7 @@ var frame_offset := Vector2i.ZERO:
 		var actor: Node = get_local_scene()
 		var doll: AnimatedSprite2D
 		if is_instance_valid(actor) and actor is Player:
-			doll = actor.get_node(doll_path)
+			doll = actor.get_node_or_null(doll_path)
 		else:
 			return
 
@@ -132,8 +132,8 @@ var fludd_offset := Vector2i.ZERO:
 		var fludd_f: AnimatedSprite2D
 		var fludd_b: AnimatedSprite2D
 		if is_instance_valid(actor) and actor is Player:
-			fludd_f = actor.get_node(fludd_f_path)
-			fludd_b = actor.get_node(fludd_b_path)
+			fludd_f = actor.get_node_or_null(fludd_f_path)
+			fludd_b = actor.get_node_or_null(fludd_b_path)
 		else:
 			return
 
