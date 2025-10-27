@@ -36,6 +36,11 @@ window/stretch/aspect="expand"
 window/vsync/vsync_mode=0
 mouse_cursor/custom_image="uid://b6gpj074qmkmk"
 
+[editor]
+
+movie_writer/video_quality=1.0
+movie_writer/movie_file="C:/Users/SenneVanAelst/Documents/SuperMarioSolarEngine/moviemaker.avi"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/rmsmartshape/plugin.cfg")
@@ -305,13 +310,15 @@ e_curve_toggle={
 2d_render/layer_20="UI"
 2d_physics/layer_1="Solid"
 2d_physics/layer_2="Player"
-2d_physics/layer_3="Layer 3"
-2d_physics/layer_4="Layer 4"
+2d_physics/layer_3="Enemy"
+2d_physics/layer_4="Pushable"
 2d_physics/layer_5="Water"
 2d_physics/layer_6="Collectible"
 2d_physics/layer_7="Interactable"
+2d_physics/layer_8="Breakable"
 2d_physics/layer_9="Preview (Editor)"
 2d_physics/layer_10="Level Preview Field (Editor)"
+2d_physics/layer_17="Destructive"
 
 [physics]
 
@@ -323,4 +330,3 @@ common/physics_interpolation=true
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-viewport/hdr_2d=true
