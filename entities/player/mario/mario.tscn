@@ -976,6 +976,12 @@ fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_ow
 
 fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
 
+[sub_resource type="Resource" id="Resource_1i10v"]
+resource_local_to_scene = true
+script = ExtResource("23_bbld7")
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
