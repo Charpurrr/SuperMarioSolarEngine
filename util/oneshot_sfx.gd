@@ -10,14 +10,15 @@ extends Resource
 
 
 ## Creates an [AudioStreamPlayer], assigns the corresponding data,
-## adds it to node, then destroys it when finished.
+## adds it to [param node], then destroys it when finished.[br]
+## Returns an optionally usable reference to the assigned [AudioStreamPlayer].
 static func play_sfx(
 		stream: AudioStream,
 		bus: StringName,
 		node: Node,
 		volume: float = 0.0,
 		pitch: float = 1.0,
-	) -> void:
+	) -> AudioStreamPlayer:
 	if not node.is_inside_tree() or stream == null:
 		return
 
@@ -40,3 +41,5 @@ static func play_sfx(
 
 	player.connect(&"finished", player.queue_free)
 	player.play()
+
+	return player

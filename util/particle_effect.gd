@@ -19,11 +19,13 @@ var timer: int = loop_delay
 
 
 ## Emit the particle at a specific node.[br]
+## Returns an optionally usable reference to the emitted particle.[br]
 ## [param offset_overwrite] is useful if you want to use logic defined offsets instead.[br]
 ## [param scale_overwrite] is useful if you want to use logic defined scales instead.
-func emit_at(node: Node, offset_overwrite := Vector2.ZERO, scale_overwrite := Vector2.ONE):
+func emit_at(node: Node, offset_overwrite := Vector2.ZERO, scale_overwrite := Vector2.ONE) -> Node:
 	if timer > 0:
 		timer = max(timer - 1, 0)
+		return
 	else:
 		timer = loop_delay
 
@@ -62,6 +64,7 @@ func emit_at(node: Node, offset_overwrite := Vector2.ZERO, scale_overwrite := Ve
 			assert(false, "Unsupported type of particle: " + particle.get_class())
 
 		node.add_child(particle)
+		return particle
 
 
 ## Deletes a particle group ([Node2D]) when all its children 
@@ -74,8 +77,4 @@ func _free_particle_group(group_node: Node, particle_amt: int, counter_meta: Str
 
 
 func _preview_pressed():
-	#if not resource_local_to_scene:
-		#printerr("Cannot preview a particle if local to scene is disabled. Check the variable under Resource -> resource_local_to_scene")
-		#return
-
 	emit_at(get_local_scene(), particle_offset)

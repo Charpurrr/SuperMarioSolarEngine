@@ -17,8 +17,12 @@ extends CharacterBody2D
 @export var small_hitbox: CollisionShape2D
 
 @export var water_check: Area2D
-@export var crouchlock: CrouchlockDetection
-@export var spin_hitbox: Area2D
+@export var auto_crouch_check: CrouchlockDetection
+
+@export var dive_hurtbox: Area2D
+@export var spin_hurtbox: Area2D
+@export var stomp_hurtbox: Area2D
+@export var gp_hurtbox: Area2D
 
 ## Current velocity.
 var vel := Vector2.ZERO
