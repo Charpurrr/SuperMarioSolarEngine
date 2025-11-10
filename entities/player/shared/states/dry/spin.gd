@@ -45,6 +45,9 @@ func _physics_tick():
 
 	if is_airspin:
 		movement.move_x_analog(movement.air_accel_step, false)
+
+		if finished_init:
+			actor.spin_hurtbox.monitoring = false
 	else:
 		movement.move_x_analog(movement.ground_accel_step, false)
 

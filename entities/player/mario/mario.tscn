@@ -415,6 +415,9 @@ script = ExtResource("23_bbld7")
 doll_path = NodePath("Doll")
 fludd_f_path = NodePath("FluddInfront")
 fludd_b_path = NodePath("FluddBehind")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
 frame_fludd_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 3),
 1: Vector2i(0, 2),
