@@ -1,4 +1,4 @@
-[gd_scene load_steps=297 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=298 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" uid="uid://bg4t154sge7br" path="res://entities/player/shared/player.gd" id="1_87j6i"]
 [ext_resource type="Texture2D" uid="uid://cargcb2py1wcg" path="res://entities/player/shared/fludd/fludd.png" id="2_e1ut2"]
@@ -409,53 +409,28 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Resource" id="Resource_bsr1j"]
+[sub_resource type="Resource" id="Resource_5iloq"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":null,"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-frame_offsets = Dictionary[int, Vector2i]({
-0: Vector2i(0, 9),
-1: Vector2i(0, 9),
-2: Vector2i(0, 9),
-3: Vector2i(0, 9),
-4: Vector2i(0, 9),
-5: Vector2i(0, 9),
-6: Vector2i(0, 9),
-7: Vector2i(0, 9),
-8: Vector2i(0, 9)
-})
-frame_fludd = Dictionary[int, String]({
-0: "default",
-1: "rot_z045",
-2: "rot_z090",
-3: "rot_z135",
-4: "rot_z180",
-5: "rot_z225",
-6: "rot_z270",
-7: "rot_z315"
-})
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_fludd_offsets = Dictionary[int, Vector2i]({
-0: Vector2i(-1, 1),
-1: Vector2i(4, 3),
-2: Vector2i(8, 8),
-3: Vector2i(5, 15),
-4: Vector2i(1, 18),
-5: Vector2i(-5, 16),
-6: Vector2i(-9, 10),
-7: Vector2i(-5, 5),
-8: Vector2i(-1, 1)
+0: Vector2i(0, 3),
+1: Vector2i(0, 2),
+2: Vector2i(0, 2),
+3: Vector2i(0, 2),
+4: Vector2i(0, 3),
+5: Vector2i(0, 2),
+6: Vector2i(0, 2),
+7: Vector2i(0, 3)
 })
-animation = "gp"
+animation = "run"
 frame = 0
 preview = false
-frame_offset = Vector2i(0, 9)
+frame_offset = Vector2i(0, 0)
 fludd_animation = "default"
-fludd_offset = Vector2i(-1, 1)
+fludd_offset = Vector2i(0, 3)
 metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f3xbj"]
@@ -765,12 +740,9 @@ point_count = 2
 [sub_resource type="Resource" id="Resource_u4fjx"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -791,12 +763,9 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 [sub_resource type="Resource" id="Resource_mqps4"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -818,12 +787,9 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 [sub_resource type="Resource" id="Resource_q75g6"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -844,12 +810,9 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 [sub_resource type="Resource" id="Resource_hnhty"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -870,12 +833,9 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 [sub_resource type="Resource" id="Resource_ata35"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -915,12 +875,9 @@ metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
 [sub_resource type="Resource" id="Resource_cpqj3"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -947,12 +904,9 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 [sub_resource type="Resource" id="Resource_xh3w7"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -966,15 +920,6 @@ frame_offset = Vector2i(0, 0)
 fludd_animation = "default"
 fludd_offset = Vector2i(0, 0)
 metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
-
-[sub_resource type="Resource" id="Resource_1i10v"]
-resource_local_to_scene = true
-script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
 
 [sub_resource type="Resource" id="Resource_1i10v"]
 resource_local_to_scene = true
@@ -1020,12 +965,9 @@ cutoff_sfx = false
 [sub_resource type="Resource" id="Resource_1vsdu"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -1050,12 +992,9 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 [sub_resource type="Resource" id="Resource_4t2h7"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -1082,12 +1021,9 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 [sub_resource type="Resource" id="Resource_e1ut2"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -1114,12 +1050,9 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 [sub_resource type="Resource" id="Resource_ijnwc"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 5),
 1: Vector2i(0, 5),
@@ -1150,12 +1083,9 @@ cutoff_sfx = false
 [sub_resource type="Resource" id="Resource_8wyc1"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -1184,12 +1114,9 @@ cutoff_sfx = false
 [sub_resource type="Resource" id="Resource_hx7ue"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -1237,12 +1164,9 @@ cutoff_sfx = false
 [sub_resource type="Resource" id="Resource_f3xbj"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -1273,12 +1197,9 @@ cutoff_sfx = false
 [sub_resource type="Resource" id="Resource_xenv0"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -1312,12 +1233,9 @@ metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
 [sub_resource type="Resource" id="Resource_wdv80"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 9),
 1: Vector2i(0, 9),
@@ -1366,12 +1284,9 @@ particle_scene = ExtResource("55_seugk")
 [sub_resource type="Resource" id="Resource_gacnc"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -1405,12 +1320,9 @@ cutoff_sfx = false
 [sub_resource type="Resource" id="Resource_txrxb"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -1444,12 +1356,9 @@ cutoff_sfx = false
 [sub_resource type="Resource" id="Resource_2siud"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 6),
 1: Vector2i(0, 6),
@@ -1522,12 +1431,9 @@ cutoff_sfx = false
 [sub_resource type="Resource" id="Resource_pakf6"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -1575,12 +1481,9 @@ metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
 [sub_resource type="Resource" id="Resource_ufl2i"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -1619,12 +1522,9 @@ metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
 [sub_resource type="Resource" id="Resource_m576x"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 8),
 1: Vector2i(0, 8),
@@ -1688,12 +1588,9 @@ cutoff_sfx = false
 [sub_resource type="Resource" id="Resource_2h0ab"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 13),
 1: Vector2i(0, 13),
@@ -1761,12 +1658,9 @@ cutoff_sfx = false
 [sub_resource type="Resource" id="Resource_o485y"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 3),
 1: Vector2i(0, 3)
@@ -1809,12 +1703,9 @@ cutoff_sfx = false
 [sub_resource type="Resource" id="Resource_ngcav"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -1835,12 +1726,9 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 [sub_resource type="Resource" id="Resource_86kn8"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -1879,12 +1767,9 @@ overwrite_other = false
 [sub_resource type="Resource" id="Resource_mk8bu"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -1911,12 +1796,9 @@ cutoff_sfx = false
 [sub_resource type="Resource" id="Resource_wc0bq"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -1957,12 +1839,9 @@ overwrite_other = false
 [sub_resource type="Resource" id="Resource_wihps"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -1989,12 +1868,9 @@ cutoff_sfx = false
 [sub_resource type="Resource" id="Resource_saqqr"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -2012,6 +1888,52 @@ fludd_animation = "default"
 fludd_offset = Vector2i(0, 0)
 metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
+[sub_resource type="Resource" id="Resource_bsr1j"]
+resource_local_to_scene = true
+script = ExtResource("23_bbld7")
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 9),
+1: Vector2i(0, 9),
+2: Vector2i(0, 9),
+3: Vector2i(0, 9),
+4: Vector2i(0, 9),
+5: Vector2i(0, 9),
+6: Vector2i(0, 9),
+7: Vector2i(0, 9),
+8: Vector2i(0, 9)
+})
+frame_fludd = Dictionary[int, String]({
+0: "default",
+1: "rot_z045",
+2: "rot_z090",
+3: "rot_z135",
+4: "rot_z180",
+5: "rot_z225",
+6: "rot_z270",
+7: "rot_z315"
+})
+frame_fludd_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(-1, 1),
+1: Vector2i(4, 3),
+2: Vector2i(8, 8),
+3: Vector2i(5, 15),
+4: Vector2i(1, 18),
+5: Vector2i(-5, 16),
+6: Vector2i(-9, 10),
+7: Vector2i(-5, 5),
+8: Vector2i(-1, 1)
+})
+animation = "gp"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 9)
+fludd_animation = "default"
+fludd_offset = Vector2i(-1, 1)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
+
 [sub_resource type="Resource" id="Resource_7r27p"]
 script = ExtResource("49_apkmk")
 sfx_list = [ExtResource("116_078t4")]
@@ -2027,12 +1949,9 @@ cutoff_sfx = false
 [sub_resource type="Resource" id="Resource_qbnhj"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 9),
 1: Vector2i(0, 9)
@@ -2055,12 +1974,9 @@ metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 [sub_resource type="Resource" id="Resource_np2tc"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -2121,12 +2037,9 @@ cutoff_sfx = false
 [sub_resource type="Resource" id="Resource_u3pyw"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -2162,12 +2075,9 @@ cutoff_sfx = false
 [sub_resource type="Resource" id="Resource_cootw"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -2200,12 +2110,9 @@ cutoff_sfx = false
 [sub_resource type="Resource" id="Resource_ae2dx"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -2249,12 +2156,9 @@ cutoff_sfx = false
 [sub_resource type="Resource" id="Resource_qko5d"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -2289,12 +2193,9 @@ metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
 [sub_resource type="Resource" id="Resource_ifrah"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
-doll = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":ExtResource("2_ttikd"),"animation":&"gp","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 9),"flip_h":false,"flip_v":false,"script":null,"metadata/last_previewed":SubResource("Resource_bsr1j"))
-
-fludd_f = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_1i10v"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
-fludd_b = Object(AnimatedSprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -24),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"sprite_frames":SubResource("SpriteFrames_e1ut2"),"animation":&"default","autoplay":"","frame":0,"frame_progress":0.0,"speed_scale":1.0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"script":null)
-
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
 frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
@@ -2364,9 +2265,8 @@ sprite_frames = SubResource("SpriteFrames_e1ut2")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = ExtResource("2_ttikd")
-animation = &"gp"
-offset = Vector2(0, 9)
-metadata/last_previewed = SubResource("Resource_bsr1j")
+animation = &"run"
+metadata/last_previewed = SubResource("Resource_5iloq")
 
 [node name="FluddInfront" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -2559,8 +2459,8 @@ lookup_animation_data = SubResource("Resource_xh3w7")
 [node name="Walk" type="Node" parent="StateManager/Dry/Grounded"]
 script = ExtResource("45_ka4vl")
 footstep_frames = Array[int]([0, 4])
-animation_run = &"run"
-animation_data = SubResource("Resource_1i10v")
+walk_animation_data = SubResource("Resource_1i10v")
+run_animation_data = SubResource("Resource_5iloq")
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_cej6f")])
 on_enter = false
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_8p2oq"), SubResource("Resource_efjxb")])
