@@ -409,7 +409,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Resource" id="Resource_hx7ue"]
+[sub_resource type="Resource" id="Resource_cpqj3"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
 doll_path = NodePath("Doll")
@@ -420,31 +420,22 @@ frame_offsets = Dictionary[int, Vector2i]({
 })
 frame_fludd = Dictionary[int, String]({
 0: "default",
-1: "rot_y045",
-2: "rot_y090",
-3: "rot_y135",
-4: "rot_y180",
-5: "rot_y225",
-6: "rot_y270",
-7: "rot_y315"
+1: "default"
 })
 frame_fludd_offsets = Dictionary[int, Vector2i]({
-0: Vector2i(0, 5),
-1: Vector2i(0, 5),
-2: Vector2i(0, 5),
-3: Vector2i(0, 5),
-4: Vector2i(0, 5),
-5: Vector2i(0, 5),
-6: Vector2i(0, 5),
-7: Vector2i(0, 5)
+0: Vector2i(0, 0),
+1: Vector2i(0, 0),
+3: Vector2i(0, 1),
+4: Vector2i(0, 2),
+5: Vector2i(0, 2),
+6: Vector2i(0, 1)
 })
-animation = "breakdance"
+animation = "idle"
 frame = 0
-preview = true
-preview_fludd = false
+preview = false
 frame_offset = Vector2i(0, 0)
 fludd_animation = "default"
-fludd_offset = Vector2i(0, 5)
+fludd_offset = Vector2i(0, 0)
 metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f3xbj"]
@@ -889,35 +880,6 @@ overwrite_other = false
 cutoff_sfx = false
 metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
 
-[sub_resource type="Resource" id="Resource_cpqj3"]
-resource_local_to_scene = true
-script = ExtResource("23_bbld7")
-doll_path = NodePath("Doll")
-fludd_f_path = NodePath("FluddInfront")
-fludd_b_path = NodePath("FluddBehind")
-frame_offsets = Dictionary[int, Vector2i]({
-0: Vector2i(0, 0)
-})
-frame_fludd = Dictionary[int, String]({
-0: "default",
-1: "default"
-})
-frame_fludd_offsets = Dictionary[int, Vector2i]({
-0: Vector2i(0, 0),
-1: Vector2i(0, 0),
-3: Vector2i(0, 1),
-4: Vector2i(0, 2),
-5: Vector2i(0, 2),
-6: Vector2i(0, 1)
-})
-animation = "idle"
-frame = 0
-preview = false
-frame_offset = Vector2i(0, 0)
-fludd_animation = "default"
-fludd_offset = Vector2i(0, 0)
-metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
-
 [sub_resource type="Resource" id="Resource_xh3w7"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
@@ -1141,7 +1103,7 @@ frame_fludd_offsets = Dictionary[int, Vector2i]({
 1: Vector2i(0, 5)
 })
 animation = "crouch"
-frame = 1
+frame = 0
 preview = false
 frame_offset = Vector2i(0, 0)
 fludd_animation = "default"
@@ -1154,6 +1116,43 @@ sfx_list = [ExtResource("51_ge5km")]
 bus = &"Motion"
 overwrite_other = false
 cutoff_sfx = false
+
+[sub_resource type="Resource" id="Resource_hx7ue"]
+resource_local_to_scene = true
+script = ExtResource("23_bbld7")
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
+frame_fludd = Dictionary[int, String]({
+0: "default",
+1: "rot_y045",
+2: "rot_y090",
+3: "rot_y135",
+4: "rot_y180",
+5: "rot_y225",
+6: "rot_y270",
+7: "rot_y315"
+})
+frame_fludd_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 5),
+1: Vector2i(0, 5),
+2: Vector2i(0, 5),
+3: Vector2i(0, 5),
+4: Vector2i(0, 5),
+5: Vector2i(0, 5),
+6: Vector2i(0, 5),
+7: Vector2i(0, 5)
+})
+animation = "breakdance"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 5)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_ttikd"]
 resource_local_to_scene = true
@@ -2273,8 +2272,8 @@ sprite_frames = SubResource("SpriteFrames_e1ut2")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = ExtResource("2_ttikd")
-animation = &"breakdance"
-metadata/last_previewed = SubResource("Resource_hx7ue")
+animation = &"idle"
+metadata/last_previewed = SubResource("Resource_cpqj3")
 
 [node name="FluddInfront" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -2551,20 +2550,21 @@ particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_kvfvp")])
 [node name="DummyJump" type="Node" parent="StateManager/Dry/Airborne/JumpStates"]
 script = ExtResource("65_6w5qc")
 
-[node name="Jump" type="Node" parent="StateManager/Dry/Airborne/JumpStates/DummyJump"]
+[node name="Jump" type="Node" parent="StateManager/Dry/Airborne/JumpStates/DummyJump" node_paths=PackedStringArray("fall_state")]
 script = ExtResource("66_2qkrt")
 jump_power = 5.3
 min_jump_percent = 20.0
 jump_number = 1
+fall_state = NodePath("../../../FallStates/Fall")
 animation_data = SubResource("Resource_gacnc")
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_2esv2"), SubResource("Resource_qmxtc")])
 
-[node name="DoubleJump" type="Node" parent="StateManager/Dry/Airborne/JumpStates/DummyJump"]
+[node name="DoubleJump" type="Node" parent="StateManager/Dry/Airborne/JumpStates/DummyJump" node_paths=PackedStringArray("fall_state")]
 script = ExtResource("75_nf276")
 jump_power = 6.7
 min_jump_percent = 35.0
 jump_number = 2
-fall_state = &"DoubleFall"
+fall_state = NodePath("../../../FallStates/DoubleFall")
 animation_data = SubResource("Resource_txrxb")
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_js1ac"), SubResource("Resource_cjrlj")])
 
@@ -2580,7 +2580,6 @@ script = ExtResource("92_pwmyp")
 jump_power = 6.7
 min_jump_percent = 100.0
 jump_number = 2
-fall_state = &""
 animation_data = SubResource("Resource_pakf6")
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_h8xfq"), SubResource("Resource_sxalk")])
 
@@ -2610,7 +2609,6 @@ script = ExtResource("104_py71u")
 jump_power = 5.3
 min_jump_percent = 20.0
 jump_number = 1
-fall_state = &""
 animation_data = SubResource("Resource_o485y")
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_jo8kb")])
 
@@ -2682,11 +2680,12 @@ animation_data = SubResource("Resource_qbnhj")
 script = ExtResource("112_02mke")
 animation_data = SubResource("Resource_ngcav")
 
-[node name="GroundPoundJump" type="Node" parent="StateManager/Dry/Airborne/GroundPoundStates"]
+[node name="GroundPoundJump" type="Node" parent="StateManager/Dry/Airborne/GroundPoundStates" node_paths=PackedStringArray("fall_state")]
 script = ExtResource("105_g4v7o")
 jump_power = 6.7
 min_jump_percent = 35.0
 jump_number = 2
+fall_state = NodePath("../../FallStates/Fall")
 animation_data = SubResource("Resource_np2tc")
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_kvfvp")])
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_8711x"), SubResource("Resource_nl575")])
@@ -2723,7 +2722,6 @@ accel_cap = 8.0
 jump_power = 3.0
 min_jump_percent = 100.0
 jump_number = 1
-fall_state = &""
 animation_data = SubResource("Resource_cootw")
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_rb2f4")])
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_4xwjg")])
@@ -2736,7 +2734,6 @@ accel_cap = 8.0
 jump_power = 3.2
 min_jump_percent = 100.0
 jump_number = 1
-fall_state = &""
 hitbox_type = "Dive"
 animation_data = SubResource("Resource_ae2dx")
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_44n4o"), SubResource("Resource_c5q6a")])
