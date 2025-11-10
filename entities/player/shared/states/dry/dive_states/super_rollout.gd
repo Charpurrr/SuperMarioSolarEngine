@@ -14,12 +14,21 @@ var particle_counter: int
 @export var speed_cap: float = 8.0
 
 
+
 func _on_enter(_param):
 	super(_param)
 
 	movement.accelerate(Vector2.RIGHT * movement.facing_direction * x_power, speed_cap)
 
+	actor.dive_hurtbox.monitoring = true
+
 	particle_counter = PARTICLE_AMT
+
+
+func _on_exit() -> void:
+	super()
+
+	actor.dive_hurtbox.monitoring = false
 
 
 func _subsequent_ticks():
