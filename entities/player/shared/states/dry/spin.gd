@@ -26,8 +26,6 @@ func _on_enter(_param):
 	movement.activate_freefall_timer()
 	movement.consume_coyote_timer()
 
-	particles[0].emit_at(self)
-
 
 func _first_tick():
 	# Gravity needs to be applied when a grounded spin is buffered.

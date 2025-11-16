@@ -2280,7 +2280,7 @@ sprite_frames = SubResource("SpriteFrames_e1ut2")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = ExtResource("2_ttikd")
-animation = &"gp_fall"
+animation = &"idle"
 metadata/last_previewed = SubResource("Resource_cpqj3")
 
 [node name="FluddInfront" type="AnimatedSprite2D" parent="."]
@@ -2630,8 +2630,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_nl575"), SubR
 [node name="AfterimageModule" parent="StateManager/Dry/Airborne/JumpStates/WallBoost" node_paths=PackedStringArray("actor") instance=ExtResource("120_f3xbj")]
 actor = NodePath("../../../../../..")
 afterimage_color = Color(1, 0, 0, 1)
-afterimage_cooldown = 7
-afterimage_offset = Vector2(0, -10)
+afterimage_offset = Vector2(-10, -10)
 
 [node name="LazyJump" type="Node" parent="StateManager/Dry/Airborne"]
 script = ExtResource("116_wolak")
@@ -2763,7 +2762,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_m87ta")])
 actor = NodePath("../../../../..")
 afterimage_color = Color(1, 0, 0, 1)
 afterimage_cooldown = 7
-afterimage_offset = Vector2(0, -32)
+afterimage_offset = Vector2(-32, -32)
 
 [node name="Bonk" type="Node" parent="StateManager/Dry/DiveStates"]
 script = ExtResource("131_f03w0")
