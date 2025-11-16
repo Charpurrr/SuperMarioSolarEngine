@@ -14,7 +14,6 @@ var particle_counter: int
 @export var speed_cap: float = 8.0
 
 
-
 func _on_enter(_param):
 	super(_param)
 
@@ -37,3 +36,27 @@ func _subsequent_ticks():
 	if particle_counter > 0:
 		particles[1].emit_at(actor)
 		particle_counter = max(particle_counter - 1, 0)
+
+
+func _trans_rules():
+	if (
+		not movement.dived
+		and movement.can_air_action()
+		and actor.vel.y > 0
+		and (input.buffered_input(&"dive") or Input.is_action_pressed(&"dive"))
+	):
+		return &"Dive"
+
+	if actor.is_on_floor():
+		return &"Idle"
+
+	if actor.is_on_wall():
+		return &"Bonk"
+
+	if movement.can_spin() and input.buffered_input(&"spin"):
+		return &"Spin"
+
+	if Input.is_action_just_pressed(&"groundpound") and movement.can_air_action():
+		return &"GroundPound"
+
+	return &""
