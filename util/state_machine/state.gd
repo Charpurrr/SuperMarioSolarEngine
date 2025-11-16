@@ -197,29 +197,27 @@ func _trans_rules() -> Variant:
 ## Return the name of a passthrough state.
 ## When this state is switched to, immediately switch to that state.
 ## This means that other states don't have to guess the behavior of this state
-## when switching to a child of it..
+## when switching to a child of it.
 func _defer_rules() -> StringName:
 	return &""
 
 
 ## Reroute the active path to select a given state as the active leaf.
 func _switch_leaf(link: StateLink, handover = null) -> void:
-	var path = link.get_path()
-	var peak = link.get_peak_index()
-	var length = link.get_length()
-	var last = length - 1
-	var argument = null
+	var path: Array[State] = link.get_path()
+	var states_in_path: int = link.get_length()
+	var diversion_idx: int = link.get_peak_index()
+	var last_idx: int = states_in_path - 1
 
 	var current_state: State = self
-	for i in length:
+
+	for i in states_in_path:
 		var next_state: State = path[i]
 
-		if i <= peak:
+		if i <= diversion_idx:
 			ditch_state()
 		else:
-			if i == last:
-				argument = handover
-			current_state.switch_substate(next_state, argument)
+			current_state.switch_substate(next_state, handover if i == last_idx else null)
 
 		assert(current_state != next_state)
 		current_state = next_state
@@ -236,8 +234,10 @@ func _call_live(function_name: StringName, arguments := []):
 ## Check if this state is live.
 func _is_live() -> bool:
 	var parent = get_parent()
-	if !parent is State:
+
+	if parent is not State:
 		return true
 	if parent.live_substate == self:
 		return true
+
 	return false

@@ -26,7 +26,7 @@ func _on_enter(_param):
 	movement.activate_freefall_timer()
 	movement.consume_coyote_timer()
 
-	particles[0].emit_at(self, Vector2.ZERO, Vector2(movement.facing_direction, 0))
+	particles[0].emit_at(self)
 
 
 func _first_tick():
