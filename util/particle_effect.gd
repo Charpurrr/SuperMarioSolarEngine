@@ -15,7 +15,7 @@ var timer: int = loop_delay
 @export_tool_button("Preview Particle", "Play") var action_pressed = _preview_pressed
 
 
-## Emit the particle at a specific node.[br]
+## Emit the particle at a specific node.[br][br]
 ## Returns an optionally usable reference to the emitted particle.[br]
 ## [param offset_overwrite] is useful if you want to use logic defined offsets instead.
 func emit_at(node: Node, offset_overwrite := Vector2.ZERO) -> Node:

@@ -147,7 +147,6 @@ height = 150
 
 [node name="Shine" type="AnimatedSprite2D" node_paths=PackedStringArray("area")]
 material = SubResource("ShaderMaterial_jbsq7")
-position = Vector2(206, 97)
 sprite_frames = SubResource("SpriteFrames_l1sdq")
 animation = &"normal"
 autoplay = "normal"
