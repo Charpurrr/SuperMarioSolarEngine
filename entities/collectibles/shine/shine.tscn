@@ -132,6 +132,7 @@ animations = [{
 [sub_resource type="Resource" id="Resource_byb03"]
 script = ExtResource("5_smdji")
 particle_scene = ExtResource("4_r3wgn")
+loop_delay = 15
 metadata/_custom_type_script = "uid://dd8oyhd4nllix"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ywnjo"]
@@ -146,11 +147,14 @@ height = 150
 
 [node name="Shine" type="AnimatedSprite2D" node_paths=PackedStringArray("area")]
 material = SubResource("ShaderMaterial_jbsq7")
+position = Vector2(206, 97)
 sprite_frames = SubResource("SpriteFrames_l1sdq")
 animation = &"normal"
 autoplay = "normal"
 offset = Vector2(0, -2)
 script = ExtResource("1_hamnh")
+shine_name = &"Untitled Shine"
+description = "Collect the Shine Sprite!"
 particle = SubResource("Resource_byb03")
 area = NodePath("Area2D")
 

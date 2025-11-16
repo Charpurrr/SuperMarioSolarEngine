@@ -9,8 +9,7 @@ extends Collectible
 
 
 func _process(_delta: float) -> void:
-	pass
-	#particle.emit_at(self)
+	particle.emit_at(self)
 
 
 func _on_collect() -> void:
