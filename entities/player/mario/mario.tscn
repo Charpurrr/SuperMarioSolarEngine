@@ -2630,6 +2630,7 @@ sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_nl575"), SubR
 [node name="AfterimageModule" parent="StateManager/Dry/Airborne/JumpStates/WallBoost" node_paths=PackedStringArray("actor") instance=ExtResource("120_f3xbj")]
 actor = NodePath("../../../../../..")
 afterimage_color = Color(1, 0, 0, 1)
+afterimage_cooldown = 8
 afterimage_offset = Vector2(-10, -10)
 
 [node name="LazyJump" type="Node" parent="StateManager/Dry/Airborne"]
