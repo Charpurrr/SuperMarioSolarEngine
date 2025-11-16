@@ -91,7 +91,19 @@ func reset_state(handover: Variant = null):
 	trigger_enter(handover)
 
 
-## Activate the given state, ditching the current state.
+## Artificially set this actor's state through its name as seen in its [StateManager].
+func set_to_state(state: StringName, handover: Variant = null):
+	call_deferred(&"_switch_leaf", _get_link(state), handover)
+
+
+## Get the active leaf of the machine.
+func get_leaf() -> State:
+	if live_substate == null:
+		return self
+	return live_substate.get_leaf()
+
+
+## Activate a sibling state.
 func switch_substate(new_state: State, handover: Variant = null):
 	if new_state == live_substate:
 		return
@@ -134,13 +146,6 @@ func probe_switch(defer: bool = false) -> void:
 		_switch_leaf(link, handover)
 
 
-## Get the active leaf of the machine.
-func get_leaf() -> State:
-	if live_substate == null:
-		return self
-	return live_substate.get_leaf()
-
-
 ## Get a link to the given state.
 func _get_link(key: StringName) -> StateLink:
 	if _link_cache.has(key):
@@ -160,46 +165,6 @@ func _cache_link(key: StringName) -> StateLink:
 	var link = StateLink.new(self, target)
 	_link_cache[key] = link
 	return link
-
-
-## Called on every cycle of the physics process loop.
-func _physics_tick() -> void:
-	pass
-
-
-## Called on the first cycle of the physics process loop.
-func _first_tick() -> void:
-	pass
-
-
-## Called on every cycle of the physics process loop minus the first.
-func _subsequent_ticks() -> void:
-	pass
-
-
-## Called when the state becomes active.
-func _on_enter(_param: Variant) -> void:
-	pass
-
-
-## Called when the state is deactivated.
-func _on_exit() -> void:
-	pass
-
-
-## Return the name of a state for the parent to switch to, or `null` for no change.
-## This is called by the parent state during probe_switch() at the start of the physics tick.
-## This function should be used to define the transition rules for the state.
-func _trans_rules() -> Variant:
-	return &""
-
-
-## Return the name of a passthrough state.
-## When this state is switched to, immediately switch to that state.
-## This means that other states don't have to guess the behavior of this state
-## when switching to a child of it.
-func _defer_rules() -> StringName:
-	return &""
 
 
 ## Reroute the active path to select a given state as the active leaf.
@@ -241,3 +206,43 @@ func _is_live() -> bool:
 		return true
 
 	return false
+
+
+## Called on every cycle of the physics process loop.
+func _physics_tick() -> void:
+	pass
+
+
+## Called on the first cycle of the physics process loop.
+func _first_tick() -> void:
+	pass
+
+
+## Called on every cycle of the physics process loop minus the first.
+func _subsequent_ticks() -> void:
+	pass
+
+
+## Called when the state becomes active.
+func _on_enter(_param: Variant) -> void:
+	pass
+
+
+## Called when the state is deactivated.
+func _on_exit() -> void:
+	pass
+
+
+## Return the name of a state for the parent to switch to, or `null` for no change.
+## This is called by the parent state during probe_switch() at the start of the physics tick.
+## This function should be used to define the transition rules for the state.
+func _trans_rules() -> Variant:
+	return &""
+
+
+## Return the name of a passthrough state.
+## When this state is switched to, immediately switch to that state.
+## This means that other states don't have to guess the behavior of this state
+## when switching to a child of it.
+func _defer_rules() -> StringName:
+	return &""

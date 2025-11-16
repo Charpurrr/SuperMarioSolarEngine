@@ -151,8 +151,6 @@ animation = &"normal"
 autoplay = "normal"
 offset = Vector2(0, -2)
 script = ExtResource("1_hamnh")
-shine_name = null
-description = null
 particle = SubResource("Resource_byb03")
 area = NodePath("Area2D")
 
