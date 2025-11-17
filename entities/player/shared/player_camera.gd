@@ -16,8 +16,8 @@ extends Camera2D
 @export var pan_follow_speed: float = 2.0
 
 @export_category(&"Shake Springs")
-@export var shake_x_spring: Spring
-@export var shake_y_spring: Spring
+@export var shake_x_spring: DampedOscillator
+@export var shake_y_spring: DampedOscillator
 
 ## This variable is set in [code]world_machine.tscn[/code].
 var player: Player
