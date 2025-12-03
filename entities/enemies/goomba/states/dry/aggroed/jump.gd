@@ -14,9 +14,6 @@ extends EnemyState
 @export var fall_animation: StringName
 @export var fall_offset := Vector2.ZERO
 
-## The difference in distance between the player, and the Goomba.
-var diff: Vector2
-
 
 func _on_enter(jump_power_overwrite: Variant) -> void:
 	actor.vel.y -= jump_power if jump_power_overwrite == null else jump_power_overwrite
@@ -33,9 +30,9 @@ func _physics_tick() -> void:
 	if actor.spotted_player == null:
 		return
 
-	diff = actor.spotted_player.global_position - actor.global_position
+	actor.diff = actor.spotted_player.global_position - actor.global_position
 
-	if abs(diff.x) <= range_jump.x and diff.y <= range_jump.y:
+	if abs(actor.diff.x) <= range_jump.x and actor.diff.y <= range_jump.y:
 		actor.vel.x = move_toward(actor.vel.x, 0, jump_decel)
 
 

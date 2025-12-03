@@ -1,4 +1,4 @@
-[gd_scene load_steps=302 format=3 uid="uid://dgqp3sqvmcvpu"]
+[gd_scene load_steps=304 format=3 uid="uid://dgqp3sqvmcvpu"]
 
 [ext_resource type="Script" uid="uid://bg4t154sge7br" path="res://entities/player/shared/player.gd" id="1_87j6i"]
 [ext_resource type="Texture2D" uid="uid://cargcb2py1wcg" path="res://entities/player/shared/fludd/fludd.png" id="2_e1ut2"]
@@ -136,6 +136,7 @@
 [ext_resource type="AudioStream" uid="uid://bbw3474fd3uxc" path="res://entities/player/shared/motion/spinattack_shine.wav" id="136_a6kal"]
 [ext_resource type="AudioStream" uid="uid://bowyc14wpkcra" path="res://entities/player/shared/motion/dive.wav" id="138_88upi"]
 [ext_resource type="Script" uid="uid://cbg4mbnpu1bvj" path="res://entities/player/shared/states/dry/butt_slide.gd" id="140_lfmwr"]
+[ext_resource type="Script" uid="uid://cghkwmax26iwr" path="res://entities/player/shared/states/dry/hit.gd" id="144_xenv0"]
 [ext_resource type="PackedScene" uid="uid://yxcrkjecabc2" path="res://props/particles/spin_ring.tscn" id="149_qbnhj"]
 [ext_resource type="Script" uid="uid://c6f05nyrdtcd6" path="res://entities/player/shared/states/dry/dive_states/super_rollout.gd" id="150_4duxu"]
 [ext_resource type="Script" uid="uid://ftwidhx88kkq" path="res://entities/player/shared/fludd/fludd_manager.gd" id="151_4womg"]
@@ -411,7 +412,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Resource" id="Resource_cpqj3"]
+[sub_resource type="Resource" id="Resource_spsxp"]
 resource_local_to_scene = true
 script = ExtResource("23_bbld7")
 doll_path = NodePath("Doll")
@@ -421,23 +422,17 @@ frame_offsets = Dictionary[int, Vector2i]({
 0: Vector2i(0, 0)
 })
 frame_fludd = Dictionary[int, String]({
-0: "default",
-1: "default"
+0: "default"
 })
 frame_fludd_offsets = Dictionary[int, Vector2i]({
-0: Vector2i(0, 0),
-1: Vector2i(0, 0),
-3: Vector2i(0, 1),
-4: Vector2i(0, 2),
-5: Vector2i(0, 2),
-6: Vector2i(0, 1)
+0: Vector2i(0, 5)
 })
-animation = "idle"
+animation = "bonk"
 frame = 0
 preview = false
 frame_offset = Vector2i(0, 0)
 fludd_animation = "default"
-fludd_offset = Vector2i(0, 0)
+fludd_offset = Vector2i(0, 5)
 metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f3xbj"]
@@ -881,6 +876,35 @@ bus = &"Motion"
 overwrite_other = false
 cutoff_sfx = false
 metadata/_custom_type_script = "uid://dvlt5sb8enmu8"
+
+[sub_resource type="Resource" id="Resource_cpqj3"]
+resource_local_to_scene = true
+script = ExtResource("23_bbld7")
+doll_path = NodePath("Doll")
+fludd_f_path = NodePath("FluddInfront")
+fludd_b_path = NodePath("FluddBehind")
+frame_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0)
+})
+frame_fludd = Dictionary[int, String]({
+0: "default",
+1: "default"
+})
+frame_fludd_offsets = Dictionary[int, Vector2i]({
+0: Vector2i(0, 0),
+1: Vector2i(0, 0),
+3: Vector2i(0, 1),
+4: Vector2i(0, 2),
+5: Vector2i(0, 2),
+6: Vector2i(0, 1)
+})
+animation = "idle"
+frame = 0
+preview = false
+frame_offset = Vector2i(0, 0)
+fludd_animation = "default"
+fludd_offset = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://cb4g1yl24gj7m"
 
 [sub_resource type="Resource" id="Resource_xh3w7"]
 resource_local_to_scene = true
@@ -2281,8 +2305,8 @@ sprite_frames = SubResource("SpriteFrames_e1ut2")
 [node name="Doll" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = ExtResource("2_ttikd")
-animation = &"idle"
-metadata/last_previewed = SubResource("Resource_cpqj3")
+animation = &"bonk"
+metadata/last_previewed = SubResource("Resource_spsxp")
 
 [node name="FluddInfront" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -2785,6 +2809,12 @@ hitbox_type = "Small"
 animation_data = SubResource("Resource_ifrah")
 particles = Array[ExtResource("55_bxnxc")]([SubResource("Resource_d3rr6")])
 sfx_layers = Array[ExtResource("49_apkmk")]([SubResource("Resource_mc84f")])
+
+[node name="Hit" type="Node" parent="StateManager/Dry"]
+process_mode = 3
+script = ExtResource("144_xenv0")
+freeze_time = 20
+animation_data = SubResource("Resource_spsxp")
 
 [connection signal="body_entered" from="Areas/DiveHurtBox" to="StateManager/Dry/DiveStates/Dive" method="_on_dive_hurt_box_body_entered"]
 [connection signal="body_entered" from="Areas/SpinHurtBox" to="StateManager/Dry/Airborne/WalljumpStates/SpinWallbonk" method="_on_spin_hurt_box_body_entered"]

@@ -244,11 +244,12 @@ _data = {
 &"die_strike": SubResource("Animation_kc47k")
 }
 
-[node name="Goomba" type="CharacterBody2D" node_paths=PackedStringArray("ledge_ray_l", "ledge_ray_r", "wall_ray_l", "wall_ray_r", "hitbox", "state_manager", "anime", "doll")]
-collision_layer = 12
+[node name="Goomba" type="CharacterBody2D" node_paths=PackedStringArray("hurtbox", "ledge_ray_l", "ledge_ray_r", "wall_ray_l", "wall_ray_r", "hitbox", "state_manager", "anime", "doll")]
+collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_hhlu2")
 gravity = 0.215
+hurtbox = NodePath("Areas/Hurtbox")
 ledge_ray_l = NodePath("Rays/LedgeRayL")
 ledge_ray_r = NodePath("Rays/LedgeRayR")
 wall_ray_l = NodePath("Rays/WallRayL")

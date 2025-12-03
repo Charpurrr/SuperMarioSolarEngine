@@ -9,8 +9,6 @@ extends EnemyState
 ## catching them with a jump.
 @export var range_jump := Vector2(10.0, 10.0)
 
-## The difference in distance between the player, and the Goomba.
-var diff: Vector2
 ## Direction the player is in, in relation to this Goomba.
 var dir: int
 
@@ -19,8 +17,8 @@ func _physics_tick() -> void:
 	if not actor.spotted_player:
 		return
 
-	diff = actor.spotted_player.global_position - actor.global_position
-	dir = sign(diff.x)
+	actor.diff = actor.spotted_player.global_position - actor.global_position
+	dir = sign(actor.diff.x)
 
 	actor.vel.x = move_toward(actor.vel.x, chase_max_speed * dir, chase_accel)
 
@@ -52,8 +50,8 @@ func _trans_rules() -> Variant:
 
 	# Try to catch the player by jumping underneath them.
 	if (
-		abs(diff.x) <= range_jump.x and
-		diff.y <= range_jump.y and
+		abs(actor.diff.x) <= range_jump.x and
+		actor.diff.y <= range_jump.y and
 		actor.spotted_player.is_on_floor()
 	):
 		return &"Jump"

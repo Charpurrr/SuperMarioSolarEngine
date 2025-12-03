@@ -46,8 +46,8 @@ func _physics_process(delta):
 
 
 func take_hit(_source: Node, _damage_type: HealthModule.DamageType):
-	state_manager.set_to_state(&"Bonk")
+	state_manager.set_to_state(&"Hit")
 
 
 func die(_source: Node, _damage_type: HealthModule.DamageType):
-	get_tree().reload_current_scene()
+	get_tree().call_deferred(&"reload_current_scene")
