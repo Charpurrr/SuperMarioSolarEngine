@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x2edebevq3c7"
-path="res://.godot/imported/idle.png-e7dcac1150e68b25b50029c73949de1a.ctex"
+uid="uid://cu6rg1coyo1db"
+path="res://.godot/imported/squish.png-3b2e1983dd21fda91f588821d8b9942f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/enemies/goomba/anime/idle.png"
-dest_files=["res://.godot/imported/idle.png-e7dcac1150e68b25b50029c73949de1a.ctex"]
+source_file="res://entities/enemies/goomba/anime/squish.png"
+dest_files=["res://.godot/imported/squish.png-3b2e1983dd21fda91f588821d8b9942f.ctex"]
 
 [params]
 

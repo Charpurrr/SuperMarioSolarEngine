@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://d0q4h02e1xlo6" path="res://entities/player/shared/push_rays.gd" id="35_g7d1t"]
 [ext_resource type="Script" uid="uid://ddr3ta4g2q457" path="res://entities/player/shared/player_movement.gd" id="37_quca3"]
 [ext_resource type="AudioStream" uid="uid://b0wlrkn5oy6gr" path="res://entities/player/shared/motion/SE_PM_SQUAT_WALK.wav" id="38_pxspy"]
-[ext_resource type="Script" uid="uid://bgbnjn5g8yd7s" path="res://entities/player/shared/player_state_manager.gd" id="38_vxs65"]
+[ext_resource type="Script" uid="uid://bgbnjn5g8yd7s" path="res://entities/player/shared/states/player_state_manager.gd" id="38_vxs65"]
 [ext_resource type="Script" uid="uid://cnhq3f60vcaka" path="res://entities/player/shared/areas/crouchlock.gd" id="39_n5dp2"]
 [ext_resource type="Script" uid="uid://rc6vjkye3g3v" path="res://entities/player/shared/states/submerged/swim_idle.gd" id="40_aeui7"]
 [ext_resource type="Script" uid="uid://nfqh6xlw3stl" path="res://entities/player/shared/states/dry/dry.gd" id="40_q8vpo"]
@@ -2246,6 +2246,7 @@ floor_constant_speed = true
 floor_max_angle = 1.48353
 floor_snap_length = 16.0
 script = ExtResource("1_87j6i")
+hp = 4
 doll = NodePath("Doll")
 fludd_f = NodePath("FluddInfront")
 fludd_b = NodePath("FluddBehind")

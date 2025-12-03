@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x2edebevq3c7"
-path="res://.godot/imported/idle.png-e7dcac1150e68b25b50029c73949de1a.ctex"
+uid="uid://b5eno3kq3b43"
+path="res://.godot/imported/chase.png-fcec237e1978cae1b4453f181d6f3b27.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/enemies/goomba/anime/idle.png"
-dest_files=["res://.godot/imported/idle.png-e7dcac1150e68b25b50029c73949de1a.ctex"]
+source_file="res://entities/enemies/goomba/anime/chase.png"
+dest_files=["res://.godot/imported/chase.png-fcec237e1978cae1b4453f181d6f3b27.ctex"]
 
 [params]
 

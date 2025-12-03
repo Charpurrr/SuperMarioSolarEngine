@@ -1,6 +1,8 @@
 class_name HealthModule
 extends RefCounted
-## Provides a simple way to add health to a player or enemy.
+## Provides a simple way to add health to entities.
+
+signal damaged(entity: Node2D, hits: int, type: DamageType)
 
 var hp: int
 
@@ -23,6 +25,8 @@ func _init(hit_points: int, hit_callback_pass: Callable, die_callback_pass: Call
 
 func damage(source: Node, damage_type: DamageType, damage_points: float = 1.0):
 	hp = max(hp - damage_points, 0)
+
+	damaged.emit(self, damage_points, damage_type)
 
 	if hp != 0:
 		hit_callback.call(source, damage_type)
