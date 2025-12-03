@@ -15,7 +15,7 @@ extends Camera2D
 
 @export var pan_follow_speed: float = 2.0
 
-@export_category(&"Shake Springs")
+@export_category(&"References")
 @export var shake_x_spring: DampedOscillator
 @export var shake_y_spring: DampedOscillator
 
@@ -69,8 +69,6 @@ func _input(event: InputEvent) -> void:
 			target_zoom -= 50
 
 	if event.is_action_pressed(&"camera_zoom_out"):
-		shake(Vector2(0, 20))
-		
 		if target_zoom != zoom_max:
 			zoom_out_sfx.play_sfx_at(self)
 
@@ -83,5 +81,5 @@ func _input(event: InputEvent) -> void:
 
 
 func shake(power: Vector2) -> void:
-	shake_x_spring.start_spring(power.x)
-	shake_y_spring.start_spring(power.y)
+	shake_x_spring.start(power.x)
+	shake_y_spring.start(power.y)

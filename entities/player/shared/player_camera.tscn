@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dvlt5sb8enmu8" path="res://util/sfx_layer.gd" id="2_hvhmj"]
 [ext_resource type="AudioStream" uid="uid://dakcghvbe6vva" path="res://entities/player/shared/camera_in.wav" id="3_tywbp"]
 [ext_resource type="AudioStream" uid="uid://c66je7k6yx3c7" path="res://entities/player/shared/camera_out.wav" id="4_bl75n"]
-[ext_resource type="Script" uid="uid://b53d42qg4e27d" path="res://util/damped_oscillator.gd" id="5_qicgx"]
+[ext_resource type="Script" uid="uid://b53d42qg4e27d" path="res://util/custom_nodes/damped_oscillator.gd" id="5_qicgx"]
 
 [sub_resource type="Resource" id="Resource_dq0cd"]
 script = ExtResource("2_hvhmj")
@@ -30,22 +30,10 @@ zoom_out_sfx = SubResource("Resource_rtieh")
 shake_x_spring = NodePath("ShakeXSpring")
 shake_y_spring = NodePath("ShakeYSpring")
 
-[node name="Button" type="Button" parent="."]
-offset_left = -243.0
-offset_top = -191.0
-offset_right = -188.0
-offset_bottom = -160.0
-text = "Shake"
-
 [node name="ShakeXSpring" type="Node2D" parent="."]
-visible = false
 script = ExtResource("5_qicgx")
 process_in_physics = true
-spring_constant = 0.3
 
 [node name="ShakeYSpring" type="Node2D" parent="."]
 script = ExtResource("5_qicgx")
 process_in_physics = true
-spring_constant = 0.3
-
-[connection signal="pressed" from="Button" to="." method="shake" binds= [Vector2(0, 20)]]
