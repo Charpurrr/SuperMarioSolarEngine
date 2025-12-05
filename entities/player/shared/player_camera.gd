@@ -19,8 +19,8 @@ extends Camera2D
 @export var shake_x_spring: DampedOscillator
 @export var shake_y_spring: DampedOscillator
 
-## This variable is set in [code]world_machine.tscn[/code].
-var player: Player
+## This is set in [WorldMachine].
+@onready var player: Player
 
 ## The current camera zoom in percentage.
 ## (Note: higher zoom percentage means you can see more level.)

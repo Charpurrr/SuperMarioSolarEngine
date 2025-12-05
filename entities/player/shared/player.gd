@@ -30,6 +30,9 @@ extends CharacterBody2D
 
 @onready var health_module := HealthModule.new(hp, take_hit, die)
 
+## This is set in [WorldMachine].
+@onready var camera: PlayerCamera
+
 ## Current velocity.
 var vel := Vector2.ZERO
 

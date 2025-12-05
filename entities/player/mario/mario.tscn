@@ -136,7 +136,7 @@
 [ext_resource type="AudioStream" uid="uid://bbw3474fd3uxc" path="res://entities/player/shared/motion/spinattack_shine.wav" id="136_a6kal"]
 [ext_resource type="AudioStream" uid="uid://bowyc14wpkcra" path="res://entities/player/shared/motion/dive.wav" id="138_88upi"]
 [ext_resource type="Script" uid="uid://cbg4mbnpu1bvj" path="res://entities/player/shared/states/dry/butt_slide.gd" id="140_lfmwr"]
-[ext_resource type="Script" path="res://entities/player/shared/states/dry/hit.gd" id="144_xenv0"]
+[ext_resource type="Script" uid="uid://cghkwmax26iwr" path="res://entities/player/shared/states/dry/hit.gd" id="144_xenv0"]
 [ext_resource type="PackedScene" uid="uid://yxcrkjecabc2" path="res://props/particles/spin_ring.tscn" id="149_qbnhj"]
 [ext_resource type="Script" uid="uid://c6f05nyrdtcd6" path="res://entities/player/shared/states/dry/dive_states/super_rollout.gd" id="150_4duxu"]
 [ext_resource type="Script" uid="uid://ftwidhx88kkq" path="res://entities/player/shared/fludd/fludd_manager.gd" id="151_4womg"]
