@@ -134,7 +134,7 @@ size = Vector2(16, 16)
 [node name="Coin" type="AnimatedSprite2D" node_paths=PackedStringArray("area")]
 sprite_frames = SubResource("SpriteFrames_b3an0")
 animation = &"0"
-frame_progress = 0.3743397
+frame_progress = 0.013547622
 script = ExtResource("2_fs6bx")
 respective_sounds = Dictionary[int, AudioStream]({
 0: ExtResource("3_we2q1"),
