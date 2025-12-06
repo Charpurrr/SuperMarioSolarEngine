@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://cnd277snrwca5"]
 
-[ext_resource type="Script" uid="uid://b8xq8roo5asyr" path="res://entities/player/shared/player_camera.gd" id="1_8exb6"]
-[ext_resource type="Script" uid="uid://dvlt5sb8enmu8" path="res://util/sfx_layer.gd" id="2_hvhmj"]
-[ext_resource type="AudioStream" uid="uid://dakcghvbe6vva" path="res://entities/player/shared/camera_in.wav" id="3_tywbp"]
-[ext_resource type="AudioStream" uid="uid://c66je7k6yx3c7" path="res://entities/player/shared/camera_out.wav" id="4_bl75n"]
+[ext_resource type="Script" uid="uid://b8xq8roo5asyr" path="res://entities/player/shared/camera/player_camera.gd" id="1_8exb6"]
+[ext_resource type="Script" uid="uid://dvlt5sb8enmu8" path="res://util/resources/sfx_layer.gd" id="2_hvhmj"]
+[ext_resource type="AudioStream" uid="uid://dakcghvbe6vva" path="res://entities/player/shared/camera/camera_in.wav" id="3_tywbp"]
+[ext_resource type="AudioStream" uid="uid://c66je7k6yx3c7" path="res://entities/player/shared/camera/camera_out.wav" id="4_bl75n"]
 [ext_resource type="Script" uid="uid://b53d42qg4e27d" path="res://util/custom_nodes/damped_oscillator.gd" id="5_qicgx"]
 
 [sub_resource type="Resource" id="Resource_dq0cd"]

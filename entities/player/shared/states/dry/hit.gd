@@ -14,6 +14,7 @@ func _on_enter(_param: Variant) -> void:
 	freeze_timer = freeze_time
 
 	actor.camera.shake(Math.random_coord(camera_shake_power))
+	actor.health_module.enabled = false
 
 
 func _physics_tick() -> void:

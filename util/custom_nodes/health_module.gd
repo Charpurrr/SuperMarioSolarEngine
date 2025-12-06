@@ -4,6 +4,8 @@ extends RefCounted
 
 signal damaged(hits: int, type: DamageType)
 
+var enabled: bool = true
+
 var hp: int
 
 var hit_callback: Callable
@@ -24,6 +26,9 @@ func _init(hit_points: int, hit_callback_pass: Callable, die_callback_pass: Call
 
 
 func damage(source: Node, damage_type: DamageType, damage_points: float = 1.0):
+	if not enabled:
+		return
+
 	hp = max(hp - damage_points, 0)
 
 	damaged.emit(damage_points, damage_type)
